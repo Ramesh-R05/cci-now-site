@@ -1,0 +1,32 @@
+.get-social {
+    margin-bottom: 0;
+
+    @media #{$medium-up} {
+        margin-bottom: 20px;
+    }
+
+    .get-social__links {
+        margin: 0 auto;
+        width: 290px;
+
+        @media #{$xlarge-up} {
+            width: 100%;
+        }
+
+        .social-link {
+            padding: $column-gutter / 2;
+            width: 95px;
+        }
+    }
+}
+
+.home-page {
+    .get-social {
+        .get-social__links {
+            .social-link {
+                padding: $column-gutter / 2;
+                width: 95px;
+            }
+        }
+    }
+}

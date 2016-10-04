@@ -1,0 +1,41 @@
+// Primary color
+$color-primary: #ec008c;
+
+// Other colors
+$color-purple: #811aff;
+$color-violet: #ddd5ea;
+$color-blue: #16d1ff;
+$color-green: #11e061;
+$color-yellow: #ffc000;
+$color-orange: #ff771d;
+$color-red: #fc3959;
+
+// Social
+$facebook-blue: #597acb;
+$twitter-blue: #5dc8ff;
+$pinterest-red: #dd2724;
+$instagram-brown: #b6956a;
+
+// Variants
+$color-primary-light: #ffd3ed!default;
+$color-purple-light: lighten($color-purple, 25%);
+$color-blue-light: lighten($color-blue, 25%);
+$color-green-light: lighten($color-green, 25%);
+$color-yellow-light: lighten($color-yellow, 25%);
+$color-orange-light: lighten($color-orange, 25%);
+$color-red-light: #ffd3ed;
+$color-red-light2: #f8b8d6;
+
+// B&W and Greys
+$color-black: #222;
+$color-grey-darker: #777; // Used in @bxm/article
+$color-grey-dark: #777; // Used in @bxm/article
+$color-grey: #777;
+$color-grey-light: #ccc;
+$color-white: #fff;
+
+// Other
+$line-color: #ddd;
+$color-section-separator: #e5e5e5;
+$color-header-menu-button: #555;
+$color-footer-grey: #555;

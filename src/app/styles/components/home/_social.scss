@@ -1,0 +1,48 @@
+.home-page__social-wrapper {
+    margin: {
+        top: 30px;
+    }
+
+    @media #{$large-up} {
+        margin: {
+            top: 0;
+        }
+    }
+
+    .columns {
+        padding: {
+            left: 0;
+            right: 0;
+        }
+    }
+
+    .ad--section-mrec {
+        margin-left: -5px;
+        margin-bottom: 45px;
+    }
+}
+
+.home-page__get-social-container {
+    margin: {
+        bottom: 35px;
+    }
+
+    @media #{$medium-up} {
+        margin: {
+            bottom: 0;
+        }
+    }
+
+    .get-social {
+        margin: {
+            bottom: 0;
+        }
+
+        .columns {
+            padding: {
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+}

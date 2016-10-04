@@ -1,0 +1,33 @@
+.teaser-view-list {
+    @include block-grid($per-row: 1);
+
+    .teaser {
+        &__image {
+            @include grid-column(6);
+
+            @media #{$medium-up} {
+                @include grid-column($columns: 12, $collapse: true);
+            }
+
+            @media #{$large-up} {
+                @include grid-column(6);
+            }
+        }
+
+        &__body {
+            @include grid-column(6);
+
+            @media #{$medium-up} {
+                @include grid-column(12);
+            }
+
+            @media #{$large-up} {
+                @include grid-column(6);
+            }
+        }
+
+        &__summary-wrap {
+            @extend .hide-for-small-only;
+        }
+    }
+}

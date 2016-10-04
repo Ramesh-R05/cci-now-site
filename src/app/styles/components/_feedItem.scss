@@ -1,0 +1,27 @@
+.feed__container {
+    .feed-item {
+        border-top-color: $color-red-light;
+        
+        // Teaser body
+        &__body {
+            padding-top: 0px;
+            width: $feed-item-body-width;
+
+            &-title {
+                @include type-xsmall-teaser-title;
+                margin-top: 0px;
+
+                &:hover,
+                &:focus {
+                    color: $color-primary;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .feed-ad {
+        padding-bottom: 20px;
+        border-top-color: $color-red-light;
+    }
+}

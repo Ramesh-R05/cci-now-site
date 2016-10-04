@@ -1,0 +1,39 @@
+.trending-wrapper {
+    position: relative;
+
+    .container {
+        padding-bottom: 5px;
+
+        @media #{$medium-up} {
+            padding-bottom: 8px;
+        }
+
+        @media #{$xlarge-up} {
+            padding-bottom: 0;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            height: 5px;
+            background: $color-black;
+            left: $column-gutter/2;
+            right: $column-gutter/2;
+
+            @media #{$medium-up} {
+                height: 8px;
+                left: $column-gutter;
+                right: $column-gutter;
+            }
+
+            @media #{$xlarge-up} {
+                position: relative;
+                display: block;
+                height: 10px;
+                left: 0;
+                right: 0;
+                margin: 0 $column-gutter/2;
+            }
+        }
+    }
+}

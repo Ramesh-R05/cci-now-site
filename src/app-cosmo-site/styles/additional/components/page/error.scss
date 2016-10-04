@@ -1,0 +1,39 @@
+.error-page-container {
+    text-align: center;
+
+    &__title {
+        font: 30px/32px $font-family-sans-serif-primary;
+        font-weight: bold;
+        letter-spacing: -1px;
+        padding: 0;
+        margin: 30px auto 25px;
+        text-align: center;
+        max-width: 360px;
+
+        @media #{$xlarge-up} {
+            font-size: 64px;
+            line-height: 68px;
+            max-width: 750px;
+        }
+
+        span:after {
+            content: none;
+        }
+    }
+
+    .emoji {
+        width: 360px;
+    }
+
+    &__footer {
+        margin-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    &__homepage-link {
+        font: italic 30px/25px $font-family-serif-primary;
+        text-decoration: underline;
+        text-transform: none;
+    }
+}
+

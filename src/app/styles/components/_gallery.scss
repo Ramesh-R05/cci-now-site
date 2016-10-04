@@ -1,0 +1,211 @@
+.gallery {
+    // Temporary until social style task is done
+    .social-share-block {
+        &.hide-for-large-up {
+            margin: 0 $column-gutter/2 40px;
+
+            .social-share {
+                height: 50px;
+                margin-right: 15px;
+                position: relative;
+                vertical-align: middle;
+                width: 10%;
+
+                @media #{$medium-up} {
+                    width: 8%;
+                }
+            }
+
+            .social-share-count {
+                border: 0;
+                line-height: 50px;
+                margin-left: 18px;
+                margin-top: 0;
+                padding-left: 20px;
+                width: 38px;
+
+                @media #{$medium-up} {
+                    margin-top: -1px;
+                    padding-left: 35px;
+                }
+            }
+
+            .email {
+                display: inline-block;
+                line-height: 48px;
+                margin-right: 0;
+            }
+        }
+
+        &.show-for-large-up {
+            margin-top: 13px;
+            padding: {
+                left: $column-gutter/2;
+                right: $column-gutter;
+            }
+
+            position: absolute;
+            right: 0;
+            text-align: left;
+            width: $gallery-aside-large-width;
+
+            .social-share-count {
+                padding-left: 30px;
+                margin-left: 10px;
+                margin-top: 7px;
+            }
+        }
+    }
+
+    .icon-logo {
+        display: inline-block;
+        background-image: url($header-logo-path);
+        background-repeat: no-repeat;
+        background-size: 122px 28px;
+        width: 122px;
+        height: 28px;
+
+        @media #{$medium-up} {
+            background-size: 153px 33px;
+            width: 153px;
+            height: 33px;
+        }
+    }
+
+    &__header {
+        border-bottom: 1px solid $color-red-light;
+        box-shadow: none;
+
+        .gallery__logo {
+            padding-top: 15px;
+        }
+    }
+
+    &__title {
+        font: 400 22px $font-family-sans-serif-primary;
+    }
+
+    &__slide-count {
+        &, .gallery__header & {
+            color: $color-primary;
+        }
+    }
+
+    &__aside {
+        .gallery__subsection {
+            @include type-teaser-color-block();
+            display: inline-block;
+            background-color: $color-primary;
+            padding: 6px 20px;
+            margin-top: 10px;
+
+            a {
+                color: $color-white;;
+            }
+        }
+
+        .gallery__date {
+            color: $color-primary;
+            font: 11px/22px $font-family-serif-primary;
+            margin-top: 10px;
+            padding-bottom: 0;
+        }
+    }
+
+    &__more-heading-container {
+        text-align: left;
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100%;
+        }
+
+        &:before {
+            background: $color-grey-light;
+            height: 1px;
+            top: inherit;
+            bottom: -1px;
+        }
+
+        &:after {
+            background: $color-black;
+            bottom: -3px;
+            height: 2px;
+        }
+
+        .gallery__more-heading {
+            background: url('/assets/images/more-galleries.svg') no-repeat;
+            width: 265px;
+            height: 33px;
+            text-indent: -9999px;
+        }
+    }
+
+    &__next-container {
+        h2 {
+            font-family: $font-family-sans-serif-primary;
+        }
+
+        h5 {
+            font-family: $font-family-sans-serif-primary;
+            font-size: 17px;
+        }
+    }
+
+    &__next-main {
+        .button {
+            border-radius: 0;
+
+            &:hover {
+                background: $color-white;
+                opacity: .85;
+            }
+
+            .icon-arrow-next {
+                top: -6px;
+                font-size: 16px;
+            }
+        }
+    }
+
+    &__next-text-container {
+        background: url('/assets/images/up-next.svg') no-repeat;
+        width: 103px;
+        height: 21px;
+        margin-top: 5px;
+        text-indent: -9999px;
+    }
+
+    &__next-aside {
+        .gallery__more {
+            margin-top: 30px;
+
+            .teaser__body {
+                position: relative;
+            }
+
+            .teaser__title {
+                font-size: 15px;
+                line-height: 21px;
+
+                @media #{$medium-up} {
+                    font-size: 22px;
+                    line-height: 30px;
+                }
+            }
+
+            .teaser__badge-container {
+                top: -34px;
+                left: -5px;
+
+                @media #{$medium-only} {
+                    top: -46px;
+                    left: 0;
+                }
+            }
+        }
+    }
+}

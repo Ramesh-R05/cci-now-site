@@ -1,0 +1,41 @@
+// Unfortunately stupid brightcove uses important in its default styling :(
+.video-wrapper {
+    .video-js {
+        .vjs-big-play-button {
+            border: 5px $color-white solid;
+            border-radius: 0px !important;
+            height: 55px !important;
+            width: 65px !important;
+
+            &:before {
+                margin: 22px auto;
+                opacity: 1;
+                line-height: 0;
+
+                @media #{$medium-up} {
+                    font-size: 65px;
+                    line-height: 50px;
+                    margin: {
+                        bottom: 28px;
+                        left: 0;
+                        right: auto;
+                        top: 20px;
+                    }
+                    padding-left: 0;
+                }
+
+            }
+
+            @media #{$medium-up} {
+                border-width: 10px;
+                height: 110px !important;
+                width: 130px !important;
+            }
+        }
+
+        .vjs-volume-level,
+        .vjs-play-progress {
+            background-color: $color-primary;
+        }
+    }
+}

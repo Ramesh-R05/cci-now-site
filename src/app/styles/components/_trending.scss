@@ -1,0 +1,137 @@
+.trending-wrapper {
+    background: url(/assets/backgrounds/trending-pink.svg) 50% 50% repeat;
+    position: relative;
+    padding-top: 45px;
+
+    @media #{$small-only} {
+        background-size: 100px;
+    }
+
+    @media #{$medium-up} {
+        padding-top: 53px;
+    }
+
+    @media #{$large-up} {
+        padding-top: 61px;
+    }
+
+    @media #{$xlarge-up} {
+        padding-top: 40px;
+    }
+
+    .container {
+        // TODO: this needs to be fixed in helpers/_grid.scss
+        // temp fix so i don't break the whole site
+        @media #{$medium-only} {
+            padding-left: $column-gutter / 2;
+            padding-right: $column-gutter / 2;
+        }
+    }
+
+    .trending__caption {
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 15px;
+        width: 100%;
+        z-index: 1;
+        text-align: center;
+
+        img {
+            width: 185px;
+            @media #{$medium-up} {
+                width: 235px;
+            }
+            @media #{$large-up} {
+                width: 285px;
+            }
+        }
+
+        @media #{$xlarge-up} {
+
+            margin-top: -8px;
+            position: relative;
+            top: auto;
+
+            img {
+                width: auto;
+            }
+        }
+    }
+
+    .teaser__list {
+        list-style: none;
+
+        &-item {
+            padding-bottom: 20px;
+
+            @media #{$small-only} {
+                &:nth-child(1) {
+                    padding-right: $column-gutter/4;
+                }
+
+                &:nth-child(2) {
+                    padding-left: $column-gutter/4;
+                }
+            }
+
+            @media #{$xlarge-up} {
+                padding-bottom: 30px;
+            }
+        }
+
+        .teaser__body {
+            margin: {
+                bottom: 0px;
+            }
+        }
+
+        .teaser__title {
+            @include type-bottom-teaser-title;
+            padding-top: 7px;
+
+            @media #{$xlarge-up} {
+                font-size: 16px;
+                line-height: 22px;
+            }
+
+            a {
+                color: $color-white;
+
+                &:hover,
+                &:focus {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .teaser__image {
+            img {
+                &:hover {
+                    outline: 5px solid $color-white;
+                    outline-offset: -5px;
+                }
+            }
+        }
+
+        .teaser__list-item:nth-child(n+3) {
+            display: none;
+        }
+
+        @media #{$medium-up} {
+            .teaser__list-item:nth-child(3) {
+                display: block;
+            }
+        }
+
+        @media #{$large-up} {
+            .teaser__list-item:nth-child(n+4) {
+                display: block;
+            }
+        }
+    }
+}
+
+
+
+

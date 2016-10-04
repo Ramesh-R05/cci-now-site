@@ -1,0 +1,137 @@
+.footer {
+    background-image: url('/assets/backgrounds/footer-bg.svg');
+    background-repeat: repeat;
+    margin-top: 30px;
+    padding: 40px 0;
+
+    a {
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    @media #{$small-only} {
+        background-size: 100px;
+    }
+
+    @media #{$medium-up} {
+        margin-top: 20px;
+        padding: 50px 0;
+    }
+
+    @media #{$large-up} {
+        padding: 80px 0;
+    }
+
+    &__copyright {
+        line-height: 15px;
+        padding-top: 4px;
+        text-align: center;
+
+        span {
+            color: $color-violet;
+            font-family: $font-family-serif-primary;
+            font-size: 10px;
+            letter-spacing: .020em;
+
+            @media #{$large-up} {
+                font-size: 14px;
+            }
+
+        }
+    }
+
+    .get-social {
+        width: 300px;
+
+        @media #{$medium-up} {
+            width: 400px;
+        }
+
+        @media #{$xlarge-up} {
+            width: 100%;
+        }
+    }
+}
+
+.footer.footer--article {
+
+    padding: 40px 0;
+
+    @media #{$large-up} {
+        clear: both;
+        float: right;
+        margin: 0 (-$column-gutter / 2) 0 auto;
+        width: calc(100% - #{$article-feed-container-width});
+
+        .newsletter {
+            margin-top: 0px;
+            width: 100%;
+        }
+    }
+
+    @media #{$xlarge-up} {
+        margin-right: 0;
+    }
+
+    .get-social {
+        .row {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &__links {
+
+            @media #{$large-up} {
+                .row:before,
+                .row:after {
+                    display: table;
+                }
+            }
+
+            @media #{$xlarge-up} {
+                .row:before,
+                .row:after {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    .subscribe {
+        float: none;
+        margin: 0 auto 20px;
+
+        &__subscribe {
+            margin-top: 40px;
+
+            @media #{$medium-up} {
+                margin-top: 0px;
+            }
+        }
+
+        .subscription {
+
+            &__image--mag {
+                width: 152px;
+                height: 208px;
+
+                @media #{$medium-up} {
+                    width: 202px;
+                    height: 256px;
+                }
+            }
+
+            &__image--ipad {
+                width: 147px;
+                height: 202px;
+
+                @media #{$medium-up} {
+                    width: 159px;
+                    height: 228px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,111 @@
+@mixin teaser-theme($theme-color) {
+    @media #{$small-only} {
+        .teaser {
+            border-top-color: $theme-color;
+        }
+    }
+
+    @media #{$xlarge-only} {
+        .teaser__image {
+            &:before {
+                position: absolute;
+                background: $theme-color;
+                height: 10px;
+            }
+        }
+    }
+
+    .teaser__badge-container {
+        background-color: $theme-color;
+    }
+}
+
+.teaser {
+    &__body {
+        a:active,
+        a:focus,
+        a:hover {
+            text-decoration: none;
+
+            @media #{$medium-up} {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__title {
+        @include type-top-teaser-title;
+
+        a {
+            color: $color-black;
+        }
+    }
+
+    &__badge-container {
+        @include type-teaser-color-block();
+        background-color: $color-primary;
+        display: inline-block;
+        padding: 1px 15px;
+        position: absolute;
+        top: -23px;
+        white-space: nowrap;
+
+        @media #{$medium-up} {
+            padding: 6px 20px;
+            top: -35px;
+        }
+
+        @media #{$xlarge-up} {
+            top: -40px;
+        }
+    }
+
+    &__summary {
+        @include type-teaser-summary();
+        margin: 12px 0;
+
+        @media #{$large-up} {
+            margin: 20px 0;
+        }
+    }
+
+    &__list-item {
+        &:nth-child(7n+1) {
+            @include teaser-theme($color-primary);
+        }
+
+        &:nth-child(7n+2) {
+            @include teaser-theme($color-purple);
+        }
+
+        &:nth-child(7n+3) {
+            @include teaser-theme($color-blue);
+        }
+
+        &:nth-child(7n+4) {
+            @include teaser-theme($color-green);
+        }
+
+        &:nth-child(7n+5) {
+            @include teaser-theme($color-yellow);
+        }
+
+        &:nth-child(7n+6) {
+            @include teaser-theme($color-orange);
+        }
+
+        &:nth-child(7n+7) {
+            @include teaser-theme($color-red);
+        }
+
+        .teaser__summary {
+            margin-top: 5px;
+        }
+
+        .teaser__badge-container {
+            @media #{$medium-up} {
+                margin-left: -10px;
+            }
+        }
+    }
+}

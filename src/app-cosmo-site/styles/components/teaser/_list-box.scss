@@ -1,0 +1,104 @@
+.teaser-view-list {
+    .teaser__list-item {
+        padding-bottom: 30px;
+
+        &:not(.teaser__list-item--ad) {
+            @media #{$medium-up} {
+                padding-bottom: 40px;
+            }
+
+            @media #{$large-up} {
+                padding-bottom: 50px;
+            }
+        }
+
+        &.teaser__list-item--ad {
+            @media #{$medium-up} {
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    .teaser {
+        @media #{$small-only} {
+            position: relative;
+        }
+
+        @media #{$large-up} {
+            position: relative;
+        }
+
+        &__image {
+            @media #{$small-only} {
+                padding-right: $column-gutter/4;
+            }
+
+            @media #{$xlarge-up} {
+                position: relative;
+
+                &:before {
+                    left: 15px;
+                    right: 15px;
+                }
+            }
+        }
+
+        &__body {
+            @media #{$small-only} {
+                margin-top: -8px;
+                padding-left: $column-gutter/4;
+            }
+
+            @media #{$medium-only} {
+                position: relative;
+            }
+
+            @media #{$medium-up} {
+                margin-top: 14px;
+                padding-left: 0;
+                padding-right: 10px;
+            }
+
+            @media #{$large-up} {
+                margin-top: -6px;
+            }
+        }
+
+        &__title {
+            @include type-bottom-teaser-title;
+
+            @media #{$medium-up} {
+                margin-bottom: 16px;
+                margin-top: 8px;
+            }
+
+            @media #{$xlarge-only} {
+                margin-bottom: 9px;
+                margin-top: 0;
+                padding: 7px 20px 0;
+            }
+        }
+
+        &__badge-container {
+            @media #{$xlarge-up} {
+                margin-left: 20px;
+            }
+        }
+
+        &__summary-wrap {
+            @extend .hide-for-small-only;
+        }
+
+        &__summary {
+            @media #{$medium-up} {
+                margin-top: 10px;
+                margin-bottom: 0;
+            }
+
+            @media #{$xlarge-only} {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+.feed {
+    top: 51px;
+
+    .side-menu-wrapper--open & {
+        //top: 0;
+    }
+}
+
+.feed__container {
+    margin-top: 75px;
+
+    .feed--pinned & {
+        margin-top: 30px;
+    }
+
+    .side-menu-wrapper--open & {
+        //margin-top: 0px;
+    }
+}

@@ -1,0 +1,103 @@
+.hero-wrapper {
+    background: url('/assets/backgrounds/hero.png') repeat $color-primary;
+    background-size: 275px 275px;
+    margin: {
+        left: -$column-gutter/2;
+        right: -$column-gutter/2;
+    }
+    padding: 10px;
+
+    @media #{$medium-up} {
+        padding: 15px;
+        margin: 0;
+    }
+
+    @media #{$xlarge-up} {
+        padding: 20px;
+    }
+}
+
+.hero-teaser {
+    background-color: $color-white;
+
+    .teaser__inner {
+        @include clearfix();
+    }
+
+    .teaser__image {
+        @media #{$medium-only} {
+            @include grid-column(7, false, false, 0, 0, 0, true);
+            padding-right: 20px;
+        }
+
+        @media #{$xlarge-up} {
+            @include grid-column(7, false, false, 0, 0, 0, true);
+        }
+    }
+
+    .teaser__body {
+        @include grid-column(12);
+        position: relative;
+
+        @media #{$medium-only} {
+            @include grid-column(5, false, false, 0, 0, 0);
+            padding-top: 20px;
+        }
+
+        @media #{$xlarge-up} {
+            @include grid-column(5, false, false, 0, 0, 0);
+            padding-top: $column-gutter;
+            padding-left: 35px;
+        }
+    }
+
+    .teaser__badge-container {
+        margin-left: -15px;
+
+        @media #{$medium-only} {
+            position: relative;
+            top: auto;
+        }
+
+        @media #{$large-up} {
+            top: -36px;
+        }
+
+        @media #{$xlarge-up} {
+            margin-left: -20px;
+            padding: {
+                left: 20px;
+                right: 20px;
+            }
+            position: relative;
+            top: auto;
+        }
+    }
+
+    .teaser__title {
+        @include type-hero-title();
+        margin: {
+            bottom: 0;
+            top: 10px;
+        }
+
+        @media #{$medium-up} {
+            margin-bottom: 10px;
+        }
+
+        @media #{$large-up} {
+            margin-top: 16px;
+        }
+    }
+
+    .teaser__summary {
+        @include type-hero-summary();
+        margin-top: 4px;
+
+        @media #{$medium-up} {
+            margin: 10px 0 25px;
+        }
+    }
+}
+
+

@@ -1,0 +1,16 @@
+.teaser-view-container {
+    @include grid-column($collapse: true);
+
+    @media #{$medium-only} {
+        padding-left: $column-gutter;
+        padding-right: $column-gutter;
+    }
+
+    @media #{$xlarge-only} {
+        @include grid-column($collapse: false);
+
+        .teaser__image:hover:before {
+            content: '';
+        }
+    }
+}
