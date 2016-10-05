@@ -1,4 +1,4 @@
-@wnheader @DDO-62 @dolly @cosmo @wd @aww @homes @food
+@wnheader @DDO-62 @life
 Feature: WN Header
     As a user
     I should be able to see the WN header

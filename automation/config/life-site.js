@@ -5,6 +5,6 @@
     "chimpPath": "./node_modules/.bin/chimp",
     "chimpConfig": "chimp.js",
     "browsers": "firefox, chrome",
-    "tags": "@dolly",
+    "tags": "@life",
     "offline": false
 }

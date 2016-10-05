@@ -1,4 +1,4 @@
-@article @DDO-41 @DDO-150 @DDO-111 @dolly @cosmo
+@article @life
 Feature: Article
     As a user
     I should be able to see the article page
@@ -84,27 +84,28 @@ Feature: Article
 
 
 @DDO-160 @DDO-48
-Scenario: Verify an hero image caption and LHR on different screen sizes
+Scenario Outline: Verify an hero image caption and LHR on different screen sizes "<device>"
     Given I am currently viewing "fashion/automation-test-article-with-hero-image-3663"
-    When I switch to "desktop" view
+    When I switch to "<device>" view
     * I can see the hero image
     * I should not see the hero image caption
     * I can see the LHR
+    Examples:
+    | device            |
+    | desktop           |
+    | tablet landscape  |
 
-    When I switch to "tablet landscape" view
-    * I can see the hero image
-    * I should not see the hero image caption
-    * I can see the LHR
-
-    When I switch to "tablet portrait" view
-    * I can see the hero image
-    * I should not see the hero image caption
-    * I should not see the LHR
-
-    When I switch to "mobile" view
+Scenario Outline: Verify an hero image caption and LHR on different screen sizes "<device>"
+    Given I am currently viewing "fashion/automation-test-article-with-hero-image-3663"
+    When I switch to "<device>" view
     * I can see the hero image
     * I should not see the hero image caption
     * I should not see the LHR
+    Examples:
+    | device            |
+    | tablet portrait   |
+    | mobile            |
+
 
 @DDO-48
 Scenario: Verify the LHR on an article page

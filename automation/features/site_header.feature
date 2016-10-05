@@ -1,24 +1,22 @@
-@homepage @dolly @cosmo
+@homepage @life
 Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to be used across all devices
 
     @DCO-64
-    Scenario: I can see the navigation widget on the homepage
+    Scenario Outline: I can see the navigation widget on the homepage "<device>"
         Given I am currently viewing the homepage
-        When I switch to "desktop" view
+        When I switch to "<device>" view
         Then I should see the site Header banner
         And I should see the site navigation links
         And I should see the site navigation hamburger icon
 
-        When I switch to "tablet portrait" view
-        Then I should see the site Header banner
-        And I should see the site navigation links
-        And I should see the site navigation hamburger icon
+        Examples:
+        | device            |
+        | desktop           |
+        | tablet portrait   |
+        | tablet landscape  |
 
-        When I switch to "tablet landscape" view
-        Then I should see the site Header banner
-        And I should see the site navigation links
-        And I should see the site navigation hamburger icon
-
+    Scenario: I can see the navigation widget on the homepage mobile
+        Given I am currently viewing the homepage
         When I switch to "mobile portrait" view
         Then I should see the site Header logo
         And I should not see the site navigation links

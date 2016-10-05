@@ -1,4 +1,4 @@
-@gallery @DDO-298 @dolly @cosmo @wd @homes @aww @food
+@gallery @DDO-298 @life
 Feature: Gallery
     As a user
     I should be able to see the gallery page

@@ -22,7 +22,6 @@ Feature: Homepage
         * I should see the homepage hero element
         * I should see the homepage hero image
         * The homepage hero image should be clickable to open its page
-        * I should see the homepage hero custom label in the right side
         * I should see the homepage hero title
         * The homepage hero title should be clickable to open its page
         * I should see the homepage hero short teaser
