@@ -3,7 +3,7 @@ const playerId = 'VkuyApojl';
 
 export default {
     site: {
-        host: 'http://dev.dolly-site.bauer-media.net.au'
+        host: 'http://dev.life-site.bauer-media.net.au'
     },
     brightcove: {
         playerId,
@@ -13,7 +13,7 @@ export default {
         inputToken: '9b4a2693-dc77-4e7e-a5ee-498845c59793',
         subdomain: 'bauerdigital',
         tags: [
-            'dolly',
+            'life',
             'dev'
         ],
         json: true,

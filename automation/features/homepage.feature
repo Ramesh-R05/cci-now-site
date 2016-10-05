@@ -1,4 +1,4 @@
-@homepage @dolly @cosmo
+@homepage @life
 Feature: Homepage
     As a user
     I should be able to see homepage

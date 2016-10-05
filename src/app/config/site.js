@@ -1,8 +1,8 @@
 export default {
-    host: 'http://dev.dolly-site.bauer-media.net.au',
-    prodDomain: 'www.dolly.com.au',
-    name: 'Dolly',
-    shortName: 'Dolly',
+    host: 'http://dev.life-site.bauer-media.net.au',
+    prodDomain: 'www.lifetolove.com.au',
+    name: 'Life',
+    shortName: 'Life',
     prefix: 'DOLLY',
     network: 'wn'
 };

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "dolly-site",
+  "name": "life-site",
   "version": "1.0.0",
   "description": "",
   "main": "start.js",
@@ -30,11 +30,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bauerxcelmedia/dolly-site.git"
+    "url": "git+https://github.com/bauerxcelmedia/life-site.git"
   },
   "author": "",
   "license": "",
-  "homepage": "https://github.com/bauerxcelmedia/dolly-site#readme",
+  "homepage": "https://github.com/bauerxcelmedia/life-site#readme",
   "dependencies": {
     "@bxm/ad": "^9.0.1",
     "@bxm/article": "^15.9.0",
