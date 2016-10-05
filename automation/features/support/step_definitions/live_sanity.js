@@ -5,7 +5,6 @@ var wn_recipe = require('../page_objects/recipe_widget');
 var wn_social = require('../page_objects/social_widget');
 var food_search = require('../page_objects/search_widget');
 var nconf = require('nconf');
-var site_domain = nconf.get('APP_KEY');
 
 module.exports = function(){
 
@@ -114,26 +113,12 @@ module.exports = function(){
 
         this.Given(/^I am currently viewing a gallery page$/, function () {
             // use the site domain to select different URL
-        switch(site_domain) {
-            case 'dolly-site':
-                browser.url(world.Urls.home_page + "beauty/12-beauty-buys-under-8-dollars-12381");
-                break;
-            case 'cosmo-site':
-                browser.url(world.Urls.home_page + "beauty/korean-beauty-products-17926");
-                break;
-        }
+            browser.url(world.Urls.home_page + "beauty/12-beauty-buys-under-8-dollars-12381");
         });
 
         this.Given(/^I am currently viewing an article page$/, function () {
             // use the site domain to select different URL
-            switch (site_domain) {
-                case 'dolly-site':
-                    browser.url(world.Urls.home_page + "celebrity/emma-watson-splits-from-beau-will-adamowicz-3207");
-                    break;
-                case 'cosmo-site':
-                    browser.url(world.Urls.home_page + "celebrity/iggy-azalea-australia-no-longer-home-17618");
-                    break;
-            }
+            browser.url(world.Urls.home_page + "celebrity/emma-watson-splits-from-beau-will-adamowicz-3207");
         });
 
 };
