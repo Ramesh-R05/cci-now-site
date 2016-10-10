@@ -3,6 +3,6 @@ export default {
     prodDomain: 'www.lifetolove.com.au',
     name: 'Life',
     shortName: 'Life',
-    prefix: 'DOLLY',
+    prefix: 'LIFE',
     network: 'wn'
 };

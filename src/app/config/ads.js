@@ -11,7 +11,7 @@ export default {
                 NavigationSection: 'index',
                 HomesArticle: 'article'
             },
-            siteId: 'Dolly',
+            siteId: 'Life',
             tagsObject: 'tags',
             sizes: {
                 native: [250, 30],

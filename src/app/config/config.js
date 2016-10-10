@@ -8,9 +8,9 @@ import site from './site';
 export default {
     typekit: { id: 'hsn1dgy' },
 
-    gtm: { masthead: 'DOLLY', id: 'GTM-WH4FTG' },
+    gtm: { masthead: 'LIFE', id: 'GTM-WH4FTG' },
 
-    defaultImageUrl: 'http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/dolly/defaultimage.png',
+    defaultImageUrl: 'http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/life/defaultimage.png',
 
     brightcove,
 
@@ -30,6 +30,7 @@ export default {
 
     cache,
 
+    //TODO find out if we still need magshop
     subscribe: {
         subscribeHeading: 'Get the mag',
         subscribeText: 'Subscribe to DOLLY magazine for heaps more awesomeness! From advice, to beauty, to fashion  – we’ve got you covered.',
@@ -39,6 +40,7 @@ export default {
     },
     newsletterIframeUrl: 'https://d4jqclkssewcy.cloudfront.net/page.aspx?QS=38dfbe491fab00eaf0b8fb992ad1a0b52fb9e1dc0c154322&brand=dolly',
 
+    //TODO make for women not grills
     error: {
         404: {
             title: `SOZ!`,
