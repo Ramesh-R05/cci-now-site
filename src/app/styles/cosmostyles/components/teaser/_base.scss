@@ -1,0 +1,55 @@
+.teaser {
+    &__body {
+        a:active,
+        a:focus,
+        a:hover {
+            text-decoration: none;
+
+            @media #{$medium-up} {
+                text-decoration: underline;
+            }
+        }
+
+        margin-top: 5px;
+        padding-left: 0;
+    }
+
+    &__title {
+        @include type-top-teaser-title;
+
+        a {
+            color: $color-black;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    &__badge-container {
+        @include type-teaser-tag;
+    }
+
+    &__summary {
+        @include type-teaser-summary();
+        margin: 12px 0;
+
+        @media #{$large-up} {
+            margin: 20px 0;
+        }
+    }
+
+    &__list-item {
+        .teaser__summary {
+            margin-top: 5px;
+        }
+    }
+
+    &__image {
+        img {
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+    }
+}

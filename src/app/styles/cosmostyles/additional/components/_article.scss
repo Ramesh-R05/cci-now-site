@@ -1,0 +1,21 @@
+.article {
+    @media #{$medium-up} {
+        padding-bottom: 40px;
+    }
+
+    @media #{$large-up} {
+        padding-bottom: 130px;
+    }
+
+    @media #{$xlarge-up} {
+        padding-bottom: 170px;
+    }
+
+    &-section {
+        .footer {
+            @media #{$large-up} {
+                margin-top: 0;
+            }
+        }
+    }
+}

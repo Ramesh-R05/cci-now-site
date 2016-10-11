@@ -1,0 +1,50 @@
+.off-canvas--left .close-btn {
+    top: 22px;
+
+    svg {
+        fill: $color-primary;
+    }
+
+    &:hover svg,
+    &:hover svg path {
+        fill: $color-primary-light;
+    }
+}
+
+.mobile-menu {
+    margin-top: 0;
+}
+
+.mobile-menu__nav {
+    font-size: 24px;
+    font-weight: bold;
+
+    a:hover {
+        color: $color-primary;
+        text-decoration: none;
+    }
+
+    a:focus {
+        text-decoration: none;
+    }
+
+    @media #{$medium-up} {
+        font-size: 28px;
+    }
+}
+
+.mobile-menu__nav .nav-item {
+    padding: 5px 0;
+
+    @media #{$medium-up} {
+        padding: {
+            top: 7px;
+            bottom: 7px;
+        };
+    }
+}
+
+.mobile-menu__nav .nav-item--active {
+    color: $color-primary;
+    text-decoration: none;
+}

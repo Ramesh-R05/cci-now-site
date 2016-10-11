@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Static Styleguide - Cosmo</title>
+    <link rel="stylesheet" href="../../dist/styles/main.css"/>
+    <link rel="stylesheet" href="../../dist/styles/styleguide.css"/>
+</head>
+
+<body class="styleguide">
+<header class="header">
+    <div class="row">
+        <div class="column small-12">
+            <h1>Cosmo Static Styleguide</h1>
+        </div>
+    </div>
+</header>
+
+<main role="main" class="body-wrapper">
+    <section class="body-content">
+        <section class="styleguide-section styleguide-type">
+            <header class="styleguide-section__header">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h1 class="styleguide-section__title">Font styles</h1>
+                    </div>
+                </div>
+            </header>
+
+            <div class="styleguide-section__body">
+                <div class="styleguide-type__row row">
+                    <div class="small-12 columns">
+                        <h1>H1</h1>
+                        <h2>H2</h2>
+                        <h3>H3</h3>
+                        <h4>H4</h4>
+                        <h5>H5</h5>
+                        <h6>H6</h6>
+                        <h7>H7</h7>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="styleguide-section styleguide-type">
+            <header class="styleguide-section__header">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h1 class="styleguide-section__title">Font families</h1>
+                    </div>
+                </div>
+            </header>
+
+            <div class="styleguide-section__body">
+                <div class="styleguide-type__row row">
+                    <div class="small-12 columns styleguide-font-family">
+                        <p class="sans-serif-primary">Amsi pro narrow bold</p>
+                        <p class="sans-serif-primary"><strong>Amsi pro narrow black</strong></p>
+                        <p class="sans-serif-primary sans-serif-primary--thin">Amsi pro narrow thin</p>
+                        <p class="serif-primary">Baskerville FS regular</p>
+                        <p class="serif-primary"><strong>Baskerville FS Bold</strong></p>
+                        <p class="serif-primary"><em>Baskerville FS italic</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="styleguide-section styleguide-colours">
+            <header class="styleguide-section__header">
+                <div class="row">
+                    <div class="column small-12">
+                        <h1 class="styleguide-section__title">Colour Pallete</h1>
+                    </div>
+                </div>
+            </header>
+            <div class="styleguide-colours__body row">
+                <div class="small-12 columns">
+                    <p class="styleguide-colours__title">Colours</p>
+                    <ul class="styleguide-colours__list">
+                        <li class="list-item styleguide-colours__swatch-group">
+                            <div class="styleguide-colours__swatch styleguide-colours__swatch--primary"></div>
+                            <p class="styleguide-colours__swatch-label">#ec008c</p>
+                            <code class="code">$color-primary</code>
+                        </li>
+                        <li class="list-item styleguide-colours__swatch-group">
+                            <div class="styleguide-colours__swatch styleguide-colours__swatch--primary-hover"></div>
+                            <p class="styleguide-colours__swatch-label">#fe2ea9</p>
+                            <code class="code">$color-primary-hover</code>
+                        </li>
+                        <li class="list-item styleguide-colours__swatch-group">
+                            <div class="styleguide-colours__swatch styleguide-colours__swatch--yellow"></div>
+                            <p class="styleguide-colours__swatch-label">#ffff5c</p>
+                            <code class="code">$color-yellow</code>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="styleguide-colours__body row">
+                <div class="small-12 columns">
+                    <p class="styleguide-colours__title">Blacks</p>
+                    <ul class="styleguide-colours__list">
+                        <li class="list-item styleguide-colours__swatch-group">
+                            <div class="styleguide-colours__swatch styleguide-colours__swatch--black"></div>
+                            <p class="styleguide-colours__swatch-label">#222222</p>
+                            <code class="code">$color-black</code>
+                        </li>
+                        <li class="list-item styleguide-colours__swatch-group">
+                            <div class="styleguide-colours__swatch styleguide-colours__swatch--black-hover"></div>
+                            <p class="styleguide-colours__swatch-label">#444444</p>
+                            <code class="code">$color-black-hover</code>
+                        </li>
+                        <li class="list-item styleguide-colours__swatch-group">
+                            <div class="styleguide-colours__swatch styleguide-colours__swatch--grey"></div>
+                            <p class="styleguide-colours__swatch-label">#777777</p>
+                            <code class="code">$color-grey</code>
+                        </li>
+                        <li class="list-item styleguide-colours__swatch-group">
+                            <div class="styleguide-colours__swatch styleguide-colours__swatch--grey-light"></div>
+                            <p class="styleguide-colours__swatch-label">#cccccc</p>
+                            <code class="code">$color-grey-light</code>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="styleguide-section styleguide-type">
+            <header class="styleguide-section__header">
+                <div class="row">
+                    <div class="column small-12">
+                        <h1 class="styleguide-section__title">Home styles</h1>
+                    </div>
+                </div>
+            </header>
+
+            <div class="styleguide-section__body">
+
+                <div class="styleguide-type__row row">
+                    <div class="small-12 columns">
+                        <p class="styleguide-note">Typography classes and mixins. Either use the class directly on your html element <code class="code">.type-hero-title</code> or the mixin <code class="code">@include type-hero-title</code>.</p>
+                    </div>
+                </div>
+
+                <div class="styleguide-type__row row">
+
+                    <div class="styleguide-type__size styleguide-type__small small-12 large-4 columns">
+                        <h2 class="styleguide-type__size__title">mobile (small)</h2>
+                        <h1 class="styleguide-type__size__sub-title">must read</h1>
+
+                        <!-- Must Read -->
+                        <div class="styleguide-type__style row">
+                            <p class="type-teaser-headline-title">
+                                <a href="#">Must Read Headline - Amsi Pro Narrow Bold (500), 15px, #fff</a>
+                            </p>
+                            <code class="code">.type-teaser-headline-title > a</code>
+                        </div>
+
+                        <!-- Hero -->
+                        <h1 class="styleguide-type__size__sub-title">hero teaser</h1>
+                        <div class="styleguide-type__style row tall">
+                            <p class="type-hero-title"><a href="#">Title - Amsi Pro Narrow Black, 24px/26px, #222</a></p>
+                            <code class="code">.type-hero-title</code>
+                        </div>
+
+                        <!-- Top Half -->
+                        <h1 class="styleguide-type__size__sub-title">top half teaser</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-top-teaser-title"><a href="#">Title - Amsi Pro Narrow Black, 24px/26px, #222</a></p>
+                            <code class="code">.type-top-teaser-title</code>
+                        </div>
+
+                        <!-- Second/Bottom half -->
+                        <h1 class="styleguide-type__size__sub-title">second half teaser</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-bottom-teaser-title"><a href="#">Title - Amsi Pro Narrow Black, 16px/18px, #222</a></p>
+                            <code class="code">.type-bottom-teaser-title</code>
+                        </div>
+
+                        <!-- Teaser summary -->
+                        <h1 class="styleguide-type__size__sub-title">teaser summary</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-teaser-summary">Teaser Summary - Baskerville FS (400), 16px/20px, #777</p>
+                            <code class="code">.type-teaser-summary</code>
+                        </div>
+
+                        <!-- Tag -->
+                        <h1 class="styleguide-type__size__sub-title">tag</h1>
+                        <div class="styleguide-type__style row">
+                            <a class="type-teaser-tag" href="#"><span>Tag name - Amsi Pro Narrow Bold, 11px/12px, #FFF</span></a>
+                            <code class="code">.type-teaser-tag > a > span</code>
+                        </div>
+                    </div>
+
+                    <div class="styleguide-type__size styleguide-type__medium small-12 large-4 columns">
+                        <h2 class="styleguide-type__size__title">tablet (medium/large)</h2>
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+
+                        <div class="styleguide-type__style row">
+                            <p class="type-teaser-headline-title">
+                                <a href="#">Must Read Headline - Amsi Pro Narrow Bold (500), 15px, #fff</a>
+                            </p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row tall">
+                            <p class="type-hero-title"><a href="#">Title - Amsi Pro Narrow Black, 28px/30px, #222</a></p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row ">
+                            <p class="type-top-teaser-title"><a href="#">Title - Amsi Pro Narrow Black, 28px/30px, #222</a></p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row ">
+                            <p class="type-bottom-teaser-title"><a href="#">Title - Amsi Pro Narrow Black, 24px/26px, #222</a></p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row "><div class="styleguide-spread"></div></div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row "><div class="styleguide-spread"></div></div>
+                    </div>
+
+                    <div class="styleguide-type__size styleguide-type__large small-12 large-4 columns">
+                        <h2 class="styleguide-type__size__title">desktop (xlarge)</h2>
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+
+                        <div class="styleguide-type__style row">
+                            <p class="type-teaser-headline-title">
+                                <a href="#">Must Read Headline - Amsi Pro Narrow Bold (500), 20px, #fff</a>
+                            </p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row tall">
+                            <p class="type-hero-title"><a href="#">Title - Amsi Pro Narrow Black, 44px/46px, #222</a></p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row "><div class="styleguide-spread"></div></div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row ">
+                            <p class="type-bottom-teaser-title"><a href="#">Title - Amsi Pro Narrow Black, 34px/36px, #222</a></p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-teaser-summary">Teaser Summary - Baskerville FS (400), 18px/25px, #777</p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row">
+                            <a class="type-teaser-tag" href="#"><span>Tag name - Amsi Pro Narrow Bold, 16px/24px, #FFF</span></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="styleguide-section styleguide-type">
+            <header class="styleguide-section__header">
+                <div class="row">
+                    <div class="column small-12">
+                        <h1 class="styleguide-section__title">Article styles</h1>
+                    </div>
+                </div>
+            </header>
+
+            <div class="styleguide-section__body">
+                <div class="styleguide-type__row row">
+
+                    <div class="styleguide-type__size styleguide-type__small small-12 large-4 columns">
+                        <h2 class="styleguide-type__size__title">mobile (small)</h2>
+
+                        <h1 class="styleguide-type__size__sub-title">title</h1>
+                        <div class="styleguide-type__style row super-tall">
+                            <p class="type-article-title"><a href="#">Title - Amsi Pro Narrow Black, 24px/26px, #222</a></p>
+                            <code class="code">.type-article-title</code>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">description</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-article-summary">Summary - Baskerville FS (400), 19px/25px, #777</p>
+                            <code class="code">.type-article-summary</code>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">body copy</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-article-body">Body - Baskerville FS (400), 19px/25px, #222</p>
+                            <code class="code">.type-article-body</code>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">sub headline</h1>
+                        <div class="styleguide-type__style row tall">
+                            <p class="type-article-heading">Sub Headline - Amsi Pro Narrow Black, 24px/26px, #222</p>
+                            <code class="code">.type-article-heading</code>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">related content title</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-related-teaser-title"><a href="#">Related Content Title - Amsi Pro Narrow Bold, 16px/18px, #222</a></p>
+                            <code class="code">.type-related-teaser-title</code>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">you'll love title</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-article-recommendation-title"><a href="#">You'll Love Title - Amsi Pro Narrow Bold, 16px/18px, #222</a></p>
+                            <code class="code">.type-article-recommendation-title</code>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">LHR Item feed title</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-xsmall-teaser-title"><a href="#">LHR Item feed title - Amsi Pro Narrow Bold, 16px/18px, #222</a></p>
+                            <code class="code">.type-xsmall-teaser-title</code>
+                        </div>
+                    </div>
+
+                    <div class="styleguide-type__size styleguide-type__medium small-12 large-4 columns">
+                        <h2 class="styleguide-type__size__title">tablet (medium/large)</h2>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row super-tall">
+                            <p class="type-article-title"><a href="#">Title - Amsi Pro Narrow Black, 44px/46px, #222</a></p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-article-summary">Summary - Baskerville FS (400), 22px/34px, #777</p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-article-body">Body - Baskerville FS (400), 22px/34px, #222</p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row tall">
+                            <p class="type-article-heading">Sub Headline - Amsi Pro Narrow Black, 34px/36px, #222</p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-related-teaser-title"><a href="#">Related Content Title - Amsi Pro Narrow Black, 24px/26px, #222</a></p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-article-recommendation-title"><a href="#">You'll Love Title - Amsi Pro Narrow Black, 20px/22px, #222</a></p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row"><div class="styleguide-spread"></div></div>
+                    </div>
+
+                    <div class="styleguide-type__size styleguide-type__large small-12 large-4 columns">
+                        <h2 class="styleguide-type__size__title">desktop (xlarge)</h2>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row super-tall">
+                            <p class="type-article-title"><a href="#">Title - Amsi Pro Narrow Black, 64px/68px, #222</a></p>
+                        </div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row"><div class="styleguide-spread"></div></div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row"><div class="styleguide-spread"></div></div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row"><div class="styleguide-spread"></div></div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row tall"><div class="styleguide-spread"></div></div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row"><div class="styleguide-spread"></div></div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row"><div class="styleguide-spread"></div></div>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row"><div class="styleguide-spread"></div></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="styleguide-section styleguide-type">
+            <header class="styleguide-section__header">
+                <div class="row">
+                    <div class="column small-12">
+                        <h1 class="styleguide-section__title">Section styles</h1>
+                    </div>
+                </div>
+            </header>
+
+            <div class="styleguide-section__body">
+                <div class="styleguide-type__row row">
+
+                    <div class="styleguide-type__size styleguide-type__small small-12 large-4 columns">
+                        <h2 class="styleguide-type__size__title">mobile (small)</h2>
+
+                        <h1 class="styleguide-type__size__sub-title">page title</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-section-title">
+                                <span>Page Title</span>
+                            </p>
+                            <p class="type-article-body">Amsi Pro Narrow Bold, 30px/1em, #222</p>
+                            <code class="code">.type-section-title</code>
+                        </div>
+                    </div>
+
+                    <div class="styleguide-type__size styleguide-type__medium small-12 large-4 columns">
+                        <h2 class="styleguide-type__size__title">tablet (medium/large)</h2>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-section-title"><span>Page Title</span></p>
+                            <p class="type-article-body">Amsi Pro Narrow Bold, 60px/1em, #222</p>
+                        </div>
+                    </div>
+
+                    <div class="styleguide-type__size styleguide-type__large small-12 large-4 columns">
+                        <h2 class="styleguide-type__size__title">desktop (xlarge)</h2>
+
+                        <h1 class="styleguide-type__size__sub-title">&nbsp;</h1>
+                        <div class="styleguide-type__style row">
+                            <p class="type-section-title"><span>Page Title</span></p>
+                            <p class="type-article-body">Amsi Pro Narrow Bold, 76px/1em, #222</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="styleguide-section styleguide-type">
+            <header class="styleguide-section__header">
+                <div class="row">
+                    <div class="column small-12">
+                        <h1 class="styleguide-section__title">Buttons and Fields</h1>
+                    </div>
+                </div>
+            </header>
+
+            <div class="styleguide-section__body">
+                <div class="styleguide-type__row row">
+                    <div class="styleguide-type__size small-12 columns">
+                        <a href="#" class="button button--link button--general">Subscribe</a>
+                    </div>
+                </div>
+                <div class="styleguide-type__row row">
+                    <div class="styleguide-type__style small-12 columns">
+                        <code class="code">.button button--link button--general</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="styleguide-section styleguide-type">
+            <header class="styleguide-section__header">
+                <div class="row">
+                    <div class="column small-12">
+                        <h1 class="styleguide-section__title">Interactions</h1>
+                    </div>
+                </div>
+            </header>
+
+            <div class="styleguide-section__body">
+                <div class="styleguide-type__row row">
+
+                    <div class="styleguide-type__size styleguide-type__small small-12 columns">
+                        <div class="styleguide-type__style row">
+                            <article class="styleguide-teaser teaser">
+                                <div class="teaser__inner">
+                                    <a href="#" class="teaser__image"><img src="http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2016/06/02/11568/Untitled-8.jpg?width=690&amp;height=388&amp;mode=crop&amp;scale=both&amp;anchor=topcenter&amp;quality=75" width="240" /></a>
+
+                                    <div class="teaser__body">
+                                        <p class="type-teaser-headline-title">
+                                            <a href="#">Must Read Headline - Amsi Pro Narrow Bold (500), 15px, #fff</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </article>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <div class="grid-overlay"></div>
+
+</main>
+
+
+</body>
+</html>

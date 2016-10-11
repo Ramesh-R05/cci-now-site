@@ -21,7 +21,6 @@ $color-styleguide-grey: #ddd;
         padding: 10px 0;
         position: relative;
         z-index: 1;
-
         h1 {
             color: $white;
             font-size: 20px;
@@ -309,6 +308,7 @@ $color-styleguide-grey: #ddd;
 
     &-hero-color-block {
         color: $color-black;
+
         .styleguide-type__small & {
             font-size: 11px;
         }

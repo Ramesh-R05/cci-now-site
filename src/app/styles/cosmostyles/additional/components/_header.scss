@@ -1,0 +1,52 @@
+.header {
+    background-color: $color-black;
+    box-shadow: none;
+}
+
+.header .header-logo__link-image {
+    background-size: 152px 28px;
+    height: 28px;
+    width: 152px;
+}
+
+.header .header-menu__button-menu {
+    &:hover svg,
+    &:hover svg path {
+        fill: $color-primary-light;
+    }
+}
+
+.header .header-nav a {
+    color: $color-white;
+}
+
+.header .header-banner {
+    background: none;
+
+    a {
+        height: 100px;
+        margin-top: 20px;
+        max-width: 540px;
+        vertical-align: top;
+        width: 70%;
+
+        @media #{$xlarge-up} {
+            height: 122px;
+            max-width: 671px;
+            margin-top: 40px;
+        }
+    }
+}
+
+.header .header__sections {
+    background: none;
+}
+
+// When header is expanded i.e home page and when it has not been fixed to the top
+.header.header--expanded:not(.header--pinned) {
+    .header-banner {
+        @media #{$xlarge-up} {
+            line-height: $header-banner-logo-height;
+        }
+    }
+}
