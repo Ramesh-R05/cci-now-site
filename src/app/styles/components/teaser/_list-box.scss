@@ -45,6 +45,7 @@
 
         &__body {
             @media #{$small-only} {
+                margin-top: -8px;
                 padding-left: $column-gutter/4;
             }
 
@@ -53,49 +54,39 @@
             }
 
             @media #{$medium-up} {
-                padding-left: 10px;
+                margin-top: 14px;
+                padding-left: 0;
                 padding-right: 10px;
             }
 
-            @media #{$xlarge-only} {
-                padding-top: 20px;
+            @media #{$large-up} {
+                margin-top: -6px;
             }
         }
 
         &__title {
-            @media #{$small-only} {
-                font-size: 16px;
-                line-height: 22px;
-                margin-top: -5px;
-            }
+            @include type-bottom-teaser-title;
 
-            @media #{$medium-only} {
-                padding-top: 15px;
+            @media #{$medium-up} {
+                margin-bottom: 16px;
+                margin-top: 8px;
             }
 
             @media #{$xlarge-only} {
-                padding: 15px 20px 0;
+                margin-bottom: 9px;
+                margin-top: 0;
+                padding: 7px 20px 0;
             }
         }
 
         &__badge-container {
-            top: -10px;
-            left: 0;
-
-            @media #{$medium-only} {
-                top: -36px;
-            }
-
-            @media #{$large-up} {
-                top: 0;
-                left: 15px;
-            }
-
             @media #{$xlarge-up} {
-                position: relative;
-                top: 0;
-                left: 10px;
+                margin-left: 20px;
             }
+        }
+
+        &__summary-wrap {
+            @extend .hide-for-small-only;
         }
 
         &__summary {

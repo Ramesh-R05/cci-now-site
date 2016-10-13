@@ -1,25 +1,3 @@
-@mixin teaser-theme($theme-color) {
-    @media #{$small-only} {
-        .teaser {
-            border-top-color: $theme-color;
-        }
-    }
-
-    @media #{$xlarge-only} {
-        .teaser__image {
-            &:before {
-                position: absolute;
-                background: $theme-color;
-                height: 10px;
-            }
-        }
-    }
-
-    .teaser__badge-container {
-        background-color: $theme-color;
-    }
-}
-
 .teaser {
     &__body {
         a:active,
@@ -31,6 +9,9 @@
                 text-decoration: underline;
             }
         }
+
+        margin-top: 5px;
+        padding-left: 0;
     }
 
     &__title {
@@ -38,26 +19,15 @@
 
         a {
             color: $color-black;
+
+            &:hover {
+                text-decoration: none;
+            }
         }
     }
 
     &__badge-container {
-        @include type-teaser-color-block();
-        background-color: $color-primary;
-        display: inline-block;
-        padding: 1px 15px;
-        position: absolute;
-        top: -23px;
-        white-space: nowrap;
-
-        @media #{$medium-up} {
-            padding: 6px 20px;
-            top: -35px;
-        }
-
-        @media #{$xlarge-up} {
-            top: -40px;
-        }
+        @include type-teaser-tag;
     }
 
     &__summary {
@@ -70,41 +40,15 @@
     }
 
     &__list-item {
-        &:nth-child(7n+1) {
-            @include teaser-theme($color-primary);
-        }
-
-        &:nth-child(7n+2) {
-            @include teaser-theme($color-purple);
-        }
-
-        &:nth-child(7n+3) {
-            @include teaser-theme($color-blue);
-        }
-
-        &:nth-child(7n+4) {
-            @include teaser-theme($color-green);
-        }
-
-        &:nth-child(7n+5) {
-            @include teaser-theme($color-yellow);
-        }
-
-        &:nth-child(7n+6) {
-            @include teaser-theme($color-orange);
-        }
-
-        &:nth-child(7n+7) {
-            @include teaser-theme($color-red);
-        }
-
         .teaser__summary {
             margin-top: 5px;
         }
+    }
 
-        .teaser__badge-container {
-            @media #{$medium-up} {
-                margin-left: -10px;
+    &__image {
+        img {
+            &:hover {
+                opacity: 0.9;
             }
         }
     }

@@ -1,18 +1,15 @@
 .teaser-view-grid {
     .teaser__title {
-        padding-top: 10px;
+        padding-top: 5px;
+        margin-bottom: 6px;
     }
 
     .teaser__body {
+        margin-top: 12px;
         position: relative;
     }
 
     @media #{$small-only} {
-        .teaser {
-            border-top-style: solid;
-            border-top-width: 5px;
-        }
-
         .teaser__body {
             margin-bottom: 40px;
         }
@@ -22,32 +19,47 @@
             padding-left: 15px;
             padding-right: 15px;
         }
+
+        .teaser__badge-container {
+            margin-left: 15px;
+        }
     }
 
     @media #{$medium-only} {
         .teaser__title,
         .teaser__summary {
-            padding-left: 10px;
+            padding-left: 0;
             padding-right: 10px;
+        }
+
+        .teaser__badge-container {
+            margin-left: 0;
         }
     }
 
     @media #{$medium-up} {
+        .teaser__title {
+            margin-bottom: 12px;
+        }
+
         .teaser__body {
             margin-bottom: 30px;
         }
     }
 
     @media #{$large-up} {
+        .teaser__body {
+            margin-top: 14px;
+        }
+
         .teaser__title,
         .teaser__summary {
-            padding-left: 10px;
+            padding-left: 0;
             padding-right: 10px;
         }
     }
 
     @media #{$xlarge-only} {
-
         .teaser {
             position: relative;
         }
@@ -57,6 +69,10 @@
                 left: 0;
                 right: 0;
             }
+        }
+
+        .teaser__title {
+            padding-top: 7px;
         }
 
         .teaser__body {

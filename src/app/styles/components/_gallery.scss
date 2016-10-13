@@ -1,6 +1,25 @@
 .gallery {
+    &__title {
+        color: $color-white;
+    }
+
+
     // Temporary until social style task is done
     .social-share-block {
+        text-align: center;
+
+        @media #{$large-up} {
+            text-align: left;
+        }
+
+        .social-share-count {
+            color: $color-black;
+
+            @media #{$large-up} {
+                color: $color-white;
+            }
+        }
+
         &.hide-for-large-up {
             margin: 0 $column-gutter/2 40px;
 
@@ -73,128 +92,289 @@
     }
 
     &__header {
-        border-bottom: 1px solid $color-red-light;
+
+        border-width: 0;
         box-shadow: none;
+        background-color: $color-black;
+
+        .gallery__title {
+            font-size: 24px;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: $color-white;
+            padding-top: 0px;
+            padding-left: 150px;
+        }
 
         .gallery__logo {
-            padding-top: 15px;
+            padding-top: 19px;
+
+            @media #{$medium-up} {
+                padding-top: 15px;
+            }
+        }
+
+        .social-share-count {
+            color: $color-white;
         }
     }
 
-    &__title {
-        font: 400 22px $font-family-sans-serif-primary;
+
+    &__main {
+        .gallery__title {
+            font: 600 24px/28px $font-family-sans-serif-primary;
+            color: $color-black;
+            text-transform: uppercase;
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+            @media #{$large-up} {
+                color: $color-white;
+                font-weight: 400;
+            }
+        }
+
+        .gallery__slide {
+            .gallery__slide-swipe-indicator {
+                width: 300px;
+                color: $color-primary;
+                font: 400 17px/21px $font-family-sans-serif-primary;
+                margin: 15px auto 0;
+                padding: 15px 0;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+
+            .gallery__nav {
+                opacity: 1;
+                background-color: rgba(255, 255, 255, 0.9);
+                font-size: 1em;
+                padding: 15px 11px;
+
+                @media #{$medium-up} {
+                    font-size: 1.2em;
+                    padding: 16px 18px;
+                }
+            }
+        }
     }
 
     &__slide-count {
+        font: 500 20px/22px $font-family-sans-serif-primary;
+        letter-spacing: -1px;
+
+        @media #{$xlarge-up} {
+            width: auto;
+        }
+
         &, .gallery__header & {
             color: $color-primary;
+            letter-spacing: 0px;
+
+            @media #{$medium-up} {
+                font-size: 28px;
+            }
+
+            @media #{$large-up} {
+                line-height: 36px;
+                font-size: 34px;
+            }
+        }
+    }
+
+    .gallery-caption {
+        padding-left: 30px;
+        padding-top: 7px;
+
+        &__content-holder {
+            p {
+                font-size: 19px;
+                line-height: 25px;
+            }
         }
     }
 
     &__aside {
         .gallery__subsection {
             @include type-teaser-color-block();
-            display: inline-block;
-            background-color: $color-primary;
-            padding: 6px 20px;
+            display: inline;
             margin-top: 10px;
+            box-shadow: 0 7px 0 0 #ffff5c inset;
+            font-size: 8px;
+
+            @media #{$medium-up} {
+                font-size: 8px;
+            }
+
+            @media #{$xlarge-up} {
+                font-size: 10px;
+            }
 
             a {
-                color: $color-white;;
+                color: $color-black;
+                font-size: 11px;
+                line-height: 12px;
+
+                @media #{$xlarge-up} {
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+        }
+
+        .gallery__summary {
+            p {
+                font-size: 19px;
+                line-height: 25px;
             }
         }
 
         .gallery__date {
             color: $color-primary;
-            font: 11px/22px $font-family-serif-primary;
+            font: 16px/24px $font-family-serif-primary;
             margin-top: 10px;
             padding-bottom: 0;
+
+            @media #{$small-only} {
+                font-size: 13px;
+            }
         }
     }
 
     &__more-heading-container {
-        text-align: left;
-
+        text-align: center;
         &:before,
         &:after {
             content: '';
             position: absolute;
             display: block;
             width: 100%;
-        }
-
-        &:before {
-            background: $color-grey-light;
-            height: 1px;
-            top: inherit;
-            bottom: -1px;
+            background: none;
         }
 
         &:after {
             background: $color-black;
-            bottom: -3px;
-            height: 2px;
+            top: -10px;
+            height: 5px;
         }
 
         .gallery__more-heading {
-            background: url('/assets/images/more-galleries.svg') no-repeat;
-            width: 265px;
-            height: 33px;
-            text-indent: -9999px;
+            font-family: $font-family-sans-serif-primary;
+            font-size: 30px;
+            line-height: 15px;
+            padding-top: 20px;
+            letter-spacing: 0.05em;
+
+            span {
+                color: $color-black;
+
+                &:first-child {
+                    color: $color-black;
+                }
+            }
         }
     }
 
-    &__next-container {
-        h2 {
-            font-family: $font-family-sans-serif-primary;
-        }
-
-        h5 {
-            font-family: $font-family-sans-serif-primary;
-            font-size: 17px;
+    &__next {
+        .teaser__title {
+            font-size: 16px;
+            line-height: 18px;
+            text-transform: uppercase;
+            font-weight: 400;
         }
     }
 
     &__next-main {
+        margin-bottom: 5px;
+    }
+
+    &__next-container {
+        h2 {
+            color: $color-white;
+            font-size: 35px;
+            font-weight: 500;
+            padding: 0 50px 0 50px;
+            text-transform: uppercase;
+        }
+
+        h5 {
+            font-family: $font-family-sans-serif-primary;
+            font-size: 20px;
+
+            &:before {
+                top: 13px;
+            }
+        }
+
         .button {
+            letter-spacing: 0;
+            background-color: rgba(255,255,255,0.8);
+            padding: 8px;
             border-radius: 0;
 
-            &:hover {
-                background: $color-white;
-                opacity: .85;
+            @media #{$large-up} {
+                background-color: $color-primary;
+                padding: 8px 15px;
             }
 
             .icon-arrow-next {
-                top: -6px;
-                font-size: 16px;
+                top: 0;
+                font-size: 20px;
+
+                @media #{$medium-up} {
+                    top: 0;
+                }
+
+                @media #{$large-up} {
+                    font-size: 26px;
+                }
+            }
+
+            .gallery__next-text {
+                display: block;
+                color: $color-black;
+                font-size: 24px;
+                background-color: rgba(255,255,255,0);
+
+                span:first-child {
+                    color: $color-black;
+                }
+
+                @media #{$large-up} {
+                    display: none;
+                }
+            }
+
+            i {
+                font-size: 26px;
             }
         }
     }
 
-    &__next-text-container {
-        background: url('/assets/images/up-next.svg') no-repeat;
-        width: 103px;
-        height: 21px;
-        margin-top: 5px;
-        text-indent: -9999px;
+    &__next-text {
+        display: none;
     }
 
     &__next-aside {
         .gallery__more {
-            margin-top: 30px;
+            margin-top: 20px;
 
             .teaser__body {
                 position: relative;
             }
 
             .teaser__title {
-                font-size: 15px;
-                line-height: 21px;
+                font-size: 16px;
+                line-height: 18px;
 
                 @media #{$medium-up} {
                     font-size: 22px;
                     line-height: 30px;
                 }
+            }
+
+            .teaser {
+                margin-bottom: 0;
             }
 
             .teaser__badge-container {
@@ -207,5 +387,9 @@
                 }
             }
         }
+    }
+
+    &__next-bg {
+        background: rgba(0,0,0,0.4);
     }
 }

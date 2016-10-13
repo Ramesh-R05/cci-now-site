@@ -4,6 +4,11 @@
     padding: 20px $column-gutter/2;
     text-align: left;
 
+    .section-page & {
+        padding: 30px $column-gutter/2;
+        text-align: center;
+    }
+
     @media #{$medium-up} {
         padding: 0;
         text-align: center;
@@ -15,8 +20,7 @@
     letter-spacing: -5px;
 
     &:before {
-        content: '//';
-        padding-right: 14px;
+        content: '';
     }
 
     @media #{$medium-up} {

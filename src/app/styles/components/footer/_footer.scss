@@ -1,8 +1,11 @@
 .footer {
     background-image: url('/assets/backgrounds/footer-bg.svg');
     background-repeat: repeat;
-    margin-top: 30px;
+    margin-top: 90px;
     padding: 40px 0;
+    position: relative;
+    background: $color-black;
+    border-top: 5px solid $color-primary;
 
     a {
         text-decoration: none;
@@ -16,12 +19,15 @@
     }
 
     @media #{$medium-up} {
-        margin-top: 20px;
+        margin-top: 100px;
         padding: 50px 0;
+        border-top-width: 8px;
     }
 
     @media #{$large-up} {
         padding: 80px 0;
+        margin-top: 120px;
+        border-top-width: 10px;
     }
 
     &__copyright {
@@ -30,7 +36,7 @@
         text-align: center;
 
         span {
-            color: $color-violet;
+            color: $color-grey;
             font-family: $font-family-serif-primary;
             font-size: 10px;
             letter-spacing: .020em;
@@ -53,6 +59,62 @@
             width: 100%;
         }
     }
+
+    &:before {
+        content: 'GET MORE COSMO';
+        display: block;
+        position: absolute;
+        top: -66px;
+        left: 50%;
+        margin-left: -107px;
+        color: $color-primary;
+        font: 30px $font-family-sans-serif-primary;
+
+        @media #{$medium-up} {
+            top: -94px;
+            margin-left: -159px;
+            font-size: 44px;
+        }
+
+        @media #{$xlarge-up} {
+            top: -123px;
+            margin-left: -253px;
+            font-size: 70px;
+        }
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: -16px;
+        background: $color-white;
+        border-bottom: 5px solid $color-primary;
+        border-right: 5px solid $color-primary;
+        transform: rotate(45deg);
+        left: 50%;
+        margin-left: -15px;
+
+        @media #{$medium-up} {
+            top: -27px;
+            width: 50px;
+            height: 50px;
+            border-bottom-width: 8px;
+            border-right-width: 8px;
+            margin-left: -25px;
+        }
+
+        @media #{$xlarge-up} {
+            top: -33px;
+            width: 60px;
+            height: 60px;
+            border-bottom-width: 10px;
+            border-right-width: 10px;
+            margin-left: -30px;
+        }
+    }
 }
 
 .footer.footer--article {
@@ -64,6 +126,7 @@
         float: right;
         margin: 0 (-$column-gutter / 2) 0 auto;
         width: calc(100% - #{$article-feed-container-width});
+        padding: 80px 0 40px;
 
         .newsletter {
             margin-top: 0px;
@@ -81,6 +144,16 @@
             margin-right: auto;
         }
 
+        @media #{$medium-up} {
+            &, .get-social__links {
+                width: 100%;
+            }
+        }
+
+        &-title {
+            display: none;
+        }
+        
         &__links {
 
             @media #{$large-up} {

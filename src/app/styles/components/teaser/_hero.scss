@@ -1,19 +1,16 @@
 .hero-wrapper {
-    background: url('/assets/backgrounds/hero.png') repeat $color-primary;
-    background-size: 275px 275px;
+    background: none;
     margin: {
         left: -$column-gutter/2;
         right: -$column-gutter/2;
     }
-    padding: 10px;
 
     @media #{$medium-up} {
-        padding: 15px;
         margin: 0;
     }
 
     @media #{$xlarge-up} {
-        padding: 20px;
+        padding: 0 0 20px;
     }
 }
 
@@ -22,12 +19,14 @@
 
     .teaser__inner {
         @include clearfix();
+
+        position: relative;
     }
 
     .teaser__image {
         @media #{$medium-only} {
-            @include grid-column(7, false, false, 0, 0, 0, true);
-            padding-right: 20px;
+            float: left;
+            width: 58.33%;
         }
 
         @media #{$xlarge-up} {
@@ -36,24 +35,43 @@
     }
 
     .teaser__body {
-        @include grid-column(12);
+        @include grid-column(11, false, true);
+        border: solid 5px $color-primary;
+        margin-top: -20px;
+        padding-top: 23px;
         position: relative;
 
         @media #{$medium-only} {
-            @include grid-column(5, false, false, 0, 0, 0);
+            border-width: 8px;
+            float: left;
+            margin-left: -($column-gutter);
+            margin-top: 12px;
+            min-height: 322px;
+            padding-left: 48px;
             padding-top: 20px;
+            width: calc(41.67% + #{$column-gutter});
         }
 
-        @media #{$xlarge-up} {
-            @include grid-column(5, false, false, 0, 0, 0);
-            padding-top: $column-gutter;
-            padding-left: 35px;
+        @media #{$large-only} {
+            border-width: 8px;
+            margin-top: -18px;
+            padding-top: 25px;
+        }
+
+        @media #{$xlarge-only} {
+            position: absolute;
+            border-width: 10px;
+            margin-top: 40px;
+            min-height: 350px;
+            padding-left: 80px;
+            padding-right: 25px;
+            padding-top: 25px;
+            right: 0;
+            width: 48%;
         }
     }
 
     .teaser__badge-container {
-        margin-left: -15px;
-
         @media #{$medium-only} {
             position: relative;
             top: auto;
@@ -64,11 +82,6 @@
         }
 
         @media #{$xlarge-up} {
-            margin-left: -20px;
-            padding: {
-                left: 20px;
-                right: 20px;
-            }
             position: relative;
             top: auto;
         }
@@ -78,7 +91,7 @@
         @include type-hero-title();
         margin: {
             bottom: 0;
-            top: 10px;
+            top: 3px;
         }
 
         @media #{$medium-up} {
@@ -86,18 +99,26 @@
         }
 
         @media #{$large-up} {
-            margin-top: 16px;
+            margin-top: 18px;
+            margin-bottom: 15px;
+        }
+
+        @media #{$xlarge-up} {
+            margin-top: 8px;
         }
     }
 
     .teaser__summary {
-        @include type-hero-summary();
+        @include type-teaser-summary();
         margin-top: 4px;
+        margin-bottom: 20px;
 
         @media #{$medium-up} {
             margin: 10px 0 25px;
         }
+
+        @media #{$large-up} {
+            margin-bottom: 30px;
+        }
     }
 }
-
-

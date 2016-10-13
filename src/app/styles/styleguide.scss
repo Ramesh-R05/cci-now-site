@@ -21,6 +21,7 @@ $color-styleguide-grey: #ddd;
         padding: 10px 0;
         position: relative;
         z-index: 1;
+
         h1 {
             color: $white;
             font-size: 20px;
@@ -28,11 +29,16 @@ $color-styleguide-grey: #ddd;
             margin: 0;
             max-width: 1200px;
         }
+
+        .row {
+            max-width: 90%;
+        }
     }
 
     .code {
         background-color: $color-grey-light;
         color: $color-styleguide-code;
+        display: inline-block;
         font: 13px Consolas, Monaco, 'Andale Mono', monospace;
         font-weight: 400;
         padding: 3px 6px;
@@ -82,37 +88,86 @@ $color-styleguide-grey: #ddd;
     }
 }
 
-.styleguide-section {
-    margin: 0 0 40px;
+// Font styles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h7 {
+    color: $color-black;
+    font-family: $font-family-sans-serif-primary;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
 
-    &__header {
-        background-color: $color-primary;
-        font-family: $font-family-sans-serif-primary;
-        padding: 20px 0 10px;
+h1 {
+    font-size: 64px;
+    line-height: 68px;
+}
+
+h2 {
+    font-size: 44px;
+    line-height: 46px;
+}
+
+h3 {
+    font-size: 34px;
+    line-height: 36px;
+}
+
+h4 {
+    font-size: 28px;
+    line-height: 30px;
+}
+
+h5 {
+    font-size: 24px;
+    line-height: 26px;
+}
+
+h6 {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 22px;
+}
+
+h7 {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 18px;
+}
+
+a {
+    color: $color-black;
+
+    &:hover {
+        text-decoration: none;
     }
+}
 
-    &__body {
-        &__part:not(:first-child) {
-            border-top: 1px solid $color-grey-light;
-            margin-top: 30px;
-            padding-top: 30px;
-        }
-    }
+// Font families
+.styleguide-font-family {
+    color: $color-black;
+    font-size: 20px;
+    line-height: 2.5;
 
-    &__title {
-        color: $color-white;
+    .sans-serif-primary {
         font-family: $font-family-sans-serif-primary;
-        font-size: 22px;
-        font-weight: 700;
         text-transform: uppercase;
-    }
 
-    &__row {
-        margin: 10px 0 30px;
+        &--thin {
+            font-weight: 100;
+        }
     }
 }
 
 .styleguide-colours {
+    &__body {
+        max-width: 90%;
+    }
+
     &__title {
         color: $color-primary;
         font-family: $font-family-sans-serif-primary;
@@ -141,79 +196,30 @@ $color-styleguide-grey: #ddd;
 
         &--primary {
             background: $color-primary;
-        }
 
-        &--purple {
-            background: $color-purple;
-        }
-
-        &--violet {
-            background: $color-violet;
-        }
-
-        &--blue {
-            background: $color-blue;
-        }
-
-        &--green {
-            background: $color-green;
+            &-hover {
+                background: $color-primary-hover;
+            }
         }
 
         &--yellow {
             background: $color-yellow;
         }
 
-        &--orange {
-            background: $color-orange;
-        }
-
-        &--red {
-            background: $color-red;
-        }
-
         &--black {
             background: $color-black;
+
+            &-hover {
+                background: $color-black-hover;
+            }
         }
 
         &--grey {
             background: $color-grey;
-        }
 
-        &--primary-light {
-            background: $color-primary-light;
-        }
-
-        &--purple-light {
-            background: $color-purple-light;
-        }
-
-        &--blue-light {
-            background: $color-blue-light;
-        }
-
-        &--green-light {
-            background: $color-green-light;
-        }
-
-        &--yellow-light {
-            background: $color-yellow-light;
-        }
-
-        &--orange-light {
-            background: $color-orange-light;
-        }
-
-        &--red-light {
-            background: $color-red-light;
-        }
-
-        &--grey-light {
-            background: $color-grey-light;
-        }
-
-        &--white {
-            background: $color-white;
-            border: 1px solid $color-grey-light;
+            &-light {
+                background: $color-grey-light;
+            }
         }
     }
 
@@ -222,6 +228,42 @@ $color-styleguide-grey: #ddd;
         font-family: $font-family-sans-serif-primary;
         font-size: 14px;
         padding: 4px 0 0;
+    }
+}
+
+.styleguide-section {
+    border-top: 2px solid $color-primary;
+    margin: 0 0 40px;
+    padding-top: 50px;
+
+    &__header {
+        background-color: transparent;
+        font-family: $font-family-sans-serif-primary;
+        padding: 20px 0 10px;
+
+        .row {
+            max-width: 90%;
+        }
+    }
+
+    &__body {
+        &__part:not(:first-child) {
+            border-top: 1px solid $color-grey-light;
+            margin-top: 30px;
+            padding-top: 30px;
+        }
+    }
+
+    &__title {
+        color: $color-black;
+        font-family: $font-family-sans-serif-primary;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 30px;
+    }
+
+    &__row {
+        margin: 10px 0 30px;
     }
 }
 
@@ -245,7 +287,7 @@ $color-styleguide-grey: #ddd;
         &__sub-title {
             color: $color-primary;
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: normal;
             margin: 80px 0 40px;
             text-transform: uppercase;
@@ -273,190 +315,187 @@ $color-styleguide-grey: #ddd;
             min-height: 480px;
         }
     }
+
+    &__row {
+        max-width: 90%;
+    }
 }
 
-// override the media queries so that small/medium/large show despite screen width
 .type {
     &-hero-title {
         .styleguide-type__small & {
-            font-size: 22px;
-            line-height: 30px;
+            font-size: 24px;
+            line-height: 26px;
         }
 
         .styleguide-type__medium & {
             font-size: 28px;
-            line-height: 38px;
-        }
-
-        .styleguide-type__large & {
-            font-size: 40px;
-            line-height: 52px;
-        }
-    }
-
-    &-hero-summary {
-        .styleguide-type__small & {
-            font-size: 15px;
-            line-height: 25px;
-        }
-
-        .styleguide-type__large & {
-            font-size: 20px;
-            line-height: 32px;
-        }
-    }
-
-    &-hero-color-block {
-        color: $color-black;
-
-        .styleguide-type__small & {
-            font-size: 11px;
-        }
-
-        .styleguide-type__medium & {
-            font-size: 14px;
-            line-height: 24px;
-        }
-
-        .styleguide-type__large & {
-            font-size: 16px;
-            line-height: 28px;
-        }
-    }
-
-    &-bottom-teaser-title {
-        .styleguide-type__small & {
-            font-size: 15px;
-            line-height: 21px;
-        }
-
-        .styleguide-type__medium & {
-            font-size: 22px;
             line-height: 30px;
         }
 
         .styleguide-type__large & {
-            font-size: 34px;
-            line-height: 44px;
+            font-size: 44px;
+            line-height: 46px;
+        }
+    }
+
+    &-teaser-headline-title {
+        .styleguide-type__small &,
+        .styleguide-type__medium & {
+            font-size: 15px;
+        }
+
+        .styleguide-type__large & {
+            font-size: 20px;
         }
     }
 
     &-top-teaser-title {
         .styleguide-type__small & {
-            font-size: 22px;
-            line-height: 30px;
-        }
-
-        .styleguide-type__large & {
-            font-size: 28px;
-            line-height: 38px;
-        }
-    }
-
-    &-related-teaser-title {
-        color: $color-black;
-
-        .styleguide-type__small & {
-            font-size: 15px;
-            line-height: 21px;
+            font-size: 24px;
+            line-height: 26px;
         }
 
         .styleguide-type__medium & {
-            font-size: 22px;
+            font-size: 28px;
             line-height: 30px;
+        }
+    }
+
+    &-bottom-teaser-title {
+        .styleguide-type__small & {
+            font-size: 16px;
+            line-height: 18px;
+        }
+
+        .styleguide-type__medium & {
+            font-size: 24px;
+            line-height: 26px;
+        }
+
+        .styleguide-type__large & {
+            font-size: 34px;
+            line-height: 36px;
         }
     }
 
     &-teaser-summary {
         .styleguide-type__small & {
-            font-size: 15px;
-            line-height: 25px;
+            font-size: 16px;
+            line-height: 20px;
         }
 
         .styleguide-type__large & {
-            font-size: 16px;
-            line-height: 26px;
+            font-size: 18px;
+            line-height: 25px;
         }
     }
 
-    &-teaser-color-block {
-        color: $color-black;
-
+    &-teaser-tag {
         .styleguide-type__small & {
-            font-size: 11px;
+            font-size: 7px;
+            letter-spacing: .1em;
+            line-height: 5;
+
+            span {
+                font-size: 11px;
+                line-height: 12px;
+            }
         }
 
         .styleguide-type__large & {
-            font-size: 14px;
+            font-size: 10px;
+            letter-spacing: .05em;
+            line-height: 3.2;
+
+            span {
+                font-size: 16px;
+                line-height: 24px;
+            }
         }
     }
 
     &-article-title {
         .styleguide-type__small & {
-            font-size: 22px;
-            line-height: 30px;
+            font-size: 24px;
+            line-height: 26px;
         }
 
+
         .styleguide-type__medium & {
-            font-size: 46px;
-            line-height: 58px;
+            font-size: 44px;
+            line-height: 46px;
         }
 
         .styleguide-type__large & {
-            font-size: 62px;
-            line-height: 80px;
+            font-size: 64px;
+            line-height: 68px;
         }
     }
 
     &-article-summary {
         .styleguide-type__small & {
-            font-size: 15px;
+            font-size: 19px;
             line-height: 25px;
         }
 
         .styleguide-type__medium & {
-            font-size: 20px;
-            line-height: 36px;
+            font-size: 22px;
+            line-height: 34px;
         }
     }
 
     &-article-body {
         .styleguide-type__small & {
-            font-size: 15px;
+            font-size: 19px;
             line-height: 25px;
         }
 
         .styleguide-type__medium & {
-            font-size: 18px;
-            line-height: 24px;
+            font-size: 22px;
+            line-height: 34px;
         }
     }
 
     &-article-heading {
         .styleguide-type__small & {
-            font-size: 22px;
-            line-height: 30px;
+            font-size: 24px;
+            line-height: 26px;
         }
 
         .styleguide-type__medium & {
-            font-size: 30px;
-            line-height: 40px;
+            font-size: 34px;
+            line-height: 36px;
         }
     }
 
-    &-article-quote {
+    &-related-teaser-title {
         .styleguide-type__small & {
-            font-size: 26px;
+            font: 16px / 18px $font-family-sans-serif-primary;
         }
 
-        .styleguide-type__large & {
-            font-size: 36px;
+        .styleguide-type__medium & {
+            font-size: 24px;
+            line-height: 26px;
+        }
+    }
+
+    &-article-recommendation-title {
+        .styleguide-type__small & {
+            font: 16px / 18px $font-family-sans-serif-primary;
+        }
+
+        .styleguide-type__medium & {
+            font-size: 20px;
+            line-height: 22px;
         }
     }
 
     &-section-title {
+        margin-bottom: 20px;
+
         .styleguide-type__small & {
-            font-size: 36px;
+            font-size: 30px;
         }
 
         .styleguide-type__medium & {
@@ -464,42 +503,11 @@ $color-styleguide-grey: #ddd;
         }
 
         .styleguide-type__large & {
-            font-size: 80px;
+            font-size: 76px;
         }
     }
+}
 
-    &-gallery-header {
-        .styleguide-type__small & {
-            font-size: 17px;
-        }
-
-        .styleguide-type__large & {
-            font-size: 20px;
-        }
-    }
-
-    &-inline-gallery-header,
-    &-inline-gallery-title {
-        color: $color-black;
-
-        .styleguide-type__small & {
-            font-size: 15px;
-        }
-
-        .styleguide-type__large & {
-            font-size: 20px;
-        }
-    }
-
-    &-inline-gallery-header {
-        color: $color-black;
-    }
-
-    &-tags {
-        color: $color-black;
-    }
-
-    &-renovation-status {
-        color: $color-black;
-    }
+.styleguide-teaser {
+    width: 240px;
 }
