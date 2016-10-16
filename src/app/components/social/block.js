@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import SocialLinks from './links';
 
-export default class CosmoSocial extends Component {
-    static displayName = 'CosmoSocial';
+export default class Social extends Component {
+    static displayName = 'Social';
 
     static links = [{
         name: 'facebook',
@@ -26,6 +26,6 @@ export default class CosmoSocial extends Component {
     }];
 
     render() {
-        return (<SocialLinks links={ CosmoSocial.links } />);
+        return (<SocialLinks links={ Social.links } />);
     }
 }
