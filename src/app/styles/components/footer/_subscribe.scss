@@ -35,6 +35,15 @@
 
     &__heading {
         @include type-subscribe-heading;
+        
+        &:before {
+            content: '';
+            display: block;
+            border: 8px solid transparent;
+            border-top: 11px solid $color-primary;
+            width: 0;
+            margin: 0 auto 10px;
+        }
     }
 
     &__content {

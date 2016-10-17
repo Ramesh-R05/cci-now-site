@@ -3,7 +3,7 @@ import express from 'express';
 const config = load();
 
 export default function start(port, site) {
-    const siteRouter = require(`../../app-${site}/automation/contentApi`).default;
+    const siteRouter = require(`../../app/automation/contentApi`).default;
     const server = express();
 
     server.use((req, res, next) => {

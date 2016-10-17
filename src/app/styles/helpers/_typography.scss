@@ -1,41 +1,41 @@
 @font-face {
-    font-family: 'Cabrito';
-    src: url('/assets/fonts/CabritoNormRegular-webfont.eot');
-    src: url('/assets/fonts/CabritoNormRegular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/CabritoNormRegular-webfont.woff2') format('woff2'),
-    url('/assets/fonts/CabritoNormRegular-webfont.woff') format('woff'),
-    url('/assets/fonts/CabritoNormRegular-webfont.ttf') format('truetype'),
-    url('/assets/fonts/CabritoNormRegular-webfont.svg#cabrito_norm_regularnormRg') format('svg');
-    font-weight: normal;
+    font-family: 'Baskerville';
+    src: url('/assets/fonts/Baskerville-Regular-webfont.eot');
+    src: url('/assets/fonts/Baskerville-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/Baskerville-Regular-webfont.woff2') format('woff2'),
+    url('/assets/fonts/Baskerville-Regular-webfont.woff') format('woff'),
+    url('/assets/fonts/Baskerville-Regular-webfont.ttf') format('truetype'),
+    url('/assets/fonts/Baskerville-Regular-webfont.svg#baskerville_fsregular') format('svg');
+    font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Cabrito';
-    src: url('/assets/fonts/CabritoNormBold-webfont.eot');
-    src: url('/assets/fonts/CabritoNormBold-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/CabritoNormBold-webfont.woff2') format('woff2'),
-    url('/assets/fonts/CabritoNormBold-webfont.woff') format('woff'),
-    url('/assets/fonts/CabritoNormBold-webfont.ttf') format('truetype'),
-    url('/assets/fonts/CabritoNormBold-webfont.svg#cabrito_norm_boldnorm_bold') format('svg');
+    font-family: 'Baskerville';
+    src: url('/assets/fonts/Baskerville-Bold-webfont.eot');
+    src: url('/assets/fonts/Baskerville-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/Baskerville-Bold-webfont.woff2') format('woff2'),
+    url('/assets/fonts/Baskerville-Bold-webfont.woff') format('woff'),
+    url('/assets/fonts/Baskerville-Bold-webfont.ttf') format('truetype'),
+    url('/assets/fonts/Baskerville-Bold-webfont.svg#baskerville_fsbold') format('svg');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Cabrito';
-    src: url('/assets/fonts/CabritoCondRegularItalic-webfont.eot');
-    src: url('/assets/fonts/CabritoCondRegularItalic-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/CabritoCondRegularItalic-webfont.woff2') format('woff2'),
-    url('/assets/fonts/CabritoCondRegularItalic-webfont.woff') format('woff'),
-    url('/assets/fonts/CabritoCondRegularItalic-webfont.ttf') format('truetype'),
-    url('/assets/fonts/CabritoCondRegularItalic-webfont.svg#cabrito_cond_regular_condRgIt') format('svg');
+    font-family: 'Baskerville';
+    src: url('/assets/fonts/Baskerville-Italic-webfont.eot');
+    src: url('/assets/fonts/Baskerville-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/Baskerville-Italic-webfont.woff2') format('woff2'),
+    url('/assets/fonts/Baskerville-Italic-webfont.woff') format('woff'),
+    url('/assets/fonts/Baskerville-Italic-webfont.ttf') format('truetype'),
+    url('/assets/fonts/Baskerville-Italic-webfont.svg#baskerville_fsitalic') format('svg');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'Amsi Pro Narrow Bold';
+    font-family: 'Amsi Pro Narrow';
     src: url('/assets/fonts/amsipronarw-bold-webfont.eot');
     src: url('/assets/fonts/amsipronarw-bold-webfont.eot?#iefix') format('embedded-opentype'),
     url('/assets/fonts/amsipronarw-bold-webfont.woff2') format('woff2'),
@@ -46,10 +46,35 @@
     font-style: normal;
 }
 
-$font-family-sans-serif-primary: 'Amsi Pro Narrow Bold', sans-serif;
-$font-family-serif-primary: 'Cabrito', serif;
+@font-face {
+    font-family: 'Amsi Pro Narrow';
+    src: url('/assets/fonts/amsipronarw-black-webfont.eot');
+    src: url('/assets/fonts/amsipronarw-black-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/amsipronarw-black-webfont.woff2') format('woff2'),
+    url('/assets/fonts/amsipronarw-black-webfont.woff') format('woff'),
+    url('/assets/fonts/amsipronarw-black-webfont.ttf') format('truetype'),
+    url('/assets/fonts/amsipronarw-black-webfont.svg#amsi_pro_narwblack') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Amsi Pro Narrow';
+    src: url('/assets/fonts/amsipronarw-thin-webfont.eot');
+    src: url('/assets/fonts/amsipronarw-thin-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/amsipronarw-thin-webfont.woff2') format('woff2'),
+    url('/assets/fonts/amsipronarw-thin-webfont.woff') format('woff'),
+    url('/assets/fonts/amsipronarw-thin-webfont.ttf') format('truetype'),
+    url('/assets/fonts/amsipronarw-thin-webfont.svg#amsipronarw-thinuploaded_file') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+
+$font-family-sans-serif-primary: 'Amsi Pro Narrow', sans-serif;
 
 $to-love-font-family-sans-serif: $font-family-sans-serif-primary;
+
+$font-family-serif-primary: 'Baskerville', serif;
 
 // ---------------------------------------------------- base elements
 
@@ -71,6 +96,49 @@ h5,
 h6,
 p {
     margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $color-black;
+    font-family: $font-family-sans-serif-primary;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 44px;
+    line-height: 46px;
+}
+
+h2 {
+    font-size: 40px;
+    line-height: 42px;
+}
+
+h3 {
+    font-size: 34px;
+    line-height: 36px;
+}
+
+h4 {
+    font-size: 28px;
+    line-height: 30px;
+}
+
+h5 {
+    font-size: 24px;
+    line-height: 26px;
+}
+
+h6 {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 18px;
 }
 
 a {
@@ -107,19 +175,92 @@ a {
     @include type-side-menu-link;
 }
 
-// Article
-@mixin type-article-title {
+// Must Read headline
+@mixin type-teaser-headline-title {
+    color: $color-white;
+    font: 500 15px / 1.4 $font-family-sans-serif-primary;
+    letter-spacing: .04em;
+    line-height: 1.55;
+    text-transform: uppercase;
+
+    @media #{$xlarge-up} {
+        font-size: 20px;
+    }
+}
+
+.type-teaser-headline-title {
+    @include type-teaser-headline-title;
+
+    a {
+        background-color: $color-primary;
+        box-shadow: 4px 0 0 $color-primary, -4px 0 0 $color-primary;
+        box-decoration-break: clone; // for Firefox
+        color: $color-white;
+
+        &:hover {
+            background-color: $color-primary-light;
+            box-shadow: 4px 0 0 $color-primary-light, -4px 0 0 $color-primary-light;
+            box-decoration-break: clone; // for Firefox
+            color: $color-white;
+            text-decoration: none;
+        }
+    }
+}
+
+
+// Hero (e.g. on homepage)
+@mixin type-hero-title {
     color: $color-black;
-    font: 400 22px / 30px $font-family-sans-serif-primary;
+    font: 24px / 26px $font-family-sans-serif-primary;
+    font-weight: bold;
+    text-transform: uppercase;
 
     @media #{$medium-up} {
-        font-size: 46px;
-        line-height: 58px;
+        font-size: 28px;
+        line-height: 30px;
     }
 
     @media #{$xlarge-up} {
-        font-size: 62px;
-        line-height: 80px;
+        font-size: 44px;
+        line-height: 46px;
+    }
+}
+
+.type-hero-title {
+    @include type-hero-title;
+}
+
+@mixin type-teaser-summary {
+    color: $color-grey;
+    font: 400 16px / 20px $font-family-serif-primary;
+    letter-spacing: 0.01em;
+
+    @media #{$xlarge-up} {
+        font-size: 18px;
+        line-height: 25px;
+    }
+}
+
+.type-hero-summary {
+    @include type-teaser-summary;
+}
+
+
+// Article
+@mixin type-article-title {
+    color: $color-black;
+    font: 24px / 26px $font-family-sans-serif-primary;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    @media #{$medium-up} {
+        font-size: 44px;
+        line-height: 46px;
+    }
+
+    @media #{$xlarge-up} {
+        font-size: 64px;
+        line-height: 68px;
     }
 }
 
@@ -129,12 +270,12 @@ a {
 
 @mixin type-article-summary {
     color: $color-grey;
-    font: italic 400 15px / 25px $font-family-serif-primary;
+    font: italic 400 19px / 25px $font-family-serif-primary;
     letter-spacing: .01em;
 
     @media #{$medium-up} {
-        font-size: 20px;
-        line-height: 36px;
+        font-size: 22px;
+        line-height: 34px;
     }
 }
 
@@ -144,11 +285,11 @@ a {
 
 @mixin type-article-body {
     color: $color-black;
-    font: 400 15px / 25px $font-family-serif-primary;
+    font: 400 19px / 25px $font-family-serif-primary;
     letter-spacing: .01em;
 
     @media #{$medium-up} {
-        font-size: 18px;
+        font-size: 22px;
         line-height: 34px;
     }
 }
@@ -159,16 +300,60 @@ a {
 
 @mixin type-article-heading {
     color: $color-black;
-    font: 400 22px / 30px $font-family-sans-serif-primary;
+    font: 400 24px / 26px $font-family-sans-serif-primary;
+    text-transform: uppercase;
 
     @media #{$medium-up} {
-        font-size: 30px;
-        line-height: 40px;
+        font-size: 34px;
+        line-height: 36px;
     }
 }
 
 .type-article-heading {
     @include type-article-heading;
+}
+
+@mixin type-related-teaser-title {
+    color: $color-black;
+    font: 16px/18px $font-family-sans-serif-primary;
+    text-transform: uppercase;
+
+    @media #{$medium-up} {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 26px;
+    }
+}
+
+.type-related-teaser-title {
+    @include type-related-teaser-title;
+}
+
+@mixin type-article-recommendation-title {
+    color: $color-black;
+    font: 16px/18px $font-family-sans-serif-primary;
+    text-transform: uppercase;
+
+    @media #{$medium-up} {
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 22px;
+    }
+}
+
+.type-article-recommendation-title {
+    @include type-article-recommendation-title;
+}
+
+// XSmall teaser (e.g. article page left hand side rail)
+@mixin type-xsmall-teaser-title {
+    color: $color-black;
+    font: 400 16px / 18px $font-family-sans-serif-primary;
+    text-transform: uppercase;
+}
+
+.type-xsmall-teaser-title {
+    @include type-xsmall-teaser-title;
 }
 
 @mixin type-article-quote {
@@ -186,11 +371,47 @@ a {
     @include type-article-quote;
 }
 
+@mixin type-inline-gallery-heading {
+    font: 400 16px / 18px $font-family-sans-serif-primary;
+    text-transform: uppercase;
+
+    @media #{$medium-up} {
+        font-size: 34px;
+        line-height: 36px;
+    }
+}
+
+.type-inline-gallery-heading {
+    @include type-inline-gallery-heading;
+}
+
 // Section
 @mixin type-section-title {
     color: $color-black;
-    font: 400 36px / 1em $font-family-sans-serif-primary;
+    font: 100 30px / 1em $font-family-sans-serif-primary;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+    text-decoration: none;
+
+    span {
+        position: relative;
+
+        &:after {
+            border-bottom: solid 2px $color-primary;
+            content: '';
+            display: block;
+            position: absolute;
+            height: 0;
+            top: 88%;
+            left: 0;
+            right: 0;
+
+            @media #{$xlarge-up} {
+                left: 4px;
+            }
+        }
+    }
+
 
     @media #{$medium-up} {
         font-size: 60px;
@@ -273,13 +494,17 @@ a {
 }
 
 // Teasers
+
+// Top half teasers
 @mixin type-top-teaser-title {
     color: $color-black;
-    font: 400 22px / 30px $font-family-sans-serif-primary;
+    font: 24px / 26px $font-family-sans-serif-primary;
+    font-weight: bold;
+    text-transform: uppercase;
 
     @media #{$medium-up} {
         font-size: 28px;
-        line-height: 38px;
+        line-height: 30px;
     }
 }
 
@@ -287,71 +512,33 @@ a {
     @include type-top-teaser-title;
 }
 
-@mixin type-teaser-summary {
-    color: $color-grey;
-    font: italic 400 15px / 25px $font-family-serif-primary;
-    letter-spacing: 0.01em;
-
-    @media #{$xlarge-up} {
-        font-size: 20px;
-        line-height: 32px;
-    }
-}
-
 .type-teaser-summary {
     @include type-teaser-summary;
 }
 
-// Small Teaser - ie, just below the hero on home page, above Gallery of Galleries
 
+// Small Teaser - ie, just below the hero on home page, above Gallery of Galleries
+// Second half teasers
 @mixin type-bottom-teaser-title {
     color: $color-black;
-    font: 400 16px / 22px $font-family-sans-serif-primary;
+    font: 16px / 18px $font-family-sans-serif-primary;
+    font-weight: bold;
+    margin-bottom: 0;
+    text-transform: uppercase;
+
+    @media #{$medium-up} {
+        font-size: 24px;
+        line-height: 26px;
+    }
 
     @media #{$xlarge-up} {
-        font-size: 22px;
-        line-height: 30px;
+        font-size: 34px;
+        line-height: 36px;
     }
 }
 
 .type-bottom-teaser-title {
     @include type-bottom-teaser-title;
-}
-
-// XSmall teaser (e.g. article page left hand side rail)
-@mixin type-xsmall-teaser-title {
-    color: $color-black;
-    font: 400 16px / 24px $font-family-sans-serif-primary;
-}
-
-.type-xsmall-teaser-title {
-    @include type-xsmall-teaser-title;
-}
-
-@mixin type-teaser-summary {
-    color: $color-grey;
-    font: italic 400 15px / 25px $font-family-serif-primary;
-    letter-spacing: 0.01em;
-
-    @media #{$xlarge-up} {
-        font-size: 16px;
-        line-height: 26px;
-    }
-}
-
-// Related Content title inside articles
-@mixin type-related-teaser-title {
-    color: $color-white;
-    font: 400 15px / 21px $font-family-sans-serif-primary;
-
-    @media #{$medium-up} {
-        font-size: 22px;
-        line-height: 30px;
-    }
-}
-
-.type-related-teaser-title {
-    @include type-related-teaser-title;
 }
 
 // Colourful block over teaser image
@@ -376,40 +563,40 @@ a {
     @include type-teaser-color-block;
 }
 
-// Hero (e.g. on homepage)
-@mixin type-hero-title {
+@mixin type-teaser-tag {
+    box-shadow: 0 5px 0 0 $color-yellow inset;
     color: $color-black;
-    font: 22px / 30px $font-family-sans-serif-primary;
+    text-decoration: none;
+    font-size: 7px;
+
+    a, span {
+        color: $color-black;
+        font: 11px / 12px $font-family-sans-serif-primary;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+
+        @media #{$medium-up} {
+            font-size: 16px;
+            letter-spacing: .05em;
+            line-height: 24px;
+        }
+    }
 
     @media #{$medium-up} {
-        font-size: 28px;
-        line-height: 38px;
+        box-shadow: 0 7px 0 0 $color-yellow inset;
+        font-size: 10px;
     }
 
-    @media #{$xlarge-up} {
-        font-size: 40px;
-        line-height: 52px;
-    }
-}
-
-.type-hero-title {
-    @include type-hero-title;
-}
-
-@mixin type-hero-summary {
-    color: $color-grey;
-    font: italic 400 15px / 25px $font-family-serif-primary;
-    letter-spacing: 0.01em;
-
-    @media #{$xlarge-up} {
-        font-size: 20px;
-        line-height: 32px;
+    &:hover {
+        color: $color-black-hover;
+        text-decoration: none;
     }
 }
 
-.type-hero-summary {
-    @include type-hero-summary;
+.type-teaser-tag {
+    @include type-teaser-tag();
 }
+
 
 // Navigation
 @mixin type-navigation {
@@ -527,7 +714,7 @@ a {
 }
 
 @mixin type-subscribe-content() {
-    color: $color-violet;
+    color: $color-grey-light;
     font-family: $font-family-serif-primary;
     font-size: 15px;
     letter-spacing: .020em;
@@ -549,6 +736,8 @@ a {
 .type-social-link-label {
     @include type-social-link-label;
 }
+
+
 
 // Error page
 @mixin type-error-page {

@@ -1,13 +1,18 @@
+.content-wrapper {
+    overflow: hidden !important;
+}
+
 .home-page {
     &__top-container {
-        margin-top: 20px;
+        padding-top: 20px;
 
         @media #{$medium-up} {
-            margin-top: 40px;
+            padding-top: 40px;
         }
 
         @media #{$xlarge-up} {
-            margin-top: 60px;
+            border-width: 10px;
+            padding-top: 50px;
         }
 
         .row {
@@ -19,152 +24,8 @@
             }
         }
     }
-
-    &__social-wrapper {
-        margin: {
-            top: 30px;
-        }
-
-        @media #{$large-up} {
-            margin: {
-                top: 0px;
-            }
-        }
-
-        .columns {
-            padding: {
-                left: 0;
-                right: 0;
-            }
-        }
-
-        .ad--section-mrec {
-            margin-left: -5px;
-            margin-bottom: 45px;
-        }
-    }
-
-    &__get-social-container {
-
-        margin: {
-            bottom: 35px;
-        }
-
-        @media #{$medium-up} {
-            margin: {
-                bottom: 0px;
-            }
-        }
-
-        .get-social {
-            margin: {
-                bottom: 0px;
-            }
-
-            .columns {
-                padding: {
-                    left: 0;
-                    right: 0;
-                }
-            }
-
-            .get-social-title {
-                background: url('/assets/titles/get-more-dolly.png') no-repeat center;
-                background-size: 240px;
-                height: 50px;
-
-                @media #{$medium-up} {
-                    background-size: 260px;
-                    height: 50px;
-                }
-            }
-
-            .get-social__links {
-                width: 290px;
-                margin: {
-                    bottom: 0;
-                    left: auto;
-                    right: auto;
-                    top: 11px;
-                };
-
-                .social-link {
-                    width: 72px;
-                    padding-top: 12px;
-
-                    .social-link__label {
-                        color: $color-black;
-                    }
-
-                    .social-link__icon {
-                        img {
-                            width: 35px;
-                        }
-                    }
-                }
-
-                .row {
-                    margin: 0;
-
-                    &:before,
-                    &:after {
-                        display: table;
-                    }
-                }
-            }
-        }
-    }
-
-    &__carousel-container {
-        background: url(/assets/backgrounds/video.svg) repeat;
-        background-size: 250%;
-        position: relative;
-        padding-top: 75px;
-
-        @media #{$medium-up} {
-            padding-top: 170px;
-            background-size: 280%;
-        }
-
-        @media #{$large-up} {
-            background-size: 215%;
-        }
-
-        @media #{$xlarge-up} {
-            padding-top: 185px;
-            background-size: 120%;
-        }
-
-        .carousel-container__heading {
-            background: url('/assets/titles/dolly-video.svg') center no-repeat;
-            height: 55px;
-            top: 10px;
-            left: 0;
-            overflow: hidden;
-            position: absolute;
-            text-indent: -1000px;
-            width: 100%;
-            z-index: 1;
-
-            @media #{$medium-up} {
-                height: 120px;
-                top: 25px;
-            }
-        }
-    }
 }
 
 .stripe-bg {
-    background: url('/assets/backgrounds/line-light-pink.svg') repeat;
-    background-size: 5px;
-
-    @media #{$medium-up} {
-        background-image: url('/assets/backgrounds/line-light-pink-ipad.svg');
-        background-size: 5px;
-    }
-
-    @media #{$xlarge-up} {
-        background-image: url('/assets/backgrounds/line-light-pink.svg');
-        background-size: 10px;
-    }
+    background: none;
 }

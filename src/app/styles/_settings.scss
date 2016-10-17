@@ -29,17 +29,19 @@ $global-header-height-desktop: $to-love-global-header-height-desktop;
 
 $header-height: 55px;
 $header-height-desktop: 75px;
-$header-banner-logo-height: 198px;
-$header-logo-width-desktop: 158px;
+$header-banner-logo-height: 170px;
+$header-logo-width-desktop: 152px;
 $header-logo-container-width-desktop: $header-logo-width-desktop + $column-gutter;
 
-$header-logo-path: '/assets/images/dolly-logo.svg';
+$header-logo-path: '/assets/images/cosmo-logo.svg';
 $header-banner-background-path: '/assets/backgrounds/header.png';
 $header-transition-duration: 200ms;
 
+$offcanvas-background-color: $color-black;
 $color-header-menu-button: $color-primary;
-$color-header-bottom-border: $color-primary-light;
-$color-header-nav-divider: $color-primary-light;
+$color-header-bottom-border: none;
+$color-header-nav-divider: #666666;
+
 
 // Side menu
 $offcanvas-width: 270px;

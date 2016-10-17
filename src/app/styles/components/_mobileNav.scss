@@ -16,7 +16,7 @@
     padding: 0;
     position: absolute;
     right: 17px;
-    top: 43px;
+    top: 22px;
 
     &:hover,
     &:focus,
@@ -24,8 +24,13 @@
         outline: none;
     }
 
+    &:hover svg,
+    &:hover svg path {
+        fill: $color-primary-light;
+    }
+
     svg {
-        fill: $color-white;
+        fill: $color-primary;
         width: 19px;
         height: 19px;
     }
@@ -35,18 +40,46 @@
     font-family: $font-family-sans-serif-primary;
     font-size: 22px;
     line-height: 1em;
-    margin-top: 19px;
+    margin-top: 0;
     text-transform: uppercase;
+}
+
+.mobile-menu__nav {
+    font-size: 24px;
+    font-weight: bold;
+
+    a:hover {
+        color: $color-primary;
+        text-decoration: none;
+    }
+
+    a:focus {
+        text-decoration: none;
+    }
+
+    @media #{$medium-up} {
+        font-size: 28px;
+    }
 }
 
 .mobile-menu__nav .nav-item {
     color: $color-white;
     display: block;
-    padding: 10px 0;
+    padding: 5px 0;
+    font-size: 24px;
+    font-weight: bold;
+
+    @media #{$medium-up} {
+        padding: {
+            top: 7px;
+            bottom: 7px;
+        };
+    }
 }
 
 .mobile-menu__nav .nav-item--active {
-    text-decoration: underline;
+    color: $color-primary;
+    text-decoration: none;
 }
 
 .off-canvas-content-wrapper {
@@ -63,5 +96,4 @@
         width: $offcanvas-desktop-width;
         padding-left: 165px + ($column-gutter / 2);
     }
-
 }
