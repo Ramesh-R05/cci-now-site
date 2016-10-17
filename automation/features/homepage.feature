@@ -3,6 +3,19 @@ Feature: Homepage
     As a user
     I should be able to see homepage
 
+    @trending @DD0-69
+    Scenario Outline: Verify the trending element is functional correctly in "<device>" view
+        Given I am currently viewing the homepage
+        When I switch to "<device>" view
+        * I should see the trending title at the "<position>"
+        * I should see <number> trending teaser images and titles which are clickable to open their page
+        Examples:
+            |device             | position  | number |
+            | mobile            | top       | 2      |
+            | tablet portrait   | top       | 3      |
+            | tablet landscape  | top       | 5      |
+            | desktop           | front     | 5      |
+
     @hero @DDO-294
     Scenario: Verify the hero teaser element is functional correctly in mobile view
         Given I am currently viewing the homepage

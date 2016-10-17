@@ -1,5 +1,10 @@
 var homepage_widget = {
 
+    trendingTitleTop: '.trending__caption.hide-for-xlarge-up',
+    trendingTitleFront: '.columns.xlarge-2.show-for-xlarge-up',
+    trendingTeaserImage: '.trending-wrapper .teaser__list-item .teaser__inner img',
+    trendingTeaserImageLink: '.trending-wrapper .teaser__list-item .teaser__inner > a',
+    trendingTeaserTitle: '.trending-wrapper .teaser__list-item .teaser__title a',
     heroImg: '.hero-wrapper',
     heroImgUrl: '.hero-wrapper img',
     heroImgLink: '.hero-wrapper .teaser__image',
