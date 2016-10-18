@@ -1,5 +1,5 @@
 // Grid
-$row-width: 1590px;
+$row-width: 1024px;
 $column-gutter: 30px;
 $align-block-grid-to-grid: true;
 $include-xl-html-grid-classes: true;
@@ -60,6 +60,7 @@ $gallery-color-grey: $color-black;
 
 // Article
 $related-content-border-color: $color-primary;
+$content-expanded-xlarge-width: 100%;
 
 // Footer
 $back-to-top-background-color: $color-primary;
