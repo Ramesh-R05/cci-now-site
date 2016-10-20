@@ -14,7 +14,7 @@ Feature: Homepage
             | mobile            | top       | 2      |
             | tablet portrait   | top       | 3      |
             | tablet landscape  | top       | 5      |
-            | desktop           | front     | 5      |
+            | desktop           | top       | 5      |
 
     @hero @DDO-294
     Scenario: Verify the hero teaser element is functional correctly in mobile view
@@ -59,12 +59,9 @@ Feature: Homepage
         * I should see the homepage hero element
         * I should see the homepage hero image
         * The homepage hero image should be clickable to open its page
-        * I should see the homepage hero custom label in the right side
         * I should see the homepage hero title
         * The homepage hero title should be clickable to open its page
         * I should see the homepage hero short teaser
-
-
 
     @homepagefeed @DDO-235
     Scenario Outline: Verify the news feed is functional correctly in "<device>" view
