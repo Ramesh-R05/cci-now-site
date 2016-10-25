@@ -1,4 +1,4 @@
-@article @life
+@article @now
 Feature: Article
     As a user
     I should be able to see the article page

@@ -9,10 +9,10 @@ export default {
     services: {
         host: 'http://localhost:3000',
         header: {
-            url: 'http://automation.life-site.bauer-media.net.au/stub/wn-header'
+            url: 'http://automation.now-site.bauer-media.net.au/stub/wn-header'
         }
     },
     site: {
-        host: 'http://automation.life-site.bauer-media.net.au/'
+        host: 'http://automation.now-site.bauer-media.net.au/'
     }
 };

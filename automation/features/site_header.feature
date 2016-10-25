@@ -1,4 +1,4 @@
-@homepage @life
+@homepage @now
 Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to be used across all devices
 
     @DCO-64

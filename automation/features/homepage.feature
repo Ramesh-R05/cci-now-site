@@ -1,4 +1,4 @@
-@homepage @life
+@homepage @now
 Feature: Homepage
     As a user
     I should be able to see homepage

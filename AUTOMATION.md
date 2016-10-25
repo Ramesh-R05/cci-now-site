@@ -12,7 +12,7 @@ Node chimp framework
 (MAC)
 - cd automation
     - `export URL=` (or populate with local host)
-    - `export APP_KEY=life-site`
+    - `export APP_KEY=now-site`
     - `export APP_ENV=environment` (automation, dev, prelive, live)
     - `export WN=true` (true will use url for WN sites `.APP_KEY-site.wn`, false will use share repo sites `dolly and cosmo`)
     - `npm run once` (run once)
@@ -22,7 +22,7 @@ Node chimp framework
 open git-bash
 - cd automation
     - `export URL=` (or populate with local host)
-    - `export APP_KEY=life-site`
+    - `export APP_KEY=now-site`
     - `export APP_ENV=environment` (automation, dev, prelive, live)
     - `export WN=true` (true will use url for WN sites `.APP_KEY-site.wn`, false will use share repo sites `dolly and cosmo`)
     - `export HTTP_PROXY=` <= this will enable the selenium-standalone package to interact with selenium
@@ -33,7 +33,7 @@ open git-bash
 # Run browserstack: - WIP -
 Ensure you update the browser or device the test will run on in the chimp.bs.js file config
 - cd automation
-- `export APP_KEY=life-site`
+- `export APP_KEY=now-site`
 - `export APP_ENV=environment` (automation, dev, prelive, live)
 - `export WN=true` (true will use url for WN sites `.APP_KEY-site.wn`)
 - `npm run bs`

@@ -1,4 +1,4 @@
-@ad @life
+@ad @now
 Feature: Ad
     As a user
     I should be able to see the relevant Ads on the site

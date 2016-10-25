@@ -1,10 +1,10 @@
-# Dolly
+# Now
 
-- A popular website and magazine product for teenage girls.
+- A Lifestyle hub site which includes popular magazine products for woman.
 - A platform on wheels for transporting heavy objects.
 - A platform for delivering Women's Network websites and rapidly rolling out changes.
 
-_dolly-site_ provides a bootstrapped, mobile first, responsive, Women's Network website running on a Flux and BFF based
+_now-site_ provides a bootstrapped, mobile first, responsive, Women's Network website running on a Flux and BFF based
 architecture. It is an opinionated set of constrains that favours rapid delivery over bespoke designs. Home, listing
 (section, sub section, tag listing), article and gallery pages are included.
 
@@ -22,12 +22,12 @@ Use NVM to manage Node versions and `nvm install` in this repo for correct Node 
 `APP_KEY` environment variable is required for the app to know which resources (components, styles, assets) to use.
 
 ```shell
-cd src/ && nvm install && npm install && APP_KEY=cosmo-site npm run dev
+cd src/ && nvm install && npm install && APP_KEY=now-site npm run dev
 ```
 
-(Windows in Git Bash: `setx APP_KEY cosmo-site` then `npm run dev-win`)
+(Windows in Git Bash: `setx APP_KEY now-site` then `npm run dev-win`)
 
-Replace 'cosmo-site' above for site key. Site keys are defined in TeamCity build `serviceName` parameters.
+Replace 'now-site' above for site key. Site keys are defined in TeamCity build `serviceName` parameters.
 
 ## Run Scripts
 

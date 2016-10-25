@@ -120,7 +120,7 @@ crashlytics-build.properties
 .vagrant
 
 # Automation
-automation/dolly/artifacts
-screenshots/*.jpg
+automation/now/artifacts
+automation/screenshots/
 .screenshots
 .vscode/

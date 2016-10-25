@@ -10,7 +10,7 @@
     "bs": "bash -c \"./node_modules/.bin/chimp chimp.bs.js\"",
     "features": "bash -c \"node runner.js --pMode=features\"",
     "browsers": "bash -c \"node runner.js\"",
-    "life:automation": "bash -c \"export URL= && export APP_KEY=life-site && export APP_ENV=automation && npm run once\"",
+    "now:automation": "bash -c \"export URL= && export APP_KEY=now-site && export APP_ENV=automation && npm run once\"",
     "share:live": "bash -c \"./node_modules/.bin/chimp chimp.js --tags=@livesharerepo --jsonOutput=reports/regression.json && npm run html_report\"",
     "general:live": "bash -c \"./node_modules/.bin/chimp chimp.js --tags=@live --jsonOutput=reports/regression.json && npm run html_report\""
   },

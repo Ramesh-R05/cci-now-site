@@ -1,4 +1,4 @@
-@wnheader @DDO-62 @life
+@wnheader @DDO-62 @now
 Feature: WN Header
     As a user
     I should be able to see the WN header
