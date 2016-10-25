@@ -1,4 +1,4 @@
-@now
+@live
 Feature: I have an automated sanity for my live environments
 
     @version
