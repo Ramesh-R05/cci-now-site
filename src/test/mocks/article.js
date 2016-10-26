@@ -1,6 +1,6 @@
 export default {
   "id": "DOLLY-3640",
-  "url": "/fashion/kendall-jenners-skin-doctor-tells-us-what-mistake-3640",
+  "url": "/fashion/models/kendall-jenners-skin-doctor-tells-us-what-mistake-3640",
   "path": [
     "DOLLY--1",
     "DOLLY-3637",

@@ -15,18 +15,21 @@ describe('Page middleware', () => {
     const config = {services: {remote: {entity: 'http://entitiesUrl.com/'}}};
     const res = {};
     const validSection = 'fashion';
+    const validSubsection = 'models';
     const validPageName = 'kendall-jenners-skin-doctor-tells-us-what-mistake';
     const validPageId = 3640;
     const validPage = `${validPageName}-${validPageId}`;
     let next;
+    let req;
 
     describe('when the path does not contain an ID number in the slug', () => {
-        const req = {
-            app: { config },
-            query: { section: validSection, page: validPage }
-        };
+
 
         before(() => {
+            req = {
+                app: { config },
+                query: { section: validSection, subSection: validSubsection, page: validPage }
+            };
             next = sinon.spy();
             getPageIDStub = sinon.stub().returns(undefined);
         });
@@ -45,13 +48,12 @@ describe('Page middleware', () => {
     });
 
     describe(`when the req already contains 'data.entity'`, () => {
-        const req = {
-            app: { config },
-            data: { entity: {} },
-            query: { section: validSection, page: validPage }
-        };
-
         before(() => {
+            req = {
+                app: { config },
+                data: { entity: {} },
+                query: { section: validSection, page: validPage }
+            };
             next = sinon.spy();
             getPageIDStub = sinon.stub();
             makeRequestStub = sinon.stub();
@@ -68,17 +70,18 @@ describe('Page middleware', () => {
     });
 
     describe('when the remote returns an error response', () => {
-        const rejectedResponse = {
-            body: 'Could not find the article DOLLY-36424',
-            err: 'Error 404',
-            status: 404
-        };
-        const req = {
-            app: { config },
-            query: { section: validSection, page : validPage }
-        };
+        let rejectedResponse;
 
         before(() => {
+            req = {
+                app: { config },
+                query: { section: validSection, page : validPage }
+            };
+            rejectedResponse = {
+                body: 'Could not find the article DOLLY-36424',
+                err: 'Error 404',
+                status: 404
+            };
             next = sinon.spy();
             makeRequestStub = sinon.stub().rejects(rejectedResponse);
             getPageIDStub = sinon.stub().returns('DOLLY-1234');
@@ -93,12 +96,11 @@ describe('Page middleware', () => {
     });
 
     describe(`when the req is a preview page`, () => {
-        const req = {
-            app: { config },
-            query: { section: validSection, page: validPage, preview: 'preview' }
-        };
-
         before(() => {
+            req = {
+                app: { config },
+                query: { section: validSection, page: validPage, preview: 'preview' }
+            };
             next = sinon.spy();
             makeRequestStub = sinon.stub().resolves(entity);
             getPageIDStub = sinon.stub().returns('DOLLY-1234');
@@ -113,22 +115,17 @@ describe('Page middleware', () => {
     });
 
     describe('when the remote returns an entity in the response and is not a preview page', () => {
-        const req = {
-            app: { config },
-            query: { section: validSection, page: validPage }
-        };
-
-        before(() => {
-            next = sinon.spy();
-            makeRequestStub = sinon.stub().resolves(entity);
-            getPageIDStub = sinon.stub().returns('DOLLY-1234');
-        });
 
         describe('and the url does not match the url in response', () => {
 
-            afterEach(() => {
-                req.query.section = validSection;
-                req.query.page = validPage;
+            beforeEach(() => {
+                req = {
+                    app: { config },
+                    query: { section: validSection, subsection: validSubsection, page: validPage }
+                };
+                next = sinon.spy();
+                makeRequestStub = sinon.stub().resolves(entity);
+                getPageIDStub = sinon.stub().returns('DOLLY-1234');
             });
 
             it('should call makeRequest without saved data', (done) => {
@@ -141,9 +138,10 @@ describe('Page middleware', () => {
 
             it('should return an error when section does not match remote', (done) => {
                 req.query.section = 'anotherSection';
+                req.query.subsection = 'anotherSubsection';
                 pageMiddleware(req, res, next).then(() => {
                     expect(next).to.be.calledWith(sinon.match((err) => {
-                        return err.message === `Path /anotherSection/${validPage} does not match page`;
+                        return err.message === `Path /anotherSection/anotherSubsection/${validPage} does not match page`;
                     }));
                     done();
                 }).catch(done);
@@ -153,7 +151,7 @@ describe('Page middleware', () => {
                 req.query.page = `another-page-${validPageId}`;
                 pageMiddleware(req, res, next).then(() => {
                     expect(next).to.be.calledWith(sinon.match((err) => {
-                        return err.message === `Path /${validSection}/another-page-${validPageId} does not match page`;
+                        return err.message === `Path /${validSection}/${validSubsection}/another-page-${validPageId} does not match page`;
                     }));
                     done();
                 }).catch(done);
@@ -161,15 +159,17 @@ describe('Page middleware', () => {
         });
 
         describe('and the url matches the data.url of the response', () => {
-            const req = {
-                app: { config },
-                query: {
-                    section: validSection,
-                    page: validPage
-                }
-            };
 
-            before(() => {
+            beforeEach(() => {
+                req = {
+                    app: { config },
+                    query: {
+                        section: validSection,
+                        subsection: validSubsection,
+                        page: validPage
+                    }
+                };
+                next = sinon.spy();
                 makeRequestStub = sinon.stub().resolves(entity);
                 getPageIDStub = sinon.stub().returns('DOLLY-1234');
             });
@@ -191,13 +191,12 @@ describe('Page middleware', () => {
     });
 
     describe('when the request contains existing data', () => {
-        const req = {
-            data: { header: 'Test' },
-            app: { config },
-            query: { section: validSection, page: validPage }
-        };
-
         before(() => {
+            req = {
+                data: { header: 'Test' },
+                app: { config },
+                query: { section: validSection, page: validPage }
+            };
             next = sinon.spy();
             makeRequestStub = sinon.stub().resolves(entity);
             getPageIDStub = sinon.stub().returns('DOLLY-1234');

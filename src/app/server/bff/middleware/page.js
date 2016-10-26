@@ -9,14 +9,14 @@ export default async function page(req, res, next) {
             return;
         }
 
-        const {page, preview, section} = req.query;
+        const {page, preview, section, subsection} = req.query;
         const pageID = getPageID(page);
         if (!pageID) throw {status: 404, message: 'Invalid page ID', section, page};
 
         const saved = `?saved=${!!preview}`;
         const pageData = await makeRequest(`${req.app.config.services.remote.entity}/${pageID}${saved}`);
 
-        const path = `/${section}/${page}`;
+        const path = `/${section}/${subsection}/${page}`;
         if (!pageData.url || pageData.url !== path) {
             throw {status: 404, message: `Path ${path} does not match page`};
         }
@@ -27,6 +27,7 @@ export default async function page(req, res, next) {
 
         next();
     } catch(error) {
+        console.error('[bff/middleware/page]', error);
         next(error);
     }
 }
