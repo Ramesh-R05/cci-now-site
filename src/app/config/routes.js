@@ -32,7 +32,7 @@ export default {
         action: loadPageContent
     },
     previewPage: {
-        path: '/:preview(preview)/:section/:page',
+        path: '/:preview(preview)/:section/:subsection/:page',
         method: 'get',
         handler: SinglePage,
         action: loadPageContent
