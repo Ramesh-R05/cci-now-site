@@ -26,7 +26,7 @@ function randomValue(){
             console.log("Nothing to record - Test Passed")
         } else {
             console.log("if is not Passed is FAILED");
-            browser.url("http://dev.historical-report.bauer-media.net.au/historical_report/reports/insert.php?id="randomId+"&name="+scenario.getName()+"&status=Failed&domain="+domainName+"&tags="+tags);
+            browser.url("http://dev.historical-report.bauer-media.net.au/historical_report/reports/insert.php?id="+randomId+"&name="+scenario.getName()+"&status=Failed&domain="+domainName+"&tags="+tags);
         }
         browser.deleteCookie();
     });
