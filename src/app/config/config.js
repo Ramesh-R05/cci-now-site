@@ -8,7 +8,7 @@ import site from './site';
 export default {
     typekit: { id: 'hsn1dgy' },
 
-    gtm: { masthead: 'NOW', id: 'GTM-WH4FTG' },
+    gtm: { masthead: 'NOW', id: 'GTM-MSL9XB' },
 
     defaultImageUrl: 'http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/now/defaultimage.png',
 
