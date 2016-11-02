@@ -1,8 +1,8 @@
 #Ignore
-.screenshots
+.screenshots/
+screenshots/
 reports/*.json
 reports/*.html
-screenshots/*.jpg
 cucumber.json
 
 #Include

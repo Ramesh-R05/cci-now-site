@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "once": "bash -c \"./node_modules/.bin/chimp chimp.js --jsonOutput=reports/regression.json && npm run html_report\"",
+    "single": "bash -c \"./node_modules/.bin/chimp chimp.js --jsonOutput=reports/regression.json\"",
+    "once": "npm run single",
     "html_report": "bash -c \"node generate_html.js\"",
     "debug": "bash -c \"./node_modules/.bin/chimp chimp.js --debug\"",
     "watch": "bash -c \"./node_modules/.bin/chimp chimp.js --watch\"",
@@ -15,7 +16,7 @@
     "general:live": "bash -c \"./node_modules/.bin/chimp chimp.js --tags=@live --jsonOutput=reports/regression.json && npm run html_report\""
   },
   "dependencies": {
-    "@bxm/automation": "^0.0.15",
+    "@bxm/automation": "^1.0.0",
     "cucumber-html-report": "^0.2.8"
   }
 }
