@@ -60,20 +60,13 @@ class Single extends Component {
             config: Single.headerAdConfig
         };
 
-        const socialShare = {
-            type: 'Social',
-            config: {
-                tweetBody: `${this.props.title} {shortURL}`
-            }
-        };
-
         return (
             <PageWrapper
                 currentUrl={ this.props.currentUrl }
                 headerExpanded={false}
                 hideFooter={true} >
                 <Article
-                    articleHeaderOrder={['Section', 'Title', 'Summary', 'Author', 'Date', socialShare, 'NativeAd', 'Hero', headerAd]}
+                    articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd]}
                     contentBodyConfig={Single.articleContentBodyConfig}
                     enableTeads={true}
                     showAdBeforeRecommendations={true}

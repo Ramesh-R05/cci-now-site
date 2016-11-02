@@ -2,6 +2,8 @@ import navigation from '../modules/navigation';
 
 export default{
     "entity": {
+        "source": "Australian Women's Weekly",
+        "articleSource": "Australian Women's Weekly",
         "authorProfiles": [
             {
                 "id": "DOLLY-11641",
@@ -91,6 +93,7 @@ export default{
                         "url": "undefined/34-truthful-thoughts-we-had-while-watching-grease-live-3666",
                         "name": "34 ~truthful~ thoughts we had while watching 'Grease: Live'",
                         "level": 5,
+                        "source": "Australian women's weekly",
                         "title": "34 ~truthful~ thoughts we had while watching 'Grease: Live' EOM",
                         "pathIds": [
                             "DOLLY--1",
@@ -141,6 +144,7 @@ export default{
                             "DOLLY-3662",
                             "DOLLY-3663"
                         ],
+                        "source": "woman's day",
                         "siteUrl": "http://dev.dolly-site.wn.bauer-media.net.au",
                         "summary": "Automation Test Article With Hero Image Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser EOM",
                         "urlName": "automation-test-article-with-hero-image",
@@ -326,6 +330,7 @@ export default{
                 "dateCreated": "2016-03-08T22:01:04.00Z",
                 "imageUrl": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/aww/2015/01/19/1605/koala.jpg",
                 "nodeType": "Gallery",
+                "source": "AUSTRALIAN WOMEN'S WEEKLY",
                 "summary": "this is the short teaser",
                 "tags": [],
                 "url": "/fashion/kev-test-gallery-13257"
@@ -335,6 +340,7 @@ export default{
                 "title": "Adi Giphy",
                 "dateCreated": "2016-03-08T22:00:44.00Z",
                 "imageCaption": "Adi Giphy",
+                "source": "Woman's day",
                 "imageUrl": "/assets/placeholder/dolly-LHR-feed-placeholder.png",
                 "nodeType": "Article",
                 "summary": "Adi Giphy",

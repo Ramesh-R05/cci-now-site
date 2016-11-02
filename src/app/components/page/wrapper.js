@@ -51,10 +51,20 @@ class Wrapper extends Component {
                         navItems={ headerNavItems }
                         siteName={ this.context.config.get('site.name')}
                         toggleMenu={ this.toggleMenu } />
+                    <Ad
+                        className="ad--section-top-leaderboard"
+                        sizes={{
+                            banner: 'banner',
+                            leaderboard: 'leaderboard',
+                            billboard: ['billboard', 'leaderboard']
+                        }}
+                        targets={{position: 1}}
+                    />
                     <div className="content-wrapper">
                         { this.props.children }
                         { !this.props.hideFooter ? <Footer /> : null }
                     </div>
+
                     <MobileOffCanvas side='left' toggleSideMenu={this.toggleMenu}>
                         <div className="off-canvas-content-wrapper">
                             <button
@@ -79,9 +89,10 @@ class Wrapper extends Component {
     }
 }
 
-export default connectToStores(hamburgerWrapper(Wrapper), ['NavigationStore'], (context) => {
+export default connectToStores(hamburgerWrapper(Wrapper), ['NavigationStore', 'articleStore'], (context) => {
     return {
         headerNavItems: context.getStore('NavigationStore').getHeaderItems(),
-        hamburgerNavItems: context.getStore('NavigationStore').getHamburgerItems()
+        hamburgerNavItems: context.getStore('NavigationStore').getHamburgerItems(),
+        content: context.getStore('articleStore').getContent()
     };
 });

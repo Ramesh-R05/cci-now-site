@@ -15,6 +15,8 @@ const entityPropertyMap = {
     contentCustomLabel: 'customLabel',
     contentSource: 'source',
     contentTags: 'tags',
+    articleSource: 'source',
+    source: 'source',
     url: 'url',
     location: 'url',
     parentName: 'parentName',

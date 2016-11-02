@@ -68,21 +68,9 @@
     &__related-content {
         background: none;
         border: 1px solid $related-content-border-color;
-        margin: {
-            bottom: 20px;
-            top: 20px;
-        };
         position: relative;
-
-        @media #{$small-only} {
-            margin: {
-                left: -$column-gutter/2;
-                right: -$column-gutter/2;
-                top: 27px;
-            };
-            padding: 12px 12px 20px;
-            width: auto;
-        }
+        margin: 0;
+        width: 100%;
 
         @media #{$medium-up} {
             background-size: auto;
@@ -90,10 +78,7 @@
                 bottom: 50px;
                 top: 50px;
             };
-            padding: {
-                left: 6.5%;
-                right: 6.5%;
-            };
+            padding: 40px 50px;
         }
 
         @media #{$large-up} {
@@ -104,28 +89,21 @@
             };
         }
 
-        @media #{$xlarge-up} {
-            padding: {
-                left: 70px;
-                right: 70px;
-            };
-        }
-
         .related-content__heading {
             background: none;
-            font: 100 30px/36px $font-family-sans-serif-primary;
-            letter-spacing: .17em;
-            margin: -30px 0 0;
+            font: 400 30px/36px $font-family-sans-serif-primary;
+            letter-spacing: .1em;
             position: static;
             text-align: center;
             text-indent: 0;
-            width: 100%;
             z-index: 1;
-
-            @media #{$medium-up} {
-                font-size: 50px;
-                margin-top: -47px;
-            }
+            background: #FFF;
+            width: 120px;
+            margin: 0 auto;
+            font-size: 20px;
+            margin-top: -57px;
+            color: $oil;
+            text-transform: uppercase;
         }
 
         .related-content-wrapper {
@@ -136,13 +114,8 @@
             }
 
             @media #{$medium-up} {
-                padding-top: 30px;
+                padding-top: 20px;
                 width: 100%;
-            }
-
-            @media #{$xlarge-up} {
-                margin: 0 auto;
-                width: $content-body-xlarge-width;
             }
         }
 
@@ -158,8 +131,14 @@
                 };
             }
 
+            .feed-item__source {
+                text-align: center;
+                display: block;
+                margin-top: 10px;
+            }
+
             .teaser__image {
-                background-color: #fff;
+                background-color: $color-white;
                 display: block;
                 height: auto;
                 width: 100%;
@@ -186,7 +165,6 @@
             @include type-related-teaser-title();
             margin-top: 12px;
             text-decoration: none;
-            text-transform: uppercase;
 
             &:hover {
                 color: $color-black-hover;
@@ -220,15 +198,8 @@
             @include content-body-width();
             bottom: 30px;
             padding: {
-                bottom: 15px;
-                top: 15px;
-            }
-        }
-
-        @media #{$xlarge-up} {
-            padding: {
-                bottom: 25px;
-                top: 25px;
+                bottom: 22px;
+                top: 22px;
             }
         }
     }
@@ -245,25 +216,23 @@
         }
 
         @media #{$medium-up} {
-            padding-right: 15px;
+            padding-right: 19px;
 
             &:after {
-                height: 24px;
-                left: 14px;
+                height: 16px;
+                left: 16px;
                 top: 1px;
             }
         }
     }
 
     &__gallery-link-title {
-        font-size: 16px;
+        color: #FFF;
+        font-size: 13px;
         font-family: $font-family-sans-serif-primary;
         letter-spacing: 0.05em;
+        line-height: 1.5;
         margin-top: 0;
-
-        @media #{$medium-up} {
-            font-size: 24px;
-        }
     }
 
     &__gallery-link-category,
@@ -274,10 +243,9 @@
 
     &__tips {
         padding: 3px 20px 3px;
-        margin: {
-            bottom: 20px;
-            top: 20px;
-        };
+        margin: 20px 0;
+        width: 100%;
+        border: 1px solid $related-content-border-color;
 
         h2 {
             margin: {
@@ -299,31 +267,6 @@
                 margin: 0;
                 width: 100%;
             }
-        }
-
-        @media #{$medium-only} {
-            padding: {
-                left: 6.5%;
-                right: 6.5%;
-            };
-        }
-
-        @media #{$medium-up} {
-            margin: {
-                bottom: 40px;
-                top: 40px;
-            }
-            padding: {
-                bottom: 20px;
-                top: 20px;
-            }
-        }
-
-        @media #{$large-only} {
-            padding: {
-                left: 30px;
-                right: 30px;
-            };
         }
     }
 

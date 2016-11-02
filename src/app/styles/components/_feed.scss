@@ -1,19 +1,68 @@
 .feed {
-    top: 51px;
-
-    .side-menu-wrapper--open & {
-        //top: 0;
+    @media #{$large-up} {
+        margin: 0 0 0 30px;
+        width: 325px;
     }
 }
 
 .feed__container {
-    margin-top: 75px;
-
     .feed--pinned & {
         margin-top: 30px;
     }
+}
 
-    .side-menu-wrapper--open & {
-        //margin-top: 0px;
+.feed-header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin: 13px 0 0 0;
+    padding: 0;
+    color: $color-black;
+
+    > span {
+        padding: 0 10px;
+    }
+
+    span {
+        background: #FFF;
+    }
+
+    &::before {
+        border-top: 1px solid $feed-item-header-colour;
+        content: '';
+        margin: 0 auto;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: -1;
+    }
+}
+
+.feed-item__body {
+
+    .feed-item__source {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+        font-family: $font-family-sans-serif-primary;
+        display: block;
+        text-transform: uppercase;
+
+        &--australian-women-s-weekly {
+            color: $aww-color;
+        }
+
+        &--woman-s-day {
+            color: $wd-color;
+        }
+
+        &--now-to-love {
+            color: #6bc5a9;
+        }
     }
 }

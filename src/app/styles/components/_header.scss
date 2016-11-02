@@ -5,10 +5,15 @@
 
 .header-wrapper {
     overflow: auto;
+    margin-bottom: 55px;
+
+    @media #{$medium-up} {
+        margin-bottom: 95px;
+    }
 
     &.header-wrapper--expanded {
         @media #{$medium-up} {
-            margin-bottom: 213px;
+            margin-bottom: 233px;
         }
 
         @media #{$xlarge-up} {
@@ -159,11 +164,6 @@
         @media #{$xlarge-up} {
             margin-top: 24px;
         }
-    }
-
-
-    @media #{$medium-up} {
-        box-shadow: 0px 6px 0px 0px rgba(255, 235, 246, 0.9);
     }
 }
 

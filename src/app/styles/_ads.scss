@@ -22,7 +22,6 @@
         }
         padding: {
             bottom: $small-ad-padding - $label-small-pad;
-            top: $small-ad-padding;
         }
         position: relative;
         width: calc(100% + #{$column-gutter});
@@ -46,6 +45,16 @@
 
         @media #{$small-only} {
             @include grey-mobile-banner();
+        }
+    }
+
+    &--section-top-leaderboard {
+        padding-bottom: 0;
+        margin-bottom: 0;
+
+        @media #{$medium-up} {
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
     }
 

@@ -7,8 +7,8 @@ Feature: Article
     Scenario: Verify an article page which contains a hero image on mobile
         When I switch to "mobile" view
         Given I am currently viewing "fashion/models/automation-test-article-with-hero-image-3663"
-        * I can see the created date "February 12, 2016 4:00pm"
-        * I can see the author "Emily Kerr"
+        * I can see the created date "FEBRUARY 12, 2016 4:00PM"
+        * I can see the author "EMILY KERR"
         * I can see the hero image
         * I can see the image alt text in the hero image element "Image ALT TEXT"
         * I should not see the hero image caption
@@ -34,8 +34,8 @@ Feature: Article
     Scenario: Verify an article page which contains a hero video on tablet portrait
         When I switch to "tablet portrait" view
         Given I am currently viewing "fashion/models/automation-test-article-with-hero-video-3664"
-        * I can see the created date "February 12, 2016 4:00pm"
-        * I can see the author "Emily Kerr"
+        * I can see the created date "FEBRUARY 12, 2016 4:00PM"
+        * I can see the author "EMILY KERR"
         * I can see the hero video instead of the main image
         * I should not see the hero image caption
         * I can see the short teaser "Short Teaser EOM"
@@ -59,8 +59,8 @@ Feature: Article
     Scenario: Verify an article page which contains a hero image on desktop
         When I switch to "desktop" view
         Given I am currently viewing "fashion/models/automation-test-article-with-hero-image-3663"
-        * I can see the created date "February 12, 2016 4:00pm"
-        * I can see the author "Emily Kerr"
+        * I can see the created date "FEBRUARY 12, 2016 4:00PM"
+        * I can see the author "EMILY KERR"
         * I can see the hero image
         * I can see the image alt text in the hero image element "Image ALT TEXT"
         * I should not see the hero image caption

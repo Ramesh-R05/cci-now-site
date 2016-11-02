@@ -38,15 +38,6 @@ class Home extends Component {
                 headerExpanded={true}>
                 <div className="home-page">
                     {/* 1st Leaderboard or billboard to show on tablet and up */}
-                    <Ad
-                        className="ad--section-top-leaderboard"
-                        sizes={{
-                            banner: 'banner',
-                            leaderboard: 'leaderboard',
-                            billboard: ['billboard', 'leaderboard']
-                        }}
-                        targets={{position: 1}}
-                    />
                     <div className="trending-wrapper">
                         <div className="container">
                             <div className="row">

@@ -70,9 +70,21 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('/assets/fonts/ProximaNova-Regular.eot');
+    src: url('/assets/fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/ProximaNova-Regular.woff') format('woff'),
+    url('/assets/fonts/ProximaNova-Regular.ttf') format('truetype'),
+    url('/assets/fonts/ProximaNova-Regular.svg#amsipronarw-thinuploaded_file') format('svg');
+    font-style: normal;
+}
+
 $font-family-sans-serif-primary: 'Amsi Pro Narrow', sans-serif;
 
 $to-love-font-family-sans-serif: $font-family-sans-serif-primary;
+
+$small-text-font: 'Proxima Nova', sans-serif;
 
 $font-family-serif-primary: 'Baskerville', serif;
 
@@ -142,8 +154,8 @@ h6 {
 }
 
 a {
-    color: $color-primary;
-    text-decoration: none;
+    color: $color-black;
+    text-decoration: underline;
 
     &:hover,
     &:focus {
@@ -250,17 +262,11 @@ a {
 @mixin type-article-title {
     color: $color-black;
     font: 24px / 26px $font-family-sans-serif-primary;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-weight: 400;
 
     @media #{$medium-up} {
-        font-size: 44px;
+        font-size: 38px;
         line-height: 46px;
-    }
-
-    @media #{$xlarge-up} {
-        font-size: 64px;
-        line-height: 68px;
     }
 }
 
@@ -270,11 +276,11 @@ a {
 
 @mixin type-article-summary {
     color: $color-grey;
-    font: italic 400 19px / 25px $font-family-serif-primary;
+    font: normal 400 19px / 25px $font-family-serif-primary;
     letter-spacing: .01em;
 
     @media #{$medium-up} {
-        font-size: 22px;
+        font-size: 20px;
         line-height: 34px;
     }
 }
@@ -285,13 +291,8 @@ a {
 
 @mixin type-article-body {
     color: $color-black;
-    font: 400 19px / 25px $font-family-serif-primary;
+    font: 400 20px / 32px $font-family-serif-primary;
     letter-spacing: .01em;
-
-    @media #{$medium-up} {
-        font-size: 22px;
-        line-height: 34px;
-    }
 }
 
 .type-article-body {
@@ -301,7 +302,6 @@ a {
 @mixin type-article-heading {
     color: $color-black;
     font: 400 24px / 26px $font-family-sans-serif-primary;
-    text-transform: uppercase;
 
     @media #{$medium-up} {
         font-size: 34px;
@@ -315,14 +315,9 @@ a {
 
 @mixin type-related-teaser-title {
     color: $color-black;
-    font: 16px/18px $font-family-sans-serif-primary;
-    text-transform: uppercase;
-
-    @media #{$medium-up} {
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 26px;
-    }
+    font: 14px/20px $font-family-sans-serif-primary;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
 .type-related-teaser-title {
@@ -332,7 +327,6 @@ a {
 @mixin type-article-recommendation-title {
     color: $color-black;
     font: 16px/18px $font-family-sans-serif-primary;
-    text-transform: uppercase;
 
     @media #{$medium-up} {
         font-weight: bold;
@@ -348,8 +342,8 @@ a {
 // XSmall teaser (e.g. article page left hand side rail)
 @mixin type-xsmall-teaser-title {
     color: $color-black;
-    font: 400 16px / 18px $font-family-sans-serif-primary;
-    text-transform: uppercase;
+    font: 400 14px / 20px $font-family-sans-serif-primary;
+    margin-bottom: 10px;
 }
 
 .type-xsmall-teaser-title {
@@ -372,13 +366,10 @@ a {
 }
 
 @mixin type-inline-gallery-heading {
-    font: 400 16px / 18px $font-family-sans-serif-primary;
+    font: 400 20px / 22px $font-family-sans-serif-primary;
     text-transform: uppercase;
-
-    @media #{$medium-up} {
-        font-size: 34px;
-        line-height: 36px;
-    }
+    font-weight: bold;
+    letter-spacing: 0.1rem;
 }
 
 .type-inline-gallery-heading {

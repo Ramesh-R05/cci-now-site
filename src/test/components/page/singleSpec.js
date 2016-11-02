@@ -40,10 +40,6 @@ describe('SinglePage Component', () => {
 
         it(`should render the Article Component passing down relevant props`, () => {
             const ArticleComponent = TestUtils.findRenderedComponentWithType(reactModule, ArticleStub);
-            const socialShare = {
-                type: 'Social',
-                config: { tweetBody: `${articleContent.title} {shortURL}` }
-            };
             const headerAd = {
                 type: 'Ad',
                 config: SinglePage.headerAdConfig
@@ -51,7 +47,7 @@ describe('SinglePage Component', () => {
 
             expect(ArticleComponent.props).to.deep.eq({
                 enableTeads: true,
-                articleHeaderOrder: ['Section', 'Title', 'Summary', 'Author', 'Date', socialShare, 'NativeAd', 'Hero', headerAd],
+                articleHeaderOrder: ['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd],
                 contentBodyConfig: SinglePage.articleContentBodyConfig,
                 showAdBeforeRecommendations: true,
 				footerComponentClass: FooterStub

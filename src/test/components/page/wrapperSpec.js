@@ -70,6 +70,12 @@ describe('PageWrapper Component', () => {
         }
     });
 
+    Context.addStore('articleStore', {
+        getContent() {
+            return { tags: [1,2,3], source: 'wd', pageId: 1234 };
+        }
+    });
+
     describe(`when passing all props`, () => {
         const props = {
             className: 'customClass',
@@ -88,7 +94,7 @@ describe('PageWrapper Component', () => {
             siteHeaderStub = TestUtils.findRenderedComponentWithType(reactModule, SiteHeaderStub);
             siteFooterStub = TestUtils.findRenderedComponentWithType(reactModule, SiteFooterStub);
             navigationStub = TestUtils.findRenderedComponentWithType(reactModule, NavigationStub);
-            adStub = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
+            adStub = TestUtils.scryRenderedComponentsWithType(reactModule, AdStub);
             closeButton = TestUtils.findRenderedDOMComponentWithTag(reactModule, 'button');
         });
 
@@ -154,8 +160,12 @@ describe('PageWrapper Component', () => {
             expect(offCanvasInnterHTML).to.contain(React.findDOMNode(closeButton).outerHTML);
         });
 
+        it('should render an top ad banner', () => {
+            expect(adStub[0].props.className).to.be.equal('ad--section-top-leaderboard');
+        });
+
         it(`should render an out of page ad`, () => {
-            expect(adStub.props).to.contain({
+            expect(adStub[1].props).to.contain({
                 sizes: 'out-of-page'
             });
         });
