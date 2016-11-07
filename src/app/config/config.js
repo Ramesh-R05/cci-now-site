@@ -4,6 +4,7 @@ import features from './features';
 import global from './global';
 import services from './services';
 import site from './site';
+import brands from './brands'
 
 export default {
     typekit: { id: 'hsn1dgy' },
@@ -17,6 +18,8 @@ export default {
     gigya: { apiKey: '3_2ZyWXAZHy5qrj7nPWE_GfZG9O2PKWqK4QjMIpjw97Tn3lDEg4rKAgVk7pPQu8-Lt' },
 
     features,
+
+    brands,
 
     global,
 

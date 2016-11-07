@@ -5,6 +5,7 @@ import MobileOffCanvas from '@bxm/nav/lib/components/offcanvas/content';
 import Header from '@bxm/site-header';
 import Footer from '../footer';
 import NetworkHeader from '@bxm/header/lib/header/header';
+import UniHeader from '../uniheader';
 import Navigation from '@bxm/site-header/lib/components/navigation';
 import classnames from 'classnames';
 import Ad from '@bxm/ad/lib/google/components/ad';
@@ -40,11 +41,10 @@ class Wrapper extends Component {
         mobileNav.unshift({name: 'Home', url: '/'});
 
         const pageClassName = classnames('page', this.props.className);
-
         return (
             <div className={ pageClassName }>
                 <div className={ this.props.menuClasses }>
-                    <NetworkHeader/>
+                    <UniHeader currentUrl={ this.props.currentUrl }/>
                     <Header
                         currentUrl={ this.props.currentUrl }
                         isExpanded={this.props.headerExpanded}

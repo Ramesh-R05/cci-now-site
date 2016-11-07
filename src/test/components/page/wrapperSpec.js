@@ -5,7 +5,7 @@ import proxyquire, {noCallThru} from 'proxyquire';
 noCallThru();
 
 const OffCanvasStub = Context.createStubComponentWithChildren();
-const NetworkHeaderStub = Context.createStubComponent();
+const UniHeaderStub = Context.createStubComponent();
 const SiteHeaderStub = Context.createStubComponent();
 const SiteFooterStub = Context.createStubComponent();
 const NavigationStub = Context.createStubComponent();
@@ -24,9 +24,9 @@ const PageWrapper = proxyquire('../../../app/components/page/wrapper', {
         };
     },
     '@bxm/nav/lib/components/offcanvas/content': OffCanvasStub,
-    '@bxm/header/lib/header/header': NetworkHeaderStub,
     '@bxm/site-header': SiteHeaderStub,
     '../footer': SiteFooterStub,
+    '../uniheader': UniHeaderStub,
     '@bxm/site-header/lib/components/navigation': NavigationStub,
     '@bxm/ad/lib/google/components/ad': AdStub
 }).default;
@@ -52,7 +52,7 @@ describe('PageWrapper Component', () => {
         { name: 'Test 4', url: '/test-4' }];
     let reactModule;
     let offCanvas;
-    let networkHeaderStub;
+    let uniHeaderStub;
     let siteHeaderStub;
     let siteFooterStub;
     let navigationStub;
@@ -90,7 +90,7 @@ describe('PageWrapper Component', () => {
             reactModule = Context.mountComponent(PageWrapper, props, [contextConfigStub]);
             currentInstance = TestUtils.findRenderedComponentWithType(reactModule, reactModuleInstance);
             offCanvas = TestUtils.findRenderedComponentWithType(reactModule, OffCanvasStub);
-            networkHeaderStub = TestUtils.findRenderedComponentWithType(reactModule, NetworkHeaderStub);
+            uniHeaderStub = TestUtils.findRenderedComponentWithType(reactModule, UniHeaderStub);
             siteHeaderStub = TestUtils.findRenderedComponentWithType(reactModule, SiteHeaderStub);
             siteFooterStub = TestUtils.findRenderedComponentWithType(reactModule, SiteFooterStub);
             navigationStub = TestUtils.findRenderedComponentWithType(reactModule, NavigationStub);
@@ -111,8 +111,8 @@ describe('PageWrapper Component', () => {
             expect(TestUtils.scryRenderedDOMComponentsWithClass(reactModule, props.menuClasses)[0]).to.exist;
         });
 
-        it(`should render the Network Header component`, () => {
-            expect(ReactDOM.findDOMNode(networkHeaderStub)).to.exist;
+        it(`should render the Uni Header component`, () => {      
+            expect(ReactDOM.findDOMNode(uniHeaderStub)).to.exist;      
         });
 
         it(`should render the Header component, passing the appropriate props`, () => {
