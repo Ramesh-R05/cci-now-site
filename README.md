@@ -1,12 +1,6 @@
-# Now
+# Now To Love
 
-- A Lifestyle hub site which includes popular magazine products for woman.
-- A platform on wheels for transporting heavy objects.
-- A platform for delivering Women's Network websites and rapidly rolling out changes.
-
-_now-site_ provides a bootstrapped, mobile first, responsive, Women's Network website running on a Flux and BFF based
-architecture. It is an opinionated set of constrains that favours rapid delivery over bespoke designs. Home, listing
-(section, sub section, tag listing), article and gallery pages are included.
+A news and lifestyle hub site which includes popular magazine products for women.
 
 ## Platform Requirements
 
@@ -144,24 +138,3 @@ The Backend For Frontend is a place to aggregate data for the site. How it works
 
 - integrates with remote services
  
-## Skinning Dolly default as a new site
-
-### Config
-
-The @bxm/config loader automatically looks for site specific configs. Add site specific configs to `app-$APP_KEY/config` and they will be merged over the default site config. 
-
-### Static Assets
-
-Express (for dev) and nginx (for prod) serve assets for site specific paths based on the `APP_KEY` environment variable.
-
-### Sass Files
-
-`sass-importer.js` checks each `app/style` module for site specific replacements in `app-$APP_KEY/styles`.
-Add _additional_ Sass modules to be used by the new site by importing them in `extras.scss`.
-
-### JavaScript Files
-
-For each `import` declaration processed by Babel (doesn't work with `require`), the `transform-load-alternates` Babel
-plugin checks for site specific replacements based on the APP_KEY env var. The plugin also checks for a `APP_UNIT_TEST`
-env var (set in the npm `test` script in package.json) to skip this transform when running unit tests as the transform
-will break stubbed modules.
