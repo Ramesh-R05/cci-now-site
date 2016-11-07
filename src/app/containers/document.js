@@ -2,12 +2,20 @@ import React, {Component, PropTypes} from 'react';
 import { connectToStores } from '@bxm/flux';
 import Article from '@bxm/article/lib/article';
 import Gallery from '@bxm/gallery/lib/components/page/gallery';
-import PageWrapper from './wrapper';
-import Footer from './../article/footer';
+import Page from './page';
+import Footer from '../components/article/footer';
 import Ad from '@bxm/ad/lib/google/components/ad';
 
-class Single extends Component {
-    static displayName = 'SinglePage';
+function mapStateToProps(context) {
+    const content = context.getStore('articleStore').getContent() || {};
+    return {
+        title: content.title
+    };
+}
+
+@connectToStores(['articleStore'], mapStateToProps)
+export default class Document extends Component {
+    static displayName = 'Document';
 
     static propTypes = {
         nodeType: PropTypes.string.isRequired
@@ -57,28 +65,21 @@ class Single extends Component {
 
         const headerAd = {
             type: 'Ad',
-            config: Single.headerAdConfig
+            config: Document.headerAdConfig
         };
 
         return (
-            <PageWrapper
+            <Page
                 currentUrl={ this.props.currentUrl }
                 headerExpanded={false}
                 hideFooter={true} >
                 <Article
                     articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd]}
-                    contentBodyConfig={Single.articleContentBodyConfig}
+                    contentBodyConfig={Document.articleContentBodyConfig}
                     enableTeads={true}
                     showAdBeforeRecommendations={true}
                     footerComponentClass={Footer} />
-            </PageWrapper>
+            </Page>
         );
     }
 }
-
-export default connectToStores(Single, ['articleStore'], (context) => {
-    const content = context.getStore('articleStore').getContent() || {};
-    return {
-        title: content.title
-    };
-});

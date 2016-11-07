@@ -9,7 +9,7 @@ const PageStub = Context.createStubComponentWithChildren();
 
 const Error = proxyquire('../../../app/components/page/error', {
     'fluxible-router': { NavLink: NavLinkStub },
-    './wrapper': PageStub
+    '../../containers/page': PageStub
 }).default;
 
 const errorConfigStub = {

@@ -13,7 +13,7 @@ const AdStub = Context.createStubComponent();
 
 let reactModuleInstance;
 const toggleMenuStub = sinon.stub();
-const PageWrapper = proxyquire('../../../app/components/page/wrapper', {
+const PageWrapper = proxyquire('../../app/containers/page', {
     'react': React,
     '@bxm/nav/lib/components/hamburgerWrapper': (Component) => {
         return class extends React.Component {
@@ -25,13 +25,13 @@ const PageWrapper = proxyquire('../../../app/components/page/wrapper', {
     },
     '@bxm/nav/lib/components/offcanvas/content': OffCanvasStub,
     '@bxm/site-header': SiteHeaderStub,
-    '../footer': SiteFooterStub,
-    '../uniheader': UniHeaderStub,
+    '../components/footer': SiteFooterStub,
+    '../components/uniheader': UniHeaderStub,
     '@bxm/site-header/lib/components/navigation': NavigationStub,
     '@bxm/ad/lib/google/components/ad': AdStub
 }).default;
 
-describe('PageWrapper Component', () => {
+describe('Page Container', () => {
     const siteName = 'Dolly';
     const contextConfigStub = {
         key: 'config',
@@ -111,8 +111,8 @@ describe('PageWrapper Component', () => {
             expect(TestUtils.scryRenderedDOMComponentsWithClass(reactModule, props.menuClasses)[0]).to.exist;
         });
 
-        it(`should render the Uni Header component`, () => {      
-            expect(ReactDOM.findDOMNode(uniHeaderStub)).to.exist;      
+        it(`should render the Uni Header component`, () => {
+            expect(ReactDOM.findDOMNode(uniHeaderStub)).to.exist;
         });
 
         it(`should render the Header component, passing the appropriate props`, () => {

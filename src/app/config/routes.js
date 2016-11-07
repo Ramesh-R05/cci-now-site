@@ -1,9 +1,9 @@
 import loadPageContent from '../actions/loadPageContent';
 import pageNotFound from '../actions/pageNotFound';
 
-import HomePage from '../components/page/home';
-import SectionPage from '../components/page/section';
-import SinglePage from '../components/page/single';
+import HomePage from '../containers/home';
+import SectionPage from '../containers/section';
+import SinglePage from '../containers/document';
 import ErrorPage from '../components/page/error';
 
 export default {

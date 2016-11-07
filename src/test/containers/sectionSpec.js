@@ -11,13 +11,12 @@ const TeaserListViewStub = Context.createStubComponent();
 const TitleStub = Context.createStubComponent();
 const RepeatableStub = Context.createStubComponent();
 
-const SectionContainer = proxyquire('../../../app/components/page/section', {
+const SectionContainer = proxyquire('../../app/containers/section', {
     '@bxm/ad/lib/google/components/ad': AdStub,
-    '../teaser/grid': TeaserGridViewStub,
-    '../teaser/list': TeaserListViewStub,
-    '../title': TitleStub,
-    './wrapper': PageStub,
-    '../repeatable': RepeatableStub
+    '../components/teaser/grid': TeaserGridViewStub,
+    '../components/teaser/list': TeaserListViewStub,
+    './page': PageStub,
+    '../components/repeatable': RepeatableStub
 }).default;
 
 describe('Section Container', () => {

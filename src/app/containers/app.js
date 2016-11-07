@@ -2,9 +2,18 @@ import React, {Component, PropTypes} from 'react';
 import {connectToStores, provideContext} from '@bxm/flux';
 import {handleHistory} from 'fluxible-router';
 import platform from '@bxm/ui/lib/common/platform';
-import ErrorPage from './page/error';
+import ErrorPage from '../components/page/error';
 import {canUseDOM} from 'exenv';
 
+function mapStateToProps(context) {
+    return {
+        nodeType: context.getStore('PageStore').getNodeType(),
+        error: context.getStore('PageStore').getErrorStatus(),
+        isNavigateComplete: context.getStore('RouteStore').isNavigateComplete()
+    };
+}
+
+@connectToStores(['PageStore', 'RouteStore'], mapStateToProps)
 class Application extends Component {
 
     static propTypes = {
@@ -65,14 +74,6 @@ class Application extends Component {
     }
 }
 
-Application = connectToStores(Application, ['PageStore', 'RouteStore'], (context) => {
-    return {
-        nodeType: context.getStore('PageStore').getNodeType(),
-        error: context.getStore('PageStore').getErrorStatus(),
-        isNavigateComplete: context.getStore('RouteStore').isNavigateComplete()
-    };
-});
-
-export default provideContext(handleHistory(Application), {
-    config: PropTypes.object
-});
+// Unit tests break when provideContext is used as a decorator. handleHistory works fine as a decorator, but to keep
+// the pattern consistent with other containers, only the connectToStore is used as a decorator.
+export default provideContext(handleHistory(Application), { config: PropTypes.object });

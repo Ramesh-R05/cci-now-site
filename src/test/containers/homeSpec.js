@@ -14,16 +14,16 @@ const SocialLinks = Context.createStubComponent();
 const InlineGalleryStub = Context.createStubComponent();
 const RepeatableStub = Context.createStubComponent();
 
-const HomeContainer = proxyquire('../../../app/components/page/home', {
+const HomeContainer = proxyquire('../../app/containers/home', {
     '@bxm/ad/lib/google/components/ad': AdStub,
-    './wrapper': PageStub,
-    '../teaser/hero': HeroTeaserStub,
-    '../teaser/grid': TeaserGridViewStub,
-    '../teaser/list': TeaserListViewStub,
-    '../trending/trending': TrendingStub,
-    '../repeatable': RepeatableStub,
-    '../social/block': SocialLinks,
-    '../inlineGallery/customInlineGallery': InlineGalleryStub
+    './page': PageStub,
+    '../components/teaser/hero': HeroTeaserStub,
+    '../components/teaser/grid': TeaserGridViewStub,
+    '../components/teaser/list': TeaserListViewStub,
+    '../components/trending/trending': TrendingStub,
+    '../components/repeatable': RepeatableStub,
+    '../components/social/block': SocialLinks,
+    '../components/inlineGallery/customInlineGallery': InlineGalleryStub
 }).default;
 
 describe('Home Container', () => {

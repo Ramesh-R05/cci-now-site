@@ -1,17 +1,29 @@
 import React, {Component, PropTypes} from 'react';
 import {connectToStores} from '@bxm/flux';
 import Ad from '@bxm/ad/lib/google/components/ad';
-import SocialContainer from '../social/block';
-import CustomInlineGallery from '../inlineGallery/customInlineGallery';
-import HeroTeaser from '../teaser/hero';
-import TeaserGridView from '../teaser/grid';
-import TeaserListView from '../teaser/list';
-import Trending from '../trending/trending';
-import PageWrapper from './wrapper';
-import Repeatable from '../repeatable';
-import loadList from '../../actions/loadList';
+import SocialContainer from '../components/social/block';
+import CustomInlineGallery from '../components/inlineGallery/customInlineGallery';
+import HeroTeaser from '../components/teaser/hero';
+import TeaserGridView from '../components/teaser/grid';
+import TeaserListView from '../components/teaser/list';
+import Trending from '../components/trending/trending';
+import Page from './page';
+import Repeatable from '../components/repeatable';
+import loadList from '../actions/loadList';
 
-class Home extends Component {
+function mapStateToProps(context) {
+    const teaserStore = context.getStore('TeaserStore');
+    return {
+        heroTeaser: teaserStore.getHeroTeaser(),
+        teasers: teaserStore.getLatestTeasers(),
+        videoGalleryTeasers: teaserStore.getVideoGalleryTeasers(),
+        list: teaserStore.getList(),
+        listNextParams: teaserStore.getListNextParams()
+    };
+}
+
+@connectToStores(['TeaserStore'], mapStateToProps)
+export default class Home extends Component {
     static displayName = 'HomePage';
 
     static propTypes = {
@@ -33,7 +45,7 @@ class Home extends Component {
 
     render() {
         return (
-            <PageWrapper
+            <Page
                 currentUrl={ this.props.currentUrl }
                 headerExpanded={true}>
                 <div className="home-page">
@@ -119,18 +131,7 @@ class Home extends Component {
                             billboard: ['billboard', 'leaderboard'] }}
                         targets={{position: 3}} />
                 </div>
-            </PageWrapper>
+            </Page>
         );
     }
 }
-
-export default connectToStores(Home, ['TeaserStore'], (context) => {
-    const teaserStore = context.getStore('TeaserStore');
-    return {
-        heroTeaser: teaserStore.getHeroTeaser(),
-        teasers: teaserStore.getLatestTeasers(),
-        videoGalleryTeasers: teaserStore.getVideoGalleryTeasers(),
-        list: teaserStore.getList(),
-        listNextParams: teaserStore.getListNextParams()
-    };
-});

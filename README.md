@@ -110,31 +110,40 @@ gulp --stubbed | stubbed | runs dev in stubbed mode.
 
 #### stubbed
 
- - sets NODE_ENV=stubbed using cross env so it works on windows. NODE_ENV=stubbed tells the @bxm/server to load up some stub default APIs.
+ - sets NODE\_ENV=stubbed using cross env so it works on windows. NODE\_ENV=stubbed tells the @bxm/server to load up some stub default APIs.
+
+## Site Patterns
+
+The incumbent data flow libary is [Fluxible](http://fluxible.io). Forward thinking approach is [Redux](http://redux.js.org) flavoured patterns where possible;
+
+- Components that connect to stores are Containers
+- Avoid shared state, otherwise move towards using a single store
+- Reduce state to store using reducer modules 
+- Fetch data in response to route events
 
 ## BFF
 
 The Backend For Frontend is a place to aggregate data for the site. How it works:
 
-#### Site
+### Site
 
 - page load executes navigation action in the router
 - the router determines which route to process
 - the page load action set on the route config is executed
 - the page load action makes async requests to BFF routes (`/api/getPageContent`)
 
-#### BFF Routes
+### BFF Routes
 
 - defines Express route paths
 - assigns Express route middleware handlers
 
-#### BFF Route Middleware
+### BFF Route Middleware
 
 - process request data using helpers
 - make async requests using BFF APIs
 - processes response data using helpers
 
-#### BFF APIs
+### BFF APIs
 
 - integrates with remote services
  

@@ -3,15 +3,25 @@ import { connectToStores } from '@bxm/flux';
 import hamburgerWrapper from '@bxm/nav/lib/components/hamburgerWrapper';
 import MobileOffCanvas from '@bxm/nav/lib/components/offcanvas/content';
 import Header from '@bxm/site-header';
-import Footer from '../footer';
+import Footer from '../components/footer';
 import NetworkHeader from '@bxm/header/lib/header/header';
-import UniHeader from '../uniheader';
+import UniHeader from '../components/uniheader';
 import Navigation from '@bxm/site-header/lib/components/navigation';
 import classnames from 'classnames';
 import Ad from '@bxm/ad/lib/google/components/ad';
 
-class Wrapper extends Component {
-    static displayName = 'PageWrapper';
+function mapStateToProps(context) {
+    return {
+        headerNavItems: context.getStore('NavigationStore').getHeaderItems(),
+        hamburgerNavItems: context.getStore('NavigationStore').getHamburgerItems(),
+        content: context.getStore('articleStore').getContent()
+    };
+}
+
+@connectToStores(['NavigationStore', 'articleStore'], mapStateToProps)
+@hamburgerWrapper
+export default class Page extends Component {
+    static displayName = 'Page';
 
     static propTypes = {
         className: PropTypes.string,
@@ -88,11 +98,3 @@ class Wrapper extends Component {
         )
     }
 }
-
-export default connectToStores(hamburgerWrapper(Wrapper), ['NavigationStore', 'articleStore'], (context) => {
-    return {
-        headerNavItems: context.getStore('NavigationStore').getHeaderItems(),
-        hamburgerNavItems: context.getStore('NavigationStore').getHamburgerItems(),
-        content: context.getStore('articleStore').getContent()
-    };
-});

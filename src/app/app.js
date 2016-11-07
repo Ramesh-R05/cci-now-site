@@ -4,7 +4,7 @@ if (canUseDOM) require('console-shim');
 import {Flux, servicesPlugin} from '@bxm/flux';
 import batchedUpdatePlugin from 'fluxible-addons-react/batchedUpdatePlugin';
 
-import AppComponent from './components/app';
+import AppComponent from './containers/app';
 import pageService from './services/page';
 import listService from './services/list';
 import networkHeaderService from '@bxm/header/lib/header/headerService';
