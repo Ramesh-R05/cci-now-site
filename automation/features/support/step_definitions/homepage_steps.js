@@ -4,7 +4,7 @@ var world = require('../world');
 module.exports = function(){
 
     this.When(/^I should see the homepage hero element$/, function () {
-    expect(browser.isVisible(home.heroImg)).toBe(true);
+        expect(browser.isVisible(home.heroImg)).toBe(true);
     });
     this.When(/^I should see the homepage hero image$/, function () {
         var heroImgUrl = browser.getAttribute(home.heroImgUrl, 'data-srcset');
@@ -52,11 +52,7 @@ module.exports = function(){
         expect(heroTitleLink).toEqual(heroImgLink);
         console.log(heroTitleLink);
     });
-    this.When(/^I should see the homepage hero short teaser$/, function () {
-        var herShortTeaser = browser.getText(home.heroShortTeaser);
-        expect(herShortTeaser).not.toBeUndefined();
-        console.log(herShortTeaser);
-    });
+
     this.When(/^I should see the homepage hero border in desktop style$/, function () {
     var heroBorderDesktop = browser.getCssProperty(home.heroStyle, 'background-image').value;
         expect(heroBorderDesktop).toMatch("/assets/backgrounds/line-light-pink.svg");

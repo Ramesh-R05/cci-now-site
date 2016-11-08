@@ -12,6 +12,7 @@ var homepage_widget = {
     heroLabelPosition: '.hero-wrapper .teaser__sub-section-container',
     heroTitle: '.hero-wrapper .gtm-teaser',
     heroShortTeaser: '.hero-wrapper .teaser__summary',
+    heroSource: '.hero-wrapper .hero.teaser__source',
     heroStyle: '.content-wrapper .stripe-bg',
     trendingTitle: '.trending__caption.hide-for-xlarge-up img',
     bottomFeed: '.teaser__list.teaser-view-list',

@@ -2,16 +2,17 @@ import {betterMockComponentContext} from '@bxm/flux';
 const Context = betterMockComponentContext();
 const {React, ReactDOM, TestUtils} = Context;
 import proxyquire, {noCallThru} from 'proxyquire';
+import { shallow } from 'enzyme';
 noCallThru();
 
 const TeaserStub = Context.createStubComponent();
 
 const HeroTeaser = proxyquire('../../../app/components/teaser/hero', {
-    '@bxm/teaser/lib/components/teaser': TeaserStub
+    './teaser': TeaserStub
 }).default;
 
 describe('Hero Teaser Component', () => {
-    const article = {id: 'HERO-TEASER', title: 'title'};
+    const article = {id: 'HERO-TEASER', title: 'title', source: 'Australian women\'s weekly'};
     const defaultImageSizes = {
         s: { w: 700, h: 583 },
         m: { w: 619, h: 515 },
@@ -43,7 +44,6 @@ describe('Hero Teaser Component', () => {
         it(`should render a div around the teaser component with class 'hero-wrapper'`, () => {
             const wrapper = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'div')[0];
             expect(wrapper.props.className).to.eq('hero-wrapper');
-            expect(ReactDOM.findDOMNode(wrapper).innerHTML).to.deep.eq(ReactDOM.findDOMNode(TeaserComponent).outerHTML);
         });
 
         it(`should render the teaser component with relevant props`, () => {
@@ -51,8 +51,7 @@ describe('Hero Teaser Component', () => {
                 className: "hero-teaser",
                 article,
                 imageSizes: defaultImageSizes,
-                showDateCreated: false,
-                showSubSection: true
+                sourceClassName: "hero-teaser__source"
             })
         });
     });
@@ -65,6 +64,6 @@ describe('Hero Teaser Component', () => {
 
         it(`should pass the imageSize prop to the Teaser component`, () => {
             expect(TeaserComponent.props.imageSizes).to.deep.eq(imageSizes);
-        })
+        });
     });
 });

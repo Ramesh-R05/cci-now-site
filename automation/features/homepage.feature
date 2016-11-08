@@ -16,7 +16,7 @@ Feature: Homepage
             | tablet landscape  | top       | 5      |
             | desktop           | top       | 5      |
 
-    @hero @DDO-294
+    @hero @BXMA-40
     Scenario: Verify the hero teaser element is functional correctly in mobile view
         Given I am currently viewing the homepage
         When I switch to "mobile" view
@@ -25,10 +25,8 @@ Feature: Homepage
         * The homepage hero image should be clickable to open its page
         * I should see the homepage hero title
         * The homepage hero title should be clickable to open its page
-        * I should see the homepage hero short teaser
 
-
-    @hero @DDO-294
+    @hero @BXMA-40
     Scenario: Verify the hero teaser element is functional correctly in tablet portrait view
         Given I am currently viewing the homepage
         When I switch to "tablet portrait" view
@@ -37,10 +35,8 @@ Feature: Homepage
         * The homepage hero image should be clickable to open its page
         * I should see the homepage hero title
         * The homepage hero title should be clickable to open its page
-        * I should see the homepage hero short teaser
 
-
-    @hero @DDO-294
+    @hero @BXMA-40
     Scenario: Verify the hero teaser element is functional correctly in tablet landscape view
         Given I am currently viewing the homepage
         When I switch to "tablet landscape" view
@@ -49,10 +45,8 @@ Feature: Homepage
         * The homepage hero image should be clickable to open its page
         * I should see the homepage hero title
         * The homepage hero title should be clickable to open its page
-        * I should see the homepage hero short teaser
 
-
-    @hero @DDO-294
+    @hero @BXMA-40
     Scenario: Verify the hero teaser element is functional correctly in desktop view
         Given I am currently viewing the homepage
         When I switch to "desktop" view
@@ -61,7 +55,6 @@ Feature: Homepage
         * The homepage hero image should be clickable to open its page
         * I should see the homepage hero title
         * The homepage hero title should be clickable to open its page
-        * I should see the homepage hero short teaser
 
     @homepagefeed @DDO-235
     Scenario Outline: Verify the news feed is functional correctly in "<device>" view

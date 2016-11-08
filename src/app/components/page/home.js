@@ -50,8 +50,16 @@ class Home extends Component {
                             <div className="row">
                                 <div className="home-page__top-container columns">
                                     <div className="row">
-                                        <div className="columns large-8 xlarge-9">
+                                        <div className="columns large-8 xlarge-9 home-page__teasers-container">
                                             <HeroTeaser article={this.props.heroTeaser} />
+
+                                            <TeaserGridView
+                                                teasers={this.props.teasers.slice(0, 7)}
+                                                className="news-feed top-news-feed"
+                                                adPosition={8}
+                                                adSizes={{ small: 'mrec', medium: ['mrec', 'double-mrec'] }}
+                                                adTargets={{ position: 2 }}
+                                            />
                                         </div>
                                         <div className="home-page__social-wrapper columns large-4 xlarge-3">
                                             <div className="columns medium-6 large-12">
@@ -66,20 +74,18 @@ class Home extends Component {
                                                     <SocialContainer />
                                                 </div>
                                             </div>
+                                            <div>
+                                                <Ad
+                                                    className="ad--section-mrec"
+                                                    sizes="mrec"
+                                                    targets={{position: 1}} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <TeaserGridView
-                        teasers={this.props.teasers.slice(0, 7)}
-                        className="news-feed top-news-feed"
-                        adPosition={8}
-                        adSizes={{ small: 'mrec', medium: ['mrec', 'double-mrec'] }}
-                        adTargets={{ position: 2 }}
-                    />
 
                     {
                         this.context.config.isFeatureEnabled('galleryOfGalleries') ?

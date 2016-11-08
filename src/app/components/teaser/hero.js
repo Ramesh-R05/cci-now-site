@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import Teaser from '@bxm/teaser/lib/components/teaser';
+import Teaser from './teaser';
 
 export default class HeroTeaser extends Component {
     static propTypes = {
@@ -18,15 +18,15 @@ export default class HeroTeaser extends Component {
 
     render() {
         if (!this.props.article) return null;
+        const { article, imageSizes } = this.props;
 
         return(
             <div className="hero-wrapper">
                 <Teaser
+                    sourceClassName="hero-teaser__source"
                     className="hero-teaser"
-                    article={this.props.article}
-                    imageSizes={this.props.imageSizes}
-                    showDateCreated={false}
-                    showSubSection={true} />
+                    article={article}
+                    imageSizes={imageSizes} />
             </div>
         )
     }

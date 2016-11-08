@@ -9,8 +9,35 @@
         margin: 0;
     }
 
-    @media #{$xlarge-up} {
-        padding: 0 0 20px;
+    .hero-teaser__source {
+        color: $color-grey-light;
+        text-transform: uppercase;
+        font-family: $font-family-sans-serif-primary;
+        display: inline-block;
+        font-size: 11px;
+        margin-left: 15px;
+        margin-bottom: 15px;
+
+        &__breaker {
+            padding: 0 8px;
+        }
+
+        @media #{$large-up} {
+            display: block;
+            margin: 3px 0 0 0;
+        }
+
+        &--australian-women-s-weekly span:first-child {
+            color: $aww-color;
+        }
+
+        &--woman-s-day span:first-child {
+            color: $wd-color;
+        }
+
+        &--now-to-love span:first-child {
+            color: #6bc5a9;
+        }
     }
 }
 
@@ -28,46 +55,17 @@
             float: left;
             width: 58.33%;
         }
-
-        @media #{$xlarge-up} {
-            @include grid-column(7, false, false, 0, 0, 0, true);
-        }
     }
 
     .teaser__body {
         @include grid-column(11, false, true);
-        border: solid 5px $color-primary;
-        margin-top: -20px;
-        padding-top: 23px;
         position: relative;
+        margin-top: -3px;
+        padding-left: 0;
+        margin-left: 0;
 
         @media #{$medium-only} {
-            border-width: 8px;
-            float: left;
-            margin-left: -($column-gutter);
-            margin-top: 12px;
-            min-height: 322px;
-            padding-left: 48px;
-            padding-top: 20px;
-            width: calc(41.67% + #{$column-gutter});
-        }
-
-        @media #{$large-only} {
-            border-width: 8px;
-            margin-top: -18px;
-            padding-top: 25px;
-        }
-
-        @media #{$xlarge-only} {
-            position: absolute;
-            border-width: 10px;
-            margin-top: 40px;
-            min-height: 350px;
-            padding-left: 80px;
-            padding-right: 25px;
-            padding-top: 25px;
-            right: 0;
-            width: 48%;
+            @include grid-column(4, false, false);
         }
     }
 
@@ -93,18 +91,20 @@
             bottom: 0;
             top: 3px;
         }
-
-        @media #{$medium-up} {
-            margin-bottom: 10px;
-        }
+        padding: 15px;
 
         @media #{$large-up} {
+            padding: 0;
+            display: block;
             margin-top: 18px;
-            margin-bottom: 15px;
+            margin-bottom: 4px;
+            display: block;
         }
 
-        @media #{$xlarge-up} {
-            margin-top: 8px;
+        a {
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 0.04rem;
         }
     }
 

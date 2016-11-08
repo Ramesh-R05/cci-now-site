@@ -1,0 +1,116 @@
+import React, {PropTypes, Component} from 'react';
+import classNames from 'classnames';
+import moment from 'moment';
+import TeaserTitle from '@bxm/teaser/lib/components/title';
+import TeaserImage from '@bxm/teaser/lib/components/image';
+import TeaserSummary from '@bxm/teaser/lib/components/summary';
+import TeaserBadge from '@bxm/teaser/lib/components/badge';
+import Date from '@bxm/datetime/lib/components/Date';
+import ExternalLink from '@bxm/teaser/lib/components/externalLink';
+import teaserContentOverride from '@bxm/teaser/lib/teaserContentOverride';
+import has from 'lodash/object/has';
+import get from 'lodash/object/get';
+
+export default class Teaser extends Component {
+
+    static propTypes = {
+        article: PropTypes.object.isRequired,
+        id: PropTypes.string.isRequired,
+        imageSizes: PropTypes.object,
+        showResponsiveImage: PropTypes.bool,
+        className: PropTypes.string,
+        sourceClassName: PropTypes.string,
+        onClick: PropTypes.func
+    };
+
+    static contextTypes = {
+        config: PropTypes.object
+    };
+
+    static defaultProps = {
+        article: {
+            dateCreated: null,
+            url: null,
+            sponsorName: null,
+            parentUrl: null,
+            parentName: null,
+            summaryTitle: null,
+            title: null,
+            imageUrl: null,
+            altText: null
+        },
+        showResponsiveImage: true,
+        sourceClassName: 'teaser__source',
+        id: 'teaser',
+        imageSizes: {
+            s: { w: 880, h: 710 },
+            m: { w: 880, h: 710 },
+            l: { w: 880, h: 710 },
+            xl: { w: 880, h: 710 }
+        },
+        onClick: function onClick() {}
+    };
+
+    constructor(props, context) {
+        super(props, context);
+    }
+
+    getGTMClass = () => {
+        const article = this.props.article;
+        return has(article, 'id') ? `gtm-${article.id}` : '';
+    };
+
+    renderImage = () => {
+        const {article, imageSizes} = this.props;
+        const imageAltText = article.imageAltText || article.summaryTitle || article.title;
+        const {config} = this.context;
+        const defaultImageUrl = config.defaultImageUrl;
+        const breakpoints = config.global.breakpoints;
+
+        return (
+            <TeaserImage
+                gtmClass={this.getGTMClass()}
+                link={article.url}
+                imageUrl={article.imageUrl}
+                defaultImageUrl={defaultImageUrl}
+                alt={imageAltText}
+                imageSizes={imageSizes}
+                breakpoints={breakpoints}
+                showResponsiveImage={this.props.showResponsiveImage} />
+        );
+    };
+
+    render() {
+        const {id, className, sourceClassName} = this.props;
+        let {article} = this.props;
+
+        if (!article) return null;
+
+        article = teaserContentOverride(article);
+
+        const gtmClass = `gtm-${id}`;
+        const articleTitle = article.summaryTitle || article.title;
+
+        const containerClassNames = classNames(className, 'teaser', {
+            'teaser--has-video': get(article, 'video.properties.videoConfiguration.statusCode') === 200,
+            'teaser--gallery': get(article, 'nodeType', '').toLowerCase() === 'gallery'
+        });
+        const articleSourceClassName = article.source ? `${sourceClassName} ${sourceClassName}--${article.source.toLowerCase().replace(/[^A-Z0-9]/ig, '-')}` : sourceClassName;
+
+        return (
+            <article className={containerClassNames} onClick={this.props.onClick}>
+                <div className="teaser__inner">
+                    {this.renderImage()}
+                    <div className="teaser__body">
+                        <TeaserTitle title={articleTitle} url={article.url} gtmClass={gtmClass} />
+                        <p className={articleSourceClassName}>
+                            {article.source ? article.source : 'Now to love'}
+                            <span className={`${sourceClassName}__breaker`}>|</span>
+                            <Date dateCreated={article.dateCreated} format="MMMM D, YYYY" />
+                        </p>
+                    </div>
+                </div>
+            </article>
+        );
+    }
+}

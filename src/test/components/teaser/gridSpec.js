@@ -42,9 +42,7 @@ describe('TeaserGridView', () => {
                 listClassName: "teaser-view-grid",
                 articles: teasers,
                 imageSizes,
-                showSubSection: true,
-                adPosition: 8,
-                adConfig
+                showSubSection: true
             })
         });
     });
@@ -54,22 +52,5 @@ describe('TeaserGridView', () => {
             reactModule = Context.mountComponent(HeroTeaser, {teasers, adTargets: { position: 2 } });
             TeaserGridViewComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserListStub);
         });
-
-        it(`should pass the correct adTargetPosition to the TeaserList component`, () => {
-            const adConfig = TeaserGridViewComponent.props.adConfig;
-            expect(adConfig.targets).to.deep.eq(reactModule.props.adTargets);
-        })
-    });
-
-    describe('when setting the adSizes', () => {
-        beforeEach(() => {
-            reactModule = Context.mountComponent(HeroTeaser, {teasers, adSizes: 'randomSize' });
-            TeaserGridViewComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserListStub);
-        });
-
-        it(`should pass the correct asSizes to the TeaserList component`, () => {
-            const adConfig = TeaserGridViewComponent.props.adConfig;
-            expect(adConfig.sizes).to.deep.eq(reactModule.props.adSizes);
-        })
     });
 });

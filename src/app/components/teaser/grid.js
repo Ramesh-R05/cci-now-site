@@ -37,12 +37,6 @@ export default class TeaserGridView extends Component {
                                 l: { w: 624, h: 518 },
                                 xl: { w: 368, h: 306 }
                             }}
-                            adPosition={adPosition}
-                            adConfig={{
-                                className: "ad--section-mrec",
-                                sizes: adSizes || "mrec",
-                                targets: adTargets
-                            }}
                         />
                     </div>
                 </div>

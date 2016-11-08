@@ -225,16 +225,12 @@ a {
     color: $color-black;
     font: 24px / 26px $font-family-sans-serif-primary;
     font-weight: bold;
-    text-transform: uppercase;
+    letter-spacing: .01rem;
+    text-transform: none;
 
     @media #{$medium-up} {
-        font-size: 28px;
-        line-height: 30px;
-    }
-
-    @media #{$xlarge-up} {
-        font-size: 44px;
-        line-height: 46px;
+        font-size: 32px;
+        line-height: 38px;
     }
 }
 
