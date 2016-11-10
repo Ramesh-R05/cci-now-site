@@ -7,10 +7,10 @@ const ErrorStub = Context.createStubComponent();
 const platformStub = {
     set() {}
 };
-const App = proxyquire('../../app/components/app', {
+const App = proxyquire('../../app/containers/app', {
     'fluxible-router': { handleHistory: Component => Component },
     '@bxm/flux': { provideContext: Component => Component, connectToStores },
-    './page/error': ErrorStub,
+    '../components/page/error': ErrorStub,
     '@bxm/ui/lib/common/platform': platformStub
 }).default;
 

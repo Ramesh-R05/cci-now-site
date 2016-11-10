@@ -10,15 +10,15 @@ const PageStub = Context.createStubComponentWithChildren();
 const FooterStub = Context.createStubComponent();
 const AdStub = Context.createStubComponent();
 
-const SinglePage = proxyquire('../../../app/components/page/single', {
+const Document = proxyquire('../../app/containers/document', {
     '@bxm/article/lib/article': ArticleStub,
     '@bxm/gallery/lib/components/page/gallery': GalleryPageStub,
-    './wrapper': PageStub,
-    './../article/footer': FooterStub,
+    './page': PageStub,
+    '../components/article/footer': FooterStub,
     '@bxm/ad/lib/google/components/ad': AdStub
 }).default;
 
-describe('SinglePage Component', () => {
+describe('Document Component', () => {
     const headerPinPoints = {expanded: {}};
     const navItems = [];
     const siteName = 'Dolly';
@@ -35,20 +35,20 @@ describe('SinglePage Component', () => {
         let reactModule;
 
         beforeEach(() => {
-            reactModule = Context.mountComponent(SinglePage, {headerPinPoints, navItems, siteName, nodeType, currentUrl: '/url'});
+            reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType, currentUrl: '/url'});
         });
 
         it(`should render the Article Component passing down relevant props`, () => {
             const ArticleComponent = TestUtils.findRenderedComponentWithType(reactModule, ArticleStub);
             const headerAd = {
                 type: 'Ad',
-                config: SinglePage.headerAdConfig
+                config: Document.headerAdConfig
             };
 
             expect(ArticleComponent.props).to.deep.eq({
                 enableTeads: true,
                 articleHeaderOrder: ['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd],
-                contentBodyConfig: SinglePage.articleContentBodyConfig,
+                contentBodyConfig: Document.articleContentBodyConfig,
                 showAdBeforeRecommendations: true,
 				footerComponentClass: FooterStub
             });
@@ -77,7 +77,7 @@ describe('SinglePage Component', () => {
         let adStub;
 
         beforeEach(() => {
-            reactModule = Context.mountComponent(SinglePage, {headerPinPoints, navItems, siteName, nodeType});
+            reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType});
             adStub = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
         });
 

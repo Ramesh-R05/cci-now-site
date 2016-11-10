@@ -1,16 +1,27 @@
 import React, {Component, PropTypes} from 'react';
 import {connectToStores} from '@bxm/flux';
-import PageWrapper from './wrapper';
+import Page from './page';
 import Ad from '@bxm/ad/lib/google/components/ad';
-import Title from '../title';
-import TeaserGridView from '../teaser/grid';
-import TeaserListView from '../teaser/list';
-import Repeatable from '../repeatable';
-import loadList from '../../actions/loadList';
+import TeaserGridView from '../components/teaser/grid';
+import TeaserListView from '../components/teaser/list';
+import Repeatable from '../components/repeatable';
+import loadList from '../actions/loadList';
 import get from 'lodash/object/get';
 
-class Section extends Component {
-    static displayName = 'SectionPage';
+function mapStateToProps(context) {
+    const pageStore = context.getStore('PageStore');
+    const teaserStore = context.getStore('TeaserStore');
+    return {
+        title: pageStore.getTitle(),
+        teasers: teaserStore.getLatestTeasers(),
+        list: teaserStore.getList(),
+        listNextParams: teaserStore.getListNextParams()
+    };
+}
+
+@connectToStores(['PageStore','TeaserStore'], mapStateToProps)
+export default class Section extends Component {
+    static displayName = 'Section';
 
     static props = {
         nodeType: PropTypes.array,
@@ -30,7 +41,7 @@ class Section extends Component {
         const keyword = nodeType === 'TagSection' && title ? [ title ] : [];
 
         return (
-            <PageWrapper
+            <Page
                 currentUrl={ this.props.currentUrl }
                 headerExpanded={false}>
                 <div className="section-page">
@@ -45,7 +56,10 @@ class Section extends Component {
                         targets={{position: 1, keyword}}
                     />
 
-                    <Title title={title} />
+                    <h1 className='page-title'>
+                        <span className="page-title__symbol"></span>
+                        { title }
+                    </h1>
 
                     <TeaserGridView
                         teasers={firstTeaserList}
@@ -80,18 +94,7 @@ class Section extends Component {
                             billboard: ['billboard', 'leaderboard'] }}
                         targets={{ position: 3, keyword }} /> : null }
                 </div>
-            </PageWrapper>
+            </Page>
         );
     }
 }
-
-export default connectToStores(Section, ['PageStore','TeaserStore'], (context) => {
-    const pageStore = context.getStore('PageStore');
-    const teaserStore = context.getStore('TeaserStore');
-    return {
-        title: pageStore.getTitle(),
-        teasers: teaserStore.getLatestTeasers(),
-        list: teaserStore.getList(),
-        listNextParams: teaserStore.getListNextParams()
-    };
-});

@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {NavLink} from 'fluxible-router';
-import PageWrapper from './wrapper';
+import Page from '../../containers/page';
 
 export default class Error extends Component {
     static displayName = 'ErrorPage';
@@ -30,7 +30,7 @@ export default class Error extends Component {
         const {content, emojiSrc, title, symbol, returnHomeText} = message;
 
         return (
-            <PageWrapper
+            <Page
                 currentUrl={ this.props.currentUrl }
                 className="error-page"
                 headerExpanded={true}>
@@ -51,7 +51,7 @@ export default class Error extends Component {
                         </a>
                     </p>
                 </section>
-            </PageWrapper>
+            </Page>
         );
     }
 }
