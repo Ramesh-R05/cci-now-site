@@ -1,11 +1,6 @@
 .top-news-feed {
-    @media #{$medium-only} {
-        margin-top: 40px;
-    }
-
-    @media #{$large-up} {
-        margin-top: 64px;
-    }
+    margin-top: 14px;
+    padding: 0;
 }
 
 .bottom-news-feed {

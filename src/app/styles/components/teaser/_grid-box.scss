@@ -1,23 +1,73 @@
 .teaser-view-grid {
     .teaser__title {
-        padding-top: 5px;
+        text-transform: none;
         margin-bottom: 6px;
+        font: 400 24px/28px $font-family-sans-serif-primary;
+
+        @media #{$medium-up} {
+            font: 400 22px/30px $font-family-sans-serif-primary;
+        }
+
+        a {
+            text-decoration: none;
+        }
     }
 
     .teaser__body {
-        margin-top: 12px;
+        margin-top: 7px;
         position: relative;
+        font-family: $font-family-sans-serif-primary;
+    }
+
+    .teaser__source {
+        font-size: 11px;
+        line-height: 15px;
+        font-weight: 400;
+        padding: 0 15px;
+        color: $color-grey-light;
+        text-transform: uppercase;
+
+        @media #{$medium-up} {
+            padding: 0;
+            line-height: 12px;
+        }
+
+        span:first-child,
+        &--now-to-love span:first-child {
+            color: $nl-color;
+        }
+
+        &--woman-s-day span:first-child {
+            color: $wd-color;
+        }
+
+        &--australian-women-s-weekly span:first-child {
+            color: $aww-color;
+        }
+
+        &__breaker span:first-child {
+            margin: 0 5px;
+        }
+
+        &__breaker {
+            margin: 0 5px;
+        }
     }
 
     @media #{$small-only} {
         .teaser__body {
-            margin-bottom: 40px;
+            margin-bottom: 48px;
+            margin-top: 8px;
         }
 
         .teaser__title,
         .teaser__summary {
             padding-left: 15px;
             padding-right: 15px;
+        }
+
+        .teaser__title {
+            margin-bottom: 6px;
         }
 
         .teaser__badge-container {
@@ -29,7 +79,6 @@
         .teaser__title,
         .teaser__summary {
             padding-left: 0;
-            padding-right: 10px;
         }
 
         .teaser__badge-container {
@@ -39,44 +88,11 @@
 
     @media #{$medium-up} {
         .teaser__title {
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .teaser__body {
             margin-bottom: 30px;
-        }
-    }
-
-    @media #{$large-up} {
-        .teaser__body {
-            margin-top: 14px;
-        }
-
-        .teaser__title,
-        .teaser__summary {
-            padding-left: 0;
-            padding-right: 10px;
-        }
-    }
-
-    @media #{$xlarge-only} {
-        .teaser {
-            position: relative;
-        }
-
-        .teaser__image {
-            &:before {
-                left: 0;
-                right: 0;
-            }
-        }
-
-        .teaser__title {
-            padding-top: 7px;
-        }
-
-        .teaser__body {
-            margin-bottom: 40px;
         }
     }
 }

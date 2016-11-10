@@ -1,6 +1,7 @@
 import React, {PropTypes, Component} from 'react';
 import classNames from 'classnames';
 import TeaserList from '@bxm/teaser/lib/components/teaserList';
+import Teaser from './teaser';
 
 export default class TeaserGridView extends Component {
     static props = {
@@ -19,7 +20,7 @@ export default class TeaserGridView extends Component {
     };
 
     render() {
-        const {className, teasers, adPosition, adSizes, adTargets} = this.props;
+        const { className, teasers } = this.props;
 
         if (!teasers || !Array.isArray(teasers) || !teasers.length) return null;
 
@@ -29,6 +30,7 @@ export default class TeaserGridView extends Component {
                     <div className="columns teaser-view-container teaser-view-grid-container">
                         <TeaserList
                             listClassName="teaser-view-grid"
+                            CustomisedTeaser={Teaser}
                             articles={teasers}
                             showSubSection={true}
                             imageSizes={{

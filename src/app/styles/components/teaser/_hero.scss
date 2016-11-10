@@ -9,6 +9,11 @@
         margin: 0;
     }
 
+    .ad--section-top-mrec {
+        margin-top: 30px;
+        margin-bottom: 0;
+    }
+
     .hero-teaser__source {
         color: $color-grey-light;
         text-transform: uppercase;
@@ -27,16 +32,17 @@
             margin: 3px 0 0 0;
         }
 
+        span:first-child,
+        &--now-to-love span:first-child {
+            color: $nl-color;
+        }
+
         &--australian-women-s-weekly span:first-child {
             color: $aww-color;
         }
 
         &--woman-s-day span:first-child {
             color: $wd-color;
-        }
-
-        &--now-to-love span:first-child {
-            color: #6bc5a9;
         }
     }
 }

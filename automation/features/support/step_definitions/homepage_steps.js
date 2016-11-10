@@ -76,65 +76,50 @@ module.exports = function(){
         expect(topFeedItems).toEqual(parseInt(number,10));
     });
 
-    this.When(/^I should see each top feed item containing images$/, function () {
-        var topFeedTeaserImgUrlCount = browser.elements(home.topFeedImgUrls).value.length;
-        console.log(topFeedTeaserImgUrlCount);
-        var topFeedTeaserImgUrl = browser.getAttribute(home.topFeedImgUrls,'data-srcset');
-        for (var i=0; i<topFeedTeaserImgUrl.length; i++){
-             expect(topFeedTeaserImgUrl[i]).not.toBeUndefined();
-            console.log(topFeedTeaserImgUrl[i]);
+    this.When(/^I should see each top feed item containing its image and clickable to open its page$/, function () {
+        //verify images of all teasers
+        console.log(browser.elements(home.topFeedTeaserImg).value.length);
+        var topFeedTeaserImgUrl = browser.getAttribute(home.topFeedTeaserImg,'data-srcset');
+        var topFeedTeaserImgLink = browser.getAttribute(home.topFeedTeaserImgLink,'href');
+        for (var i=0; i<topFeedTeaserImg.length; i++){
+            console.log( i + ":" + topFeedTeaserImgUrl[i] + " => " + topFeedTeaserImgLink[i]);
+            expect(topFeedTeaserImgUrl[i]).not.toEqual('');
+            expect(topFeedTeaserImgLink[i]).not.toEqual('');
         }
     });
-    this.When(/^I should see a correct hero image on top feed item if it has a hero image$/, function () {
-        var topFeedTeaserImgUrl = browser.getAttribute(home.topFeedImgUrls,'data-srcset');
-        expect(topFeedTeaserImgUrl[0]).toMatch("http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68027/main.jpg");
+
+    this.When(/^I should see each top feed item containing its title and clickable to open its page$/, function () {
+        //verify titles of all teasers
+        console.log(browser.elements(home.topFeedTeaserTitle).value.length);
+        var topFeedTeaserTitle = browser.getText(home.topFeedTeaserTitle);
+        var topFeedTeaserTitleLink = browser.getAttribute(home.topFeedTeaserTitle,'href');
+        for (var i=0; i<topFeedTeaserTitle.length; i++){
+            console.log( i + ":" + topFeedTeaserTitle[i] + " => " + topFeedTeaserTitleLink[i]);
+            expect(topFeedTeaserTitle[i]).not.toEqual('');
+            expect(topFeedTeaserTitleLink[i]).not.toEqual('');
+        }
     });
 
-    this.When(/^I should see a default image on top feed item if it does not have a hero image$/, function () {
-        var topFeedTeaserImgUrl = browser.getAttribute(home.topFeedImgUrls,'data-srcset');
-        expect(topFeedTeaserImgUrl[2]).toMatch("defaultimage.png");
+    this.When(/^I should see each top feed item containing source$/, function () {
+        //verify sources of all teasers
+        console.log(browser.elements(home.topFeedTeaserSourc).value.length);
+        var topFeedTeaserSource = browser.getText(home.topFeedTeaserSource);
+        for (var i=0; i<topFeedTeaserSource.length; i++){
+            console.log( i + ":" + topFeedTeaserSource[i]);
+            expect(topFeedTeaserSource[i]).not.toEqual('');
+        }
+    });
 
-        });
-    this.When(/^I should see each top feed item containing custom label$/, function () {
-        var topFeedItems = browser.elements(home.topFeedNumber).value.length;
-        var topCustomLabelCount = browser.elements(home.topCustomLabel).value.length;
-        expect(topCustomLabelCount).toEqual(topFeedItems);
+    this.When(/^I should see a custom label "([^"]*)" on top feed item if it has a custom label$/, function (labelName) {
         var topCustomLabels = browser.getText(home.topCustomLabel);
-        for (var i=0; i<topCustomLabels.length; i++){
-            expect(topCustomLabels[i]).not.toBeUndefined();
-            console.log(topCustomLabels[i]);
-        }
+        expect(topCustomLabels[0]).toEqual(labelName);
     });
-        this.When(/^I should see a custom label "([^"]*)" on top feed item if it has a custom label$/, function (labelName) {
-            var topCustomLabels = browser.getText(home.topCustomLabel);
-            expect(topCustomLabels[0]).toEqual(labelName);
-        });
+
     this.When(/^I should see a section name "([^"]*)" on top feed item if it does not have a custom label$/, function (sectionName) {
         var topCustomLabels = browser.getText(home.topCustomLabel);
         expect(topCustomLabels[3]).toEqual(sectionName);
     });
-    this.When(/^I should see each top feed item containing long title and the first one is "([^"]*)"$/, function (longTitle) {
-        var teaserTitleCount = browser.elements(home.topFeedLongTitles).value.length;
-        var topFeedItems = browser.elements(home.topFeedNumber).value.length;
-        expect(teaserTitleCount).toEqual(topFeedItems);
-        var teaserTitle = browser.getText(home.topFeedLongTitles);
-        for(var i=0; i<teaserTitle.length; i++){
-            expect(teaserTitle[i]).not.toBeUndefined();
-            console.log("Top Feed Long Titles are::" + teaserTitle[i]);
-        }
-        expect(teaserTitle[0]).toMatch(longTitle);
-    });
-    this.When(/^I should see each top feed item containing short teaser and the first one is "([^"]*)"$/, function (shortTeaser) {
-        var topFeedTeaserCount = browser.elements(home.topFeedShortTeasers).value.length;
-        var topFeedItems = browser.elements(home.topFeedNumber).value.length;
-        expect(topFeedTeaserCount).toEqual(topFeedItems);
-        var topFeedTeaser = browser.getText(home.topFeedShortTeasers);
-        for(var i=0; i<topFeedTeaser.lengh; i++){
-            expect(topFeedTeaser[i]).not.toBeUndefined();
-            console.log("Top Feed Short Teasers are::" + topFeedTeaser[i]);
-        }
-        expect(topFeedTeaser[0]).toMatch(shortTeaser);
-        });
+
     this.When(/^Image and long title in each top feed item are clickable to open its page with first top teaser page as "([^"]*)"$/, function (teaserPage) {
         var topTeaserImg = browser.getAttribute(home.topFeedImg,'href');
         var topTeaserTitle = browser.getAttribute(home.topFeedTeaserTitle, 'href');

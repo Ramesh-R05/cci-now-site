@@ -7,9 +7,11 @@ import proxyquire, {noCallThru} from 'proxyquire';
 noCallThru();
 
 const TeaserListStub = Context.createStubComponent();
+const TeaserStub = Context.createStubComponent();
 
 const HeroTeaser = proxyquire('../../../app/components/teaser/grid', {
-    '@bxm/teaser/lib/components/teaserList': TeaserListStub
+    '@bxm/teaser/lib/components/teaserList': TeaserListStub,
+    './teaser': TeaserStub
 }).default;
 
 describe('TeaserGridView', () => {
@@ -18,13 +20,6 @@ describe('TeaserGridView', () => {
         m: { w: 486, h: 404 },
         l: { w: 624, h: 518 },
         xl: { w: 368, h: 306 }
-    };
-    const adConfig = {
-        className: "ad--section-mrec",
-        sizes: "mrec",
-        targets: {
-            position: 1
-        }
     };
     let reactModule;
     let TeaserGridViewComponent;
@@ -42,7 +37,8 @@ describe('TeaserGridView', () => {
                 listClassName: "teaser-view-grid",
                 articles: teasers,
                 imageSizes,
-                showSubSection: true
+                showSubSection: true,
+                CustomisedTeaser: TeaserStub
             })
         });
     });

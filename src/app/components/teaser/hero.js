@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import Teaser from './teaser';
+import Ad from '@bxm/ad/lib/google/components/ad';
 
 export default class HeroTeaser extends Component {
     static propTypes = {
@@ -27,6 +28,12 @@ export default class HeroTeaser extends Component {
                     className="hero-teaser"
                     article={article}
                     imageSizes={imageSizes} />
+
+                <Ad
+                    displayFor={['small']}
+                    className="ad--section-top-mrec"
+                    sizes="mrec"
+                    targets={{position: 1}} />
             </div>
         )
     }

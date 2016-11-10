@@ -6,9 +6,11 @@ import { shallow } from 'enzyme';
 noCallThru();
 
 const TeaserStub = Context.createStubComponent();
+const AdStub = Context.createStubComponent();
 
 const HeroTeaser = proxyquire('../../../app/components/teaser/hero', {
-    './teaser': TeaserStub
+    './teaser': TeaserStub,
+    '@bxm/ad/lib/google/components/ad': AdStub
 }).default;
 
 describe('Hero Teaser Component', () => {
@@ -53,6 +55,12 @@ describe('Hero Teaser Component', () => {
                 imageSizes: defaultImageSizes,
                 sourceClassName: "hero-teaser__source"
             })
+        });
+
+        it('should render 1 ad', () => {
+            const wrapper =  shallow(<HeroTeaser article={article} />);
+            const elm = wrapper.find(TeaserStub);
+            expect(elm.length).to.be.equal(1);
         });
     });
 

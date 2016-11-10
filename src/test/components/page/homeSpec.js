@@ -73,10 +73,10 @@ describe('Home Container', () => {
 
     after(Context.cleanup);
 
-    it(`should render 4 ads in total`, () => {
+    it(`should render 3 ads in total`, () => {
         reactModule = Context.mountComponent(HomeContainer, {}, [contextConfigStub]);
         const AdComponents = TestUtils.scryRenderedComponentsWithType(reactModule, AdStub);
-        expect(AdComponents.length).to.eq(4);
+        expect(AdComponents.length).to.eq(3);
     });
 
     describe(`when the inlineGallery feature is toggled on`, () => {

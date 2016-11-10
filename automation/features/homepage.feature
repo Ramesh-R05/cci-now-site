@@ -56,19 +56,14 @@ Feature: Homepage
         * I should see the homepage hero title
         * The homepage hero title should be clickable to open its page
 
-    @homepagefeed @DDO-235
-    Scenario Outline: Verify the news feed is functional correctly in "<device>" view
+    @homepagefeed @BXMA-82
+    Scenario Outline: Verify the top news feed is functional correctly in "<device>" view
         Given I am currently viewing the homepage
         When I switch to "<device>" view
-        * I should see 7 top half feed
-        * I should see each top feed item containing images
-        * I should see a correct hero image on top feed item if it has a hero image
-        * I should see a default image on top feed item if it does not have a hero image
-        * I should see each top feed item containing custom label
-        * I should see a custom label "TEST CUSTOM LABEL" on top feed item if it has a custom label
-        * I should see a section name "FASHION" on top feed item if it does not have a custom label
-        * I should see each top feed item containing short teaser and the first one is "Joe Manual Test Gallery Short Teaser Short Teaser Short Teaser"
-        * Image and long title in each top feed item are clickable to open its page with first top teaser page as "fashion/joe-manual-test-gallery-13317"
+        * I should see 6 top half feed
+     #   * I should see each top feed item containing its image and clickable to open its page
+     #   * I should see each top feed item containing its title and clickable to open its page
+     #   * I should see each top feed item containing source
         Examples:
             |device|
             |tablet landscape|

@@ -53,13 +53,16 @@ class Home extends Component {
                                         <div className="columns large-8 xlarge-9 home-page__teasers-container">
                                             <HeroTeaser article={this.props.heroTeaser} />
 
+                                            <div className="home-page__teasers-title">
+                                                <span>what's happening now</span>
+                                            </div>
+
                                             <TeaserGridView
-                                                teasers={this.props.teasers.slice(0, 7)}
+                                                teasers={this.props.teasers.slice(0, 6)}
                                                 className="news-feed top-news-feed"
                                                 adPosition={8}
                                                 adSizes={{ small: 'mrec', medium: ['mrec', 'double-mrec'] }}
-                                                adTargets={{ position: 2 }}
-                                            />
+                                                adTargets={{ position: 2 }} />
                                         </div>
                                         <div className="home-page__social-wrapper columns large-4 xlarge-3">
                                             <div className="columns medium-6 large-12">
@@ -73,12 +76,6 @@ class Home extends Component {
                                                 <div className="home-page__get-social-container">
                                                     <SocialContainer />
                                                 </div>
-                                            </div>
-                                            <div>
-                                                <Ad
-                                                    className="ad--section-mrec"
-                                                    sizes="mrec"
-                                                    targets={{position: 1}} />
                                             </div>
                                         </div>
                                     </div>
