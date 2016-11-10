@@ -81,7 +81,7 @@ module.exports = function(){
         console.log(browser.elements(home.topFeedTeaserImg).value.length);
         var topFeedTeaserImgUrl = browser.getAttribute(home.topFeedTeaserImg,'data-srcset');
         var topFeedTeaserImgLink = browser.getAttribute(home.topFeedTeaserImgLink,'href');
-        for (var i=0; i<topFeedTeaserImg.length; i++){
+        for (var i=0; i<topFeedTeaserImgUrl.length; i++){
             console.log( i + ":" + topFeedTeaserImgUrl[i] + " => " + topFeedTeaserImgLink[i]);
             expect(topFeedTeaserImgUrl[i]).not.toEqual('');
             expect(topFeedTeaserImgLink[i]).not.toEqual('');
@@ -102,7 +102,7 @@ module.exports = function(){
 
     this.When(/^I should see each top feed item containing source$/, function () {
         //verify sources of all teasers
-        console.log(browser.elements(home.topFeedTeaserSourc).value.length);
+        console.log(browser.elements(home.topFeedTeaserSource).value.length);
         var topFeedTeaserSource = browser.getText(home.topFeedTeaserSource);
         for (var i=0; i<topFeedTeaserSource.length; i++){
             console.log( i + ":" + topFeedTeaserSource[i]);

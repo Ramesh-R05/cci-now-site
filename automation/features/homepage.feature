@@ -17,58 +17,34 @@ Feature: Homepage
             | desktop           | top       | 5      |
 
     @hero @BXMA-40
-    Scenario: Verify the hero teaser element is functional correctly in mobile view
+    Scenario Outline: Verify the hero teaser element is functional correctly in "<device>" view
         Given I am currently viewing the homepage
-        When I switch to "mobile" view
+        When I switch to "<device>" view
         * I should see the homepage hero element
         * I should see the homepage hero image
         * The homepage hero image should be clickable to open its page
         * I should see the homepage hero title
         * The homepage hero title should be clickable to open its page
-
-    @hero @BXMA-40
-    Scenario: Verify the hero teaser element is functional correctly in tablet portrait view
-        Given I am currently viewing the homepage
-        When I switch to "tablet portrait" view
-        * I should see the homepage hero element
-        * I should see the homepage hero image
-        * The homepage hero image should be clickable to open its page
-        * I should see the homepage hero title
-        * The homepage hero title should be clickable to open its page
-
-    @hero @BXMA-40
-    Scenario: Verify the hero teaser element is functional correctly in tablet landscape view
-        Given I am currently viewing the homepage
-        When I switch to "tablet landscape" view
-        * I should see the homepage hero element
-        * I should see the homepage hero image
-        * The homepage hero image should be clickable to open its page
-        * I should see the homepage hero title
-        * The homepage hero title should be clickable to open its page
-
-    @hero @BXMA-40
-    Scenario: Verify the hero teaser element is functional correctly in desktop view
-        Given I am currently viewing the homepage
-        When I switch to "desktop" view
-        * I should see the homepage hero element
-        * I should see the homepage hero image
-        * The homepage hero image should be clickable to open its page
-        * I should see the homepage hero title
-        * The homepage hero title should be clickable to open its page
+        Examples:
+            |device|
+            |mobile|
+            |tablet portrait |
+            |tablet landscape|
+            |mobile|
 
     @homepagefeed @BXMA-82
     Scenario Outline: Verify the top news feed is functional correctly in "<device>" view
         Given I am currently viewing the homepage
         When I switch to "<device>" view
         * I should see 6 top half feed
-     #   * I should see each top feed item containing its image and clickable to open its page
-     #   * I should see each top feed item containing its title and clickable to open its page
-     #   * I should see each top feed item containing source
+        * I should see each top feed item containing its image and clickable to open its page
+        * I should see each top feed item containing its title and clickable to open its page
+        * I should see each top feed item containing source
         Examples:
             |device|
-            |tablet landscape|
+            |mobile|
             |tablet portrait |
-            |desktop|
+            |tablet landscape|
             |mobile|
 
     @homepagefeed-bottom @DDO-234

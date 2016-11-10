@@ -28,4 +28,14 @@ Feature: I have an automated sanity for my live environments
         * I should see the homepage hero title
         * The homepage hero title should be clickable to open its page
 
+    @homepagefeed @BXMA-82
+    Scenario: Verify the top news feed is functional correctly in mobile view
+        Given I am currently viewing the homepage
+        When I switch to "mobile" view
+        * I should see 6 top half feed
+        * I should see each top feed item containing its image and clickable to open its page
+        * I should see each top feed item containing its title and clickable to open its page
+        * I should see each top feed item containing source
+
+
 
