@@ -26,6 +26,7 @@
         padding: 0 15px;
         color: $color-grey-light;
         text-transform: uppercase;
+        letter-spacing: .7px;
 
         @media #{$medium-up} {
             padding: 0;
@@ -67,6 +68,7 @@
         }
 
         .teaser__title {
+            margin-top: 9px;
             margin-bottom: 6px;
         }
 

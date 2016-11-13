@@ -5,6 +5,7 @@
 .home-page {
     &__top-container {
         padding-top: 20px;
+        margin-bottom: 30px;
 
         @media #{$medium-up} {
             padding-top: 30px;
