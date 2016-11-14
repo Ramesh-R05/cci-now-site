@@ -70,14 +70,14 @@ export default{
                 "label": "Video",
                 "content": {
                     "id": "VIDEO-3026",
-                    "name": "4731174013001",
+                    "name": "4066659625001",
                     "type": "VideoItem",
                     "properties": {
                         "videoConfiguration": {
                             "status": "Video upload is complete",
                             "videoId": "VIDEO-3026",
                             "statusCode": 200,
-                            "brightcoveId": "4731174013001"
+                            "brightcoveId": "4066659625001"
                         }
                     }
                 }

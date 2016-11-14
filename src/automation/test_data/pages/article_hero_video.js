@@ -72,14 +72,14 @@ export default{
                 "label": "Video",
                 "content": {
                     "id": "VIDEO-3101",
-                    "name": "4731174013001 (2)",
+                    "name": "4066659625001",
                     "type": "VideoItem",
                     "properties": {
                         "videoConfiguration": {
                             "status": "Video upload is complete",
                             "videoId": "VIDEO-3101",
                             "statusCode": 200,
-                            "brightcoveId": "4731174013001"
+                            "brightcoveId": "4066659625001"
                         }
                     }
                 }
@@ -295,14 +295,14 @@ export default{
         "url": "/fashion/automation-test-article-with-hero-video-3664",
         "video": {
             "id": "VIDEO-3097",
-            "name": "4735247822001 (8)",
+            "name": "4066659625001",
             "type": "VideoItem",
             "properties": {
                 "videoConfiguration": {
                     "status": "Video upload is complete",
                     "videoId": "VIDEO-3097",
                     "statusCode": 200,
-                    "brightcoveId": "4735247822001"
+                    "brightcoveId": "4066659625001"
                 }
             }
         }
