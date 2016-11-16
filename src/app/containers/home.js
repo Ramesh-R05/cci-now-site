@@ -61,6 +61,10 @@ export default class Home extends Component {
                                         <div className="columns large-8 xlarge-9 home-page__teasers-container">
                                             <HeroTeaser article={this.props.heroTeaser} />
 
+                                            <div className="home-page__teasers-title">
+                                                <span>what's happening now</span>
+                                            </div>
+
                                             <TeaserGridView
                                                 teasers={this.props.teasers.slice(0, 6)}
                                                 className="news-feed top-news-feed"
