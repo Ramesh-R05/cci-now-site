@@ -16,6 +16,7 @@
 
         &__body {
             @include grid-column(6);
+            padding-left: 0;
 
             @media #{$medium-up} {
                 @include grid-column(12);

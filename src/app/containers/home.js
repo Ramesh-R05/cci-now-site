@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react';
 import {connectToStores} from '@bxm/flux';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import SocialContainer from '../components/social/block';
-import CustomInlineGallery from '../components/inlineGallery/customInlineGallery';
 import HeroTeaser from '../components/teaser/hero';
 import TeaserGridView from '../components/teaser/grid';
 import TeaserListView from '../components/teaser/list';
@@ -16,7 +15,6 @@ function mapStateToProps(context) {
     return {
         heroTeaser: teaserStore.getHeroTeaser(),
         teasers: teaserStore.getLatestTeasers(),
-        videoGalleryTeasers: teaserStore.getVideoGalleryTeasers(),
         list: teaserStore.getList(),
         listNextParams: teaserStore.getListNextParams()
     };
@@ -30,13 +28,11 @@ export default class Home extends Component {
         heroTeaser: PropTypes.object,
         list: PropTypes.array,
         listNextParams: PropTypes.object,
-        teasers: PropTypes.array.isRequired,
-        videoGalleryTeasers: PropTypes.array.isRequired
+        teasers: PropTypes.array.isRequired
     };
 
     static defaultProps = {
-        teasers: [],
-        videoGalleryTeasers: []
+        teasers: []
     };
 
     static contextTypes = {
@@ -65,16 +61,13 @@ export default class Home extends Component {
                                         <div className="columns large-8 xlarge-9 home-page__teasers-container">
                                             <HeroTeaser article={this.props.heroTeaser} />
 
-                                            <div className="home-page__teasers-title">
-                                                <span>what's happening now</span>
-                                            </div>
-
                                             <TeaserGridView
                                                 teasers={this.props.teasers.slice(0, 6)}
                                                 className="news-feed top-news-feed"
                                                 adPosition={8}
                                                 adSizes={{ small: 'mrec', medium: ['mrec', 'double-mrec'] }}
-                                                adTargets={{ position: 2 }} />
+                                                adTargets={{ position: 2 }}
+                                            />
                                         </div>
                                         <div className="home-page__social-wrapper columns large-4 xlarge-3">
                                             <div className="columns medium-6 large-12">
@@ -95,14 +88,6 @@ export default class Home extends Component {
                             </div>
                         </div>
                     </div>
-
-                    {
-                        this.context.config.isFeatureEnabled('galleryOfGalleries') ?
-                            <div className="home-page__carousel-container">
-                                <h2 className="carousel-container__heading">Dolly Video</h2>
-                                <CustomInlineGallery videoGallery={this.props.videoGalleryTeasers} />
-                            </div> : null
-                    }
 
                     <Ad
                         className="ad--section-leaderboard"

@@ -37,5 +37,12 @@ Feature: I have an automated sanity for my live environments
         * I should see each top feed item containing its title and clickable to open its page
         * I should see each top feed item containing source
 
-
+    @homepagefeed-bottom @BXMA-60
+    Scenario: Verify the bottom news feed is functional correctly in mobile view
+        Given I am currently viewing the homepage
+        When I switch to "mobile" view
+        * I should see 6 bottom half feed
+        * I should see each bottom feed item containing its image and clickable to open its page
+        * I should see each bottom feed item containing its title and clickable to open its page
+        * I should see each bottom feed item containing source
 

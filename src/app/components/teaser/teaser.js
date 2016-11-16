@@ -18,6 +18,7 @@ export default class Teaser extends Component {
         id: PropTypes.string.isRequired,
         imageSizes: PropTypes.object,
         showResponsiveImage: PropTypes.bool,
+        showTeaserSummary: PropTypes.bool,
         className: PropTypes.string,
         sourceClassName: PropTypes.string,
         onClick: PropTypes.func
@@ -40,6 +41,7 @@ export default class Teaser extends Component {
             altText: null
         },
         showResponsiveImage: true,
+        showTeaserSummary: false,
         sourceClassName: 'teaser__source',
         id: 'teaser',
         imageSizes: {
@@ -80,6 +82,16 @@ export default class Teaser extends Component {
         );
     };
 
+    renderSummary = () => {
+        const {article, showTeaserSummary} = this.props;
+
+        if (!showTeaserSummary) return null;
+
+        return (
+            <TeaserSummary summary={article.summary} className="teaser__summary" />
+        );
+    };
+
     render() {
         const {id, className, sourceClassName} = this.props;
         let {article} = this.props;
@@ -103,6 +115,7 @@ export default class Teaser extends Component {
                     {this.renderImage()}
                     <div className="teaser__body">
                         <TeaserTitle title={articleTitle} url={article.url} gtmClass={gtmClass} />
+                        {this.renderSummary()}
                         <p className={articleSourceClassName}>
                             {article.source ? article.source : 'Now to love'}
                             <span className={`${sourceClassName}__breaker`}>|</span>

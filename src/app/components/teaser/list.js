@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import TeaserList from '@bxm/teaser/lib/components/teaserList';
 import StickyBlock from '@bxm/behaviour/lib/components/sticky';
 import Ad from '@bxm/ad/lib/google/components/ad';
+import Teaser from './teaser';
 
 export default class TeaserListView extends Component {
     static props = {
@@ -38,6 +39,7 @@ export default class TeaserListView extends Component {
                     <div className="teaser-view-container teaser-view-list-container">
                         <TeaserList
                             listClassName="teaser-view-list"
+                            CustomisedTeaser={Teaser}
                             articles={items}
                             showSubSection={true}
                             imageSizes={{

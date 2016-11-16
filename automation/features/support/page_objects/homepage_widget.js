@@ -22,13 +22,9 @@ var homepage_widget = {
     topFeedTeaserTitle: '.teaser__list.teaser-view-grid .teaser__title a',
     topFeedTeaserSource: '.teaser__list.teaser-view-grid .teaser__source',
     bottomFeedNumber: '.teaser__list.teaser-view-list article.teaser',
-    bottomFeedTeaserImg: '.teaser__list.teaser-view-list .teaser__image ',
+    bottomFeedTeaserImg: '.teaser__list.teaser-view-list .teaser__image img',
+    bottomFeedTeaserImgLink: '.teaser__list.teaser-view-list .teaser__image',
     bottomFeedTeaserTitle: '.teaser__list.teaser-view-list .teaser__title a',
-    bottomFeedImgUrls: '.teaser__list.teaser-view-list .teaser__image img',
-    bottomCustomLabel:'.teaser__list.teaser-view-list .teaser__badge, teaser__sub-section',
-    bottomFeedLongTitles: '.teaser__list.teaser-view-list .teaser__title',
-    bottomFeedShortTeasers: '.teaser__list.teaser-view-list .teaser__summary-wrap',
-    bottomFeedImg: '.teaser__list.teaser-view-list .teaser__image'
-
+    bottomFeedTeaserSource: '.teaser__list.teaser-view-list .teaser__source',
 };
 module.exports = homepage_widget;

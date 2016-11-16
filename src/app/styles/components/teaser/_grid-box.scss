@@ -46,6 +46,34 @@
             color: $aww-color;
         }
 
+        &--good-health span:first-child {
+            color: $good-health-color;
+        }
+
+        &--yours span:first-child {
+            color: $yours-color;
+        }
+
+        &--ok--magazine span:first-child {
+            color: $ok-color;
+        }
+
+        &--shop-til-you-drop span:first-child {
+            color: $shop-color;
+        }
+
+        &--mother---baby span:first-child {
+            color: $mother-baby-color;
+        }
+
+        &--take-5 span:first-child {
+            color: $take-5-color;
+        }
+
+        &--nw span:first-child {
+            color: $nw-color;
+        }
+
         &__breaker span:first-child {
             margin: 0 5px;
         }

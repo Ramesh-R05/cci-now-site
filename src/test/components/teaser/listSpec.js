@@ -7,6 +7,7 @@ import proxyquire, {noCallThru} from 'proxyquire';
 noCallThru();
 
 const TeaserListStub = Context.createStubComponent();
+const TeaserStub = Context.createStubComponent();
 const AdStub = Context.createStubComponent();
 const StickyStub = React.createClass({
     render: function() {
@@ -17,7 +18,8 @@ const StickyStub = React.createClass({
 const TeaserListView = proxyquire('../../../app/components/teaser/list', {
     '@bxm/teaser/lib/components/teaserList': TeaserListStub,
     '@bxm/behaviour/lib/components/sticky': StickyStub,
-    '@bxm/ad/lib/google/components/ad': AdStub
+    '@bxm/ad/lib/google/components/ad': AdStub,
+    './teaser': TeaserStub
 }).default;
 
 describe('TeaserListView', () => {
@@ -45,6 +47,7 @@ describe('TeaserListView', () => {
 
             it(`should render the TeaserList component with relevant props`, () => {
                 expect(TeaserListViewComponent.props).to.deep.eq({
+                    CustomisedTeaser: TeaserStub,
                     listClassName: "teaser-view-list",
                     articles: items,
                     imageSizes,

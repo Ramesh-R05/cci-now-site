@@ -110,90 +110,44 @@ module.exports = function(){
         }
     });
 
-    this.When(/^I should see a custom label "([^"]*)" on top feed item if it has a custom label$/, function (labelName) {
-        var topCustomLabels = browser.getText(home.topCustomLabel);
-        expect(topCustomLabels[0]).toEqual(labelName);
+    this.When(/^I should see (\d+) bottom half feed$/, function (number) {
+        var bottomFeedItems = browser.elements(home.bottomFeedNumber).value.length;
+        console.log(bottomFeedItems);
+        expect(bottomFeedItems).toEqual(parseInt(number,10));
     });
 
-    this.When(/^I should see a section name "([^"]*)" on top feed item if it does not have a custom label$/, function (sectionName) {
-        var topCustomLabels = browser.getText(home.topCustomLabel);
-        expect(topCustomLabels[3]).toEqual(sectionName);
-    });
-
-    this.When(/^Image and long title in each top feed item are clickable to open its page with first top teaser page as "([^"]*)"$/, function (teaserPage) {
-        var topTeaserImg = browser.getAttribute(home.topFeedImg,'href');
-        var topTeaserTitle = browser.getAttribute(home.topFeedTeaserTitle, 'href');
-        expect(topTeaserImg).toEqual(topTeaserTitle);
-        console.log(topTeaserImg);
-        expect(topTeaserImg[0]).toMatch(teaserPage);
-    });
-
-     this.Given(/^I should see (\d+) bottom half feed$/, function (number) {
-      var bottomeFeedItems = browser.elements(home.bottomFeedNumber).value.length;
-      console.log(bottomeFeedItems);
-      expect(bottomeFeedItems).toEqual(parseInt(number,10));
-      //parsing string to integer using parseInt func
-    });
-
-   this.Given(/^I should see each bottom feed item containing images$/, function () {
-       var BottomFeedTeaserImgUrlCount = browser.elements(home.bottomFeedImgUrls).value.length;
-        console.log(BottomFeedTeaserImgUrlCount);
-       var BottomFeedTeaserImgUrl = browser.getAttribute(home.bottomFeedImgUrls ,'data-srcset');
-       for (var i=0; i<BottomFeedTeaserImgUrl.length; i++){
-           expect(BottomFeedTeaserImgUrl[i]).not.toBeUndefined();
-           console.log(BottomFeedTeaserImgUrl[i]);
-       }
-    });
-
-    this.Given(/^I should see each bottom feed item containing custom label$/, function () {
-        var bottomeFeedItems = browser.elements(home.bottomFeedNumber).value.length;
-        var bottomCustomLabelCount = browser.elements(home.bottomCustomLabel).value.length;
-        expect(bottomCustomLabelCount).toEqual(bottomeFeedItems);
-        var bottomCustomLabels = browser.getText(home.bottomCustomLabel);
-        for (var i=0; i<bottomCustomLabels.length; i++){
-            expect(bottomCustomLabels[i]).not.toBeUndefined();
-            console.log(bottomCustomLabels[i]);
+    this.When(/^I should see each bottom feed item containing its image and clickable to open its page$/, function () {
+        //verify images of all teasers
+        console.log(browser.elements(home.bottomFeedTeaserImg).value.length);
+        var bottomFeedTeaserImgUrl = browser.getAttribute(home.bottomFeedTeaserImg,'data-srcset');
+        var bottomFeedTeaserImgLink = browser.getAttribute(home.bottomFeedTeaserImgLink,'href');
+        for (var i=0; i<bottomFeedTeaserImgUrl.length; i++){
+            console.log( i + ":" + bottomFeedTeaserImgUrl[i] + " => " + bottomFeedTeaserImgLink[i]);
+            expect(bottomFeedTeaserImgUrl[i]).not.toEqual('');
+            expect(bottomFeedTeaserImgLink[i]).not.toEqual('');
         }
     });
-    this.Given(/^I should see a custom label "([^"]*)" on bottom feed item if it has a custom label$/, function (labelName) {
-        var bottomCustomLabels = browser.getText(home.bottomCustomLabel);
-        expect(bottomCustomLabels[0]).toEqual(labelName);
-    });
 
-    this.Given(/^I should see a section name "([^"]*)" on bottom feed item if it does not have a custom label$/, function (sectionName) {
-        var bottomCustomLabels = browser.getText(home.bottomCustomLabel);
-        expect(bottomCustomLabels[6]).toEqual(sectionName);
-    });
-
-    this.Given(/^I should see each bottom feed item containing long title with first long title as "([^"]*)"$/, function (longTitle) {
-        var teaserTitleCount = browser.elements(home.bottomFeedLongTitles).value.length;
-        var bottomeFeedItems = browser.elements(home.bottomFeedNumber).value.length;
-        expect(teaserTitleCount).toEqual(bottomeFeedItems);
-        var teaserTitle = browser.getText(home.bottomFeedLongTitles);
-        for (var i=0; i<teaserTitle.length; i++){
-            expect(teaserTitle[i]).not.toBeUndefined();
-            console.log("Bottom feed Long Titles are::" + teaserTitle[i]);
+    this.When(/^I should see each bottom feed item containing its title and clickable to open its page$/, function () {
+        //verify titles of all teasers
+        console.log(browser.elements(home.bottomFeedTeaserTitle).value.length);
+        var bottomFeedTeaserTitle = browser.getText(home.bottomFeedTeaserTitle);
+        var bottomFeedTeaserTitleLink = browser.getAttribute(home.bottomFeedTeaserTitle,'href');
+        for (var i=0; i<bottomFeedTeaserTitle.length; i++){
+            console.log( i + ":" + bottomFeedTeaserTitle[i] + " => " + bottomFeedTeaserTitleLink[i]);
+            expect(bottomFeedTeaserTitle[i]).not.toEqual('');
+            expect(bottomFeedTeaserTitleLink[i]).not.toEqual('');
         }
-        expect(teaserTitle[0]).toMatch(longTitle);
     });
 
-    this.Given(/^I should see each bottom feed item containing short teaser with first short teaser as "([^"]*)"$/, function (shortTeaser) {
-        var bottomFeedTeaserCount = browser.elements(home.bottomFeedShortTeasers).value.length;
-        var bottomeFeedItems = browser.elements(home.bottomFeedNumber).value.length;
-        expect(bottomFeedTeaserCount).toEqual(bottomeFeedItems);
-        var bottomFeedTeaser = browser.getText(home.bottomFeedShortTeasers);
-        for (var i=0; i<bottomFeedTeaser.length; i++){
-            expect(bottomFeedTeaser[i]).not.toBeUndefined();
-            console.log(bottomFeedTeaser[i]);
+    this.When(/^I should see each bottom feed item containing source$/, function () {
+        //verify sources of all teasers
+        console.log(browser.elements(home.bottomFeedTeaserSource).value.length);
+        var bottomFeedTeaserSource = browser.getText(home.bottomFeedTeaserSource);
+        for (var i=0; i<bottomFeedTeaserSource.length; i++){
+            console.log( i + ":" + bottomFeedTeaserSource[i]);
+            expect(bottomFeedTeaserSource[i]).not.toEqual('');
         }
-        expect(bottomFeedTeaser[0]).toEqual(shortTeaser);
-    });
-    this.Given(/^Image and long title in each bottom feed item are clickable to open its page with first bottom teaser page as "([^"]*)"$/, function (teaserPage) {
-        var bottomTeaserImg = browser.getAttribute(home.bottomFeedImg,'href');
-        var bottomTeaserTitle = browser.getAttribute(home.bottomFeedTeaserTitle, 'href');
-        expect(bottomTeaserImg).toEqual(bottomTeaserTitle);
-        console.log(bottomTeaserImg);
-       expect(bottomTeaserImg[0]).toMatch(teaserPage);
     });
 
     this.Given(/^I should see the trending title at the "([^"]*)"$/, function(position) {
