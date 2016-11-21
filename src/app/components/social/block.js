@@ -6,23 +6,13 @@ export default class Social extends Component {
 
     static links = [{
         name: 'facebook',
-        url: 'http://www.facebook.com/cosmoaustralia'
+        url: 'http://www.facebook.com/nowtolove'
     },{
         name: 'twitter',
-        url: 'https://twitter.com/cosmoaustralia'
+        url: 'https://twitter.com/NowToLove'
     },{
         name: 'instagram',
-        url: 'https://www.instagram.com/cosmoaustralia/'
-    },{
-        name: 'youtube',
-        url: 'https://www.youtube.com/user/cosmoaustralia/'
-    },{
-        name: 'snapchat',
-        url: 'https://www.snapchat.com/'
-    },{
-        name: 'newsletter',
-        url: '#footer-sign-up',
-        target: '_self'
+        url: 'https://www.instagram.com/NowToLove'
     }];
 
     render() {

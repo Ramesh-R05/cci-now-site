@@ -9,6 +9,7 @@ import Trending from '../components/trending/trending';
 import Page from './page';
 import Repeatable from '../components/repeatable';
 import loadList from '../actions/loadList';
+import StickyAndDockAd from '../components/page/stickyAndDockAd';
 
 function mapStateToProps(context) {
     const teaserStore = context.getStore('TeaserStore');
@@ -39,6 +40,19 @@ export default class Home extends Component {
         config: PropTypes.object
     };
 
+    state = {
+        bottomElm: null,
+        topElm: null
+    };
+
+    componentDidMount() {
+
+        this.setState({
+            bottomElm: this.refs.bottom,
+            topElm: this.refs.top
+        });
+    }
+
     render() {
         return (
             <Page
@@ -58,7 +72,7 @@ export default class Home extends Component {
                             <div className="row">
                                 <div className="home-page__top-container columns">
                                     <div className="row">
-                                        <div className="columns large-8 xlarge-9 home-page__teasers-container">
+                                        <div className="columns large-8 xlarge-9 home-page__teasers-container" ref="top">
                                             <HeroTeaser article={this.props.heroTeaser} />
 
                                             <div className="home-page__teasers-title">
@@ -75,16 +89,22 @@ export default class Home extends Component {
                                         </div>
                                         <div className="home-page__social-wrapper columns large-4 xlarge-3">
                                             <div className="columns medium-6 large-12">
-                                                {/* 1st MREC above social links */}
-                                                <Ad
-                                                    className="ad--section-mrec"
-                                                    sizes="mrec"
-                                                    targets={{position: 1}} />
-                                            </div>
-                                            <div className="columns medium-6 large-12">
-                                                <div className="home-page__get-social-container">
-                                                    <SocialContainer />
-                                                </div>
+                                                <StickyAndDockAd
+                                                    offsetTop={95}
+                                                    offsetBottom={16}
+                                                    customiseBreakpoint={1024}
+                                                    bottomElm={ this.state.bottomElm }
+                                                    topElm={ this.state.topElm }>
+                                                    <Ad
+                                                        className="ad--section-mrec"
+                                                        sizes="mrec"
+                                                        displayFor="large"
+                                                        targets={{position: 1}} />
+                                                    <div className="home-page__get-social-container">
+                                                        <span className="home-page__social-logo">Now To Love</span>
+                                                        <SocialContainer />
+                                                    </div>
+                                                </StickyAndDockAd>
                                             </div>
                                         </div>
                                     </div>
@@ -92,6 +112,8 @@ export default class Home extends Component {
                             </div>
                         </div>
                     </div>
+
+                    <div class="home-page__carousel-container" ref="bottom"></div>
 
                     <Ad
                         className="ad--section-leaderboard"

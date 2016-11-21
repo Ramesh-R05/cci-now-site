@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import Teaser from './teaser';
 import Ad from '@bxm/ad/lib/google/components/ad';
+import SocialContainer from '../social/block';
 
 export default class HeroTeaser extends Component {
     static propTypes = {
@@ -30,10 +31,15 @@ export default class HeroTeaser extends Component {
                     imageSizes={imageSizes} />
 
                 <Ad
-                    displayFor={['small']}
+                    displayFor={['small', 'medium']}
                     className="ad--section-top-mrec"
                     sizes="mrec"
                     targets={{position: 1}} />
+
+                <div className="hero-wrapper__get-social-container">
+                    <span className="hero-wrapper__social-logo">Now To Love</span>
+                    <SocialContainer />
+                </div>
             </div>
         )
     }

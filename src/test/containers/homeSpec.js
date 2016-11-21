@@ -12,6 +12,7 @@ const TeaserListViewStub = Context.createStubComponent();
 const TrendingStub = Context.createStubComponent();
 const SocialLinks = Context.createStubComponent();
 const RepeatableStub = Context.createStubComponent();
+const StickyAndDockStub = Context.createStubComponent();
 
 const HomeContainer = proxyquire('../../app/containers/home', {
     '@bxm/ad/lib/google/components/ad': AdStub,
@@ -21,7 +22,8 @@ const HomeContainer = proxyquire('../../app/containers/home', {
     '../components/teaser/list': TeaserListViewStub,
     '../components/trending/trending': TrendingStub,
     '../components/repeatable': RepeatableStub,
-    '../components/social/block': SocialLinks
+    '../components/social/block': SocialLinks,
+    '../components/page/stickyAndDockAd': StickyAndDockStub
 }).default;
 
 describe('Home Container', () => {
@@ -45,7 +47,7 @@ describe('Home Container', () => {
         getHeroTeaser() {
             return {id: 'HERO-TEASER'};
         },
-        
+
         getLatestTeasers() {
             return [1, 2, 3, 4, 5, 6, 7];
         },
@@ -65,10 +67,10 @@ describe('Home Container', () => {
 
     after(Context.cleanup);
 
-    it(`should render 3 ads in total`, () => {
+    it(`should render 2 ads in total`, () => {
         reactModule = Context.mountComponent(HomeContainer, {}, [contextConfigStub]);
         const AdComponents = TestUtils.scryRenderedComponentsWithType(reactModule, AdStub);
-        expect(AdComponents.length).to.eq(3);
+        expect(AdComponents.length).to.eq(2);
     });
 
 });

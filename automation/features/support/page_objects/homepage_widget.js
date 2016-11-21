@@ -26,5 +26,8 @@ var homepage_widget = {
     bottomFeedTeaserImgLink: '.teaser__list.teaser-view-list .teaser__image',
     bottomFeedTeaserTitle: '.teaser__list.teaser-view-list .teaser__title a',
     bottomFeedTeaserSource: '.teaser__list.teaser-view-list .teaser__source',
+    adMrecNextToTopFeed: '.home-page__top-container #gpt-slot-2',
+    adMrecNextToTopFeedSticky: '.home-page__top-container .home-page__social-wrapper > div > div > span',
+    adMrecUnderHero: '.hero-wrapper #gpt-slot-1',
 };
 module.exports = homepage_widget;

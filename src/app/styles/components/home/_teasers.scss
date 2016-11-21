@@ -1,5 +1,7 @@
 .home-page {
     &__teasers-title {
+        clear: both;
+        display: none;
         position: relative;
         text-align: center;
         margin-top: 20px;
@@ -7,6 +9,10 @@
         color: #333333;
         font: 14px/30px $font-family-sans-serif-primary;
         letter-spacing: 1px;
+
+        @media #{$medium-up} {
+            display: block;
+        }
 
         &::before {
             border-top: 1px solid $color-grey-lighter;

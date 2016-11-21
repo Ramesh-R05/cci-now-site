@@ -46,3 +46,16 @@ Feature: I have an automated sanity for my live environments
         * I should see each bottom feed item containing its title and clickable to open its page
         * I should see each bottom feed item containing source
 
+    @ad @BXMA-90
+    Scenario: Ads on homepage in the desktop view
+        Given I switch to "desktop" view
+        When I am currently viewing the homepage
+        * I should see sticky MREC ad next to the top news feed
+        * I should not see MREC ad under the hero teaser
+
+    @ad @BXMA-90
+    Scenario: Ads on homepage in the mobile view
+        Given I switch to "mobile" view
+        When I am currently viewing the homepage
+        * I should see MREC ad under the hero teaser
+
