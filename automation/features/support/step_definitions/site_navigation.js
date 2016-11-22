@@ -69,7 +69,7 @@ module.exports = function() {
         browser.scroll(0, 1000);
     });
 
-    this.Then(/^I can not see the hamburger menu$/, function () {
-        expect(browser.isVisible(site_nav.siteNavHamburger)).toEqual(false);
+    this.Then(/^I can see the hamburger menu$/, function () {
+        expect(browser.isVisible(site_nav.siteNavHamburger)).toEqual(true);
     });
 };

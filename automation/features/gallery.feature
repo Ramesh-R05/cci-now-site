@@ -1,4 +1,4 @@
-@gallery @DDO-298 @now
+@gallery @BXMA-33 @now
 Feature: Gallery
     As a user
     I should be able to see the gallery page
@@ -9,11 +9,10 @@ Feature: Gallery
         * I can see the logo on the gallery header
         * I can click the logo to go to homepage
         * I can see an image appearing on the gallery
-        * I can see the custom label of the gallery "AUSSIE GOSS"
         * I can see the gallery description of the gallery containing "Test the second paragraph"
         * I can see the right arrow on the gallery
         * I should not see the left arrow on the gallery
-        * I can see the image number "1" of total "8" on the mobile gallery
+        * I can see the image number "1" of total "8" on the gallery
         * I can see the image caption on the gallery containing "Fresh-faced beauty"
         * I can click MORE to see the full image caption on the gallery
         * I can click LESS to see the short image caption on the gallery
@@ -43,7 +42,6 @@ Feature: Gallery
         * I can see the logo on the gallery header
         * I can click the logo to go to homepage
         * I can see an image appearing on the gallery
-        * I can see the custom label of the gallery "AUSSIE GOSS"
         * I can see the gallery description of the gallery containing "Test the second paragraph"
         * I can see the right arrow on the gallery
         * I should not see the left arrow on the gallery

@@ -1,6 +1,6 @@
 var gallery_widget = {
     //Locators identified by className
-    headerLogo: '.icon-logo',
+    headerLogo: '.header-logo a',
     galleryLongTitle: '.gallery__title',
     galleryDescription: '.gallery__summary-text',
     galleryImg: 'img.gallery__slide-image',
@@ -24,8 +24,7 @@ var gallery_widget = {
     videoAdPlay: '.vjs-ad-playing',
     videoId: 'data-video-id',
     playButton: '.vjs-big-play-button',
-    imageCountMobile: "header .gallery__slide-count",
-    imageCountDesktop: "footer .gallery__slide-count",
+    imageCount: "footer .gallery__slide-count",
     //Locators identified by Xpath
     imgCount: "//*[@id='app']/div/section/section[1]/section/footer/div[1]/span",
     imgCountMobile: "//*[@id='app']/div/section/header/div/span",

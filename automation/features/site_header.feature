@@ -52,7 +52,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         Given I am currently viewing "fashion/models/automation-test-gallery-13302"
         When I switch to "mobile portrait" view
         Then I should not see the site navigation links
-        And I can not see the hamburger menu
+        And I can see the hamburger menu
 
     @BXMA-65
     Scenario: I can see the brand logos in the hamburger menu

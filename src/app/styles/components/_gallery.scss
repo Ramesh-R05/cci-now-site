@@ -3,6 +3,36 @@
         color: $color-white;
     }
 
+    &__mobile-ad {
+        position: initial;
+        background: none;
+        margin-top: 60px;
+        margin-bottom: 9px;
+
+        @media #{$medium-up} {
+            margin-top: -13px;
+        }
+    }
+
+    &__body {
+        max-width: 1024px;
+        margin-top: 0px;
+    }
+
+    &-item {
+        max-height: 376px !important;
+    }
+
+    &-caption__toggle {
+        color: $color-primary;
+        text-decoration: underline;
+    }
+
+    &__summary-content {
+        a {
+            color: $color-primary;
+        }
+    }
 
     // Temporary until social style task is done
     .social-share-block {
@@ -119,17 +149,21 @@
         }
     }
 
-
     &__main {
+        @media #{$large-up} {
+            width: 100%;
+            max-height: 600px;
+            overflow: visible;
+        }
+
         .gallery__title {
-            font: 600 24px/28px $font-family-sans-serif-primary;
-            color: $color-black;
-            text-transform: uppercase;
+            font: 400 24px/26px $font-family-sans-serif-primary;
+            color: $color-black-light;
             padding-top: 20px;
             padding-bottom: 20px;
 
             @media #{$large-up} {
-                color: $color-white;
+                display: block !important;
                 font-weight: 400;
             }
         }
@@ -147,13 +181,20 @@
 
             .gallery__nav {
                 opacity: 1;
-                background-color: rgba(255, 255, 255, 0.9);
+                background-color: rgba(0, 0, 0, 1);
                 font-size: 1em;
-                padding: 15px 11px;
+                padding: 12px 11px;
+                width: 40px;
+                height: 40px;
 
                 @media #{$medium-up} {
                     font-size: 1.2em;
                     padding: 16px 18px;
+                }
+
+                &.icon-arrow-prev::before,
+                &.icon-arrow-next::before {
+                    color: #FFF;
                 }
             }
         }
@@ -161,15 +202,17 @@
 
     &__slide-count {
         font: 500 20px/22px $font-family-sans-serif-primary;
-        letter-spacing: -1px;
-
-        @media #{$xlarge-up} {
-            width: auto;
-        }
+        color: $color-black;
+        display: block;
+        font-size: 16px;
+        line-height: 24px;
+        margin-left: 15px;
 
         &, .gallery__header & {
-            color: $color-primary;
+            color: $color-black-light;
             letter-spacing: 0px;
+            float: left;
+            padding-top: 6px;
 
             @media #{$medium-up} {
                 font-size: 28px;
@@ -183,13 +226,13 @@
     }
 
     .gallery-caption {
-        padding-left: 30px;
+        padding-left: 15px;
         padding-top: 7px;
 
         &__content-holder {
             p {
-                font-size: 19px;
-                line-height: 25px;
+                font-size: 16px;
+                line-height: 20px;
             }
         }
     }
@@ -201,6 +244,10 @@
             margin-top: 10px;
             box-shadow: 0 7px 0 0 #ffff5c inset;
             font-size: 8px;
+
+            @media #{$small-only} {
+                display: none;
+            }
 
             @media #{$medium-up} {
                 font-size: 8px;
@@ -226,13 +273,23 @@
             p {
                 font-size: 19px;
                 line-height: 25px;
+
+                &.gallery__date-author {
+                    margin-top: -17px;
+                    margin-bottom: -7px;
+                    font-size: 11px;
+                    line-height: 20px;
+                    letter-spacing: 0.6px;
+                    font-family: $font-family-sans-serif-primary;
+                    text-transform: uppercase;
+                }
             }
         }
 
         .gallery__date {
-            color: $color-primary;
+            color: $color-grey-light;
             font: 16px/24px $font-family-serif-primary;
-            margin-top: 10px;
+            margin-top: 8px;
             padding-bottom: 0;
 
             @media #{$small-only} {
@@ -391,5 +448,11 @@
 
     &__next-bg {
         background: rgba(0,0,0,0.4);
+    }
+}
+
+.gallery__image-details {
+    @media only screen and (min-width: $gallery-footer-minor-bp-2) {
+        width: calc(100% - 128px);
     }
 }

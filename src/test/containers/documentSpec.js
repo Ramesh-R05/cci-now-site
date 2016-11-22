@@ -12,7 +12,7 @@ const AdStub = Context.createStubComponent();
 
 const Document = proxyquire('../../app/containers/document', {
     '@bxm/article/lib/article': ArticleStub,
-    '@bxm/gallery/lib/components/page/gallery': GalleryPageStub,
+    './gallery': GalleryPageStub,
     './page': PageStub,
     '../components/article/footer': FooterStub,
     '@bxm/ad/lib/google/components/ad': AdStub

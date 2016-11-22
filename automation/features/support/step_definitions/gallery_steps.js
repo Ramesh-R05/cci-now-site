@@ -55,13 +55,7 @@ module.exports = function() {
     });
 
     this.Given(/^I can see the image number "([^"]*)" of total "([^"]*)" on the gallery$/, function(num, total) {
-        var imageCount = browser.getText(gallery.imageCountDesktop);
-        expect(imageCount).toEqual(num + " / " + total);
-        console.log(imageCount);
-    });
-
-    this.Given(/^I can see the image number "([^"]*)" of total "([^"]*)" on the mobile gallery$/, function(num, total) {
-        var imageCount = browser.getText(gallery.imageCountMobile);
+        var imageCount = browser.getText(gallery.imageCount);
         expect(imageCount).toEqual(num + " / " + total);
         console.log(imageCount);
     });
