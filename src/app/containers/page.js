@@ -6,6 +6,7 @@ import Header from '@bxm/site-header';
 import Footer from '../components/footer';
 import NetworkHeader from '@bxm/header/lib/header/header';
 import UniHeader from '../components/uniheader';
+import Logos from '../components/uniheader/logos';
 import Navigation from '@bxm/site-header/lib/components/navigation';
 import classnames from 'classnames';
 import Ad from '@bxm/ad/lib/google/components/ad';
@@ -54,7 +55,7 @@ export default class Page extends Component {
         return (
             <div className={ pageClassName }>
                 <div className={ this.props.menuClasses }>
-                    <UniHeader currentUrl={ this.props.currentUrl }/>
+                    <UniHeader className="uniheader" logoList={this.context.config.brands.uniheader} currentUrl={this.props.currentUrl} homepageOnly={true} />
                     <Header
                         currentUrl={ this.props.currentUrl }
                         isExpanded={this.props.headerExpanded}
@@ -86,6 +87,7 @@ export default class Page extends Component {
                                     </svg>
                                 ` } } />
                             <Navigation className="mobile-menu" items={ mobileNav } currentUrl={ this.props.currentUrl } />
+                            <Logos className="mobile-menu-list" openInNewTab={true} logoList={this.context.config.brands.hamburgers} />
                         </div>
                     </MobileOffCanvas>
                     <Ad

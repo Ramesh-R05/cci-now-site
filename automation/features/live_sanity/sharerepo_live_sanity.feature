@@ -59,3 +59,17 @@ Feature: I have an automated sanity for my live environments
         When I am currently viewing the homepage
         * I should see MREC ad under the hero teaser
 
+    @navigation @BXMA-65
+    Scenario: I can see the brand logos in the hamburger menu
+        When I switch to "mobile" view
+        Given I am currently viewing the homepage
+        * I can navigate to all sites in the hamburger navigation menu
+            |title                      |url                                |tag                         |
+            |Homes To Love              |http://homestolove.com.au/         |gtm-mobile-menu-list-homes  |
+            |Food To Love               |http://foodtolove.com.au/          |gtm-mobile-menu-list-food   |
+            |Elle                       |http://elle.com.au/                |gtm-mobile-menu-list-elle   |
+            |Harper's Bazaar            |http://harpersbazaar.com.au/       |gtm-mobile-menu-list-hb     |
+            |Gourmet Traveller          |http://gourmettraveller.com.au/    |gtm-mobile-menu-list-gt     |
+            |Cosmopolitan               |http://cosmopolitan.com.au/        |gtm-mobile-menu-list-cosmo  |
+            |Dolly                      |http://dolly.com.au/               |gtm-mobile-menu-list-dolly  |
+

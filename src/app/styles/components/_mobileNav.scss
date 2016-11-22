@@ -1,11 +1,23 @@
 .off-canvas {
     height: 100%;
     overflow: auto;
-    padding: 0;
+    padding: 0; 
+}
+
+.off-canvas--left {
+    left: auto;
+    position: fixed;
+
+    @media #{$small-only} {
+        transform: translateX(-270px);
+    }
+    @media #{$medium-up} {
+        transform: translateX(-450px);
+    }
 }
 
 .off-canvas__overlay {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(255,255,255,0.8);
     z-index: $z-index-15;
 }
 
@@ -15,8 +27,8 @@
     outline: none;
     padding: 0;
     position: absolute;
-    right: 17px;
-    top: 22px;
+    right: 51px;
+    top: 67px;
 
     &:hover,
     &:focus,
@@ -24,15 +36,14 @@
         outline: none;
     }
 
-    &:hover svg,
-    &:hover svg path {
-        fill: $color-primary-light;
-    }
-
     svg {
-        fill: $color-primary;
         width: 19px;
         height: 19px;
+    }
+
+    @media #{$small-only} {
+        right: 16px;
+        top: 16px;
     }
 }
 
@@ -41,16 +52,18 @@
     font-size: 22px;
     line-height: 1em;
     margin-top: 0;
-    text-transform: uppercase;
 }
 
 .mobile-menu__nav {
     font-size: 24px;
     font-weight: bold;
 
+    a {
+        text-decoration: none;
+    }
+
     a:hover {
         color: $color-primary;
-        text-decoration: none;
     }
 
     a:focus {
@@ -58,7 +71,16 @@
     }
 
     @media #{$medium-up} {
-        font-size: 28px;
+        font-size: 24px;
+    }
+
+    &::after {
+        content: ' ';
+        border-top: 3px solid $color-primary;;
+        width: 60px;
+        margin-top: 24px;
+        position: relative;
+        display: inline-block;
     }
 }
 
@@ -66,13 +88,22 @@
     color: $color-white;
     display: block;
     padding: 5px 0;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 28px;    
+    font-weight: 400;
+
+    @media #{$small-only} {
+        font-size: 23px;
+        padding: 11px 0;
+
+        &:first-child {
+            padding: 0px 0px 10px;
+        };
+    }
 
     @media #{$medium-up} {
         padding: {
-            top: 7px;
-            bottom: 7px;
+            top: 14px;
+            bottom: 14px;
         };
     }
 }
@@ -82,18 +113,152 @@
     text-decoration: none;
 }
 
+.mobile-menu-list {
+    padding: 0;
+    li {
+        display: inline-block;
+        padding: 5px 21px 23px 0px;
+
+        @media #{$small-only} {
+            padding: 5px 15px 18px 0px;
+        }
+
+        .mobile-menu-list__logo {
+            &--homes-to-love {
+                width: 115px;
+                height: 36px;
+                margin-right: 11px;
+
+                @media #{$small-only} {
+                    width: 102px;
+                    height: 32px;
+                }
+            }
+            &--food-to-love {
+                width: 90px;
+                height: 36px;
+
+                @media #{$small-only} {
+                    width: 80px;
+                    height: 32px;
+                    margin-left: 4px;
+                }
+            }
+            &--elle {
+                width: 72px;
+                height: 29px;
+
+                @media #{$small-only} {
+                    margin-right: 12px;
+                    width: 63px;
+                    height: 26px;
+                }
+            }
+            &--harpers-bazaar {
+                width: 100px;
+                height: 30px;
+
+                @media #{$small-only} {
+                    margin-top: 2px;
+                    width: 88px;
+                    height: 30px;
+                }
+            }
+            &--gourmet-traveller {
+                width: 99px;
+                height: 31px;
+                padding-top: 2px;
+
+                @media #{$small-only} {
+                    width: 88px;
+                    height: 28px;
+                    margin-left: -3px;
+                }
+            }
+            &--cosmopolitan {
+                width: 130px;
+                height: 24px;
+
+                @media #{$small-only} {
+                    width: 115px;
+                    height: 22px;
+                    
+                    margin-left: 10px;
+                }
+            }
+            &--dolly {
+                width: 113px;
+                height: 25px;
+
+                @media #{$small-only} {
+                    width: 94px;
+                    height: 22px;
+                    margin-left: 3px;
+                    margin-top: 7px;
+                }
+            }
+        }
+    }
+
+    img:not(:hover) {
+        filter: brightness(0) invert(1);
+    }
+}
+
 .off-canvas-content-wrapper {
     padding: $column-gutter / 2;
 
-    @media #{$large-up} {
-        height: 100%;
-        overflow: auto;
-        position: fixed;
-        width: $offcanvas-tablet-width;
+    svg {
+        fill: $color-primary;
     }
 
-    @media #{$xlarge-up} {
-        width: $offcanvas-desktop-width;
-        padding-left: 165px + ($column-gutter / 2);
+    @media #{$medium-up} {
+        height: 100%;
+        overflow: auto;
+        width: $offcanvas-tablet-width;
+        padding: 52px 58px;
+    }
+}
+
+.mobile-menu-list:before {
+    content: 'MORE FROM THE TO LOVE NETWORK';
+    width: 100%;
+    display: block;
+    font-family: proxima-nova, sans-serif;
+    position: relative;
+    background-color: transparent;
+    color: #bbbbbb;
+    font-size: 13px;
+    margin: 30px 0px 20px;
+    padding-bottom: 30px;
+    left: 0;
+    height: 0px;
+
+    @media #{$small-only} {
+        font-size: 11px; 
+        margin: 34px 0px 16px;
+    }
+}
+
+@-moz-document url-prefix() { 
+    .off-canvas-wrapper {
+        transition: 0s all;
+    }
+}
+
+.off-canvas-wrapper {
+    z-index: 2000;
+    pointer-events: none;
+}
+
+.side-menu-wrapper--open-left {
+    .off-canvas-wrapper {
+        pointer-events: inherit;
+    }
+
+    .tl-header,
+    .content-wrapper,
+    .header {
+        left: 0 !important;
     }
 }

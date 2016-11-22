@@ -288,6 +288,16 @@ export default{
             "award:award_winning_work:Gossip Girl",
             "internet:website_category:Dolly Doctor"
         ],
+        "tagsDetails": [
+            {
+                name: "award:award_winning_work:Gossip Girl",
+                fullName: "award_award_winning_work_Gossip_Girl"
+            },
+            {
+                name: "internet:website_category:Dolly Doctor",
+                fullName: "internet_website_category_Dolly_Doctor"
+            }
+        ],
         "title": "Automation Test Article With Hero Image Test Title Long Title Long Title Long Title Long Title EOM",
         "url": "/fashion/automation-test-article-with-hero-image-3663",
         "video": "",

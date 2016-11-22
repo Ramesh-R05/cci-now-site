@@ -21,38 +21,6 @@ export default {
             "name": "Health & Fitness"
         },
         {
-            "url": "/news",
-            "name": "News"
-        },
-        {
-            "url": "/horoscopes",
-            "name": "Horoscopes"
-        },
-        {
-            "url": "/bride",
-            "name": "Bride"
-        },
-        {
-            "url": "/love",
-            "name": "Love"
-        },
-        {
-            "url": "/shop",
-            "name": "Shop"
-        },
-        {
-            "url": "/cosmo-tv",
-            "name": "Cosmo TV"
-        },
-        {
-            "url": "/lifestyle",
-            "name": "Lifestyle"
-        },
-        {
-            "url": "/career",
-            "name": "Career"
-        },
-        {
             "url": "/win",
             "name": "Win"
         }

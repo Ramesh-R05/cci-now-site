@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from 'react';
+import React, {Component, PropTypes} from 'react';
+import Logos from './logos';
 
 export default class UniHeader extends Component {
     static contextTypes = {
@@ -6,7 +7,9 @@ export default class UniHeader extends Component {
     };
 
     static propTypes = {
-        currentUrl: PropTypes.string.isRequired
+        currentUrl: PropTypes.string,
+        logoList: PropTypes.array,
+        className: PropTypes.string
     };
 
     render() {
@@ -14,26 +17,11 @@ export default class UniHeader extends Component {
             return null;
         }
 
-        const html = this.context.config.brands.map((item, i) => {
-            const gtmClassName = `gtm-uniheader-${item.gtmClass}`;
+        const navclass = `${this.props.className}__nav`
 
-            const imgClassName = 'uniheader__logo--' + item.title
-                .replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g, '')
-                .replace(/ /g, '-')
-                .toLowerCase();
-
-            return (
-                <li>
-                    <a key={i} href={item.url} title={item.title} className={gtmClassName}>
-                        <img src={item.imageUrl} alt={item.title} className={imgClassName} />
-                    </a>
-                </li>
-            );
-        });
-
-        return (<header className="uniheader">
-                    <nav className="uniheader__nav">
-                        <ul>{html}</ul>
+        return (<header className={this.props.className}>
+                    <nav className={navclass}>
+                    	<Logos className={this.props.className} logoList={this.props.logoList}/>
                     </nav>
                 </header>);
     }

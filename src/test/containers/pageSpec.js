@@ -9,6 +9,7 @@ const UniHeaderStub = Context.createStubComponent();
 const SiteHeaderStub = Context.createStubComponent();
 const SiteFooterStub = Context.createStubComponent();
 const NavigationStub = Context.createStubComponent();
+const LogosStub = Context.createStubComponent();
 const AdStub = Context.createStubComponent();
 
 let reactModuleInstance;
@@ -27,16 +28,22 @@ const PageWrapper = proxyquire('../../app/containers/page', {
     '@bxm/site-header': SiteHeaderStub,
     '../components/footer': SiteFooterStub,
     '../components/uniheader': UniHeaderStub,
+    '../components/uniheader/logos': LogosStub,
     '@bxm/site-header/lib/components/navigation': NavigationStub,
     '@bxm/ad/lib/google/components/ad': AdStub
 }).default;
 
 describe('Page Container', () => {
     const siteName = 'Dolly';
+    const brandStubData = {
+        uniheader: [],
+        hamburgers: []
+    }
     const contextConfigStub = {
         key: 'config',
         type: '',
         value: {
+            brands: brandStubData,
             get() {
                 return siteName;
             }
@@ -56,6 +63,7 @@ describe('Page Container', () => {
     let siteHeaderStub;
     let siteFooterStub;
     let navigationStub;
+    let logosStub;
     let closeButton;
     let currentInstance;
     let adStub;
@@ -90,10 +98,11 @@ describe('Page Container', () => {
             reactModule = Context.mountComponent(PageWrapper, props, [contextConfigStub]);
             currentInstance = TestUtils.findRenderedComponentWithType(reactModule, reactModuleInstance);
             offCanvas = TestUtils.findRenderedComponentWithType(reactModule, OffCanvasStub);
-            uniHeaderStub = TestUtils.findRenderedComponentWithType(reactModule, UniHeaderStub);
+            uniHeaderStub = TestUtils.findRenderedComponentWithType(reactModule, UniHeaderStub, [contextConfigStub]);
             siteHeaderStub = TestUtils.findRenderedComponentWithType(reactModule, SiteHeaderStub);
             siteFooterStub = TestUtils.findRenderedComponentWithType(reactModule, SiteFooterStub);
             navigationStub = TestUtils.findRenderedComponentWithType(reactModule, NavigationStub);
+            logosStub = TestUtils.findRenderedComponentWithType(reactModule, LogosStub);
             adStub = TestUtils.scryRenderedComponentsWithType(reactModule, AdStub);
             closeButton = TestUtils.findRenderedDOMComponentWithTag(reactModule, 'button');
         });
@@ -136,6 +145,14 @@ describe('Page Container', () => {
             expect(offCanvas.props).to.deep.contain({
                 side: 'left',
                 toggleSideMenu: currentInstance.toggleMenu
+            });
+        });
+
+        it (`should render the Logos with the appropriate props`, () => {
+            expect(ReactDOM.findDOMNode(logosStub)).to.exist;
+            expect(logosStub.props).to.deep.contain({
+                className: "mobile-menu-list", 
+                openInNewTab: true
             });
         });
 

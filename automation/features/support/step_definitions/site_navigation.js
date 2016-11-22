@@ -44,6 +44,27 @@ module.exports = function() {
         browser.click(site_nav.siteNavClose);
     });
 
+    this.Then(/^I can navigate to all sites in the hamburger navigation menu/, function(dataTable){
+        browser.click(site_nav.siteNavHamburger);
+        browser.waitForVisible(site_nav.siteNavHamburgerLinks, 3000);
+        wait(500); // ensure it waits for transition effect to complete
+        var rows = dataTable.hashes();
+
+        var menuTitle = browser.getAttribute(site_nav.siteNavLogos, 'title');
+        var menuhref = browser.getAttribute(site_nav.siteNavLogos, 'href');
+        var menuTag = browser.getAttribute(site_nav.siteNavLogos, 'class');
+        //end
+
+        for (var i = 0; i < rows.length; ++i) {
+            var row = rows[i];
+            //validates position of menu base on Index
+            expect(menuTitle[i]).toEqual(row['title']);
+            expect(menuhref[i]).toMatch(row['url']);
+            expect(menuTag[i]).toEqual(row['tag']);
+        }
+        browser.click(site_nav.siteNavClose);
+    });
+
     this.Then(/^when I scroll down in the page$/, function () {
         browser.scroll(0, 1000);
     });

@@ -37,7 +37,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         And I should see the site navigation links
         And I should see the site navigation hamburger icon
         And I can see the link "FASHION" is highlighted on the navigation links
-        And I can see the link "FASHION" is highlighted on the hamburger navigation links
+        And I can see the link "Fashion" is highlighted on the hamburger navigation links
 
     Scenario: I can see the navigation widget on the article page
         Given I am currently viewing "fashion/models/automation-test-article-with-hero-image-3663"
@@ -46,8 +46,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         And I should see the site navigation links
         And I should see the site navigation hamburger icon
         And I can see the link "FASHION" is highlighted on the navigation links
-        And I can see the link "FASHION" is highlighted on the hamburger navigation links
-
+        And I can see the link "Fashion" is highlighted on the hamburger navigation links
 
     Scenario: I can see the navigation widget on the gallery page
         Given I am currently viewing "fashion/models/automation-test-gallery-13302"
@@ -55,12 +54,16 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         Then I should not see the site navigation links
         And I can not see the hamburger menu
 
-# Tags page in stubb is not workin will need to look at this manually
-#    Scenario: I can see the navigation widget on the tag page
-#        Given I am currently viewing "tags/video"
-#        When I switch to "tags/desktop" view
-#        Then I should see the site Header logo
-#        And I should see the site navigation links
-#        And I should see the site navigation hamburger icon
-#        And I can see the link "VIDEO" is highlighted on the navigation links
-#        And I can see the link "VIDEO" is highlighted on the hamburger navigation links
+    @BXMA-65
+    Scenario: I can see the brand logos in the hamburger menu
+        When I switch to "mobile" view
+        Given I am currently viewing "fashion/models/automation-test-article-with-hero-image-3663"
+         * I can navigate to all sites in the hamburger navigation menu
+            |title                      |url                                |tag                         |
+            |Homes To Love              |http://homestolove.com.au/         |gtm-mobile-menu-list-homes  |
+            |Food To Love               |http://foodtolove.com.au/          |gtm-mobile-menu-list-food   |
+            |Elle                       |http://elle.com.au/                |gtm-mobile-menu-list-elle   |
+            |Harper's Bazaar            |http://harpersbazaar.com.au/       |gtm-mobile-menu-list-hb     |
+            |Gourmet Traveller          |http://gourmettraveller.com.au/    |gtm-mobile-menu-list-gt     |
+            |Cosmopolitan               |http://cosmopolitan.com.au/        |gtm-mobile-menu-list-cosmo  |
+            |Dolly                      |http://dolly.com.au/               |gtm-mobile-menu-list-dolly  |

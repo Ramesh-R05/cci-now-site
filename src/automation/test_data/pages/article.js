@@ -70,6 +70,32 @@ export default {
         "nodeType": "Article",
         "summary": "If it gets us lookin' like Kendall then sure!",
         "tags": ["food:Renovating:Trims and fittings", "food:Topic:Feature garden"],
+        "tagsDetails": [
+            {
+                "name": "celebrities:celebrity:Drake",
+                "urlName": "Drake",
+                "fullName": "celebrities_celebrity_Drake",
+                "displayName": "Drake"
+            },
+            {
+                "name": "people:profession:presenter:Jamie Durie",
+                "urlName": "Jamie-Durie",
+                "fullName": "people_profession_presenter_Jamie_Durie",
+                "displayName": "Jamie Durie"
+            },
+            {
+                "name": "food:Difficulty:Easy",
+                "urlName": "Easy",
+                "fullName": "food_Difficulty_Easy",
+                "displayName": "Easy"
+            },
+            {
+                "name": "food:Number of ingredients:3 ingredients",
+                "urlName": "3-ingredients",
+                "fullName": "food_Number_of_ingredients_3_ingredients",
+                "displayName": "3 ingredients"
+            }
+        ],
         "title": "Kendall Jenner's skin doctor tells us what mistake you're making when washing your face",
         "url": "/fashion/kendall-jenners-skin-doctor-tells-us-what-mistake-3640",
         "video": ""

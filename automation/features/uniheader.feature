@@ -3,12 +3,12 @@ Feature: Uniheader
     As a user
     I should be able to see the Uniheader
 
-@homepage
+    @homepage
     Scenario: Verify desktop WN header is functional correctly on homepage
         When I switch to "desktop" view
         Given I am currently viewing the homepage
         * I can navigate to all sites in the desktop list on the header
-            |title                      |url                                |tag    |
+            |title                      |url                                |tag                  |
             |Australian Women's Weekly  |/aww                               |gtm-uniheader-aww    |
             |Woman's Day                |/womansday                         |gtm-uniheader-wd     |
             |Good Health                |/good-health                       |gtm-uniheader-gh     |
@@ -19,4 +19,3 @@ Feature: Uniheader
             |Yours                      |/yours                             |gtm-uniheader-yours  |
             |TV WEEK                    |/tvweeklogieawards                 |gtm-uniheader-tvweek |
             |Mother & Baby              |/mother-and-baby                   |gtm-uniheader-mb     |
-

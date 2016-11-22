@@ -1,5 +1,6 @@
 var site_navigation_widget = {
     siteNavHamburger: "button.header-menu__button-menu",
+    siteNavLogos: ".mobile-menu-list a",
     siteNavLinks: "nav.header-nav__nav",
     siteNaveActiveLink: ".header-nav__nav > a.nav-item.nav-item--active",
     siteNavHeader: "div.header-banner",
