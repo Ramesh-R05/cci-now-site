@@ -26,7 +26,7 @@
 .header {
     @include mobile-menu-fixed();
     border-width: 0px;
-    background-color: $color-black;
+    background-color: $color-aqua;
     box-shadow: none;
 
     @media #{$medium-up} {
@@ -52,25 +52,24 @@
     }
 
     .header-logo {
+        @media #{$medium-up} {
+            margin-right: 43px;
+        }
+
         @media #{$large-up} {
             margin-left: 0;
         }
     }
 
     .header-logo__link-image {
-        background-size: 152px 28px;
-        height: 28px;
-        width: 152px;
-
-        @media #{$small-only} {
-            background-size: 124px 30px;
-            height: 30px;
-            width: 124px;
-        }
+        background-size: 207px 20px;
+        height: 20px;
+        width: 207px;
 
         @media #{$medium-up} {
-            background-size: $header-logo-width-desktop 37px;
-            height: 37px;
+            background-size: $header-logo-width-desktop 27px;
+            width: $header-logo-width-desktop;
+            height: 27px;
             margin-left: 0;
         }
     }
@@ -106,40 +105,61 @@
         }
     }
 
-    .header-menu__button-menu {
-        svg path {
-            fill: $color-white;
-        }
-        &:hover svg,
-        &:hover svg path {
-            fill: $color-primary;
+    .header-menu {
+        &__button-menu {
+
+            padding: 0 $column-gutter/2;
+
+            @media #{$medium-up} {
+                padding: 0 $column-gutter 0 38px;
+            }
+
+            svg, svg path {
+                fill: $color-white;
+            }
+
+            &:hover svg,
+            &:hover svg path {
+                fill: $color-white;
+                opacity: 0.75;
+                transition: opacity 0.3s;
+                transition-timing-function: ease-in-out;
+            }
         }
     }
 
     .header-nav {
-        width: calc(100% - #{$header-logo-container-width-desktop + 80px});
+        width: calc(100% - #{$header-logo-container-width-desktop + 160px});
+
+        @media #{$medium-up} {
+
+            &:before {
+                border-left: 1px solid #79dbdf;
+                height: 22px;
+                right: 10px;
+                top: 8px;
+                position: relative;
+            }
+        }
 
         a {
             color: $color-white;
             display: inline-block;
-            font-size: 1.1em;
-            padding: 0 20px 0 21px;
+            font-size: 15px;
+            letter-spacing: 1.2px;
+            padding: 0 15px 0 15px;
+            text-decoration: none;
 
             &:before {
-                height: 12px;
-                top: 5px;
-
-                @media #{$xlarge-up} {
-                    height: 15px;
-                    top: 7px;
-                }
+                display: none;
             }
 
             &:active,
             &:focus,
-            &:hover {
-                color: $color-primary;
-                text-decoration: none;
+            &:hover,
+            &.nav-item--active {
+                color: $color-white;
+                text-decoration: underline;
             }
 
             &:first-child {
@@ -156,17 +176,13 @@
 
     .header-nav__nav {
         filter: blur(0);
-        height: 21px;
-        line-height: 2em;
-        margin-top: 25px;
+        height: 22px;
         overflow: hidden;
+        line-height: 2em;
+        margin-top: 14px;
         vertical-align: top;
         white-space: normal;
         width: 100%;
-
-        @media #{$xlarge-up} {
-            margin-top: 24px;
-        }
     }
 }
 
@@ -182,12 +198,12 @@
         > div {
             @media #{$medium-up} {
                 float: left;
-                height: 75px;
+                height: $header-height-desktop;
                 overflow: hidden;
             }
         }
     }
-    
+
     .header-banner {
         @media #{$xlarge-up} {
             line-height: $header-banner-logo-height;
@@ -238,7 +254,7 @@
     .header-nav__nav {
         @media #{$large-up} {
             line-height: 1em;
-            margin-top: 24px;
+            margin-top: 16px;
             vertical-align: top;
         }
     }

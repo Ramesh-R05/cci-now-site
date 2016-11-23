@@ -3,8 +3,8 @@ Feature: I have an automated sanity for my live environments
 
     @homepage @BXMA-89
     Scenario: Verify desktop WN header is functional correctly on homepage
-        When I switch to "desktop" view
-        Given I am currently viewing the homepage
+        Given I switch to "desktop" view
+        When I am currently viewing the homepage
         * I can navigate to all sites in the desktop list on the header
             |title                      |url                                |tag    |
             |Australian Women's Weekly  |/aww                               |gtm-uniheader-aww    |
@@ -20,8 +20,8 @@ Feature: I have an automated sanity for my live environments
 
     @hero @BXMA-40
     Scenario: Verify the hero teaser element is functional correctly in mobile view
-        Given I am currently viewing the homepage
-        When I switch to "mobile" view
+        Given I switch to "mobile" view
+        When I am currently viewing the homepage
         * I should see the homepage hero element
         * I should see the homepage hero image
         * The homepage hero image should be clickable to open its page
@@ -30,8 +30,8 @@ Feature: I have an automated sanity for my live environments
 
     @homepagefeed @BXMA-82
     Scenario: Verify the top news feed is functional correctly in mobile view
-        Given I am currently viewing the homepage
-        When I switch to "mobile" view
+        Given I switch to "mobile" view
+        When I am currently viewing the homepage
         * I should see 6 top half feed
         * I should see each top feed item containing its image and clickable to open its page
         * I should see each top feed item containing its title and clickable to open its page
@@ -39,8 +39,8 @@ Feature: I have an automated sanity for my live environments
 
     @homepagefeed-bottom @BXMA-60
     Scenario: Verify the bottom news feed is functional correctly in mobile view
-        Given I am currently viewing the homepage
-        When I switch to "mobile" view
+        Given I switch to "mobile" view
+        When I am currently viewing the homepage
         * I should see 6 bottom half feed
         * I should see each bottom feed item containing its image and clickable to open its page
         * I should see each bottom feed item containing its title and clickable to open its page
@@ -61,8 +61,8 @@ Feature: I have an automated sanity for my live environments
 
     @navigation @BXMA-65
     Scenario: I can see the brand logos in the hamburger menu
-        When I switch to "mobile" view
-        Given I am currently viewing the homepage
+        Given I switch to "mobile" view
+        When I am currently viewing the homepage
         * I can navigate to all sites in the hamburger navigation menu
             |title                      |url                                |tag                         |
             |Homes To Love              |http://homestolove.com.au/         |gtm-mobile-menu-list-homes  |
@@ -72,4 +72,21 @@ Feature: I have an automated sanity for my live environments
             |Gourmet Traveller          |http://gourmettraveller.com.au/    |gtm-mobile-menu-list-gt     |
             |Cosmopolitan               |http://cosmopolitan.com.au/        |gtm-mobile-menu-list-cosmo  |
             |Dolly                      |http://dolly.com.au/               |gtm-mobile-menu-list-dolly  |
+
+    @navigation @BXMA-117
+    Scenario: I can see the navigation widget on the homepage desktop
+        Given I switch to "desktop" view
+        When I am currently viewing the homepage
+        * I should see the site header banner
+        * I should see the site header logo clickable to open homepage
+        * I should see the site navigation links and "gtm-navigation-section nav-item" class name in "header"
+        * I should see the site navigation links and "gtm-navigation-section nav-item" class name in "hamburger"
+
+    @navigation @BXMA-117
+    Scenario: I can see the navigation widget on the homepage mobile
+        Given I switch to "mobile" view
+        When I am currently viewing the homepage
+        * I should see the site header logo clickable to open homepage
+        * I should not see the site navigation links
+        * I should see the site navigation links and "gtm-navigation-section nav-item" class name in "hamburger"
 

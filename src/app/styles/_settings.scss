@@ -27,13 +27,13 @@ $to-love-global-header-height-desktop: 51px;
 $global-header-height: $to-love-global-header-height-mobile;
 $global-header-height-desktop: $to-love-global-header-height-desktop;
 
-$header-height: 55px;
-$header-height-desktop: 75px;
+$header-height: 54px;
+$header-height-desktop: 58px;
 $header-banner-logo-height: 170px;
-$header-logo-width-desktop: 152px;
-$header-logo-container-width-desktop: $header-logo-width-desktop + $column-gutter;
+$header-logo-width-desktop: 212px;
+$header-logo-container-width-desktop: $header-logo-width-desktop;
 
-$header-logo-path: '/assets/images/cosmo-logo.svg';
+$header-logo-path: '/assets/images/now-logo-white.svg';
 $header-banner-background-path: '/assets/backgrounds/header.png';
 $header-transition-duration: 200ms;
 
