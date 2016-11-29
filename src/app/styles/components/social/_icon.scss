@@ -39,7 +39,8 @@
         }
 
         svg {
-            margin-left: 4px;
+            vertical-align: baseline;
+            margin-left: 0;
         }
     }
 
@@ -50,13 +51,3 @@
     }
 }
 
-.home-page {
-    .social-link {
-        &__icon {
-            svg {
-                vertical-align: baseline;
-                margin-left: 0;
-            }
-        }
-    }
-}

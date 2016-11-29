@@ -1,25 +1,13 @@
-@homepage @now
-Feature: Homepage
+@section @now
+Feature: Section Landing page
     As a user
-    I should be able to see homepage
+    I should be able to see section landing page which has the same layout as homepage
 
-    @trending @DD0-69
-    Scenario Outline: Verify the trending element is functional correctly in "<device>" view
-        Given I am currently viewing the homepage
-        When I switch to "<device>" view
-        * I should see the trending title at the "<position>"
-        * I should see <number> trending teaser images and titles which are clickable to open their page
-        Examples:
-            |device             | position  | number |
-            | mobile            | top       | 2      |
-            | tablet portrait   | top       | 3      |
-            | tablet landscape  | top       | 5      |
-            | desktop           | top       | 5      |
-
-    @hero @BXMA-40
+    @hero @BXMA-34
     Scenario Outline: Verify the hero teaser element is functional correctly in "<device>" view
-        Given I am currently viewing the homepage
+        Given I am currently viewing "fashion"
         When I switch to "<device>" view
+        * I should see the section title containing the default word as now
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
         * I should see the main hero item containing source
@@ -30,9 +18,9 @@ Feature: Homepage
             |tablet landscape|
             |desktop|
 
-    @homepagefeed @BXMA-82
+    @sectionfeed @BXMA-34
     Scenario Outline: Verify the top news feed is functional correctly in "<device>" view
-        Given I am currently viewing the homepage
+        Given I am currently viewing "fashion"
         When I switch to "<device>" view
         * I should see 6 top half feed
         * I should see each top feed item containing its image and clickable to open its page
@@ -45,9 +33,9 @@ Feature: Homepage
             |tablet landscape|
             |desktop|
 
-    @homepagefeed-bottom @BXMA-60
+    @sectionfeed-bottom @BXMA-34
     Scenario Outline: Verify the bottom news feed is functional correctly in "<device>" view
-        Given I am currently viewing the homepage
+        Given I am currently viewing "fashion"
         When I switch to "<device>" view
         * I should see 6 bottom half feed
         * I should see each bottom feed item containing its image and clickable to open its page
@@ -60,3 +48,10 @@ Feature: Homepage
             |tablet landscape|
             |desktop|
 
+    @sectionfeed-bottom @BXMA-34
+        Examples:
+            |device|
+            |mobile|
+            |tablet portrait |
+            |tablet landscape|
+            |desktop|

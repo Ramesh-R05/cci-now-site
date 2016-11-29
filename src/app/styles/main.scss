@@ -51,6 +51,7 @@
 @import 'components/repeatable';
 @import 'components/page';
 @import 'components/mobileNav';
+@import 'components/container';
 @import 'components/content-body';
 @import 'components/video';
 @import 'components/header';
@@ -78,7 +79,6 @@
 // Home Page
 @import 'components/home/container';
 @import 'components/home/ad';
-@import 'components/home/social';
 @import 'components/home/carousel';
 @import 'components/home/teasers';
 
@@ -104,4 +104,5 @@
 //Social
 @import 'components/social/icon';
 @import 'components/social/link';
+@import 'components/social/social';
 @import 'components/social/title';

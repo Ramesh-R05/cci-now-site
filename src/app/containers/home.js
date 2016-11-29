@@ -70,7 +70,7 @@ export default class Home extends Component {
                     <div className="stripe-bg">
                         <div className="container">
                             <div className="row">
-                                <div className="home-page__top-container columns">
+                                <div className="page__top-container columns">
                                     <div className="row">
                                         <div className="columns large-8 xlarge-9 home-page__teasers-container" ref="top">
                                             <HeroTeaser article={this.props.heroTeaser} />
@@ -87,7 +87,7 @@ export default class Home extends Component {
                                                 adTargets={{ position: 2 }}
                                             />
                                         </div>
-                                        <div className="home-page__social-wrapper columns large-4 xlarge-3">
+                                        <div className="page__social-wrapper columns large-4 xlarge-3">
                                             <div className="columns medium-6 large-12">
                                                 <StickyAndDockAd
                                                     offsetTop={95}
@@ -100,8 +100,8 @@ export default class Home extends Component {
                                                         sizes="mrec"
                                                         displayFor="large"
                                                         targets={{position: 1}} />
-                                                    <div className="home-page__get-social-container">
-                                                        <span className="home-page__social-logo">Now To Love</span>
+                                                    <div className="page__get-social-container">
+                                                        <span className="page__social-logo">Now To Love</span>
                                                         <SocialContainer />
                                                     </div>
                                                 </StickyAndDockAd>

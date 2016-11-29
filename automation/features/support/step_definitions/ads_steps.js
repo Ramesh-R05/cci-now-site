@@ -6,20 +6,57 @@ module.exports = function() {
         //Always scroll to the top first to allow this scenario can be reused for tablet landscape after testing desktop
         browser.scroll(0,0);
         //Verify the ad is appearing
-        expect(browser.isVisible(home.adMrecNextToTopFeed)).toBe(true);
+        expect(browser.isVisible(wn_ads.adMrecNextToTopFeed)).toBe(true);
         //Verify the ad is a sticky ad after scrolling down
         browser.scroll(0,1500);
-        expect(browser.isVisible(home.adMrecNextToTopFeed)).toBe(true);
-        expect(browser.getAttribute(home.adMrecNextToTopFeedSticky, 'style')).toContain("fixed");
+        expect(browser.isVisible(wn_ads.adMrecNextToTopFeed)).toBe(true);
+        expect(browser.getAttribute(wn_ads.adMrecNextToTopFeedSticky, 'style')).toContain("fixed");
+    });
+
+    this.Given(/^I should see sticky MREC ad next to the bottom news feed$/, function () {
+        //Always scroll to the beginning of the bottom news feed to allow this scenario can be reused for tablet landscape after testing desktop
+        browser.scroll(0,2000);
+        //Verify the ad is appearing
+        browser.waitForVisible(wn_ads.adMrecNextToBottomFeed,3000);
+        expect(browser.isVisible(wn_ads.adMrecNextToBottomFeed)).toBe(true);
+        //Verify the ad is a sticky ad after scrolling down
+        browser.scroll(0,2700);
+        expect(browser.isVisible(wn_ads.adMrecNextToBottomFeed)).toBe(true);
+        //expect(browser.getAttribute(wn_ads.adMrecNextToBottomFeedSticky, 'style')).toContain("fixed"); //Unstable result - Will find a solution later
     });
 
     this.Then(/^I should see MREC ad under the hero teaser$/, function () {
-        expect(browser.isVisible(home.adMrecUnderHero)).toBe(true);
+        expect(browser.isVisible(wn_ads.adMrecUnderHero)).toBe(true);
     });
 
     this.Then(/^I should not see MREC ad under the hero teaser$/, function () {
-        expect(browser.isVisible(home.adMrecUnderHero)).toBe(false);
+        expect(browser.isVisible(wn_ads.adMrecUnderHero)).toBe(false);
     });
+
+    this.Then(/^I should see the top leaderboard ad under navigation$/, function () {
+        expect(browser.isVisible(wn_ads.adTopLeaderboard)).toBe(true);
+    });
+
+    this.Then(/^I should see the middle leaderboard ad under the top news feed$/, function () {
+        expect(browser.isVisible(wn_ads.adMiddleLeaderboard)).toBe(true);
+    });
+
+    this.Then(/^I should see the bottom leaderboard ad above the footer$/, function () {
+        expect(browser.isVisible(wn_ads.adBottomLeaderboard)).toBe(true);
+    });
+
+    this.Then(/^I should not see the bottom leaderboard ad above the footer$/, function () {
+        expect(browser.isVisible(wn_ads.adBottomLeaderboard)).toBe(false);
+    });
+
+    this.Then(/^I should see MREC ad in the bottom news feed$/, function () {
+        expect(browser.isVisible(wn_ads.adMrecInBottomNewsFeed)).toBe(true);
+    });
+
+    this.Then(/^I should not see MREC ad in the bottom news feed$/, function () {
+        expect(browser.isVisible(wn_ads.adMrecInBottomNewsFeed)).toBe(false);
+    });
+
 
     //BELOW ARE THE STEPS FROM OTHER SITES. I WILL DECIDE TO KEEP OR DELETE LATER
 

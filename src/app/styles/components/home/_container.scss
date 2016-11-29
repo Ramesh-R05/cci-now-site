@@ -2,30 +2,6 @@
     overflow: hidden !important;
 }
 
-.home-page {
-    &__top-container {
-        padding-top: 20px;
-        margin-bottom: 30px;
-
-        @media #{$medium-up} {
-            padding-top: 30px;
-        }
-
-        .row {
-            @media #{$medium-only} {
-                margin: {
-                    left: 0;
-                    right: 0;
-                }
-            }
-        }
-    }
-
-    &__teasers-container {
-        border-right: 1px solid $color-grey-lighter;
-    }
-}
-
 .stripe-bg {
     background: none;
 }

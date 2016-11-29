@@ -3,71 +3,39 @@ var world = require('../world');
 
 module.exports = function(){
 
-    this.When(/^I should see the homepage hero element$/, function () {
-        expect(browser.isVisible(home.heroImg)).toBe(true);
-    });
-    this.When(/^I should see the homepage hero image$/, function () {
+    this.When(/^I should see the main hero item containing its image and clickable to open its page$/, function () {
+        //Verify the hero image
         var heroImgUrl = browser.getAttribute(home.heroImgUrl, 'data-srcset');
-        expect(heroImgUrl).not.toBeUndefined();
         console.log(heroImgUrl);
+        expect(heroImgUrl).not.toBeUndefined();
+        //Verify the hero image's link
+        var heroImgLink = browser.getAttribute(home.heroImgLink, 'href');
+        console.log(heroImgLink);
+        expect(heroImgLink).not.toBeUndefined();
     });
+
+    this.When(/^I should see the main hero item containing its title and clickable to open its page$/, function () {
+        //Verify the hero title
+        var heroTitle = browser.getText(home.heroTitle);
+        console.log(heroTitle);
+        expect(heroTitle).not.toBeUndefined();
+        //Verify the hero title's link
+        var heroTitleLink = browser.getAttribute(home.heroTitle, 'href');
+        console.log(heroTitleLink);
+        expect(heroTitleLink).not.toBeUndefined();
+    });
+
+    this.When(/^I should see the main hero item containing source$/, function () {
+        //Verify the hero source
+        var heroSource = browser.getText(home.heroSource);
+        console.log(heroSource);
+        expect(heroSource).not.toBeUndefined();
+    });
+
     this.When(/^The homepage hero image should be clickable to open its page$/, function () {
         var heroImgLink = browser.getAttribute(home.heroImgLink, 'href');
         expect(heroImgLink).not.toBeUndefined();
         console.log(heroImgLink);
-    });
-    this.When(/^I should see the homepage hero custom label in the right side$/, function () {
-        var heroLabelPosition = browser.getCssProperty(home.heroLabelPosition, 'position').value;
-        console.log("Position of hero custom Label for desktop is" + "::" + heroLabelPosition);
-        expect(heroLabelPosition).toEqual("relative");
-        var heroCustomLabel = browser.getText(home.heroCustomLabel);
-       expect(heroCustomLabel).not.toBeUndefined();
-        console.log(heroCustomLabel);
-    });
-    this.When(/^I should see the homepage hero custom label at the bottom edge of hero image$/, function () {
-        var heroLabelPosition = browser.getCssProperty(home.heroLabelPosition, 'position').value;
-        console.log("Position of hero custom Label for desktop is" + "::" + heroLabelPosition);
-        expect(heroLabelPosition).toEqual("absolute");
-        var heroCustomLabel = browser.getText(home.heroCustomLabel);
-        expect(heroCustomLabel).not.toBeUndefined();
-        console.log(heroCustomLabel);
-    });
-    this.When(/^I should see the homepage hero custom label below the hero image$/, function () {
-        var heroLabelPosition = browser.getCssProperty(home.heroLabelPosition, 'position').value;
-        console.log("Position of hero custom Label for desktop is" + "::" + heroLabelPosition);
-        expect(heroLabelPosition).toEqual("static");
-        var heroCustomLabel = browser.getText(home.heroCustomLabel);
-        expect(heroCustomLabel).not.toBeUndefined();
-        console.log(heroCustomLabel);
-    });
-    this.When(/^I should see the homepage hero title$/, function () {
-        var heroImgTitle = browser.getText(home.heroTitle);
-        expect(heroImgTitle).not.toBeUndefined();
-        console.log(heroImgTitle);
-    });
-    this.When(/^The homepage hero title should be clickable to open its page$/, function () {
-        var heroTitleLink = browser.getAttribute(home.heroTitle, 'href');
-        expect(heroTitleLink).not.toBeUndefined();
-        var heroImgLink = browser.getAttribute(home.heroImgLink, 'href');
-        expect(heroTitleLink).toEqual(heroImgLink);
-        console.log(heroTitleLink);
-    });
-
-    this.When(/^I should see the homepage hero border in desktop style$/, function () {
-    var heroBorderDesktop = browser.getCssProperty(home.heroStyle, 'background-image').value;
-        expect(heroBorderDesktop).toMatch("/assets/backgrounds/line-light-pink.svg");
-    });
-    this.When(/^I should see the homepage hero border in tablet style$/, function () {
-        var heroBorderTablet = browser.getCssProperty(home.heroStyle, 'background-image').value;
-        expect(heroBorderTablet).toMatch("/assets/backgrounds/line-light-pink-ipad.svg");
-    });
-    this.When(/^I should see the homepage hero border in mobile style$/, function () {
-        var heroBorderMobile = browser.getCssProperty(home.heroStyle, 'background-image').value;
-        expect(heroBorderMobile).toMatch("/assets/backgrounds/line-light-pink.svg");
-    });
-    this.When(/^I should see the homepage hero striped background$/, function () {
-       var heroBackground = browser.getCssProperty(home.heroImg, 'background').value;
-        expect(heroBackground).toMatch("/assets/backgrounds/hero.png");
     });
 
     this.When(/^I should see (\d+) top half feed$/, function (number) {

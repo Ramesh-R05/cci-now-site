@@ -12,7 +12,7 @@ var homepage_widget = {
     heroLabelPosition: '.hero-wrapper .teaser__sub-section-container',
     heroTitle: '.hero-wrapper .gtm-teaser',
     heroShortTeaser: '.hero-wrapper .teaser__summary',
-    heroSource: '.hero-wrapper .hero.teaser__source',
+    heroSource: '.hero-wrapper .hero-teaser__source',
     heroStyle: '.content-wrapper .stripe-bg',
     trendingTitle: '.trending__caption.hide-for-xlarge-up img',
     bottomFeed: '.teaser__list.teaser-view-list',
@@ -26,8 +26,6 @@ var homepage_widget = {
     bottomFeedTeaserImgLink: '.teaser__list.teaser-view-list .teaser__image',
     bottomFeedTeaserTitle: '.teaser__list.teaser-view-list .teaser__title a',
     bottomFeedTeaserSource: '.teaser__list.teaser-view-list .teaser__source',
-    adMrecNextToTopFeed: '.home-page__top-container #gpt-slot-2',
-    adMrecNextToTopFeedSticky: '.home-page__top-container .home-page__social-wrapper > div > div > span',
-    adMrecUnderHero: '.hero-wrapper #gpt-slot-1',
+
 };
 module.exports = homepage_widget;

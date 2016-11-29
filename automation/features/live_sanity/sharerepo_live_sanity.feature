@@ -22,11 +22,9 @@ Feature: I have an automated sanity for my live environments
     Scenario: Verify the hero teaser element is functional correctly in mobile view
         Given I switch to "mobile" view
         When I am currently viewing the homepage
-        * I should see the homepage hero element
-        * I should see the homepage hero image
-        * The homepage hero image should be clickable to open its page
-        * I should see the homepage hero title
-        * The homepage hero title should be clickable to open its page
+        * I should see the main hero item containing its image and clickable to open its page
+        * I should see the main hero item containing its title and clickable to open its page
+        * I should see the main hero item containing source
 
     @homepagefeed @BXMA-82
     Scenario: Verify the top news feed is functional correctly in mobile view
@@ -50,14 +48,23 @@ Feature: I have an automated sanity for my live environments
     Scenario: Ads on homepage in the desktop view
         Given I switch to "desktop" view
         When I am currently viewing the homepage
+        * I should see the top leaderboard ad under navigation
         * I should see sticky MREC ad next to the top news feed
         * I should not see MREC ad under the hero teaser
+        * I should see sticky MREC ad next to the bottom news feed
+        * I should not see MREC ad in the bottom news feed
+        * I should see the middle leaderboard ad under the top news feed
+        * I should see the bottom leaderboard ad above the footer
 
     @ad @BXMA-90
     Scenario: Ads on homepage in the mobile view
         Given I switch to "mobile" view
         When I am currently viewing the homepage
+        * I should see the top leaderboard ad under navigation
         * I should see MREC ad under the hero teaser
+        * I should see the middle leaderboard ad under the top news feed
+        * I should see MREC ad in the bottom news feed
+        * I should not see the bottom leaderboard ad above the footer
 
     @navigation @BXMA-65
     Scenario: I can see the brand logos in the hamburger menu

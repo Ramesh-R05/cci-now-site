@@ -13,24 +13,86 @@ Feature: Ad
     Scenario: Ads on homepage in the desktop view
         Given I switch to "desktop" view
         When I am currently viewing the homepage
+        * I should see the top leaderboard ad under navigation
         * I should see sticky MREC ad next to the top news feed
         * I should not see MREC ad under the hero teaser
+        * I should see sticky MREC ad next to the bottom news feed
+        * I should not see MREC ad in the bottom news feed
+        * I should see the middle leaderboard ad under the top news feed
+        * I should see the bottom leaderboard ad above the footer
 
     @BXMA-90
     Scenario: Ads on homepage in the tablet landscape view
         Given I switch to "tablet landscape" view
         When I am currently viewing the homepage
+        * I should see the top leaderboard ad under navigation
         * I should see sticky MREC ad next to the top news feed
         * I should not see MREC ad under the hero teaser
+        * I should see sticky MREC ad next to the bottom news feed
+        * I should not see MREC ad in the bottom news feed
+        * I should see the middle leaderboard ad under the top news feed
+        * I should see the bottom leaderboard ad above the footer
 
     @BXMA-90
     Scenario: Ads on homepage in the tablet portrait view
         Given I switch to "tablet portrait" view
         When I am currently viewing the homepage
+        * I should see the top leaderboard ad under navigation
         * I should see MREC ad under the hero teaser
+        * I should see sticky MREC ad next to the bottom news feed
+        * I should not see MREC ad in the bottom news feed
+        * I should see the middle leaderboard ad under the top news feed
+        * I should see the bottom leaderboard ad above the footer
 
     @BXMA-90
     Scenario: Ads on homepage in the mobile view
         Given I switch to "mobile" view
         When I am currently viewing the homepage
+        * I should see the top leaderboard ad under navigation
         * I should see MREC ad under the hero teaser
+        * I should see the middle leaderboard ad under the top news feed
+        * I should see MREC ad in the bottom news feed
+        * I should not see the bottom leaderboard ad above the footer
+
+    @BXMA-34
+    Scenario: Ads on section landing page in the desktop view
+        Given I switch to "desktop" view
+        When I am currently viewing "fashion"
+        * I should see the top leaderboard ad under navigation
+        * I should see sticky MREC ad next to the top news feed
+        * I should not see MREC ad under the hero teaser
+        * I should see sticky MREC ad next to the bottom news feed
+        * I should see the middle leaderboard ad under the top news feed
+        * I should see the bottom leaderboard ad above the footer
+
+    @BXMA-34
+    Scenario: Ads on section landing page in the tablet landscape view
+        Given I switch to "tablet landscape" view
+        When I am currently viewing "fashion"
+        * I should see the top leaderboard ad under navigation
+        * I should see sticky MREC ad next to the top news feed
+        * I should not see MREC ad under the hero teaser
+        * I should see sticky MREC ad next to the bottom news feed
+        * I should see the middle leaderboard ad under the top news feed
+        * I should see the bottom leaderboard ad above the footer
+
+    @BXMA-34
+    Scenario: Ads on section landing page in the tablet portrait view
+        Given I switch to "tablet portrait" view
+        When I am currently viewing "fashion"
+        * I should see the top leaderboard ad under navigation
+        * I should see MREC ad under the hero teaser
+        * I should see sticky MREC ad next to the bottom news feed
+        * I should not see MREC ad in the bottom news feed
+        * I should see the middle leaderboard ad under the top news feed
+        * I should see the bottom leaderboard ad above the footer
+
+    @BXMA-34
+    Scenario: Ads on section landing page in the mobile view
+        Given I switch to "mobile" view
+        When I am currently viewing "fashion"
+        * I should see the top leaderboard ad under navigation
+        * I should see MREC ad under the hero teaser
+        * I should see the middle leaderboard ad under the top news feed
+        * I should see MREC ad in the bottom news feed
+        * I should not see the bottom leaderboard ad above the footer

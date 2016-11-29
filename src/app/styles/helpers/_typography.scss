@@ -377,14 +377,14 @@ a {
     color: $color-black;
     font: 100 30px / 1em $font-family-sans-serif-primary;
     letter-spacing: 0.1em;
-    text-transform: uppercase;
+    text-transform: lowercase;
     text-decoration: none;
 
     span {
         position: relative;
 
         &:after {
-            border-bottom: solid 2px $color-primary;
+            border-bottom: solid 2px $color-black;
             content: '';
             display: block;
             position: absolute;
