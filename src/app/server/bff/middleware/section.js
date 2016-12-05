@@ -26,7 +26,7 @@ export default async function section(req, res, next) {
 
         let previousPage = null;
         if (pageNo > 1) {
-            const path = `/${section}?pageNo=${pageNo - 1}`;
+            const path = pageNo === 2 ? `/${section}` : `/${section}?pageNo=${pageNo - 1}`;
             previousPage = {
                 path,
                 url: `${req.app.config.site.host}${path}`

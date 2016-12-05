@@ -27,7 +27,7 @@ const homeMiddleware = proxyquire('../../../../app/server/bff/middleware/home', 
 describe('Home middleware', () => {
     const config = {
         services: {remote: {entity: 'http://entitiesUrl.com/'}},
-        site: {host: 'http://site-host.com/'}
+        site: {host: 'http://site-host.com'}
     };
     const latestTeasers = { data: ['Teaser 1', 'Teaser 2'] };
     const hero = { name: 'hero' };
@@ -185,6 +185,25 @@ describe('Home middleware', () => {
                     }).catch(done);
                 });
             });
+        });
+    });
+
+    describe('when a query param of pageNo 2 is passed in', () => {
+        const req = { app: { config }, query: {pageNo: 2} };
+        before(() => {
+                next = sinon.stub();
+                makeRequestStub = sinon.stub().resolves(entity);
+                getLatestTeasersStub = sinon.stub();
+                getLatestTeasersStub.onFirstCall().resolves(latestTeasers);
+                getLatestTeasersStub.onSecondCall().resolves(videoGalleryMock);
+                getTrendingStub = sinon.stub().resolves(trending);
+            });
+
+        it('should not have a query param in the previous page url', (done) => {
+            homeMiddleware(req, res, next).then(() => {
+                expect(req.data.list.previous.url).to.equal('http://site-host.com/');
+                done();
+            }).catch(done);
         });
     });
 });

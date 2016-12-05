@@ -46,7 +46,7 @@ export default async function home(req, res, next) {
 
         let previousPage = null;
         if (pageNo > 1) {
-            const path = `/?pageNo=${pageNo - 1}`;
+            const path = pageNo === 2 ? '/' : `/?pageNo=${pageNo - 1}`;
             previousPage = {
                 path,
                 url: `${req.app.config.site.host}${path}`
@@ -87,7 +87,6 @@ export default async function home(req, res, next) {
         req.data.trendingItems = trendingItems;
         req.data.heroTeaser = heroTeaser;
         req.data.section = { id: pageData.id, name: 'Home' }; // Initally used to set the ad slot within @bxm/ads + gtm in @bxm/server
-
         next();
     } catch(error) {
         console.log(error);

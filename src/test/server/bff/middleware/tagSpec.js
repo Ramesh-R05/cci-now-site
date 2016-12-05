@@ -319,7 +319,7 @@ describe('Tag middleware', () => {
                         .resolves({});
                     makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`)
                         .rejects();
-                    getLatestTeasersStub = sinon.stub().resolves({});
+                    getLatestTeasersStub = sinon.stub().resolves(latestTeasers);
                 });
 
                 it('should call both the listing and entity service, along with calling next', (done) => {
@@ -329,6 +329,16 @@ describe('Tag middleware', () => {
                         expect(next).to.have.been.calledWith();
                         done();
                     }).catch(done);
+                });
+
+                describe('when a query param of pageNo 2 is passed in', () => {
+                    it('should not have a query param in the previous page url', (done) => {
+                        req.query.pageNo = 2;
+                        tagMiddleware(req, res, next).then(() => {
+                            expect(req.data.list.previous.url).to.equal('http://www.dolly.com.au/tags/two-words');
+                            done();
+                        }).catch(done);
+                    });
                 });
             });
 

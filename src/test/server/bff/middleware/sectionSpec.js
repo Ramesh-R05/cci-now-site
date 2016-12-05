@@ -11,22 +11,28 @@ const sectionMiddleware = proxyquire('../../../../app/server/bff/middleware/sect
 }).default;
 
 describe('Section middleware', () => {
-    const validRes = [1, 2];
+    const validRes = {data: [1, 2]};
     const res = {};
     let next;
+    let req;
+    let reqBase;
+    let rejectedResponse;
 
     describe('when there is a section in the query param and nodeTypeAlias equal to Section', () => {
-        const reqBase = { data: { entity: { nodeTypeAlias: 'Section' } }, query: { section: 'sec' } };
-        describe('when the remote returns an error response', () => {
-            const req = { ...reqBase };
-            const rejectedResponse = {
-                body: 'Could not find the article DOLLY-36424',
-                err: 'Error 404',
-                status: 404
-            };
+        before(() => {
+            reqBase = { data: { entity: { nodeTypeAlias: 'Section' } }, query: { section: 'sec' } };
+        });
 
+        describe('when the remote returns an error response', () => {
             before(() => {
+                rejectedResponse = {
+                    body: 'Could not find the article DOLLY-36424',
+                    err: 'Error 404',
+                    status: 404
+                };
+
                 next = sinon.spy();
+                req = { ...reqBase };
                 getLatestTeasersStub = sinon.stub().rejects(rejectedResponse);
             });
 
@@ -39,10 +45,9 @@ describe('Section middleware', () => {
         });
 
         describe('when the remote returns the list of teasers', () => {
-            const req = { ...reqBase };
-            req.data.headerNav = [1, 2, 3];
-
             before(() => {
+                req = { ...reqBase };
+                req.data.headerNav = [1, 2, 3];
                 next = sinon.spy();
                 getLatestTeasersStub = sinon.stub().resolves(validRes);
             });
@@ -54,12 +59,27 @@ describe('Section middleware', () => {
                 }).catch(done);
             });
         });
+
+        describe('when a query param of pageNo 2 is passed in', () => {
+            before(() => {
+                req = { ...reqBase, app: { config: {site: { host: 'http://site-host.com'}}} };
+                req.query.pageNo = 2;
+                next = sinon.spy();
+                getLatestTeasersStub = sinon.stub().resolves(validRes);
+            });
+
+            it('should not have a query param in the previous page url', (done) => {
+                sectionMiddleware(req, res, next).then(() => {
+                    expect(req.data.list.previous.url).to.equal('http://site-host.com/sec');
+                    done();
+                }).catch(done);
+            });
+        });
     });
 
     describe('when there is a page query param and nodeTypeAlias equal to Section', () => {
-        const req = { data: { entity: { nodeTypeAlias: 'Section' } }, query: { page: 'page' } };
-
         before(() => {
+            req = { data: { entity: { nodeTypeAlias: 'Section' } }, query: { page: 'page' } };
             next = sinon.stub();
             getLatestTeasersStub = sinon.stub();
         });
@@ -74,9 +94,8 @@ describe('Section middleware', () => {
     });
 
     describe('when there is a page and section query param along with a nodeTypeAlias equal to Section', () => {
-        const req = { data: { entity: { nodeTypeAlias: 'Section' } }, query: { page: 'page', section: 'section' } };
-
         before(() => {
+            req = { data: { entity: { nodeTypeAlias: 'Section' } }, query: { page: 'page', section: 'section' } };
             next = sinon.stub();
             getLatestTeasersStub = sinon.stub();
         });
@@ -91,12 +110,13 @@ describe('Section middleware', () => {
     });
 
     describe('when there is a section in the query param and nodeTypeAlias equal to Article', () => {
-        const baseReq = { data: { entity: { nodeTypeAlias: 'Article' } }, query: { section: 'section' } };
+        before(() => {
+            reqBase = { data: { entity: { nodeTypeAlias: 'Article' } }, query: { section: 'section' } };
+        });
 
         describe('and there is a nodeTypeAlias equal Section', () => {
-            const req = { ...baseReq, data: { entity: 'Section' } };
-
             before(() => {
+                req = { ...reqBase, data: { entity: 'Section' } };
                 next = sinon.stub();
                 getLatestTeasersStub = sinon.stub();
             });

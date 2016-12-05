@@ -68,7 +68,7 @@ export default async function tag(req, res, next) {
         const basePath = query.section ? `/${tag}` : `/tags/${tag}`;
         let previousPage = null;
         if (pageNo > 1) {
-            const path = `${basePath}?pageNo=${pageNo - 1}`;
+            const path = pageNo === 2 ? `${basePath}` : `${basePath}?pageNo=${pageNo - 1}`;
             previousPage = {
                 path,
                 url: `${req.app.config.site.host}${path}`
