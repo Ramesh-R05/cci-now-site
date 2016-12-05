@@ -10,7 +10,10 @@ var ads_widget = {
     adMrecNextToBottomFeed: '.bottom-news-feed #gpt-slot-5', //homepage, section
     adMrecNextToBottomFeedSticky: '.bottom-news-feed div.carriage', //homepage, section
     adBottomLeaderboard: '.ad--section-top-leaderboard #gpt-slot-6', //homepage, section
-
+    adTopLeaderboardGallery: '.ad.gallery__mobile-ad.ad--bottom-label #gpt-slot-0', //gallery
+    adMrecBottomRightGallery: '.ad.gallery__aside-ad.ad--top-label #gpt-slot-2', //gallery
+    adMrecInSlideGallery: '.ad.gallery__slide-ad.ad--bottom-label #gpt-slot-3', //gallery
+    adBottomLeaderboardGallery: '.ad.gallery__footer-ad.ad--top-label', //gallery
 
     //Below are the widget from the other sites. We will delete later.
     leaderBoard: '.ad--section-top-leaderboard',

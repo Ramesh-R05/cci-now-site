@@ -74,7 +74,7 @@ export default{
                 "title": "test image title 1",
                 "valid": true,
                 "source": "",
-                "caption": "Fresh-faced beauty Gigi Hadid is glowing perfection. She keeps it minimal with some light foundation and a coat of mascara. #BEAUTYGOALS long caption to test More long caption to test More long caption to test More long caption to test More EOM",
+                "caption": "Fresh-faced beauty Gigi Hadid is glowing perfection. She keeps it minimal with some light foundation and a coat of mascara. #BEAUTYGOALS long caption to test More long caption to test More  long caption to test More  long caption to test More long caption to test More long caption to test More long caption to test More Added more text Added more text Added more text Added more text Added more text Added more text Added more text Added more text Added more text Added more text Added more text for testing the More and Less EOM",
                 "credits": [],
                 "mediaType": "image"
             },

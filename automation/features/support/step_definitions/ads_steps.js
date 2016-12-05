@@ -1,5 +1,6 @@
 var wn_ads = require('../page_objects/ads_widget');
-var home = require('../page_objects/homepage_widget');
+var gallery = require('../page_objects/gallery_widget');
+
 module.exports = function() {
 
     this.Given(/^I should see sticky MREC ad next to the top news feed$/, function () {
@@ -55,6 +56,33 @@ module.exports = function() {
 
     this.Then(/^I should not see MREC ad in the bottom news feed$/, function () {
         expect(browser.isVisible(wn_ads.adMrecInBottomNewsFeed)).toBe(false);
+    });
+
+    //BELOW ARE STEPS FOR GALLERY
+    this.Then(/^I should see the top leaderboard ad above the gallery slide$/, function () {
+        expect(browser.isVisible(wn_ads.adTopLeaderboardGallery)).toBe(true);
+    });
+
+    this.Then(/^I should not see the bottom leaderboard ad under the gallery slide$/, function () {
+        expect(browser.isVisible(wn_ads.adBottomLeaderboardGallery)).toBe(false);
+    });
+
+    this.Then(/^I should see the MREC ad at the bottom right of the gallery$/, function () {
+        expect(browser.isVisible(wn_ads.adMrecBottomRightGallery)).toBe(true);
+    });
+
+    this.Then(/^I should not see the MREC ad at the bottom right of the gallery$/, function () {
+        expect(browser.isVisible(wn_ads.adMrecBottomRightGallery)).toBe(false);
+    });
+
+    this.Then(/^I should see the MREC ad after the (\d+) slide$/, function (slide) {
+        //Go to the MREC slide
+        for (var i=0; i<slide; i++){
+            browser.click(gallery.galleryNextButton);
+        }
+        //Validate
+        browser.waitForVisible(wn_ads.adMrecInSlideGallery,3000);
+        expect(browser.isVisible(wn_ads.adMrecInSlideGallery)).toBe(true);
     });
 
 

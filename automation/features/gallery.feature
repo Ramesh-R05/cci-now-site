@@ -1,4 +1,4 @@
-@gallery @BXMA-33 @now
+@gallery @BXMA-33 @BXMA-132 @BXMA-133 @now
 Feature: Gallery
     As a user
     I should be able to see the gallery page
@@ -8,6 +8,7 @@ Feature: Gallery
         Given I am currently viewing "fashion/models/automation-test-gallery-13302"
         * I can see the logo on the gallery header
         * I can click the logo to go to homepage
+        * I can see the gallery title containing "Automation Test Gallery"
         * I can see an image appearing on the gallery
         * I can see the gallery description of the gallery containing "Test the second paragraph"
         * I can see the right arrow on the gallery
@@ -18,6 +19,7 @@ Feature: Gallery
         * I can click LESS to see the short image caption on the gallery
         * I can click the right arrow on the gallery to check the next image
         When I see the image no "2" on the gallery
+        * I can not see the gallery title
         * I can see the left arrow on the gallery
         * I can see an image appearing on the gallery
         * I should not see the gallery description on mobile for next image
@@ -41,6 +43,7 @@ Feature: Gallery
         Given I am currently viewing "fashion/models/automation-test-gallery-13302"
         * I can see the logo on the gallery header
         * I can click the logo to go to homepage
+        * I can see the gallery title containing "Automation Test Gallery"
         * I can see an image appearing on the gallery
         * I can see the gallery description of the gallery containing "Test the second paragraph"
         * I can see the right arrow on the gallery
@@ -51,6 +54,7 @@ Feature: Gallery
         * I can click LESS to see the short image caption on the gallery
         * I can click the right arrow on the gallery to check the next image
         When I see the image no "2" on the gallery
+        * I can see the gallery title containing "Automation Test Gallery"
         * I can see the left arrow on the gallery
         * I can see an image appearing on the gallery
         * I can see the gallery description of the gallery containing "Test the second paragraph"

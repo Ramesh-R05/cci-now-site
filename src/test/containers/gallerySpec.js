@@ -108,6 +108,9 @@ describe('GallerySection', () => {
         key: 'config',
         type: '',
         value: {
+            brands: {
+                hamburgers: {}
+            },
             site: {
                 name: 'Dolly',
                 shortName: ''

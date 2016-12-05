@@ -15,6 +15,7 @@ import AdStore from '@bxm/ad/lib/google/stores/ad';
 import GalleryStore from '@bxm/gallery/lib/stores/gallery';
 import GalleryPageStore from '@bxm/gallery/lib/stores/galleryPage';
 import hamburgerWrapper from '@bxm/nav/lib/components/hamburgerWrapper';
+import Logos from '../components/uniheader/logos';
 import classnames from 'classnames';
 
 @hamburgerWrapper
@@ -114,7 +115,7 @@ class GallerySection extends Component {
     };
 
     render() {
-        const { gallery, hamburgerNavItems, headerNavItems } = this.props;
+        const { gallery, hamburgerNavItems, headerNavItems, customisedTeaser } = this.props;
         if(!gallery) return null;
 
         const shareDescription = (gallery.summary || gallery.title || "");
@@ -163,8 +164,11 @@ class GallerySection extends Component {
                         <GalleryDetailMain
                             {...this.props}
                             keyword={keyword}
+                            customisedTeaser={customisedTeaser}
                             onNextGalleryClick={this.onNextGalleryClick}
                             kingtag={kingtag}
+                            alwaysDisplayTitle={true}
+                            showFooterAd={false}
                         />
 
                         <GalleryDetailAside
@@ -187,6 +191,7 @@ class GallerySection extends Component {
                                         </svg>
                                     ` } } />
                             <Navigation className="mobile-menu" items={ mobileNav } currentUrl={ this.props.currentUrl } />
+                            <Logos className="mobile-menu-list" openInNewTab={true} logoList={this.context.config.brands.hamburgers} />
                         </div>
                     </MobileOffCanvas>
 

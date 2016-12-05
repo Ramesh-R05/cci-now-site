@@ -5,6 +5,7 @@ import Gallery from './gallery';
 import Page from './page';
 import Footer from '../components/article/footer';
 import Ad from '@bxm/ad/lib/google/components/ad';
+import Teaser from '../components/teaser/teaser';
 
 function mapStateToProps(context) {
     const content = context.getStore('articleStore').getContent() || {};
@@ -53,7 +54,8 @@ export default class Document extends Component {
         if (this.props.nodeType === 'Gallery') {
             return (
                 <div>
-                    <Gallery />
+                    <Gallery
+                        customisedTeaser={Teaser} />
                     <Ad
                         className='ad--out-of-page'
                         sizes={'out-of-page'}
@@ -77,6 +79,7 @@ export default class Document extends Component {
                     articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd]}
                     contentBodyConfig={Document.articleContentBodyConfig}
                     enableTeads={true}
+                    CustomisedTeaser={Teaser}
                     showAdBeforeRecommendations={true}
                     footerComponentClass={Footer} />
             </Page>

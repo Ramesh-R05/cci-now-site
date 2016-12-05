@@ -32,9 +32,17 @@ module.exports = function() {
         console.log(galleryDate);
     });
 
-    this.Given(/^I can see the long title on the gallery header "([^"]*)"$/, function(longTitle) {
+    this.Given(/^I can see the gallery title containing "([^"]*)"$/, function(longTitle) {
         var galleryTitle = browser.getText(gallery.galleryLongTitle);
-        expect(galleryTitle).toMatch(longTitle);
+        expect(galleryTitle).toContain(longTitle);
+    });
+
+    this.Given(/^I can not see the gallery title$/, function() {
+        expect(browser.isVisible(gallery.galleryLongTitle)).toBe(false);
+    });
+
+    this.Given(/^I should see the long title on the gallery header on the next gallery slide$/, function() {
+        expect(browser.isVisible(gallery.galleryLongTitle)).toBe(true);
     });
 
     this.Given(/^I should not see the long title on the gallery header on the next gallery slide$/, function() {
