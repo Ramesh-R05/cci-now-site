@@ -55,6 +55,10 @@ var article_widget = {
     wd_lhrFeedSubsection: '.article__listing .feed__subSection',
     wd_lhrFeedSubsectionLink: '.article__listing .feed__subSection a',
     wd_lhrFeedDate: '.article__listing .feed__item-date',
+    headerSource: 'header.article__header .article-header-source a',
+    headerSourceImg: 'header.article__header .article-header-source img',
+    bottomSource: '.article-header-source--bottom a',
+    bottomSourceImg: '.article-header-source--bottom img',
 };
 
 module.exports = article_widget;

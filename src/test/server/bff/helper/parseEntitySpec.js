@@ -29,7 +29,7 @@ const entityInput = {
     nodeTypeAlias: 'node type',
     contentSummary: 'summary',
     contentSource: 'souce',
-    contentTags: 'tags',
+    tagsDetails: 'tagsDetails',
     contentTitle: 'title',
     url: 'url',
     contentVideo: 'video',
@@ -49,7 +49,7 @@ const entityOutput = {
     nodeType: entityInput.nodeTypeAlias,
     summary: entityInput.contentSummary,
     source: entityInput.contentSource,
-    tags: entityInput.contentTags,
+    tagsDetails: entityInput.tagsDetails,
     title: entityInput.contentTitle,
     url: entityInput.url,
     video: entityInput.contentVideo

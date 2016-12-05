@@ -36,7 +36,11 @@ export default {
                 "caption": "Test Body Image Caption",
                 "credits": []
             }
-        }, {"type": "related-content", "label": "Related Content", "content": []}, {
+        }, {
+             "type": "related-content",
+             "label": "Related Content",
+             "content": []
+        }, {
             "type": "image",
             "label": "Image",
             "content": {
@@ -60,7 +64,9 @@ export default {
         }, {
             "type": "twitter",
             "label": "Twitter",
-            "content": {"url": "https://twitter.com/BBCR1/status/694082199256219648"}
+            "content": {
+                 "url": "https://twitter.com/BBCR1/status/694082199256219648"
+            }
         }],
         "dateCreated": "2016-01-02T13:35:00.00Z",
         "id": "DOLLY-3640",

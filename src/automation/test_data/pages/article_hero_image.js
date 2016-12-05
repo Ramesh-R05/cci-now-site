@@ -284,20 +284,21 @@ export default{
         "parentName": "Celebrity",
         "parentUrl": "/celebrity",
         "summary": "Automation Test Article With Hero Image Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser EOM",
-        "tags": [
-            "award:award_winning_work:Gossip Girl",
-            "internet:website_category:Dolly Doctor"
-        ],
         "tagsDetails": [
             {
-                name: "award:award_winning_work:Gossip Girl",
-                fullName: "award_award_winning_work_Gossip_Girl"
+                "name": "award:award_winning_work:Gossip Girl",
+                "urlName": "gossip-girl",
+                "fullName": "award_award_winning_work_Gossip_Girl",
+                "displayName": "Gossip Girl"
             },
             {
-                name: "internet:website_category:Dolly Doctor",
-                fullName: "internet_website_category_Dolly_Doctor"
+                "name": "internet:website_category:Dolly Doctor",
+                "urlName": "dolly-doctor",
+                "fullName": "internet_website_category_Dolly_Doctor",
+                "displayName": "Dolly Doctor"
             }
         ],
+        "source": "Australian Women's Weekly",
         "title": "Automation Test Article With Hero Image Test Title Long Title Long Title Long Title Long Title EOM",
         "url": "/fashion/automation-test-article-with-hero-image-3663",
         "video": "",

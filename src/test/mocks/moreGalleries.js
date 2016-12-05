@@ -15,7 +15,7 @@ export default {
       "parentUrl": "/celebrity",
       "sortOrder": "12",
       "parentName": "Celebrity",
-      "contentTags": [],
+      "tagsDetails": [],
       "contentYear": 2016,
       "contentMonth": 2,
       "contentTitle": "The evolution of Harry Edward Styles",
@@ -75,7 +75,7 @@ export default {
       "parentUrl": "#",
       "sortOrder": "119",
       "parentName": "Celebrity",
-      "contentTags": [
+      "tagsDetails": [
         "visual_art:visual_art_form:Tattoo"
       ],
       "contentYear": 2016,
@@ -112,7 +112,7 @@ export default {
       "parentUrl": "/fashion",
       "sortOrder": "0",
       "parentName": "Fashion",
-      "contentTags": [],
+      "tagsDetails": [],
       "contentYear": 2015,
       "contentMonth": 12,
       "contentTitle": "15 pets who are SO ready for Christmas holidays",
@@ -201,7 +201,7 @@ export default {
       "parentUrl": "/fashion",
       "sortOrder": "3",
       "parentName": "Fashion",
-      "contentTags": [
+      "tagsDetails": [
         "award:award_winning_work:Gossip Girl",
         "auto:name:testdolly",
         "visual_art:visual_art_form:Tattoo"
@@ -274,7 +274,7 @@ export default {
       "parentUrl": "/fashion",
       "sortOrder": "1",
       "parentName": "Fashion",
-      "contentTags": [
+      "tagsDetails": [
         "award:award_winning_work:Gossip Girl"
       ],
       "contentYear": 2015,

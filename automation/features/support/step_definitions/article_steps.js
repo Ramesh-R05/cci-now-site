@@ -207,13 +207,40 @@ module.exports = function() {
         expect(videoEmbArry[1]).toEqual(vimeoUrl);
     });
     this.Given(/^I can see the related tags "([^"]*)" "([^"]*)"$/, function (rTag1, rTag2) {
-    var relatedTags = browser.getText(wn_article.relatedTags, 'href');
-        expect(relatedTags[0]).toEqual(rTag1);
-        expect(relatedTags[1]).toEqual(rTag2);
+        var relatedTags = browser.getText(wn_article.relatedTags, 'href');
+            expect(relatedTags[0]).toEqual(rTag1);
+            expect(relatedTags[1]).toEqual(rTag2);
     });
     this.Given(/^I can see the author "([^"]*)"$/, function (authorName) {
-      var author = browser.getText(wn_article.authorText);
-        expect(author).toEqual(authorName);
+        var author = browser.getText(wn_article.authorText);
+            expect(author).toEqual(authorName);
+    });
+
+    this.Given(/^I can see the "([^"]*)" source appearing with gtm "([^"]*)"$/, function (position,gtm) {
+        //Identify the element
+        switch(position) {
+            case 'header':
+                var source = wn_article.headerSource
+                var sourceImg = wn_article.headerSourceImg
+                break;
+            case 'bottom':
+                var source = wn_article.bottomSource
+                var sourceImg = wn_article.bottomSourceImg
+                break;
+        }
+
+        //Get values
+        var sourceHref = browser.getAttribute(source, 'href');
+        var sourceGTM = browser.getAttribute(source,'class');
+        var sourceLogo = browser.getAttribute(sourceImg,'src');
+
+        //Validate the values
+        console.log(sourceHref);
+        expect(sourceHref).not.toEqual('');
+        console.log(sourceGTM);
+        expect(sourceGTM).toEqual(gtm);
+        console.log(sourceLogo);
+        expect(sourceLogo).not.toEqual('');
     });
 
     this.Given(/^I can see the ([^"]*) top and bottom ad$/, function (adSize) {

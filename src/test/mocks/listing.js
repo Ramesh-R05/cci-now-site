@@ -16,7 +16,7 @@ export default {
       "parentUrl": "/fashion",
       "sortOrder": "9",
       "parentName": "Fashion",
-      "contentTags": [],
+      "tagsDetails": [],
       "contentYear": 2016,
       "contentMonth": 2,
       "contentTitle": "Next Top Bogan?",
@@ -45,7 +45,7 @@ export default {
       ],
       "sortOrder": "8",
       "parentName": "Fashion",
-      "contentTags": [],
+      "tagsDetails": [],
       "contentYear": 2016,
       "contentMonth": 2,
       "contentTitle": "Joe test again",
@@ -75,7 +75,7 @@ export default {
       "parentUrl": "/fashion",
       "sortOrder": "7",
       "parentName": "Fashion",
-      "contentTags": [
+      "tagsDetails": [
         "tv:tv_genre:Music video"
       ],
       "contentYear": 2016,
@@ -127,7 +127,7 @@ export default {
       "parentUrl": "/fashion",
       "sortOrder": "4",
       "parentName": "Fashion",
-      "contentTags": [],
+      "tagsDetails": [],
       "contentYear": 2016,
       "contentMonth": 2,
       "contentTitle": "34 ~truthful~ thoughts we had while watching 'Grease: Live' EOM",

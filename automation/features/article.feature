@@ -29,6 +29,8 @@ Feature: Article
         * I can see the body Youtube embed "https://www.youtube.com/embed/4GpnNxjy6m0"
         * I can see the body Vimeo embed "https://player.vimeo.com/video/181027959"
         * I can see the related tags "Gossip Girl," "Dolly Doctor"
+        * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
+        * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
 
     @DAW-1125
     Scenario: Verify an article page which contains a hero video on tablet portrait
@@ -55,6 +57,8 @@ Feature: Article
         * I can see the body Youtube embed "https://www.youtube.com/embed/4GpnNxjy6m0"
         * I can see the body Vimeo embed "https://player.vimeo.com/video/181027959"
         * I can see the related tags "Gossip Girl," "Dolly Doctor"
+        * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
+        * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
 
     Scenario: Verify an article page which contains a hero image on desktop
         When I switch to "desktop" view
@@ -81,6 +85,8 @@ Feature: Article
         * I can see the body Youtube embed "https://www.youtube.com/embed/4GpnNxjy6m0"
         * I can see the body Vimeo embed "https://player.vimeo.com/video/181027959"
         * I can see the related tags "Gossip Girl," "Dolly Doctor"
+        * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
+        * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
 
 
 @DDO-160 @DDO-48

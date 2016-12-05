@@ -33,7 +33,7 @@ export default {
       "content": "This is some test body content"
     }
   ],
-  "contentTags": [],
+  "tagsDetails": [],
   "contentYear": 2007,
   "navIsHidden": 0,
   "navRedirect": {
