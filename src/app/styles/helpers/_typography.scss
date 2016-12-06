@@ -80,11 +80,24 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Proxima Nova light';
+    src: url('/assets/fonts/ProximaNova-Regular.eot');
+    src: url('/assets/fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/ProximaNova-Regular.woff') format('woff'),
+    url('/assets/fonts/ProximaNova-Regular.ttf') format('truetype'),
+    url('/assets/fonts/ProximaNova-Regular.svg#amsipronarw-thinuploaded_file') format('svg');
+    font-style: normal;
+}
+
+
 $font-family-sans-serif-primary: 'Amsi Pro Narrow', sans-serif;
 
 $to-love-font-family-sans-serif: $font-family-sans-serif-primary;
 
 $small-text-font: 'Proxima Nova', sans-serif;
+
+$small-text-light-font: 'Proxima Nova light', sans-serif;
 
 $font-family-serif-primary: 'Baskerville', serif;
 

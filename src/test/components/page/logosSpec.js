@@ -1,7 +1,7 @@
 import {betterMockComponentContext} from '@bxm/flux';
 const Context = betterMockComponentContext();
 const {React, ReactDOM, TestUtils} = Context;
-import Logos from '../../../app/components/uniheader/logos'
+import Logos from '../../../app/components/page/logos'
 
 describe('Brand Header', () => {
     let reactModule;

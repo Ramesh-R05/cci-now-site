@@ -49,12 +49,6 @@ export default {
             "gtmClass": "yours"
         },
         {
-            "imageUrl": "/assets/images/headerlogos/TVWEEK-logo.svg",
-            "url": "/tvweeklogieawards ",
-            "title": "TV WEEK",
-            "gtmClass": "tvweek"
-        },
-        {
             "imageUrl": "/assets/images/headerlogos/MB-logo.svg",
             "url": "/mother-and-baby",
             "title": "Mother & Baby",

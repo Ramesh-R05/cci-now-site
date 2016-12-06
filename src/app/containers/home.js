@@ -57,7 +57,8 @@ export default class Home extends Component {
         return (
             <Page
                 currentUrl={ this.props.currentUrl }
-                headerExpanded={false}>
+                headerExpanded={false}
+                isHomePage={true}>
                 <div className="home-page">
                     {/* 1st Leaderboard or billboard to show on tablet and up */}
                     <div className="trending-wrapper">
@@ -113,7 +114,7 @@ export default class Home extends Component {
                         </div>
                     </div>
 
-                    <div class="home-page__carousel-container" ref="bottom"></div>
+                    <div ref="bottom"></div>
 
                     <Ad
                         className="ad--section-leaderboard"

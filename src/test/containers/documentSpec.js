@@ -7,7 +7,6 @@ noCallThru();
 const ArticleStub = Context.createStubComponent();
 const GalleryPageStub = Context.createStubComponent();
 const PageStub = Context.createStubComponentWithChildren();
-const FooterStub = Context.createStubComponent();
 const AdStub = Context.createStubComponent();
 const CustomisedTeaserStub = Context.createStubComponent();
 
@@ -15,7 +14,6 @@ const Document = proxyquire('../../app/containers/document', {
     '@bxm/article/lib/article': ArticleStub,
     './gallery': GalleryPageStub,
     './page': PageStub,
-    '../components/article/footer': FooterStub,
     '@bxm/ad/lib/google/components/ad': AdStub,
     '../components/teaser/teaser': CustomisedTeaserStub
 }).default;
@@ -52,7 +50,6 @@ describe('Document Component', () => {
                 articleHeaderOrder: ['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd],
                 contentBodyConfig: Document.articleContentBodyConfig,
                 showAdBeforeRecommendations: true,
-				footerComponentClass: FooterStub,
                 CustomisedTeaser: CustomisedTeaserStub
             });
         });
@@ -63,7 +60,7 @@ describe('Document Component', () => {
             expect(PageComponent.props).to.deep.contain({
                 headerExpanded: false,
                 currentUrl: '/url',
-                hideFooter: true
+                hideFooter: false
             });
         });
 

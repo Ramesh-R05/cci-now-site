@@ -1,0 +1,52 @@
+.footer {
+    &__logos {
+        padding-top: 35px;
+        border-top: 1px solid $color-grey-lighter;
+        text-align: center;
+
+        &-title {
+            font-size: 20px;
+            color: $color-black;
+            font-family: $small-text-font;
+        }
+
+        &-list {
+            margin-top: 40px;
+            margin-bottom: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            list-style: none;
+            margin: 10px;
+            vertical-align: top;
+            height: 30px;
+
+            a {
+                color: $color-grey-light;
+                font-family: $small-text-font;
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: .6px;
+                margin-left: 1px;
+                text-transform: uppercase;
+                transition: linear .175s;
+                opacity: 1;
+
+                img {
+                    height: 100%;
+                    width: auto;
+                }
+
+                @media #{$medium-up} {
+                    font-size: 14px;
+                }
+
+                &:hover {
+                    opacity: .8;
+                }
+            }
+        }
+    }
+}

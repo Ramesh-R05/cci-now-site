@@ -75,7 +75,7 @@ module.exports = function() {
 
         var menuTitle = browser.getAttribute(site_nav.siteNavLogos, 'title');
         var menuhref = browser.getAttribute(site_nav.siteNavLogos, 'href');
-        var menuTag = browser.getAttribute(site_nav.siteNavLogos, 'class');
+        var menuGTM = browser.getAttribute(site_nav.siteNavLogos, 'class');
         //end
 
         for (var i = 0; i < rows.length; ++i) {
@@ -83,7 +83,7 @@ module.exports = function() {
             //validates position of menu base on Index
             expect(menuTitle[i]).toEqual(row['title']);
             expect(menuhref[i]).toMatch(row['url']);
-            expect(menuTag[i]).toEqual(row['tag']);
+            expect(menuGTM[i]).toEqual(row['gtm']);
         }
         browser.click(site_nav.siteHamburgerClose);
     });

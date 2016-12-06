@@ -3,7 +3,6 @@ import { connectToStores } from '@bxm/flux';
 import Article from '@bxm/article/lib/article';
 import Gallery from './gallery';
 import Page from './page';
-import Footer from '../components/article/footer';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import Teaser from '../components/teaser/teaser';
 
@@ -74,14 +73,13 @@ export default class Document extends Component {
             <Page
                 currentUrl={ this.props.currentUrl }
                 headerExpanded={false}
-                hideFooter={true} >
+                hideFooter={false} >
                 <Article
                     articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd]}
                     contentBodyConfig={Document.articleContentBodyConfig}
                     enableTeads={true}
                     CustomisedTeaser={Teaser}
-                    showAdBeforeRecommendations={true}
-                    footerComponentClass={Footer} />
+                    showAdBeforeRecommendations={true} />
             </Page>
         );
     }

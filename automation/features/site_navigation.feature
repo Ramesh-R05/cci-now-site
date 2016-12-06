@@ -61,7 +61,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         Given I switch to "mobile" view
         When I am currently viewing "fashion/models/automation-test-article-with-hero-image-3663"
          * I can navigate to all sites in the hamburger navigation menu
-            |title                      |url                                |tag                         |
+            |title                      |url                                |gtm                        |
             |Homes To Love              |http://homestolove.com.au/         |gtm-mobile-menu-list-homes  |
             |Food To Love               |http://foodtolove.com.au/          |gtm-mobile-menu-list-food   |
             |Elle                       |http://elle.com.au/                |gtm-mobile-menu-list-elle   |

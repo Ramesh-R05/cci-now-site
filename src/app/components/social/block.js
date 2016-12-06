@@ -6,7 +6,7 @@ export default class Social extends Component {
 
     static links = [{
         name: 'facebook',
-        url: 'http://www.facebook.com/nowtolove'
+        url: 'https://www.facebook.com/nowtolove'
     },{
         name: 'twitter',
         url: 'https://twitter.com/NowToLove'

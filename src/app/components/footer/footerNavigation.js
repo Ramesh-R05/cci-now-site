@@ -15,7 +15,7 @@ export default class FooterNavigation extends Component {
                         <a href="http://www.bauer-media.com.au/terms/website-terms" target="_blank">Terms of Use</a>
                     </li>
                     <li>
-                        <a href="/contact-us" target="_blank">Contact Us</a>
+                        <a href="/contact-us">Contact Us</a>
                     </li>
                 </ul>
             </nav>

@@ -1,7 +1,7 @@
 import {betterMockComponentContext} from '@bxm/flux';
 const Context = betterMockComponentContext();
 const {React, ReactDOM, TestUtils} = Context;
-import UniHeader from '../../../app/components/uniheader'
+import UniHeader from '../../../app/components/uniheader';
 
 describe('Brand Header', () => {
     let reactModule;
@@ -40,16 +40,4 @@ describe('Brand Header', () => {
         });
     })
 
-    describe('Rendering the UniHeader somewhere other than Home Page', () => {
-        before(()=> {
-            reactModule = Context.mountComponent(UniHeader, {
-                currentUrl: '/page',
-                logoList: logoListStub
-            });
-        });
-
-        it('should not render the Brand Component', () => {
-            expect(ReactDOM.findDOMNode(reactModule)).to.not.exist;
-        });
-    });
 });

@@ -1,9 +1,9 @@
 import React, {Component, PropTypes} from 'react';
-import SocialBlock from '../social/block';
+import SocialContainer from '../social/block';
 import FooterNavigation from './footerNavigation';
-import Subscribe from './subscribe/subscribe';
 import BackToTop from '@bxm/ui/lib/back-to-top/backToTop';
-import Newsletter from '@bxm/newsletter/lib/components/newsletter';
+import Logos from '../page/logos';
+import FooterSubscribe from './footerSubscribe';
 
 export default class Footer extends Component {
     static propTypes = {
@@ -22,8 +22,7 @@ export default class Footer extends Component {
 
     render() {
         const {config} = this.context;
-        const {iframeKey, modifier, socialComponentClass} = this.props;
-        const SocialComponent = socialComponentClass || SocialBlock;
+        const {iframeKey, modifier, socialComponentClass, logoList} = this.props;
         let classNames = 'footer';
 
         if (modifier) classNames += ` footer--${modifier}`;
@@ -31,10 +30,20 @@ export default class Footer extends Component {
         return (
             <div>
                 <footer className={classNames}>
-                    <SocialComponent />
-                    <div id="footer-sign-up" className="row">
-                        <Newsletter url={`${config.get('newsletterIframeUrl')}!${iframeKey}`} />
-                        <Subscribe content={config.get('subscribe')} />
+                    <div className="home-page__get-social-container">
+                        <span className="home-page__social-logo">Now To Love</span>
+                        <SocialContainer />
+                    </div>
+                    <FooterSubscribe 
+                        url={`${config.get('newsletterIframeUrl')}!${iframeKey}`} 
+                        content={config.get('subscribe')}
+                        isDisplayed={false}
+                    />
+                    <div className="footer__logos">
+                        <span className="footer__logos-title">CONTENT SUPPORTED BY</span><br/>
+                        <nav className="footer__logos-nav">
+                            <Logos className="footer__logos-list" logoList={logoList}/>
+                        </nav>
                     </div>
                     <FooterNavigation />
                     <div className="footer__copyright">

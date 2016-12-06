@@ -5,7 +5,8 @@
         ul {
             margin-top: 45px;
             padding: 0;
-
+            margin-bottom: 10px;
+            
             @media #{$medium-up} {
                 margin-top: 50px;
             }
@@ -18,8 +19,8 @@
             margin: 0;
 
             a {
-                color: $color-white;
-                font-family: $font-family-sans-serif-primary;
+                color: $color-grey-light;
+                font-family: $small-text-font;
                 font-size: 12px;
                 font-weight: 500;
                 letter-spacing: .6px;
@@ -28,11 +29,11 @@
                 transition: linear .175s;
 
                 @media #{$medium-up} {
-                    font-size: 14px;
+                    font-size: 12px;
                 }
 
                 &:hover {
-                    color: $color-white;
+                    text-decoration: underline;  
                 }
             }
 

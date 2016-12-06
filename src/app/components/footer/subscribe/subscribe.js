@@ -19,7 +19,6 @@ export default class Subscribe extends Component {
         const {inSideNav, content} = this.props;
         const {subscribeHeading, subscribeText, subscribeMagUrl, subscribeIpadUrl, subscribeButtonUrl} = content;
         const xLargeGridClass = (!inSideNav) ? 'xlarge-6' : '';
-
         return (
             <div className="subscribe">
                 <div className="row">

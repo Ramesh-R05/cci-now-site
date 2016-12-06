@@ -28,7 +28,7 @@ const PageWrapper = proxyquire('../../app/containers/page', {
     '@bxm/site-header': SiteHeaderStub,
     '../components/footer': SiteFooterStub,
     '../components/uniheader': UniHeaderStub,
-    '../components/uniheader/logos': LogosStub,
+    '../components/page/logos': LogosStub,
     '@bxm/site-header/lib/components/navigation': NavigationStub,
     '@bxm/ad/lib/google/components/ad': AdStub
 }).default;
@@ -91,7 +91,8 @@ describe('Page Container', () => {
             headerExpanded: true,
             hideFooter: false,
             menuClasses: 'site-menu',
-            currentUrl: '/'
+            currentUrl: '/',
+            isHomePage: true
         };
 
         before(() => {
@@ -124,6 +125,7 @@ describe('Page Container', () => {
             expect(ReactDOM.findDOMNode(uniHeaderStub)).to.exist;
         });
 
+    
         it(`should render the Header component, passing the appropriate props`, () => {
             expect(siteHeaderStub.props).to.deep.eq({
                 currentUrl: props.currentUrl,
@@ -197,6 +199,27 @@ describe('Page Container', () => {
             });
         });
     });
+
+    
+    describe(`the current page is not home page`, () => {
+        const props = {
+            className: 'customClass',
+            children: <h1>Test Children</h1>,
+            headerExpanded: true,
+            hideFooter: false,
+            menuClasses: 'site-menu',
+            currentUrl: '/page',
+            isHomePage: false
+        };
+        before(() => {
+            reactModule = Context.mountComponent(PageWrapper, props, [contextConfigStub]);
+            uniHeaderStub = TestUtils.scryRenderedComponentsWithType(reactModule,UniHeaderStub);
+        })
+        it(`should not render the Brand Component`, () => {
+            expect(uniHeaderStub.length).to.eq(0);
+        });
+    })
+
 
     describe(`when hiding the footer`, () => {
         const props = {

@@ -6,7 +6,7 @@ Feature: I have an automated sanity for my live environments
         Given I switch to "desktop" view
         When I am currently viewing the homepage
         * I can navigate to all sites in the desktop list on the header
-            |title                      |url                                |tag    |
+            |title                      |url                                |gtm    |
             |Australian Women's Weekly  |/aww                               |gtm-uniheader-aww    |
             |Woman's Day                |/womansday                         |gtm-uniheader-wd     |
             |Good Health                |/good-health                       |gtm-uniheader-gh     |
@@ -15,7 +15,6 @@ Feature: I have an automated sanity for my live environments
             |NW                         |/nw                                |gtm-uniheader-nw     |
             |Take 5                     |/take5mag                          |gtm-uniheader-take5  |
             |Yours                      |/yours                             |gtm-uniheader-yours  |
-            |TV WEEK                    |/tvweeklogieawards                 |gtm-uniheader-tvweek |
             |Mother & Baby              |/mother-and-baby                   |gtm-uniheader-mb     |
 
     @hero @BXMA-40
@@ -71,7 +70,7 @@ Feature: I have an automated sanity for my live environments
         Given I switch to "mobile" view
         When I am currently viewing the homepage
         * I can navigate to all sites in the hamburger navigation menu
-            |title                      |url                                |tag                         |
+            |title                      |url                                |gtm                         |
             |Homes To Love              |http://homestolove.com.au/         |gtm-mobile-menu-list-homes  |
             |Food To Love               |http://foodtolove.com.au/          |gtm-mobile-menu-list-food   |
             |Elle                       |http://elle.com.au/                |gtm-mobile-menu-list-elle   |
@@ -97,3 +96,32 @@ Feature: I have an automated sanity for my live environments
         * I should not see the site navigation links
         * I should see the site navigation links and "gtm-navigation-section nav-item" class name in "hamburger"
 
+    @footer @BXMA-145
+    Scenario: Verify the footer in the mobile view
+        Given I switch to "mobile" view
+        When I am currently viewing the homepage
+        * I can see the social logo in the footer
+        * I can see the social icons clickable to open its page in the footer
+            |social     |url                                    |
+            |Facebook   |https://www.facebook.com/nowtolove     |
+            |Twitter    |https://twitter.com/NowToLove          |
+            |Instagram  |https://www.instagram.com/NowToLove   |
+        * I can see the brands title in the footer as "CONTENT SUPPORTED BY"
+        * I can navigate to all sites in the footer
+            |title                      |url                |gtm                           |
+            |Australian Women's Weekly  |/aww               |gtm-footer__logos-list-aww    |
+            |Woman's Day                |/womansday         |gtm-footer__logos-list-wd     |
+            |Good Health                |/good-health       |gtm-footer__logos-list-gh     |
+            |OK! Magazine               |/okmagazine        |gtm-footer__logos-list-ok     |
+            |SHOP Til You Drop          |/shop-til-you-drop |gtm-footer__logos-list-shop   |
+            |NW                         |/nw                |gtm-footer__logos-list-nw     |
+            |Take 5                     |/take5mag          |gtm-footer__logos-list-take5  |
+            |Yours                      |/yours             |gtm-footer__logos-list-yours  |
+            |Mother & Baby              |/mother-and-baby   |gtm-footer__logos-list-mb     |
+        * I can navigate to all standard pages in the footer
+            |page           |url                                                            |
+            |PRIVACY POLICY |http://www.bauer-media.com.au/privacy                          |
+            |ADVERTISE      |http://www.bauer-media.com.au/advertising/advertise-with-us    |
+            |TERMS OF USE   |http://www.bauer-media.com.au/terms/website-terms              |
+            |CONTACT US     |contact-us                                                     |
+        * I can see the standard copyright text in the footer as "COPYRIGHT BAUER MEDIA PTY LTD ALL RIGHTS RESERVED"

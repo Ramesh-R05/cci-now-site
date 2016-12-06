@@ -6,17 +6,17 @@ module.exports = function() {
          var rows = dataTable.hashes();
         //below captures the array of menu items to validate agains the table
 
-        var menuTitle = browser.getAttribute(uniheader.uniHeader, 'title');
-        var menuhref = browser.getAttribute(uniheader.uniHeader, 'href');
-        var menuTag = browser.getAttribute(uniheader.uniHeader, 'class');
+        var brandTitle = browser.getAttribute(uniheader.uniHeader, 'title');
+        var brandHref = browser.getAttribute(uniheader.uniHeader, 'href');
+        var brandGTM = browser.getAttribute(uniheader.uniHeader, 'class');
         //end
 
         for (var i = 0; i < rows.length; ++i) {
             var row = rows[i];
             //validates position of menu base on Index
-            expect(menuTitle[i]).toEqual(row['title']);
-            expect(menuhref[i]).toMatch(row['url']);
-            expect(menuTag[i]).toEqual(row['tag']);
+            expect(brandTitle[i]).toEqual(row['title']);
+            expect(brandHref[i]).toMatch(row['url']);
+            expect(brandGTM[i]).toEqual(row['gtm']);
         }
     });
 };

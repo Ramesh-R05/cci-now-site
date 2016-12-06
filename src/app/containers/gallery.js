@@ -15,7 +15,7 @@ import AdStore from '@bxm/ad/lib/google/stores/ad';
 import GalleryStore from '@bxm/gallery/lib/stores/gallery';
 import GalleryPageStore from '@bxm/gallery/lib/stores/galleryPage';
 import hamburgerWrapper from '@bxm/nav/lib/components/hamburgerWrapper';
-import Logos from '../components/uniheader/logos';
+import Logos from '../components/page/logos';
 import classnames from 'classnames';
 
 @hamburgerWrapper
