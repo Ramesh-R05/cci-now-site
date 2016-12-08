@@ -17,6 +17,7 @@ import GalleryPageStore from '@bxm/gallery/lib/stores/galleryPage';
 import hamburgerWrapper from '@bxm/nav/lib/components/hamburgerWrapper';
 import Logos from '../components/page/logos';
 import classnames from 'classnames';
+import Footer from '../components/footer';
 
 @hamburgerWrapper
 class GallerySection extends Component {
@@ -207,6 +208,7 @@ class GallerySection extends Component {
                     />
 
                 </section>
+                <Footer logoList={this.context.config.brands.uniheader} />
             </div>
         );
     }

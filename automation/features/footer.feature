@@ -46,4 +46,5 @@ Feature: Footer
             |page               |url                                                            |
             |section landing    |fashion                                                        |
             |article            |fashion/models/automation-test-article-with-hero-image-3663    |
+            |gallery            |fashion/models/automation-test-gallery-13302                   |
             |404                |404                                                            |

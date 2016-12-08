@@ -33,6 +33,10 @@
     &__body {
         max-width: 1024px;
         margin-top: 0px;
+        
+        @media #{$large-up} {
+            max-height: 690px;
+        }
     }
 
     &-caption__toggle {

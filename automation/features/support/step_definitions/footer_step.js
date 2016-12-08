@@ -66,7 +66,7 @@ module.exports = function() {
         //Validate the copyright text is correct
         expect(browser.getText(footer.footerElementCopyright)).toContain(text)
     });
-
+    
     this.Given(/^I can see all main elements in the footer$/, function () {
         //Validate that the four main elements in the footer appears
         expect(browser.isVisible(footer.footerElementSocialContainer)).toBe(true);

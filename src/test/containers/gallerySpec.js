@@ -10,6 +10,8 @@ const MainStub = Context.createStubComponent();
 const AsideStub = Context.createStubComponent();
 const MobileCanvasStub = Context.createStubComponent();
 const SocialShareStub = Context.createStubComponent();
+const FooterStub = Context.createStubComponent();
+
 let reactModuleInstance;
 const ViewportStub = (CompositeComponent) => {
     return class extends React.Component {
@@ -42,6 +44,7 @@ const GallerySection = proxyquire('../../app/containers/gallery', {
     '@bxm/behaviour/lib/components/resizeViewport': ViewportStub,
     '@bxm/ad/lib/google/components/ad': AdStub,
     '@bxm/nav/lib/components/offcanvas/content': MobileCanvasStub,
+    '../components/footer': FooterStub,
     '@bxm/nav/lib/components/hamburgerWrapper': (component) => component
 }).default;
 
@@ -131,6 +134,7 @@ describe('GallerySection', () => {
         let galleryAside;
         let ad;
         let socialShare;
+        let footer;
 
         before(() => {
             initializeStub = sinon.stub();
@@ -141,6 +145,7 @@ describe('GallerySection', () => {
             galleryAside = TestUtils.findRenderedComponentWithType(reactModule, AsideStub);
             socialShare = TestUtils.findRenderedComponentWithType(reactModule, SocialShareStub);
             ad = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
+            footer = TestUtils.findRenderedComponentWithType(reactModule, FooterStub);
         });
 
         it('should render the appropriate meta tags', () => {
@@ -165,6 +170,10 @@ describe('GallerySection', () => {
         it('should render the MobileCanvas component', () => {
             expect(MobileCanvasStub).to.exist;
         });
+
+        it('should render the Footer component', () => {
+            expect(ReactDOM.findDOMNode(footer)).to.exist;
+        });        
 
         it('should render the ad', () => {
             expect(ad.props).to.deep.eq({
