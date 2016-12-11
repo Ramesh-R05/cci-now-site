@@ -92,7 +92,19 @@ module.exports = function() {
         browser.scroll(0, 1000);
     });
 
-    this.Then(/^I can see the hamburger menu$/, function () {
+    this.Then(/^I should see the hamburger menu$/, function () {
         expect(browser.isVisible(site_nav.siteHamburger)).toEqual(true);
+    });
+
+    this.Then(/^I should not see the hamburger menu$/, function () {
+        expect(browser.isVisible(site_nav.siteHamburger)).toEqual(false);
+    });
+
+    this.Then(/^I should see the large header banner clickable to open homepage$/, function () {
+        expect(browser.isVisible(site_nav.siteHeaderBanner)).toEqual(true);
+
+        //Validate the logo is clickable to open homepage
+        var headerLogoLink = browser.getAttribute(site_nav.siteHeaderBanner,'href');
+        expect(headerLogoLink).not.toEqual('');
     });
 };

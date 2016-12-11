@@ -33,6 +33,7 @@ export default class Error extends Component {
             <Page
                 currentUrl={ this.props.currentUrl }
                 className="error-page"
+                showLeaderboard={true}
                 headerExpanded={true}>
                 <section className="error-page-container container">
                     <h1 className="page-title error-page-container__title">
@@ -46,7 +47,7 @@ export default class Error extends Component {
                         }</p>
                     ))}
                     <p className="error-page-container__footer">
-                        <a href="/" className="error-page-container__homepage-link">
+                        <a href="/" className="gtm-error-goback error-page-container__homepage-link">
                             {returnHomeText}
                         </a>
                     </p>

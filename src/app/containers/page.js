@@ -36,7 +36,8 @@ export default class Page extends Component {
         hamburgerNavItems: PropTypes.array,
         toggleSideMenu: PropTypes.func,
         currentUrl: PropTypes.string.isRequired,
-        isHomePage: PropTypes.bool
+        showUniheader: PropTypes.bool,
+        showLeaderboard: PropTypes.bool
     };
 
     static contextTypes = {
@@ -48,7 +49,7 @@ export default class Page extends Component {
     };
 
     render() {
-        const { headerNavItems, hamburgerNavItems, isHomePage, currentUrl, headerExpanded, hideFooter, children } = this.props;
+        const { headerNavItems, hamburgerNavItems, showUniheader, currentUrl, headerExpanded, hideFooter, children, showLeaderboard } = this.props;
         const mobileNav = hamburgerNavItems ? hamburgerNavItems.slice() : headerNavItems.slice();
         mobileNav.unshift({name: 'Home', url: '/'});
 
@@ -57,7 +58,7 @@ export default class Page extends Component {
             <div className={pageClassName}>
                 <div className={this.props.menuClasses}>
 
-                    {isHomePage ? <UniHeader className="uniheader" logoList={this.context.config.brands.uniheader} /> : null}
+                    {showUniheader ? <UniHeader className="uniheader" logoList={this.context.config.brands.uniheader} /> : null}
 
                     <Header
                         currentUrl={currentUrl}
@@ -65,7 +66,7 @@ export default class Page extends Component {
                         navItems={headerNavItems}
                         siteName={this.context.config.get('site.name')}
                         toggleMenu={this.toggleMenu} />
-                    <Ad
+                    {!showLeaderboard ? <Ad
                         className="ad--section-top-leaderboard"
                         sizes={{
                             banner: 'banner',
@@ -73,7 +74,7 @@ export default class Page extends Component {
                             billboard: ['billboard', 'leaderboard']
                         }}
                         targets={{position: 1}}
-                    />
+                    /> : null }
                     <div className="content-wrapper">
                         { children }
                         { !hideFooter ? <Footer logoList={this.context.config.brands.uniheader} /> : null }

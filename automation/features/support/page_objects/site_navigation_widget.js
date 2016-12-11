@@ -8,7 +8,8 @@ var site_navigation_widget = {
     siteNavHeaderLogo: ".header__sections .header-logo a",
     siteHamburgerDetail: "nav.mobile-menu__nav a",
     siteHamburgerActiveLink: "nav.mobile-menu__nav > a.nav-item.nav-item--active",
-    siteHamburgerClose: "button.close-btn"
+    siteHamburgerClose: "button.close-btn",
+    siteHeaderBanner: ".header-banner a",
 };
 
 module.exports = site_navigation_widget;

@@ -125,3 +125,13 @@ Feature: I have an automated sanity for my live environments
             |TERMS OF USE   |http://www.bauer-media.com.au/terms/website-terms              |
             |CONTACT US     |contact-us                                                     |
         * I can see the standard copyright text in the footer as "COPYRIGHT BAUER MEDIA PTY LTD ALL RIGHTS RESERVED"
+
+    @error @BXMA-139
+    Scenario: I can see the 404 error page in the mobile style
+        Given I switch to "mobile" view
+        When I am currently viewing "404"
+        * I should see the site header logo clickable to open homepage
+        * I should see the hamburger menu
+        * I should see the error title as "Shock! Horror! This page is broken..."
+        * I should see the error giphy image
+        * I should see the text clickable to homepage with gtm "gtm-error-goback"

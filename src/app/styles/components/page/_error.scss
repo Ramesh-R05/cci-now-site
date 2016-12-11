@@ -1,16 +1,19 @@
-.error-page .header-wrapper--expanded {
-    @media #{$medium-up} {
-        margin-bottom: 213px - 76px;
+.error-page {
+
+    .header-wrapper--expanded {
+        @media #{$medium-up} {
+            margin-bottom: 213px - 76px;
+        }
     }
 
-    @media #{$xlarge-up} {
-        margin-bottom: $header-banner-logo-height;
+    .header__sections {
+        @media #{$medium-up} {
+            display: none;
+        }
     }
-}
 
-.error-page .header__sections {
-    @media #{$medium-up} {
-        display: none;
+    .footer {
+        margin-top: 0px;
     }
 }
 
@@ -24,11 +27,14 @@
     }
 
     .emoji {
-        width: 360px;
+        width: 245px;
         height: auto;
+        position: relative;
+        display: block;
+        margin: 0 auto;
 
         @media #{$medium-up} {
-            width: 60px
+            width: 386px;
         }
     }
 }
@@ -43,40 +49,36 @@
 }
 
 .error-page-container__homepage-link {
-    @include type-top-teaser-title();
-    color: $color-primary;
-    font: italic 30px/25px $font-family-serif-primary;
+    font-weight: normal;
+    color: $color-dark-aqua;
+    font: italic 22px/30px $font-family-serif-primary;
     text-decoration: underline;
     text-transform: none;
 }
 
 .error-page-container__footer {
-    margin-top: 25px;
-    padding-bottom: 25px;
+    margin-top: 30px;
+    padding-bottom: 0;
 }
 
 .error-page-container__title {
-    font: 30px/32px $font-family-sans-serif-primary;
+    font: 38px/46px $font-family-sans-serif-primary;
     font-weight: bold;
-    font-size: 80px;
+    text-transform: none;
     line-height: 1.2em;
     letter-spacing: -1px;
     padding: 0;
-    margin: 30px auto 25px;
+    margin: 30px auto 35px;
     text-align: center;
     max-width: 360px;
-
-    @media #{$medium-up} {
-        font-size: 140px;
-    }
 
     .page-title__symbol:before {
         content: none;
     }
 
-    @media #{$xlarge-up} {
-        font-size: 64px;
-        line-height: 68px;
+    @media #{$medium-up} {
+        font-size: 38px;
+        line-height: 46px;
         max-width: 750px;
     }
 

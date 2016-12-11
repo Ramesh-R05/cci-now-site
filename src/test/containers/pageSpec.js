@@ -92,7 +92,8 @@ describe('Page Container', () => {
             hideFooter: false,
             menuClasses: 'site-menu',
             currentUrl: '/',
-            isHomePage: true
+            showUniheader: true,
+            showLeaderboard: false
         };
 
         before(() => {
@@ -125,7 +126,6 @@ describe('Page Container', () => {
             expect(ReactDOM.findDOMNode(uniHeaderStub)).to.exist;
         });
 
-    
         it(`should render the Header component, passing the appropriate props`, () => {
             expect(siteHeaderStub.props).to.deep.eq({
                 currentUrl: props.currentUrl,
@@ -153,7 +153,7 @@ describe('Page Container', () => {
         it (`should render the Logos with the appropriate props`, () => {
             expect(ReactDOM.findDOMNode(logosStub)).to.exist;
             expect(logosStub.props).to.deep.contain({
-                className: "mobile-menu-list", 
+                className: "mobile-menu-list",
                 openInNewTab: true
             });
         });
@@ -179,7 +179,7 @@ describe('Page Container', () => {
             expect(offCanvasInnterHTML).to.contain(React.findDOMNode(closeButton).outerHTML);
         });
 
-        it('should render an top ad banner', () => {
+        it('should render a top ad banner', () => {
             expect(adStub[0].props.className).to.be.equal('ad--section-top-leaderboard');
         });
 
@@ -200,7 +200,7 @@ describe('Page Container', () => {
         });
     });
 
-    
+
     describe(`the current page is not home page`, () => {
         const props = {
             className: 'customClass',
@@ -209,17 +209,46 @@ describe('Page Container', () => {
             hideFooter: false,
             menuClasses: 'site-menu',
             currentUrl: '/page',
-            isHomePage: false
+            showUniheader: false
         };
+
         before(() => {
             reactModule = Context.mountComponent(PageWrapper, props, [contextConfigStub]);
             uniHeaderStub = TestUtils.scryRenderedComponentsWithType(reactModule,UniHeaderStub);
-        })
+        });
+
         it(`should not render the Brand Component`, () => {
             expect(uniHeaderStub.length).to.eq(0);
         });
-    })
+    });
 
+    describe(`the current page is the error page`, () => {
+        const props = {
+            className: 'customClass',
+            children: <h1>Test Children</h1>,
+            headerExpanded: true,
+            hideFooter: false,
+            menuClasses: 'site-menu',
+            currentUrl: '/page',
+            showUniheader: false,
+            showLeaderboard: true
+        };
+
+        before(() => {
+            reactModule = Context.mountComponent(PageWrapper, props, [contextConfigStub]);
+            adStub = TestUtils.scryRenderedComponentsWithType(reactModule, AdStub);
+        });
+
+        it(`should render only 1 ad`, () => {
+            expect(adStub.length).to.eq(1);
+        });
+
+        it(`should render an out of page ad`, () => {
+            expect(adStub[0].props).to.contain({
+                sizes: 'out-of-page'
+            });
+        });
+    });
 
     describe(`when hiding the footer`, () => {
         const props = {

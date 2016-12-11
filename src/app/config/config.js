@@ -44,22 +44,21 @@ export default {
 
     error: {
         404: {
-            title: `SOZ!`,
-            symbol: '#',
-            content: [
-                `This page is broken`
-            ],
-            emojiSrc: '/assets/images/grin-emoji.png',
-            returnHomeText: 'Return to homepage'
+            title: `Shock! Horror! This page is broken...`,
+            symbol: null,
+            content: [''],
+            emojiSrc: '/assets/images/error.gif',
+            returnHomeText: 'Try refreshing this page or join us back on the homepage'
         },
         503: {
-            title: `SOZ!`,
+            title: `Shock! Horror! This page is broken...`,
             symbol: '#',
             content: [
                 `It seems the page you were trying to view is temporarily unavailable.`,
                 `Please try again shortly.`
             ],
-            returnHomeText: 'Return to homepage'
+            emojiSrc: '/assets/images/error.gif',
+            returnHomeText: 'Try refreshing this page or join us back on the homepage'
         }
     }
 };
