@@ -73,7 +73,7 @@ export default class Document extends Component {
             <Page
                 currentUrl={ this.props.currentUrl }
                 headerExpanded={false}
-                hideFooter={false} >
+                hideFooter={false}>
                 <Article
                     articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd]}
                     contentBodyConfig={Document.articleContentBodyConfig}

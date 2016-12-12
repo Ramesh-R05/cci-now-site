@@ -37,19 +37,23 @@ export default class Page extends Component {
         toggleSideMenu: PropTypes.func,
         currentUrl: PropTypes.string.isRequired,
         showUniheader: PropTypes.bool,
-        showLeaderboard: PropTypes.bool
+        hideLeaderboard: PropTypes.bool
     };
 
     static contextTypes = {
         config: PropTypes.object
     };
 
+    static defaultProps = {
+        hideLeaderboard: false
+    };
+    
     toggleMenu = () => {
         this.props.toggleSideMenu('left')
     };
 
     render() {
-        const { headerNavItems, hamburgerNavItems, showUniheader, currentUrl, headerExpanded, hideFooter, children, showLeaderboard } = this.props;
+        const { headerNavItems, hamburgerNavItems, showUniheader, currentUrl, headerExpanded, hideFooter, children, hideLeaderboard } = this.props;
         const mobileNav = hamburgerNavItems ? hamburgerNavItems.slice() : headerNavItems.slice();
         mobileNav.unshift({name: 'Home', url: '/'});
 
@@ -66,7 +70,7 @@ export default class Page extends Component {
                         navItems={headerNavItems}
                         siteName={this.context.config.get('site.name')}
                         toggleMenu={this.toggleMenu} />
-                    {!showLeaderboard ? <Ad
+                    {!hideLeaderboard ? <Ad
                         className="ad--section-top-leaderboard"
                         sizes={{
                             banner: 'banner',

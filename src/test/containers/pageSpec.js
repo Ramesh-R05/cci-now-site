@@ -93,7 +93,7 @@ describe('Page Container', () => {
             menuClasses: 'site-menu',
             currentUrl: '/',
             showUniheader: true,
-            showLeaderboard: false
+            hideLeaderboard: false
         };
 
         before(() => {
@@ -231,7 +231,7 @@ describe('Page Container', () => {
             menuClasses: 'site-menu',
             currentUrl: '/page',
             showUniheader: false,
-            showLeaderboard: true
+            hideLeaderboard: true
         };
 
         before(() => {

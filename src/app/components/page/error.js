@@ -33,7 +33,7 @@ export default class Error extends Component {
             <Page
                 currentUrl={ this.props.currentUrl }
                 className="error-page"
-                showLeaderboard={true}
+                hideLeaderboard={true}
                 headerExpanded={true}>
                 <section className="error-page-container container">
                     <h1 className="page-title error-page-container__title">
