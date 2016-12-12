@@ -90,11 +90,21 @@
 
     &--load-more {
         display: block;
-        margin: 0 auto 30px;
+        margin: 30px auto 0px;
+        background-color: $color-black-origin;
+        line-height: 1;
+        border-radius: 0;
+        border-color: transparent;
+        padding: 10px 25px;
+        min-height: 40px;
 
         @media #{$medium-up} {
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
+    }
+
+    &.back-to-top {
+        background-color: $color-black-origin;
     }
 
     &--link {

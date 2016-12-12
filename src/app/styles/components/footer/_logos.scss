@@ -1,6 +1,6 @@
 .footer {
     &__logos {
-        padding-top: 35px;
+        padding-top: $footer-gap;
         border-top: 1px solid $color-grey-lighter;
         text-align: center;
 
@@ -8,10 +8,11 @@
             font-size: 20px;
             color: $color-black;
             font-family: $small-text-font;
+            letter-spacing: 1.5px;
         }
 
         &-list {
-            margin-top: 40px;
+            margin-top: $footer-gap/2;
             margin-bottom: 0;
             padding: 0;
         }

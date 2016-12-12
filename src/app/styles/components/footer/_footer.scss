@@ -1,9 +1,8 @@
 .footer {
-    padding: 40px 0;
+    padding: $footer-gap 0;
     position: relative;
     max-width: $row-width;
     margin: 0 auto;
-    margin-top: 20px;
 
     a {
         text-decoration: none;
@@ -17,8 +16,6 @@
     }
 
     @media #{$medium-up} {
-        margin-top: 40px;
-        padding: 50px 0;
         border-top-width: 8px;
     }
 
@@ -61,6 +58,10 @@
         width: 55px;
     }
 
+    .get-social__links {
+        margin-bottom: 0;
+    }
+
     .home-page__social-logo {
         background: url(/assets/logos/FollowNowToLove.svg) no-repeat;
         background-size: contain;
@@ -71,12 +72,16 @@
         min-width: 250px;
         display: inline-block;
         text-indent: -99999rem;
-        margin-bottom: 20px;
+        margin-bottom: 0px;
         background-position: center;
 
         @media #{$medium-up} {
             padding-bottom: 4%;
         }
+    }
+
+    .home-page__get-social-container {
+        margin-bottom: 10px;
     }
 
     .social-link__icon svg {

@@ -7,7 +7,7 @@ Feature: Section Landing page
     Scenario Outline: Verify the hero teaser element is functional correctly in "<device>" view
         Given I am currently viewing "fashion"
         When I switch to "<device>" view
-        * I should see the section title containing the default word as now
+        * I should not see the section title containing the default word as now
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
         * I should see the main hero item containing source
@@ -41,14 +41,6 @@ Feature: Section Landing page
         * I should see each bottom feed item containing its image and clickable to open its page
         * I should see each bottom feed item containing its title and clickable to open its page
         * I should see each bottom feed item containing source
-        Examples:
-            |device|
-            |mobile|
-            |tablet portrait |
-            |tablet landscape|
-            |desktop|
-
-    @sectionfeed-bottom @BXMA-34
         Examples:
             |device|
             |mobile|

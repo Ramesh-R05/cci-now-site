@@ -1,6 +1,49 @@
+.teaser {
+    position: relative;
+
+    &.teaser--has-video,
+    &.teaser--gallery {
+        &:after {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-repeat: no-repeat;
+            background-position: top left;
+            background-size: contain;
+            content: '';
+            background-color: $color-white;
+            border: 1px solid $color-white;
+            left: 0;
+            top: 0;
+        }            
+    }       
+
+    &.teaser--has-video {
+        &:after {
+            background-image: url($play-icon);
+            }
+    }
+
+    &.teaser--gallery {
+        &:after {
+            background-image: url($gallery-icon);
+        }
+    }
+}
+
 .top-news-feed {
     margin-top: 14px;
     padding: 0;
+
+    .teaser {
+        &.teaser--has-video,
+        &.teaser--gallery {
+            &:after {
+                top: 0px;
+                left: 0px;
+            }            
+        }      
+    } 
 }
 
 .bottom-news-feed {
@@ -47,4 +90,23 @@
             margin-left: -5px;
         }
     }
+
+    .teaser {
+        &.teaser--has-video,
+        &.teaser--gallery {
+            &:after {
+                top: 0px;
+                left: 15px;
+                @media #{$medium-up} {
+                    top: 0px;
+                    left: 0px;
+                }
+                @media #{$large-up} {
+                    top: 0px;
+                    left: 15px;
+                }
+            }            
+        }      
+    } 
 }
+

@@ -390,14 +390,14 @@ a {
     color: $color-black;
     font: 100 30px / 1em $font-family-sans-serif-primary;
     letter-spacing: 0.1em;
-    text-transform: lowercase;
+    text-transform: uppercase;
     text-decoration: none;
 
     span {
         position: relative;
 
         &:after {
-            border-bottom: solid 2px $color-black;
+            border-bottom: solid 2px $color-aqua;
             content: '';
             display: block;
             position: absolute;
@@ -414,7 +414,7 @@ a {
 
 
     @media #{$medium-up} {
-        font-size: 60px;
+        font-size: 70px;
     }
 
     @media #{$xlarge-up} {

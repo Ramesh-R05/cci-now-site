@@ -5,8 +5,24 @@
     text-align: left;
 
     .section-page & {
-        padding: 30px $column-gutter/2;
+        padding: 20px $column-gutter/2 10px;
         text-align: center;
+
+        span {
+            color: $color-black-origin;
+
+            &:after {
+                border-bottom: 1px solid $color-grey-lighter;
+
+                @media #{$medium-up} {
+                    border-bottom-color: $color-green;
+                }
+            }
+        }
+
+        @media #{$medium-up} {
+            padding: 30px $column-gutter/2 25px;
+        }
     }
 
     @media #{$medium-up} {

@@ -65,7 +65,6 @@ export default class Section extends Component {
                     <h1 className='page-title'>
                         <span className="page-title__symbol"></span>
                         { title }
-                        <span className="page-title__now">now</span>
                     </h1>
                     <div className="container">
                         <div className="row">

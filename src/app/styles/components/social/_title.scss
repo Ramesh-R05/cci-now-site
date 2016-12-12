@@ -8,13 +8,14 @@
             position: relative;
 
             &:before {
-                color: $color-grey-light;
+                color: $color-black-origin;
                 content: 'Follow us now';
                 height: 10px;
                 display: block;
                 font: 400 14px/18px $font-family-sans-serif-primary;
                 text-align: center;
                 letter-spacing: .5px;
+                text-transform: capitalize;
             }
         }
     }
