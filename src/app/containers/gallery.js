@@ -206,9 +206,9 @@ class GallerySection extends Component {
                         imageUrl={gallery.imageUrl}
                         nodeId={gallery.id}
                     />
-
+                    
+                    <Footer logoList={this.context.config.brands.uniheader} />
                 </section>
-                <Footer logoList={this.context.config.brands.uniheader} />
             </div>
         );
     }
