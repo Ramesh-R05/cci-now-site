@@ -16,6 +16,10 @@ function generateTagToTitle(tag) {
     return tag.split('-').map((str) => str.charAt(0).toUpperCase() + str.slice(1)).join(' ');
 }
 
+function transformToLowerCaseTag(tag) {
+    return tag.toLowerCase().replace('%20', '-');
+}
+
 describe('Tag middleware', () => {
     const entityService = 'http://entitiesUrl.com';
     const tagService = 'http://tagUrl.com';
@@ -60,7 +64,7 @@ describe('Tag middleware', () => {
 
                 it('should pass an error to next middleware', (done) => {
                     tagMiddleware(req, res, next).then(() => {
-                        expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, generateTagToTitle(req.query.tag), 'contentTags');
+                        expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, transformToLowerCaseTag(req.query.tag), 'tagsDetails/urlName');
                         expect(next).to.be.calledWith(rejectedResponse);
                         done();
                     }).catch(done);
@@ -419,7 +423,7 @@ describe('Tag middleware', () => {
         it('should call both the listing and entity service, along with calling next', (done) => {
             tagMiddleware(req, res, next).then(() => {
                 expect(makeRequestStub).to.have.been.calledWith(`${entityService}/section/${req.query.section}`);
-                expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, generateTagToTitle(req.query.section), 'contentTags');
+                expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, transformToLowerCaseTag(req.query.section), 'tagsDetails/urlName');
                 expect(next).to.have.been.calledWith();
                 done();
             }).catch(done);
