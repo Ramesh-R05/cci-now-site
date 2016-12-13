@@ -61,13 +61,6 @@ export default class Home extends Component {
                 showUniheader={true}>
                 <div className="home-page">
                     {/* 1st Leaderboard or billboard to show on tablet and up */}
-                    <div className="trending-wrapper">
-                        <div className="container">
-                            <div className="row">
-                                <Trending />
-                            </div>
-                        </div>
-                    </div>
                     <div className="stripe-bg">
                         <div className="container">
                             <div className="row">
