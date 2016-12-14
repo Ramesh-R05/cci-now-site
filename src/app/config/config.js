@@ -44,20 +44,17 @@ export default {
 
     error: {
         404: {
-            title: `Shock! Horror! This page is broken...`,
+            title: `This page is under construction`,
             symbol: null,
             content: [''],
-            emojiSrc: '/assets/images/error.gif',
+            emojiSrc: '/assets/images/coming-soon.jpg',
             returnHomeText: 'Try refreshing this page or join us back on the homepage'
         },
         503: {
-            title: `Shock! Horror! This page is broken...`,
-            symbol: '#',
-            content: [
-                `It seems the page you were trying to view is temporarily unavailable.`,
-                `Please try again shortly.`
-            ],
-            emojiSrc: '/assets/images/error.gif',
+            title: `This page is under construction`,
+            symbol: null,
+            content: [''],
+            emojiSrc: '/assets/images/coming-soon.jpg',
             returnHomeText: 'Try refreshing this page or join us back on the homepage'
         }
     }
