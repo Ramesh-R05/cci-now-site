@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Dolly site" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="NOW Cloudfront site" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
@@ -15,7 +15,7 @@
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
-        <stringProp name="HTTPSampler.domain">live.dolly-site.bauer-media.net.au</stringProp>
+        <stringProp name="HTTPSampler.domain">d241t614vnz766.cloudfront.net</stringProp>
         <stringProp name="HTTPSampler.port"></stringProp>
         <stringProp name="HTTPSampler.connect_timeout"></stringProp>
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -31,10 +31,10 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">3295</stringProp>
         <stringProp name="ThreadGroup.ramp_time">100</stringProp>
-        <longProp name="ThreadGroup.start_time">1346172541000</longProp>
-        <longProp name="ThreadGroup.end_time">1346172541000</longProp>
+        <longProp name="ThreadGroup.start_time">1480563300000</longProp>
+        <longProp name="ThreadGroup.end_time">1480563600000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -68,7 +68,7 @@
           <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="urls" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
             <stringProp name="RegexExtractor.refname">urls</stringProp>
-            <stringProp name="RegexExtractor.regex">&lt;a href=&quot;/([^&quot;]+)&quot;</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;a class=&quot;gtm-navigation-section nav-item&quot; href=&quot;/([^&quot;]+)&quot;</stringProp>
             <stringProp name="RegexExtractor.template">$1$</stringProp>
             <stringProp name="RegexExtractor.default">NOTFOUND</stringProp>
             <stringProp name="RegexExtractor.match_number">-1</stringProp>
@@ -125,10 +125,10 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">3295</stringProp>
         <stringProp name="ThreadGroup.ramp_time">100</stringProp>
-        <longProp name="ThreadGroup.start_time">1458275177000</longProp>
-        <longProp name="ThreadGroup.end_time">1458275177000</longProp>
+        <longProp name="ThreadGroup.start_time">1480563300000</longProp>
+        <longProp name="ThreadGroup.end_time">1480563600000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
