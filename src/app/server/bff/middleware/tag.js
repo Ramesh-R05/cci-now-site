@@ -58,7 +58,8 @@ export default async function tag(req, res, next) {
             });
 
         const skip = ((pageNo-1) * listCount);
-        const latestTeasersResp = await getLatestTeasers(listCount, skip, title, 'contentTags');
+        const loweredCaseTag = tag.toLowerCase().replace('%20', '-');
+        const latestTeasersResp = await getLatestTeasers(listCount, skip, loweredCaseTag, 'tagsDetails/urlName');
 
         // TODO: need to handle `data` in resp better
         const latestTeasers = latestTeasersResp || {
