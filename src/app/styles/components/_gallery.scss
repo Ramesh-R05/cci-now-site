@@ -19,11 +19,13 @@
     }
 
     &__mobile-ad {
-        position: initial;
-        background: #f7f7f7;
+        position: relative;
+        top: 0;
         margin-top: -1px;
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         padding: 10px 0;
+        background: none;
+        z-index: 1; 
 
         @media #{$medium-up} {
             margin-top: -13px;
@@ -33,10 +35,14 @@
     &__body {
         max-width: 1024px;
         margin-top: 0px;
-        
+
         @media #{$large-up} {
             max-height: 690px;
         }
+
+        padding-top: 20px;
+        z-index: 1;
+        background-color: #fff;
     }
 
     &-caption__toggle {
@@ -213,7 +219,7 @@
         .gallery__title {
             font: 400 24px/26px $font-family-sans-serif-primary;
             color: $color-black-light;
-            padding: 20px 30px 20px;
+            padding: 0px 30px 20px;
             margin-bottom: 6px;
 
             @media #{$large-up} {
@@ -342,6 +348,11 @@
     }
 
     &__aside {
+
+        @media #{$large-up} {
+            padding-top: 0px;
+        }
+
         .gallery__subsection {
             @include type-teaser-color-block();
             display: inline;

@@ -11,6 +11,7 @@ const SiteFooterStub = Context.createStubComponent();
 const NavigationStub = Context.createStubComponent();
 const LogosStub = Context.createStubComponent();
 const AdStub = Context.createStubComponent();
+const StandardPageAdsWrapperStub = Context.createStubComponentWithChildren();
 
 let reactModuleInstance;
 const toggleMenuStub = sinon.stub();
@@ -30,7 +31,8 @@ const PageWrapper = proxyquire('../../app/containers/page', {
     '../components/uniheader': UniHeaderStub,
     '../components/page/logos': LogosStub,
     '@bxm/site-header/lib/components/navigation': NavigationStub,
-    '@bxm/ad/lib/google/components/ad': AdStub
+    '@bxm/ad/lib/google/components/ad': AdStub,
+    '@bxm/ad/lib/google/components/standardPageAdsWrapper': StandardPageAdsWrapperStub
 }).default;
 
 describe('Page Container', () => {
@@ -183,12 +185,6 @@ describe('Page Container', () => {
             expect(adStub[0].props.className).to.be.equal('ad--section-top-leaderboard');
         });
 
-        it(`should render an out of page ad`, () => {
-            expect(adStub[1].props).to.contain({
-                sizes: 'out-of-page'
-            });
-        });
-
         describe(`when the close button is clicked`, () => {
             before(() => {
                 TestUtils.Simulate.click(closeButton);
@@ -219,34 +215,6 @@ describe('Page Container', () => {
 
         it(`should not render the Brand Component`, () => {
             expect(uniHeaderStub.length).to.eq(0);
-        });
-    });
-
-    describe(`the current page is the error page`, () => {
-        const props = {
-            className: 'customClass',
-            children: <h1>Test Children</h1>,
-            headerExpanded: true,
-            hideFooter: false,
-            menuClasses: 'site-menu',
-            currentUrl: '/page',
-            showUniheader: false,
-            hideLeaderboard: true
-        };
-
-        before(() => {
-            reactModule = Context.mountComponent(PageWrapper, props, [contextConfigStub]);
-            adStub = TestUtils.scryRenderedComponentsWithType(reactModule, AdStub);
-        });
-
-        it(`should render only 1 ad`, () => {
-            expect(adStub.length).to.eq(1);
-        });
-
-        it(`should render an out of page ad`, () => {
-            expect(adStub[0].props).to.contain({
-                sizes: 'out-of-page'
-            });
         });
     });
 

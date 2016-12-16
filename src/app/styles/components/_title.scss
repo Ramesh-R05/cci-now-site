@@ -1,33 +1,27 @@
 .page-title {
     @include type-section-title();
     margin-bottom: 0;
-    padding: 20px $column-gutter/2;
-    text-align: left;
+    padding: 20px $column-gutter/2 10px;
+    text-align: center;
 
-    .section-page & {
-        padding: 20px $column-gutter/2 10px;
-        text-align: center;
-
-        span {
-            color: $color-black-origin;
-
-            &:after {
-                border-bottom: 1px solid $color-grey-lighter;
-
-                @media #{$medium-up} {
-                    border-bottom-color: $color-green;
-                }
-            }
-        }
-
-        @media #{$medium-up} {
-            padding: 30px $column-gutter/2 25px;
-        }
+    @media #{$medium-only} {
+        padding: 30px $column-gutter/2 55px;
     }
 
-    @media #{$medium-up} {
-        padding: 0;
-        text-align: center;
+    @media #{$large-up} {
+        padding: 10px $column-gutter/2 55px;
+    }
+    
+    span {
+        color: $color-black-origin;
+
+        &:after {
+            border-bottom: 1px solid $color-grey-lighter;
+
+            @media #{$medium-up} {
+                border-bottom-color: $color-green;
+            }
+        }
     }
 }
 

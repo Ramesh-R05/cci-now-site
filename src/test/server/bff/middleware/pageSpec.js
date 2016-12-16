@@ -183,7 +183,8 @@ describe('Page middleware', () => {
 
             it('should store the section in `req.data`', (done) => {
                 pageMiddleware(req, res, next).then(() => {
-                    expect(req.data.section).to.deep.equal({ id: entity.sectionId, name: entity.parentName });
+                    expect(req.data.section).to.deep.equal({ id: entity.sectionId, name: 'fashion' });
+                    expect(req.data.subsection).to.deep.equal({ name: 'models' });
                     done();
                 }).catch(done);
             });

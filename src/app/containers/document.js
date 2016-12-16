@@ -3,7 +3,6 @@ import { connectToStores } from '@bxm/flux';
 import Article from '@bxm/article/lib/article';
 import Gallery from './gallery';
 import Page from './page';
-import Ad from '@bxm/ad/lib/google/components/ad';
 import Teaser from '../components/teaser/teaser';
 
 function mapStateToProps(context) {
@@ -52,15 +51,8 @@ export default class Document extends Component {
 
         if (this.props.nodeType === 'Gallery') {
             return (
-                <div>
-                    <Gallery
+                    <Gallery 
                         customisedTeaser={Teaser} />
-                    <Ad
-                        className='ad--out-of-page'
-                        sizes={'out-of-page'}
-                        label={{active: false}}
-                    />
-                </div>
             );
         }
 

@@ -5,6 +5,7 @@ const { React, ReactDOM, TestUtils } = Context;
 const proxyquire = require('proxyquire').noCallThru();
 
 const AdStub = Context.createStubComponent();
+const StandardPageAdsWrapperStub = Context.createStubComponentWithChildren();
 const HeaderStub = Context.createStubComponent();
 const MainStub = Context.createStubComponent();
 const AsideStub = Context.createStubComponent();
@@ -45,6 +46,7 @@ const GallerySection = proxyquire('../../app/containers/gallery', {
     '@bxm/ad/lib/google/components/ad': AdStub,
     '@bxm/nav/lib/components/offcanvas/content': MobileCanvasStub,
     '../components/footer': FooterStub,
+    '@bxm/ad/lib/google/components/standardPageAdsWrapper': StandardPageAdsWrapperStub,
     '@bxm/nav/lib/components/hamburgerWrapper': (component) => component
 }).default;
 

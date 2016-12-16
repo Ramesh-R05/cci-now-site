@@ -7,15 +7,16 @@ noCallThru();
 const ArticleStub = Context.createStubComponent();
 const GalleryPageStub = Context.createStubComponent();
 const PageStub = Context.createStubComponentWithChildren();
-const AdStub = Context.createStubComponent();
 const CustomisedTeaserStub = Context.createStubComponent();
+const FooterStub = Context.createStubComponent();
+const AdWrapperStub = Context.createStubComponentWithChildren();
 
 const Document = proxyquire('../../app/containers/document', {
     '@bxm/article/lib/article': ArticleStub,
     './gallery': GalleryPageStub,
     './page': PageStub,
-    '@bxm/ad/lib/google/components/ad': AdStub,
-    '../components/teaser/teaser': CustomisedTeaserStub
+    '../components/teaser/teaser': CustomisedTeaserStub,
+    '../components/article/footer': FooterStub
 }).default;
 
 describe('Document Component', () => {
@@ -74,21 +75,13 @@ describe('Document Component', () => {
     describe('when nodeType is Gallery', () => {
         const nodeType = 'Gallery';
         let reactModule;
-        let adStub;
 
-        beforeEach(() => {
+        before(() => {
             reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType});
-            adStub = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
         });
 
         it(`should render the Gallery Component`, () => {
             TestUtils.findRenderedComponentWithType(reactModule, GalleryPageStub);
-        });
-
-        it(`should render an out of page ad`, () => {
-            expect(adStub.props).to.contain({
-                sizes: 'out-of-page'
-            });
         });
     });
   });

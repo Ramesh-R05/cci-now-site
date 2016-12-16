@@ -42,9 +42,12 @@ export default function start(port, site) {
             return
         }
 
-        // /section and fashio page
+        // /section and fashion page
         if (section === 'section' || section === 'fashion') {
             const section = require('../test_data/listing/section').default;
+            res.json(section);
+        } if (section === 'beauty') { //beauty section has the Inskin ad
+            const section = require('../test_data/listing/section_inskin').default;
             res.json(section);
         } else {
             next({body: "Could not find the section page", err: null, status: 404});
@@ -87,6 +90,9 @@ export default function start(port, site) {
                 break;
             case 'automation-test-gallery-13302':
                 data = require('../test_data/pages/gallery').default;
+                break;
+            case 'automation-test-gallery-inskin-13303':
+                data = require('../test_data/pages/gallery_inskin').default;
                 break;
             default:
                 next({body: "Could not find the article page", err: null, status: 404});

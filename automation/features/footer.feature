@@ -43,8 +43,8 @@ Feature: Footer
         When I am currently viewing "<url>"
         * 	I can see all main elements in the footer
         Examples:
-            |page               |url                                                            |
-            |section landing    |fashion                                                        |
-            |article            |fashion/models/automation-test-article-with-hero-image-3663    |
-            |gallery            |fashion/models/automation-test-gallery-13302                   |
-            |404                |404                                                            |
+            |page               |url                                                                |
+            |section landing    |fashion                                                            |
+            |article            |fashion/red-carpet/automation-test-article-with-hero-image-3663    |
+            |gallery            |fashion/red-carpet/automation-test-gallery-13302                       |
+            |404                |404                                                                |

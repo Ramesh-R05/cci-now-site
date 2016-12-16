@@ -43,7 +43,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
 
     Scenario: I can see the navigation widget on the article page
         Given I switch to "tablet portrait" view
-        When I am currently viewing "fashion/models/automation-test-article-with-hero-image-3663"
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         Then I should see the site header logo clickable to open homepage
         And I should see the site navigation links and "gtm-navigation-section nav-item" class name in "header"
         And I should see the site navigation links and "gtm-navigation-section nav-item" class name in "hamburger"
@@ -52,14 +52,14 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
 
     Scenario: I can see the navigation widget on the gallery page
         Given I switch to "mobile portrait" view
-        When I am currently viewing "fashion/models/automation-test-gallery-13302"
+        When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
         Then I should not see the site navigation links
         And I should see the hamburger menu
 
     @BXMA-65
     Scenario: I can see the brand logos in the hamburger menu
         Given I switch to "mobile" view
-        When I am currently viewing "fashion/models/automation-test-article-with-hero-image-3663"
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
          * I can navigate to all sites in the hamburger navigation menu
             |title                      |url                                |gtm                        |
             |Homes To Love              |http://homestolove.com.au/         |gtm-mobile-menu-list-homes  |

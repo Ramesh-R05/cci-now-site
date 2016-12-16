@@ -86,6 +86,93 @@ module.exports = function() {
     });
 
 
+    //BELOW ARE THE STEPS TO TEST WALLPAPER, SIDE PANEL, OUT OF PAGE ADs
+    this.Then(/^I should "([^"]*)" the wallpaper ad slot on "([^"]*)"$/, function (visibility, page) {
+        //Identify the element
+        switch(visibility) {
+            case 'see':
+                var valueVisible = true
+                break;
+            case 'not see':
+                var valueVisible = false
+                break;
+        }
+        switch(page) {
+            case 'homepage':
+            case 'section':
+                var adWallpaper = wn_ads.adWallpaperHomepageSection
+                break;
+            case 'article':
+                var adWallpaper = wn_ads.adWallpaperArticle
+                break;
+            case 'gallery':
+                var adWallpaper = wn_ads.adWallpaperGallery
+                break;
+        }
+
+        //Validate
+        expect(browser.isVisible(adWallpaper)).toBe(valueVisible);
+    });
+
+    this.Then(/^I should "([^"]*)" the left and right side ad slot on "([^"]*)"$/, function (visibility, page) {
+        //Identify the element
+        switch(visibility) {
+            case 'see':
+                var valueVisible = true
+                break;
+            case 'not see':
+                var valueVisible = false
+                break;
+        }
+        switch(page) {
+            case 'homepage':
+            case 'section':
+                var adLeftSide = wn_ads.adLeftSideHomepageSection
+                var adRightSide = wn_ads.adRightSideHomepageSection
+                break;
+            case 'article':
+                var adLeftSide = wn_ads.adLeftSideArticle
+                var adRightSide = wn_ads.adRightSideArticle
+                break;
+            case 'gallery':
+                var adLeftSide = wn_ads.adLeftSideGallery
+                var adRightSide = wn_ads.adRightSideGallery
+                break;
+        }
+
+        //Validate
+        expect(browser.isVisible(adLeftSide)).toBe(valueVisible);
+        expect(browser.isVisible(adRightSide)).toBe(valueVisible);
+    });
+
+    this.Then(/^I should "([^"]*)" the out of page ad slot on "([^"]*)"$/, function (visibility, page) {
+        //Identify the element
+        switch(visibility) {
+            case 'see':
+                var valueVisible = true
+                break;
+            case 'not see':
+                var valueVisible = false
+                break;
+        }
+        switch(page) {
+            case 'homepage':
+            case 'section':
+                var adOutOfPage = wn_ads.adOutOfPageHomepageSection
+                break;
+            case 'article':
+                var adOutOfPage = wn_ads.adOutOfPageArticle
+                break;
+            case 'gallery':
+                var adOutOfPage = wn_ads.adOutOfPageGallery
+                break;
+        }
+
+        //Validate
+        expect(browser.isVisible(adOutOfPage)).toBe(valueVisible);
+    });
+
+
     //BELOW ARE THE STEPS FROM OTHER SITES. I WILL DECIDE TO KEEP OR DELETE LATER
 
     this.Then(/^I should see (\d+) leaderboard ad slots$/, function (slot_count) {

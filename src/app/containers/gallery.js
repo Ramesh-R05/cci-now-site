@@ -17,6 +17,7 @@ import GalleryPageStore from '@bxm/gallery/lib/stores/galleryPage';
 import hamburgerWrapper from '@bxm/nav/lib/components/hamburgerWrapper';
 import Logos from '../components/page/logos';
 import classnames from 'classnames';
+import StandardPageAdsWrapper from '@bxm/ad/lib/google/components/standardPageAdsWrapper';
 import Footer from '../components/footer';
 
 @hamburgerWrapper
@@ -161,25 +162,29 @@ class GallerySection extends Component {
                         targets={targets}
                     />
 
-                    <section ref="galleryBody" className="gallery__body row" style={{ height: this.state.galleryHeight }} ref="galleryBody">
-                        <GalleryDetailMain
-                            {...this.props}
-                            keyword={keyword}
-                            customisedTeaser={customisedTeaser}
-                            onNextGalleryClick={this.onNextGalleryClick}
-                            kingtag={kingtag}
-                            alwaysDisplayTitle={true}
-                            showFooterAd={false}
-                        />
+                    <StandardPageAdsWrapper>
+                        <section ref="galleryBody" className="gallery__body row" style={{ height: this.state.galleryHeight }} ref="galleryBody"> 
+                            <GalleryDetailMain
+                                {...this.props}
+                                keyword={keyword}
+                                customisedTeaser={customisedTeaser}
+                                onNextGalleryClick={this.onNextGalleryClick}
+                                kingtag={kingtag}
+                                alwaysDisplayTitle={true}
+                                showFooterAd={false}
+                            />
 
-                        <GalleryDetailAside
-                            {...this.props}
-                            showAuthor={true}
-                            showSourceLogo={true}
-                            keyword={keyword}
-                            kingtag={kingtag}
-                        />
-                    </section>
+                            <GalleryDetailAside
+                                {...this.props}
+                                showAuthor={true}
+                                showSourceLogo={true}
+                                keyword={keyword}
+                                kingtag={kingtag}
+                            />
+                        </section>
+                    </StandardPageAdsWrapper>
+
+                    <Footer logoList={this.context.config.brands.uniheader} />
 
                     <MobileOffCanvas side='left' toggleSideMenu={this.toggleMenu}>
                         <div className="off-canvas-content-wrapper">
@@ -206,8 +211,6 @@ class GallerySection extends Component {
                         imageUrl={gallery.imageUrl}
                         nodeId={gallery.id}
                     />
-                    
-                    <Footer logoList={this.context.config.brands.uniheader} />
                 </section>
             </div>
         );

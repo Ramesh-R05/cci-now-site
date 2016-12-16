@@ -56,16 +56,12 @@ export default class Section extends Component {
         const heroTeaser = teasers[0];
         const firstTeaserList = teasers.slice(1, 7);
         const keyword = nodeType === 'TagSection' && title ? [ title ] : [];
-
         return (
             <Page
                 currentUrl={ this.props.currentUrl }
-                headerExpanded={false}>
+                headerExpanded={false}
+                sectionTitle={title}>
                 <div className="section-page">
-                    <h1 className='page-title'>
-                        <span className="page-title__symbol"></span>
-                        { title }
-                    </h1>
                     <div className="container">
                         <div className="row">
                             <div className="page__top-container columns">

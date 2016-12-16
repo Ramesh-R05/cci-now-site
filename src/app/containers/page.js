@@ -10,6 +10,7 @@ import Logos from '../components/page/logos';
 import Navigation from '@bxm/site-header/lib/components/navigation';
 import classnames from 'classnames';
 import Ad from '@bxm/ad/lib/google/components/ad';
+import StandardPageAdsWrapper from '@bxm/ad/lib/google/components/standardPageAdsWrapper';
 
 function mapStateToProps(context) {
     return {
@@ -37,7 +38,8 @@ export default class Page extends Component {
         toggleSideMenu: PropTypes.func,
         currentUrl: PropTypes.string.isRequired,
         showUniheader: PropTypes.bool,
-        hideLeaderboard: PropTypes.bool
+        hideLeaderboard: PropTypes.bool,
+        sectionTitle: PropTypes.string
     };
 
     static contextTypes = {
@@ -53,10 +55,9 @@ export default class Page extends Component {
     };
 
     render() {
-        const { headerNavItems, hamburgerNavItems, showUniheader, currentUrl, headerExpanded, hideFooter, children, hideLeaderboard } = this.props;
+        const { headerNavItems, hamburgerNavItems, showUniheader, currentUrl, headerExpanded, hideFooter, children, hideLeaderboard, sectionTitle } = this.props;
         const mobileNav = hamburgerNavItems ? hamburgerNavItems.slice() : headerNavItems.slice();
         mobileNav.unshift({name: 'Home', url: '/'});
-
         const pageClassName = classnames('page', this.props.className);
         return (
             <div className={pageClassName}>
@@ -79,10 +80,18 @@ export default class Page extends Component {
                         }}
                         targets={{position: 1}}
                     /> : null }
-                    <div className="content-wrapper">
-                        { children }
-                        { !hideFooter ? <Footer logoList={this.context.config.brands.uniheader} /> : null }
-                    </div>
+
+                    {sectionTitle ? <h1 className='page-title'>
+                        <span className="page-title__symbol"></span>
+                        { sectionTitle }
+                    </h1> : null}
+
+                    <StandardPageAdsWrapper>
+                        <div className="content-wrapper">
+                            { this.props.children }
+                            { !hideFooter ? <Footer logoList={this.context.config.brands.uniheader} /> : null }
+                        </div>
+                    </StandardPageAdsWrapper>
 
                     <MobileOffCanvas side='left' toggleSideMenu={this.toggleMenu}>
                         <div className="off-canvas-content-wrapper">
@@ -98,11 +107,6 @@ export default class Page extends Component {
                             <Logos className="mobile-menu-list" openInNewTab={true} logoList={this.context.config.brands.hamburgers} />
                         </div>
                     </MobileOffCanvas>
-                    <Ad
-                        className='ad--out-of-page'
-                        sizes="out-of-page"
-                        label={{active: false}}
-                    />
                 </div>
             </div>
         )

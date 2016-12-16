@@ -3,9 +3,9 @@ import latestTeasers from '../latestTeasers';
 
 export default {
     entity: {
-        id: "NOW-1206",
-        title: "Fashion",
-        dateCreated: "2016-11-23T02:25:50.00Z",
+        id: "NOW-1210",
+        title: "Beauty",
+        dateCreated: "2016-11-23T02:25:51.00Z",
         imageFacebookUrl: {
             tags: [ ],
             source: "",
@@ -13,17 +13,17 @@ export default {
         },
         nodeType: "Section",
         url: "/",
-        parentName: "Fashion",
-        parentUrl: "/fashion"
+        parentName: "Beauty",
+        parentUrl: "/beauty"
     },
     headerMetaData: {
         googleTagManagerEnvironment: "dev",
         googleTagManagerMasthead: "NOW",
         robots: "NOINDEX,NOFOLLOW",
-        canonicalUrl: "",
-        pageDescription: "Fashion",
-        pageName: "Fashion",
-        title: "Fashion"
+        canonicalUrl: "http://dev.now-site.bauer-media.net.au/beauty",
+        pageDescription: "Beauty",
+        pageName: "Beauty",
+        title: "Beauty"
     },
     latestTeasers: latestTeasers.slice(0, 7),
     list: {
@@ -40,8 +40,8 @@ export default {
         }
     },
     section: {
-        id: "NOW-1206",
-        name: "Fashion"
+        id: "NOW-1210",
+        name: "Beauty"
     },
     headerNavigation: navigation.getData()
 }

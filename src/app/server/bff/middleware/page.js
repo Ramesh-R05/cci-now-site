@@ -23,8 +23,8 @@ export default async function page(req, res, next) {
 
         req.data = req.data || {};
         req.data.entity = { ...pageData };
-        req.data.section = { id: pageData.sectionId, name: pageData.parentName }; // Initally used to set the ad slot within @bxm/ads + gtm in @bxm/server
-
+        req.data.section = { id: pageData.sectionId, name: section }; // Initally used to set the ad slot within @bxm/ads + gtm in @bxm/server
+        req.data.subsection = { name: subsection };
         next();
     } catch(error) {
         console.error('[bff/middleware/page]', error);

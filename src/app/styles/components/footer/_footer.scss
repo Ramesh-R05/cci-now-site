@@ -3,6 +3,8 @@
     position: relative;
     max-width: $row-width;
     margin: 0 auto;
+    margin-top: 20px;
+    background: #fff;
 
     a {
         text-decoration: none;
@@ -16,6 +18,8 @@
     }
 
     @media #{$medium-up} {
+        margin-top: 0px;
+        padding: 90px 0;
         border-top-width: 8px;
     }
 
@@ -34,7 +38,6 @@
             @media #{$large-up} {
                 font-size: 12px;
             }
-
         }
     }
 

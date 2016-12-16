@@ -6,7 +6,7 @@ Feature: Article
     @DDO-46 @DAW-1125
     Scenario: Verify an article page which contains a hero image on mobile
         When I switch to "mobile" view
-        Given I am currently viewing "fashion/models/automation-test-article-with-hero-image-3663"
+        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the created date "FEBRUARY 12, 2016 4:00PM"
         * I can see the author "EMILY KERR"
         * I can see the hero image
@@ -35,7 +35,7 @@ Feature: Article
     @DAW-1125
     Scenario: Verify an article page which contains a hero video on tablet portrait
         When I switch to "tablet portrait" view
-        Given I am currently viewing "fashion/models/automation-test-article-with-hero-video-3664"
+        Given I am currently viewing "beauty/hair/automation-test-article-with-hero-video-3664"
         * I can see the created date "FEBRUARY 12, 2016 4:00PM"
         * I can see the author "EMILY KERR"
         * I can see the hero video instead of the main image
@@ -62,7 +62,7 @@ Feature: Article
 
     Scenario: Verify an article page which contains a hero image on desktop
         When I switch to "desktop" view
-        Given I am currently viewing "fashion/models/automation-test-article-with-hero-image-3663"
+        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the created date "FEBRUARY 12, 2016 4:00PM"
         * I can see the author "EMILY KERR"
         * I can see the hero image
@@ -91,7 +91,7 @@ Feature: Article
 
 @DDO-160 @DDO-48
 Scenario Outline: Verify an hero image caption and LHR on different screen sizes "<device>"
-    Given I am currently viewing "fashion/models/automation-test-article-with-hero-image-3663"
+    Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
     When I switch to "<device>" view
     * I can see the hero image
     * I should not see the hero image caption
@@ -102,7 +102,7 @@ Scenario Outline: Verify an hero image caption and LHR on different screen sizes
     | tablet landscape  |
 
 Scenario Outline: Verify an hero image caption and LHR on different screen sizes "<device>"
-    Given I am currently viewing "fashion/models/automation-test-article-with-hero-image-3663"
+    Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
     When I switch to "<device>" view
     * I can see the hero image
     * I should not see the hero image caption
@@ -115,7 +115,7 @@ Scenario Outline: Verify an hero image caption and LHR on different screen sizes
 
 @DDO-48
 Scenario: Verify the LHR on an article page
-    Given I am currently viewing "fashion/models/automation-test-article-with-hero-image-3663"
+    Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
     When I switch to "desktop" view
     * I can see 20 items in the list of items in LHR
     * I can see the 20 images of each item in LHR

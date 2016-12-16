@@ -1,34 +1,41 @@
 import DataManager from '../class/DataManager';
 
 const navigation = {
-    items: [
+    "items": [
         {
-            "url": "/celebrity",
-            "name": "Celebrity"
+            "id": "NOW-1168",
+            "name": "Celebrity",
+            "dateCreated": "2016-11-23T02:25:42.00Z",
+            "nodeType": "Section",
+            "url": "/celebrity"
         },
         {
-            "url": "/fashion",
-            "name": "Fashion"
+            "id": "NOW-1172",
+            "name": "News",
+            "dateCreated": "2016-11-23T02:25:43.00Z",
+            "nodeType": "Section",
+            "url": "/news"
         },
         {
-            "url": "/beauty",
-            "name": "Beauty"
+            "id": "NOW-1180",
+            "name": "Health",
+            "dateCreated": "2016-11-23T02:25:45.00Z",
+            "nodeType": "Section",
+            "url": "/health"
         },
         {
-            "url": "/dolly-doctor",
-            "name": "Dolly Doctor"
+            "id": "NOW-1186",
+            "name": "Lifestyle",
+            "dateCreated": "2016-11-23T02:25:46.00Z",
+            "nodeType": "Section",
+            "url": "/lifestyle"
         },
         {
-            "url": "/lifestyle",
-            "name": "Lifestyle"
-        },
-        {
-            "url": "/video",
-            "name": "Video"
-        },
-        {
-            "url": "/win",
-            "name": "Win"
+            "id": "NOW-1217",
+            "name": "Royals",
+            "dateCreated": "2016-11-23T02:25:52.00Z",
+            "nodeType": "Section",
+            "url": "/royals"
         }
     ]
 };

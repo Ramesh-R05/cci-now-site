@@ -18,11 +18,11 @@ export default {
   "parentID": "DOLLY-3641",
   "siteCode": "b9b259e8-9920-4f2d-9a13-0cb1a75b684b",
   "siteName": "dolly",
-  "parentUrl": "/fashion",
+  "parentUrl": "/fashion/models",
   "sectionId": "DOLLY-3638",
   "siteTitle": "DOLLY",
   "sortOrder": 1,
-  "parentName": "Fashion",
+  "parentName": "Models",
   "contentBody": [
     {
       "type": "paragraph",
