@@ -12,7 +12,7 @@
     "prepush": "npm run lint:scss && npm test",
     "clean": "rimraf dist/ coverage/ .build/ && mkdirp dist/scripts dist/styles .build/",
     "start": "node ./start.js",
-    "test": "cross-env APP_UNIT_TEST=true babel-node ./node_modules/babel-istanbul/lib/cli cover --root ./ --include-all-sources --report teamcity --report cobertura --report html ./node_modules/mocha/bin/_mocha -- --require ./test/setup.js --recursive --check-leaks",
+    "test": "babel-node ./node_modules/babel-istanbul/lib/cli cover --root ./ --include-all-sources --report teamcity --report cobertura --report html ./node_modules/mocha/bin/_mocha -- --require ./test/setup.js --recursive --check-leaks",
     "test:tdd": "mocha --require babel-polyfill --require babel-register --recursive --check-leaks --watch",
     "build": "npm run clean && npm run build:css && npm run build:js",
     "build:css": "npm run build:css:site && npm run build:css:styleguide",
