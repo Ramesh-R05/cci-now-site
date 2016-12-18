@@ -24,7 +24,7 @@
     "dev-win": "setx APP_KEY now-site && npm run build:css && npm run build:js && npm start",
     "dev:css": "nodemon --watch app/styles --watch app-$APP_KEY/styles --ext scss --exec \"npm run build:css\"",
     "dev:js": "watchify app/client.js --debug --transform babelify --transform [envify --APP_KEY $APP_KEY] --plugin [minifyify --output ./dist/bundle.map] --ignore-missing --external request --outfile dist/scripts/main.js",
-    "dev:serve": "cross-env BABEL_DISABLE_CACHE=1 nodemon --watch app start.js",
+    "dev:serve": "nodemon --watch app start.js",
     "stubbed": "cross-env NODE_ENV=stubbed npm run dev",
     "lint:scss": "sass-lint --config .sass-lint.yml --ignore './**/vendor/**' --no-exit --verbose './app*/styles/**/*.scss'"
   },
