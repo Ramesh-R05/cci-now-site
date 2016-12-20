@@ -17,7 +17,7 @@ export default async function section(req, res, next) {
         }
 
         const skip = ((pageNo-1) * listCount);
-        const latestTeasersResp = await getLatestTeasers(listCount, skip, section, 'parentUrl');
+        const latestTeasersResp = await getLatestTeasers(listCount, skip, `/${section}/`, 'parentUrl');
 
         // TODO: need to handle `data` in resp better
         const latestTeasers = latestTeasersResp || {
@@ -53,7 +53,7 @@ export default async function section(req, res, next) {
             listName: section,
             params: {
                 pageNo,
-                section,
+                section: `/${section}/`,
                 filter: 'parentUrl'
             },
             items: [

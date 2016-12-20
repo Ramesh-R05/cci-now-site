@@ -46,7 +46,7 @@ describe('Section middleware', () => {
 
         describe('when the remote returns the list of teasers', () => {
             before(() => {
-                req = { ...reqBase };
+                req = { ...reqBase, app: { config: {site: { host: 'http://site-host.com'}}} };
                 req.data.headerNav = [1, 2, 3];
                 next = sinon.spy();
                 getLatestTeasersStub = sinon.stub().resolves(validRes);
@@ -54,7 +54,14 @@ describe('Section middleware', () => {
 
             it('should store the latest teasers in `req.data`', (done) => {
                 sectionMiddleware(req, res, next).then(() => {
-                    expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, req.query.section, 'parentUrl');
+                    expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, `/${req.query.section}/`, 'parentUrl');
+                    done();
+                }).catch(done);
+            });
+
+            it('should have valid section value in `req.data.list`', (done) => {
+                sectionMiddleware(req, res, next).then(() => {
+                    expect(req.data.list.params.section).to.equal('/sec/');
                     done();
                 }).catch(done);
             });
