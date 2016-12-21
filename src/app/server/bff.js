@@ -14,7 +14,8 @@ import sitemap from './bff/middleware/sitemap';
 import list from './bff/middleware/list';
 
 export default function bff(server) {
-    server.get('/sitemap/:section?', sitemap, error);
+    //// TODO: Enable this on Hard Launch 31 Jan 2017
+    //server.get('/sitemap/:section?', sitemap, error);
     server.get(server.config.services.endpoints.list, list, render, error);
     server.get(
         server.config.services.endpoints.page,// Config set inside @bxm/server
