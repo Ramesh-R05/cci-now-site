@@ -24,7 +24,10 @@ export default createReducerStore({
 
         getFooter(state) {
           return state.footer;
-        }
+        },
 
+        getMustReadItems(state) {
+          return state.mustRead;   
+        }
     }
 });

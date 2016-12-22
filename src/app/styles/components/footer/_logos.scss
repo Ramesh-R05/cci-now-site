@@ -4,6 +4,12 @@
         border-top: 1px solid $color-grey-lighter;
         text-align: center;
 
+        @media #{$medium-up} {
+            margin-right: 30px;
+            margin-left: 30px;
+        }
+
+
         &-title {
             font-size: 20px;
             color: $color-black;

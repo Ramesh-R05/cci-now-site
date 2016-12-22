@@ -5,6 +5,7 @@ export const initialState = {
     footer: {},
     nodeType: '',
     title: '',
+    mustRead: [],
 	trendingItems: []
 };
 
@@ -16,13 +17,15 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
             const entity = payload.body.entity;
 			const trendingItems = payload.body.trendingItems || [];
             const footer = payload.body.footer || {};
+            const mustRead = payload.body.mustRead || [];
             if (!entity) return state;
             return {
                 error: null,
                 nodeType: entity.nodeType,
                 title: entity.title,
                 trendingItems,
-                footer
+                footer,
+                mustRead
             };
             break;
         case 'LOAD_CONTENT_FAILED':
@@ -34,7 +37,8 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 nodeType: '',
                 title: '',
                 trendingItems: [],
-                footer: get(payload, 'response.body.footer', {})
+                footer: get(payload, 'response.body.footer', {}),
+                mustRead: []
             };
             break;
         default:

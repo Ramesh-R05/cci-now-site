@@ -17,6 +17,25 @@ Feature: I have an automated sanity for my live environments
             |Yours                      |/yours                             |gtm-uniheader-yours  |
             |Mother & Baby              |/mother-and-baby                   |gtm-uniheader-mb     |
 
+    @mustread @BXMA-81
+    Scenario Outline: Verify the must read module is functional correctly in "<device>" view
+        Given I switch to "<device>" view
+        When I am currently viewing the homepage
+        * I should see must read header as "MUST READ"
+        * I should see <number> must read images and titles which are clickable to open their page
+        * I should see each must read items containing gtm
+            |no |gtm                    |
+            |1  |gtm-mustread1-homepage |
+            |2  |gtm-mustread2-homepage |
+            |3  |gtm-mustread3-homepage |
+            |4  |gtm-mustread4-homepage |
+            |5  |gtm-mustread5-homepage |
+            |6  |gtm-mustread6-homepage |
+        Examples:
+            |device             | number |
+            | mobile            | 2      |
+            | desktop           | 6      |
+
     @hero @BXMA-40
     Scenario: Verify the hero teaser element is functional correctly in mobile view
         Given I switch to "mobile" view

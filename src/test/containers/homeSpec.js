@@ -13,6 +13,7 @@ const TrendingStub = Context.createStubComponent();
 const SocialLinks = Context.createStubComponent();
 const RepeatableStub = Context.createStubComponent();
 const StickyAndDockStub = Context.createStubComponent();
+const MustReadStub = Context.createStubComponent();
 
 const HomeContainer = proxyquire('../../app/containers/home', {
     '@bxm/ad/lib/google/components/ad': AdStub,
@@ -23,7 +24,8 @@ const HomeContainer = proxyquire('../../app/containers/home', {
     '../components/trending/trending': TrendingStub,
     '../components/repeatable': RepeatableStub,
     '../components/social/block': SocialLinks,
-    '../components/page/stickyAndDockAd': StickyAndDockStub
+    '../components/page/stickyAndDockAd': StickyAndDockStub,
+    '../components/mustRead/mustRead':  MustReadStub
 }).default;
 
 describe('Home Container', () => {
@@ -40,6 +42,10 @@ describe('Home Container', () => {
     Context.addStore('PageStore', {
         getTrendingItems() {
             return [];
+        },
+
+        getMustReadItems() {
+          return [];   
         }
     });
 
@@ -71,6 +77,12 @@ describe('Home Container', () => {
         reactModule = Context.mountComponent(HomeContainer, {}, [contextConfigStub]);
         const AdComponents = TestUtils.scryRenderedComponentsWithType(reactModule, AdStub);
         expect(AdComponents.length).to.eq(2);
+    });
+
+    it(`should render MustRead Component`, () => {
+        reactModule = Context.mountComponent(HomeContainer, {}, [contextConfigStub]);
+        const MustReadComponents = TestUtils.scryRenderedComponentsWithType(reactModule, MustReadStub);
+        expect(MustReadComponents.length).to.eq(1);
     });
 
 });

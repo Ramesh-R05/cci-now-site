@@ -10,6 +10,7 @@ import Page from './page';
 import Repeatable from '../components/repeatable';
 import loadList from '../actions/loadList';
 import StickyAndDockAd from '../components/page/stickyAndDockAd';
+import MustRead from '../components/mustRead/mustRead';
 
 function mapStateToProps(context) {
     const teaserStore = context.getStore('TeaserStore');
@@ -63,6 +64,9 @@ export default class Home extends Component {
                     {/* 1st Leaderboard or billboard to show on tablet and up */}
                     <div className="stripe-bg">
                         <div className="container">
+                            <div className="row">
+                                <MustRead />
+                            </div>
                             <div className="row">
                                 <div className="page__top-container columns">
                                     <div className="row">

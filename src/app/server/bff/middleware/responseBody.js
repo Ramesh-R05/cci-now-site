@@ -28,6 +28,12 @@ export default function responseBody(req, res, next) {
             res.body.footer = parseModule(req.data.footer);
         }
 
+        if (get(req, 'data.mustread')) {
+            res.body.mustRead = parseEntities(req.data.mustread, {
+                title: 'title', imageUrl: 'imageUrl', location: 'url'
+            });
+        }
+
         if (get(req, 'data.leftHandSide')) {
             var lhsData = getPlaceholderImage(req.data.leftHandSide.data);
             res.body.leftHandSide = { items:  parseEntities(lhsData)};

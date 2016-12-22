@@ -118,38 +118,41 @@ module.exports = function(){
         }
     });
 
-    this.Given(/^I should see the trending title at the "([^"]*)"$/, function(position) {
-        //find the display value of the trending title
-        switch(position) {
-            case 'top':
-                var trendingTitleDisplay = browser.getCssProperty(home.trendingTitleTop, 'display').value;
-                var trendingTitleHidden = browser.getCssProperty(home.trendingTitleFront, 'display').value;
-                break;
-            case 'front':
-                var trendingTitleDisplay = browser.getCssProperty(home.trendingTitleFront, 'display').value;
-                var trendingTitleHidden = browser.getCssProperty(home.trendingTitleTop, 'display').value;
-                break;
-        }
-
-        //validate the trending title
-        expect(trendingTitleDisplay).toContain('block');
-        expect(trendingTitleHidden).toContain('none');
+    this.When(/^I should see must read header as "([^"]*)"$/, function (name) {
+        //verify the must read title
+        var title = browser.getText(home.mustreadHeader);
+        expect(title).toEqual(name);
     });
 
-    this.Given(/^I should see (\d+) trending teaser images and titles which are clickable to open their page$/, function(number) {
-        //find elements of image and title of all trending teasers
-        var trendingTeaserImage = browser.getAttribute(home.trendingTeaserImage,'data-srcset');
-        var trendingTeaserImageLink = browser.getAttribute(home.trendingTeaserImageLink,'href');
-        var trendingTeaserTitle = browser.getText(home.trendingTeaserTitle);
-        var trendingTeaserTitleLink = browser.getAttribute(home.trendingTeaserTitle,'href');
+    this.Given(/^I should see (\d+) must read images and titles which are clickable to open their page$/, function(number) {
+        //find elements of image and title of all must read items
+        var mustreadImage = browser.getAttribute(home.mustreadImage,'data-srcset');
+        var mustreadImageLink = browser.getAttribute(home.mustreadImageLink,'href');
+        var mustreadTitle = browser.getText(home.mustreadTitle);
+        var mustreadTitleLink = browser.getAttribute(home.mustreadTitle,'href');
 
         //validate image and title and their links
         for (var i=0; i<number; i++){
-            expect(trendingTeaserImage[i]).not.toEqual('');
-            expect(trendingTeaserImageLink[i]).not.toEqual('');
-            expect(trendingTeaserTitle[i]).not.toEqual('');
-            expect(trendingTeaserTitleLink[i]).toEqual(trendingTeaserImageLink[i]);
-            console.log( i + ":" + trendingTeaserImage[i] + " => " + trendingTeaserTitle[i] + " => " + trendingTeaserImageLink[i]);
+            console.log( i + ":" + mustreadImage[i] + " => " + mustreadTitle[i] + " => " + mustreadImageLink[i]);
+            expect(mustreadImage[i]).not.toEqual('');
+            expect(mustreadImageLink[i]).not.toEqual('');
+            expect(mustreadTitle[i]).not.toEqual('');
+            expect(mustreadTitleLink[i]).toEqual(mustreadImageLink[i]);
+        }
+    });
+
+    this.Then(/^I should see each must read items containing gtm$/, function(dataTable){
+        var rows = dataTable.hashes();
+
+        //find elements
+        var mustreadImageGTM = browser.getAttribute(home.mustreadImageLink,'class');
+        var mustreadTitleGTM = browser.getAttribute(home.mustreadTitle,'class');
+
+        //validate gtm name
+        for (var i = 0; i < mustreadImageGTM.length; ++i) {
+            var row = rows[i];
+            expect(mustreadImageGTM[i]).toMatch(row['gtm']);
+            expect(mustreadTitleGTM[i]).toMatch(row['gtm']);
         }
     });
 };

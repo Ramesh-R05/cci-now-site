@@ -66,7 +66,7 @@ export default {
             "imageUrl": "/assets/images/menulogos/FTL-logo.svg",
             "url": "http://foodtolove.com.au/",
             "title": "Food To Love",
-            "gtmClass": "food" 
+            "gtmClass": "food"
         },
         {
             "imageUrl": "/assets/images/menulogos/ELLE-logo.svg",
@@ -78,25 +78,30 @@ export default {
             "imageUrl": "/assets/images/menulogos/HB-logo.svg",
             "url": "http://harpersbazaar.com.au/",
             "title": "Harper's Bazaar",
-            "gtmClass": "hb" 
+            "gtmClass": "hb"
         },
         {
             "imageUrl": "/assets/images/menulogos/GT-logo.svg",
             "url": "http://gourmettraveller.com.au/",
             "title": "Gourmet Traveller",
-            "gtmClass": "gt" 
+            "gtmClass": "gt"
         },
         {
             "imageUrl": "/assets/images/menulogos/COSMO-logo.svg",
             "url": "http://cosmopolitan.com.au/",
             "title": "Cosmopolitan",
-            "gtmClass": "cosmo" 
+            "gtmClass": "cosmo"
         },
         {
             "imageUrl": "/assets/images/menulogos/DOLLY-logo.svg",
             "url": "http://dolly.com.au/",
             "title": "Dolly",
-            "gtmClass": "dolly" 
+            "gtmClass": "dolly"
         }
-    ]
-}   
+    ],
+    shortSources: {
+        "Australian Women's Weekly": {
+            shortName: "AWW"
+        }
+    }
+}

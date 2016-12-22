@@ -1,3 +1,4 @@
+.mustread-teaser-view-grid,
 .teaser-view-grid {
     .teaser__title {
         text-transform: none;
@@ -41,7 +42,8 @@
         &--woman-s-day span:first-child {
             color: $wd-color;
         }
-
+        
+        &--aww span:first-child,
         &--australian-women-s-weekly span:first-child {
             color: $aww-color;
         }
@@ -126,3 +128,109 @@
         }
     }
 }
+
+.mustread-teaser-view-grid {
+
+    .home-page__teasers-title {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: block;
+
+        @media #{$medium-up} {
+            margin-top: 0;
+
+            &:before {
+                width: calc(100% - #{$must-teaser-gutter});
+            }
+        }
+    }
+
+    .teaser__list {
+        margin-bottom: 30px;
+    }
+
+    .teaser__list-item {
+        padding-bottom: 0;
+
+        .teaser__title {
+            font-size: $must-teaser-title-size;
+            line-height: $must-teaser-title-lineheight;
+            overflow: hidden;
+            max-height: 2*$must-teaser-title-lineheight;
+            padding-left: 0;
+            padding-right: 0;
+            display: block;
+            a {
+                color: #000;
+            }
+        }
+
+        .teaser__source {
+            padding-left: 0;
+            padding-right: 0;
+            letter-spacing: .5px;
+        }
+
+        .teaser__body {
+            margin-bottom: 0;
+        }
+
+        .teaser.teaser--has-video:after, 
+        .teaser.teaser--gallery:after {
+            width: 25px;
+            height: 25px;
+        }
+
+        &:hover {
+            .teaser__title {
+                a {
+                    color: #333;
+                }
+            }
+        }
+
+        &:nth-child(-n+6) {
+            padding-left: $must-teaser-gutter/2;
+            padding-right: $must-teaser-gutter/2;
+        }
+
+        &:nth-child(1) {
+            padding-left: 0;
+        }
+
+        &:nth-child(2) {
+            padding-right: 0;
+        }
+
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(6) {
+            display: none;
+        }
+
+        @media #{$medium-up} {
+            
+            &:nth-child(3),
+            &:nth-child(4) {
+                display: block;
+            }
+
+            &:nth-child(1) {
+                padding-left: $must-teaser-gutter/2;
+            }
+
+            &:nth-child(2) {
+                padding-right: $must-teaser-gutter/2;
+            }
+        }
+
+        @media #{$large-up} {
+            &:nth-child(5),
+            &:nth-child(6) {
+                display: block;
+            }
+        }
+    }  
+}
+

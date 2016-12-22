@@ -60,7 +60,7 @@ describe('Component', () => {
             it('it should find source with correct className to style', () => {
                 const elm = wrapper.find('.hero-teaser__source--australian-women-s-weekly');
                 expect(elm.length).to.be.equal(1);
-                expect(elm.text()).to.contain('Australian women\'s weekly');
+                expect(elm.text()).to.contain('Australian women\'s weekly|< />');
             });
         });
     });
