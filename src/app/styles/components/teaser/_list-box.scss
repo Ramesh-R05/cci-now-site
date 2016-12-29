@@ -4,6 +4,7 @@
 
         &:not(.teaser__list-item--ad) {
             position: relative;
+            padding-bottom: 0;
 
             &:after {
                 content: '';
@@ -11,15 +12,14 @@
                 height: 1px;
                 background-color:  transparent;
                 position: absolute;
-                bottom: 0;
-                left: 0;
+                top: 0;
                 width: calc(100% - #{$column-gutter});
                 left: $column-gutter/2;
             }
 
             @media #{$medium-up} {
-                padding-bottom: 20px;
-                margin-bottom: 20px;
+                padding-top: 20px;
+                margin-top: 20px;
 
                 &:after {
                     background-color:  $color-grey-lighter;
@@ -29,8 +29,8 @@
             }
 
             @media #{$large-up} {
-                padding-bottom: 25px;
-                margin-bottom: 25px;
+                padding-top: 25px;
+                margin-top: 25px;
 
                 &:after {
                     width: calc(100% - #{$column-gutter});
@@ -42,16 +42,6 @@
         &.teaser__list-item--ad {
             @media #{$medium-up} {
                 padding-bottom: 0;
-            }
-        }
-
-        &:last-child {
-            &:not(.teaser__list-item--ad) {
-                margin-bottom: 0;
-
-                &:after {
-                    background-color:  transparent;
-                }
             }
         }
     }
@@ -135,53 +125,55 @@
                 line-height: 12px;
             }
 
-            span:first-child,
-            &--now-to-love span:first-child {
+            span:first-child:not(.teaser__source__breaker),
+            &--now-to-love span:first-child:not(.teaser__source__breaker) {
                 color: $nl-color;
             }
 
-            &--woman-s-day span:first-child {
+            &--woman-s-day span:first-child:not(.teaser__source__breaker) {
                 color: $wd-color;
             }
 
-            &--australian-women-s-weekly span:first-child {
+            &--australian-women-s-weekly span:first-child:not(.teaser__source__breaker) {
                 color: $aww-color;
             }
 
-            &--good-health span:first-child {
+            &--good-health span:first-child:not(.teaser__source__breaker) {
                 color: $good-health-color;
             }
 
-            &--yours span:first-child {
+            &--yours span:first-child:not(.teaser__source__breaker) {
                 color: $yours-color;
             }
 
-            &--ok--magazine span:first-child {
+            &--ok--magazine span:first-child:not(.teaser__source__breaker) {
                 color: $ok-color;
             }
 
-            &--shop-til-you-drop span:first-child {
+            &--shop-til-you-drop span:first-child:not(.teaser__source__breaker) {
                 color: $shop-color;
             }
 
-            &--mother---baby span:first-child {
+            &--mother-and-baby span:first-child:not(.teaser__source__breaker) {
                 color: $mother-baby-color;
             }
 
-            &--take-5 span:first-child {
+            &--take-5 span:first-child:not(.teaser__source__breaker) {
                 color: $take-5-color;
             }
 
-            &--nw span:first-child {
+            &--nw span:first-child:not(.teaser__source__breaker) {
                 color: $nw-color;
             }
 
             &__breaker span:first-child {
                 margin: 0 5px;
+                color: $color-grey-light;
             }
 
             &__breaker {
                 margin: 0 5px;
+                color: $color-grey-light;
             }
         }
 

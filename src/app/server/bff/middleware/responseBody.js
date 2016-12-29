@@ -29,6 +29,7 @@ export default function responseBody(req, res, next) {
         }
 
         if (get(req, 'data.mustread')) {
+            
             res.body.mustRead = parseEntities(req.data.mustread, {
                 title: 'title', imageUrl: 'imageUrl', location: 'url'
             });
@@ -71,6 +72,20 @@ export default function responseBody(req, res, next) {
 
         if (get(req, 'data.subsection')) {
             res.body.subsection = req.data.subsection;
+        }
+
+        if (get(req, 'data.promoted')) {
+
+            res.body.promoted = {
+                title : '',
+                items : []
+            };
+
+            res.body.promoted.items = parseEntities(req.data.promoted.items, {
+                title: 'title', imageUrl: 'imageUrl', location: 'url'
+            });
+
+            res.body.promoted.title = req.data.promoted.title;
         }
 
         next();

@@ -18,7 +18,13 @@ export async function getModules(...args) {
             const moduleConfig = find(modules.data, { moduleName: arg });
             if (arg === 'footer') {
                 moduleList[arg] = moduleConfig || {};
-            } else {
+            } 
+            else if (arg === 'promoted') {
+                moduleList[arg] = {};
+                moduleList[arg]['items'] = get(moduleConfig, 'moduleManualContent.data', []);
+                moduleList[arg]['title'] = get(moduleConfig, 'moduleTitle', '');
+            }
+            else {
                 moduleList[arg] = get(moduleConfig, 'moduleManualContent.data', []);
             }
         });

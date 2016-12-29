@@ -100,8 +100,6 @@ export default {
         }
     ],
     shortSources: {
-        "Australian Women's Weekly": {
-            shortName: "AWW"
-        }
+        "Australian Women's Weekly": 'AWW'
     }
 }

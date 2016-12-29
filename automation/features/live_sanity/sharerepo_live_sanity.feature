@@ -36,6 +36,23 @@ Feature: I have an automated sanity for my live environments
             | mobile            | 2      |
             | desktop           | 6      |
 
+    @promoted @BXMA-205
+    Scenario Outline: Verify the promoted module is functional correctly in "<device>" view
+        Given I switch to "<device>" view
+        When I am currently viewing the homepage
+        * I should see promoted header as "WOMEN OF THE YEAR"
+        * I should see <number> promoted images and titles which are clickable to open their page
+        * I should see each promoted items containing gtm
+            |no |gtm                 |
+            |1  |gtm-promo1-homepage |
+            |2  |gtm-promo2-homepage |
+            |3  |gtm-promo3-homepage |
+            |4  |gtm-promo4-homepage |
+        Examples:
+            |device             | number |
+            | mobile            | 2      |
+            | desktop           | 4      |
+
     @hero @BXMA-40
     Scenario: Verify the hero teaser element is functional correctly in mobile view
         Given I switch to "mobile" view

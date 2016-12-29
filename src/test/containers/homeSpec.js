@@ -13,6 +13,7 @@ const TrendingStub = Context.createStubComponent();
 const SocialLinks = Context.createStubComponent();
 const RepeatableStub = Context.createStubComponent();
 const StickyAndDockStub = Context.createStubComponent();
+const PromotedStub = Context.createStubComponent();
 const MustReadStub = Context.createStubComponent();
 
 const HomeContainer = proxyquire('../../app/containers/home', {
@@ -25,6 +26,7 @@ const HomeContainer = proxyquire('../../app/containers/home', {
     '../components/repeatable': RepeatableStub,
     '../components/social/block': SocialLinks,
     '../components/page/stickyAndDockAd': StickyAndDockStub,
+    '../components/promoted/promoted':  PromotedStub,
     '../components/mustRead/mustRead':  MustReadStub
 }).default;
 
@@ -44,8 +46,12 @@ describe('Home Container', () => {
             return [];
         },
 
+        promotedItems() {
+            return [];
+        },
+
         getMustReadItems() {
-          return [];   
+          return [];
         }
     });
 

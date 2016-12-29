@@ -10,6 +10,7 @@ import Page from './page';
 import Repeatable from '../components/repeatable';
 import loadList from '../actions/loadList';
 import StickyAndDockAd from '../components/page/stickyAndDockAd';
+import Promoted from '../components/promoted/promoted';
 import MustRead from '../components/mustRead/mustRead';
 
 function mapStateToProps(context) {
@@ -71,7 +72,7 @@ export default class Home extends Component {
                                 <div className="page__top-container columns">
                                     <div className="row">
                                         <div className="columns large-8 xlarge-9 home-page__teasers-container" ref="top">
-                                            <HeroTeaser article={this.props.heroTeaser} />
+                                            <HeroTeaser article={this.props.heroTeaser} showPromoted={true} />
 
                                             <div className="home-page__teasers-title">
                                                 <span>what's happening now</span>
@@ -139,6 +140,7 @@ export default class Home extends Component {
                             leaderboard: 'leaderboard',
                             billboard: ['billboard', 'leaderboard'] }}
                         targets={{position: 3}} />
+
                 </div>
             </Page>
         );

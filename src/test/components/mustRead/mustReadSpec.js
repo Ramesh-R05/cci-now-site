@@ -22,9 +22,7 @@ describe('#MustRead Component', () => {
         value: {
             brands: {
                 shortSources: {
-                    "Australian Women's Weekly": {
-                        'shortName': "AWW"
-                    }
+                    "Australian Women's Weekly": "AWW"
                 }
             }
         }
@@ -78,7 +76,7 @@ describe('#MustRead Component', () => {
     let reactModule;
     let teaserSource;
 
-    Context.addStore('PageStore', {
+    Context.addStore('TeaserStore', {
         getMustReadItems() {
             return mustReadItems;
         }

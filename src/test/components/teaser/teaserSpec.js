@@ -27,9 +27,11 @@ const Teaser = proxyquire('../../../app/components/teaser/teaser', {
 describe('Component', () => {
     describe('Teaser', () => {
         const wrapper = shallow(<Teaser
-            article={teaserMock}
+            article={teaserMock.stores.homepageHeroItems.items[0]}
             sourceClassName="hero-teaser__source"
             className="hero-teaser" />, { context });
+
+
 
         it('it should contain source detail', () => {
             expect(wrapper.find('p.hero-teaser__source').length).to.be.equal(1);
@@ -50,6 +52,10 @@ describe('Component', () => {
         it('it should container date component', () => {
             expect(wrapper.find(DateStub).length).to.be.equal(1);
         });
+
+        it('it should use short title', () => {
+            expect(wrapper.find(TeaserTitleStub).prop('title')).to.be.equal("George Clooney's wife takes name -- short");
+        });        
 
         describe('when there is source field in the article', () => {
             const wrapper = shallow(<Teaser

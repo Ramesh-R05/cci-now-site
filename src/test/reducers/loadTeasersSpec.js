@@ -9,6 +9,8 @@ describe(`loadTeasers Reducer`, () => {
                 heroTeaser: {},
                 latestTeasers: ['Teaser 1', 'Teaser 2'],
                 videoGalleryTeasers: ['VideoTeaser 1', 'VideoTeaser 2', 'VideoTeaser 3'],
+                mustRead: [],
+                promoted: { title: '', items: [] },
                 list: {
                     params: {
                         pageNo: 1
@@ -28,6 +30,8 @@ describe(`loadTeasers Reducer`, () => {
                     heroTeaser: payload.body.heroTeaser,
                     latestTeasers: payload.body.latestTeasers,
                     videoGalleryTeasers: payload.body.videoGalleryTeasers,
+                    mustRead: payload.body.mustRead,
+                    promoted: payload.body.promoted,
                     list: {
                         params: {
                             pageNo: payload.body.list.params.pageNo
@@ -42,12 +46,14 @@ describe(`loadTeasers Reducer`, () => {
                     heroTeaser: payload.body.heroTeaser,
                     latestTeasers: payload.body.latestTeasers,
                     videoGalleryTeasers: payload.body.videoGalleryTeasers,
+                    mustRead: payload.body.mustRead,
+                    promoted: payload.body.promoted,
                     list: {
                         params: {
                             pageNo: payload.body.list.params.pageNo
                         },
                         items: payload.body.list.items
-                    }
+                    }                 
                 });
             });
         });
@@ -73,6 +79,11 @@ describe(`loadTeasers Reducer`, () => {
                             pageNo: payload.body.list.params.pageNo
                         },
                         items: payload.body.list.items
+                    },
+                    mustRead: [],
+                    promoted: { 
+                        title : '',
+                        items: [] 
                     }
                 });
             });
@@ -93,6 +104,11 @@ describe(`loadTeasers Reducer`, () => {
                             pageNo: payload.body.list.params.pageNo
                         },
                         items: payload.body.list.items
+                    },
+                    mustRead: [],
+                    promoted: { 
+                        title : '',
+                        items: [] 
                     }
                 });
             });
@@ -113,6 +129,11 @@ describe(`loadTeasers Reducer`, () => {
                             pageNo: payload.body.list.params.pageNo
                         },
                         items: payload.body.list.items
+                    },
+                    mustRead: [],
+                    promoted: { 
+                        title : '',
+                        items: [] 
                     }
                 });
             });
@@ -130,6 +151,11 @@ describe(`loadTeasers Reducer`, () => {
                         pageNo: 1
                     },
                     items: []
+                },
+                mustRead: [],
+                promoted: { 
+                    title : '',
+                    items: [] 
                 }
             };
             payload = {
@@ -154,6 +180,11 @@ describe(`loadTeasers Reducer`, () => {
                         pageNo: 1
                     },
                     items: []
+                },
+                mustRead: [],
+                promoted: { 
+                    title : '',
+                    items: [] 
                 }
             };
             payload = {

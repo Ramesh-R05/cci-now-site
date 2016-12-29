@@ -1,6 +1,7 @@
 const entityPropertyMap = {
     id: 'id',
     contentTitle: 'title',
+    contentSummaryTitle: 'shortTitle',
     contentBody: 'body',
     contentProfiles: 'authorProfiles',
     pageDateCreated: 'dateCreated',

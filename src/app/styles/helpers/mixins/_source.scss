@@ -40,7 +40,7 @@
         color: $shop-color;
     }
 
-    &--mother---baby span:first-child {
+    &--mother-and-baby span:first-child {
         color: $mother-baby-color;
     }
 
@@ -51,6 +51,10 @@
     &--nw span:first-child {
         color: $nw-color;
     }
+
+    &--tv-week span:first-child {
+        color: $tv-color;
+    }    
 
     &__breaker span:first-child {
         margin: 0 5px;

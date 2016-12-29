@@ -178,6 +178,7 @@ export default {
                     ],
                     "id": "AWW-1428",
                     "title": "George Clooney's wife takes name",
+                    "shortTitle": "George Clooney's wife takes name -- short",
                     "imageUrl": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/aww/2014/11/26/1427/clooney-and-wife.png",
                     "nodeType": "BauerArticle",
                     "teaserSummary": "The couple exchanged vows at a luxury resort in Venice surrounded by family and celebrity friends",

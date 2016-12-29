@@ -37,16 +37,16 @@ class MustRead extends Component {
             return null;
         }
 
-		mustRead = (mustRead.length > 6) ? mustRead.slice(0, 6) : mustRead;
+		mustRead = mustRead.slice(0, 6);
 
-        const shortenedNameList = this.context.config ? this.context.config.brands.shortSources : {};
+        const shortenedNameList = this.context.config.brands.shortSources || {};
 
         //Add gtm class name,
         //mustReadItem.id prop will pass into teaser component and be attached as a gtm class
         const newMustRead = mustRead.map((mustReadItem, index) => {
 
             mustReadItem.id = `mustread${++index}-homepage`;
-            mustReadItem.source = has(shortenedNameList, mustReadItem.source) ? get(shortenedNameList, [mustReadItem.source, 'shortName'], mustReadItem.source) : mustReadItem.source;
+            mustReadItem.source = shortenedNameList[mustReadItem.source] || mustReadItem.source;
 
             return mustReadItem;
         });
@@ -70,8 +70,8 @@ class MustRead extends Component {
     }
  }
 
-export default connectToStores(MustRead, ['PageStore'], (context) => {
+export default connectToStores(MustRead, ['TeaserStore'], (context) => {
     return {
-        mustRead: context.getStore('PageStore').getMustReadItems()
+        mustRead: context.getStore('TeaserStore').getMustReadItems()
     };
 });

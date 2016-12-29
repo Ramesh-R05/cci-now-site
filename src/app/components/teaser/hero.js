@@ -2,11 +2,13 @@ import React, {Component, PropTypes} from 'react';
 import Teaser from './teaser';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import SocialContainer from '../social/block';
+import Promoted from '../promoted/promoted';
 
 export default class HeroTeaser extends Component {
     static propTypes = {
         article: PropTypes.object.isRequired,
-        imageSizes: PropTypes.object
+        imageSizes: PropTypes.object,
+        showPromoted: PropTypes.bool
     };
 
     static defaultProps = {
@@ -15,12 +17,13 @@ export default class HeroTeaser extends Component {
             m: { w: 619, h: 515 },
             l: { w: 810, h: 456 },
             xl: { w: 619, h: 515 }
-        }
+        },
+        showPromoted: false
     };
 
     render() {
         if (!this.props.article) return null;
-        const { article, imageSizes } = this.props;
+        const { article, imageSizes, showPromoted } = this.props;
 
         return(
             <div className="hero-wrapper">
@@ -35,6 +38,8 @@ export default class HeroTeaser extends Component {
                     className="ad--section-top-mrec"
                     sizes="mrec"
                     targets={{position: 1}} />
+
+                {showPromoted ? <Promoted /> : null}
 
                 <div className="hero-wrapper__get-social-container">
                     <span className="hero-wrapper__social-logo">Now To Love</span>

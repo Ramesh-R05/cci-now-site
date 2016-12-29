@@ -2,7 +2,7 @@ export default [
     {
         "id": "NOW-1451",
         "url": "/section-aww/subsection-aww/prince-william-and-kate-middleton-visit-national-portrait-gallery-1451",
-        "source": "Mother & Baby",
+        "source": "Mother And Baby",
         "parentName": "Subsection AWW",
         "title": "Prince William and Kate Middleton visit National Portrait Gallery",
         "video": "",

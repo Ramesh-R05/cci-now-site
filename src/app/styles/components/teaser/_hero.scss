@@ -10,7 +10,28 @@ $hero-teaser-line-height: 25px;
     @media #{$medium-up} {
         margin: 0;
         padding-bottom: 20px;
+
+        .home-page & {
+            padding-bottom: 0px;
+            position: relative;
+
+            .promoted-teaser-view-grid + .hero-wrapper__get-social-container {
+                position: absolute;
+                bottom: 35%;
+            }
+        }
     }
+
+    @media #{$large-up} {
+        .home-page & {
+            position: static;
+
+            .promoted-teaser-view-grid + .hero-wrapper__get-social-container {
+                position: static;
+                bottom: auto;
+            }
+        }
+    }    
 
     .ad--section-top-mrec {
         margin-top: 30px;
@@ -29,6 +50,7 @@ $hero-teaser-line-height: 25px;
 
         &__breaker {
             padding: 0 8px;
+            color: $color-grey-light;
         }
 
         @media #{$large-up} {
@@ -36,44 +58,44 @@ $hero-teaser-line-height: 25px;
             margin: 3px 0 0 0;
         }
 
-        span:first-child,
-        &--now-to-love span:first-child {
+        span:first-child:not(.hero-teaser__source__breaker),
+        &--now-to-love span:first-child:not(.hero-teaser__source__breaker) {
             color: $nl-color;
         }
 
-        &--woman-s-day span:first-child {
+        &--woman-s-day span:first-child:not(.hero-teaser__source__breaker) {
             color: $wd-color;
         }
 
-        &--australian-women-s-weekly span:first-child {
+        &--australian-women-s-weekly span:first-child:not(.hero-teaser__source__breaker) {
             color: $aww-color;
         }
 
-        &--good-health span:first-child {
+        &--good-health span:first-child:not(.hero-teaser__source__breaker) {
             color: $good-health-color;
         }
 
-        &--yours span:first-child {
+        &--yours span:first-child:not(.hero-teaser__source__breaker) {
             color: $yours-color;
         }
 
-        &--ok--magazine span:first-child {
+        &--ok--magazine span:first-child:not(.hero-teaser__source__breaker) {
             color: $ok-color;
         }
 
-        &--shop-til-you-drop span:first-child {
+        &--shop-til-you-drop span:first-child:not(.hero-teaser__source__breaker) {
             color: $shop-color;
         }
 
-        &--mother---baby span:first-child {
+        &--mother---baby span:first-child:not(.hero-teaser__source__breaker) {
             color: $mother-baby-color;
         }
 
-        &--take-5 span:first-child {
+        &--take-5 span:first-child:not(.hero-teaser__source__breaker) {
             color: $take-5-color;
         }
 
-        &--nw span:first-child {
+        &--nw span:first-child:not(.hero-teaser__source__breaker) {
             color: $nw-color;
         }
 

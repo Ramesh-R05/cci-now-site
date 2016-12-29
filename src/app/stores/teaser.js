@@ -22,6 +22,14 @@ export default createReducerStore({
             return state.list;
         },
 
+        getMustReadItems(state) {
+          return state.mustRead;
+        },
+
+        getPromoted(state) {
+            return state.promoted;
+        },
+
         getListNextParams(state) {
             return {
                 ...state.list.params,

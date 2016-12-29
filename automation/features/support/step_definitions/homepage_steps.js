@@ -155,4 +155,42 @@ module.exports = function(){
             expect(mustreadTitleGTM[i]).toMatch(row['gtm']);
         }
     });
+
+    this.When(/^I should see promoted header as "([^"]*)"$/, function (name) {
+        //verify the promoted title
+        var title = browser.getText(home.promotedHeader);
+        expect(title).toEqual(name);
+    });
+
+    this.Given(/^I should see (\d+) promoted images and titles which are clickable to open their page$/, function(number) {
+        //find elements of image and title of all promoted items
+        var promotedImage = browser.getAttribute(home.promotedImage,'data-srcset');
+        var promotedImageLink = browser.getAttribute(home.promotedImageLink,'href');
+        var promotedTitle = browser.getText(home.promotedTitle);
+        var promotedTitleLink = browser.getAttribute(home.promotedTitle,'href');
+
+        //validate image and title and their links
+        for (var i=0; i<number; i++){
+            console.log( i + ":" + promotedImage[i] + " => " + promotedTitle[i] + " => " + promotedImageLink[i]);
+            expect(promotedImage[i]).not.toEqual('');
+            expect(promotedImageLink[i]).not.toEqual('');
+            expect(promotedTitle[i]).not.toEqual('');
+            expect(promotedTitleLink[i]).toEqual(promotedImageLink[i]);
+        }
+    });
+
+    this.Then(/^I should see each promoted items containing gtm$/, function(dataTable){
+        var rows = dataTable.hashes();
+
+        //find elements
+        var promotedImageGTM = browser.getAttribute(home.promotedImageLink,'class');
+        var promotedTitleGTM = browser.getAttribute(home.promotedTitle,'class');
+
+        //validate gtm name
+        for (var i = 0; i < promotedImageGTM.length; ++i) {
+            var row = rows[i];
+            expect(promotedImageGTM[i]).toMatch(row['gtm']);
+            expect(promotedTitleGTM[i]).toMatch(row['gtm']);
+        }
+    });
 };

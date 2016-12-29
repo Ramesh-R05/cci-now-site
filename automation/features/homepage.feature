@@ -38,6 +38,25 @@ Feature: Homepage
             |tablet landscape|
             |desktop|
 
+    @promoted @BXMA-205
+    Scenario Outline: Verify the promoted module is functional correctly in "<device>" view
+        Given I switch to "<device>" view
+        When I am currently viewing the homepage
+        * I should see promoted header as "WOMEN OF THE YEAR"
+        * I should see <number> promoted images and titles which are clickable to open their page
+        * I should see each promoted items containing gtm
+            |no |gtm                 |
+            |1  |gtm-promo1-homepage |
+            |2  |gtm-promo2-homepage |
+            |3  |gtm-promo3-homepage |
+            |4  |gtm-promo4-homepage |
+        Examples:
+            |device             | number |
+            | mobile            | 2      |
+            | tablet portrait   | 3      |
+            | tablet landscape  | 4      |
+            | desktop           | 4      |
+
     @homepagefeed @BXMA-82
     Scenario Outline: Verify the top news feed is functional correctly in "<device>" view
         Given I am currently viewing the homepage

@@ -7,10 +7,12 @@ noCallThru();
 
 const TeaserStub = Context.createStubComponent();
 const AdStub = Context.createStubComponent();
+const PromotedStub = Context.createStubComponent();
 
 const HeroTeaser = proxyquire('../../../app/components/teaser/hero', {
     './teaser': TeaserStub,
-    '@bxm/ad/lib/google/components/ad': AdStub
+    '@bxm/ad/lib/google/components/ad': AdStub,
+    '../promoted/promoted': PromotedStub
 }).default;
 
 describe('Hero Teaser Component', () => {
