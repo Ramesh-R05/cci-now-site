@@ -70,7 +70,7 @@ export default class Teaser extends Component {
         const { config } = this.context;
         const defaultImageUrl = config.defaultImageUrl;
         const breakpoints = config.global.breakpoints;
-              
+
         return (
             <TeaserImage
                 gtmClass={this.getGTMClass()}
@@ -98,7 +98,7 @@ export default class Teaser extends Component {
     render() {
         const { id, className, sourceClassName, showDate } = this.props;
         let { article } = this.props;
-        
+
         if (!article) return null;
 
         article = teaserContentOverride(article);
@@ -111,9 +111,6 @@ export default class Teaser extends Component {
         });
         const articleSourceClassName = article.source ? `${sourceClassName} ${sourceClassName}--${article.source.toLowerCase().replace(/[^A-Z0-9]/ig, '-')}` : sourceClassName;
 
-        let datePart = showDate ? (<span><span className={`${sourceClassName}__breaker`}>|</span>
-                                   <Date dateCreated={article.dateCreated} format="MMMM D, YYYY" /></span>) : null;
-
         return (
             <article className={containerClassNames} onClick={this.props.onClick}>
                 <div className="teaser__inner">
@@ -123,7 +120,9 @@ export default class Teaser extends Component {
                         {this.renderSummary()}
                         <p className={articleSourceClassName}>
                             {article.source ? article.source : 'Now to love'}
-                            {datePart}
+                            {showDate ? (<span><span className={`${sourceClassName}__breaker`}>|</span>
+                                <Date dateCreated={article.dateCreated} showElapsed={true} />
+                            </span>) : null}
                         </p>
                     </div>
                 </div>

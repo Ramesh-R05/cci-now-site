@@ -68,13 +68,20 @@ module.exports = function(){
         }
     });
 
-    this.When(/^I should see each top feed item containing source$/, function () {
+    this.When(/^I should see each top feed item containing source and date$/, function () {
         //verify sources of all teasers
         console.log(browser.elements(home.topFeedTeaserSource).value.length);
         var topFeedTeaserSource = browser.getText(home.topFeedTeaserSource);
         for (var i=0; i<topFeedTeaserSource.length; i++){
-            console.log( i + ":" + topFeedTeaserSource[i]);
-            expect(topFeedTeaserSource[i]).not.toEqual('');
+            var valueSourceDate = topFeedTeaserSource[i].split("|");
+            console.log( i + ":Source:" + valueSourceDate[0]);
+            console.log( i + ":Date:" + valueSourceDate[1]);
+            //validate the source
+            expect(valueSourceDate[0]).not.toEqual('');
+            //validate the date
+            expect(valueSourceDate[1]).not.toEqual('');
+            expect(valueSourceDate[1]).not.toMatch('ago');
+            expect(valueSourceDate[1]).toEqual(valueSourceDate[1].toUpperCase());
         }
     });
 
@@ -108,13 +115,20 @@ module.exports = function(){
         }
     });
 
-    this.When(/^I should see each bottom feed item containing source$/, function () {
+    this.When(/^I should see each bottom feed item containing source and date$/, function () {
         //verify sources of all teasers
         console.log(browser.elements(home.bottomFeedTeaserSource).value.length);
         var bottomFeedTeaserSource = browser.getText(home.bottomFeedTeaserSource);
         for (var i=0; i<bottomFeedTeaserSource.length; i++){
-            console.log( i + ":" + bottomFeedTeaserSource[i]);
-            expect(bottomFeedTeaserSource[i]).not.toEqual('');
+            var valueSourceDate = bottomFeedTeaserSource[i].split("|");
+            console.log( i + ":Source:" + valueSourceDate[0]);
+            console.log( i + ":Date:" + valueSourceDate[1]);
+            //validate the source
+            expect(valueSourceDate[0]).not.toEqual('');
+            //validate the date
+            expect(valueSourceDate[1]).not.toEqual('');
+            expect(valueSourceDate[1]).not.toMatch('ago');
+            expect(valueSourceDate[1]).toEqual(valueSourceDate[1].toUpperCase());
         }
     });
 

@@ -20,16 +20,25 @@ module.exports = function() {
         console.log("IMAGE SRC =" + " " + img);
     });
 
-    this.Given(/^I can see the custom label of the gallery "([^"]*)"$/, function(label) {
-        var galleryCustomLabel = browser.getText(gallery.galleryCustomLabel);
-        expect(galleryCustomLabel).toEqual(label);
-        console.log(galleryCustomLabel);
+    this.Given(/^I can see the source appearing on the gallery with gtm "([^"]*)"$/, function (gtm) {
+        //Get values
+        var sourceHref = browser.getAttribute(gallery.gallerySource, 'href');
+        var sourceGTM = browser.getAttribute(gallery.gallerySource,'class');
+        var sourceLogo = browser.getAttribute(gallery.gallerySourceImg,'src');
+
+        //Validate the values
+        console.log(sourceHref);
+        expect(sourceHref).not.toEqual('');
+        console.log(sourceGTM);
+        expect(sourceGTM).toEqual(gtm);
+        console.log(sourceLogo);
+        expect(sourceLogo).not.toEqual('');
     });
 
-    this.Given(/^I can see the created date of the gallery "([^"]*)"$/, function(date) {
+    this.Given(/^I can see the created date on the gallery "([^"]*)"$/, function(date) {
         var galleryDate = browser.getText(gallery.galleryDate);
-        expect(galleryDate).toEqual(date);
         console.log(galleryDate);
+        expect(galleryDate).toEqual(date);
     });
 
     this.Given(/^I can see the gallery title containing "([^"]*)"$/, function(longTitle) {

@@ -32,6 +32,8 @@ var article_widget = {
     lhrFeedTitles: '.feed__container a.feed-item__body-title',
     lhrFeedImgs: '.feed__container a.teaser__image',
     lhrFeed: '.feed',
+    lhrFeedSource: '.feed__container .feed-item__source',
+    lhrFeedDate: '.feed__container .article__date-created',
     bodyVideo: '.content-body__inline-video',
     bodyTips:'.content-body__tips',
     Bodycomp:'.content-body__competition iframe',

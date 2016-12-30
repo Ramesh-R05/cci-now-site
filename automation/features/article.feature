@@ -7,11 +7,12 @@ Feature: Article
     Scenario: Verify an article page which contains a hero image on mobile
         When I switch to "mobile" view
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
-        * I can see the created date "FEBRUARY 12, 2016 4:00PM"
+        * I can see the long title "Automation Test Article With Hero Image Test Title Long Title"
+        * I can see the created date "FEB 12, 2016 4:00PM"
         * I can see the author "EMILY KERR"
         * I can see the hero image
-        * I can see the image alt text in the hero image element "Image ALT TEXT"
         * I should not see the hero image caption
+        * I can see the image alt text in the hero image element "Image ALT TEXT"
         * I can see the short teaser "Short Teaser EOM"
         * I can see the body paragraph "Test body paragraph"
         * I can see the body related content
@@ -36,7 +37,8 @@ Feature: Article
     Scenario: Verify an article page which contains a hero video on tablet portrait
         When I switch to "tablet portrait" view
         Given I am currently viewing "beauty/hair/automation-test-article-with-hero-video-3664"
-        * I can see the created date "FEBRUARY 12, 2016 4:00PM"
+        * I can see the long title "Automation Test Article With Hero Image Test Title Long Title"
+        * I can see the created date "FEB 12, 2016 4:00PM"
         * I can see the author "EMILY KERR"
         * I can see the hero video instead of the main image
         * I should not see the hero image caption
@@ -63,11 +65,12 @@ Feature: Article
     Scenario: Verify an article page which contains a hero image on desktop
         When I switch to "desktop" view
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
-        * I can see the created date "FEBRUARY 12, 2016 4:00PM"
+        * I can see the long title "Automation Test Article With Hero Image Test Title Long Title"
+        * I can see the created date "FEB 12, 2016 4:00PM"
         * I can see the author "EMILY KERR"
         * I can see the hero image
-        * I can see the image alt text in the hero image element "Image ALT TEXT"
         * I should not see the hero image caption
+        * I can see the image alt text in the hero image element "Image ALT TEXT"
         * I can see the short teaser "Short Teaser EOM"
         * I can see the body paragraph "Test body paragraph"
         * I can see the body related content
@@ -89,37 +92,32 @@ Feature: Article
         * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
 
 
-@DDO-160 @DDO-48
-Scenario Outline: Verify an hero image caption and LHR on different screen sizes "<device>"
-    Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
-    When I switch to "<device>" view
-    * I can see the hero image
-    * I should not see the hero image caption
-    * I can see the LHR
-    Examples:
-    | device            |
-    | desktop           |
-    | tablet landscape  |
+    @DDO-160 @DDO-48
+    Scenario Outline: Verify LHR on different screen sizes "<device>"
+        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        When I switch to "<device>" view
+        * I can see the LHR
+        Examples:
+        | device            |
+        | desktop           |
+        | tablet landscape  |
 
-Scenario Outline: Verify an hero image caption and LHR on different screen sizes "<device>"
-    Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
-    When I switch to "<device>" view
-    * I can see the hero image
-    * I should not see the hero image caption
-    * I should not see the LHR
-    Examples:
-    | device            |
-    | tablet portrait   |
-    | mobile            |
+    Scenario Outline: Verify LHR on different screen sizes "<device>"
+        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        When I switch to "<device>" view
+        * I should not see the LHR
+        Examples:
+        | device            |
+        | tablet portrait   |
+        | mobile            |
 
-
-@DDO-48
-Scenario: Verify the LHR on an article page
-    Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
-    When I switch to "desktop" view
-    * I can see 20 items in the list of items in LHR
-    * I can see the 20 images of each item in LHR
-    * Image in LHR is clickable to open its page
-    * I can see the long title of each item in LHR
-    * Long title in LHR is clickable to open its page
-    #* I can see the items in LHR sorted by created date #This has been done in manual testing. I will find out the way to apply to automation when the date appears on the main article page.
+    @BXMA-174
+    Scenario: Verify the LHR on an article page
+        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        When I switch to "desktop" view
+        * I can see 20 items in the list of items in LHR
+        * I can see the 20 images of each item in LHR
+        * Image in LHR is clickable to open its page
+        * I can see the long title of each item in LHR
+        * Long title in LHR is clickable to open its page
+        * I can see each item in LHR containing source and date

@@ -5,6 +5,8 @@ var gallery_widget = {
     galleryDescription: '.gallery__summary-text',
     galleryImg: 'img.gallery__slide-image',
     galleryCustomLabel: '.gallery__subsection',
+    gallerySource: '.gallery__subsection a',
+    gallerySourceImg: '.gallery__subsection img',
     galleryNextButton: 'button.gallery__nav.gallery__nav--next',
     galleryPrevButton: 'button.gallery__nav.gallery__nav--prev',
     galleryLastSlide: '.icon-arrow-next',

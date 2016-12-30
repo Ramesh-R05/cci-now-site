@@ -64,7 +64,7 @@ Feature: Homepage
         * I should see 6 top half feed
         * I should see each top feed item containing its image and clickable to open its page
         * I should see each top feed item containing its title and clickable to open its page
-        * I should see each top feed item containing source
+        * I should see each top feed item containing source and date
         Examples:
             |device|
             |mobile|
@@ -79,7 +79,7 @@ Feature: Homepage
         * I should see 6 bottom half feed
         * I should see each bottom feed item containing its image and clickable to open its page
         * I should see each bottom feed item containing its title and clickable to open its page
-        * I should see each bottom feed item containing source
+        * I should see each bottom feed item containing source and date
         Examples:
             |device|
             |mobile|

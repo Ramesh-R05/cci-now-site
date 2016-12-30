@@ -25,7 +25,7 @@
         margin-bottom: 30px;
         padding: 10px 0;
         background: none;
-        z-index: 1; 
+        z-index: 1;
 
         @media #{$medium-up} {
             margin-top: -13px;
@@ -70,7 +70,7 @@
 
     &__image-details {
         margin-left: 0px;
-        
+
         @media #{$medium-up} {
             margin-top: 23px;
         }
@@ -94,7 +94,7 @@
 
     // Temporary until social style task is done
     .social-share-block {
-        display: none !important; 
+        display: none !important;
         /*overwriting the Foundation visibility class that's also being applied to this element */
         text-align: center;
 
@@ -256,7 +256,7 @@
                 }
             }
 
-            .gallery-teaser-item { 
+            .gallery-teaser-item {
                 height: 100%;
             }
 
@@ -267,7 +267,7 @@
                 padding: 12px 11px;
                 width: 48px;
                 height: 48px;
-                
+
                 @media #{$medium-up} {
                     font-size: 1.2em;
                     padding: 16px 18px;
@@ -304,7 +304,7 @@
         }
 
         @media #{$large-up} {
-            float: left;    
+            float: left;
         }
 
         &, .gallery__header & {
@@ -387,7 +387,7 @@
         &-ad {
             @media #{$large-up} {
                 top: 411px;
-            }    
+            }
         }
 
         .gallery__summary {
@@ -417,7 +417,7 @@
                 &:first-child {
                     color: $color-grey-light;
                     &:before {
-                        content: ', ';
+                        content: ' ';
                     }
                     &:after {
                         content: ' ';

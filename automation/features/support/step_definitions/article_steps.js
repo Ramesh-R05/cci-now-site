@@ -10,10 +10,12 @@ module.exports = function() {
         var feedList = browser.elements(wn_article.lhrFeedItems);
         expect((feedList.value.length).toString()).toEqual(count);
     });
+
     this.When(/^I can see the (\d+) images of each item in LHR$/, function (count) {
         var feedImages = browser.elements(wn_article.lhrFeedImgs);
         expect((feedImages.value.length).toString()).toEqual(count);
     });
+
     this.When(/^Image in LHR is clickable to open its page$/, function () {
         var feedImagesUrls = browser.getAttribute(wn_article.lhrFeedImgs, 'href');
         for (var i = 0; i < feedImagesUrls.length; ++i) {
@@ -22,6 +24,7 @@ module.exports = function() {
             expect(indFeedImgUrl === '').toBe(false);
         }
     });
+
     this.When(/^I can see the long title of each item in LHR$/, function () {
         var feedTitles = browser.getText(wn_article.lhrFeedTitles);
         for (var i = 0; i < feedTitles.length; ++i) {
@@ -30,6 +33,7 @@ module.exports = function() {
             expect(title === '').toBe(false);
         }
     });
+
     this.When(/^Long title in LHR is clickable to open its page$/, function () {
         var feedTitlesUrls = browser.getAttribute(wn_article.lhrFeedTitles, 'href');
         for (var i = 0; i < feedTitlesUrls.length; ++i) {
@@ -37,7 +41,24 @@ module.exports = function() {
             console.log('teaser title url is :'+titleUrl);
             expect(titleUrl === '').toBe(false);
             expect(titleUrl === null).toBe(false);
-        }    });
+        }
+    });
+
+    this.When(/^I can see each item in LHR containing source and date$/, function () {
+        //verify sources/dates of all LHR items
+        var feedSource = browser.getText(wn_article.lhrFeedSource);
+        var feedDate = browser.getText(wn_article.lhrFeedDate);
+        for (var i=0; i<feedSource.length; i++){
+            console.log( i + ":Source:" + feedSource[i]);
+            console.log( i + ":Date:" + feedDate[i]);
+            //validate the source
+            expect(feedSource[i]).not.toEqual('');
+            //validate the date
+            expect(feedDate[i]).not.toEqual('');
+            expect(feedDate[i]).not.toMatch('ago');
+            expect(feedDate[i]).toEqual(feedDate[i].toUpperCase());
+        }
+    });
 
     this.When(/^I can see the hero image$/, function () {
         browser.scroll(wn_article.heroImg);
@@ -73,7 +94,7 @@ module.exports = function() {
     this.Given(/^I can see the long title "([^"]*)"$/, function (articleTitle) {
            var longTitle = browser.getText(wn_article.longTitle);
            expect(longTitle).toContain(articleTitle);
-        });
+    });
     this.Given(/^I can see the created date "([^"]*)"$/, function (date) {
         var articleDate = browser.getText(wn_article.dateText);
         expect(articleDate.toString()).toEqual(date);
@@ -205,6 +226,10 @@ module.exports = function() {
         var videoEmbArry = browser.getAttribute(wn_article.videoEmbArry, 'src');
         console.log(videoEmbArry[1]); //The stubbed data of Vimeo is in the second iframe of video container.
         expect(videoEmbArry[1]).toEqual(vimeoUrl);
+    });
+    this.Given(/^I can see the related tags "([^"]*)"$/, function (rTag1) {
+        var relatedTags = browser.getText(wn_article.relatedTags, 'href');
+        expect(relatedTags).toEqual(rTag1);
     });
     this.Given(/^I can see the related tags "([^"]*)" "([^"]*)"$/, function (rTag1, rTag2) {
         var relatedTags = browser.getText(wn_article.relatedTags, 'href');
