@@ -40,7 +40,7 @@ Feature: I have an automated sanity for my live environments
     Scenario Outline: Verify the promoted module is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing the homepage
-        * I should see promoted header as "WOMEN OF THE YEAR"
+        * I should see promoted header
         * I should see <number> promoted images and titles which are clickable to open their page
         * I should see each promoted items containing gtm
             |no |gtm                 |
@@ -211,7 +211,7 @@ Feature: I have an automated sanity for my live environments
         * I can see the gallery title containing "Natalie Portman shows off her divine baby bump"
         * I can see an image appearing on the gallery
         * I can see the source appearing on the gallery with gtm "gtm-brand-gallery"
-        * I can see the created date on the gallery "SEP 6, 2016 1:32PM"
+        * I can see the created date on the gallery "SEP 09, 2016 1:32PM"
         * I can see the gallery description of the gallery containing "The 35-year-old Oscar winner looked radiant"
         * I can see the right arrow on the gallery
         * I should not see the left arrow on the gallery

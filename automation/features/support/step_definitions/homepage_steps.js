@@ -176,6 +176,12 @@ module.exports = function(){
         expect(title).toEqual(name);
     });
 
+    this.When(/^I should see promoted header$/, function () {
+        //verify the promoted title is not blank (for live sanity)
+        var title = browser.getText(home.promotedHeader);
+        expect(title).not.toEqual('');
+    });
+
     this.Given(/^I should see (\d+) promoted images and titles which are clickable to open their page$/, function(number) {
         //find elements of image and title of all promoted items
         var promotedImage = browser.getAttribute(home.promotedImage,'data-srcset');
