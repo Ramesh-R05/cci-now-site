@@ -52,7 +52,7 @@ export default class Document extends Component {
         if (this.props.nodeType === 'Gallery') {
             return (
                     <Gallery 
-                        customisedTeaser={Teaser} />
+                        customisedTeaser={Teaser} currentUrl={this.props.currentUrl}/>
             );
         }
 
@@ -63,7 +63,7 @@ export default class Document extends Component {
 
         return (
             <Page
-                currentUrl={ this.props.currentUrl }
+                currentUrl={this.props.currentUrl}
                 headerExpanded={false}
                 hideFooter={false}>
                 <Article

@@ -143,6 +143,7 @@
         }
 
         a {
+            @include menu-hover;
             color: $color-white;
             display: inline-block;
             font-size: 15px;
@@ -150,39 +151,30 @@
             padding: 0 15px 0 15px;
             text-decoration: none;
 
-            &:before {
-                display: none;
-            }
-
             &:active,
             &:focus,
             &:hover,
             &.nav-item--active {
+                @include menu-hover--hover;
                 color: $color-white;
-                text-decoration: underline;
-            }
-
-            &:first-child {
-                &:before {
-                    display: none;
-                }
             }
 
             @media #{$xlarge-up} {
                 font-size: 20px;
             }
+            @include menu-hover;
         }
     }
 
     .header-nav__nav {
         filter: blur(0);
-        height: 22px;
-        overflow: hidden;
+        height: 35px;
         line-height: 2em;
         margin-top: 14px;
         vertical-align: top;
         white-space: normal;
         width: 100%;
+        overflow: hidden;
     }
 }
 
