@@ -15,7 +15,7 @@ Feature: I have an automated sanity for my live environments
             |NW                         |/nw                                |gtm-uniheader-nw     |
             |Take 5                     |/take5mag                          |gtm-uniheader-take5  |
             |Yours                      |/yours                             |gtm-uniheader-yours  |
-            |Mother & Baby              |/mother-and-baby                   |gtm-uniheader-mb     |
+            |Mother and Baby            |/mother-and-baby                   |gtm-uniheader-mb     |
 
     @mustread @BXMA-81
     Scenario Outline: Verify the must read module is functional correctly in "<device>" view
@@ -153,7 +153,7 @@ Feature: I have an automated sanity for my live environments
             |NW                         |/nw                |gtm-footer__logos-list-nw     |
             |Take 5                     |/take5mag          |gtm-footer__logos-list-take5  |
             |Yours                      |/yours             |gtm-footer__logos-list-yours  |
-            |Mother & Baby              |/mother-and-baby   |gtm-footer__logos-list-mb     |
+            |Mother and Baby            |/mother-and-baby   |gtm-footer__logos-list-mb     |
         * I can navigate to all standard pages in the footer
             |page           |url                                                            |
             |PRIVACY POLICY |http://www.bauer-media.com.au/privacy                          |
@@ -241,3 +241,38 @@ Feature: I have an automated sanity for my live environments
         * I can slide to the first MREC ad
         * I cannot go to the next slide when the ad is not loaded
         * I can go to the next slide when the ad is loaded
+
+    @brand @BXMA-104
+    Scenario: Verify the brand landing page is functional correctly in desktop view
+        Given I switch to "desktop" view
+        When I am currently viewing "aww"
+        * I should see the brand title logo on the brand landing page
+        * I should see the breadcrumb of "AUSTRALIAN WOMEN'S WEEKLY" on the brand landing page
+        * I should see the main hero item containing its image and clickable to open its page
+        * I should see the main hero item containing its title and clickable to open its page
+        * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source and date
+        * I should see 6 top half feed
+        * I should see 7 bottom half feed
+
+    @brand @BXMA-104
+    Scenario: Verify the brand landing page is functional correctly in mobile view
+        Given I switch to "mobile" view
+        When I am currently viewing "aww"
+        * I should see the brand title logo on the brand landing page
+        * I should not see the breadcrumb on the brand landing page
+        * I should see the main hero item containing its image and clickable to open its page
+        * I should see the main hero item containing its title and clickable to open its page
+        * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source and date
+        * I should see 6 top half feed
+        * I should see 7 bottom half feed
+
+    @brand @BXMA-104
+    Scenario Outline: Verify the subscribe now and social icons of "<brand>" landing page in "<device>" view
+        Given I switch to "<device>" view
+        When I am currently viewing "<brand>"
+        * I should see the subscribe element under "<position>" and containing title "<subscribe_title>" and image
+        * I should see the follow us element under "<position>"
+        Examples:
+            |device             |brand          |position   |subscribe_title                |
+            |mobile             |aww            |hero teaser|Subscribe to The Weekly        |
+            |desktop            |womansday      |MREC       |Subscribe to Woman's Day       |

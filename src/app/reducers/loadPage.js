@@ -5,6 +5,7 @@ export const initialState = {
     footer: {},
     nodeType: '',
     title: '',
+    magazineImageUrl: '',
 	trendingItems: []
 };
 
@@ -23,7 +24,8 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 nodeType: entity.nodeType,
                 title: entity.title,
                 trendingItems,
-                footer
+                footer,
+                magazineImageUrl: entity.imageUrl
             };
             break;
         case 'LOAD_CONTENT_FAILED':
@@ -35,7 +37,8 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 nodeType: '',
                 title: '',
                 trendingItems: [],
-                footer: get(payload, 'response.body.footer', {})
+                footer: get(payload, 'response.body.footer', {}),
+                magazineImageUrl: ''
             };
             break;
         default:

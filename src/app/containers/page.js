@@ -10,6 +10,7 @@ import Logos from '../components/page/logos';
 import Navigation from '@bxm/site-header/lib/components/navigation';
 import classnames from 'classnames';
 import Ad from '@bxm/ad/lib/google/components/ad';
+import BrandTitle from '../components/brand/brandTitle';
 import StandardPageAdsWrapper from '@bxm/ad/lib/google/components/standardPageAdsWrapper';
 
 function mapStateToProps(context) {
@@ -39,7 +40,8 @@ export default class Page extends Component {
         currentUrl: PropTypes.string.isRequired,
         showUniheader: PropTypes.bool,
         hideLeaderboard: PropTypes.bool,
-        sectionTitle: PropTypes.string
+        pageTitle: PropTypes.string,
+        headerClassName: PropTypes.string
     };
 
     static contextTypes = {
@@ -47,7 +49,8 @@ export default class Page extends Component {
     };
 
     static defaultProps = {
-        hideLeaderboard: false
+        hideLeaderboard: false,
+        headerClassName: ''
     };
     
     toggleMenu = () => {
@@ -55,23 +58,25 @@ export default class Page extends Component {
     };
 
     render() {
-        const { headerNavItems, hamburgerNavItems, showUniheader, currentUrl, headerExpanded, hideFooter, children, hideLeaderboard, sectionTitle } = this.props;
+        const { headerNavItems, hamburgerNavItems, showUniheader, currentUrl, headerExpanded, hideFooter, children, hideLeaderboard, pageTitle, headerClassName } = this.props;
         const mobileNav = hamburgerNavItems ? hamburgerNavItems.slice() : headerNavItems.slice();
         mobileNav.unshift({name: 'Home', url: '/'});
+        
         const pageClassName = classnames('page', this.props.className);
         return (
             <div className={pageClassName}>
                 <div className={this.props.menuClasses}>
 
-                    {showUniheader ? <UniHeader className="uniheader" logoList={this.context.config.brands.uniheader} /> : null}
+                    {showUniheader && <UniHeader className="uniheader" logoList={this.context.config.brands.uniheader} />}
 
                     <Header
                         currentUrl={currentUrl}
                         isExpanded={headerExpanded}
                         navItems={headerNavItems}
                         siteName={this.context.config.get('site.name')}
-                        toggleMenu={this.toggleMenu} />
-                    {!hideLeaderboard ? <Ad
+                        toggleMenu={this.toggleMenu} 
+                        headerClassName={headerClassName} />
+                    {!hideLeaderboard && <Ad
                         className="ad--section-top-leaderboard"
                         sizes={{
                             banner: 'banner',
@@ -79,17 +84,14 @@ export default class Page extends Component {
                             billboard: ['billboard', 'leaderboard']
                         }}
                         targets={{position: 1}}
-                    /> : null }
+                    />}
 
-                    {sectionTitle ? <h1 className='page-title'>
-                        <span className="page-title__symbol"></span>
-                        { sectionTitle }
-                    </h1> : null}
+                    {pageTitle && <div className="page-title-container"> { pageTitle } </div>}
 
                     <StandardPageAdsWrapper>
                         <div className="content-wrapper">
                             { this.props.children }
-                            { !hideFooter ? <Footer logoList={this.context.config.brands.uniheader} /> : null }
+                            { !hideFooter && <Footer logoList={this.context.config.brands.uniheader} />}
                         </div>
                     </StandardPageAdsWrapper>
 

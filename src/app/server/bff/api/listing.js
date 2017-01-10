@@ -4,13 +4,10 @@ import {backendLogger as logger} from '@bxm/winston-logger';
 const config = load();
 const FEEDPATH = '/teasers';
 
-export function getLatestTeasers(top = 20, skip = 0, section = 'all', filter = 'path') {
-    if (!section) return Promise.resolve([]);
-
+export function getLatestTeasers(top = 20, skip = 0, filter) {
     let query = '?$select=*';
-
-    if (section !== 'all') {
-        query += `&$filter=${filter} eq %27${section}%27`;
+    if (filter) {
+        query += '&$filter=' + filter;
     }
 
     query += `&$orderby=pageDateCreated desc&$top=${top}&$skip=${skip}`;

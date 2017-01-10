@@ -59,7 +59,8 @@ export default async function tag(req, res, next) {
 
         const skip = ((pageNo-1) * listCount);
         const loweredCaseTag = tag.toLowerCase().replace('%20', '-');
-        const latestTeasersResp = await getLatestTeasers(listCount, skip, loweredCaseTag, 'tagsDetails/urlName');
+        const listingQuery = `tagsDetails/urlName eq %27${loweredCaseTag}%27`;
+        const latestTeasersResp = await getLatestTeasers(listCount, skip, listingQuery);
 
         // TODO: need to handle `data` in resp better
         const latestTeasers = latestTeasersResp || {

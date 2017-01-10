@@ -54,7 +54,7 @@ describe('Section middleware', () => {
 
             it('should store the latest teasers in `req.data`', (done) => {
                 sectionMiddleware(req, res, next).then(() => {
-                    expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, `/${req.query.section}/`, 'parentUrl');
+                    expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, `parentUrl eq %27/${req.query.section}/%27`);
                     done();
                 }).catch(done);
             });
@@ -137,4 +137,26 @@ describe('Section middleware', () => {
             });
         });
     });
+
+    describe('when there is a brand in the query param and nodeTypeAlias equal to Brand', () => {
+        before(() => {
+            reqBase = { data: { entity: { nodeTypeAlias: 'Brand', source: "Australian Women's Weekly" } }, query: { section: 'aww' } };
+        });
+
+        describe('when the remote returns the list of teasers', () => {
+            before(() => {
+                req = { ...reqBase };
+                req.data.headerNav = [1, 2, 3];
+                next = sinon.spy();
+                getLatestTeasersStub = sinon.stub().resolves(validRes);
+            });
+
+            it('should request for teasers', (done) => {
+                sectionMiddleware(req, res, next).then(() => {
+                    expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, `source eq %27Australian Women''s Weekly%27 and nodeTypeAlias ne %27Brand%27`);
+                    done();
+                }).catch(done);
+            });
+        });
+    })
 });

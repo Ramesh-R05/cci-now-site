@@ -18,12 +18,20 @@ export default createReducerStore({
             return state.nodeType;
         },
 
+        getMagazineImageUrl(state) {
+            return state.magazineImageUrl
+        },
+
         getTrendingItems(state) {
-          return state.trendingItems;
+            return state.trendingItems;
         },
 
         getFooter(state) {
-          return state.footer;
+            return state.footer;
+        },
+
+        getMustReadItems(state) {
+            return state.mustRead;
         }
     }
 });

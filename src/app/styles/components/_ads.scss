@@ -22,6 +22,11 @@
     z-index: 1;
 }
 
+.page-title-container {
+    position: relative;
+    z-index: 1;
+}
+
 .ad--section-top-leaderboard {
     @media #{$large-up} {
         position: relative;

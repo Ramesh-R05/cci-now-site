@@ -5,7 +5,7 @@ describe(`loadPage Reducer`, () => {
     let payload;
     describe(`on LOAD_CONTENT`, () => {
         beforeEach(() => {
-            body = {entity: { nodeType: 'Article', title: 'Title' }, footer: {}, trendingItems: [] };
+            body = {entity: { nodeType: 'Article', title: 'Title',  imageUrl: '' }, footer: {}, trendingItems: [], mustRead: []};
             payload = {
                 type: 'LOAD_CONTENT',
                 body
@@ -19,7 +19,8 @@ describe(`loadPage Reducer`, () => {
                     footer: payload.body.footer,
                     nodeType: payload.body.entity.nodeType,
                     title: payload.body.entity.title,
-                    trendingItems: payload.body.trendingItems
+                    trendingItems: payload.body.trendingItems,
+                    magazineImageUrl: payload.body.entity.imageUrl
                 });
             });
 
@@ -29,7 +30,8 @@ describe(`loadPage Reducer`, () => {
                     footer: payload.body.footer,
                     nodeType: payload.body.entity.nodeType,
                     title: payload.body.entity.title,
-                    trendingItems: payload.body.trendingItems
+                    trendingItems: payload.body.trendingItems,
+                    magazineImageUrl: payload.body.entity.imageUrl
                 });
             });
         });
@@ -65,7 +67,8 @@ describe(`loadPage Reducer`, () => {
                 footer: {},
                 nodeType: '',
                 title: '',
-                trendingItems: []
+                trendingItems: [],
+                magazineImageUrl: ''
             });
         });
 
@@ -76,7 +79,8 @@ describe(`loadPage Reducer`, () => {
                 footer: {},
                 nodeType: '',
                 title: '',
-                trendingItems: []
+                trendingItems: [],
+                magazineImageUrl: ''
             });
         });
     });

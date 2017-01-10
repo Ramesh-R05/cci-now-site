@@ -7,7 +7,6 @@ noCallThru();
 
 const TeaserListStub = Context.createStubComponentWithChildren();
 const TeaserStub = Context.createStubComponent();
-const MustReadStub = Context.createStubComponentWithChildren();
 
 const MustRead = proxyquire('../../../app/components/mustRead/mustRead', {
     '@bxm/teaser/lib/components/teaserList': TeaserListStub,

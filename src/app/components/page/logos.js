@@ -1,10 +1,6 @@
 import React, {PropTypes, Component} from 'react';
 
 export default class Logos extends Component {
-    static contextTypes = {
-        config: PropTypes.object
-    };
-
     static propTypes = {
         currentUrl: PropTypes.string,
         logoList: PropTypes.array,

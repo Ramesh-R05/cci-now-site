@@ -9,7 +9,10 @@ import Repeatable from '../components/repeatable';
 import loadList from '../actions/loadList';
 import SocialContainer from '../components/social/block';
 import StickyAndDockAd from '../components/page/stickyAndDockAd';
+import BrandMagazine from '../components/brand/brandMagazine';
+import BrandTitle from '../components/brand/brandTitle';
 import get from 'lodash/object/get';
+import { find } from 'lodash';
 
 function mapStateToProps(context) {
     const pageStore = context.getStore('PageStore');
@@ -38,13 +41,16 @@ export default class Section extends Component {
         teasers: []
     };
 
+    static contextTypes = {
+        config: PropTypes.object
+    };
+
     state = {
         bottomElm: null,
         topElm: null
     };
 
     componentDidMount() {
-
         this.setState({
             bottomElm: this.refs.bottom,
             topElm: this.refs.top
@@ -52,22 +58,33 @@ export default class Section extends Component {
     }
 
     render() {
-        const { nodeType, teasers, title } = this.props;
+        const { nodeType, teasers, title, currentUrl } = this.props;
         const heroTeaser = teasers[0];
         const firstTeaserList = teasers.slice(1, 7);
         const keyword = nodeType === 'TagSection' && title ? [ title ] : [];
+
+        const isBrandPage = nodeType === 'Brand';
+        const brand = isBrandPage ? find(this.context.config.brands.uniheader, (b) => { return b.url === currentUrl }) : null;
+        const headerClassName = isBrandPage ? `header-${brand.gtmClass}` : '';
+        const pageTitle = isBrandPage ? <BrandTitle brand={brand}/> : <h1 className='page-title'>
+                        <span className="page-title__symbol"></span>
+                        {title}
+                    </h1>;
+
         return (
             <Page
-                currentUrl={ this.props.currentUrl }
+                currentUrl={currentUrl}
                 headerExpanded={false}
-                sectionTitle={title}>
+                pageTitle={pageTitle}
+                headerClassName={headerClassName}>
                 <div className="section-page">
                     <div className="container">
                         <div className="row">
                             <div className="page__top-container columns">
                                 <div className="row">
                                     <div className="columns large-8 xlarge-9 section-page__teasers-container" ref="top">
-                                        <HeroTeaser article={heroTeaser} />
+                                        <HeroTeaser article={heroTeaser} brand={brand}/>
+
                                         <TeaserGridView
                                             teasers={firstTeaserList}
                                             className="news-feed top-news-feed"
@@ -87,10 +104,11 @@ export default class Section extends Component {
                                                     sizes="mrec"
                                                     displayFor="large"
                                                     targets={{position: 1}} />
+                                                { isBrandPage? <BrandMagazine brand={brand}/> : 
                                                 <div className="page__get-social-container">
                                                     <span className="page__social-logo">Now To Love</span>
-                                                    <SocialContainer />
-                                                </div>
+                                                    <SocialContainer /> 
+                                                </div> }
                                             </StickyAndDockAd>
                                         </div>
                                     </div>

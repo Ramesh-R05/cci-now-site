@@ -27,7 +27,7 @@ export default async function home(req, res, next) {
         const [pageData, latestTeasersResp, videoGalleryTeasers, trendingItems, heroTeaser] = await Promise.all([
             makeRequest(`${req.app.config.services.remote.entity}/homepage`),
             getLatestTeasers(listCount, skip),
-            getLatestTeasers(videoGalleryTeaserCount , undefined, 'video', 'contentTags').catch(() => {
+            getLatestTeasers(videoGalleryTeaserCount , undefined, 'video eq %27$contentTags%27').catch(() => {
                 return { data: [] };
             }),
             getTrending(trendingCount),

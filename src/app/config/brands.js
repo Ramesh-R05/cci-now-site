@@ -1,60 +1,117 @@
 export default {
     uniheader: [
         {
+            "title": "Australian Women's Weekly",
+            "magazineTitle": "The Weekly",
             "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
             "url": "/aww",
-            "title": "Australian Women's Weekly",
-            "gtmClass": "aww"
+            "gtmClass": "aww",
+            "socialLinks": {
+                "facebookUrl": "https://www.facebook.com/WomensWeeklyMag",
+                "twitterUrl": "https://twitter.com/womensweeklymag",
+                "instagramUrl": "https://www.instagram.com/womensweeklymag"
+            }
         },
         {
+            "title": "Woman's Day",
             "imageUrl": "/assets/images/headerlogos/WD-logo.svg",
             "url": "/womansday",
-            "title": "Woman's Day",
-            "gtmClass": "wd"
+            "gtmClass": "wd",
+            "socialLinks": {
+                "facebookUrl": "https://www.facebook.com/WomansDayAUS",
+                "twitterUrl": "https://twitter.com/womansdayaus",
+                "instagramUrl": "https://www.instagram.com/Womansdayaus"
+                }
         },
         {
+            "title": "Good Health",
             "imageUrl": "/assets/images/headerlogos/GH-logo.svg",
             "url": "/good-health",
-            "title": "Good Health",
-            "gtmClass": "gh"
+            "gtmClass": "gh",
+            "socialLinks": {
+                "facebookUrl": "https://www.facebook.com/GoodHealthMag/",
+                "twitterUrl": "https://twitter.com/goodhealthmag",
+                "instagramUrl": "https://www.instagram.com/goodhealthmag"
+            }
         },
         {
+            "title": "OK! Magazine",
             "imageUrl": "/assets/images/headerlogos/OK-logo.svg",
             "url": "/okmagazine",
-            "title": "OK! Magazine",
-            "gtmClass": "ok"
+            "gtmClass": "ok",
+            "socialLinks": {
+                "facebookUrl": "https://www.facebook.com/OKmagAustralia",
+                "twitterUrl": "https://twitter.com/okmagaustralia",
+                "instagramUrl": "https://www.instagram.com/okmagaustralia"
+            }
         },
         {
+            "title": "SHOP Til You Drop",
             "imageUrl": "/assets/images/headerlogos/SHOP-logo.svg",
             "url": "/shop-til-you-drop",
-            "title": "SHOP Til You Drop",
-            "gtmClass": "shop"
+            "gtmClass": "shop",
+            "socialLinks": {
+                "facebookUrl": "https://www.facebook.com/shoptilyoudropmag/",
+                "twitterUrl": "https://twitter.com/shoptilyoudrop",
+                "instagramUrl": "https://www.instagram.com/shoptilyoudropmag/"
+            }
         },
         {
+            "title": "NW",
             "imageUrl": "/assets/images/headerlogos/NW-logo.svg",
             "url": "/nw",
-            "title": "NW",
-            "gtmClass": "nw"
+            "gtmClass": "nw",
+            "socialLinks": {
+                "facebookUrl": "https://www.facebook.com/NWmagazine",
+                "twitterUrl": "https://twitter.com/nwmag",
+                "instagramUrl": "https://www.instagram.com/nwmag/"
+            }
         },
         {
+            "title": "Take 5",
             "imageUrl": "/assets/images/headerlogos/T5-logo.svg",
             "url": "/take5mag",
-            "title": "Take 5",
-            "gtmClass": "take5"
+            "gtmClass": "take5",
+            "socialLinks": {
+                "facebookUrl": "https://www.facebook.com/take5magazine",
+                "twitterUrl": "https://twitter.com/take5magazine",
+                "instagramUrl": "https://www.instagram.com/take5magazine/"
+            }
         },
         {
+            "title": "Yours",
             "imageUrl": "/assets/images/headerlogos/YOURS-logo.svg",
             "url": "/yours",
-            "title": "Yours",
-            "gtmClass": "yours"
+            "gtmClass": "yours",
+            "socialLinks": {
+                "facebookUrl": "https://www.facebook.com/Yoursmagazineau/",
+                "twitterUrl": "https://twitter.com/yoursmagazineau",
+                "instagramUrl": "https://www.instagram.com/yoursmagazineau/"
+            }
         },
         {
+            "title": "Mother and Baby",
             "imageUrl": "/assets/images/headerlogos/MB-logo.svg",
             "url": "/mother-and-baby",
-            "title": "Mother & Baby",
-            "gtmClass": "mb"
+            "gtmClass": "mb",
+            "socialLinks": {
+                "facebookUrl": "https://www.facebook.com/mbmag/",
+                "twitterUrl": "https://twitter.com/motherbaby_au",
+                "instagramUrl": "https://www.instagram.com/motherbaby_au"
+            }
+        },
+        {
+            "title": "TV WEEK",
+            "imageUrl": "/assets/images/headerlogos/TVWEEK-logo.svg",
+            "url": "/tvweek",
+            "gtmClass": "tvweek",
+            "socialLinks": {
+                "facebookUrl": "https://www.facebook.com/tvweekmag",
+                "twitterUrl": "https://twitter.com/TVWEEKmag",
+                "instagramUrl": "https://www.instagram.com/TVWEEK"
+            }
         }
-     ],
+    ],
     hamburgers: [
         {
             "imageUrl": "/assets/images/menulogos/HTL-logo.svg",

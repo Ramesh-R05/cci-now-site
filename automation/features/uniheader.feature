@@ -17,4 +17,4 @@ Feature: Uniheader
             |NW                         |/nw                                |gtm-uniheader-nw     |
             |Take 5                     |/take5mag                          |gtm-uniheader-take5  |
             |Yours                      |/yours                             |gtm-uniheader-yours  |
-            |Mother & Baby              |/mother-and-baby                   |gtm-uniheader-mb     |
+            |Mother and Baby            |/mother-and-baby                   |gtm-uniheader-mb     |

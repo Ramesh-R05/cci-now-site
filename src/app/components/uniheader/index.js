@@ -2,10 +2,6 @@ import React, {Component, PropTypes} from 'react';
 import Logos from '../page/logos';
 
 export default class UniHeader extends Component {
-    static contextTypes = {
-        config: PropTypes.object
-    };
-
     static propTypes = {
         logoList: PropTypes.array,
         className: PropTypes.string

@@ -33,15 +33,6 @@ export default {
 
     cache,
 
-    subscribe: {
-        subscribeHeading: 'Get the mag',
-        subscribeText: 'Subscribe to DOLLY magazine for heaps more awesomeness! From advice, to beauty, to fashion  – we’ve got you covered.',
-        subscribeMagUrl: 'https://www.magshop.com.au/dolly/h1608dol',
-        subscribeIpadUrl: 'https://www.magshop.com.au/dolly/h1608dol',
-        subscribeButtonUrl: 'https://www.magshop.com.au/dolly/h1608dol'
-    },
-    newsletterIframeUrl: 'https://d4jqclkssewcy.cloudfront.net/page.aspx?QS=38dfbe491fab00eaf0b8fb992ad1a0b52fb9e1dc0c154322&brand=dolly',
-
     error: {
         404: {
             title: `This page is under construction`,

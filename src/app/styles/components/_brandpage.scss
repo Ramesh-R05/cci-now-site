@@ -1,0 +1,224 @@
+.brand--magazine-title  {
+    font-size: 20px;
+    color: black;
+    font-family: $font-family-sans-serif-primary;
+    margin-bottom: 20px;
+}
+
+.brand--magazine-container {
+    text-align: center;
+    margin-top: 27px;
+    @media #{$large-up} {
+        margin-top: 0;
+    }
+}
+
+.brand--magazine-image {
+    margin-top: 10px;
+
+    img { 
+        max-height: 232px;
+    }
+}
+
+hr {
+    border-color: #e9e9e9;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.brand {
+    width: 1024px;
+    padding-left: 32px;
+    margin: 0 auto;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    background: #fff;
+
+    @media #{$small-only} {
+        width: 100vw;
+    }
+
+    @media #{$medium-only} {
+        width: 231px;
+        
+        &-wd, &-aww, &-gh {
+            width: 450px;
+        }
+
+        &-tvweek, &-nw {
+            width: 150px;
+        }
+    }
+}
+
+.brand-title {
+    @media #{$small-only} {
+        width: 224px;
+        margin: 0 auto;
+        margin-top: 5px;
+        margin-bottom: -20px;
+    }
+
+    @media #{$medium-only} {
+        margin: 0 auto;
+    }
+}
+
+.brand-title--logo {
+    width: 420px;
+    display: inline-block;
+
+    @media #{$small-only} {
+        width: 190px;
+        max-height: 80px;
+    }
+}
+
+.brand-title--left-line {
+    position: relative;
+    top: 10px;
+    width: 22%;
+    display: inline-block;
+    margin-right: 50px;
+
+    @media #{$small-only} {
+        display: none;
+    }
+
+    @media #{$medium-only} {
+        display: none;
+    }
+}
+
+
+.brand-title--right-line {
+    position: relative;
+    top: 10px;
+    width: 22%;
+    display: inline-block;
+    margin-left: 50px;
+
+    @media #{$small-only} {
+        display: none;
+    }
+
+    @media #{$medium-only} {
+        display: none;
+    }
+}
+
+.brand-title-yours, .brand-title-take5, .brand-title-ok, .brand-title-shop, .brand-title-tvweek {
+    .brand-title--right-line, .brand-title--left-line { width: 32%; }
+    .brand-title--logo { 
+        width: 200px; 
+        @media #{$small-only} { width: 190px; }
+    }
+}
+
+.brand-title-nw, .brand-title-tvweek {
+    .brand-title--right-line, .brand-title--left-line { width: 38%; }
+    .brand-title--logo { width: 110px; }
+    @media #{$small-only} { width: 180px; }
+}
+
+.brand-breadcrumb {
+    letter-spacing: 0.7px;
+    font-size: 11px;
+    font-family: $font-family-sans-serif-primary;
+    text-transform: uppercase;
+
+    &-aww { color: $aww-color; }
+
+    &-wd { color: $wd-color; }
+
+    &-gh { color: $good-health-color; }
+
+    &-ok { color: $ok-color; }
+
+    &-shop { color: $shop-color; }
+
+    &-nw { color: $nw-color; }
+
+    &-take5 { color: $take-5-color; }
+
+    &-yours { color: $yours-color; }
+
+    &-mb { color: $mother-baby-color }
+
+    &-tvweek { color: $tv-color }
+
+    @media #{$small-only} {
+        display: none;
+    }
+
+    @media #{$medium-only} {
+        display: none;
+    }
+}
+
+.sub-now {
+    width: 148px;
+    height: 42px;
+    color: #fff;
+    font-size: 14px;
+    display: inline-block;
+    font-family: $font-family-sans-serif-primary;
+    padding-top: 10px;
+    margin: 20px 0 20px;
+    letter-spacing: 0.7px;
+
+    &-aww { background-color: $aww-color; }
+
+    &-wd { background-color: $wd-color; }
+
+    &-gh { background-color: $good-health-color; }
+
+    &-ok { background-color: $ok-color; }
+
+    &-shop { background-color: $shop-color; }
+
+    &-nw { background-color: $nw-color; }
+
+    &-take5 { background-color: $take-5-color; }
+
+    &-yours { background-color: $yours-color; }
+
+    &-mb { background-color: $mother-baby-color }
+
+    &-tvweek { background-color: $tv-color }
+}
+
+.header {
+    &-aww { background-color: $aww-color; }
+
+    &-wd { background-color: $wd-color; }
+
+    &-gh { background-color: $good-health-color; }
+
+    &-ok { background-color: $ok-color; }
+
+    &-shop { background-color: $shop-color; }
+
+    &-nw { background-color: $nw-color; }
+
+    &-take5 { background-color: $take-5-color; }
+
+    &-yours { background-color: $yours-color; }
+
+    &-mb { background-color: $mother-baby-color }
+
+    &-tvweek { background-color: $tv-color }
+}
+
+.header-gh, .header-aww, .header-wd, .header-ok, .header-shop, .header-nw, .header-take5, .header-yours, .header-mb {
+    .header-nav:before {
+        border-left: 1px solid #FFF;
+    }
+}
+
+

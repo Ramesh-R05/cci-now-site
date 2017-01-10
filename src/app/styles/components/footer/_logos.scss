@@ -21,6 +21,10 @@
             margin-top: $footer-gap/2;
             margin-bottom: 0;
             padding: 0;
+
+            &__logo--tv-week {
+                display: none;
+            }
         }
 
         li {

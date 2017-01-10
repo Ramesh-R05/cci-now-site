@@ -11,13 +11,29 @@ export default async function section(req, res, next) {
         const { page, section } = req.query;
         pageNo = parseInt(req.query.pageNo || pageNo, 10);
 
-        if (get(req, 'data.entity.nodeTypeAlias', '') !== 'Section' || !section || page) {
+        const nodeTypeAlias = get(req, 'data.entity.nodeTypeAlias', '');
+
+        if (nodeTypeAlias !== 'Section' && nodeTypeAlias !== 'Brand' || !section || page) {
             next();
             return;
         }
 
+        let listingQuery, teaserQuery, teaserFilter;
+
+        if ( nodeTypeAlias === 'Section' ) {
+            teaserQuery = `/${section}/`;
+            teaserFilter = 'parentUrl';
+            listingQuery = `${teaserFilter} eq %27${teaserQuery}%27`;
+        }
+        if ( nodeTypeAlias === 'Brand' ) { 
+            teaserQuery = req.data.entity.source.replace("\'", "''");
+            teaserFilter = 'source';
+            listingQuery = `${teaserFilter} eq %27${teaserQuery}%27 and nodeTypeAlias ne %27Brand%27`;
+        }
+
         const skip = ((pageNo-1) * listCount);
-        const latestTeasersResp = await getLatestTeasers(listCount, skip, `/${section}/`, 'parentUrl');
+        const latestTeasersResp = await getLatestTeasers(listCount, skip, listingQuery);
+
 
         // TODO: need to handle `data` in resp better
         const latestTeasers = latestTeasersResp || {
@@ -53,8 +69,8 @@ export default async function section(req, res, next) {
             listName: section,
             params: {
                 pageNo,
-                section: `/${section}/`,
-                filter: 'parentUrl'
+                section: teaserQuery,
+                filter: teaserFilter
             },
             items: [
                 parseEntities(latestTeasers.data.slice(latestTeaserCount))
