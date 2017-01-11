@@ -6,7 +6,7 @@ module.exports = function() {
         browser.waitForVisible(site_nav.siteNavHeader, 3000);
     });
 
-    this.Then(/^I should see the site header logo clickable to open homepage$/, function () {
+    this.Then(/^I should see the site header logo clickable to open homepage and contain "([^"]*)" class name$/, function (gtm) {
         browser.waitForVisible(site_nav.siteNavHeaderLogo, 3000);
         //Validate the existence of the logo
         var headerLogo = browser.getCssProperty(site_nav.siteNavHeaderLogo, 'background-image').value;
@@ -14,6 +14,9 @@ module.exports = function() {
         //Validate the logo is clickable to open homepage
         var headerLogoLink = browser.getAttribute(site_nav.siteNavHeaderLogo,'href');
         expect(headerLogoLink).not.toEqual('');
+        //Validate GTM
+        var headerLogoClass = browser.getAttribute(site_nav.siteNavHeaderLogo,'class');
+        expect(headerLogoClass).toContain(gtm);
     });
 
     this.Then(/^I should see the site navigation links and "([^"]*)" class name in "([^"]*)"$/, function (gtm, position) {

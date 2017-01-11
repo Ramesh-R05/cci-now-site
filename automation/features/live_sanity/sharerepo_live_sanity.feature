@@ -106,21 +106,22 @@ Feature: I have an automated sanity for my live environments
         Given I switch to "mobile" view
         When I am currently viewing the homepage
         * I can navigate to all sites in the hamburger navigation menu
-            |title                      |url                                |gtm                         |
-            |Homes To Love              |http://homestolove.com.au/         |gtm-mobile-menu-list-homes  |
-            |Food To Love               |http://foodtolove.com.au/          |gtm-mobile-menu-list-food   |
-            |Elle                       |http://elle.com.au/                |gtm-mobile-menu-list-elle   |
-            |Harper's Bazaar            |http://harpersbazaar.com.au/       |gtm-mobile-menu-list-hb     |
-            |Gourmet Traveller          |http://gourmettraveller.com.au/    |gtm-mobile-menu-list-gt     |
-            |Cosmopolitan               |http://cosmopolitan.com.au/        |gtm-mobile-menu-list-cosmo  |
-            |Dolly                      |http://dolly.com.au/               |gtm-mobile-menu-list-dolly  |
+            |title                      |url                                |gtm                        |
+            |Homes To Love              |http://homestolove.com.au/         |gtm-hamburger-homes        |
+            |Food To Love               |http://foodtolove.com.au/          |gtm-hamburger-food         |
+            |Elle                       |http://elle.com.au/                |gtm-hamburger-elle         |
+            |Harper's Bazaar            |http://harpersbazaar.com.au/       |gtm-hamburger-harpers      |
+            |Gourmet Traveller          |http://gourmettraveller.com.au/    |gtm-hamburger-gt           |
+            |Cosmopolitan               |http://cosmopolitan.com.au/        |gtm-hamburger-cosmo        |
+            |Dolly                      |http://dolly.com.au/               |gtm-hamburger-dolly        |
+            |Beauty Heaven              |http://beautyheaven.com.au/        |gtm-hamburger-beautyheaven |
 
     @navigation @BXMA-117
     Scenario: I can see the navigation widget on the homepage desktop
         Given I switch to "desktop" view
         When I am currently viewing the homepage
         * I should see the site header banner
-        * I should see the site header logo clickable to open homepage
+        * I should see the site header logo clickable to open homepage and contain "gtm-navbar-now" class name
         * I should see the site navigation links and "gtm-navigation-section nav-item" class name in "header"
         * I should see the site navigation links and "gtm-navigation-section nav-item" class name in "hamburger"
 
@@ -128,7 +129,7 @@ Feature: I have an automated sanity for my live environments
     Scenario: I can see the navigation widget on the homepage mobile
         Given I switch to "mobile" view
         When I am currently viewing the homepage
-        * I should see the site header logo clickable to open homepage
+        * I should see the site header logo clickable to open homepage and contain "gtm-navbar-now" class name
         * I should not see the site navigation links
         * I should see the site navigation links and "gtm-navigation-section nav-item" class name in "hamburger"
 
@@ -166,7 +167,7 @@ Feature: I have an automated sanity for my live environments
     Scenario: I can see the 404 error page in the mobile style
         Given I switch to "mobile" view
         When I am currently viewing "404"
-        * I should see the site header logo clickable to open homepage
+        * I should see the site header logo clickable to open homepage and contain "gtm-navbar-now" class name
         * I should see the hamburger menu
         * I should see the error title as "This page is under construction"
         * I should see the error giphy image

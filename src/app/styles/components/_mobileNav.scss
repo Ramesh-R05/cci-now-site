@@ -11,6 +11,7 @@
     @media #{$small-only} {
         transform: translateX(-270px);
     }
+    
     @media #{$medium-up} {
         transform: translateX(-450px);
     }
@@ -119,82 +120,107 @@
         display: inline-block;
         padding: 5px 21px 23px 0px;
 
+        &:nth-child(2) {
+            width: 100%;
+        }
+
+        @media #{$medium-up} {
+            &:nth-child(3),
+            &:nth-child(4),
+            &:nth-child(5) {
+                padding-right: 15px;
+            }
+
+            &:nth-child(4) {
+                padding-right: 10px;   
+            }   
+        }
+        
         @media #{$small-only} {
             padding: 5px 15px 18px 0px;
         }
 
-        .mobile-menu-list__logo {
-            &--homes-to-love {
-                width: 115px;
-                height: 36px;
-                margin-right: 11px;
+        img {
+            &.mobile-menu-list__logo {
+                &--homes-to-love {
+                    width: 220px;
+                    height: auto;
+                    margin-right: 11px;
 
-                @media #{$small-only} {
-                    width: 102px;
-                    height: 32px;
+                    @media #{$small-only} {
+                        width: 210px;
+                    }
                 }
-            }
-            &--food-to-love {
-                width: 90px;
-                height: 36px;
+                &--food-to-love {
+                    width: 90px;
+                    height: 36px;
 
-                @media #{$small-only} {
-                    width: 80px;
-                    height: 32px;
-                    margin-left: 4px;
+                    @media #{$small-only} {
+                        width: 80px;
+                        height: 32px;
+                        margin-left: 4px;
+                    }
                 }
-            }
-            &--elle {
-                width: 72px;
-                height: 29px;
+                &--elle {
+                    width: 72px;
+                    height: 29px;
 
-                @media #{$small-only} {
-                    margin-right: 12px;
-                    width: 63px;
-                    height: 26px;
+                    @media #{$small-only} {
+                        margin-right: 12px;
+                        width: 63px;
+                        height: 26px;
+                    }
                 }
-            }
-            &--harpers-bazaar {
-                width: 100px;
-                height: 30px;
-
-                @media #{$small-only} {
-                    margin-top: 2px;
-                    width: 88px;
+                &--harpers-bazaar {
+                    width: 100px;
                     height: 30px;
-                }
-            }
-            &--gourmet-traveller {
-                width: 99px;
-                height: 31px;
-                padding-top: 2px;
 
-                @media #{$small-only} {
-                    width: 88px;
-                    height: 28px;
-                    margin-left: -3px;
+                    @media #{$small-only} {
+                        margin-top: 2px;
+                        width: 88px;
+                        height: 30px;
+                    }
                 }
-            }
-            &--cosmopolitan {
-                width: 130px;
-                height: 24px;
+                &--gourmet-traveller {
+                    width: 99px;
+                    height: 31px;
+                    padding-top: 2px;
 
-                @media #{$small-only} {
-                    width: 115px;
-                    height: 22px;
-                    
-                    margin-left: 10px;
+                    @media #{$small-only} {
+                        width: 88px;
+                        height: 28px;
+                        margin-left: -3px;
+                    }
                 }
-            }
-            &--dolly {
-                width: 113px;
-                height: 25px;
+                &--cosmopolitan {
+                    width: 130px;
+                    height: 24px;
 
-                @media #{$small-only} {
-                    width: 94px;
-                    height: 22px;
-                    margin-left: 3px;
-                    margin-top: 7px;
+                    @media #{$small-only} {
+                        width: 115px;
+                        height: 22px;
+                    }
+                }
+                &--dolly {
+                    width: 113px;
+                    height: 25px;
+
+                    @media #{$small-only} {
+                        width: 94px;
+                        height: 22px;
+                        margin-left: 3px;
+                        margin-top: 7px;
+                    }
+                }
+                &--beauty-heaven {
+                    width: 113px;
+                    height: auto;
+
+                    @media #{$small-only} {
+                        width: 100px;
+                        margin-left: 3px;
+                        margin-top: 7px;
+                    }
                 }
             }
         }
@@ -229,14 +255,13 @@
     background-color: transparent;
     color: #bbbbbb;
     font-size: 13px;
-    margin: 30px 0px 20px;
-    padding-bottom: 30px;
+    margin: 28px 0px 40px;
     left: 0;
     height: 0px;
 
     @media #{$small-only} {
         font-size: 11px; 
-        margin: 34px 0px 16px;
+        margin: 25px 0px 34px;
     }
 }
 

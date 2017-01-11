@@ -114,7 +114,7 @@ export default {
     ],
     hamburgers: [
         {
-            "imageUrl": "/assets/images/menulogos/HTL-logo.svg",
+            "imageUrl": "/assets/images/menulogos/HTL-logo-greytext.svg",
             "url": "http://homestolove.com.au/",
             "title": "Homes To Love",
             "gtmClass": "homes"
@@ -126,7 +126,7 @@ export default {
             "gtmClass": "food"
         },
         {
-            "imageUrl": "/assets/images/menulogos/ELLE-logo.svg",
+            "imageUrl": "/assets/images/menulogos/ELLE-logo-redtext.svg",
             "url": "http://elle.com.au/",
             "title": "Elle",
             "gtmClass": "elle"
@@ -135,7 +135,7 @@ export default {
             "imageUrl": "/assets/images/menulogos/HB-logo.svg",
             "url": "http://harpersbazaar.com.au/",
             "title": "Harper's Bazaar",
-            "gtmClass": "hb"
+            "gtmClass": "harpers"
         },
         {
             "imageUrl": "/assets/images/menulogos/GT-logo.svg",
@@ -149,11 +149,17 @@ export default {
             "title": "Cosmopolitan",
             "gtmClass": "cosmo"
         },
-        {
+        {   
             "imageUrl": "/assets/images/menulogos/DOLLY-logo.svg",
             "url": "http://dolly.com.au/",
             "title": "Dolly",
             "gtmClass": "dolly"
+        },
+        {
+            "imageUrl": "/assets/images/menulogos/BEAUTYHEAVEN-logo.svg",
+            "url": "http://beautyheaven.com.au/",
+            "title": "Beauty Heaven",
+            "gtmClass": "beautyheaven"
         }
     ],
     shortSources: {

@@ -5,6 +5,7 @@ export default class Logos extends Component {
         currentUrl: PropTypes.string,
         logoList: PropTypes.array,
         className: PropTypes.string,
+        gtmPrefix: PropTypes.string,
         openInNewTab: PropTypes.bool
     };
 
@@ -12,7 +13,7 @@ export default class Logos extends Component {
         if(!this.props.logoList || this.props.logoList.length <= 0) return null;
 
         const html = this.props.logoList.map((item, i) => {
-            const gtmClassName = `gtm-${this.props.className}-${item.gtmClass}`;
+            const gtmClassName = `gtm-${this.props.gtmPrefix || this.props.className}-${item.gtmClass}`;
 
             const imgClassName = `${this.props.className}__logo--${item.title}`
                 .replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g, '')

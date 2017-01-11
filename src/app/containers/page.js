@@ -106,7 +106,7 @@ export default class Page extends Component {
                                     </svg>
                                 ` }} />
                             <Navigation className="mobile-menu" items={mobileNav} currentUrl={currentUrl} />
-                            <Logos className="mobile-menu-list" openInNewTab={true} logoList={this.context.config.brands.hamburgers} />
+                            <Logos className="mobile-menu-list" gtmPrefix="hamburger" openInNewTab={true} logoList={this.context.config.brands.hamburgers} />
                         </div>
                     </MobileOffCanvas>
                 </div>
