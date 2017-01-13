@@ -2,34 +2,34 @@
 .video-wrapper {
     .video-js {
         .vjs-big-play-button {
-            border: 5px $color-white solid;
+            border: $video-button-border-sml $color-white solid;
             border-radius: 0px !important;
-            height: 55px !important;
-            width: 65px !important;
+            height: $video-button-height-sml !important;
+            width: $video-button-width-sml !important;
+            transform: translate(-50%,-50%);
+            margin: 0 !important;
+            left: 50% !important;
+            top: 50% !important;
 
             &:before {
-                margin: 22px auto;
+                margin: 0;
+                margin-left: -2px;
                 opacity: 1;
-                line-height: 0;
+                line-height: $video-button-height-sml - (2 * $video-button-border-sml);
+                font-size: 30px;
 
                 @media #{$medium-up} {
-                    font-size: 65px;
-                    line-height: 50px;
-                    margin: {
-                        bottom: 28px;
-                        left: 0;
-                        right: auto;
-                        top: 20px;
-                    }
+                    margin-left: 0px;
+                    font-size: 50px;
                     padding-left: 0;
+                    line-height: $video-button-height - (2 * $video-button-border);
                 }
-
             }
 
             @media #{$medium-up} {
-                border-width: 10px;
-                height: 110px !important;
-                width: 130px !important;
+                border-width: $video-button-border;
+                height: $video-button-height !important;
+                width: $video-button-width !important;
             }
         }
 
