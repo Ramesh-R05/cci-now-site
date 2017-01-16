@@ -10,6 +10,12 @@
             margin: 0 !important;
             left: 50% !important;
             top: 50% !important;
+            transition: background-color .3s ease;
+
+            &:hover,
+            &:active {
+                background-color: rgba(0, 0, 0, .70);
+            }
 
             &:before {
                 margin: 0;
@@ -36,6 +42,14 @@
         .vjs-volume-level,
         .vjs-play-progress {
             background-color: $color-primary;
+        }
+    }
+
+    &:hover,
+    &:active {
+        
+        .vjs-big-play-button {
+            background-color: #000;
         }
     }
 }
