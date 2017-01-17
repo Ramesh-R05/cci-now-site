@@ -462,7 +462,20 @@ module.exports = function() {
             console.log('Date is :'+ FeedDate);
             expect(FeedDate === '').toBe(false);
         }
-        });
+    });
 
-    };
+    this.When(/^I can see the facebook share button on article page$/, function () {
+        var facebook = browser.isVisible(wn_article.articleFacebook);
+        var facebookButton = browser.getText(wn_article.articleFacebook);
+        expect(facebook).toBe(true);
+        expect(facebookButton).toEqual('SHARE');
+    });
+
+    this.When(/^I can see the pinterest share button on article page$/, function () {
+        var pinterest = browser.isVisible(wn_article.articlePinterest);
+        var pinterestButton = browser.getText(wn_article.articlePinterest);
+        expect(pinterest).toBe(true);
+        expect(pinterestButton).toEqual('PIN IT');
+    });
+};
 

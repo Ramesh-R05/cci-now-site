@@ -4,7 +4,6 @@
     font-weight: 500;
     margin: {
         bottom: 8px;
-        left: - $column-gutter / 2;
         top: 8px;
     }
     padding: 0;
@@ -24,58 +23,48 @@
         background-color: transparent;
         border: 0;
         color: transparent;
-        font-size: 0;
-        height: 35px;
+        font-size: 11px;
+        font-weight: 500;
+        height: 32px;
         padding: 0;
         position: relative;
         text-align: center;
         transition: none;
-        width: 46px;
-
-        &:before {
-            display: inline-block;
-            font-size: 23px;
-            transition: color 200ms ease-in;
-            width: 100%;
-        }
+        width: 49%;
+        margin-right: 10px;
+        font-family: 'Amsi Pro Narrow', sans-serif;
+        line-height: 32px;
 
         &.icon-facebook {
-            &:before {
-                font-size: 21px;
-            }
-        }
-
-        &.icon-twitter {
-            line-height: 1.2;
+            background-color: $facebook-share-color;
+            padding: 0 16px;
+            text-align: center;
+            color: white;
 
             &:before {
-                font-size: 18px;
+                font-family: 'social-icons';
+                font-size: 16px;
+                color: white;
+                margin-right: 8px;
+                display: inline-block;
+                vertical-align: middle;
             }
         }
 
         &.icon-pinterest {
-            line-height: 1.2;
+            background-color: $pinterest-share-color;
+            padding: 0 20px;
+            text-align: center;
+            color: white;
+            content: '';
 
             &:before {
-                font-size: 18px;
-            }
-
-            width: 43px;
-        }
-
-        &.icon-email {
-            margin: {
-                left: -1px;
-            }
-
-            &:before {
-                font-size: 18px;
-            }
-
-            @media #{$medium-up} {
-                margin: {
-                    left: 3px;
-                }
+                font-family: 'social-icons';
+                font-size: 16px;
+                color: white;
+                margin-right: 8px;
+                display: inline-block;
+                vertical-align: middle;
             }
         }
     }

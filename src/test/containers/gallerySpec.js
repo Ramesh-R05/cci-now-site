@@ -10,7 +10,6 @@ const HeaderStub = Context.createStubComponent();
 const MainStub = Context.createStubComponent();
 const AsideStub = Context.createStubComponent();
 const MobileCanvasStub = Context.createStubComponent();
-const SocialShareStub = Context.createStubComponent();
 const FooterStub = Context.createStubComponent();
 
 let reactModuleInstance;
@@ -41,7 +40,6 @@ const GallerySection = proxyquire('../../app/containers/gallery', {
     '@bxm/gallery/lib/components/page/main': MainStub,
     '@bxm/gallery/lib/components/page/aside': AsideStub,
     '@bxm/gallery/lib/actions/gallery': GalleryActionsStub,
-    '@bxm/social/lib/components/share/block': SocialShareStub,
     '@bxm/behaviour/lib/components/resizeViewport': ViewportStub,
     '@bxm/ad/lib/google/components/ad': AdStub,
     '@bxm/nav/lib/components/offcanvas/content': MobileCanvasStub,
@@ -135,7 +133,6 @@ describe('GallerySection', () => {
         let galleryMain;
         let galleryAside;
         let ad;
-        let socialShare;
         let footer;
 
         before(() => {
@@ -145,7 +142,6 @@ describe('GallerySection', () => {
             galleryHeader = TestUtils.findRenderedComponentWithType(reactModule, HeaderStub);
             galleryMain = TestUtils.findRenderedComponentWithType(reactModule, MainStub);
             galleryAside = TestUtils.findRenderedComponentWithType(reactModule, AsideStub);
-            socialShare = TestUtils.findRenderedComponentWithType(reactModule, SocialShareStub);
             ad = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
             footer = TestUtils.findRenderedComponentWithType(reactModule, FooterStub);
         });
@@ -211,8 +207,8 @@ describe('GallerySection', () => {
         });
 
         it('should render the Gallery Aside Section', () => {
-            expect(galleryMain.props.keyword).to.deep.eq(['Toronto', 'Nav Item']);
-            expect(galleryMain.props).to.deep.contain({
+            expect(galleryAside.props.keyword).to.deep.eq(['Toronto', 'Nav Item']);
+            expect(galleryAside.props).to.deep.contain({
                 activeGalleryItem: activeItem,
                 activeGalleryItemIndex: activeIndex,
                 gallery,
@@ -221,20 +217,8 @@ describe('GallerySection', () => {
                 nextGallery,
                 numAds,
                 totalItems,
-                kingtag: 'Nav Item'
-            });
-        });
-
-        it('should render the SocialShare block', () => {
-            expect(socialShare.props).to.deep.eq({
-                className: "social-share-block hide-for-large-up",
-                url: gallery.siteUrl + gallery.url,
-                title: gallery.title,
-                emailSubject: `${contextConfigStub.value.site.shortName}:  ${gallery.title}`,
-                tweetBody: `${contextConfigStub.value.site.shortName}: ${gallery.title} {shortURL}`,
-                description: gallery.summary,
-                imageUrl: gallery.imageUrl,
-                nodeId: gallery.id
+                kingtag: 'Nav Item',
+                showSocialShare: true
             });
         });
 

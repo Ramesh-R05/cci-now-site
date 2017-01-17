@@ -94,9 +94,9 @@
 
     // Temporary until social style task is done
     .social-share-block {
-        display: none !important;
         /*overwriting the Foundation visibility class that's also being applied to this element */
         text-align: center;
+        margin-top: 25px;
 
         @media #{$large-up} {
             text-align: left;
@@ -149,7 +149,7 @@
         &.show-for-large-up {
             margin-top: 13px;
             padding: {
-                left: $column-gutter/2;
+                left: $column-gutter;
                 right: $column-gutter;
             }
 
@@ -386,11 +386,18 @@
 
         &-ad {
             @media #{$large-up} {
-                top: 411px;
+                top: 370px;
             }
         }
 
         .gallery__summary {
+            @media #{$large-up} {
+                box-sizing: border-box;
+                height: initial;
+                margin-bottom: 0px;
+                padding: 0px;
+            }
+
             p {
                 font-size: 18px;
                 line-height: 25px;
@@ -424,6 +431,12 @@
                     }
                 }
                 color: #53a8b3;
+            }
+        }
+
+        .social-share-block .social-share {
+            @media #{$large-up} {
+                width: 38%;
             }
         }
     }

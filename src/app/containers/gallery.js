@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react';
 import Header from '@bxm/site-header';
 import GalleryDetailMain from '@bxm/gallery/lib/components/page/main';
 import GalleryDetailAside from '@bxm/gallery/lib/components/page/aside';
-import SocialShareBlock from '@bxm/social/lib/components/share/block';
 import MobileOffCanvas from '@bxm/nav/lib/components/offcanvas/content';
 import Navigation from '@bxm/site-header/lib/components/navigation';
 import { getKeywordsFromTags } from '@bxm/ad/lib/utils/tagsUtils';
@@ -163,7 +162,7 @@ class GallerySection extends Component {
                     />
 
                     <StandardPageAdsWrapper>
-                        <section ref="galleryBody" className="gallery__body row" style={{ height: this.state.galleryHeight }} ref="galleryBody"> 
+                        <section ref="galleryBody" className="gallery__body row" style={{ height: this.state.galleryHeight }} ref="galleryBody">
                             <GalleryDetailMain
                                 {...this.props}
                                 keyword={keyword}
@@ -180,6 +179,7 @@ class GallerySection extends Component {
                                 showSourceLogo={true}
                                 keyword={keyword}
                                 kingtag={kingtag}
+                                showSocialShare={true}
                             />
                         </section>
                     </StandardPageAdsWrapper>
@@ -200,17 +200,6 @@ class GallerySection extends Component {
                             <Logos className="mobile-menu-list" openInNewTab={true} logoList={this.context.config.brands.hamburgers} />
                         </div>
                     </MobileOffCanvas>
-
-                    <SocialShareBlock
-                        className="social-share-block hide-for-large-up"
-                        url={gallery.siteUrl + gallery.url}
-                        title={shareTitle}
-                        emailSubject={`${config.site.shortName}:  ${shareTitle}`}
-                        tweetBody={`${config.site.shortName}: ${shareTitle} {shortURL}`}
-                        description={shareDescription}
-                        imageUrl={gallery.imageUrl}
-                        nodeId={gallery.id}
-                    />
                 </section>
             </div>
         );

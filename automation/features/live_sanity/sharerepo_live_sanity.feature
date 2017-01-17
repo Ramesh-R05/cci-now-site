@@ -187,6 +187,8 @@ Feature: I have an automated sanity for my live environments
         * I can see the related tags "Advice"
         * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
         * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
+        * I can see the facebook share button on article page
+        * I can see the pinterest share button on article page
         Examples:
         |device            |
         |mobile            |
@@ -214,6 +216,8 @@ Feature: I have an automated sanity for my live environments
         * I can see the source appearing on the gallery with gtm "gtm-brand-gallery"
         * I can see the created date on the gallery "SEP 09, 2016 1:32PM"
         * I can see the gallery description of the gallery containing "The 35-year-old Oscar winner looked radiant"
+        * I can see the facebook share button on gallery page
+        * I can see the pinterest share button on gallery page
         * I can see the right arrow on the gallery
         * I should not see the left arrow on the gallery
         * I can see the image number "1" of total "8" on the gallery

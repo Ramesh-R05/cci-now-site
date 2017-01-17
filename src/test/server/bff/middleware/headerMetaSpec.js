@@ -69,7 +69,7 @@ describe('HeaderMeta middleware', () => {
                             contentSummary,
                             contentTitle,
                             pageTitle: contentTitle,
-                            pageMetaDescription: `${contentTitle}, ${contentSummary}`
+                            pageMetaDescription: contentSummary
                         },
                         headerMetaData: {
                             googleTagManagerEnvironment: 'development',

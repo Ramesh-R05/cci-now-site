@@ -27,6 +27,8 @@ var gallery_widget = {
     videoId: 'data-video-id',
     playButton: '.vjs-big-play-button',
     imageCount: "footer .gallery__slide-count",
+    galleryFacebook: '.gallery__aside .social-share-block .icon-facebook',
+    galleryPinterest: '.gallery__aside .social-share-block .icon-pinterest',
     //Locators identified by Xpath
     imgCount: "//*[@id='app']/div/section/section[1]/section/footer/div[1]/span",
     imgCountMobile: "//*[@id='app']/div/section/header/div/span",

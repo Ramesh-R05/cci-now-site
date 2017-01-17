@@ -223,4 +223,18 @@ module.exports = function() {
         expect(style_next).not.toContain("opacity");
         expect(style_prev).not.toContain("opacity");
     });
+
+    this.When(/^I can see the facebook share button on gallery page$/, function () {
+        var facebook = browser.isVisible(gallery.galleryFacebook);
+        var facebookButton = browser.getText(gallery.galleryFacebook);
+        expect(facebook).toBe(true);
+        expect(facebookButton).toEqual('SHARE');
+    });
+
+    this.When(/^I can see the pinterest share button on gallery page$/, function () {
+        var pinterest = browser.isVisible(gallery.galleryPinterest);
+        var pinterestButton = browser.getText(gallery.galleryPinterest);
+        expect(pinterest).toBe(true);
+        expect(pinterestButton).toEqual('PIN IT');
+    });
 };

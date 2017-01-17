@@ -121,3 +121,16 @@ Feature: Article
         * I can see the long title of each item in LHR
         * Long title in LHR is clickable to open its page
         * I can see each item in LHR containing source and date
+
+    @BXMA-155
+    Scenario Outline: Verify the share buttons on an article page in "<device>" view
+        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        When I switch to "<device>" view
+        * I can see the facebook share button on article page
+        * I can see the pinterest share button on article page
+        Examples:
+            | device            |
+            | mobile            |
+            | tablet portrait   |
+            | tablet landscape  |
+            | desktop           |

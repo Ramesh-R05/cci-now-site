@@ -46,12 +46,19 @@ describe('Document Component', () => {
                 config: Document.headerAdConfig
             };
 
+            const socialShare = {
+                facebook: true,
+                pinterest: true
+            };
+
             expect(ArticleComponent.props).to.deep.eq({
                 enableTeads: true,
                 articleHeaderOrder: ['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd],
                 contentBodyConfig: Document.articleContentBodyConfig,
                 showAdBeforeRecommendations: true,
-                CustomisedTeaser: CustomisedTeaserStub
+                CustomisedTeaser: CustomisedTeaserStub,
+                showSocialShare: true,
+                socialShare: socialShare
             });
         });
 

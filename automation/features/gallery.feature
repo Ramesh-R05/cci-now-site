@@ -104,3 +104,19 @@ Feature: Gallery
         * I can slide to the first MREC ad
         * I cannot go to the next slide when the ad is not loaded
         * I can go to the next slide when the ad is loaded
+
+    @BXMA-155
+    Scenario Outline: Verify the share buttons on a gallery page in "<device>" view
+        Given I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
+        When I switch to "<device>" view
+        * I can see the facebook share button on gallery page
+        * I can see the pinterest share button on gallery page
+        Examples:
+            | device            |
+            | mobile            |
+            | tablet portrait   |
+            | tablet landscape  |
+            | desktop           |
+
+
+

@@ -51,7 +51,7 @@ export default class Document extends Component {
 
         if (this.props.nodeType === 'Gallery') {
             return (
-                    <Gallery 
+                    <Gallery
                         customisedTeaser={Teaser} currentUrl={this.props.currentUrl}/>
             );
         }
@@ -59,6 +59,11 @@ export default class Document extends Component {
         const headerAd = {
             type: 'Ad',
             config: Document.headerAdConfig
+        };
+
+        const socialShare = {
+            facebook: true,
+            pinterest: true
         };
 
         return (
@@ -71,7 +76,10 @@ export default class Document extends Component {
                     contentBodyConfig={Document.articleContentBodyConfig}
                     enableTeads={true}
                     CustomisedTeaser={Teaser}
-                    showAdBeforeRecommendations={true} />
+                    showAdBeforeRecommendations={true}
+                    showSocialShare={true}
+                    socialShare={socialShare}
+                />
             </Page>
         );
     }
