@@ -104,7 +104,8 @@ function trackLoadList(payload) {
     const data = {
         event: 'expandListing',
         eventInfo: {
-            listingName: get(payload, 'body.list.listName')
+            listingName: get(payload, 'body.list.listName'),
+            pageNo: get(payload, 'body.list.params.pageNo')
         }
     };
     dataLayerPush(data);
