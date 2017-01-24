@@ -35,17 +35,17 @@ export default {
 
     error: {
         404: {
-            title: `This page is under construction`,
+            title: `Shock! Horror! This page is broken...`,
             symbol: null,
             content: [''],
-            emojiSrc: '/assets/images/coming-soon.jpg',
+            emojiSrc: '/assets/images/error.gif',
             returnHomeText: 'Try refreshing this page or join us back on the homepage'
         },
         503: {
-            title: `This page is under construction`,
+            title: `Shock! Horror! This page is broken...`,
             symbol: null,
             content: [''],
-            emojiSrc: '/assets/images/coming-soon.jpg',
+            emojiSrc: '/assets/images/error.gif',
             returnHomeText: 'Try refreshing this page or join us back on the homepage'
         }
     }
