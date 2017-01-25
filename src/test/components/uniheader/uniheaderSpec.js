@@ -7,24 +7,24 @@ describe('Brand Header', () => {
     let reactModule;
     const logoListStub = [
         {
+            "id": "aww",
             "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
             "url": "/aww",
-            "title": "Australian Women's Weekly",
-            "gtmClass": "aww"
+            "title": "Australian Women's Weekly"
         },
         {
+            "id": "wd",
             "imageUrl": "/assets/images/headerlogos/WD-logo.svg",
             "url": "/womansday",
-            "title": "Woman's Day",
-            "gtmClass": "wd"
+            "title": "Woman's Day"
         },
         {
+            "id": "gh",
             "imageUrl": "/assets/images/headerlogos/GH-logo.svg",
             "url": "/good-health",
-            "title": "Good Health",
-            "gtmClass": "gh"
+            "title": "Good Health"
         }
-     ];   
+     ];
 
     describe('Rendering the UniHeader on the Home Page', () => {
         before(()=> {

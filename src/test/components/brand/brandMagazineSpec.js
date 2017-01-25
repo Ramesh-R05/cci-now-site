@@ -25,18 +25,18 @@ describe(`BrandMagazine`, () => {
     let responsiveImageStub;
 
     const brandPropStub = {
+        "id": "aww",
         "title": "Australian Women's Weekly",
         "magazineTitle": "The Weekly",
         "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
         "url": "/aww",
-        "gtmClass": "aww",
         "socialLinks": {
             "facebookUrl": "https://www.facebook.com/WomensWeeklyMag",
             "twitterUrl": "https://twitter.com/womensweeklymag",
             "instagramUrl": "http://instagram.com/womensweeklymag"
         }
-    }
-    
+    };
+
     const contextConfigStub = {
         key: 'config',
         type: '',
@@ -45,11 +45,10 @@ describe(`BrandMagazine`, () => {
                 breakpoints: ''
             }
         }
-    }
+    };
 
-   	
     describe('when passing in /aww as the brand prop', () => {
-			before(() => { 
+			before(() => {
 		        reactModule = Context.mountComponent(BrandMagazine, {brand: brandPropStub}, [contextConfigStub]);
                 socialContainerStub = TestUtils.findRenderedComponentWithType(reactModule, SocialContainerStub);
                 responsiveImageStub = TestUtils.findRenderedComponentWithType(reactModule, ResponsiveImageStub);
@@ -69,14 +68,14 @@ describe(`BrandMagazine`, () => {
                 const spans = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'span');
                 const firstSpan = spans[0];
                 expect(firstSpan.textContent).to.eq("Subscribe to " + brandPropStub.magazineTitle);
-            }); 
-            
+            });
+
             it('should render the second span and apply the correct class from the config', () => {
                 const spans = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'span');
                 const secondSpanClass = spans[1].props.className;
-                const correctClass = `sub-now sub-now-${brandPropStub.gtmClass}`;
+                const correctClass = `sub-now sub-now-${brandPropStub.id}`;
                 expect(secondSpanClass).to.equal(correctClass);
-            });     
+            });
     });
 });
 

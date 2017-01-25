@@ -12,7 +12,9 @@ const pageMiddleware = proxyquire('../../../../app/server/bff/middleware/page', 
 }).default;
 
 describe('Page middleware', () => {
-    const config = {services: {remote: {entity: 'http://entitiesUrl.com/'}}};
+    const config = {
+        services: { remote: { entity: 'http://entitiesUrl.com/'}},
+    };
     const res = {};
     const validSection = 'fashion';
     const validSubsection = 'models';
@@ -23,8 +25,6 @@ describe('Page middleware', () => {
     let req;
 
     describe('when the path does not contain an ID number in the slug', () => {
-
-
         before(() => {
             req = {
                 app: { config },

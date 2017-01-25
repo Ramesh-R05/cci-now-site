@@ -112,7 +112,7 @@ describe('GallerySection', () => {
         type: '',
         value: {
             brands: {
-                hamburgers: {}
+                hamburgers: []
             },
             site: {
                 name: 'Dolly',
@@ -171,7 +171,7 @@ describe('GallerySection', () => {
 
         it('should render the Footer component', () => {
             expect(ReactDOM.findDOMNode(footer)).to.exist;
-        });        
+        });
 
         it('should render the ad', () => {
             expect(ad.props).to.deep.eq({

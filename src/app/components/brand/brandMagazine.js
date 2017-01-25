@@ -28,12 +28,12 @@ class BrandMagazine extends Component {
             xl: {w: 175}
         }
     };
-    
+
     render() {
         const { imageSizes, responsiveConfig, magazineImageUrl, brand } = this.props;
         const breakpoints = this.context.config.global.breakpoints;
-        const { socialLinks, gtmClass, title, magazineTitle } = brand;
-        const subscribeUrl = `subscribe-${gtmClass}`;
+        const { socialLinks, id, title, magazineTitle } = brand;
+        const subscribeUrl = `subscribe-${id}`;
 
         return (
             <div>
@@ -50,11 +50,11 @@ class BrandMagazine extends Component {
                             quality={80}
                         />
                     </div>
-                    <a target="_blank" className={`gtm-subscribe-${gtmClass}`} href={subscribeUrl}> <span className={`sub-now sub-now-${gtmClass}`}>SUBSCRIBE NOW</span></a>
+                    <a target="_blank" className={`gtm-subscribe-${id}`} href={subscribeUrl}> <span className={`sub-now sub-now-${id}`}>SUBSCRIBE NOW</span></a>
                 </div>
                 <hr/>
                 <div className="page__get-social-container">
-                    <SocialContainer socialUrls={socialLinks}/> 
+                    <SocialContainer socialUrls={socialLinks}/>
                 </div>
             </div>
         )

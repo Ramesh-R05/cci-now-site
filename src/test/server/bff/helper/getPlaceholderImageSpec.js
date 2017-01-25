@@ -1,4 +1,4 @@
-import getPlaceholderImage from '../../../../app/server/bff/helper/getPlaceholderImage';
+import { getPlaceholderImage } from '../../../../app/server/bff/helper/getPlaceholderImage';
 import listing from '../../../mocks/listing';
 
 const imagePlaceholderUrl = '/assets/placeholder/dolly-LHR-feed-placeholder.png';

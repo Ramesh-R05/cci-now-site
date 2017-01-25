@@ -1,5 +1,6 @@
-import has from 'lodash/object/has';
+import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
+import has from 'lodash/object/has';
 import { getLatestTeasers } from '../api/listing';
 import { parseEntities } from '../helper/parseEntity';
 const latestTeaserCount = 7;
@@ -12,7 +13,6 @@ export default async function section(req, res, next) {
         pageNo = parseInt(req.query.pageNo || pageNo, 10);
 
         const nodeTypeAlias = get(req, 'data.entity.nodeTypeAlias', '');
-
         if (nodeTypeAlias !== 'Section' && nodeTypeAlias !== 'Brand' || !section || page) {
             next();
             return;
@@ -20,20 +20,23 @@ export default async function section(req, res, next) {
 
         let listingQuery, teaserQuery, teaserFilter;
 
-        if ( nodeTypeAlias === 'Section' ) {
+        if (nodeTypeAlias === 'Section') {
             teaserQuery = `/${section}/`;
             teaserFilter = 'parentUrl';
             listingQuery = `${teaserFilter} eq %27${teaserQuery}%27`;
         }
-        if ( nodeTypeAlias === 'Brand' ) { 
-            teaserQuery = req.data.entity.source.replace("\'", "''");
+        if (nodeTypeAlias === 'Brand') {
+            const source = get(req, 'data.entity.source', '');
+            const adBrand = find(req.app.config.brands.uniheader, (b) => { return b.title === source });
+            req.data.entity.adBrand = get(adBrand, 'id', 'ntl');
+
+            teaserQuery = source.replace("\'", "''");
             teaserFilter = 'source';
             listingQuery = `${teaserFilter} eq %27${teaserQuery}%27 and nodeTypeAlias ne %27Brand%27`;
         }
 
         const skip = ((pageNo-1) * listCount);
         const latestTeasersResp = await getLatestTeasers(listCount, skip, listingQuery);
-
 
         // TODO: need to handle `data` in resp better
         const latestTeasers = latestTeasersResp || {

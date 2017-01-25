@@ -23,6 +23,7 @@ export default {
   "siteTitle": "DOLLY",
   "sortOrder": 1,
   "parentName": "Models",
+  "articleSource": "Woman\'s Day",
   "contentBody": [
     {
       "type": "paragraph",

@@ -8,12 +8,12 @@ export default class BrandTitle extends Component {
 
     render() {
         const { brand } = this.props
-        const { imageUrl, gtmClass, title } = brand;
-        const brandClass = `brand-title brand-title-${gtmClass}`
-        const crumbClass = `brand-breadcrumb-${gtmClass}`;
+        const { imageUrl, id, title } = brand;
+        const brandClass = `brand-title brand-title-${id}`
+        const crumbClass = `brand-breadcrumb-${id}`;
 
         return (
-            <div className={`brand brand-${gtmClass}`}>
+            <div className={`brand brand-${id}`}>
                 <div className={brandClass}>
                     <hr className="brand-title--left-line"/>
                     <img className="brand-title--logo" src={imageUrl} />

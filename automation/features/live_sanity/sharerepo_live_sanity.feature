@@ -213,7 +213,7 @@ Feature: I have an automated sanity for my live environments
         * I can click the logo to go to homepage
         * I can see the gallery title containing "Natalie Portman shows off her divine baby bump"
         * I can see an image appearing on the gallery
-        * I can see the source appearing on the gallery with gtm "gtm-brand-gallery"
+        * I can see the source appearing on the gallery with gtm "gtm-brandlogotop-gallery"
         * I can see the created date on the gallery "SEP 09, 2016 1:32PM"
         * I can see the gallery description of the gallery containing "The 35-year-old Oscar winner looked radiant"
         * I can see the facebook share button on gallery page

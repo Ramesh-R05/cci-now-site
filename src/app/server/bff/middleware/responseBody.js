@@ -1,8 +1,8 @@
+import { parseEntity, parseEntities } from '../helper/parseEntity';
+import { parseHeaderMetaData } from '../helper/parseHeaderMetaData';
+import { parseModule } from '../helper/parseModule';
+import { getPlaceholderImage } from '../helper/getPlaceholderImage';
 import get from 'lodash/object/get';
-import {parseEntity, parseEntities} from '../helper/parseEntity';
-import {parseHeaderMetaData} from '../helper/parseHeaderMetaData';
-import {parseModule} from '../helper/parseModule';
-import getPlaceholderImage from '../helper/getPlaceholderImage';
 
 export default function responseBody(req, res, next) {
 
@@ -29,7 +29,7 @@ export default function responseBody(req, res, next) {
         }
 
         if (get(req, 'data.mustread')) {
-            
+
             res.body.mustRead = parseEntities(req.data.mustread, {
                 title: 'title', imageUrl: 'imageUrl', location: 'url'
             });
@@ -37,7 +37,7 @@ export default function responseBody(req, res, next) {
 
         if (get(req, 'data.leftHandSide')) {
             var lhsData = getPlaceholderImage(req.data.leftHandSide.data);
-            res.body.leftHandSide = { items:  parseEntities(lhsData)};
+            res.body.leftHandSide = { items: parseEntities(lhsData) };
         }
 
         if (get(req, 'data.trendingItems')) {

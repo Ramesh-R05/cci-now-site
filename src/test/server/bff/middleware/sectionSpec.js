@@ -11,7 +11,32 @@ const sectionMiddleware = proxyquire('../../../../app/server/bff/middleware/sect
 }).default;
 
 describe('Section middleware', () => {
+    const config = {
+        brands: {
+            uniheader: [
+                {
+                    "id": "aww",
+                    "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
+                    "url": "/aww",
+                    "title": "Australian Women's Weekly"
+                },
+                {
+                    "id": "wd",
+                    "imageUrl": "/assets/images/headerlogos/WD-logo.svg",
+                    "url": "/womansday",
+                    "title": "Woman's Day"
+                },
+                {
+                    "id": "gh",
+                    "imageUrl": "/assets/images/headerlogos/GH-logo.svg",
+                    "url": "/good-health",
+                    "title": "Good Health"
+                }
+            ]
+        }
+    };
     const validRes = {data: [1, 2]};
+    const validSection = 'fashion';
     const res = {};
     let next;
     let req;
@@ -139,16 +164,79 @@ describe('Section middleware', () => {
     });
 
     describe('when there is a brand in the query param and nodeTypeAlias equal to Brand', () => {
-        before(() => {
-            reqBase = { data: { entity: { nodeTypeAlias: 'Brand', source: "Australian Women's Weekly" } }, query: { section: 'aww' } };
+        let res = {};
+        let next;
+        let req;
+        let reqBase;
+
+        describe('when source is Australian Women\'s Weekly', () => {
+            before(() => {
+                reqBase = {
+                    app: { config },
+                    query: {
+                        section: validSection
+                    },
+                    data: {
+                        entity: {
+                            nodeTypeAlias: 'Brand',
+                            source: "Australian Women\'s Weekly"
+                        }
+                    }
+                };
+                req = { ...reqBase };
+                next = sinon.spy();
+            });
+
+            it('should set adBrand as aww', (done) => {
+                sectionMiddleware(req, res, next).then(() => {
+                    expect(req.data.entity.adBrand).to.equal('aww');
+                    done();
+                }).catch(done);
+            });
+        });
+
+        describe('when articleSource is undefined', () => {
+            before(() => {
+                reqBase = {
+                    app: { config },
+                    query: {
+                        section: validSection
+                    },
+                    data: {
+                        entity: {
+                            nodeTypeAlias: 'Brand'
+                        }
+                    }
+                };
+                req = { ...reqBase };
+                next = sinon.spy();
+            });
+
+            it('should set adBrand as ntl', (done) => {
+                sectionMiddleware(req, res, next).then(() => {
+                    expect(req.data.entity.adBrand).to.equal('ntl');
+                    done();
+                }).catch(done);
+
+            });
         });
 
         describe('when the remote returns the list of teasers', () => {
             before(() => {
+                reqBase = {
+                    app: { config },
+                    query: {
+                        section: validSection
+                    },
+                    data: {
+                        entity: {
+                            nodeTypeAlias: 'Brand',
+                            source: "Australian Women\'s Weekly"
+                        }
+                    }
+                };
                 req = { ...reqBase };
-                req.data.headerNav = [1, 2, 3];
                 next = sinon.spy();
-                getLatestTeasersStub = sinon.stub().resolves(validRes);
             });
 
             it('should request for teasers', (done) => {

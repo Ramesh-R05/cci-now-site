@@ -1,5 +1,6 @@
 import {createReducerStore} from 'fluxible-reducer-store';
 import {initialState, reducer} from '../reducers/loadTeasers';
+import get from 'lodash/object/get';
 
 export default createReducerStore({
     storeName: 'TeaserStore',
@@ -31,9 +32,11 @@ export default createReducerStore({
         },
 
         getListNextParams(state) {
+            const pageNo = get(state, 'list.params.pageNo', 1);
+
             return {
                 ...state.list.params,
-                pageNo: (state.list.params.pageNo + 1)
+                pageNo: pageNo + 1
             };
         }
     }

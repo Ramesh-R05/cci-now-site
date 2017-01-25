@@ -65,7 +65,7 @@ export default class Section extends Component {
 
         const isBrandPage = nodeType === 'Brand';
         const brand = isBrandPage ? find(this.context.config.brands.uniheader, (b) => { return b.url === currentUrl }) : null;
-        const headerClassName = isBrandPage ? `header-${brand.gtmClass}` : '';
+        const headerClassName = isBrandPage ? `header-${brand.id}` : '';
         const pageTitle = isBrandPage ? <BrandTitle brand={brand}/> : <h1 className='page-title'>
                         <span className="page-title__symbol"></span>
                         {title}
@@ -104,10 +104,10 @@ export default class Section extends Component {
                                                     sizes="mrec"
                                                     displayFor="large"
                                                     targets={{position: 1}} />
-                                                { isBrandPage? <BrandMagazine brand={brand}/> : 
+                                                { isBrandPage? <BrandMagazine brand={brand}/> :
                                                 <div className="page__get-social-container">
                                                     <span className="page__social-logo">Now To Love</span>
-                                                    <SocialContainer /> 
+                                                    <SocialContainer />
                                                 </div> }
                                             </StickyAndDockAd>
                                         </div>
