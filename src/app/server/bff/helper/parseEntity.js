@@ -5,6 +5,7 @@ const entityPropertyMap = {
     contentBody: 'body',
     contentProfiles: 'authorProfiles',
     pageDateCreated: 'dateCreated',
+    updated_at: 'dateModified',
     contentNewsKeywords: 'googleNewsKeywords',
     contentImageAltText: 'imageAltText',
     contentImageCaption: 'imageCaption',

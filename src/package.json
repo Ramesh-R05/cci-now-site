@@ -37,7 +37,7 @@
   "homepage": "https://github.com/bauerxcelmedia/now-site#readme",
   "dependencies": {
     "@bxm/ad": "^10.2.0",
-    "@bxm/article": "^19.1.0",
+    "@bxm/article": "^20.0.0",
     "@bxm/behaviour": "^1.2.0",
     "@bxm/config": "^4.1.1",
     "@bxm/datetime": "^3.0.0",
@@ -51,7 +51,7 @@
     "@bxm/node-apm": "^1.0.1",
     "@bxm/react-script-loader": "^2.1.0",
     "@bxm/recommendations": "^4.1.0",
-    "@bxm/server": "^17.1.0",
+    "@bxm/server": "^17.2.0",
     "@bxm/site-header": "^2.3.0",
     "@bxm/social": "^1.5.0",
     "@bxm/tags": "^3.0.0",
