@@ -64,7 +64,7 @@ export default class Section extends Component {
         const keyword = nodeType === 'TagSection' && title ? [ title ] : [];
 
         const isBrandPage = nodeType === 'Brand';
-        const brand = isBrandPage ? find(this.context.config.brands.uniheader, (b) => { return b.url === currentUrl }) : null;
+        const brand = isBrandPage ? find(this.context.config.brands.uniheader, (b) => { return b.url === currentUrl.match(/\/[^\/|?]*/)[0] }) : null; 
         const headerClassName = isBrandPage ? `header-${brand.id}` : '';
         const pageTitle = isBrandPage ? <BrandTitle brand={brand}/> : <h1 className='page-title'>
                         <span className="page-title__symbol"></span>
