@@ -1,5 +1,7 @@
 .feed__container {
+
     .feed-item {
+        
         // Teaser body
         &__body {
             padding-top: 0;
@@ -27,6 +29,17 @@
                     text-decoration: none;
                 }
             }
+
+            &-source {
+                color: $nl-color;
+            }
+        }
+
+        &.polar-feed-item {
+
+            .teaser__image {
+                overflow: hidden;
+            }
         }
     }
 
@@ -34,3 +47,4 @@
         padding-bottom: 20px;
     }
 }
+

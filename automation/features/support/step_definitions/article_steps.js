@@ -50,13 +50,15 @@ module.exports = function() {
         var feedDate = browser.getText(wn_article.lhrFeedDate);
         for (var i=0; i<feedSource.length; i++){
             console.log( i + ":Source:" + feedSource[i]);
-            console.log( i + ":Date:" + feedDate[i]);
             //validate the source
             expect(feedSource[i]).not.toEqual('');
-            //validate the date
-            expect(feedDate[i]).not.toEqual('');
-            expect(feedDate[i]).not.toMatch('ago');
-            expect(feedDate[i]).toEqual(feedDate[i].toUpperCase());
+            if (i != 1 && i != 4 && i != 8 && i != 13){ //Skip the polar ad spot as no date is required
+                console.log( i + ":Date:" + feedDate[i]);
+                //validate the date
+                expect(feedDate[i]).not.toEqual('');
+                expect(feedDate[i]).not.toMatch('ago');
+                expect(feedDate[i]).toEqual(feedDate[i].toUpperCase());
+            }
         }
     });
 

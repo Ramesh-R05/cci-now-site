@@ -22,5 +22,9 @@ export default {
     },
     services: {
         faceBookAppID: '520578108132544'
+    },
+    polar: {
+        propertyId: 'NA-NOWTOLOVE-11238611',
+        targets: { env: 'test' }
     }
 };

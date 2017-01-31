@@ -115,8 +115,8 @@ Feature: Article
     Scenario: Verify the LHR on an article page
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         When I switch to "desktop" view
-       # * I can see 20 items in the list of items in LHR #enable again in the article polar branch
-       # * I can see the 20 images of each item in LHR #enable again in the article polar branch
+        * I can see 20 items in the list of items in LHR
+        * I can see the 20 images of each item in LHR
         * Image in LHR is clickable to open its page
         * I can see the long title of each item in LHR
         * Long title in LHR is clickable to open its page

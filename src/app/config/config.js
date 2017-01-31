@@ -106,6 +106,41 @@ export default {
                 slot: 5,
                 label: 'section_bottom_feed_2',
                 targets: {kw:'section_bottom_feed_2'}
+            },
+            articleRightFeedTwo:{
+                slot: 1,
+                label: 'article_right_feed_1',
+                targets: {
+                    kw: 'article_right_feed_1'
+                }
+            },
+            articleRightFeedFive:{
+                slot: 4,
+                label: 'article_right_feed_2',
+                targets: {
+                    kw: 'article_right_feed_2'
+                }
+            },
+            articleRightFeedNine:{
+                slot: 8,
+                label: 'article_right_feed_3',
+                targets: {
+                    kw: 'article_right_feed_3'
+                }
+            },
+            articleRightFeedFourteen:{
+                slot: 13,
+                label: 'article_right_feed_4',
+                targets: {
+                    kw: 'article_right_feed_4',
+                }
+            },
+            articleRealatedFeed:{
+                slot: 0,
+                label: 'article_related_1',
+                targets: {
+                    kw: 'article_related_1'
+                }
             }
         }
     }

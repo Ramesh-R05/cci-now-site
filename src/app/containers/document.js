@@ -1,8 +1,8 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connectToStores } from '@bxm/flux';
-import Article from '@bxm/article/lib/article';
 import Gallery from './gallery';
 import Page from './page';
+import Article from '@bxm/article/lib/article';
 import Teaser from '../components/teaser/teaser';
 
 function mapStateToProps(context) {

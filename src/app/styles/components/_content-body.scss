@@ -67,12 +67,16 @@
 
     &__related-content {
         background: none;
-        border: 1px solid $related-content-border-color;
+        border: 1px solid transparent;
+        border-top-color: $related-content-border-color;
+        padding: 35px 0px 10px;
         position: relative;
         margin: 0;
+        margin-top: 30px;
         width: 100%;
 
         @media #{$medium-up} {
+            border-color: $related-content-border-color;
             background-size: auto;
             margin: {
                 bottom: 50px;
@@ -83,7 +87,7 @@
 
         @media #{$large-up} {
             padding: {
-                bottom: 45px;
+                bottom: 25px;
                 left: 30px;
                 right: 30px;
             };
@@ -111,6 +115,7 @@
 
             @media #{$small-only} {
                 margin: 0 $column-gutter/4;
+                padding-top: 20px;
             }
 
             @media #{$medium-up} {
@@ -118,6 +123,15 @@
                 width: 100%;
             }
         }
+
+        .related-content-items {
+            .feed-item {
+                &:last-child,
+                &:first-child {
+                    margin-bottom: 0;
+                }
+            }
+        } 
 
         .feed-item {
             @include grid-column(6);
@@ -134,7 +148,9 @@
             .feed-item__source {
                 text-align: center;
                 display: block;
-                margin-top: 10px;
+                float: left;
+                width: 100%;
+                margin-top: 0;
             }
 
             .teaser__image {
@@ -151,19 +167,27 @@
                     }
                 }
             }
+
+            &.polar-feed-item {
+
+                .teaser__image {
+                    height: 0;
+                    padding-bottom: $polar-in-related-feed-height;
+                    overflow: hidden;
+                }
+            }
         }
 
         .feed-item__body {
             padding-left: 0;
-        }
-
-        .feed-item__body-source {
-            display: none;
+            display: block;
         }
 
         .feed-item__body-title {
             @include type-related-teaser-title();
             margin-top: 12px;
+            float: left;
+            width: 100%;
             text-decoration: none;
 
             &:hover {
@@ -174,6 +198,15 @@
             @media #{$medium-up} {
                 margin-top: 20px;
             }
+        }
+
+        .feed-item__body-source {
+            float: left;
+            display: block;
+            width: 100%;
+            text-align: center;
+            line-height: 1;
+            color: $nl-color;
         }
     }
 

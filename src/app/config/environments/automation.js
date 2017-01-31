@@ -14,5 +14,8 @@ export default {
     },
     site: {
         host: 'http://automation.now-site.bauer-media.net.au/'
+    },
+    polar: {
+        propertyId: 'NA-NOWTOLOVE-11238611'
     }
 };
