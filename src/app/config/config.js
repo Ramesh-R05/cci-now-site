@@ -48,6 +48,66 @@ export default {
             emojiSrc: '/assets/images/error.gif',
             returnHomeText: 'Try refreshing this page or join us back on the homepage'
         }
+    },
+
+    polar: {
+        url: '//plugin.mediavoice.com/plugin.js',
+        propertyId: 'NA-NOWTOLOVE-11238611',
+        targets: { env: 'test' },
+        adSize: '2x2',
+        server: 'dfp',
+        labels: {
+            homeMustReadTwo: {
+                slot: 1,
+                label: 'home_mustread_1',
+                targets: {kw:'home_mustread_1'}
+            },
+            homeMustReadFive: {
+                slot: 4,
+                label: 'home_mustread_2',
+                targets: {kw:'home_mustread_2'}
+            },
+            homeTopFeedsOne: {
+                slot: 0,
+                label: 'home_top_feed_1',
+                targets: {kw:'home_top_feed_1'}
+            },
+            homeTopFeedsSix: {
+                slot: 5,
+                label: 'home_top_feed_2',
+                targets: {kw:'home_top_feed_2'}
+            },
+            homeBottomFeedsTwo: {
+                slot: 1,
+                label: 'home_bottom_feed_1',
+                targets: {kw:'home_bottom_feed_1'}
+            },
+            homeBottomFeedsSix: {
+                slot: 5,
+                label: 'home_bottom_feed_2',
+                targets: {kw:'home_bottom_feed_2'}
+            },
+            sectionTopFeedsOne: {
+                slot: 0,
+                label: 'section_top_feed_1',
+                targets: {kw:'section_top_feed_1'}
+            },
+            sectionTopFeedsSix: {
+                slot: 5,
+                label: 'section_top_feed_2',
+                targets: {kw:'section_top_feed_2'}
+            },
+            sectionBottomFeedsTwo: {
+                slot: 1,
+                label: 'section_bottom_feed_1',
+                targets: {kw:'section_bottom_feed_1'}
+            },
+            sectionBottomFeedsSix: {
+                slot: 5,
+                label: 'section_bottom_feed_2',
+                targets: {kw:'section_bottom_feed_2'}
+            }
+        }
     }
 };
 

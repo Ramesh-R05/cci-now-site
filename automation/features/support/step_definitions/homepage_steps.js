@@ -75,13 +75,15 @@ module.exports = function(){
         for (var i=0; i<topFeedTeaserSource.length; i++){
             var valueSourceDate = topFeedTeaserSource[i].split("|");
             console.log( i + ":Source:" + valueSourceDate[0]);
-            console.log( i + ":Date:" + valueSourceDate[1]);
             //validate the source
             expect(valueSourceDate[0]).not.toEqual('');
-            //validate the date
-            expect(valueSourceDate[1]).not.toEqual('');
-            expect(valueSourceDate[1]).not.toMatch('ago');
-            expect(valueSourceDate[1]).toEqual(valueSourceDate[1].toUpperCase());
+            if (i != 0 && i != 5){ //Skip the polar ad spot as no date is required
+                console.log( i + ":Date:" + valueSourceDate[1]);
+                //validate the date
+                expect(valueSourceDate[1]).not.toEqual('');
+                expect(valueSourceDate[1]).not.toMatch('ago');
+                expect(valueSourceDate[1]).toEqual(valueSourceDate[1].toUpperCase());
+            }
         }
     });
 
@@ -122,13 +124,15 @@ module.exports = function(){
         for (var i=0; i<bottomFeedTeaserSource.length; i++){
             var valueSourceDate = bottomFeedTeaserSource[i].split("|");
             console.log( i + ":Source:" + valueSourceDate[0]);
-            console.log( i + ":Date:" + valueSourceDate[1]);
             //validate the source
             expect(valueSourceDate[0]).not.toEqual('');
-            //validate the date
-            expect(valueSourceDate[1]).not.toEqual('');
-            expect(valueSourceDate[1]).not.toMatch('ago');
-            expect(valueSourceDate[1]).toEqual(valueSourceDate[1].toUpperCase());
+            if (i != 1 && i != 5){ //Skip the polar ad spot as no date is required
+                console.log( i + ":Date:" + valueSourceDate[1]);
+                //validate the date
+                expect(valueSourceDate[1]).not.toEqual('');
+                expect(valueSourceDate[1]).not.toMatch('ago');
+                expect(valueSourceDate[1]).toEqual(valueSourceDate[1].toUpperCase());
+            }
         }
     });
 

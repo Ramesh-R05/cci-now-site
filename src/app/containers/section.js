@@ -64,13 +64,13 @@ export default class Section extends Component {
         const keyword = nodeType === 'TagSection' && title ? [ title ] : [];
 
         const isBrandPage = nodeType === 'Brand';
-        const brand = isBrandPage ? find(this.context.config.brands.uniheader, (b) => { return b.url === currentUrl.match(/\/[^\/|?]*/)[0] }) : null; 
+        const brand = isBrandPage ? find(this.context.config.brands.uniheader, (b) => { return b.url === currentUrl.match(/\/[^\/|?]*/)[0] }) : null;
         const headerClassName = isBrandPage ? `header-${brand.id}` : '';
         const pageTitle = isBrandPage ? <BrandTitle brand={brand}/> : <h1 className='page-title'>
                         <span className="page-title__symbol"></span>
                         {title}
                     </h1>;
-
+        const polarLabels = this.context.config.polar.labels;
         return (
             <Page
                 currentUrl={currentUrl}
@@ -89,7 +89,13 @@ export default class Section extends Component {
                                             teasers={firstTeaserList}
                                             className="news-feed top-news-feed"
                                             adPosition={8}
-                                            adTargets={{ position: 1, keyword }} />
+                                            adTargets={{ position: 1, keyword }}
+                                            nativeAdConfig = {isBrandPage || {
+                                                slotPositionIndex: [
+                                                    polarLabels.sectionTopFeedsOne,
+                                                    polarLabels.sectionTopFeedsSix
+                                                ]
+                                            }} />
                                     </div>
                                     <div className="page__social-wrapper columns large-4 xlarge-3">
                                         <div className="columns medium-6 large-12">
@@ -134,7 +140,13 @@ export default class Section extends Component {
                         dataSource={this.props.list}
                         nextParams={this.props.listNextParams}
                         className="news-feed bottom-news-feed"
-                        adTargets={{ position: 2, keyword }} />
+                        adTargets={{ position: 2, keyword }}
+                        nativeAdConfig = {{
+                            slotPositionIndex: [
+                                polarLabels.sectionBottomFeedsTwo,
+                                polarLabels.sectionBottomFeedsSix
+                            ]
+                        }} />
 
                     {/* 3rd Leaderboard to show on tablet and up */}
                     { get(this.props.list, 'items[0].length') ? <Ad

@@ -22,7 +22,8 @@ export default class Teaser extends Component {
         className: PropTypes.string,
         sourceClassName: PropTypes.string,
         onClick: PropTypes.func,
-        showDate: PropTypes.bool
+        showDate: PropTypes.bool,
+        sourceDefault: PropTypes.string
     };
 
     static contextTypes = {
@@ -52,7 +53,8 @@ export default class Teaser extends Component {
             l: { w: 880, h: 710 },
             xl: { w: 880, h: 710 }
         },
-        onClick: function onClick() {}
+        onClick: function onClick() {},
+        sourceDefault : ''
     };
 
     constructor(props, context) {
@@ -96,7 +98,7 @@ export default class Teaser extends Component {
     };
 
     render() {
-        const { id, className, sourceClassName, showDate } = this.props;
+        const { id, className, sourceClassName, showDate, sourceDefault } = this.props;
         let { article } = this.props;
 
         if (!article) return null;
@@ -111,15 +113,23 @@ export default class Teaser extends Component {
         });
         const articleSourceClassName = article.source ? `${sourceClassName} ${sourceClassName}--${article.source.toLowerCase().replace(/[^A-Z0-9]/ig, '-')}` : sourceClassName;
 
+        let sourceName = article.source || 'Now to love';
+
         return (
             <article className={containerClassNames} onClick={this.props.onClick}>
                 <div className="teaser__inner">
                     {this.renderImage()}
+
                     <div className="teaser__body">
+
                         <TeaserTitle title={articleTitle} url={article.url} gtmClass={this.getGTMClass()} />
+
                         {this.renderSummary()}
+
                         <p className={articleSourceClassName}>
-                            {article.source ? article.source : 'Now to love'}
+
+                            {sourceDefault || `${sourceName}`}
+
                             {showDate ? (<span><span className={`${sourceClassName}__breaker`}>|</span>
                                 <Date dateCreated={article.dateCreated} showElapsed={true} />
                             </span>) : null}

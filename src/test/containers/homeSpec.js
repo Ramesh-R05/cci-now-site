@@ -16,6 +16,8 @@ const StickyAndDockStub = Context.createStubComponent();
 const PromotedStub = Context.createStubComponent();
 const MustReadStub = Context.createStubComponent();
 
+import polarConfig from '../mocks/polar';
+
 const HomeContainer = proxyquire('../../app/containers/home', {
     '@bxm/ad/lib/google/components/ad': AdStub,
     './page': PageStub,
@@ -38,6 +40,7 @@ describe('Home Container', () => {
         key: 'config',
         type: '',
         value: {
+            polar: polarConfig.polarSetting
         }
     };
 

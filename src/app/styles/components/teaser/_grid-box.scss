@@ -349,3 +349,56 @@
     }
 }
 
+//--------------Polar ads size adjust, it may be removed later------------------
+$must-read-polar-height: 56.5%;
+$top-news-feed-polar-height: 83%;
+$top-news-feed-polar-height-sml: 56.23%;
+$bottom-news-feed-polar-height-lg: 25.6%;
+$bottom-news-feed-polar-height-md: 56%;
+$bottom-news-feed-polar-height-sml: 35%;
+
+.teaser--polar {
+    .teaser__image {
+        position: relative;
+        height: 0;
+        overflow: hidden;
+        display: block; 
+    }
+
+    h3.teaser__title {
+        margin-top: 0;
+    }
+
+    .mustread-teaser-view-grid & {
+
+        .teaser__image {
+            padding-bottom: $must-read-polar-height;
+        }
+    }
+
+    .top-news-feed & {
+
+        .teaser__image {
+            padding-bottom: $top-news-feed-polar-height-sml;
+
+            @media #{$medium-up} {
+                padding-bottom: $top-news-feed-polar-height;
+            }
+        }
+    }
+
+    .bottom-news-feed & {
+        .teaser__image {
+            padding-bottom: $bottom-news-feed-polar-height-sml;
+
+            @media #{$medium-up} {
+                padding-bottom: $bottom-news-feed-polar-height-md;
+            }
+
+            @media #{$large-up} {
+                padding-bottom: $bottom-news-feed-polar-height-lg;
+            }
+        }
+    }
+}
+

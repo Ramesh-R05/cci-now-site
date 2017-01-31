@@ -9,17 +9,24 @@ export default class TeaserListView extends Component {
     static props = {
         items: PropTypes.array.isRequired,
         className: PropTypes.string,
-        adTargets: PropTypes.object
+        adTargets: PropTypes.object,
+        nativeAdConfig: PropTypes.shape({
+            slotPositionIndex: PropTypes.array,
+            targets: PropTypes.shape({
+                kw: PropTypes.string
+            })
+        })
     };
 
     static defaultProps = {
         teasers: [],
         className: "",
-        adTargets: { position: 1 }
+        adTargets: { position: 1 },
+        nativeAdConfig: {}
     };
 
     render() {
-        const {className, items, adTargets, index} = this.props;
+        const { className, items, adTargets, index, nativeAdConfig } = this.props;
         const adProps = {
             className: "ad--section-mrec",
             displayFor: ['medium', 'large', 'xlarge'],
@@ -55,6 +62,7 @@ export default class TeaserListView extends Component {
                                 sizes: 'mrec',
                                 targets: adProps.targets
                             }}
+                            nativeAdConfig={nativeAdConfig}
                         />
                     </div>
                     { items.length > 1 ?

@@ -1,6 +1,7 @@
 import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
 const { React, ReactDOM, TestUtils } = Context;
+import polarConfig from '../../mocks/polar';
 
 import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
@@ -23,11 +24,12 @@ describe('#MustRead Component', () => {
                 shortSources: {
                     "Australian Women's Weekly": "AWW"
                 }
-            }
+            },
+            polar: polarConfig.polarSetting
         }
     };
 
-	let mustReadItems = [
+    let mustReadItems = [
         {
             id: 'NOW-10467',
             title: '',
@@ -86,9 +88,9 @@ describe('#MustRead Component', () => {
         teaserSource = TestUtils.scryRenderedComponentsWithType(reactModule,TeaserListStub);
     });
 
-	describe('When MustRead articles are >= 6', () => {
+    describe('When MustRead articles are >= 6', () => {
 
-		it ('MustRead component should render', () => {
+        it ('MustRead component should render', () => {
            expect(ReactDOM.findDOMNode(reactModule)).to.exist;
         });
 

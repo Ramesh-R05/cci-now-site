@@ -12,7 +12,17 @@ class MustRead extends Component {
     }
 
     static propTypes = {
-        mustRead: PropTypes.array.isRequired
+        mustRead: PropTypes.array.isRequired,
+        nativeAdConfig: PropTypes.shape({
+            slotPositionIndex: PropTypes.array,
+            targets: PropTypes.shape({
+                kw: PropTypes.string
+            })
+        })
+    };
+
+    static defaultProps = {
+        nativeAdConfig: {}
     };
 
     static contextTypes = {
@@ -37,7 +47,7 @@ class MustRead extends Component {
             return null;
         }
 
-		mustRead = mustRead.slice(0, 6);
+        mustRead = mustRead.slice(0, 6);
 
         const shortenedNameList = this.context.config.brands.shortSources || {};
 
@@ -51,6 +61,8 @@ class MustRead extends Component {
             return mustReadItem;
         });
 
+        const polarLabels = this.context.config.polar.labels;
+
         return (
             <div className='mustread-teaser-view-grid'>
                 <div className='home-page__teasers-title'>
@@ -58,11 +70,18 @@ class MustRead extends Component {
                 </div>
                 <div className='columns xlarge-10'>
                     <TeaserList
-                        listClassName={MustRead.listClassName}
-                        imageSizes={MustRead.imageSizes}
-                        articles={newMustRead}
-                        CustomisedTeaser={Teaser}
-                        showDate={false}
+                        listClassName = {MustRead.listClassName}
+                        imageSizes = {MustRead.imageSizes}
+                        articles = {newMustRead}
+                        CustomisedTeaser = {Teaser}
+                        showDate = {false}
+                        nativeAdConfig = {{
+                            slotPositionIndex: [
+                                polarLabels.homeMustReadTwo,
+                                polarLabels.homeMustReadFive
+                            ]
+                        }}
+                        sourceDefault = {'SPONSORED'} 
                     />
                 </div>
             </div>

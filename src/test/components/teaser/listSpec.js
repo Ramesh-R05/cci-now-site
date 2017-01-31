@@ -2,6 +2,7 @@ import {betterMockComponentContext} from '@bxm/flux';
 const Context = betterMockComponentContext();
 const {React, ReactDOM, TestUtils} = Context;
 import listingMock from '../../mocks/listing';
+import polarConfig from '../../mocks/polar';
 const items = listingMock.data;
 import proxyquire, {noCallThru} from 'proxyquire';
 noCallThru();
@@ -29,6 +30,15 @@ describe('TeaserListView', () => {
         l: { w: 409, h: 230 },
         xl: { w: 1010, h: 478 }
     };
+
+    const contextConfigStub = {
+        key: 'config',
+        type: '',
+        value: {
+            polar: polarConfig.polarSetting
+        }
+    };
+
     let reactModule;
     let TeaserListViewComponent;
     let AdComponent;
@@ -39,7 +49,7 @@ describe('TeaserListView', () => {
     describe('when receiving teasers', () => {
         describe('and there are more than 1', () => {
             beforeEach(() => {
-                reactModule = Context.mountComponent(TeaserListView, {items});
+                reactModule = Context.mountComponent(TeaserListView, {items}, contextConfigStub);
                 TeaserListViewComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserListStub);
                 AdComponent = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
                 StickyComponent = TestUtils.findRenderedComponentWithType(reactModule, StickyStub);
@@ -60,6 +70,7 @@ describe('TeaserListView', () => {
                             position: 1
                         }
                     },
+                    nativeAdConfig: {},
                     adPosition: 4
                 });
             });
@@ -121,4 +132,5 @@ describe('TeaserListView', () => {
             });
         })
     });
+    
 });

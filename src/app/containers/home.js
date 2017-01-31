@@ -56,6 +56,7 @@ export default class Home extends Component {
     }
 
     render() {
+        const polarLabels = this.context.config.polar.labels;
         return (
             <Page
                 currentUrl={ this.props.currentUrl }
@@ -84,6 +85,12 @@ export default class Home extends Component {
                                                 adPosition={8}
                                                 adSizes={{ small: 'mrec', medium: ['mrec', 'double-mrec'] }}
                                                 adTargets={{ position: 2 }}
+                                                nativeAdConfig = {{
+                                                    slotPositionIndex: [
+                                                        polarLabels.homeTopFeedsOne,
+                                                        polarLabels.homeTopFeedsSix
+                                                    ]
+                                                }}
                                             />
                                         </div>
                                         <div className="page__social-wrapper columns large-4 xlarge-3">
@@ -129,6 +136,12 @@ export default class Home extends Component {
                         nextParams={this.props.listNextParams}
                         className="news-feed bottom-news-feed"
                         adTargets={{ position: 3 }}
+                        nativeAdConfig={{
+                            slotPositionIndex: [
+                                polarLabels.homeBottomFeedsTwo,
+                                polarLabels.homeBottomFeedsSix
+                            ]
+                        }}
                     />
 
                     {/* 3rd Leaderboard to show on tablet and up */}

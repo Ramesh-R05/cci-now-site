@@ -2,6 +2,7 @@ import {betterMockComponentContext} from '@bxm/flux';
 const Context = betterMockComponentContext();
 const {React, ReactDOM, TestUtils} = Context;
 import listingMock from '../../mocks/listing';
+import polarConfig from '../../mocks/polar';
 const teasers = listingMock.data;
 import proxyquire, {noCallThru} from 'proxyquire';
 noCallThru();
@@ -13,6 +14,15 @@ const HeroTeaser = proxyquire('../../../app/components/teaser/grid', {
     '@bxm/teaser/lib/components/teaserList': TeaserListStub,
     './teaser': TeaserStub
 }).default;
+
+
+const contextConfigStub = {
+    key: 'config',
+    type: '',
+    value: {
+        polar: polarConfig.polarSetting
+    }
+};
 
 describe('TeaserGridView', () => {
     const imageSizes = {
@@ -28,7 +38,7 @@ describe('TeaserGridView', () => {
 
     describe('when receiving teasers', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(HeroTeaser, {teasers});
+            reactModule = Context.mountComponent(HeroTeaser, {teasers},[contextConfigStub]);
             TeaserGridViewComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserListStub);
         });
 
@@ -38,14 +48,15 @@ describe('TeaserGridView', () => {
                 articles: teasers,
                 imageSizes,
                 showSubSection: true,
-                CustomisedTeaser: TeaserStub
+                CustomisedTeaser: TeaserStub,
+                nativeAdConfig: {}
             })
         });
     });
 
     describe('when setting the adTargets', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(HeroTeaser, {teasers, adTargets: { position: 2 } });
+            reactModule = Context.mountComponent(HeroTeaser, {teasers, adTargets: { position: 2 } },[contextConfigStub]);
             TeaserGridViewComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserListStub);
         });
     });

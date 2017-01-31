@@ -28,5 +28,8 @@ export default {
         redirect: {
             url: 'http://live.redirect.services.bauer-media.internal/v1/now/301'
         }
+    },
+    polar: {
+        targets: ''
     }
 };
