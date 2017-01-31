@@ -23,6 +23,8 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 error: null,
                 nodeType: entity.nodeType,
                 title: entity.title,
+                shortTitle: entity.shortTitle,
+                summary: entity.summary,
                 trendingItems,
                 footer,
                 magazineImageUrl: entity.imageUrl

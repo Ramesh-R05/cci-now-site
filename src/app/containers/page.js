@@ -16,8 +16,7 @@ import StandardPageAdsWrapper from '@bxm/ad/lib/google/components/standardPageAd
 function mapStateToProps(context) {
     return {
         headerNavItems: context.getStore('NavigationStore').getHeaderItems(),
-        hamburgerNavItems: context.getStore('NavigationStore').getHamburgerItems(),
-        content: context.getStore('articleStore').getContent()
+        hamburgerNavItems: context.getStore('NavigationStore').getHamburgerItems()
     };
 }
 

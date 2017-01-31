@@ -44,15 +44,8 @@ hr {
     }
 
     @media #{$medium-only} {
-        width: 231px;
-        
-        &-wd, &-aww, &-gh {
-            width: 450px;
-        }
-
-        &-tvweek, &-nw {
-            width: 150px;
-        }
+        width: initial;
+        padding-left: 0px;
     }
 }
 
@@ -66,6 +59,50 @@ hr {
 
     @media #{$medium-only} {
         margin: 0 auto;
+        width: 200px;
+        
+        &-wd, &-aww, &-gh {
+            width: 420px;
+        }
+
+        &-tvweek, &-nw {
+            width: 110px;
+        }
+    }
+}
+
+.brand-short-title {
+    font-family: $font-family-sans-serif-primary;
+    color: #222;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+
+    @media #{$small-only} {
+        margin: 50px 20px 10px -10px;
+        
+        &:before {
+            content: '';
+            background: #e9e9e9; 
+            position: absolute;
+            top: 75px;
+            left: 8%; 
+            width: 84%; 
+            height: 2px;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.brand-summary {
+    font-family: $font-family-sans-serif-primary;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+
+    @media #{$small-only} {
+        margin-left: -20px;
+        margin-right: 10px;
     }
 }
 
@@ -82,7 +119,7 @@ hr {
 .brand-title--left-line {
     position: relative;
     top: 10px;
-    width: 22%;
+    width: 24%;
     display: inline-block;
     margin-right: 50px;
 
@@ -99,7 +136,7 @@ hr {
 .brand-title--right-line {
     position: relative;
     top: 10px;
-    width: 22%;
+    width: 20%;
     display: inline-block;
     margin-left: 50px;
 

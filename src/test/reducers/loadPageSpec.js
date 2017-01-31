@@ -5,7 +5,7 @@ describe(`loadPage Reducer`, () => {
     let payload;
     describe(`on LOAD_CONTENT`, () => {
         beforeEach(() => {
-            body = {entity: { nodeType: 'Article', title: 'Title',  imageUrl: '' }, footer: {}, trendingItems: [], mustRead: []};
+            body = {entity: { nodeType: 'Article', title: 'Title',  imageUrl: '', shortTitle: 'Short Title', summary: 'Summary' }, footer: {}, trendingItems: [], mustRead: []};
             payload = {
                 type: 'LOAD_CONTENT',
                 body
@@ -19,6 +19,8 @@ describe(`loadPage Reducer`, () => {
                     footer: payload.body.footer,
                     nodeType: payload.body.entity.nodeType,
                     title: payload.body.entity.title,
+                    shortTitle: payload.body.entity.shortTitle,
+                    summary: payload.body.entity.summary,
                     trendingItems: payload.body.trendingItems,
                     magazineImageUrl: payload.body.entity.imageUrl
                 });
@@ -30,6 +32,8 @@ describe(`loadPage Reducer`, () => {
                     footer: payload.body.footer,
                     nodeType: payload.body.entity.nodeType,
                     title: payload.body.entity.title,
+                    shortTitle: payload.body.entity.shortTitle,
+                    summary: payload.body.entity.summary,
                     trendingItems: payload.body.trendingItems,
                     magazineImageUrl: payload.body.entity.imageUrl
                 });

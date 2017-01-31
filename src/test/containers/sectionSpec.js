@@ -56,6 +56,12 @@ describe('Section Container', () => {
     Context.addStore('PageStore', {
         getTitle() {
             return 'Title';
+        },
+        getShortTitle() {
+            return 'Short Title'
+        },
+        getSummary() {
+            return 'Summary'
         }
     });
 

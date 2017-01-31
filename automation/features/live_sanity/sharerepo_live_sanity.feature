@@ -198,8 +198,8 @@ Feature: I have an automated sanity for my live environments
     Scenario: Verify the LHR on an article page
         Given I switch to "desktop" view
         When I am currently viewing "how-to/expert-qa/baking-soda-bicarb-soda-baking-powder-what-is-the-difference-15828"
-        * I can see 20 items in the list of items in LHR
-        * I can see the 20 images of each item in LHR
+     #   * I can see 20 items in the list of items in LHR #enable again in the article polar branch
+     #   * I can see the 20 images of each item in LHR #enable again in the article polar branch
         * Image in LHR is clickable to open its page
         * I can see the long title of each item in LHR
         * Long title in LHR is clickable to open its page

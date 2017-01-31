@@ -20,7 +20,7 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 mustRead = [],
                 promoted = { title: '', items: [] }
             } = payload.body;
-
+            
             return {
                 heroTeaser,
                 latestTeasers,

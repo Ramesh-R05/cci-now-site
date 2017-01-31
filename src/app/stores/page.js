@@ -10,6 +10,14 @@ export default createReducerStore({
             return state.title;
         },
 
+        getShortTitle(state) {
+            return state.shortTitle;
+        },
+
+        getSummary(state) {
+            return state.summary;
+        },
+
         getErrorStatus(state) {
             return state.error;
         },

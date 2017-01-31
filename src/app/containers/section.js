@@ -19,6 +19,8 @@ function mapStateToProps(context) {
     const teaserStore = context.getStore('TeaserStore');
     return {
         title: pageStore.getTitle(),
+        shortTitle: pageStore.getShortTitle(),
+        summary: pageStore.getSummary(),
         teasers: teaserStore.getLatestTeasers(),
         list: teaserStore.getList(),
         listNextParams: teaserStore.getListNextParams()
@@ -58,7 +60,7 @@ export default class Section extends Component {
     }
 
     render() {
-        const { nodeType, teasers, title, currentUrl } = this.props;
+        const { nodeType, teasers, title, currentUrl, shortTitle, summary } = this.props;
         const heroTeaser = teasers[0];
         const firstTeaserList = teasers.slice(1, 7);
         const keyword = nodeType === 'TagSection' && title ? [ title ] : [];
@@ -66,7 +68,7 @@ export default class Section extends Component {
         const isBrandPage = nodeType === 'Brand';
         const brand = isBrandPage ? find(this.context.config.brands.uniheader, (b) => { return b.url === currentUrl.match(/\/[^\/|?]*/)[0] }) : null;
         const headerClassName = isBrandPage ? `header-${brand.id}` : '';
-        const pageTitle = isBrandPage ? <BrandTitle brand={brand}/> : <h1 className='page-title'>
+        const pageTitle = isBrandPage ? <BrandTitle brand={brand} shortTitle={shortTitle} summary={summary} /> : <h1 className='page-title'>
                         <span className="page-title__symbol"></span>
                         {title}
                     </h1>;
