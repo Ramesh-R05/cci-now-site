@@ -42,7 +42,7 @@ export default class Footer extends Component {
                     <div className="footer__logos">
                         <span className="footer__logos-title">CONTENT SUPPORTED BY</span><br/>
                         <nav className="footer__logos-nav">
-                            <Logos className="footer__logos-list" logoList={logoList}/>
+                            <Logos className="footer__logos-list" openInNewTab={true} logoList={logoList}/>
                         </nav>
                     </div>
                     <FooterNavigation />

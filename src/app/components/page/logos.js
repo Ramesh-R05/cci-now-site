@@ -20,23 +20,13 @@ export default class Logos extends Component {
                 .replace(/ /g, '-')
                 .toLowerCase();
 
-            if (this.props.openInNewTab) {
-                return (
-                    <li>
-                        <a key={i} href={item.url} target="_blank" title={item.title} className={gtmClassName}>
-                            <img src={item.imageUrl} alt={item.title} className={imgClassName} />
-                        </a>
-                    </li>
-                );
-            } else {
-                return (
-                    <li>
-                        <a key={i} href={item.url} title={item.title} className={gtmClassName}>
-                            <img src={item.imageUrl} alt={item.title} className={imgClassName} />
-                        </a>
-                    </li>
-                );
-            }
+            return (
+                <li>
+                    <a key={i} href={item.url} target={this.props.openInNewTab ? "_blank" : "_self"} title={item.title} className={gtmClassName}>
+                        <img src={item.imageUrl} alt={item.title} className={imgClassName} />
+                    </a>
+                </li>
+            );
         });
 
         return (<ul className={this.props.className}>{html}</ul>);

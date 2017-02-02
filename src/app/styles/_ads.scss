@@ -12,10 +12,12 @@
         display: none;
     }
 
+    
+
     // Article
 
     @mixin grey-mobile-banner() {
-        background-color: lighten($color-grey-light, 15%);
+        background-color: #f8f8f8;
         margin: {
             bottom: 33px;
             left: -($column-gutter/2);
@@ -49,7 +51,6 @@
     }
 
     &--section-leaderboard {
-        
         @media #{$medium-up} {
             background-color: $color-grey-more-lighter;
             padding-top: $column-gutter/2;

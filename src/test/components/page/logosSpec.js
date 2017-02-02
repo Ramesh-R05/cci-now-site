@@ -46,10 +46,10 @@ describe('Brand Header', () => {
             expect(anchorUrl).to.equal(logoListStub[0].url);
         });
 
-        it('should not give the anchor a target', () => {
+        it('should give the anchor a target of blank', () => {
             const anchor = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'a');
             const anchorTarget = anchor[0].props.target;
-            expect(anchorTarget).to.equal(undefined);
+            expect(anchorTarget).to.equal("_self");
         });
 
         it('should apply the correct gtm class to the anchor', () => {
@@ -86,10 +86,10 @@ describe('Brand Header', () => {
              });
         });
 
-        it('should not give the anchor a target', () => {
+        it('should give the anchor a target of self', () => {
             const anchor = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'a');
             const anchorTarget = anchor[0].props.target;
-            expect(anchorTarget).to.equal(undefined);
+            expect(anchorTarget).to.equal("_self");
         });
     });
 });

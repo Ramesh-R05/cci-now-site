@@ -1,4 +1,13 @@
 .content-body {
+
+    a {
+        color: $nl-color;
+    }
+
+    @media #{$large-up} {
+        width: 88%;
+    }
+
     p {
         padding: 0;
         margin: 20px 0;
@@ -20,13 +29,19 @@
             line-height: 20px;
             padding: 8px 15px 6px 15px;
             text-align: left;
+            color: #ccc;
+            background-color: #222;
+
+            a {
+                color: $nl-color;
+            }
 
             @media #{$medium-up} {
-                font-size: 15px;
+                font-size: 18px;
                 line-height: 27px;
                 padding: {
-                    top: 11px;
-                    bottom: 9px;
+                    top: 13px;
+                    bottom: 11px;
                 };
             }
         }
@@ -249,8 +264,6 @@
         }
 
         @media #{$medium-up} {
-            padding-right: 19px;
-
             &:after {
                 height: 16px;
                 left: 16px;

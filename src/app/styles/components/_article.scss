@@ -89,7 +89,7 @@
 
     .article-header-author {
         span:nth-child(2) {
-            border-bottom: 1px solid $color-grey-light;
+            border-bottom: 1px solid $nl-color;
         }
 
         &:before {
@@ -100,10 +100,7 @@
 }
 
 .article-section {
-    @media #{$large-up} {
-        margin-bottom: 57px;
-        margin-top: -20px;
-    }
+    margin-bottom: 57px;
 
     .article-header-section {
         margin-top: 10px;
@@ -217,4 +214,8 @@
     letter-spacing: 0.6px;
     margin-top: 15px;
     margin-right: 0;
+
+    &__name {
+        color: $nl-color;
+    }
 }
