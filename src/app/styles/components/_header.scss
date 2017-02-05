@@ -5,7 +5,8 @@
 
 .header-wrapper {
     overflow: auto;
-    margin-bottom: 55px;
+    margin-bottom: 54px;
+    padding-bottom: 1px;
 
     @media #{$medium-up} {
         margin-bottom: 95px;
