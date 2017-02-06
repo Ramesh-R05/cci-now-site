@@ -1,6 +1,6 @@
 import { getLatestTeasers } from '../api/listing';
 import { parseEntities } from '../helper/parseEntity';
-const listCount = 12;
+const listCount = 14;
 
 export default async function list(req, res, next) {
     try {

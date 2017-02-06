@@ -7,7 +7,7 @@ import { getTrending } from '../api/trending';
 import { parseEntities } from '../helper/parseEntity';
 const trendingCount = 6;
 const latestTeaserCount = 6;
-const listCount = 12;
+const listCount = 14;
 const videoGalleryTeaserCount = 6;
 
 export default async function home(req, res, next) {
