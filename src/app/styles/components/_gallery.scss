@@ -27,6 +27,10 @@
         background: none;
         z-index: 1;
 
+        @media #{$small-only} {
+            margin-bottom: 0px;
+        }
+
         @media #{$medium-up} {
             margin-top: -13px;
         }
@@ -35,14 +39,14 @@
     &__body {
         max-width: 1024px;
         margin-top: 0px;
-
-        @media #{$large-up} {
-            max-height: 690px;
-        }
-
-        padding-top: 20px;
         z-index: 1;
         background-color: #fff;
+
+
+        @media #{$large-up} {
+            padding-top: 20px;
+            max-height: 690px;
+        }
     }
 
     &-caption__toggle {
@@ -182,7 +186,6 @@
     }
 
     &__header {
-
         border-width: 0;
         box-shadow: none;
         background-color: $color-black;
@@ -222,6 +225,14 @@
             padding: 0px 30px 20px;
             margin-bottom: 6px;
 
+            @media #{$small-only} {
+                padding-bottom: 0px;
+            }
+
+            @media #{$medium-only} {
+                text-align: center;
+            }
+
             @media #{$large-up} {
                 display: block !important;
                 /*overwriting the Foundation visibility class that's been applied to this element */
@@ -247,11 +258,9 @@
             }
 
             .gallery-item {
-                height: 310px;
-                @media only (min-width: 400px) {
-                    height: 370px;
-                }
-                @media only (min-width: 500px) {
+                height: calc(100vw * 0.94);
+
+                @media #{$large-up} {
                     height: 100%;
                 }
             }

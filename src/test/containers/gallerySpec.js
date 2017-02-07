@@ -128,7 +128,6 @@ describe('GallerySection', () => {
     after(Context.cleanup);
 
     describe('on initial render', () => {
-        let metaTags;
         let galleryHeader;
         let galleryMain;
         let galleryAside;
@@ -138,27 +137,11 @@ describe('GallerySection', () => {
         before(() => {
             initializeStub = sinon.stub();
             reactModule = Context.mountComponent(GallerySection, {}, [contextConfigStub]);
-            metaTags = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'meta');
             galleryHeader = TestUtils.findRenderedComponentWithType(reactModule, HeaderStub);
             galleryMain = TestUtils.findRenderedComponentWithType(reactModule, MainStub);
             galleryAside = TestUtils.findRenderedComponentWithType(reactModule, AsideStub);
             ad = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
             footer = TestUtils.findRenderedComponentWithType(reactModule, FooterStub);
-        });
-
-        it('should render the appropriate meta tags', () => {
-            expect(metaTags[0].props).to.deep.eq({
-                itemProp: 'image', content: `${gallery.imageUrl}?width=960&height=600&mode=crop&quality=75`
-            });
-            expect(metaTags[1].props).to.deep.eq({
-                itemProp: 'description', content: gallery.summary
-            });
-            expect(metaTags[2].props).to.deep.eq({
-                itemProp: 'datePublished', content: gallery.dateCreated
-            });
-            expect(metaTags[3].props).to.deep.eq({
-                itemProp: 'publisher', content: contextConfigStub.value.site.name
-            });
         });
 
         it('should render the Gallery Header', () => {
