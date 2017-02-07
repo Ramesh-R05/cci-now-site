@@ -52,7 +52,7 @@ const gallery = {
     summary: 'Gallery Summary',
     title: 'Gallery Title',
     name: 'GalleryName',
-    contentTags: [{
+    tagsDetails: [{
         name: 'location:citytown:Toronto',
         fullName: 'Toronto'
     }, {
@@ -184,8 +184,7 @@ describe('GallerySection', () => {
                 isGalleryCompletedItemActive: true,
                 nextGallery,
                 numAds,
-                totalItems,
-                kingtag: 'Nav Item'
+                totalItems
             });
         });
 
@@ -200,7 +199,6 @@ describe('GallerySection', () => {
                 nextGallery,
                 numAds,
                 totalItems,
-                kingtag: 'Nav Item',
                 showSocialShare: true
             });
         });

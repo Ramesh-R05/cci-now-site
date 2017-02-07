@@ -82,7 +82,21 @@ describe('Page Container', () => {
 
     Context.addStore('articleStore', {
         getContent() {
-            return { tags: [1,2,3], source: 'wd', pageId: 1234 };
+            return {
+                tags: [1,2,3],
+                source: 'wd',
+                pageId: 1234,
+                tagsDetails: [
+                    {
+                        name: "homes:Topic:Garden planner",
+                        fullName: "homes_Topic_Garden_planner"
+                    },
+                    {
+                        name: "homes:Homes navigation:Outdoor",
+                        fullName: "homes_Homes_navigation_Outdoor"
+                    }
+                ]
+            };
         }
     });
 
@@ -184,6 +198,7 @@ describe('Page Container', () => {
 
         it('should render a top ad banner', () => {
             expect(adStub[0].props.className).to.be.equal('ad--section-top-leaderboard');
+            expect(adStub[0].props.targets).to.deep.eq({position: 1, keyword: ['homes_Topic_Garden_planner', 'homes_Homes_navigation_Outdoor']});
         });
 
         describe(`when the close button is clicked`, () => {

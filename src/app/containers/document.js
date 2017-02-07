@@ -6,9 +6,8 @@ import Article from '@bxm/article/lib/article';
 import Teaser from '../components/teaser/teaser';
 
 function mapStateToProps(context) {
-    const content = context.getStore('articleStore').getContent() || {};
     return {
-        title: content.title
+        content: context.getStore('articleStore').getContent()
     };
 }
 
@@ -49,10 +48,12 @@ export default class Document extends Component {
 
     render() {
 
-        if (this.props.nodeType === 'Gallery') {
+        const { content, currentUrl, nodeType } = this.props;
+
+        if (nodeType === 'Gallery') {
             return (
                     <Gallery
-                        customisedTeaser={Teaser} currentUrl={this.props.currentUrl}/>
+                        customisedTeaser={Teaser} currentUrl={currentUrl}/>
             );
         }
 
@@ -61,6 +62,11 @@ export default class Document extends Component {
             config: Document.headerAdConfig
         };
 
+        const tags = content.tagsDetails;
+        const keyword = tags ? tags.map(tag => tag.fullName) : '';
+
+        headerAd.config.targets.keyword = keyword;
+
         const socialShare = {
             facebook: true,
             pinterest: true
@@ -68,7 +74,7 @@ export default class Document extends Component {
 
         return (
             <Page
-                currentUrl={this.props.currentUrl}
+                currentUrl={currentUrl}
                 headerExpanded={false}
                 hideFooter={false}>
                 <Article

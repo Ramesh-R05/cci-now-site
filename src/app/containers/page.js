@@ -16,7 +16,8 @@ import StandardPageAdsWrapper from '@bxm/ad/lib/google/components/standardPageAd
 function mapStateToProps(context) {
     return {
         headerNavItems: context.getStore('NavigationStore').getHeaderItems(),
-        hamburgerNavItems: context.getStore('NavigationStore').getHamburgerItems()
+        hamburgerNavItems: context.getStore('NavigationStore').getHamburgerItems(),
+        content: context.getStore('articleStore').getContent()
     };
 }
 
@@ -30,6 +31,7 @@ export default class Page extends Component {
         children: PropTypes.oneOfType([
             PropTypes.element, PropTypes.array
         ]),
+        content: PropTypes.array,
         headerExpanded: PropTypes.bool,
         hideFooter: PropTypes.bool,
         menuClasses: PropTypes.string.isRequired,
@@ -57,11 +59,18 @@ export default class Page extends Component {
     };
 
     render() {
-        const { headerNavItems, hamburgerNavItems, showUniheader, currentUrl, headerExpanded, hideFooter, children, hideLeaderboard, pageTitle, headerClassName } = this.props;
+        const { headerNavItems, hamburgerNavItems, showUniheader, currentUrl, headerExpanded, hideFooter, children, hideLeaderboard, pageTitle, headerClassName, content } = this.props;
         const mobileNav = hamburgerNavItems ? hamburgerNavItems.slice() : headerNavItems.slice();
         mobileNav.unshift({name: 'Home', url: '/'});
         
         const pageClassName = classnames('page', this.props.className);
+        let keyword;
+
+        if(content) {
+            const tags = content.tagsDetails;
+            keyword = tags ? tags.map(tag => tag.fullName) : '';
+        }
+
         return (
             <div className={pageClassName}>
                 <div className={this.props.menuClasses}>
@@ -82,7 +91,7 @@ export default class Page extends Component {
                             leaderboard: 'leaderboard',
                             billboard: ['billboard', 'leaderboard']
                         }}
-                        targets={{position: 1}}
+                        targets={{position: 1, keyword}}
                     />}
 
                     {pageTitle && <div className="page-title-container"> { pageTitle } </div>}

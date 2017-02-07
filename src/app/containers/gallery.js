@@ -121,9 +121,9 @@ class GallerySection extends Component {
 
         const shareDescription = (gallery.summary || gallery.title || "");
         const shareTitle = gallery.title || gallery.name;
-        const keyword = getKeywordsFromTags(gallery.contentTags);
-        const kingtag = getFirstTagNameForCategory(gallery.contentTags, 'Homes navigation');
         const config = this.context.config;
+        const tags = gallery.tagsDetails;
+        const keyword = tags ? tags.map(tag => tag.fullName) : '';
         const targets = {
             keyword,
             position: 1
@@ -163,7 +163,6 @@ class GallerySection extends Component {
                                 keyword={keyword}
                                 customisedTeaser={customisedTeaser}
                                 onNextGalleryClick={this.onNextGalleryClick}
-                                kingtag={kingtag}
                                 alwaysDisplayTitle={true}
                                 showFooterAd={false}
                             />
@@ -173,7 +172,6 @@ class GallerySection extends Component {
                                 showAuthor={true}
                                 showSourceLogo={true}
                                 keyword={keyword}
-                                kingtag={kingtag}
                                 showSocialShare={true}
                             />
                         </section>
