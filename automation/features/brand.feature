@@ -11,10 +11,14 @@ Feature: Brand Landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
         * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source and date
+        @high
+        Examples:
+            |device           |
+            |desktop          |
+        @med
         Examples:
             |device           |
             |tablet landscape |
-            |desktop          |
 
     Scenario Outline: Verify the brand title and hero teaser element are functional correctly in "<device>" view
         Given I switch to "<device>" view
@@ -24,9 +28,13 @@ Feature: Brand Landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
         * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source and date
+        @high
         Examples:
             |device          |
             |mobile          |
+        @med
+        Examples:
+            |device          |
             |tablet portrait |
 
     Scenario Outline: Verify the top news feed is functional correctly in "<device>" view
@@ -36,12 +44,17 @@ Feature: Brand Landing page
         * I should see each top feed item containing its image and clickable to open its page
         * I should see each top feed item containing its title and clickable to open its page
         * I should see each top feed item containing source and date
+        @high
         Examples:
             |device|
             |mobile|
+            |desktop|
+        @med
+        Examples:
+            |device|
             |tablet portrait |
             |tablet landscape|
-            |desktop|
+
 
     Scenario Outline: Verify the bottom news feed is functional correctly in "<device>" view
         Given I switch to "<device>" view
@@ -50,12 +63,17 @@ Feature: Brand Landing page
         * I should see each bottom feed item containing its image and clickable to open its page
         * I should see each bottom feed item containing its title and clickable to open its page
         * I should see each bottom feed item containing source and date
+        @high
         Examples:
             |device|
             |mobile|
+            |desktop|
+        @med
+        Examples:
+            |device|
             |tablet portrait |
             |tablet landscape|
-            |desktop|
+
 
     Scenario Outline: Verify the subscribe now link and social links of "<brand>" landing page
         Given I switch to "desktop" view
@@ -65,10 +83,14 @@ Feature: Brand Landing page
         * I should see the correct brand "twitter" link as "<twitter>"
         * I should see the correct brand "instagram" link as "<instagram>"
         * I should see the subscribe button containing GTM "<gtm>"
+        @high
         Examples:
             |brand              |subscribe          |facebook                                   |twitter                                |instagram                                      |gtm                  |
             |aww                |subscribe-aww      |https://www.facebook.com/WomensWeeklyMag   |https://twitter.com/womensweeklymag    |https://www.instagram.com/womensweeklymag      |gtm-subscribe-aww    |
             |womansday          |subscribe-wd       |https://www.facebook.com/WomansDayAUS      |https://twitter.com/womansdayaus       |https://www.instagram.com/Womansdayaus         |gtm-subscribe-wd     |
+        @low
+        Examples:
+            |brand              |subscribe          |facebook                                   |twitter                                |instagram                                      |gtm                  |
             |good-health        |subscribe-gh       |https://www.facebook.com/GoodHealthMag/    |https://twitter.com/goodhealthmag      |https://www.instagram.com/goodhealthmag        |gtm-subscribe-gh     |
             |okmagazine         |subscribe-ok       |https://www.facebook.com/OKmagAustralia    |https://twitter.com/okmagaustralia     |https://www.instagram.com/okmagaustralia       |gtm-subscribe-ok     |
             |shop-til-you-drop  |subscribe-shop     |https://www.facebook.com/shoptilyoudropmag/|https://twitter.com/shoptilyoudrop     |https://www.instagram.com/shoptilyoudropmag/   |gtm-subscribe-shop   |
@@ -83,9 +105,14 @@ Feature: Brand Landing page
         When I am currently viewing "<brand>"
         * I should see the subscribe element under "<position>" and containing title "<subscribe_title>" and image
         * I should see the follow us element under "<position>"
+        @high
         Examples:
             |device             |brand          |position   |subscribe_title                |
             |mobile             |aww            |hero teaser|Subscribe to The Weekly        |
+            |desktop            |womansday      |MREC       |Subscribe to Woman's Day       |
+        @med
+        Examples:
+            |device             |brand          |position   |subscribe_title                |
             |tablet portrait    |good-health    |hero teaser|Subscribe to Good Health       |
             |tablet landscape   |mother-and-baby|MREC       |Subscribe to Mother and Baby   |
-            |desktop            |womansday      |MREC       |Subscribe to Woman's Day       |
+

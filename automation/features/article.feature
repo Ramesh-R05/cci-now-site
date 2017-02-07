@@ -3,7 +3,7 @@ Feature: Article
     As a user
     I should be able to see the article page
 
-    @DDO-46 @DAW-1125
+    @DDO-46 @DAW-1125 @high
     Scenario: Verify an article page which contains a hero image on mobile
         When I switch to "mobile" view
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
@@ -33,7 +33,7 @@ Feature: Article
         * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
         * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
 
-    @DAW-1125
+    @DAW-1125 @med
     Scenario: Verify an article page which contains a hero video on tablet portrait
         When I switch to "tablet portrait" view
         Given I am currently viewing "beauty/hair/automation-test-article-with-hero-video-3664"
@@ -62,6 +62,7 @@ Feature: Article
         * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
         * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
 
+    @high
     Scenario: Verify an article page which contains a hero image on desktop
         When I switch to "desktop" view
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
@@ -97,11 +98,16 @@ Feature: Article
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         When I switch to "<device>" view
         * I can see the LHR
+        @high
         Examples:
-        | device            |
-        | desktop           |
-        | tablet landscape  |
+            | device            |
+            | desktop           |
+        @med
+        Examples:
+            | device            |
+            | tablet landscape  |
 
+    @med
     Scenario Outline: Verify LHR on different screen sizes "<device>"
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         When I switch to "<device>" view
@@ -111,7 +117,7 @@ Feature: Article
         | tablet portrait   |
         | mobile            |
 
-    @BXMA-174
+    @BXMA-174 @high
     Scenario: Verify the LHR on an article page
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         When I switch to "desktop" view
@@ -128,9 +134,14 @@ Feature: Article
         When I switch to "<device>" view
         * I can see the facebook share button on article page
         * I can see the pinterest share button on article page
+        @high
         Examples:
             | device            |
             | mobile            |
+            | desktop           |
+        @med
+        Examples:
+            | device            |
             | tablet portrait   |
             | tablet landscape  |
-            | desktop           |
+

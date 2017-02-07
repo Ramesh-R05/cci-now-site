@@ -3,6 +3,7 @@ Feature: Error page
     As a user
     I should be able to see the error page
 
+    @high
     Scenario: I can see the 404 error page in the mobile style
         Given I switch to "mobile" view
         When I am currently viewing "404"
@@ -20,8 +21,13 @@ Feature: Error page
         * I should see the error title as "Sorry, this page is broken."
         * I should see the error giphy image
         * I should see the text clickable to homepage with gtm "gtm-error-goback"
+        @high
+        Examples:
+            | device            |
+            | desktop           |
+        @low
         Examples:
             | device            |
             | tablet portrait   |
             | tablet landscape  |
-            | desktop           |
+

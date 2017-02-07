@@ -31,13 +31,18 @@ Feature: Footer
             |TERMS OF USE   |http://www.bauer-media.com.au/terms/website-terms              |
             |CONTACT US     |contact-us                                                     |
         * I can see the standard copyright text in the footer as "COPYRIGHT BAUER MEDIA PTY LTD ALL RIGHTS RESERVED"
+        @high
         Examples:
             |device            |
             |mobile            |
+            |desktop           |
+        @low
+        Examples:
+            |device            |
             |tablet portrait   |
             |tablet landscape  |
-            |desktop           |
 
+    @high
     Scenario Outline: Verify the footer appearing on the "<page>" page
         Given I switch to "desktop" view
         When I am currently viewing "<url>"
@@ -46,5 +51,5 @@ Feature: Footer
             |page               |url                                                                |
             |section landing    |fashion                                                            |
             |article            |fashion/red-carpet/automation-test-article-with-hero-image-3663    |
-            |gallery            |fashion/red-carpet/automation-test-gallery-13302                       |
+            |gallery            |fashion/red-carpet/automation-test-gallery-13302                   |
             |404                |404                                                                |

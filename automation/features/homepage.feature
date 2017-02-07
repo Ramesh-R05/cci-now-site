@@ -3,7 +3,7 @@ Feature: Homepage
     As a user
     I should be able to see homepage
 
-    @mustread @BXMA-81
+    @mustread @BXMA-81 @high
     Scenario Outline: Verify the must read module is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing the homepage
@@ -31,14 +31,19 @@ Feature: Homepage
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
         * I should see the main hero item containing source
+        @high
         Examples:
             |device|
             |mobile|
+            |desktop|
+        @med
+        Examples:
+            |device|
             |tablet portrait |
             |tablet landscape|
-            |desktop|
 
-    @promoted @BXMA-205
+
+    @promoted @BXMA-205 @high
     Scenario Outline: Verify the promoted module is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing the homepage
@@ -65,12 +70,17 @@ Feature: Homepage
         * I should see each top feed item containing its image and clickable to open its page
         * I should see each top feed item containing its title and clickable to open its page
         * I should see each top feed item containing source and date
+        @high
         Examples:
             |device|
             |mobile|
+            |desktop|
+        @med
+        Examples:
+            |device|
             |tablet portrait |
             |tablet landscape|
-            |desktop|
+
 
     @homepagefeed-bottom @BXMA-60
     Scenario Outline: Verify the bottom news feed is functional correctly in "<device>" view
@@ -80,10 +90,14 @@ Feature: Homepage
         * I should see each bottom feed item containing its image and clickable to open its page
         * I should see each bottom feed item containing its title and clickable to open its page
         * I should see each bottom feed item containing source and date
+        @high
         Examples:
             |device|
             |mobile|
+            |desktop|
+        @med
+        Examples:
+            |device|
             |tablet portrait |
             |tablet landscape|
-            |desktop|
 

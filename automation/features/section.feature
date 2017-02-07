@@ -11,12 +11,17 @@ Feature: Section Landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
         * I should see the main hero item containing source
+        @high
         Examples:
             |device|
             |mobile|
+            |desktop|
+        @low
+        Examples:
+            |device|
             |tablet portrait |
             |tablet landscape|
-            |desktop|
+
 
     @sectionfeed @BXMA-34
     Scenario Outline: Verify the top news feed is functional correctly in "<device>" view
@@ -26,12 +31,16 @@ Feature: Section Landing page
         * I should see each top feed item containing its image and clickable to open its page
         * I should see each top feed item containing its title and clickable to open its page
         * I should see each top feed item containing source and date
+        @high
         Examples:
             |device|
             |mobile|
+            |desktop|
+        @low
+        Examples:
+            |device|
             |tablet portrait |
             |tablet landscape|
-            |desktop|
 
     @sectionfeed-bottom @BXMA-34
     Scenario Outline: Verify the bottom news feed is functional correctly in "<device>" view
@@ -41,9 +50,13 @@ Feature: Section Landing page
         * I should see each bottom feed item containing its image and clickable to open its page
         * I should see each bottom feed item containing its title and clickable to open its page
         * I should see each bottom feed item containing source and date
+        @high
         Examples:
             |device|
             |mobile|
+            |desktop|
+        @low
+        Examples:
+            |device|
             |tablet portrait |
             |tablet landscape|
-            |desktop|

@@ -3,13 +3,13 @@ Feature: Ad
     As a user
     I should be able to see the relevant Ads on the site
 
-    @DAW-1070
+    @DAW-1070 @high
     Scenario: Add sticky mobile banner to bottom of the article
         Given I switch to "mobile portrait" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         Then I can see the sticky ad when the top banner disappears from view
 
-    @homepage @BXMA-90
+    @homepage @BXMA-90 @high
     Scenario: Ads on homepage in the desktop view
         Given I switch to "desktop" view
         When I am currently viewing the homepage
@@ -21,7 +21,7 @@ Feature: Ad
         * I should see the middle leaderboard ad under the top news feed
         * I should see the bottom leaderboard ad above the footer
 
-    @homepage @BXMA-90
+    @homepage @BXMA-90 @med
     Scenario: Ads on homepage in the tablet landscape view
         Given I switch to "tablet landscape" view
         When I am currently viewing the homepage
@@ -33,7 +33,7 @@ Feature: Ad
         * I should see the middle leaderboard ad under the top news feed
         * I should see the bottom leaderboard ad above the footer
 
-    @homepage @BXMA-90
+    @homepage @BXMA-90 @med
     Scenario: Ads on homepage in the tablet portrait view
         Given I switch to "tablet portrait" view
         When I am currently viewing the homepage
@@ -44,7 +44,7 @@ Feature: Ad
         * I should see the middle leaderboard ad under the top news feed
         * I should see the bottom leaderboard ad above the footer
 
-    @homepage @BXMA-90
+    @homepage @BXMA-90 @high
     Scenario: Ads on homepage in the mobile view
         Given I switch to "mobile" view
         When I am currently viewing the homepage
@@ -54,7 +54,7 @@ Feature: Ad
         * I should see MREC ad in the bottom news feed
         * I should not see the bottom leaderboard ad above the footer
 
-    @section @BXMA-34
+    @section @BXMA-34 @high
     Scenario: Ads on section landing page in the desktop view
         Given I switch to "desktop" view
         When I am currently viewing "fashion"
@@ -65,7 +65,7 @@ Feature: Ad
         * I should see the middle leaderboard ad under the top news feed
         * I should see the bottom leaderboard ad above the footer
 
-    @section @BXMA-34
+    @section @BXMA-34 @med
     Scenario: Ads on section landing page in the tablet landscape view
         Given I switch to "tablet landscape" view
         When I am currently viewing "fashion"
@@ -76,7 +76,7 @@ Feature: Ad
         * I should see the middle leaderboard ad under the top news feed
         * I should see the bottom leaderboard ad above the footer
 
-    @section @BXMA-34
+    @section @BXMA-34 @med
     Scenario: Ads on section landing page in the tablet portrait view
         Given I switch to "tablet portrait" view
         When I am currently viewing "fashion"
@@ -87,7 +87,7 @@ Feature: Ad
         * I should see the middle leaderboard ad under the top news feed
         * I should see the bottom leaderboard ad above the footer
 
-    @section @BXMA-34
+    @section @BXMA-34 @high
     Scenario: Ads on section landing page in the mobile view
         Given I switch to "mobile" view
         When I am currently viewing "fashion"
@@ -97,7 +97,7 @@ Feature: Ad
         * I should see MREC ad in the bottom news feed
         * I should not see the bottom leaderboard ad above the footer
 
-    @gallery @BXMA-132
+    @gallery @BXMA-132 @high
     Scenario: Ads on gallery page in the desktop view
         Given I switch to "desktop" view
         When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
@@ -106,7 +106,7 @@ Feature: Ad
         * I should see the MREC ad at the bottom right of the gallery
         * I should see the MREC ad after the 3 slide
 
-    @gallery @BXMA-132
+    @gallery @BXMA-132 @med
     Scenario: Ads on gallery page in the tablet landscape view
         Given I switch to "tablet landscape" view
         When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
@@ -115,7 +115,7 @@ Feature: Ad
         * I should see the MREC ad at the bottom right of the gallery
         * I should see the MREC ad after the 3 slide
 
-    @gallery @BXMA-132
+    @gallery @BXMA-132 @med
     Scenario: Ads on gallery page in the tablet portrait view
         Given I switch to "tablet portrait" view
         When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
@@ -124,7 +124,7 @@ Feature: Ad
         * I should not see the MREC ad at the bottom right of the gallery
         * I should see the MREC ad after the 3 slide
 
-    @gallery @BXMA-132
+    @gallery @BXMA-132 @high
     Scenario: Ads on gallery page in the mobile view
         Given I switch to "mobile" view
         When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
@@ -133,7 +133,7 @@ Feature: Ad
         * I should not see the MREC ad at the bottom right of the gallery
         * I should see the MREC ad after the 3 slide
 
-    @BXMA-156
+    @BXMA-156 @high
     Scenario Outline: Wallpaper ad and side panel ad should appear on "<page>" page in the desktop view
         Given I switch to "desktop" view
         When I am currently viewing "<url>"
@@ -145,7 +145,7 @@ Feature: Ad
             |article    |fashion/red-carpet/automation-test-article-with-hero-image-3663    |
             |gallery    |fashion/red-carpet/automation-test-gallery-13302                   |
 
-    @BXMA-156
+    @BXMA-156 @low
     Scenario Outline: Wallpaper ad and side panel ad should not appear on "<page>" page in the "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "<url>"
@@ -162,8 +162,12 @@ Feature: Ad
         Given I switch to "<device>" view
         When I am currently viewing "<url>"
         * I should "see" the out of page ad slot on "<page>"
+        @high
         Examples:
             |device             |page       |url                                                         |
             |desktop            |section    |beauty                                                      |
+        @med
+        Examples:
+            |device             |page       |url                                                         |
             |tablet landscape   |article    |beauty/hair/automation-test-article-with-hero-video-3664    |
             |tablet portrait    |gallery    |beauty/hair/automation-test-gallery-inskin-13303            |
