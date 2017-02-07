@@ -74,7 +74,7 @@ Feature: I have an automated sanity for my live environments
     Scenario: Verify the bottom news feed is functional correctly in mobile view
         Given I switch to "mobile" view
         When I am currently viewing the homepage
-        * I should see 6 bottom half feed
+        * I should see 8 bottom half feed
         * I should see each bottom feed item containing its image and clickable to open its page
         * I should see each bottom feed item containing its title and clickable to open its page
         * I should see each bottom feed item containing source and date
