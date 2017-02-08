@@ -72,7 +72,7 @@ export default class Section extends Component {
                         <span className="page-title__symbol"></span>
                         {title}
                     </h1>;
-        const polarLabels = this.context.config.polar.labels;
+        const polarLabels = this.context.config.polar.details;
         return (
             <Page
                 currentUrl={currentUrl}
@@ -93,10 +93,7 @@ export default class Section extends Component {
                                             adPosition={8}
                                             adTargets={{ position: 1, keyword }}
                                             nativeAdConfig = {isBrandPage || {
-                                                slotPositionIndex: [
-                                                    polarLabels.sectionTopFeedsOne,
-                                                    polarLabels.sectionTopFeedsSix
-                                                ]
+                                                slotPositionIndex: polarLabels.sectionTopFeed
                                             }} />
                                     </div>
                                     <div className="page__social-wrapper columns large-4 xlarge-3">
@@ -143,11 +140,8 @@ export default class Section extends Component {
                         nextParams={this.props.listNextParams}
                         className="news-feed bottom-news-feed"
                         adTargets={{ position: 2, keyword }}
-                        nativeAdConfig = {{
-                            slotPositionIndex: [
-                                polarLabels.sectionBottomFeedsTwo,
-                                polarLabels.sectionBottomFeedsSix
-                            ]
+                        nativeAdConfig = {isBrandPage || {
+                            slotPositionIndex: polarLabels.sectionBottomFeed
                         }} />
 
                     {/* 3rd Leaderboard to show on tablet and up */}

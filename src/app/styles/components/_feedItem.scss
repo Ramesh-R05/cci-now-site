@@ -40,6 +40,30 @@
             .teaser__image {
                 overflow: hidden;
             }
+
+            &.polar-horizontal,
+            &.polar-verticle {
+                img {
+                    max-height: none;
+                    max-width: none;
+                }
+            }
+
+            &.polar-horizontal {
+                img {
+                    position: absolute;
+                    height: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                }
+            }
+
+            &.polar-verticle {
+                img {
+                    width: 100%;
+                }
+            }
         }
     }
 

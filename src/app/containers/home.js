@@ -56,7 +56,7 @@ export default class Home extends Component {
     }
 
     render() {
-        const polarLabels = this.context.config.polar.labels;
+        const polarLabels = this.context.config.polar.details;
         return (
             <Page
                 currentUrl={ this.props.currentUrl }
@@ -86,10 +86,7 @@ export default class Home extends Component {
                                                 adSizes={{ small: 'mrec', medium: ['mrec', 'double-mrec'] }}
                                                 adTargets={{ position: 2 }}
                                                 nativeAdConfig = {{
-                                                    slotPositionIndex: [
-                                                        polarLabels.homeTopFeedsOne,
-                                                        polarLabels.homeTopFeedsSix
-                                                    ]
+                                                    slotPositionIndex: polarLabels.homeTopFeed
                                                 }}
                                             />
                                         </div>
@@ -137,10 +134,7 @@ export default class Home extends Component {
                         className="news-feed bottom-news-feed"
                         adTargets={{ position: 3 }}
                         nativeAdConfig={{
-                            slotPositionIndex: [
-                                polarLabels.homeBottomFeedsTwo,
-                                polarLabels.homeBottomFeedsSix
-                            ]
+                            slotPositionIndex: polarLabels.homeBottomFeed
                         }}
                     />
 
