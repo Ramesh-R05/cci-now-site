@@ -85,10 +85,11 @@ export default class Section extends Component {
                             <div className="page__top-container columns">
                                 <div className="row">
                                     <div className="columns large-8 xlarge-9 section-page__teasers-container" ref="top">
-                                        <HeroTeaser article={heroTeaser} brand={brand}/>
+                                        <HeroTeaser showDate={!isBrandPage} article={heroTeaser} brand={brand}/>
 
                                         <TeaserGridView
                                             teasers={firstTeaserList}
+                                            showDate={!isBrandPage}
                                             className="news-feed top-news-feed"
                                             adPosition={8}
                                             adTargets={{ position: 1, keyword }}
@@ -136,6 +137,7 @@ export default class Section extends Component {
                     <Repeatable
                         component={TeaserListView}
                         action={loadList}
+                        showDate={!isBrandPage}
                         dataSource={this.props.list}
                         nextParams={this.props.listNextParams}
                         className="news-feed bottom-news-feed"

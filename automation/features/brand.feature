@@ -3,6 +3,7 @@ Feature: Brand Landing page
     As a user
     I should be able to see brand landing page
 
+    @BXMA-291
     Scenario Outline: Verify the brand title and hero teaser element are functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "aww"
@@ -10,7 +11,7 @@ Feature: Brand Landing page
         * I should see the breadcrumb of "AUSTRALIAN WOMEN'S WEEKLY" on the brand landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
-        * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source and date
+        * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source without date
         @high
         Examples:
             |device           |
@@ -20,6 +21,7 @@ Feature: Brand Landing page
             |device           |
             |tablet landscape |
 
+    @BXMA-291
     Scenario Outline: Verify the brand title and hero teaser element are functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "aww"
@@ -27,7 +29,7 @@ Feature: Brand Landing page
         * I should not see the breadcrumb on the brand landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
-        * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source and date
+        * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source without date
         @high
         Examples:
             |device          |
@@ -37,13 +39,14 @@ Feature: Brand Landing page
             |device          |
             |tablet portrait |
 
+    @BXMA-291
     Scenario Outline: Verify the top news feed is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "aww"
         * I should see 6 top half feed
         * I should see each top feed item containing its image and clickable to open its page
         * I should see each top feed item containing its title and clickable to open its page
-        * I should see each top feed item containing source and date
+        * I should see each top feed item containing source without date
         @high
         Examples:
             |device|
@@ -55,14 +58,14 @@ Feature: Brand Landing page
             |tablet portrait |
             |tablet landscape|
 
-
+    @BXMA-291
     Scenario Outline: Verify the bottom news feed is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "aww"
         * I should see 7 bottom half feed
         * I should see each bottom feed item containing its image and clickable to open its page
         * I should see each bottom feed item containing its title and clickable to open its page
-        * I should see each bottom feed item containing source and date
+        * I should see each top feed item containing source without date
         @high
         Examples:
             |device|

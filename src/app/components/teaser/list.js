@@ -15,10 +15,12 @@ export default class TeaserListView extends Component {
             targets: PropTypes.shape({
                 kw: PropTypes.string
             })
-        })
+        }),
+        showDate: PropTypes.bool
     };
 
     static defaultProps = {
+        showDate: true,
         teasers: [],
         className: "",
         adTargets: { position: 1 },
@@ -26,7 +28,7 @@ export default class TeaserListView extends Component {
     };
 
     render() {
-        const { className, items, adTargets, index, nativeAdConfig } = this.props;
+        const { className, items, adTargets, index, nativeAdConfig, showDate } = this.props;
         const adProps = {
             className: "ad--section-mrec",
             displayFor: ['medium', 'large', 'xlarge'],
@@ -47,6 +49,7 @@ export default class TeaserListView extends Component {
                         <TeaserList
                             listClassName="teaser-view-list"
                             CustomisedTeaser={Teaser}
+                            showDate={showDate}
                             articles={items}
                             showSubSection={true}
                             imageSizes={{

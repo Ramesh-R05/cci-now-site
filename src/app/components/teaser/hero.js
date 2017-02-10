@@ -10,10 +10,12 @@ export default class HeroTeaser extends Component {
         article: PropTypes.object.isRequired,
         imageSizes: PropTypes.object,
         showPromoted: PropTypes.bool,
-        brand: PropTypes.object
+        brand: PropTypes.object,
+        showDate: PropTypes.bool
     };
 
     static defaultProps = {
+        showDate: true,
         imageSizes: {
             s: { w: 700, h: 583 },
             m: { w: 619, h: 515 },
@@ -25,13 +27,14 @@ export default class HeroTeaser extends Component {
 
     render() {
         if (!this.props.article) return null;
-        const { article, imageSizes, showPromoted, brand } = this.props;
+        const { article, imageSizes, showPromoted, brand, showDate } = this.props;
 
         return(
             <div className="hero-wrapper">
                 <Teaser
                     sourceClassName="hero-teaser__source"
                     className="hero-teaser"
+                    showDate={showDate}
                     article={article}
                     imageSizes={imageSizes} />
 

@@ -255,7 +255,7 @@ Feature: I have an automated sanity for my live environments
         * I should see the breadcrumb of "AUSTRALIAN WOMEN'S WEEKLY" on the brand landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
-        * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source and date
+        * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source without date
         * I should see 6 top half feed
         * I should see 7 bottom half feed
 
@@ -267,7 +267,7 @@ Feature: I have an automated sanity for my live environments
         * I should not see the breadcrumb on the brand landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
-        * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source and date
+        * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source without date
         * I should see 6 top half feed
         * I should see 7 bottom half feed
 

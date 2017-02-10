@@ -15,19 +15,21 @@ export default class TeaserGridView extends Component {
             targets: PropTypes.shape({
                 kw: PropTypes.string
             })
-        })
+        }),
+        showDate: PropTypes.bool
     };
 
     static defaultProps = {
         teasers: [],
         className: "",
+        showDate: true,
         adPosition: 8,
         adTargets: { position: 1 },
         nativeAdConfig: {}
     };
 
     render() {
-        const { className, teasers, nativeAdConfig } = this.props;
+        const { className, teasers, nativeAdConfig, showDate } = this.props;
 
         if (!teasers || !Array.isArray(teasers) || !teasers.length) return null;
 
@@ -38,6 +40,7 @@ export default class TeaserGridView extends Component {
                         <TeaserList
                             listClassName="teaser-view-grid"
                             CustomisedTeaser={Teaser}
+                            showDate={showDate}
                             articles={teasers}
                             showSubSection={true}
                             imageSizes={{

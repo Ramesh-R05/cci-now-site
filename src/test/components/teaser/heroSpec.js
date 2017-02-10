@@ -55,7 +55,8 @@ describe('Hero Teaser Component', () => {
                 className: "hero-teaser",
                 article,
                 imageSizes: defaultImageSizes,
-                sourceClassName: "hero-teaser__source"
+                sourceClassName: "hero-teaser__source",
+                showDate: true
             })
         });
 
@@ -66,14 +67,18 @@ describe('Hero Teaser Component', () => {
         });
     });
 
-    describe('when passing both article and imageSizes', () => {
+    describe('when passing both article, imageSizes and showDate prop', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(HeroTeaser, {article, imageSizes});
+            reactModule = Context.mountComponent(HeroTeaser, {article, imageSizes, showDate: false});
             TeaserComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserStub);
         });
 
         it(`should pass the imageSize prop to the Teaser component`, () => {
             expect(TeaserComponent.props.imageSizes).to.deep.eq(imageSizes);
         });
+
+        it(`should pass the showDate to the Teaser component`, () => {
+            expect(TeaserComponent.props.showDate).to.eq(false);
+        });         
     });
 });

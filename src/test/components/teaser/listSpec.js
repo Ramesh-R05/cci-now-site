@@ -49,7 +49,7 @@ describe('TeaserListView', () => {
     describe('when receiving teasers', () => {
         describe('and there are more than 1', () => {
             beforeEach(() => {
-                reactModule = Context.mountComponent(TeaserListView, {items}, contextConfigStub);
+                reactModule = Context.mountComponent(TeaserListView, {items, showDate: false}, contextConfigStub);
                 TeaserListViewComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserListStub);
                 AdComponent = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
                 StickyComponent = TestUtils.findRenderedComponentWithType(reactModule, StickyStub);
@@ -60,6 +60,7 @@ describe('TeaserListView', () => {
                     CustomisedTeaser: TeaserStub,
                     listClassName: "teaser-view-list",
                     articles: items,
+                    showDate: false,
                     imageSizes,
                     showSubSection: true,
                     adConfig: {
@@ -132,5 +133,4 @@ describe('TeaserListView', () => {
             });
         })
     });
-    
 });

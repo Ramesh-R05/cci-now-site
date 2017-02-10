@@ -1,3 +1,4 @@
+var home = require('../page_objects/homepage_widget');
 var brand = require('../page_objects/brand_widget');
 var world = require('../world');
 
@@ -29,7 +30,7 @@ module.exports = function(){
         expect(brandBreadcrumb).toBe(false);
     });
 
-    this.When(/^I should see the main hero item containing "([^"]*)" source and date$/, function (name) {
+    this.When(/^I should see the main hero item containing "([^"]*)" source without date$/, function (name) {
         //verify source and date of the main hero item
         var heroSource = browser.getText(brand.heroSource);
         console.log(heroSource);
@@ -38,9 +39,38 @@ module.exports = function(){
         console.log("Date: " + valueSourceDate[1]);
         //validate the source
         expect(valueSourceDate[0]).toEqual(name);
-        //validate the date
-        expect(valueSourceDate[1]).not.toEqual('');
-        expect(valueSourceDate[1]).toEqual(valueSourceDate[1].toUpperCase());
+        //validate the date is not appearing
+        expect(valueSourceDate[1]).toBeUndefined();
+    });
+
+    this.When(/^I should see each top feed item containing source without date$/, function () {
+        //verify sources of all teasers
+        console.log(browser.elements(home.topFeedTeaserSource).value.length);
+        var topFeedTeaserSource = browser.getText(home.topFeedTeaserSource);
+        for (var i=0; i<topFeedTeaserSource.length; i++){
+            var valueSourceDate = topFeedTeaserSource[i].split("|");
+            console.log( i + ":Source:" + valueSourceDate[0]);
+            console.log( i + ":Date:" + valueSourceDate[1]);
+            //validate the source
+            expect(valueSourceDate[0]).not.toEqual('');
+            //validate the date is not existing
+            expect(valueSourceDate[1]).toBeUndefined();
+        }
+    });
+
+    this.When(/^I should see each bottom feed item containing source without date$/, function () {
+        //verify sources of all teasers
+        console.log(browser.elements(home.bottomFeedTeaserSource).value.length);
+        var bottomFeedTeaserSource = browser.getText(home.bottomFeedTeaserSource);
+        for (var i=0; i<bottomFeedTeaserSource.length; i++){
+            var valueSourceDate = bottomFeedTeaserSource[i].split("|");
+            console.log( i + ":Source:" + valueSourceDate[0]);
+            console.log( i + ":Date:" + valueSourceDate[1]);
+            //validate the source
+            expect(valueSourceDate[0]).not.toEqual('');
+            //validate the date is not existing
+            expect(valueSourceDate[1]).toBeUndefined();
+        }
     });
 
 
