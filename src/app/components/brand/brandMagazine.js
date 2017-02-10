@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import imageResize from '@bxm/ui/lib/common/ImageResize';
 import ResponsiveImage from '@bxm/ui/lib/common/ResponsiveImage';
 import SocialContainer from '../social/block';
-import { find } from 'lodash';
+import get from 'lodash/object/get';
 import { connectToStores } from '@bxm/flux';
 
 class BrandMagazine extends Component {
@@ -33,12 +33,13 @@ class BrandMagazine extends Component {
         const { imageSizes, responsiveConfig, magazineImageUrl, brand } = this.props;
         const breakpoints = this.context.config.global.breakpoints;
         const { socialLinks, id, title, magazineTitle } = brand;
+        const renderSubscribeElements = get(brand, 'renderSubscribeElements', true);
         const subscribeUrl = `subscribe-${id}`;
 
         return (
             <div>
                 <div className="brand--magazine-container">
-                    <span className="brand--magazine-title">Subscribe to {magazineTitle || title}</span>
+                    {renderSubscribeElements && <span className="brand--magazine-title">Subscribe to {magazineTitle || title}</span>}
                     <div className="brand--magazine-image">
                         <ResponsiveImage
                             url={magazineImageUrl}
@@ -50,7 +51,9 @@ class BrandMagazine extends Component {
                             quality={80}
                         />
                     </div>
-                    <a target="_blank" className={`gtm-subscribe-${id}`} href={subscribeUrl}> <span className={`sub-now sub-now-${id}`}>SUBSCRIBE NOW</span></a>
+                    {renderSubscribeElements && 
+                        <a target="_blank" className={`gtm-subscribe-${id}`} href={subscribeUrl}> <span className={`sub-now sub-now-${id}`}>SUBSCRIBE NOW</span></a>
+                    }
                 </div>
                 <hr/>
                 <div className="page__get-social-container">

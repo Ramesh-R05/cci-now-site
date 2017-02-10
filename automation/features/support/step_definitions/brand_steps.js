@@ -91,14 +91,21 @@ module.exports = function(){
                 break;
         }
 
-        //Get value of href
-        var brandElementLink = browser.getAttribute(brandElement,'href');
-        console.log(brandElementLink);
-        //Validate the values [This is to check the link on both two positions as we show/hide on different breakpoints]
-        for (var i=0; i<brandElementLink.length; i++){
-            console.log(i + ":" +brandElementLink[i]);
-            expect(brandElementLink[i]).toContain(link);
+        //Some brands do not require to have subscribe button
+        if (link != 'none'){
+            //Get value of href
+            var brandElementLink = browser.getAttribute(brandElement,'href');
+            console.log(brandElementLink);
+            //Validate the values [This is to check the link on both two positions as we show/hide on different breakpoints]
+            for (var i=0; i<brandElementLink.length; i++){
+                console.log(i + ":" +brandElementLink[i]);
+                expect(brandElementLink[i]).toContain(link);
+            }
+        } else {
+            //To ensure that the subscribe link is not showing
+            expect(browser.isExisting(brandElement)).toBe(false);
         }
+
     });
 
     this.When(/^I should see the subscribe element under "([^"]*)" and containing title "([^"]*)" and image$/, function (position,title) {
@@ -141,13 +148,19 @@ module.exports = function(){
     });
 
     this.When(/^I should see the subscribe button containing GTM "([^"]*)"$/, function (gtm) {
-        //Identify the element
-        var brandSubscribeGTM = browser.getAttribute(brand.brandSubscribeLink, 'class');
+        //Some brands do not require to have subscribe button
+        if (gtm != 'none'){
+            //Identify the element
+            var brandSubscribeGTM = browser.getAttribute(brand.brandSubscribeLink, 'class');
 
-        //Validate the element is existing
-        for (var i=0; i<brandSubscribeGTM.length; i++){
-            console.log(i + ":" + brandSubscribeGTM[i]);
-            expect(brandSubscribeGTM[i]).toContain(gtm);
+            //Validate the element is existing
+            for (var i=0; i<brandSubscribeGTM.length; i++){
+                console.log(i + ":" + brandSubscribeGTM[i]);
+                expect(brandSubscribeGTM[i]).toContain(gtm);
+            }
+        } else {
+            //To ensure that the GTM is not required
+            expect(browser.isExisting(brand.brandSubscribeLink)).toBe(false);
         }
     });
 };

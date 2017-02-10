@@ -2,8 +2,6 @@ import React, {PropTypes, Component} from 'react';
 import {connectToStores} from '@bxm/flux';
 import TeaserList from '@bxm/teaser/lib/components/teaserList';
 import Teaser from '../teaser/teaser';
-import get from 'lodash/object/get';
-import has from 'lodash/object/has';
  
  class Promoted extends Component {
  

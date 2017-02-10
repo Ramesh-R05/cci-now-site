@@ -36,6 +36,7 @@ describe(`BrandMagazine`, () => {
             "instagramUrl": "http://instagram.com/womensweeklymag"
         }
     };
+    const brandPropRenderSubFalseStub = {"renderSubscribeElements": false, ...brandPropStub};
 
     const contextConfigStub = {
         key: 'config',
@@ -76,6 +77,23 @@ describe(`BrandMagazine`, () => {
                 const correctClass = `sub-now sub-now-${brandPropStub.id}`;
                 expect(secondSpanClass).to.equal(correctClass);
             });
+    });
+
+    describe('when passing in a prop that sets renderSubscribeElements to false', () => {
+        before(() => {
+            reactModule = Context.mountComponent(BrandMagazine, {brand: brandPropRenderSubFalseStub}, [contextConfigStub]);
+        });
+
+        it('should not render the title span', () => {
+            const titleSpan = TestUtils.scryRenderedDOMComponentsWithClass(reactModule, 'brand--magazine-title');
+            expect(titleSpan.length).to.eq(0)
+        });
+
+        it('should not render the subscribe now span', () => {
+            const subNow = TestUtils.scryRenderedDOMComponentsWithClass(reactModule, 'gtm-subscribe-aww');
+            expect(subNow.length).to.eq(0)
+        });
+
     });
 });
 

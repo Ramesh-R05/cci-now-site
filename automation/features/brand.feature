@@ -77,7 +77,7 @@ Feature: Brand Landing page
             |tablet portrait |
             |tablet landscape|
 
-
+    @BXMA-292
     Scenario Outline: Verify the subscribe now link and social links of "<brand>" landing page
         Given I switch to "desktop" view
         When I am currently viewing "<brand>"
@@ -96,11 +96,11 @@ Feature: Brand Landing page
             |brand              |subscribe          |facebook                                   |twitter                                |instagram                                      |gtm                  |
             |good-health        |subscribe-gh       |https://www.facebook.com/GoodHealthMag/    |https://twitter.com/goodhealthmag      |https://www.instagram.com/goodhealthmag        |gtm-subscribe-gh     |
             |okmagazine         |subscribe-ok       |https://www.facebook.com/OKmagAustralia    |https://twitter.com/okmagaustralia     |https://www.instagram.com/okmagaustralia       |gtm-subscribe-ok     |
-            |shop-til-you-drop  |subscribe-shop     |https://www.facebook.com/shoptilyoudropmag/|https://twitter.com/shoptilyoudrop     |https://www.instagram.com/shoptilyoudropmag/   |gtm-subscribe-shop   |
+            |shop-til-you-drop  |none               |https://www.facebook.com/shoptilyoudropmag/|https://twitter.com/shoptilyoudrop     |https://www.instagram.com/shoptilyoudropmag/   |none                 |
             |nw                 |subscribe-nw       |https://www.facebook.com/NWmagazine        |https://twitter.com/nwmag              |https://www.instagram.com/nwmag/               |gtm-subscribe-nw     |
             |take5mag           |subscribe-take5    |https://www.facebook.com/take5magazine     |https://twitter.com/take5magazine      |https://www.instagram.com/take5magazine/       |gtm-subscribe-take5  |
             |yours              |subscribe-yours    |https://www.facebook.com/Yoursmagazineau/  |https://twitter.com/yoursmagazineau    |https://www.instagram.com/yoursmagazineau/     |gtm-subscribe-yours  |
-            |mother-and-baby    |subscribe-mb       |https://www.facebook.com/mbmag/            |https://twitter.com/motherbaby_au      |https://www.instagram.com/motherbaby_au        |gtm-subscribe-mb     |
+            |mother-and-baby    |none               |https://www.facebook.com/mbmag/            |https://twitter.com/motherbaby_au      |https://www.instagram.com/motherbaby_au        |none                 |
             |tvweek             |subscribe-tvweek   |https://www.facebook.com/tvweekmag         |https://twitter.com/TVWEEKmag          |https://www.instagram.com/TVWEEK               |gtm-subscribe-tvweek |
 
     Scenario Outline: Verify the subscribe now and social icons of "<brand>" landing page in "<device>" view
@@ -117,5 +117,5 @@ Feature: Brand Landing page
         Examples:
             |device             |brand          |position   |subscribe_title                |
             |tablet portrait    |good-health    |hero teaser|Subscribe to Good Health       |
-            |tablet landscape   |mother-and-baby|MREC       |Subscribe to Mother and Baby   |
+            |tablet landscape   |tvweek         |MREC       |Subscribe to TV WEEK           |
 
