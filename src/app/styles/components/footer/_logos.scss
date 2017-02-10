@@ -9,7 +9,6 @@
             margin-left: 30px;
         }
 
-
         &-title {
             font-size: 20px;
             color: $color-black;
@@ -21,10 +20,6 @@
             margin-top: $footer-gap/2;
             margin-bottom: 0;
             padding: 0;
-
-            &__logo--tv-week {
-                display: none;
-            }
         }
 
         li {

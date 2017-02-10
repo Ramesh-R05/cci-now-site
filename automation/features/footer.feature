@@ -24,6 +24,7 @@ Feature: Footer
             |Take 5                     |/take5mag          |gtm-footer__logos-list-take5  |
             |Yours                      |/yours             |gtm-footer__logos-list-yours  |
             |Mother and Baby            |/mother-and-baby   |gtm-footer__logos-list-mb     |
+            |TV WEEK                    |/tvweek            |gtm-footer__logos-list-tvweek |
         * I can navigate to all standard pages in the footer
             |page           |url                                                            |
             |PRIVACY POLICY |http://www.bauer-media.com.au/privacy                          |

@@ -18,3 +18,4 @@ Feature: Uniheader
             |Take 5                     |/take5mag                          |gtm-uniheader-take5  |
             |Yours                      |/yours                             |gtm-uniheader-yours  |
             |Mother and Baby            |/mother-and-baby                   |gtm-uniheader-mb     |
+            |TV WEEK                    |/tvweek                            |gtm-uniheader-tvweek |

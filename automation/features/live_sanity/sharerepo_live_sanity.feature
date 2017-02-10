@@ -16,6 +16,7 @@ Feature: I have an automated sanity for my live environments
             |Take 5                     |/take5mag                          |gtm-uniheader-take5  |
             |Yours                      |/yours                             |gtm-uniheader-yours  |
             |Mother and Baby            |/mother-and-baby                   |gtm-uniheader-mb     |
+            |TV WEEK                    |/tvweek                            |gtm-uniheader-tvweek |
 
     @mustread @BXMA-81
     Scenario Outline: Verify the must read module is functional correctly in "<device>" view
@@ -155,6 +156,7 @@ Feature: I have an automated sanity for my live environments
             |Take 5                     |/take5mag          |gtm-footer__logos-list-take5  |
             |Yours                      |/yours             |gtm-footer__logos-list-yours  |
             |Mother and Baby            |/mother-and-baby   |gtm-footer__logos-list-mb     |
+            |TV WEEK                    |/tvweek            |gtm-footer__logos-list-tvweek |
         * I can navigate to all standard pages in the footer
             |page           |url                                                            |
             |PRIVACY POLICY |http://www.bauer-media.com.au/privacy                          |

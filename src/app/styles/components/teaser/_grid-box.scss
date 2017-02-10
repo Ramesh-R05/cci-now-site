@@ -77,6 +77,10 @@
             color: $nw-color;
         }
 
+        &--tv-week span:first-child:not(.teaser__source__breaker) {
+            color: $tv-color;
+        }
+
         &__breaker span:first-child {
             color: $color-grey-light;
             margin: 0 5px;

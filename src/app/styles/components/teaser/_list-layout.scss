@@ -19,7 +19,8 @@
             padding-left: 0;
 
             @media #{$medium-up} {
-                @include grid-column(12);
+                @include grid-column(12);                
+                padding-left: 0;
             }
 
             @media #{$large-up} {

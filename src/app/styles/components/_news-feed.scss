@@ -103,6 +103,7 @@
 
         @media #{$large-up} {
             @include grid-column(4);
+            padding-left: 6px;
         }
     }
 

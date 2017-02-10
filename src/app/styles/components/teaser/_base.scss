@@ -19,8 +19,10 @@
 
         a {
             color: $color-black;
+            transition: opacity 1s;
 
             &:hover {
+                opacity: 0.85;
                 text-decoration: none;
             }
         }

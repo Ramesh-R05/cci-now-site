@@ -69,7 +69,7 @@ export default class TeaserListView extends Component {
                         />
                     </div>
                     { items.length > 1 ?
-                        <StickyBlock breakpoints={['medium','large','xlarge']}>
+                        <StickyBlock carriageYPosition={95} breakpoints={['medium','large','xlarge']}>
                             <Ad {...adProps} />
                         </StickyBlock> : <Ad {...adProps} /> }
                 </div>

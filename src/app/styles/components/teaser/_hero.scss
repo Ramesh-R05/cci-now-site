@@ -87,7 +87,7 @@ $hero-teaser-line-height: 25px;
             color: $shop-color;
         }
 
-        &--mother---baby span:first-child:not(.hero-teaser__source__breaker) {
+        &--mother-and-baby span:first-child:not(.hero-teaser__source__breaker) {
             color: $mother-baby-color;
         }
 
@@ -97,6 +97,10 @@ $hero-teaser-line-height: 25px;
 
         &--nw span:first-child:not(.hero-teaser__source__breaker) {
             color: $nw-color;
+        }
+
+        &--tv-week span:first-child:not(.hero-teaser__source__breaker) {
+            color: $tv-color;
         }
 
         .home-page & {
@@ -228,7 +232,6 @@ $hero-teaser-line-height: 25px;
         a {
             text-decoration: none;
             font-weight: 400;
-            letter-spacing: 0.04rem;
             line-height: $hero-teaser-line-height;
         }
     }
