@@ -9,7 +9,6 @@ var hooks = function () {
 
         this.After(function (scenario) {
             console.log('run on domain : ' + domainName);
-            automation.sendReport(scenario, 'agent-i',domainName);
             browser.deleteCookie();
         });
 };
