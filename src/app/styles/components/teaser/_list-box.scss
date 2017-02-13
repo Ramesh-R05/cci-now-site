@@ -167,6 +167,10 @@
                 color: $nw-color;
             }
 
+            &--tv-week span:first-child:not(.teaser__source__breaker) {
+                color: $tv-color;
+            }
+
             &__breaker span:first-child {
                 margin: 0 5px;
                 color: $color-grey-light;

@@ -65,8 +65,36 @@
             color: $nl-color;
         }
 
+        &--good-health {
+            color: $good-health-color;
+        }
+
+        &--yours {
+            color: $yours-color;
+        }
+
+        &--ok--magazine {
+            color: $ok-color;
+        }
+
         &--shop-til-you-drop {
             color: $shop-color;
+        }
+
+        &--mother-and-baby {
+            color: $mother-baby-color;
+        }
+
+        &--take-5 {
+            color: $take-5-color;
+        }
+
+        &--nw {
+            color: $nw-color;
+        }
+
+        &--tv-week {
+            color: $tv-color;
         }
     }
 }

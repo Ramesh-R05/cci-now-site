@@ -13,6 +13,12 @@
         margin: 20px 0;
     }
 
+    &__heading {
+        @media #{$large-up} {
+            width: 88%;
+        }
+    }
+
     &__inline-image {
         padding: {
             bottom: 0px;
@@ -117,7 +123,7 @@
             text-indent: 0;
             z-index: 1;
             background: #FFF;
-            width: 120px;
+            width: 190px;
             margin: 0 auto;
             font-size: 20px;
             margin-top: -57px;

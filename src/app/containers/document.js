@@ -30,6 +30,7 @@ export default class Document extends Component {
             }
         },
         relatedContent: {
+            headingText: 'Read this next',
             imageSizes: {
                 s: {w: 384, h: 216},
                 m: {w: 375, h: 211},

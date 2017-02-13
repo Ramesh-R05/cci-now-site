@@ -139,7 +139,7 @@ module.exports = function() {
 
         //Validate the heading of Related
             console.log(rcHeading);
-            expect(rcHeading.toUpperCase()).toContain("RELATED");
+            expect(rcHeading).not.toEqual('');
 
         //Loop through the related items, and Validate the body related items' image and title
         for(var i=0; i<rcItemsTitle.length; i++) {

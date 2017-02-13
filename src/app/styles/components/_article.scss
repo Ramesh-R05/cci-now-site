@@ -188,6 +188,10 @@
     @media #{$xlarge-up} {
         margin-bottom: 64px;
     }
+
+    @media #{$large-up} {
+        width: 88%;
+    }
 }
 
 .article-credit__value {

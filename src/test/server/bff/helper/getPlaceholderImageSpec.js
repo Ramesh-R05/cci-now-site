@@ -1,7 +1,18 @@
-import { getPlaceholderImage } from '../../../../app/server/bff/helper/getPlaceholderImage';
 import listing from '../../../mocks/listing';
+import proxyquire, {noCallThru} from 'proxyquire';
+noCallThru();
 
-const imagePlaceholderUrl = '/assets/placeholder/dolly-LHR-feed-placeholder.png';
+const getPlaceholderImage = proxyquire('../../../../app/server/bff/helper/getPlaceholderImage', {
+    '@bxm/config': {
+        load: () => {
+            return {
+                defaultImageUrl: 'http://defaultimageurl.com'
+            }
+        }
+    }
+}).getPlaceholderImage;
+
+const imagePlaceholderUrl = 'http://defaultimageurl.com';
 const contentImageUrl = "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/Dolly/2016/02/22/11626/Tulips.jpg";
 const imagePlaceholderData = listing.data;
 

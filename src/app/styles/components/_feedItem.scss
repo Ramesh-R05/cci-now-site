@@ -1,7 +1,9 @@
 .feed__container {
 
     .feed-item {
-        
+        min-height: 150px;
+        overflow: auto;
+
         // Teaser body
         &__body {
             padding-top: 0;
@@ -63,6 +65,35 @@
                 img {
                     width: 100%;
                 }
+            }
+        }
+
+        &.feed-item--has-video,
+        &.feed-item--gallery {
+            &:after {
+                position: absolute;
+                width: 24px;
+                height: 24px;
+                background-repeat: no-repeat;
+                background-position: top left;
+                background-size: contain;
+                content: '';
+                background-color: $color-white;
+                border: 1px solid $color-white;
+                left: 0;
+                top: 20px;
+            }
+        }
+
+        &.feed-item--has-video {
+            &:after {
+                background-image: url($play-icon);
+            }
+        }
+
+        &.feed-item--gallery {
+            &:after {
+                background-image: url($gallery-icon);
             }
         }
     }
