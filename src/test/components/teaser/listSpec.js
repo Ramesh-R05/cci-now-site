@@ -63,6 +63,7 @@ describe('TeaserListView', () => {
                     showDate: false,
                     imageSizes,
                     showSubSection: true,
+                    loadAgain: true,
                     adConfig: {
                         className: "ad--teaser-list",
                         displayFor: "small",

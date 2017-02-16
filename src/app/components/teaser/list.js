@@ -16,7 +16,8 @@ export default class TeaserListView extends Component {
                 kw: PropTypes.string
             })
         }),
-        showDate: PropTypes.bool
+        showDate: PropTypes.bool,
+        loadAgain:PropTypes.bool
     };
 
     static defaultProps = {
@@ -24,11 +25,12 @@ export default class TeaserListView extends Component {
         teasers: [],
         className: "",
         adTargets: { position: 1 },
-        nativeAdConfig: {}
+        nativeAdConfig: {},
+        loadAgain:true
     };
 
     render() {
-        const { className, items, adTargets, index, nativeAdConfig, showDate } = this.props;
+        const { className, items, adTargets, index, nativeAdConfig, showDate, loadAgain } = this.props;
         const adProps = {
             className: "ad--section-mrec",
             displayFor: ['medium', 'large', 'xlarge'],
@@ -66,6 +68,7 @@ export default class TeaserListView extends Component {
                                 targets: adProps.targets
                             }}
                             nativeAdConfig={nativeAdConfig}
+                            loadAgain={loadAgain}
                         />
                     </div>
                     { items.length > 1 ?

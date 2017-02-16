@@ -11,7 +11,8 @@ export default class Repeatable extends Component {
     };
 
     static contextTypes = {
-        executeAction: PropTypes.func.isRequired
+        executeAction: PropTypes.func.isRequired,
+        config: PropTypes.object
     };
 
     constructor(...args) {
@@ -41,13 +42,19 @@ export default class Repeatable extends Component {
             ...otherProps
         } = this.props;
 
+        let { shouldLoadMore } = this.state;
+ 
         const items = dataSource.items;
 
         if (!items || items.length == 0) return null;
 
         const repeatableComponents = items.map((item, i) => {
             return (
-                <ChildComponent key={item.id || i} index={i} items={item} {...otherProps} />
+                <ChildComponent 
+                    key={item.id || i} 
+                    index={i} items={item} 
+                    {...otherProps} 
+                    loadAgain={i === items.length-1} />
             )
         });
 
