@@ -49,13 +49,14 @@ export default {
             {
                 "id": "shop",
                 "title": "SHOP Til You Drop",
-                "imageUrl": "/assets/images/headerlogos/SHOP-logo.svg",
+                "imageUrl": "/assets/images/headerlogos/SUMMERSHOP-logo.svg",
                 "url": "/shop-til-you-drop",
                 "socialLinks": {
                     "facebookUrl": "https://www.facebook.com/shoptilyoudropmag/",
                     "twitterUrl": "https://twitter.com/shoptilyoudrop",
                     "instagramUrl": "https://www.instagram.com/shoptilyoudropmag/"
-                }
+                },
+                "renderSubscribeElements": false
             },
             {
                 "id": "nw",
@@ -99,7 +100,8 @@ export default {
                     "facebookUrl": "https://www.facebook.com/mbmag/",
                     "twitterUrl": "https://twitter.com/motherbaby_au",
                     "instagramUrl": "https://www.instagram.com/motherbaby_au"
-                }
+                },
+                "renderSubscribeElements": false
             },
             {
                 "id": "tvweek",

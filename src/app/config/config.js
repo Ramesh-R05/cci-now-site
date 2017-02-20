@@ -4,8 +4,7 @@ import features from './features';
 import global from './global';
 import services from './services';
 import site from './site';
-import brands from './brands'
-import polar from './polar'
+import polar from './polar';
 
 export default {
     typekit: { id: 'hsn1dgy' },
@@ -19,8 +18,6 @@ export default {
     gigya: { apiKey: '3_R74vzxKbWVOiWuMSjElPNubJi5gS7NQ-KkpquR6Y3zVBafukYzJSZRMHKtri2igs' },
 
     features,
-
-    brands,
 
     global,
 
