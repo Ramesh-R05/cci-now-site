@@ -109,7 +109,8 @@ describe('Page Container', () => {
             menuClasses: 'site-menu',
             currentUrl: '/',
             showUniheader: true,
-            hideLeaderboard: false
+            hideLeaderboard: false,
+            theme: {}
         };
 
         before(() => {
@@ -149,7 +150,8 @@ describe('Page Container', () => {
                 headerClassName: "",
                 navItems: headerItems,
                 siteName: siteName,
-                toggleMenu: currentInstance.toggleMenu
+                toggleMenu: currentInstance.toggleMenu,
+                theme: {}
             });
         });
 

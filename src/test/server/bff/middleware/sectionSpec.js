@@ -1,10 +1,12 @@
-import proxyquire, {noCallThru} from 'proxyquire';
+import proxyquire, { noCallThru } from 'proxyquire';
 
 noCallThru();
 
+let makeRequestStub = () => {};
 let getLatestTeasersStub = () => {};
 
 const sectionMiddleware = proxyquire('../../../../app/server/bff/middleware/section', {
+    '../../makeRequest': (...args) => { return makeRequestStub(...args) },
     '../api/listing': {
         getLatestTeasers: (...args) => { return getLatestTeasersStub(...args) }
     }
@@ -33,6 +35,11 @@ describe('Section middleware', () => {
                     "title": "Good Health"
                 }
             ]
+        },
+        services: {
+            remote: {
+                module: 'http://module.url'
+            }
         }
     };
     const validRes = {data: [1, 2]};
@@ -45,7 +52,7 @@ describe('Section middleware', () => {
 
     describe('when there is a section in the query param and nodeTypeAlias equal to Section', () => {
         before(() => {
-            reqBase = { data: { entity: { nodeTypeAlias: 'Section' } }, query: { section: 'sec' } };
+            reqBase = { data: { entity: { nodeTypeAlias: 'Section', nodeName: 'travel' } }, query: { section: 'sec' } };
         });
 
         describe('when the remote returns an error response', () => {
@@ -71,7 +78,8 @@ describe('Section middleware', () => {
 
         describe('when the remote returns the list of teasers', () => {
             before(() => {
-                req = { ...reqBase, app: { config: {site: { host: 'http://site-host.com'}}} };
+                req = { ...reqBase, app: { config: { site: { host: 'http://site-host.com'},
+                    services: { remote: { module: 'http://module.url' } } } } };
                 req.data.headerNav = [1, 2, 3];
                 next = sinon.spy();
                 getLatestTeasersStub = sinon.stub().resolves(validRes);
@@ -94,7 +102,8 @@ describe('Section middleware', () => {
 
         describe('when a query param of pageNo 2 is passed in', () => {
             before(() => {
-                req = { ...reqBase, app: { config: {site: { host: 'http://site-host.com'}}} };
+                req = { ...reqBase, app: { config: { site: { host: 'http://site-host.com'},
+                    services: { remote: { module: 'http://module.url' } } } } };
                 req.query.pageNo = 2;
                 next = sinon.spy();
                 getLatestTeasersStub = sinon.stub().resolves(validRes);
@@ -246,5 +255,5 @@ describe('Section middleware', () => {
                 }).catch(done);
             });
         });
-    })
+    });
 });

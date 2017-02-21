@@ -255,7 +255,7 @@ describe('ResponseBody middleware', () => {
 
     describe('when data contains `heroTeaser`', () => {
         const heroTeaser = { id: 'HERO_123' };
-        let reqData = { entity: article, heroTeaser };
+        let reqData = { entity: article, hero: heroTeaser };
         let reqBase = { data: reqData, app: { config } };
         let req = { ...reqBase };
         let res = {};

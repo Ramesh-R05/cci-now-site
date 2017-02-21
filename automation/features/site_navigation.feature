@@ -6,6 +6,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         Given I switch to "<device>" view
         When I am currently viewing the homepage
         Then I should see the site header banner
+        And I should see the theme nav background
         And I should see the site header logo clickable to open homepage and contain "gtm-navbar-now" class name
         And I should see the site navigation links and "gtm-navigation-section nav-item" class name in "header"
         And I should see the site navigation links and "gtm-navigation-section nav-item" class name in "hamburger"
@@ -25,6 +26,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         When I am currently viewing the homepage
         Then I should see the site header logo clickable to open homepage and contain "gtm-navbar-now" class name
         And I should not see the site navigation links
+        And I should see the theme nav background
         And I should see the site navigation links and "gtm-navigation-section nav-item" class name in "hamburger"
 
     @high

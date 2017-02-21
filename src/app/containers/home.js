@@ -31,11 +31,13 @@ export default class Home extends Component {
         heroTeaser: PropTypes.object,
         list: PropTypes.array,
         listNextParams: PropTypes.object,
-        teasers: PropTypes.array.isRequired
+        teasers: PropTypes.array.isRequired,
+        theme: PropTypes.object
     };
 
     static defaultProps = {
-        teasers: []
+        teasers: [],
+        theme: {}
     };
 
     static contextTypes = {
@@ -61,7 +63,8 @@ export default class Home extends Component {
             <Page
                 currentUrl={ this.props.currentUrl }
                 headerExpanded={false}
-                showUniheader={true}>
+                showUniheader={true}
+                theme={this.props.theme}>
                 <div className="home-page">
                     {/* 1st Leaderboard or billboard to show on tablet and up */}
                     <div className="stripe-bg">

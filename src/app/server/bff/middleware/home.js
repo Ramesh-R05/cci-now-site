@@ -24,16 +24,14 @@ export default async function home(req, res, next) {
         }
 
         const skip = ((pageNo-1) * listCount);
-        const [pageData, latestTeasersResp, videoGalleryTeasers, trendingItems, heroTeaser] = await Promise.all([
+        const [pageData, latestTeasersResp, videoGalleryTeasers, trendingItems] = await Promise.all([
             makeRequest(`${req.app.config.services.remote.entity}/homepage`),
             getLatestTeasers(listCount, skip),
             getLatestTeasers(videoGalleryTeaserCount , undefined, 'video eq %27$contentTags%27').catch(() => {
                 return { data: [] };
             }),
-            getTrending(trendingCount),
-            getHeroTeaser()
+            getTrending(trendingCount)
         ]);
-
         videoGalleryTeasers.data = videoGalleryTeasers.data.map((gallery) => {
             gallery.contentImageUrl = get(gallery, 'contentVideo.properties.videoConfiguration.videoStillUrl', gallery.contentImageUrl);
             return gallery;
@@ -71,6 +69,7 @@ export default async function home(req, res, next) {
         req.data = req.data || {};
         req.data.entity = { ...pageData };
         req.data.latestTeasers = latestTeasers.data.slice(0, latestTeaserCount);
+
         req.data.list = {
             listName: 'home',
             params: {
@@ -85,7 +84,6 @@ export default async function home(req, res, next) {
         };
         req.data.videoGalleryTeasers = videoGalleryTeasers;
         req.data.trendingItems = trendingItems;
-        req.data.heroTeaser = heroTeaser;
         req.data.section = { id: pageData.id, name: 'Home' }; // Initally used to set the ad slot within @bxm/ads + gtm in @bxm/server
         next();
     } catch(error) {

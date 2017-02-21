@@ -1,4 +1,4 @@
-import proxyquire, {noCallThru} from 'proxyquire';
+import proxyquire, { noCallThru } from 'proxyquire';
 import sinonAsPromised from 'sinon-as-promised';
 import trending from '../../../mocks/trending'
 import videoGalleryMock from '../../../mocks/galleryOfGalleries';
@@ -26,12 +26,14 @@ const homeMiddleware = proxyquire('../../../../app/server/bff/middleware/home', 
 
 describe('Home middleware', () => {
     const config = {
-        services: {remote: {entity: 'http://entitiesUrl.com/'}},
+        services: {remote: {entity: 'http://entitiesUrl.com/'}, module: 'http://module.url'},
         site: {host: 'http://site-host.com'}
     };
     const latestTeasers = { data: ['Teaser 1', 'Teaser 2'] };
     const hero = { name: 'hero' };
-    const entity = { id: 'DOLLY-ID' };
+    const entity = {
+        id: 'DOLLY-ID'
+    };
     const res = {};
     let next;
 
@@ -100,7 +102,6 @@ describe('Home middleware', () => {
                     done();
                 }).catch(done);
             });
-
 
             it('the videoGalleryTeasers should set the contentImageUrl as brightcove image still', (done) => {
 

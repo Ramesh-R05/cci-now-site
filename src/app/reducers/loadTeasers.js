@@ -20,7 +20,7 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 mustRead = [],
                 promoted = { title: '', items: [] }
             } = payload.body;
-            
+
             return {
                 heroTeaser,
                 latestTeasers,
@@ -31,6 +31,7 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
             };
             break;
         case 'LOAD_CONTENT_FAILED':
+
             return {
                 heroTeaser: null,
                 latestTeasers: [],

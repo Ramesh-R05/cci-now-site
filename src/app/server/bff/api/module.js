@@ -18,32 +18,26 @@ export async function getModules(...args) {
             const moduleConfig = find(modules.data, { moduleName: arg });
             if (arg === 'footer') {
                 moduleList[arg] = moduleConfig || {};
-            } 
+            }
             else if (arg === 'promoted') {
                 moduleList[arg] = {};
                 moduleList[arg]['items'] = get(moduleConfig, 'moduleManualContent.data', []);
                 moduleList[arg]['title'] = get(moduleConfig, 'moduleTitle', '');
+            }
+            else if (arg && arg.indexOf('theme') >= 0) {
+                moduleList.theme = moduleConfig;
+            }
+            else if (arg === 'hero') {
+                moduleList[arg] = get(moduleConfig, 'moduleManualContent.data[0]', null);
             }
             else {
                 moduleList[arg] = get(moduleConfig, 'moduleManualContent.data', []);
             }
         });
 
-        if (args.length === 1) {
-            return moduleList[args];
-        } else {
-            return moduleList;
-        }
+        return moduleList;
     } catch(error) {
         logger.log('error', error);
         return {};
-    }
-}
-
-export async function getHeroTeaser() {
-    try {
-        return await getModules('hero').then((module) => Array.isArray(module) ? module[0] : null);
-    } catch (error) {
-        return null;
     }
 }

@@ -36,11 +36,13 @@ export default class Section extends Component {
         list: PropTypes.array,
         listNextParams: PropTypes.object,
         teasers: PropTypes.array.isRequired,
-        title: PropTypes.array.isRequired
+        title: PropTypes.array.isRequired,
+        theme: PropTypes.object
     };
 
     static defaultProps = {
-        teasers: []
+        teasers: [],
+        theme: {}
     };
 
     static contextTypes = {
@@ -60,7 +62,7 @@ export default class Section extends Component {
     }
 
     render() {
-        const { nodeType, teasers, title, currentUrl, shortTitle, summary } = this.props;
+        const { nodeType, teasers, title, currentUrl, shortTitle, summary, theme } = this.props;
         const heroTeaser = teasers[0];
         const firstTeaserList = teasers.slice(1, 7);
         const keyword = nodeType === 'TagSection' && title ? [ title ] : [];
@@ -78,7 +80,8 @@ export default class Section extends Component {
                 currentUrl={currentUrl}
                 headerExpanded={false}
                 pageTitle={pageTitle}
-                headerClassName={headerClassName}>
+                headerClassName={headerClassName}
+                theme={theme}>
                 <div className="section-page">
                     <div className="container">
                         <div className="row">

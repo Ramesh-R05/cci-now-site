@@ -40,6 +40,11 @@ export default createReducerStore({
 
         getMustReadItems(state) {
             return state.mustRead;
+        },
+
+        getModule: (state, module) => {
+            if (!module) return [];
+            return state[module] || [];
         }
     }
 });

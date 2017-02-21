@@ -46,7 +46,7 @@ export default class HeroTeaser extends Component {
 
                 { showPromoted && <Promoted /> }
 
-                { brand ? <div className="hide-for-large-up"><BrandMagazine brand={brand} /> </div> : 
+                { brand ? <div className="hide-for-large-up"><BrandMagazine brand={brand} /> </div> :
                 <div className="hero-wrapper__get-social-container">
                     <span className="hero-wrapper__social-logo">Now To Love</span>
                     <SocialContainer />

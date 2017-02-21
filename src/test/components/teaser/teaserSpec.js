@@ -55,7 +55,7 @@ describe('Component', () => {
 
         it('it should use short title', () => {
             expect(wrapper.find(TeaserTitleStub).prop('title')).to.be.equal("George Clooney's wife takes name -- short");
-        });        
+        });
 
         describe('when there is source field in the article', () => {
             const wrapper = shallow(<Teaser
@@ -66,7 +66,7 @@ describe('Component', () => {
             it('it should find source with correct className to style', () => {
                 const elm = wrapper.find('.hero-teaser__source--australian-women-s-weekly');
                 expect(elm.length).to.be.equal(1);
-                expect(elm.text()).to.contain('Australian women\'s weekly|< />');
+                expect(elm.text()).to.contain('Australian women\'s weekly');
             });
         });
     });

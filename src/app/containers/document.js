@@ -16,8 +16,13 @@ export default class Document extends Component {
     static displayName = 'Document';
 
     static propTypes = {
-        nodeType: PropTypes.string.isRequired
+        nodeType: PropTypes.string.isRequired,
+        theme: PropTypes.object
     };
+
+    static defaultProps = {
+        theme: {}
+    }
 
     static articleContentBodyConfig = {
         disableAds: true,
@@ -49,12 +54,12 @@ export default class Document extends Component {
 
     render() {
 
-        const { content, currentUrl, nodeType } = this.props;
+        const { content, currentUrl, nodeType, theme } = this.props;
 
         if (nodeType === 'Gallery') {
             return (
                     <Gallery
-                        customisedTeaser={Teaser} currentUrl={currentUrl}/>
+                        customisedTeaser={Teaser} currentUrl={currentUrl} theme={theme} />
             );
         }
 
@@ -77,7 +82,8 @@ export default class Document extends Component {
             <Page
                 currentUrl={currentUrl}
                 headerExpanded={false}
-                hideFooter={false}>
+                hideFooter={false}
+                theme={theme}>
                 <Article
                     articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd]}
                     contentBodyConfig={Document.articleContentBodyConfig}
@@ -86,6 +92,7 @@ export default class Document extends Component {
                     showAdBeforeRecommendations={true}
                     showSocialShare={true}
                     socialShare={socialShare}
+                    theme={theme}
                 />
             </Page>
         );

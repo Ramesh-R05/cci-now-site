@@ -20,6 +20,16 @@ describe('App Component', () => {
     const title = 'Title';
     const siteName = 'Dolly';
     const nodeType = 'NodeType';
+    const themeMock = { 
+        id: 'NOW-32655',
+        dateCreated: '2017-02-07T01:27:43.00Z',
+        url: '/modules/hometheme',
+        themeName: 'Confetti',
+        themeColour: '#31c7ce',
+        themeTextColour: '#ffffff',
+        themeImage: 'http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/Now/2017/02/08/32655/recording-(3).gif',
+        themeAlignment: 'center' 
+    };
     let error = null;
 
     Context.addStore('PageStore', {
@@ -31,6 +41,9 @@ describe('App Component', () => {
         },
         getNodeType() {
             return nodeType;
+        },
+        getModule() {
+            return themeMock;
         }
     });
 
@@ -63,7 +76,7 @@ describe('App Component', () => {
         });
 
         it(`should pass appropriate props to the Handler Component`, () => {
-            expect(HandlerComponent.props).to.deep.eq({ currentUrl: currentRoute.url, nodeType })
+            expect(HandlerComponent.props).to.deep.eq({ currentUrl: currentRoute.url, nodeType, theme: themeMock })
         });
 
         it(`should not render the Error Component`, () => {

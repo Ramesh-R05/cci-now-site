@@ -12,6 +12,10 @@ export default function responseBody(req, res, next) {
             headerMetaData: parseHeaderMetaData(req.data.entity, get(req, 'data.headerMetaData', {}))
         };
 
+        if (get(req, 'data.theme')) {
+            res.body.theme = req.data.theme;
+        }
+
         if (get(req, 'data.headernavigation')) {
             res.body.headerNavigation = {
                 items: parseEntities(req.data.headernavigation, { contentTitle: 'name' })
@@ -29,7 +33,6 @@ export default function responseBody(req, res, next) {
         }
 
         if (get(req, 'data.mustread')) {
-
             res.body.mustRead = parseEntities(req.data.mustread, {
                 title: 'title', imageUrl: 'imageUrl', location: 'url'
             });
@@ -50,8 +53,8 @@ export default function responseBody(req, res, next) {
             res.body.moreGalleries = parseEntities(req.data.moreGalleries.data);
         }
 
-        if (get(req, 'data.heroTeaser')) {
-            res.body.heroTeaser = parseEntity(req.data.heroTeaser);
+        if (get(req, 'data.hero')) {
+            res.body.heroTeaser = parseEntity(req.data.hero);
         }
 
         if (get(req, 'data.latestTeasers')) {

@@ -13,7 +13,7 @@ const pageMiddleware = proxyquire('../../../../app/server/bff/middleware/page', 
 
 describe('Page middleware', () => {
     const config = {
-        services: { remote: { entity: 'http://entitiesUrl.com/'}},
+        services: { remote: { entity: 'http://entitiesUrl.com/' } }
     };
     const res = {};
     const validSection = 'fashion';

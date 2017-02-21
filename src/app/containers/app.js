@@ -9,7 +9,8 @@ function mapStateToProps(context) {
     return {
         nodeType: context.getStore('PageStore').getNodeType(),
         error: context.getStore('PageStore').getErrorStatus(),
-        isNavigateComplete: context.getStore('RouteStore').isNavigateComplete()
+        theme: context.getStore('PageStore').getModule('theme'),
+        isNavigateComplete: context.getStore('RouteStore').isNavigateComplete(),
     };
 }
 
@@ -21,6 +22,7 @@ class Application extends Component {
         userAgent: PropTypes.string,
         nodeType: PropTypes.string,
         error: PropTypes.object,
+        theme: PropTypes.object,
         isNavigateComplete: PropTypes.bool
     };
 
@@ -68,7 +70,8 @@ class Application extends Component {
             <div className={className}>
                 <Handler
                     currentUrl={ this.props.currentRoute.url }
-                    nodeType={this.props.nodeType} />
+                    nodeType={this.props.nodeType}
+                    theme={this.props.theme} />
             </div>
         );
     }

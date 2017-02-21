@@ -2,6 +2,7 @@ import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 import has from 'lodash/object/has';
 import { getLatestTeasers } from '../api/listing';
+import makeRequest from '../../makeRequest';
 import { parseEntities } from '../helper/parseEntity';
 const latestTeaserCount = 7;
 const listCount = 14;

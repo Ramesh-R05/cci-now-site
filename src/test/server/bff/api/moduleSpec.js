@@ -20,6 +20,9 @@ describe(`Module API`, () => {
     describe(`#getModules`, () => {
         let footerModuleData;
         let headerModuleData;
+        let themeModuleData;
+        let heroModuleData;
+        let expectedHeroData;
 
         describe(`when passing no arguments`, () => {
             it(`should return an empty object`, (done) => {
@@ -30,90 +33,7 @@ describe(`Module API`, () => {
             });
         });
 
-        describe(`when passing 1 argument`, () => {
-            afterEach(() => {
-                footerModuleData = null;
-            });
-
-            describe(`and the response returns an empty object`, () => {
-                beforeEach(() => {
-                    headerModuleData = [];
-                    makeRequestStub = sinon.stub().resolves([]);
-                });
-
-                it(`should return an empty array`, (done) => {
-                    moduleApi.getModules('header').then((modules) => {
-                        expect(makeRequestStub).to.have.been.calledWith(`${remoteModuleUrl}/header`);
-                        expect(modules).to.deep.eq(headerModuleData);
-                        done();
-                    }).catch(done);
-                });
-            });
-
-            describe(`and the response returns an object with an array of data`, () => {
-                describe(`and there is no moduleName that matches what is expected`, () => {
-                    beforeEach(() => {
-                        headerModuleData = [];
-                        makeRequestStub = sinon.stub().resolves({ data: [ { moduleName: 'header' } ] });
-                    });
-
-                    it(`should return an empty array`, (done) => {
-                        moduleApi.getModules('header').then((modules) => {
-                            expect(modules).to.deep.eq(headerModuleData);
-                            done();
-                        }).catch(done);
-                    });
-                });
-
-                describe(`and there is a moduleName that matches the arg being passed`, () => {
-                    describe(`and there is no moduleManualContent property`, () => {
-                        beforeEach(() => {
-                            headerModuleData = [];
-                            makeRequestStub = sinon.stub().resolves({ data: [ { moduleName: 'header' } ] });
-                        });
-
-                        it(`should return an empty array`, (done) => {
-                            moduleApi.getModules('header').then((modules) => {
-                                expect(modules).to.deep.eq(headerModuleData);
-                                done();
-                            }).catch(done);
-                        });
-                    });
-
-                    describe(`and there is a moduleManualContent with a data property`, () => {
-                        beforeEach(() => {
-                            footerModuleData = { moduleName: 'footer', moduleManualContent: { data: ['footer 1', 'footer 2'] } };
-                            makeRequestStub = sinon.stub().resolves({
-                                data: [ footerModuleData ]
-                            });
-                        });
-
-                        it(`should return the footer data`, (done) => {
-                            moduleApi.getModules('footer').then((modules) => {
-                                expect(modules).to.deep.eq(footerModuleData);
-                                done();
-                            }).catch(done);
-                        });
-                    });
-                });
-            });
-
-            describe(`and the response from the module service returns an error`, () => {
-                beforeEach(() => {
-                    footerModuleData = ['footer 1', 'footer 2'];
-                    makeRequestStub = sinon.stub().rejects({});
-                });
-
-                it(`should return an empty object`, (done) => {
-                    moduleApi.getModules('footer').then((modules) => {
-                        expect(modules).to.deep.eq({});
-                        done();
-                    }).catch(done);
-                });
-            });
-        });
-
-        describe(`when passing 2 argument`, () => {
+        describe(`when passing 2 arguments`, () => {
             afterEach(() => {
                 footerModuleData = null;
                 headerModuleData = null;
@@ -169,56 +89,70 @@ describe(`Module API`, () => {
                         it(`should return an object which contains the data for both footer and header`, (done) => {
                             moduleApi.getModules('footer', 'header').then((modules) => {
                                 expect(modules).to.deep.eq({footer: footerModuleData, header: headerModuleData});
+                                expect(modules).to.not.have.property('traveltheme');
                                 done();
                             }).catch(done);
                         });
                     });
                 });
-            });
-        });
-    });
 
-    describe(`#getHeroTeaser`, () => {
-        const heroItems = ['test1', 'test2'];
-        let getModulesStub;
+                describe(`and there is a moduleName that contains 'theme'`, () => {
+                    beforeEach(() => {
+                        footerModuleData = {};
+                        themeModuleData = { moduleName: 'traveltheme' };
+                        makeRequestStub = sinon.stub().resolves({
+                            data: [
+                                themeModuleData
+                            ]
+                        });
+                    });
 
-        afterEach(() => {
-            moduleApi.getModules.restore();
-        });
-
-        describe(`when getModules returns a valid array`, () => {
-            beforeEach(() => {
-                getModulesStub = sinon.stub(moduleApi, 'getModules').resolves(heroItems);
-            });
-
-            it('should return the first item in the response', () => {
-                moduleApi.getHeroTeaser().then((resp) => {
-                    expect(getModulesStub).to.have.been.calledWith('hero');
-                    expect(resp).to.eq(heroItems[0]);
+                    it(`should return an object which contains the data for traveltheme`, (done) => {
+                        moduleApi.getModules('traveltheme', 'footer').then((modules) => {
+                            expect(modules).to.deep.eq({theme: themeModuleData, footer: footerModuleData});
+                            done();
+                        }).catch(done);
+                    });
                 });
-            });
-        });
 
-        describe(`when getModules returns an object response`, () => {
-            beforeEach(() => {
-                getModulesStub = sinon.stub(moduleApi, 'getModules').resolves({});
-            });
+                describe(`and there is a moduleName equal to 'hero'`, () => {
+                    describe(`and there is heroModule data `, () => {
+                        before(() => {
+                            footerModuleData = {};
+                            heroModuleData = { moduleName: 'hero', moduleManualContent: { data: [ { id: "NOW-19532" } ] } };
+                            expectedHeroData = { id: 'NOW-19532' };
+                            makeRequestStub = sinon.stub().resolves({
+                                data: [
+                                    heroModuleData
+                                ]
+                            });
+                        });
 
-            it('should return null', () => {
-                moduleApi.getHeroTeaser().then((resp) => {
-                    expect(resp).to.eq(null);
-                });
-            });
-        });
+                        it(`should return an object which contains the data for hero`, (done) => {
+                            moduleApi.getModules('hero', 'footer').then((modules) => {
+                                expect(modules).to.deep.eq({ hero: expectedHeroData, footer: {} });
+                                done();
+                            }).catch(done);
+                        });
+                    });
 
-        describe(`when getModules returns an error`, () => {
-            beforeEach(() => {
-                getModulesStub = sinon.stub(moduleApi, 'getModules').rejects({});
-            });
+                    describe(`and there is no heroModule data `, () => {
+                        before(() => {
+                            heroModuleData = { moduleName: 'hero', moduleManualContent: { data: [] } };
+                            makeRequestStub = sinon.stub().resolves({
+                                data: [
+                                    heroModuleData
+                                ]
+                            });
+                        });
 
-            it('should return null', () => {
-                moduleApi.getHeroTeaser().then((resp) => {
-                    expect(resp).to.eq(null);
+                        it(`should return null`, (done) => {
+                            moduleApi.getModules('hero', 'footer').then((modules) => {
+                                expect(modules).to.deep.eq({ hero: null, footer: {} });
+                                done();
+                            }).catch(done);
+                        });
+                    });
                 });
             });
         });

@@ -14,7 +14,7 @@ describe(`loadPage Reducer`, () => {
 
         describe(`when the payload contains the navigation items within the body object`, () => {
             it(`should return the new items`, () => {
-                expect(reducer(initialState, payload)).to.deep.eq({
+                expect(reducer(initialState, payload)).to.contain.all.keys({
                     error: null,
                     footer: payload.body.footer,
                     nodeType: payload.body.entity.nodeType,
@@ -27,7 +27,7 @@ describe(`loadPage Reducer`, () => {
             });
 
             it(`should still return the new items `, () => {
-                expect(reducer(initialState, {body}, 'LOAD_CONTENT')).to.deep.eq({
+                expect(reducer(initialState, {body}, 'LOAD_CONTENT')).to.contain.all.keys({
                     error: null,
                     footer: payload.body.footer,
                     nodeType: payload.body.entity.nodeType,
@@ -72,7 +72,8 @@ describe(`loadPage Reducer`, () => {
                 nodeType: '',
                 title: '',
                 trendingItems: [],
-                magazineImageUrl: ''
+                magazineImageUrl: '',
+                theme: ''
             });
         });
 
@@ -84,7 +85,8 @@ describe(`loadPage Reducer`, () => {
                 nodeType: '',
                 title: '',
                 trendingItems: [],
-                magazineImageUrl: ''
+                magazineImageUrl: '',
+                theme: ''
             });
         });
     });

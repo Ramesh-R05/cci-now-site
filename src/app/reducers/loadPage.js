@@ -27,7 +27,8 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 summary: entity.summary,
                 trendingItems,
                 footer,
-                magazineImageUrl: entity.imageUrl
+                magazineImageUrl: entity.imageUrl,
+                theme: payload.body.theme
             };
             break;
         case 'LOAD_CONTENT_FAILED':
@@ -40,7 +41,8 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 title: '',
                 trendingItems: [],
                 footer: get(payload, 'response.body.footer', {}),
-                magazineImageUrl: ''
+                magazineImageUrl: '',
+                theme: ''
             };
             break;
         default:

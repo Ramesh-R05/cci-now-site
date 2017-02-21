@@ -23,6 +23,14 @@ import Footer from '../components/footer';
 class GallerySection extends Component {
     static headerHeight = 65;
 
+    static propTypes = {
+        theme: PropTypes.object
+    }
+
+    static defaultProps = {
+        theme: {}
+    }
+
     static contextTypes = {
         config: PropTypes.object,
         getStore: PropTypes.func,
@@ -116,7 +124,7 @@ class GallerySection extends Component {
     };
 
     render() {
-        const { gallery, hamburgerNavItems, headerNavItems, customisedTeaser } = this.props;
+        const { gallery, hamburgerNavItems, headerNavItems, customisedTeaser, theme } = this.props;
         if(!gallery) return null;
 
         const shareDescription = (gallery.summary || gallery.title || "");
@@ -141,7 +149,8 @@ class GallerySection extends Component {
                         isExpanded={this.props.headerExpanded}
                         navItems={this.props.headerNavItems}
                         siteName={this.context.config.get('site.name')}
-                        toggleMenu={this.toggleMenu} />
+                        toggleMenu={this.toggleMenu}
+                        theme={theme} />
 
                     <Ad
                         className="gallery__mobile-ad"

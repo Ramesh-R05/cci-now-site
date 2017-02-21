@@ -4,6 +4,7 @@ var site_navigation_widget = {
     siteNavSection: "nav.header-nav__nav",
     siteNavSectionDetail: "nav.header-nav__nav a",
     siteNavActiveLink: ".header-nav__nav > a.nav-item.nav-item--active",
+    siteNavHeaderBackground: "header.header",
     siteNavHeader: ".header__sections",
     siteNavHeaderLogo: ".header__sections .header-logo a",
     siteHamburgerDetail: "nav.mobile-menu__nav a",
