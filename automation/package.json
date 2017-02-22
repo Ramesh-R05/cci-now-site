@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "test:high": "bash -c \"./node_modules/.bin/chimp chimp.js --jsonOutput=reports/regression.json --tags=@now --tags=@high\" && npm run html_report",
-    "test:med": "bash -c \"./node_modules/.bin/chimp chimp.js --jsonOutput=reports/regression.json --tags=@now --tags=@med\" && npm run html_report",
-    "test:low": "bash -c \"./node_modules/.bin/chimp chimp.js --jsonOutput=reports/regression.json --tags=@now --tags=@low\" && npm run html_report",
-    "all:test": "bash -c \"./node_modules/.bin/chimp chimp.js --jsonOutput=reports/regression.json --tags=@now\"",
+    "test:high": "bash -c \"./node_modules/.bin/chimp chimp.js --format=rerun:@rerun.txt --jsonOutput=reports/regression.json --tags=@now --tags=@high && npm run html_report\"",
+    "test:med": "bash -c \"./node_modules/.bin/chimp chimp.js --format=rerun:@rerun.txt --jsonOutput=reports/regression.json --tags=@now --tags=@med && npm run html_report\"",
+    "test:low": "bash -c \"./node_modules/.bin/chimp chimp.js --format=rerun:@rerun.txt --jsonOutput=reports/regression.json --tags=@now --tags=@low && npm run html_report\"",
+    "all:test": "bash -c \"./node_modules/.bin/chimp chimp.js --format=rerun:@rerun.txt --jsonOutput=reports/regression.json --tags=@now\"",
     "single": "bash -c \"./node_modules/.bin/chimp chimp.js --jsonOutput=reports/regression.json\"",
     "once": "npm run single",
     "html_report": "bash -c \"node generate_html.js\"",
@@ -18,7 +18,9 @@
     "now:automation": "bash -c \"export URL= && export APP_KEY=now-site && export APP_ENV=automation && npm run all:test\"",
     "now:automation:high": "bash -c \"export URL= && export APP_KEY=now-site && export APP_ENV=automation && npm run high:test\"",
     "share:live": "bash -c \"./node_modules/.bin/chimp chimp.js --tags=@livesharerepo --jsonOutput=reports/regression.json && npm run html_report\"",
-    "general:live": "bash -c \"./node_modules/.bin/chimp chimp.js --tags=@live --jsonOutput=reports/regression.json && npm run html_report\""
+    "general:live": "bash -c \"./node_modules/.bin/chimp chimp.js --tags=@live --jsonOutput=reports/regression.json && npm run html_report\"",
+    "phantom": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --jsonOutput=reports/regression.json --tags=@now --tags=@high\" && npm run html_report",
+    "test:phantom": "export URL=http://dev-site-now-au-140875160.ap-southeast-2.elb.amazonaws.com/ && export APP_KEY=now-site && npm run phantom"
   },
   "dependencies": {
     "@bxm/automation": "^1.0.0",

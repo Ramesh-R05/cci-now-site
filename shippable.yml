@@ -1,0 +1,62 @@
+# language setting
+build_environment: Ubuntu 12.04
+language: node_js
+node_js: "6.1.0"
+
+env:
+  global:
+    - APP_ENV=stubbed
+    - APP_KEY=now-site
+    - IMAGE=317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site
+    - XUNIT_FILE=$SHIPPABLE_BUILD_DIR/shippable/testresults/result.xml # location to store test results
+
+build:
+  cache: true
+  cache_dir_list:
+    - $SHIPPABLE_BUILD_DIR/src/node_modules
+  ci:
+    - npm set registry http://npm.digital.bauer-media.net.au
+    - node --version
+    - mkdir -p ./shippable/testresults ./shippable/codecoverage ./shippable/buildoutput
+    - echo $BUILD_NUMBER > ~/buildConfig.txt
+    - cd src
+    - npm install
+    - npm run build
+    - npm run test:ci
+    - cd ..
+  post_ci:
+    - ./src/node_modules/.bin/babel-istanbul report cobertura --dir  ./shippable/codecoverage/
+    - docker --version
+    - docker build -f Dockerfile.ecs -t $IMAGE:$BUILD_NUMBER --label build-number=$BUILD_NUMBER .
+    - docker tag -f $IMAGE:$BUILD_NUMBER $IMAGE:latest
+  push:
+    - docker push $IMAGE:$BUILD_NUMBER
+    - docker push $IMAGE:latest
+
+branches:
+  only:
+    - master
+
+#Integration and Notifications
+integrations:
+  hub:
+    - integrationName: AWS-digital-services-ECR
+      type: ecr
+      region: ap-southeast-2
+
+  notifications:
+    - integrationName: triggerNowSitePipeline
+      type: webhook
+      payload:
+        - versionName=$BUILD_NUMBER
+      on_success: always
+      on_failure: never
+    - integrationName: slack-bauerxcelmedia
+      type: slack
+      recipients:
+        - "au-shippable"
+      branches:
+        only:
+          - master
+      on_success: always
+      on_failure: always
