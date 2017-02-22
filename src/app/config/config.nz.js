@@ -1,4 +1,10 @@
 export default {
+	site: {
+		host: 'http://dev.nznow-site.bauer-media.net.au',
+		prodDomain: 'www.nowtolove.co.nz',
+		prefix: 'NZNOW',
+	},
+
 	services: {
 		remote: {
 			entity: 'http://dev.entities.services.bauer-media.internal/v1/nznow',
@@ -9,6 +15,7 @@ export default {
 			tag: 'http://dev.tags.services.bauer-media.internal/v1/nznow'
 		}
 	},
+	
 	brands: {
 		uniheader: [
 			{
