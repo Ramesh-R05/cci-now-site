@@ -168,5 +168,15 @@ export default {
         shortSources: {
             "Australian Women's Weekly": 'AWW'
         }
+    },
+    features: {
+        outbrain: {
+            enabled: true
+        }
+    },
+    outbrain: {
+        templateId: 'NowtoLove',
+        widgetId: 'AR_1',
+        scriptUrl: 'http://widgets.outbrain.com/outbrain.js'
     }
 }

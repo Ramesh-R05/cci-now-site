@@ -4,7 +4,6 @@ export default {
 		prodDomain: 'www.nowtolove.co.nz',
 		prefix: 'NZNOW',
 	},
-
 	services: {
 		remote: {
 			entity: 'http://dev.entities.services.bauer-media.internal/v1/nznow',
@@ -15,7 +14,6 @@ export default {
 			tag: 'http://dev.tags.services.bauer-media.internal/v1/nznow'
 		}
 	},
-	
 	brands: {
 		uniheader: [
 			{
@@ -79,5 +77,10 @@ export default {
 		        }
 		    }
 		]
-	}
+	},
+    features: {
+        outbrain: {
+            enabled: false
+        }
+    }
 }

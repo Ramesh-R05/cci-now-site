@@ -22,7 +22,7 @@ export default class Document extends Component {
 
     static defaultProps = {
         theme: {}
-    }
+    };
 
     static articleContentBodyConfig = {
         disableAds: true,

@@ -45,7 +45,6 @@ describe('Document Component', () => {
                 type: 'Ad',
                 config: Document.headerAdConfig
             };
-            const themeMock = {}
             const socialShare = {
                 facebook: true,
                 pinterest: true
@@ -59,7 +58,7 @@ describe('Document Component', () => {
                 CustomisedTeaser: CustomisedTeaserStub,
                 showSocialShare: true,
                 socialShare: socialShare,
-                theme: themeMock
+                theme: {}
             });
         });
 

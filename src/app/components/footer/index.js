@@ -34,8 +34,8 @@ export default class Footer extends Component {
                         <span className="home-page__social-logo">Now To Love</span>
                         <SocialContainer />
                     </div>
-                    <FooterSubscribe 
-                        url={`${config.get('newsletterIframeUrl')}!${iframeKey}`} 
+                    <FooterSubscribe
+                        url={`${config.get('newsletterIframeUrl')}!${iframeKey}`}
                         content={config.get('subscribe')}
                         isDisplayed={false}
                     />
