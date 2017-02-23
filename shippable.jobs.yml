@@ -32,7 +32,7 @@ jobs:
             image: now-site-img
             port: 3001
       - TASK: managed
-        deployMethod: upgrade
+        deployMethod: blueGreen
 
 # Test Dev site
   - name: now-site-dev-automation-test
@@ -58,10 +58,11 @@ jobs:
   - name: now-site-staging-release
     type: release
     steps:
+      - IN: now-site-dev-automation-test
       - IN: now-site-version
-#        switch: off
+        switch: off
       - IN: now-site-dev-deploy
-#        switch: off
+        switch: off
       - TASK: managed
         bump: minor
 
@@ -72,7 +73,7 @@ jobs:
       - NOTIFY: slack-notifications
     steps:
       - IN: now-site-staging-release
-        #switch: off - if we don't want to autodeploy.
+        switch: off # comment out if we want to autodeploy.
       - IN: env-staging-ecs
       - IN: now-site-staging-deploy-trigger
       - IN: now-site-params-staging
@@ -84,4 +85,4 @@ jobs:
             image: now-site-img
             port: 3001
       - TASK: managed
-        deployMethod: upgrade
+        deployMethod: blueGreen

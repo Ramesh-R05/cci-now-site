@@ -43,7 +43,7 @@ Feature: Footer
             |tablet portrait   |
             |tablet landscape  |
 
-    @high
+    @high @must
     Scenario Outline: Verify the footer appearing on the "<page>" page
         Given I switch to "desktop" view
         When I am currently viewing "<url>"

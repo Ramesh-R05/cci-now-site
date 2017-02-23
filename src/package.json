@@ -12,7 +12,6 @@
     "prepush": "npm run lint:scss && npm test",
     "clean": "rimraf dist/ coverage/ .build/ && mkdirp dist/scripts dist/styles .build/",
     "start": "node ./start.js",
-    "test:ci": "npm run test -- --reporter=xunit-file",
     "test": "babel-node ./node_modules/babel-istanbul/lib/cli cover --root ./ --include-all-sources --report teamcity --report cobertura --report html ./node_modules/mocha/bin/_mocha -- --require ./test/setup.js --recursive --check-leaks",
     "test:ci": "npm run test -- --reporter=xunit-file",
     "test:tdd": "mocha --require babel-polyfill --require babel-register --recursive --check-leaks --watch",

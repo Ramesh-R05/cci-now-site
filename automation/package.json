@@ -19,7 +19,7 @@
     "now:automation:high": "bash -c \"export URL= && export APP_KEY=now-site && export APP_ENV=automation && npm run high:test\"",
     "share:live": "bash -c \"./node_modules/.bin/chimp chimp.js --tags=@livesharerepo --jsonOutput=reports/regression.json && npm run html_report\"",
     "general:live": "bash -c \"./node_modules/.bin/chimp chimp.js --tags=@live --jsonOutput=reports/regression.json && npm run html_report\"",
-    "phantom": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --jsonOutput=reports/regression.json --tags=@now --tags=@high\" && npm run html_report",
+    "phantom": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --jsonOutput=reports/regression.json --tags=@now --tags=@must\" && npm run html_report",
     "test:phantom": "export URL=http://dev-site-now-au-140875160.ap-southeast-2.elb.amazonaws.com/ && export APP_KEY=now-site && npm run phantom"
   },
   "dependencies": {
