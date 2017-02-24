@@ -32,7 +32,7 @@ export default class Footer extends Component {
                 <footer className={classNames}>
                     <div className="home-page__get-social-container">
                         <span className="home-page__social-logo">Now To Love</span>
-                        <SocialContainer />
+                        <SocialContainer socialUrls={config.urls.socialUrls}/>
                     </div>
                     <FooterSubscribe
                         url={`${config.get('newsletterIframeUrl')}!${iframeKey}`}
