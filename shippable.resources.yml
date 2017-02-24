@@ -46,7 +46,7 @@ resources:
   - name: now-site-alb-dev
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/dev-site-now-au/440e2f8716fd2a53"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:loadbalancer/app/dev-site-now-au/03c8a6b927fe4633"
       method: application
 
 # TO BE UPDATED
@@ -86,7 +86,7 @@ resources:
   - name: now-site-alb-staging
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/staging-site-now-au/3dcf98db5e9f2e31"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:loadbalancer/app/staging-site-now-au/92a230badb407926"
       method: application
 
   - name: now-site-replicas-staging

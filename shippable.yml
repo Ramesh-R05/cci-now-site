@@ -24,7 +24,6 @@ build:
     - npm run build
     - npm run test:ci
     - cd ..
-    - echo "versionName=$BRANCH.$BUILD_NUMBER" >> $JOB_STATE/now-site-img.env
   post_ci:
     - ./src/node_modules/.bin/babel-istanbul report cobertura --dir  ./shippable/codecoverage/
     - docker --version
