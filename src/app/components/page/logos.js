@@ -15,7 +15,7 @@ export default class Logos extends Component {
         const html = this.props.logoList.map((item, i) => {
             const gtmClassName = `gtm-${this.props.gtmPrefix || this.props.className}-${item.id}`;
 
-            const imgClassName = `${this.props.className}__logo--${item.title}`
+            const imgClassName = `${this.props.className}__logo--${item.id}`
                 .replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g, '')
                 .replace(/ /g, '-')
                 .toLowerCase();

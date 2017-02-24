@@ -29,12 +29,20 @@ describe(`Footer`, () => {
             subscribeText: 'Subscribe to our homes mags to gain access to more inspiring homes and gardens, plus renovating, decorating, food and travel stories.',
             subscribeUrl: 'https://www.magshop.com.au/store/homestolove'
         },
-        newsletterIframeUrl: 'https://iframe.url.com'
+        newsletterIframeUrl: 'https://iframe.url.com',
+        urls: { 
+            footerUrls: {
+                privacy: "http://www.bauer-media.com.au/privacy",
+                advertise: "http://www.bauer-media.com.au/advertising/advertise-with-us",
+                terms: "http://www.bauer-media.com.au/terms/website-terms"
+            }
+        }
     };
     const contextConfigStub = {
         key: 'config',
         type: '',
         value: {
+            urls: configData.urls,
             get(arg) {
                 if ( arg === 'subscribe') return configData.subscribe;
                 if ( arg === 'newsletterIframeUrl') return configData.newsletterIframeUrl

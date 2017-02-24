@@ -45,7 +45,7 @@ export default class Footer extends Component {
                             <Logos className="footer__logos-list" openInNewTab={true} logoList={logoList}/>
                         </nav>
                     </div>
-                    <FooterNavigation />
+                    <FooterNavigation footerUrls={config.urls.footerUrls}/>
                     <div className="footer__copyright">
                         <span>&copy; Copyright Bauer Media Pty Ltd All Rights Reserved</span>
                     </div>

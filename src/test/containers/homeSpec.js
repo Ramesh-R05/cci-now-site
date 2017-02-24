@@ -40,7 +40,14 @@ describe('Home Container', () => {
         key: 'config',
         type: '',
         value: {
-            polar: polarConfig.polarSetting
+            polar: polarConfig.polarSetting,
+            urls: {
+                socialUrls: {
+                    facebookUrl: 'https://www.facebook.com/nowtolovenz',
+                    twitterUrl: 'https://twitter.com/NowToLovenz',
+                    instagramUrl: 'https://www.instagram.com/NowToLovenz'
+                }
+            }
         }
     };
 

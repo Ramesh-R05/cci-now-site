@@ -142,7 +142,7 @@
 
         img {
             &.mobile-menu-list__logo {
-                &--homes-to-love {
+                &--homes {
                     width: 220px;
                     height: auto;
                     margin-right: 11px;
@@ -151,7 +151,8 @@
                         width: 210px;
                     }
                 }
-                &--food-to-love {
+                
+                &--food {
                     width: 90px;
                     height: 36px;
 
@@ -161,6 +162,7 @@
                         margin-left: 4px;
                     }
                 }
+
                 &--elle {
                     width: 72px;
                     height: 29px;
@@ -171,7 +173,8 @@
                         height: 26px;
                     }
                 }
-                &--harpers-bazaar {
+
+                &--harpers {
                     width: 100px;
                     height: 30px;
 
@@ -181,7 +184,8 @@
                         height: 30px;
                     }
                 }
-                &--gourmet-traveller {
+
+                &--gt {
                     width: 99px;
                     height: 31px;
                     padding-top: 2px;
@@ -192,7 +196,8 @@
                         margin-left: -3px;
                     }
                 }
-                &--cosmopolitan {
+
+                &--cosmo {
                     width: 130px;
                     height: 24px;
 
@@ -201,6 +206,7 @@
                         height: 22px;
                     }
                 }
+
                 &--dolly {
                     width: 113px;
                     height: 25px;
@@ -212,7 +218,8 @@
                         margin-top: 7px;
                     }
                 }
-                &--beauty-heaven {
+
+                &--beautyheaven {
                     width: 113px;
                     height: auto;
 
@@ -221,6 +228,28 @@
                         margin-left: 3px;
                         margin-top: 7px;
                     }
+                }
+
+                &--nzhomes {
+                    max-height: 57px;
+                }
+
+                &--nzfood {
+                    height: 36px;
+                }
+
+                &--missfq {
+                    max-height: 41px;
+                    margin-right: 100px;
+                }
+
+                &--fq {
+                    max-height: 37px;
+                    margin-right: 100px;
+                }
+
+                &--noted {
+                    max-height: 32px;
                 }
             }
         }

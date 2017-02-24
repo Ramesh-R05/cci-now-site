@@ -1,4 +1,18 @@
 export default {
+    urls: {
+        footerUrls: {
+            privacy: "http://www.bauer-media.com.au/privacy",
+            advertise: "http://www.bauer-media.com.au/advertising/advertise-with-us",
+            terms: "http://www.bauer-media.com.au/terms/website-terms"
+        },
+
+        socialUrls: {
+            facebookUrl: 'https://www.facebook.com/nowtolove',
+            twitterUrl: 'https://twitter.com/NowToLove',
+            instagramUrl: 'https://www.instagram.com/NowToLove'
+        }
+    },
+
     brands: {
         uniheader: [
             {

@@ -50,7 +50,6 @@ export default class Home extends Component {
     };
 
     componentDidMount() {
-
         this.setState({
             bottomElm: this.refs.bottom,
             topElm: this.refs.top
@@ -108,7 +107,7 @@ export default class Home extends Component {
                                                         targets={{position: 1}} />
                                                     <div className="page__get-social-container">
                                                         <span className="page__social-logo">Now To Love</span>
-                                                        <SocialContainer />
+                                                        <SocialContainer socialUrls={this.context.config.urls.socialUrls}/>
                                                     </div>
                                                 </StickyAndDockAd>
                                             </div>

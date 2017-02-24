@@ -44,11 +44,45 @@
 
                 img.uniheader__logo--nw:not(:hover), 
                 img.uniheader__logo--yours:not(:hover), 
-                img.uniheader__logo--take-5:not(:hover),
-                img.uniheader__logo--ok-magazine:not(:hover),
-                img.uniheader__logo--tv-week:not(:hover) {
+                img.uniheader__logo--take5:not(:hover),
+                img.uniheader__logo--ok:not(:hover),
+                img.uniheader__logo--tvweek:not(:hover) {
                     filter: grayscale(1) opacity(0.6); 
                 }
+
+                img.uniheader__logo-- {
+                    &nzww {
+                        max-height: 20px;
+                    }
+
+                    &awwnz {
+                        max-height: 37px;
+                    }
+
+                    &next {
+                        max-height: 18px;
+                    }
+
+                    &nzwd {
+                        max-height: 23px;
+                        padding-top: 2px;   
+                    }
+
+                    &nzgh {
+                        max-height: 33px;
+                        padding-top: 8px;
+                    }
+
+                    &nadia {
+                        max-height: 33px;
+                        padding-bottom: 9px;
+                    }
+
+                    &simply {
+                        max-height: 24px;
+                    }
+                }
+
             }
 
             li:first-child a {

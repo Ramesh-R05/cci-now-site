@@ -9,21 +9,42 @@ const FooterNavigation = proxyquire('../../../app/components/footer/footerNaviga
 }).default;
 
 const nbAnchors = 4;
+const footerUrls = {
+    privacy: "http://www.testurl.com/privacy",
+    advertise: "http://www.testurl.com/advertise",
+    terms: "http://www.testurl.com/terms"
+}
 
 describe(`FooterNavigation`, () => {
     let reactModule;
     let anchors;
+    let anchorHrefs;
 
-    before(() => {
-        reactModule = Context.mountComponent(FooterNavigation);
-        anchors = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, `a`);
-    });
+    describe(`rendering footer without props`, () => {
+        before(() => {
+            reactModule = Context.mountComponent(FooterNavigation);
+            anchors = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, `a`);
+        });
 
-    it(`should render the FooterNavigation Component`, () => {
-        expect(ReactDOM.findDOMNode(reactModule)).to.exist;
-    });
+        it(`shouldnt render the FooterNavigation Component`, () => {
+            expect(ReactDOM.findDOMNode(reactModule)).to.eq(null);
+        });
+    })
+    
+    describe(`rendering footer with props`, () => {
+        before(() => {
+            reactModule = Context.mountComponent(FooterNavigation, {footerUrls});
+            anchors = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, `a`);
+        });
 
-    it(`should render ${nbAnchors} Anchors`, () => {
-        expect(anchors.length).to.eq(nbAnchors);
-    });
+        it(`should render default anchor urls if nothing is passed`, () => {
+            anchorHrefs = [];
+            anchors.forEach((a) => {
+                anchorHrefs.push(a.props.href);
+            });
+
+            expect(anchorHrefs).to.deep.eq(["http://www.testurl.com/privacy", "http://www.testurl.com/advertise", "http://www.testurl.com/terms", "/contact-us"]);
+        });    
+    })
+
 });

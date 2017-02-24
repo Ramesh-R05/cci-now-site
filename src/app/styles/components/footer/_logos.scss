@@ -21,8 +21,39 @@
             margin-bottom: 0;
             padding: 0;
             
-            &__logo--shop-til-you-drop {
+            &__logo--shop {
                 padding-bottom: 7px; 
+            }
+
+            &__logo--nzww {
+                max-height: 17px;
+            }
+
+            &__logo--awwnz {
+                max-height: 37px;
+            }
+
+            &__logo--next {
+                max-height: 18px;
+            }
+
+            &__logo--nzwd {
+                max-height: 21px;
+                padding-top: 2px;   
+            }
+
+            &__logo--nzgh {
+                max-height: 36px;
+                padding-top: 8px;
+            }
+
+            &__logo--nadia {
+                max-height: 33px;
+                padding-bottom: 9px;
+            }
+
+            &__logo--simply {
+                max-height: 24px;
             }
         }
 

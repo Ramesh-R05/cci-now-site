@@ -1,18 +1,25 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 
 export default class FooterNavigation extends Component {
+
+    static propTypes = {
+        footerUrls: PropTypes.object.isRequired
+    };
+
     render() {
+        if (!this.props.footerUrls) return null;
+        const { privacy, advertise, terms } = this.props.footerUrls;
         return (
             <nav className="footer__navigation" role="contentinfo">
                 <ul>
                     <li>
-                        <a href="http://www.bauer-media.com.au/privacy" target="_blank">Privacy Policy</a>
+                        <a href={privacy} target="_blank">Privacy Policy</a>
                     </li>
                     <li>
-                        <a href="http://www.bauer-media.com.au/advertising/advertise-with-us" target="_blank">Advertise</a>
+                        <a href={advertise} target="_blank">Advertise</a>
                     </li>
                     <li>
-                        <a href="http://www.bauer-media.com.au/terms/website-terms" target="_blank">Terms of Use</a>
+                        <a href={terms} target="_blank">Terms of Use</a>
                     </li>
                     <li>
                         <a href="/contact-us">Contact Us</a>
