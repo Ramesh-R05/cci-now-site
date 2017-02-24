@@ -99,6 +99,16 @@ resources:
     type: params
     version:
       params:
+        NODE_REGION: "au"
+        NODE_ENV: "dev"
+        ENV: "staging"
+
+  # TO BE UPDATED
+  - name: nz-now-site-params-staging
+    type: params
+    version:
+      params:
+        NODE_REGION: "nz"
         NODE_ENV: "dev"
         ENV: "staging"
 
@@ -112,6 +122,17 @@ resources:
           awslogs-group: "staging_app_ecs"
           awslogs-region: "ap-southeast-2"
           awslogs-stream-prefix: "app-now-site"
+
+# Docker Image Options
+  - name: now-site-opts-staging
+    type: dockerOptions
+    version:
+      logConfig:
+        type: awslogs
+        options:
+          awslogs-group: "staging_app_ecs"
+          awslogs-region: "ap-southeast-2"
+          awslogs-stream-prefix: "app-nznow-site"
 #
 # PRODUCTION environment configuration (TO BE DONE)
 #

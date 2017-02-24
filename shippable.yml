@@ -9,9 +9,6 @@ env:
     - APP_KEY=now-site
     - IMAGE=317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site
     - XUNIT_FILE=$SHIPPABLE_BUILD_DIR/shippable/testresults/result.xml # location to store test results
-  matrix:
-    - NODE_REGION=
-    - NODE_REGION=nz
 
 build:
   cache: true
@@ -27,6 +24,7 @@ build:
     - npm run build
     - npm run test:ci
     - cd ..
+    - echo "versionName=latest" >> $JOB_STATE/now-site-img.env
   post_ci:
     - ./src/node_modules/.bin/babel-istanbul report cobertura --dir  ./shippable/codecoverage/
     - docker --version
