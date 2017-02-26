@@ -32,6 +32,9 @@ const contextConfigStub = {
     key: 'config',
     type: '',
     value: {
+        urls: {
+            socialUrls: {}
+        },
         brands: {
             uniheader: [
             {

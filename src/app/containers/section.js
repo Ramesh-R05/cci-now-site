@@ -116,7 +116,7 @@ export default class Section extends Component {
                                                 { isBrandPage? <BrandMagazine brand={brand}/> :
                                                 <div className="page__get-social-container">
                                                     <span className="page__social-logo">Now To Love</span>
-                                                    <SocialContainer />
+                                                    <SocialContainer socialUrls={this.context.config.urls.socialUrls}/>
                                                 </div> }
                                             </StickyAndDockAd>
                                         </div>
