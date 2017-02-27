@@ -32,9 +32,9 @@ export default {
 	        "socialLinks": {
 	            "facebookUrl": "https://www.facebook.com/nextmagazine/",
 	            "twitterUrl": "https://twitter.com/nextmagazinenz",
-	            "instagramUrl": "https://www.instagram.com/awwmagazine"
+	            "instagramUrl": "https://www.instagram.com/nextmagazinenz/"
 	        }
-	    },  
+	    },
 	    {
 	        "id": "nzwd",
 	        "title": "New Zealand Woman's Day",
