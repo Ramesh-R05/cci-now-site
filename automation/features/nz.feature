@@ -37,13 +37,13 @@ Feature: Specific value for NZ NTL
         * I should see the subscribe button containing GTM "<gtm>"
         Examples:
             |brand               |subscribe         |facebook                                       |twitter                            |instagram                                  |gtm                  |
-            |nz-womans-weekly    |subscribe-nzww    |https://www.facebook.com/nzwomansweekly        |https://twitter.com/nzwomansweekly |https://www.instagram.com/nzwomansweekly/  |gtm-subscribe-nzww   |
+            |nz-womans-weekly    |subscribe-nzww    |https://www.facebook.com/nzwomansweekly        |https://twitter.com/nzwomansweekly |https://www.instagram.com/nzwomansweekly   |gtm-subscribe-nzww   |
             |aww                 |subscribe-awwnz   |https://www.facebook.com/awwmagazine           |none                               |https://www.instagram.com/awwmagazine      |gtm-subscribe-awwnz  |
-            |next                |subscribe-next    |https://www.facebook.com/nextmagazine/         |https://twitter.com/nextmagazinenz |https://www.instagram.com/nextmagazinenz/  |gtm-subscribe-next   |
+            |next                |subscribe-next    |https://www.facebook.com/nextmagazine          |https://twitter.com/nextmagazinenz |https://www.instagram.com/nextmagazinenz   |gtm-subscribe-next   |
             |womans-day          |subscribe-nzwd    |https://www.facebook.com/womansdaynz           |https://twitter.com/WomansDayNZ    |https://www.instagram.com/womansdaynz      |gtm-subscribe-nzwd   |
-            |good-health-choices |subscribe-nzgh    |https://www.facebook.com/goodhealthchoicesnz/  |https://twitter.com/good_health_nz |https://www.instagram.com/goodhealthnz/    |gtm-subscribe-nzgh   |
-            |nadia               |subscribe-nadia   |https://www.facebook.com/NadiaLimCooks/        |https://twitter.com/nadialimchef   |https://www.instagram.com/nadialimcooks    |gtm-subscribe-nadia  |
-            |simply-you          |subscribe-simply  |https://www.facebook.com/SimplyYouMagazine/    |https://twitter.com/SimplyYouMag   |https://www.instagram.com/simplyyoumag     |gtm-subscribe-simply |
+            |good-health-choices |subscribe-nzgh    |https://www.facebook.com/goodhealthchoicesnz   |https://twitter.com/good_health_nz |https://www.instagram.com/goodhealthnz     |gtm-subscribe-nzgh   |
+            |nadia               |subscribe-nadia   |https://www.facebook.com/NadiaLimCooks         |https://twitter.com/nadialimchef   |https://www.instagram.com/nadialimcooks    |gtm-subscribe-nadia  |
+            |simply-you          |subscribe-simply  |https://www.facebook.com/SimplyYouMagazine     |https://twitter.com/SimplyYouMag   |https://www.instagram.com/simplyyoumag     |gtm-subscribe-simply |
 
     Scenario: Verify the footer in the "mobile" view
         Given I switch to "mobile" view
