@@ -30,6 +30,8 @@ export default {
         }
     },
     polar: {
-        targets: {}
+        targets: {
+            env: ''
+        }
     }
 };
