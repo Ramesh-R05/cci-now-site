@@ -15,9 +15,7 @@ const homeMiddleware = proxyquire('../../../../app/server/bff/middleware/home', 
     '../api/listing': {
         getLatestTeasers: () => { return getLatestTeasersStub(); }
     },
-    '../api/trending': {
-        getTrending: () => { return getTrendingStub() }
-    },
+    '../api/trending': () => { return getTrendingStub() },
     '../api/module': {
         getHeroTeaser() { return getHeroTeaserStub() }
     },

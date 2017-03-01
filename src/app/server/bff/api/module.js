@@ -1,12 +1,12 @@
 import makeRequest from '../../makeRequest';
-import {load} from '@bxm/config';
-import {backendLogger as logger} from '@bxm/winston-logger';
+import { load } from '@bxm/config';
+import { backendLogger as logger } from '@bxm/winston-logger';
 import get from 'lodash/object/get';
 import find from 'lodash/collection/find';
 
 const config = load();
 
-export async function getModules(...args) {
+export default async function getModules(...args) {
     try {
         if (!args.length) return {};
 
@@ -18,25 +18,21 @@ export async function getModules(...args) {
             const moduleConfig = find(modules.data, { moduleName: arg });
             if (arg === 'footer') {
                 moduleList[arg] = moduleConfig || {};
-            }
-            else if (arg === 'promoted') {
+            } else if (arg === 'promoted') {
                 moduleList[arg] = {};
-                moduleList[arg]['items'] = get(moduleConfig, 'moduleManualContent.data', []);
-                moduleList[arg]['title'] = get(moduleConfig, 'moduleTitle', '');
-            }
-            else if (arg && arg.indexOf('theme') >= 0) {
+                moduleList[arg].items = get(moduleConfig, 'moduleManualContent.data', []);
+                moduleList[arg].title = get(moduleConfig, 'moduleTitle', '');
+            } else if (arg && arg.indexOf('theme') >= 0) {
                 moduleList.theme = moduleConfig;
-            }
-            else if (arg === 'hero') {
+            } else if (arg === 'hero') {
                 moduleList[arg] = get(moduleConfig, 'moduleManualContent.data[0]', null);
-            }
-            else {
+            } else {
                 moduleList[arg] = get(moduleConfig, 'moduleManualContent.data', []);
             }
         });
 
         return moduleList;
-    } catch(error) {
+    } catch (error) {
         logger.log('error', error);
         return {};
     }

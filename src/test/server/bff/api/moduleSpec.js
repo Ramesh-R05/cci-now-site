@@ -11,10 +11,10 @@ const configStub = {
     }
 };
 
-const moduleApi = proxyquire('../../../../app/server/bff/api/module', {
-    '../../makeRequest': (args) => { return makeRequestStub(args) },
+const getModules = proxyquire('../../../../app/server/bff/api/module', {
+    '../../makeRequest': args => makeRequestStub(args),
     '@bxm/config': configStub
-});
+}).default;
 
 describe(`Module API`, () => {
     describe(`#getModules`, () => {
@@ -26,7 +26,7 @@ describe(`Module API`, () => {
 
         describe(`when passing no arguments`, () => {
             it(`should return an empty object`, (done) => {
-                moduleApi.getModules().then((modules) => {
+                getModules().then((modules) => {
                     expect(modules).to.deep.eq({});
                     done()
                 }).catch(done);
@@ -47,7 +47,7 @@ describe(`Module API`, () => {
                 });
 
                 it(`should return an object which contains a footer and header property with an empty array`, (done) => {
-                    moduleApi.getModules('footer', 'header').then((modules) => {
+                    getModules('footer', 'header').then((modules) => {
                         expect(makeRequestStub).to.have.been.calledWith(`${remoteModuleUrl}/footer,header`);
                         expect(modules).to.deep.eq({footer: footerModuleData, header: headerModuleData});
                         done();
@@ -66,7 +66,7 @@ describe(`Module API`, () => {
                     });
 
                     it(`should return an object which contains a footer property with an empty array and the header with data`, (done) => {
-                        moduleApi.getModules('footer', 'header').then((modules) => {
+                        getModules('footer', 'header').then((modules) => {
                             expect(modules).to.deep.eq({footer: footerModuleData, header: headerModuleData});
                             done();
                         }).catch(done);
@@ -87,7 +87,7 @@ describe(`Module API`, () => {
                         });
 
                         it(`should return an object which contains the data for both footer and header`, (done) => {
-                            moduleApi.getModules('footer', 'header').then((modules) => {
+                            getModules('footer', 'header').then((modules) => {
                                 expect(modules).to.deep.eq({footer: footerModuleData, header: headerModuleData});
                                 expect(modules).to.not.have.property('traveltheme');
                                 done();
@@ -108,7 +108,7 @@ describe(`Module API`, () => {
                     });
 
                     it(`should return an object which contains the data for traveltheme`, (done) => {
-                        moduleApi.getModules('traveltheme', 'footer').then((modules) => {
+                        getModules('traveltheme', 'footer').then((modules) => {
                             expect(modules).to.deep.eq({theme: themeModuleData, footer: footerModuleData});
                             done();
                         }).catch(done);
@@ -129,7 +129,7 @@ describe(`Module API`, () => {
                         });
 
                         it(`should return an object which contains the data for hero`, (done) => {
-                            moduleApi.getModules('hero', 'footer').then((modules) => {
+                            getModules('hero', 'footer').then((modules) => {
                                 expect(modules).to.deep.eq({ hero: expectedHeroData, footer: {} });
                                 done();
                             }).catch(done);
@@ -147,7 +147,7 @@ describe(`Module API`, () => {
                         });
 
                         it(`should return null`, (done) => {
-                            moduleApi.getModules('hero', 'footer').then((modules) => {
+                            getModules('hero', 'footer').then((modules) => {
                                 expect(modules).to.deep.eq({ hero: null, footer: {} });
                                 done();
                             }).catch(done);

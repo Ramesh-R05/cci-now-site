@@ -20,7 +20,7 @@ describe('App Component', () => {
     const title = 'Title';
     const siteName = 'Dolly';
     const nodeType = 'NodeType';
-    const themeMock = { 
+    const themeMock = {
         id: 'NOW-32655',
         dateCreated: '2017-02-07T01:27:43.00Z',
         url: '/modules/hometheme',
@@ -28,7 +28,7 @@ describe('App Component', () => {
         themeColour: '#31c7ce',
         themeTextColour: '#ffffff',
         themeImage: 'http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/Now/2017/02/08/32655/recording-(3).gif',
-        themeAlignment: 'center' 
+        themeAlignment: 'center'
     };
     let error = null;
 

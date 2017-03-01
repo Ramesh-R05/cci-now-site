@@ -1,4 +1,4 @@
-import {parseHeaderMetaData} from '../../../../app/server/bff/helper/parseHeaderMetaData';
+import parseHeaderMetaData from '../../../../app/server/bff/helper/parseHeaderMetaData';
 
 const headerMetaDataInput = {
     pageCanonicalUrl: 'canonical url',

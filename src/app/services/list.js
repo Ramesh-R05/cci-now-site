@@ -1,5 +1,5 @@
 import superagent from 'superagent';
-import {canUseDOM} from 'exenv';
+import { canUseDOM } from 'exenv';
 
 let host = '';
 let path = '';
@@ -21,7 +21,6 @@ export default {
     read(deferred, params) {
         superagent.get(host + path).query(params).end((error, response) => {
             if (error) {
-                console.error(`[service][${path}] ${error.response.error.status} ${error.response.error.path}`);
                 deferred.reject(error);
             } else {
                 deferred.resolve(response);

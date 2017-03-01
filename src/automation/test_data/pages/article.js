@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import navigation from '../modules/navigation';
 
 export default {

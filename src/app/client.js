@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createElementWithContext} from 'fluxible-addons-react';
+import { createElementWithContext } from 'fluxible-addons-react';
 import app from './app';
 
 const dehydratedState = window.App;
@@ -15,7 +15,5 @@ app.rehydrate(dehydratedState, (err, context) => {
     const mountNode = document.getElementById('app');
     const userAgent = window.navigator.userAgent;
 
-    ReactDOM.render(createElementWithContext(context, {userAgent}), mountNode, () => {
-        console.log('[CLIENT] - react rendered');
-    });
+    ReactDOM.render(createElementWithContext(context, { userAgent }), mountNode, () => {});
 });

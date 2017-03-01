@@ -10,10 +10,10 @@ export default class Links extends Component {
         const { links = [] } = this.props;
         return (
             <section className="get-social">
-                <div className="get-social-title"></div>
+                <div className="get-social-title" />
                 <div className="get-social__links">
                     <span className="row">
-                        { links.map((link) => <SocialIcon { ...link } />) }
+                        { links.map(link => <SocialIcon {...link} />) }
                     </span>
                 </div>
             </section>

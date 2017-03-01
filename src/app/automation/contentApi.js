@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import express from 'express';
 import setModuleData from './setModuleData';
 const router = express.Router();
@@ -11,7 +12,7 @@ router.use((req, res, next) => {
 
         if (page || section || tag) {
             next('route');
-            return
+            return;
         }
     }
     const home = require('../../automation/test_data/home').default;
@@ -25,18 +26,22 @@ router.use((req, res, next) => {
 
     if (!page || tag) {
         next('route');
-        return
+        return;
     }
 
     let data;
 
     // /anything/page_name_id
-    switch (page){
-        case 'cosmo-test-page-does-not-work-in-dolly':
-            data = require('./test-data/pages/article').default;
-            break;
+    switch (page) {
+    case 'cosmo-test-page-does-not-work-in-dolly':
+        data = require('./test-data/pages/article').default;
+        break;
+    default:
+        data = null;
+        break;
     }
-    data ? res.json(data) : next('route');
+    if (data) res.json(data);
+    else next('route');
 });
 
 export default router;

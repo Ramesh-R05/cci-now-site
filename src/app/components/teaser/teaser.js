@@ -1,12 +1,9 @@
-import React, {PropTypes, Component} from 'react';
+import React, { PropTypes, Component } from 'react';
 import classNames from 'classnames';
-import moment from 'moment';
 import TeaserTitle from '@bxm/teaser/lib/components/title';
 import TeaserImage from '@bxm/teaser/lib/components/image';
 import TeaserSummary from '@bxm/teaser/lib/components/summary';
-import TeaserBadge from '@bxm/teaser/lib/components/badge';
 import Date from '@bxm/datetime/lib/components/Date';
-import ExternalLink from '@bxm/teaser/lib/components/externalLink';
 import teaserContentOverride from '@bxm/teaser/lib/teaserContentOverride';
 import has from 'lodash/object/has';
 import get from 'lodash/object/get';
@@ -15,11 +12,10 @@ export default class Teaser extends Component {
 
     static propTypes = {
         article: PropTypes.object.isRequired,
-        id: PropTypes.string.isRequired,
         imageSizes: PropTypes.object,
         showResponsiveImage: PropTypes.bool,
         showTeaserSummary: PropTypes.bool,
-        className: PropTypes.string,
+        className: PropTypes.string.isRequired,
         sourceClassName: PropTypes.string,
         onClick: PropTypes.func,
         showDate: PropTypes.bool,
@@ -46,7 +42,6 @@ export default class Teaser extends Component {
         showResponsiveImage: true,
         showTeaserSummary: false,
         sourceClassName: 'teaser__source',
-        id: 'teaser',
         imageSizes: {
             s: { w: 880, h: 710 },
             m: { w: 880, h: 710 },
@@ -54,12 +49,8 @@ export default class Teaser extends Component {
             xl: { w: 880, h: 710 }
         },
         onClick: function onClick() {},
-        sourceDefault : ''
+        sourceDefault: ''
     };
-
-    constructor(props, context) {
-        super(props, context);
-    }
 
     getGTMClass = () => {
         const article = this.props.article;
@@ -75,15 +66,16 @@ export default class Teaser extends Component {
 
         return (
             <TeaserImage
-                gtmClass={this.getGTMClass()}
-                link={article.url}
-                imageUrl={article.imageUrl}
-                defaultImageUrl={defaultImageUrl}
-                alt={imageAltText}
-                imageSizes={imageSizes}
-                breakpoints={breakpoints}
-                showResponsiveImage={this.props.showResponsiveImage}
-                className={this.getGTMClass()} />
+              gtmClass={this.getGTMClass()}
+              link={article.url}
+              imageUrl={article.imageUrl}
+              defaultImageUrl={defaultImageUrl}
+              alt={imageAltText}
+              imageSizes={imageSizes}
+              breakpoints={breakpoints}
+              showResponsiveImage={this.props.showResponsiveImage}
+              className={this.getGTMClass()}
+            />
         );
     };
 
@@ -98,7 +90,7 @@ export default class Teaser extends Component {
     };
 
     render() {
-        const { id, className, sourceClassName, showDate, sourceDefault } = this.props;
+        const { className, sourceClassName, showDate, sourceDefault } = this.props;
         let { article } = this.props;
 
         if (!article) return null;
@@ -111,9 +103,13 @@ export default class Teaser extends Component {
             'teaser--has-video': get(article, 'video.properties.videoConfiguration.statusCode') === 200,
             'teaser--gallery': get(article, 'nodeType', '').toLowerCase() === 'gallery'
         });
-        const articleSourceClassName = article.source ? `${sourceClassName} ${sourceClassName}--${article.source.toLowerCase().replace(/[^A-Z0-9]/ig, '-')}` : sourceClassName;
 
-        let sourceName = article.source || 'Now to love';
+        let articleSourceClassName = sourceClassName;
+        if (article.source) {
+            articleSourceClassName = `${sourceClassName} ${sourceClassName}--${article.source.toLowerCase().replace(/[^A-Z0-9]/ig, '-')}`;
+        }
+
+        const sourceName = article.source || 'Now to love';
 
         return (
             <article className={containerClassNames} onClick={this.props.onClick}>
@@ -131,7 +127,7 @@ export default class Teaser extends Component {
                             {sourceDefault || `${sourceName}`}
 
                             {showDate ? (<span><span className={`${sourceClassName}__breaker`}>|</span>
-                                <Date dateCreated={article.dateCreated} showElapsed={true} />
+                                <Date dateCreated={article.dateCreated} showElapsed />
                             </span>) : null}
                         </p>
                     </div>

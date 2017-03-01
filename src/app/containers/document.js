@@ -16,6 +16,8 @@ export default class Document extends Component {
     static displayName = 'Document';
 
     static propTypes = {
+        content: PropTypes.object.isRequired,
+        currentUrl: PropTypes.string.isRequired,
         nodeType: PropTypes.string.isRequired,
         theme: PropTypes.object
     };
@@ -28,19 +30,19 @@ export default class Document extends Component {
         disableAds: true,
         inlineImage: {
             imageSizes: {
-                s: {w: 690},
-                m: {w: 963},
-                l: {w: 922},
-                xl: {w: 640}
+                s: { w: 690 },
+                m: { w: 963 },
+                l: { w: 922 },
+                xl: { w: 640 }
             }
         },
         relatedContent: {
             headingText: 'Read this next',
             imageSizes: {
-                s: {w: 384, h: 216},
-                m: {w: 375, h: 211},
-                l: {w: 329, h: 185},
-                xl: {w: 296, h: 166}
+                s: { w: 384, h: 216 },
+                m: { w: 375, h: 211 },
+                l: { w: 329, h: 185 },
+                xl: { w: 296, h: 166 }
             }
         }
     };
@@ -53,13 +55,13 @@ export default class Document extends Component {
     };
 
     render() {
-
         const { content, currentUrl, nodeType, theme } = this.props;
 
         if (nodeType === 'Gallery') {
             return (
-                    <Gallery
-                        customisedTeaser={Teaser} currentUrl={currentUrl} theme={theme} />
+                <Gallery
+                  customisedTeaser={Teaser} currentUrl={currentUrl}theme={theme}
+                />
             );
         }
 
@@ -80,19 +82,20 @@ export default class Document extends Component {
 
         return (
             <Page
-                currentUrl={currentUrl}
-                headerExpanded={false}
-                hideFooter={false}
-                theme={theme}>
+              currentUrl={currentUrl}
+              headerExpanded={false}
+              hideFooter={false}
+              theme={theme}
+            >
                 <Article
-                    articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd]}
-                    contentBodyConfig={Document.articleContentBodyConfig}
-                    enableTeads={true}
-                    CustomisedTeaser={Teaser}
-                    showAdBeforeRecommendations={true}
-                    showSocialShare={true}
-                    socialShare={socialShare}
-                    theme={theme}
+                  articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd]}
+                  contentBodyConfig={Document.articleContentBodyConfig}
+                  enableTeads
+                  CustomisedTeaser={Teaser}
+                  showAdBeforeRecommendations
+                  showSocialShare
+                  socialShare={socialShare}
+                  theme={theme}
                 />
             </Page>
         );

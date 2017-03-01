@@ -1,15 +1,10 @@
-import {canUseDOM} from 'exenv';
-if (canUseDOM) require('console-shim');
-
-import {Flux, servicesPlugin} from '@bxm/flux';
+import { Flux, servicesPlugin } from '@bxm/flux';
 import batchedUpdatePlugin from 'fluxible-addons-react/batchedUpdatePlugin';
-
 import AppComponent from './containers/app';
 import pageService from './services/page';
 import listService from './services/list';
 import networkHeaderService from '@bxm/header/lib/header/headerService';
 import adConfig from './config/ads';
-
 import AdStore from '@bxm/ad/lib/google/stores/ad';
 import ArticleStore from '@bxm/article/lib/stores/articleStore';
 import GalleryPageStore from '@bxm/gallery/lib/stores/galleryPage';
@@ -23,13 +18,12 @@ import RouteStore from './stores/route';
 import SocialStore from '@bxm/social/lib/stores/social';
 import TeaserStore from './stores/teaser';
 import TrackingStore from './stores/tracking';
-
-import {load, configPlugin} from '@bxm/config';
+import { load, configPlugin } from '@bxm/config';
 const config = load();
 
 adConfig.init();
 
-let app = new Flux({
+const app = new Flux({
     component: AppComponent,
     stores: [
         AdStore,
@@ -48,8 +42,8 @@ let app = new Flux({
     ]
 });
 
-let configsPlugin = configPlugin(config);
-let servicePlugin = servicesPlugin(config);
+const configsPlugin = configPlugin(config);
+const servicePlugin = servicesPlugin(config);
 servicePlugin.registerService(pageService);
 servicePlugin.registerService(listService);
 servicePlugin.registerService(networkHeaderService);

@@ -1,4 +1,4 @@
-import React, {PropTypes, Component} from 'react';
+import React, { PropTypes, Component } from 'react';
 import classNames from 'classnames';
 import TeaserList from '@bxm/teaser/lib/components/teaserList';
 import StickyBlock from '@bxm/behaviour/lib/components/sticky';
@@ -6,7 +6,8 @@ import Ad from '@bxm/ad/lib/google/components/ad';
 import Teaser from './teaser';
 
 export default class TeaserListView extends Component {
-    static props = {
+    static propTypes = {
+        index: PropTypes.number.isRequired,
         items: PropTypes.array.isRequired,
         className: PropTypes.string,
         adTargets: PropTypes.object,
@@ -17,22 +18,22 @@ export default class TeaserListView extends Component {
             })
         }),
         showDate: PropTypes.bool,
-        loadAgain:PropTypes.bool
+        loadAgain: PropTypes.bool
     };
 
     static defaultProps = {
         showDate: true,
         teasers: [],
-        className: "",
+        className: '',
         adTargets: { position: 1 },
         nativeAdConfig: {},
-        loadAgain:true
+        loadAgain: true
     };
 
     render() {
         const { className, items, adTargets, index, nativeAdConfig, showDate, loadAgain } = this.props;
         const adProps = {
-            className: "ad--section-mrec",
+            className: 'ad--section-mrec',
             displayFor: ['medium', 'large', 'xlarge'],
             sizes: { medium: ['mrec', 'double-mrec'] },
             targets: {
@@ -49,30 +50,30 @@ export default class TeaserListView extends Component {
                 <div className="row">
                     <div className="teaser-view-container teaser-view-list-container">
                         <TeaserList
-                            listClassName="teaser-view-list"
-                            CustomisedTeaser={Teaser}
-                            showDate={showDate}
-                            articles={items}
-                            showSubSection={true}
-                            imageSizes={{
-                                s: { w: 323, h: 269 },
-                                m: { w: 452, h: 254 },
-                                l: { w: 409, h: 230 },
-                                xl: { w: 1010, h: 478 }
-                            }}
-                            adPosition={4}
-                            adConfig={{
-                                className: 'ad--teaser-list',
-                                displayFor: 'small',
-                                sizes: 'mrec',
-                                targets: adProps.targets
-                            }}
-                            nativeAdConfig={nativeAdConfig}
-                            loadAgain={loadAgain}
+                          listClassName="teaser-view-list"
+                          CustomisedTeaser={Teaser}
+                          showDate={showDate}
+                          articles={items}
+                          showSubSection
+                          imageSizes={{
+                              s: { w: 323, h: 269 },
+                              m: { w: 452, h: 254 },
+                              l: { w: 409, h: 230 },
+                              xl: { w: 1010, h: 478 }
+                          }}
+                          adPosition={4}
+                          adConfig={{
+                              className: 'ad--teaser-list',
+                              displayFor: 'small',
+                              sizes: 'mrec',
+                              targets: adProps.targets
+                          }}
+                          nativeAdConfig={nativeAdConfig}
+                          loadAgain={loadAgain}
                         />
                     </div>
                     { items.length > 1 ?
-                        <StickyBlock carriageYPosition={95} breakpoints={['medium','large','xlarge']}>
+                        <StickyBlock carriageYPosition={95} breakpoints={['medium', 'large', 'xlarge']}>
                             <Ad {...adProps} />
                         </StickyBlock> : <Ad {...adProps} /> }
                 </div>

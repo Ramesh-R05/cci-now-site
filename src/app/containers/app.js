@@ -1,16 +1,16 @@
-import React, {Component, PropTypes} from 'react';
-import {connectToStores, provideContext} from '@bxm/flux';
-import {handleHistory} from 'fluxible-router';
+import React, { Component, PropTypes } from 'react';
+import { connectToStores, provideContext } from '@bxm/flux';
+import { handleHistory } from 'fluxible-router';
 import platform from '@bxm/ui/lib/common/platform';
 import ErrorPage from '../components/page/error';
-import {canUseDOM} from 'exenv';
+import { canUseDOM } from 'exenv';
 
 function mapStateToProps(context) {
     return {
         nodeType: context.getStore('PageStore').getNodeType(),
         error: context.getStore('PageStore').getErrorStatus(),
         theme: context.getStore('PageStore').getModule('theme'),
-        isNavigateComplete: context.getStore('RouteStore').isNavigateComplete(),
+        isNavigateComplete: context.getStore('RouteStore').isNavigateComplete()
     };
 }
 
@@ -18,12 +18,16 @@ function mapStateToProps(context) {
 class Application extends Component {
 
     static propTypes = {
-        currentRoute: PropTypes.object,
-        userAgent: PropTypes.string,
-        nodeType: PropTypes.string,
+        currentRoute: PropTypes.object.isRequired,
+        userAgent: PropTypes.string.isRequired,
+        nodeType: PropTypes.string.isRequired,
         error: PropTypes.object,
-        theme: PropTypes.object,
-        isNavigateComplete: PropTypes.bool
+        theme: PropTypes.object
+    };
+
+    static defaultProps = {
+        error: null,
+        theme: null
     };
 
     static contextTypes = {
@@ -39,6 +43,7 @@ class Application extends Component {
     componentDidMount() {
         // Temp added here due to unforseen update of versions when updating react.
         // This loads <picture> element in older browsers and IE
+        // eslint-disable-next-line global-require
         require('picturefill');
     }
 
@@ -47,7 +52,7 @@ class Application extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        let newProps = this.props;
+        const newProps = this.props;
         if (newProps.title === prevProps.title) {
             return;
         }
@@ -58,8 +63,9 @@ class Application extends Component {
         if (this.props.error) {
             return (
                 <ErrorPage
-                    currentUrl={ this.props.currentRoute.url }
-                    status={this.props.error.status} />
+                  currentUrl={this.props.currentRoute.url}
+                  status={this.props.error.status}
+                />
             );
         }
 
@@ -69,9 +75,10 @@ class Application extends Component {
         return (
             <div className={className}>
                 <Handler
-                    currentUrl={ this.props.currentRoute.url }
-                    nodeType={this.props.nodeType}
-                    theme={this.props.theme} />
+                  currentUrl={this.props.currentRoute.url}
+                  nodeType={this.props.nodeType}
+                  theme={this.props.theme}
+                />
             </div>
         );
     }

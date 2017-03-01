@@ -1,8 +1,8 @@
-import {load} from '@bxm/config';
+import { load } from '@bxm/config';
 const config = load();
 
-export default function(slug) {
+export default function getPageID(slug) {
     const idMatch = slug.match(/\d+$/);
-    if (!idMatch || !idMatch.length) return;
+    if (!idMatch || !idMatch.length) return '';
     return `${config.site.prefix}-${idMatch[0]}`;
 }

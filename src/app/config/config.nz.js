@@ -8,13 +8,13 @@ import features from './nzconfig/features';
 export default {
     features,
 
-	services,
+    services,
 
-	site,
+    site,
 
-	brightcove,
+    brightcove,
 
-	urls,
+    urls,
 
-	brands
-}
+    brands
+};

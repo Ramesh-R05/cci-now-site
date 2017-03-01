@@ -1,19 +1,19 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import Logos from '../page/logos';
 
 export default class UniHeader extends Component {
     static propTypes = {
-        logoList: PropTypes.array,
-        className: PropTypes.string
+        logoList: PropTypes.array.isRequired,
+        className: PropTypes.string.isRequired
     };
 
     render() {
-        const navclass = `${this.props.className}__nav`
+        const navclass = `${this.props.className}__nav`;
 
         return (
             <header className={this.props.className}>
                 <nav className={navclass}>
-                    <Logos className={this.props.className} openInNewTab={true} logoList={this.props.logoList}/>
+                    <Logos className={this.props.className} openInNewTab logoList={this.props.logoList} />
                 </nav>
             </header>
         );

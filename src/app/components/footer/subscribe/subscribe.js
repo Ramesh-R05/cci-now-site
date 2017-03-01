@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import SubscribeMagBlock from './subscribeMagBlock';
 
 export default class Subscribe extends Component {
@@ -12,12 +12,12 @@ export default class Subscribe extends Component {
     };
 
     fireEvent = () => {
-        window.dataLayer.push({event: 'subscribe.click'});
+        window.dataLayer.push({ event: 'subscribe.click' });
     };
 
     render() {
-        const {inSideNav, content} = this.props;
-        const {subscribeHeading, subscribeText, subscribeMagUrl, subscribeIpadUrl, subscribeButtonUrl} = content;
+        const { inSideNav, content } = this.props;
+        const { subscribeHeading, subscribeText, subscribeMagUrl, subscribeIpadUrl, subscribeButtonUrl } = content;
         const xLargeGridClass = (!inSideNav) ? 'xlarge-6' : '';
         return (
             <div className="subscribe">
@@ -32,7 +32,10 @@ export default class Subscribe extends Component {
                                 {subscribeText}
                             </p>
                             <p className="subscribe__action">
-                                <a className="button button--link button--subscribe" href={subscribeButtonUrl} target="_blank" onClick={this.fireEvent}>
+                                <a
+                                  className="button button--link button--subscribe" href={subscribeButtonUrl}
+                                  target="_blank" onClick={this.fireEvent}
+                                >
                                     Subscribe
                                 </a>
                             </p>

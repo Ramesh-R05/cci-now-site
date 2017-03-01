@@ -16,7 +16,7 @@ export default async function listing(req, res, next) {
         req.data.section = { id: listingData.id, name: listingData.contentTitle }; // Initially used to set the ad slot within @bxm/ads + gtm in @bxm/server
 
         next();
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 }

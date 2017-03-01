@@ -1,11 +1,9 @@
 import { parseEntity, parseEntities } from '../helper/parseEntity';
-import { parseHeaderMetaData } from '../helper/parseHeaderMetaData';
-import { parseModule } from '../helper/parseModule';
-import { getPlaceholderImage } from '../helper/getPlaceholderImage';
+import parseHeaderMetaData from '../helper/parseHeaderMetaData';
+import parseModule from '../helper/parseModule';
 import get from 'lodash/object/get';
 
 export default function responseBody(req, res, next) {
-
     try {
         res.body = {
             entity: parseEntity(req.data.entity),
@@ -39,7 +37,11 @@ export default function responseBody(req, res, next) {
         }
 
         if (get(req, 'data.leftHandSide')) {
-            var lhsData = getPlaceholderImage(req.data.leftHandSide.data);
+            const lhsData = req.data.leftHandSide.data.map((lhsTeaser) => {
+                const withDefaultImg = { ...lhsTeaser };
+                withDefaultImg.contentImageUrl = withDefaultImg.contentImageUrl || req.app.config.defaultImageUrl;
+                return withDefaultImg;
+            });
             res.body.leftHandSide = { items: parseEntities(lhsData) };
         }
 
@@ -78,10 +80,9 @@ export default function responseBody(req, res, next) {
         }
 
         if (get(req, 'data.promoted')) {
-
             res.body.promoted = {
-                title : '',
-                items : []
+                title: '',
+                items: []
             };
 
             res.body.promoted.items = parseEntities(req.data.promoted.items, {
@@ -92,7 +93,7 @@ export default function responseBody(req, res, next) {
         }
 
         next();
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 }

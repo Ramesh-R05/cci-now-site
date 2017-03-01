@@ -1,28 +1,24 @@
-import React, {Component, PropTypes} from 'react';
-import classnames from 'classnames';
+import React, { Component, PropTypes } from 'react';
 
 export default class SubscribeButtons extends Component {
-    static propTypes: {
+    static propTypes = {
         subscribeMagUrl: PropTypes.string.isRequired,
         subscribeIPadUrl: PropTypes.string.isRequired,
-        className: PropTypes.string
+        className: PropTypes.string.isRequired
     };
 
     render() {
-        var classes = classnames(
-            this.props.className,
-            'subscription__buttons'
-        );
+        const classes = [this.props.className, 'subscription__buttons'].join(' ');
 
-        var magButton = this.props.subscribeMagUrl
+        const magButton = this.props.subscribeMagUrl
         ? (<a className="subscription__button" href={this.props.subscribeMagUrl} target="_blank">
-                <span>MAGAZINE</span>
-           </a>) : null;
+            <span>MAGAZINE</span>
+        </a>) : null;
 
-       var ipadButton = this.props.subscribeIPadUrl
-       ? (<a className="subscription__button" target="itunes_store" href= {this.props.subscribeIPadUrl}>
+        const ipadButton = this.props.subscribeIPadUrl
+        ? (<a className="subscription__button" target="itunes_store" href={this.props.subscribeIPadUrl}>
             <span>IPAD</span>
-          </a>) : null;
+        </a>) : null;
 
         return (
             <div className={classes}>

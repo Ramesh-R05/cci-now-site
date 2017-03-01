@@ -1,15 +1,12 @@
-import React, {PropTypes, Component} from 'react';
+import React, { PropTypes, Component } from 'react';
 import classNames from 'classnames';
 import TeaserList from '@bxm/teaser/lib/components/teaserList';
 import Teaser from './teaser';
 
 export default class TeaserGridView extends Component {
-    static props = {
+    static propTypes = {
         teasers: PropTypes.array.isRequired,
         className: PropTypes.string,
-        adPosition: PropTypes.number,
-        adTargets: PropTypes.object,
-        adSizes: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
         nativeAdConfig: PropTypes.shape({
             slotPositionIndex: PropTypes.array,
             targets: PropTypes.shape({
@@ -21,10 +18,8 @@ export default class TeaserGridView extends Component {
 
     static defaultProps = {
         teasers: [],
-        className: "",
+        className: '',
         showDate: true,
-        adPosition: 8,
-        adTargets: { position: 1 },
         nativeAdConfig: {}
     };
 
@@ -38,18 +33,18 @@ export default class TeaserGridView extends Component {
                 <div className="row">
                     <div className="columns teaser-view-container teaser-view-grid-container">
                         <TeaserList
-                            listClassName="teaser-view-grid"
-                            CustomisedTeaser={Teaser}
-                            showDate={showDate}
-                            articles={teasers}
-                            showSubSection={true}
-                            imageSizes={{
-                                s: { w: 690, h: 388 },
-                                m: { w: 486, h: 404 },
-                                l: { w: 624, h: 518 },
-                                xl: { w: 368, h: 306 }
-                            }}
-                            nativeAdConfig={nativeAdConfig}
+                          listClassName="teaser-view-grid"
+                          CustomisedTeaser={Teaser}
+                          showDate={showDate}
+                          articles={teasers}
+                          showSubSection
+                          imageSizes={{
+                              s: { w: 690, h: 388 },
+                              m: { w: 486, h: 404 },
+                              l: { w: 624, h: 518 },
+                              xl: { w: 368, h: 306 }
+                          }}
+                          nativeAdConfig={nativeAdConfig}
                         />
                     </div>
                 </div>

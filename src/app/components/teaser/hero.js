@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import Teaser from './teaser';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import SocialContainer from '../social/block';
@@ -22,27 +22,30 @@ export default class HeroTeaser extends Component {
             l: { w: 810, h: 456 },
             xl: { w: 619, h: 515 }
         },
-        showPromoted: false
+        showPromoted: false,
+        brand: null
     };
 
     render() {
         if (!this.props.article) return null;
         const { article, imageSizes, showPromoted, brand, showDate } = this.props;
 
-        return(
+        return (
             <div className="hero-wrapper">
                 <Teaser
-                    sourceClassName="hero-teaser__source"
-                    className="hero-teaser"
-                    showDate={showDate}
-                    article={article}
-                    imageSizes={imageSizes} />
+                  sourceClassName="hero-teaser__source"
+                  className="hero-teaser"
+                  showDate={showDate}
+                  article={article}
+                  imageSizes={imageSizes}
+                />
 
                 <Ad
-                    displayFor={['small', 'medium']}
-                    className="ad--section-top-mrec"
-                    sizes="mrec"
-                    targets={{position: 1}} />
+                  displayFor={['small', 'medium']}
+                  className="ad--section-top-mrec"
+                  sizes="mrec"
+                  targets={{ position: 1 }}
+                />
 
                 { showPromoted && <Promoted /> }
 
@@ -52,6 +55,6 @@ export default class HeroTeaser extends Component {
                     <SocialContainer />
                 </div> }
             </div>
-        )
+        );
     }
 }

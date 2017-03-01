@@ -1,5 +1,5 @@
-import {createReducerStore} from 'fluxible-reducer-store';
-import {initialState, reducer} from '../reducers/loadPage';
+import { createReducerStore } from 'fluxible-reducer-store';
+import { initialState, reducer } from '../reducers/loadPage';
 
 export default createReducerStore({
     storeName: 'PageStore',
@@ -27,7 +27,7 @@ export default createReducerStore({
         },
 
         getMagazineImageUrl(state) {
-            return state.magazineImageUrl
+            return state.magazineImageUrl;
         },
 
         getTrendingItems(state) {
@@ -48,5 +48,4 @@ export default createReducerStore({
         }
     }
 });
-
 

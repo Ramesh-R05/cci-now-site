@@ -8,7 +8,11 @@ import { parseEntities } from '../helper/parseEntity';
 const latestTeaserCount = 7;
 const listCount = 14;
 
-export default async function tag(req, res, next) {
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export default async function tagMiddleware(req, res, next) {
     try {
         let pageNo = 1;
         const query = req.query;
@@ -19,10 +23,6 @@ export default async function tag(req, res, next) {
         if (!tag || query.page || (entity && entity.nodeTypeAlias !== 'TagSection')) {
             next();
             return;
-        }
-
-        function capitalize(str) {
-            return str.charAt(0).toUpperCase() + str.slice(1);
         }
 
         let title = tag.split('-').map(capitalize).join(' ');
@@ -36,9 +36,7 @@ export default async function tag(req, res, next) {
             .then((listingData) => {
                 const defaultTagUrl = `/tags/${tag}`;
                 return listingData.nodeTypeAlias !== 'TagSection' ? defaultTagUrl : listingData.url || defaultTagUrl;
-            }).catch(() => {
-                return `/tags/${tag}`;
-            });
+            }).catch(() => `/tags/${tag}`);
 
 
         const tagData = await makeRequest(`${tagService}/tags/${title}`)
@@ -49,15 +47,12 @@ export default async function tag(req, res, next) {
                     if (tagName.toLowerCase() === title.toLowerCase()) {
                         title = tagName; // Override tagName with one received from service
                         return true;
-                    } else {
-                        return false;
                     }
+                    return false;
                 }) || {};
-            }).catch(() => {
-                return {};
-            });
+            }).catch(() => ({}));
 
-        const skip = ((pageNo-1) * listCount);
+        const skip = ((pageNo - 1) * listCount);
         const loweredCaseTag = tag.toLowerCase().replace('%20', '-');
         const listingQuery = `tagsDetails/urlName eq %27${loweredCaseTag}%27`;
         const latestTeasersResp = await getLatestTeasers(listCount, skip, listingQuery);
@@ -74,7 +69,7 @@ export default async function tag(req, res, next) {
             previousPage = {
                 path,
                 url: `${req.app.config.site.host}${path}`
-            }
+            };
         }
 
         let nextPage = null;
@@ -116,7 +111,7 @@ export default async function tag(req, res, next) {
         };
         req.data.section = { name: 'Tag' }; // Initally used to set the ad slot within @bxm/ads
         next();
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 }

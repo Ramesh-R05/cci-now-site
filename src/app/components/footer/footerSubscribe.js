@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import Subscribe from './subscribe/subscribe';
 import Newsletter from '@bxm/newsletter/lib/components/newsletter';
 
@@ -15,7 +15,7 @@ export default class FooterSubscribe extends Component {
     };
 
     render() {
-        const {content, url,  isDisplayed} = this.props;
+        const { content, url, isDisplayed } = this.props;
 
         return isDisplayed ? (
             <div id="footer-sign-up" className="row">

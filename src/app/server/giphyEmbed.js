@@ -8,7 +8,12 @@ export default function giphyEmbed(req, res) {
             <meta charset="UTF-8">
             <title>Giphy Embed</title>
             <meta name="robots" value="NOINDEX,NOFOLLOW"/>
-            <style>html { overflow: hidden; } iframe, .ui-loader { display: none; } img { display: block; width: 100%!important; } div { margin: 0 auto, text-align: center; width: 100%!important; }</style>
+            <style>
+            html { overflow: hidden; }
+            iframe, .ui-loader { display: none; }
+            img { display: block; width: 100% !important; }
+            div { margin: 0 auto, text-align: center; width: 100% !important; }
+            </style>
         </head>
         <body style="margin: 0; padding: 0">
             <div id="_giphy_${id}"></div>
@@ -21,7 +26,7 @@ export default function giphyEmbed(req, res) {
             var g = document.createElement("script"); 
             g.type = "text/javascript"; 
             g.async = true;
-            g.src = ("https:" == document.location.protocol ? "https://" : "http://") + "giphy.com/static/js/widgets/embed.js";
+            g.src = "//giphy.com/static/js/widgets/embed.js";
             var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(g, s);
             </script>
         </body>

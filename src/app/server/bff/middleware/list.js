@@ -11,14 +11,14 @@ export default async function list(req, res, next) {
         const skip = (pageNo - 1) * listCount;
         const listResp = await getLatestTeasers(top, skip, listingQuery);
 
-        const basePath = section ? `/${section}` : `/`;
+        const basePath = section ? `/${section}` : '/';
         let previousPage = null;
         if (pageNo > 1) {
             const path = `${basePath}?pageNo=${pageNo - 1}`;
             previousPage = {
                 path,
                 url: `${req.app.config.site.host}${path}`
-            }
+            };
         }
 
         let nextPage = null;
@@ -51,7 +51,7 @@ export default async function list(req, res, next) {
         };
 
         next();
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 }

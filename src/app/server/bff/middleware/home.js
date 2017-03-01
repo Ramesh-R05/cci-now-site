@@ -1,9 +1,7 @@
-import queryString from 'query-string';
 import get from 'lodash/object/get';
 import makeRequest from '../../makeRequest';
 import { getLatestTeasers } from '../api/listing';
-import { getHeroTeaser } from '../api/module';
-import { getTrending } from '../api/trending';
+import getTrending from '../api/trending';
 import { parseEntities } from '../helper/parseEntity';
 const trendingCount = 6;
 const latestTeaserCount = 6;
@@ -14,7 +12,7 @@ export default async function home(req, res, next) {
     try {
         let pageNo = 1;
         if (req.query) {
-            const {page, section, tag} = req.query;
+            const { page, section, tag } = req.query;
             if (page || section || tag) {
                 next();
                 return;
@@ -23,13 +21,11 @@ export default async function home(req, res, next) {
             pageNo = parseInt(req.query.pageNo || pageNo, 10);
         }
 
-        const skip = ((pageNo-1) * listCount);
+        const skip = ((pageNo - 1) * listCount);
         const [pageData, latestTeasersResp, videoGalleryTeasers, trendingItems] = await Promise.all([
             makeRequest(`${req.app.config.services.remote.entity}/homepage`),
             getLatestTeasers(listCount, skip),
-            getLatestTeasers(videoGalleryTeaserCount , undefined, 'video eq %27$contentTags%27').catch(() => {
-                return { data: [] };
-            }),
+            getLatestTeasers(videoGalleryTeaserCount, undefined, 'video eq %27$contentTags%27').catch(() => ({ data: [] })),
             getTrending(trendingCount)
         ]);
         videoGalleryTeasers.data = videoGalleryTeasers.data.map((gallery) => {
@@ -39,8 +35,8 @@ export default async function home(req, res, next) {
 
         // TODO: need to handle `data` in resp better
         const latestTeasers = latestTeasersResp || {
-                data: []
-            };
+            data: []
+        };
 
         let previousPage = null;
         if (pageNo > 1) {
@@ -48,7 +44,7 @@ export default async function home(req, res, next) {
             previousPage = {
                 path,
                 url: `${req.app.config.site.host}${path}`
-            }
+            };
         }
 
         let nextPage = null;
@@ -86,10 +82,8 @@ export default async function home(req, res, next) {
         req.data.trendingItems = trendingItems;
         req.data.section = { id: pageData.id, name: 'Home' }; // Initally used to set the ad slot within @bxm/ads + gtm in @bxm/server
         next();
-    } catch(error) {
-        console.log(error);
+    } catch (error) {
         next(error);
     }
 }
-
 

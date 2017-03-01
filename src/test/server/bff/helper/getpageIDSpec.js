@@ -26,6 +26,6 @@ describe('#getPageID', () => {
 
     it(`should return undefined for invalid page ID`, ()=> {
         const pageID = getPageID(invalidPageParam);
-        expect(pageID).to.be.undefined;
+        expect(pageID).to.be.empty;
     });
 });

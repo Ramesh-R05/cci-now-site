@@ -1,26 +1,12 @@
-import React, {PropTypes, Component} from 'react';
-import {connectToStores} from '@bxm/flux';
+import React, { PropTypes, Component } from 'react';
+import { connectToStores } from '@bxm/flux';
 import TeaserList from '@bxm/teaser/lib/components/teaserList';
 import Teaser from '../teaser/teaser';
 
 class MustRead extends Component {
 
-    constructor(props, context) {
-        super(props, context);
-    }
-
     static propTypes = {
-        mustRead: PropTypes.array.isRequired,
-        nativeAdConfig: PropTypes.shape({
-            slotPositionIndex: PropTypes.array,
-            targets: PropTypes.shape({
-                kw: PropTypes.string
-            })
-        })
-    };
-
-    static defaultProps = {
-        nativeAdConfig: {}
+        mustRead: PropTypes.array.isRequired
     };
 
     static contextTypes = {
@@ -30,16 +16,15 @@ class MustRead extends Component {
     };
 
     static imageSizes = {
-        s: {w: 300, h: 170},
-        m: {w: 300, h: 170},
-        l: {w: 300, h: 170},
-        xl: {w: 230, h: 130}
+        s: { w: 300, h: 170 },
+        m: { w: 300, h: 170 },
+        l: { w: 300, h: 170 },
+        xl: { w: 230, h: 130 }
     };
 
     static listClassName = 'small-block-grid-2 medium-block-grid-4 large-block-grid-6';
 
     render() {
-
         let { mustRead } = this.props;
         if (!mustRead || mustRead.length < 6) {
             return null;
@@ -49,34 +34,33 @@ class MustRead extends Component {
 
         const shortenedNameList = this.context.config.brands.shortSources || {};
 
-        //Add gtm class name,
-        //mustReadItem.id prop will pass into teaser component and be attached as a gtm class
-        const newMustRead = mustRead.map((mustReadItem, index) => {
-
-            mustReadItem.id = `mustread${++index}-homepage`;
+        // Add gtm class name,
+        // mustReadItem.id prop will pass into teaser component and be attached as a gtm class
+        const newMustRead = mustRead.map((item, index) => {
+            const mustReadItem = { ...item };
+            mustReadItem.id = `mustread${index + 1}-homepage`;
             mustReadItem.source = shortenedNameList[mustReadItem.source] || mustReadItem.source;
-
             return mustReadItem;
         });
 
         const polarLabels = this.context.config.polar.details;
 
         return (
-            <div className='mustread-teaser-view-grid'>
-                <div className='home-page__teasers-title'>
+            <div className="mustread-teaser-view-grid">
+                <div className="home-page__teasers-title">
                     <span>Must Read</span>
                 </div>
-                <div className='columns xlarge-10'>
+                <div className="columns xlarge-10">
                     <TeaserList
-                        listClassName = {MustRead.listClassName}
-                        imageSizes = {MustRead.imageSizes}
-                        articles = {newMustRead}
-                        CustomisedTeaser = {Teaser}
-                        showDate = {false}
-                        nativeAdConfig = {{
-                            slotPositionIndex: polarLabels.homeMustRead
-                        }}
-                        sourceDefault = {'SPONSORED'} 
+                      listClassName={MustRead.listClassName}
+                      imageSizes={MustRead.imageSizes}
+                      articles={newMustRead}
+                      CustomisedTeaser={Teaser}
+                      showDate={false}
+                      nativeAdConfig={{
+                          slotPositionIndex: polarLabels.homeMustRead
+                      }}
+                      sourceDefault={'SPONSORED'}
                     />
                 </div>
             </div>
@@ -84,8 +68,6 @@ class MustRead extends Component {
     }
  }
 
-export default connectToStores(MustRead, ['TeaserStore'], (context) => {
-    return {
-        mustRead: context.getStore('TeaserStore').getMustReadItems()
-    };
-});
+export default connectToStores(MustRead, ['TeaserStore'], context => ({
+    mustRead: context.getStore('TeaserStore').getMustReadItems()
+}));

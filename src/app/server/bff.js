@@ -17,7 +17,7 @@ export default function bff(server) {
     server.get('/sitemap/:section?', sitemap, error);
     server.get(server.config.services.endpoints.list, list, render, error);
     server.get(
-        server.config.services.endpoints.page,// Config set inside @bxm/server
+        server.config.services.endpoints.page, // Config set inside @bxm/server
         pageModules,
         home,
         listing,

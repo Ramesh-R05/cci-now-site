@@ -1,25 +1,25 @@
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
-import has from 'lodash/object/has';
 import { getLatestTeasers } from '../api/listing';
-import makeRequest from '../../makeRequest';
 import { parseEntities } from '../helper/parseEntity';
 const latestTeaserCount = 7;
 const listCount = 14;
 
-export default async function section(req, res, next) {
+export default async function sectionMiddleware(req, res, next) {
     try {
         let pageNo = 1;
         const { page, section } = req.query;
         pageNo = parseInt(req.query.pageNo || pageNo, 10);
 
         const nodeTypeAlias = get(req, 'data.entity.nodeTypeAlias', '');
-        if (nodeTypeAlias !== 'Section' && nodeTypeAlias !== 'Brand' || !section || page) {
+        if ((nodeTypeAlias !== 'Section' && nodeTypeAlias !== 'Brand') || !section || page) {
             next();
             return;
         }
 
-        let listingQuery, teaserQuery, teaserFilter;
+        let listingQuery;
+        let teaserQuery;
+        let teaserFilter;
 
         if (nodeTypeAlias === 'Section') {
             teaserQuery = `/${section}/`;
@@ -28,15 +28,15 @@ export default async function section(req, res, next) {
         }
         if (nodeTypeAlias === 'Brand') {
             const source = get(req, 'data.entity.source', '');
-            const adBrand = find(req.app.config.brands.uniheader, (b) => { return b.title === source });
+            const adBrand = find(req.app.config.brands.uniheader, b => b.title === source);
             req.data.entity.adBrand = get(adBrand, 'id', 'ntl');
 
-            teaserQuery = source.replace("\'", "''");
+            teaserQuery = source.replace("'", "''");
             teaserFilter = 'source';
             listingQuery = `${teaserFilter} eq %27${teaserQuery}%27 and nodeTypeAlias ne %27Brand%27`;
         }
 
-        const skip = ((pageNo-1) * listCount);
+        const skip = ((pageNo - 1) * listCount);
         const latestTeasersResp = await getLatestTeasers(listCount, skip, listingQuery);
 
         // TODO: need to handle `data` in resp better
@@ -50,7 +50,7 @@ export default async function section(req, res, next) {
             previousPage = {
                 path,
                 url: `${req.app.config.site.host}${path}`
-            }
+            };
         }
 
         let nextPage = null;
@@ -85,7 +85,7 @@ export default async function section(req, res, next) {
         };
 
         next();
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 }

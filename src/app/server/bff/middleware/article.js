@@ -12,8 +12,8 @@ export default async function article(req, res, next) {
             return;
         }
 
-        const source =  get(req, 'data.entity.articleSource', '');
-        const adBrand = find(req.app.config.brands.uniheader, (b) => { return b.title === source });
+        const source = get(req, 'data.entity.articleSource', '');
+        const adBrand = find(req.app.config.brands.uniheader, b => b.title === source);
         req.data.entity.adBrand = get(adBrand, 'id', 'ntl');
 
         const sectionId = req.data.entity.sectionId;
@@ -23,7 +23,7 @@ export default async function article(req, res, next) {
         }
 
         next();
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 }

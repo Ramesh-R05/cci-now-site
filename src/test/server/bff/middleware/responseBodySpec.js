@@ -8,7 +8,6 @@ noCallThru();
 let parseEntityStub = () => {};
 let parseEntitiesStub = () => {};
 let parseHeaderMetaDataStub = () => {};
-let getPlaceholderImageStub = () => {};
 
 const responseBodyMiddleware = proxyquire('../../../../app/server/bff/middleware/responseBody', {
     '../helper/parseEntity': {
@@ -19,15 +18,8 @@ const responseBodyMiddleware = proxyquire('../../../../app/server/bff/middleware
             return parseEntitiesStub(...args)
         }
     },
-    '../helper/parseHeaderMetaData': {
-        parseHeaderMetaData: (...args) => {
-            return parseHeaderMetaDataStub(...args)
-        }
-    },
-    '../helper/getPlaceholderImage': {
-        getPlaceholderImage: (...args) => {
-            return getPlaceholderImageStub(...args)
-        }
+    '../helper/parseHeaderMetaData': (...args) => {
+        return parseHeaderMetaDataStub(...args)
     }
 }).default;
 
@@ -104,7 +96,6 @@ describe('ResponseBody middleware', () => {
         before(() => {
             next = sinon.spy();
             parseEntitiesStub = sinon.stub().returns(listing.data);
-            getPlaceholderImageStub = sinon.stub().returns(listing.data);
         });
 
         it('should set `res.body.leftHandSide`', () => {
@@ -115,13 +106,7 @@ describe('ResponseBody middleware', () => {
         before(() => {
             next = sinon.spy();
             parseEntitiesStub = sinon.stub().returns(listing.data);
-            getPlaceholderImageStub = sinon.stub().returns(listing.data);
         });
-
-		it('should call getPlaceholderImage() to set the default image for the LHR items', () => {
-			responseBodyMiddleware(req, res, next);
-            expect(getPlaceholderImageStub).to.have.been.calledWith(req.data.leftHandSide.data);
-		});
 
 		describe('and it has no image', () => {
 

@@ -1,6 +1,6 @@
 import isUndefined from 'lodash/lang/isUndefined';
-import {canUseDOM} from 'exenv';
-import {createStore} from '@bxm/flux';
+import { canUseDOM } from 'exenv';
+import { createStore } from '@bxm/flux';
 import get from 'lodash/object/get';
 
 const dataLayer = canUseDOM && !isUndefined(window.dataLayer) ? window.dataLayer : [];
@@ -11,9 +11,7 @@ function dataLayerPush(data) {
 }
 
 function getNumAds(items) {
-    const adItems = items.filter((item) => {
-        return !isUndefined(item.ad);
-    });
+    const adItems = items.filter(item => !isUndefined(item.ad));
 
     return adItems.length;
 }
@@ -32,7 +30,7 @@ function trackGalleryOpen(action) {
             currImage: activeItem.url,
             currImageNo: activeItem.index,
             totalImages: action.totalItems - numAds,
-            numAds: numAds,
+            numAds,
             isAd: !!activeItem.ad
         }
     };
@@ -62,7 +60,7 @@ function trackGalleryItemChanged(action) {
             currImage: newItem.url,
             currImageNo: newItem.index,
             totalImages: totalItems - numAds,
-            numAds: numAds,
+            numAds,
             isAd: !!newItem.ad
         }
     };
@@ -79,7 +77,7 @@ function trackGalleryComplete(action) {
             galleryName: action.galleryTitle,
             prevImage: action.activeItem.url,
             totalImages: action.totalItems - numAds,
-            numAds: numAds,
+            numAds,
             isAd: false
         }
     };
@@ -96,7 +94,7 @@ function trackFollowOnClick(source) {
     dataLayerPush(data);
 }
 
-function trackGalleryChanged(action) {
+function trackGalleryChanged() {
     trackFollowOnClick('Next gallery');
 }
 

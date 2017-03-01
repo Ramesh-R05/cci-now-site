@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {navigateAction} from 'fluxible-router';
+import { navigateAction } from 'fluxible-router';
 import Server from '@bxm/server';
 import env from '@bxm/server/lib/env';
 import AdScript from '@bxm/ad/lib/google/components/script';
-import {load} from '@bxm/config';
+import { load } from '@bxm/config';
 import contentApiStub from '../../automation/test_data/contentApi';
 import app from '../app';
 import bff from './bff';
@@ -12,10 +12,10 @@ import networkHeaderMock from '@bxm/services-stubs/lib/templates/header/header';
 const config = load();
 
 const server = new Server({
-    React: React,
-    config: config,
-    app: app,
-    navigateAction: navigateAction,
+    React,
+    config,
+    app,
+    navigateAction,
     additionalHeadComponents: [AdScript],
     siteMiddlewares: (siteServer) => {
         // Hack to get JS embed working within articles
@@ -24,7 +24,7 @@ const server = new Server({
         bff(siteServer);
 
         if (env.stubbed || env.automation) {
-            //Network Header Stub
+            // Network Header Stub
             siteServer.get('/stub/wn-header', (req, res) => res.json(networkHeaderMock));
 
             contentApiStub(3000, env.appKey);

@@ -4,12 +4,10 @@ const modulePropertyMap = {
     moduleImageUrl: 'moduleImageUrl'
 };
 
-export function parseModule(data, propertyMapOverride = {}) {
-    let module = {};
+export default function parseModule(data, propertyMapOverride = {}) {
+    const module = {};
     const propertyMap = Object.assign({}, modulePropertyMap, propertyMapOverride);
-    const propertyMapKeys = Object.keys(propertyMap);
-
-    propertyMapKeys.map((key) => {
+    Object.keys(propertyMap).forEach((key) => {
         const propertyName = propertyMap[key];
         if (propertyName && data[key]) {
             module[propertyName] = data[key];

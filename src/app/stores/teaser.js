@@ -1,5 +1,5 @@
-import {createReducerStore} from 'fluxible-reducer-store';
-import {initialState, reducer} from '../reducers/loadTeasers';
+import { createReducerStore } from 'fluxible-reducer-store';
+import { initialState, reducer } from '../reducers/loadTeasers';
 import get from 'lodash/object/get';
 
 export default createReducerStore({
@@ -24,7 +24,7 @@ export default createReducerStore({
         },
 
         getMustReadItems(state) {
-          return state.mustRead;
+            return state.mustRead;
         },
 
         getPromoted(state) {

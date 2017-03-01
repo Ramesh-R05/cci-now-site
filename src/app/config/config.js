@@ -16,7 +16,7 @@ export default {
     brightcove,
 
     gigya: { apiKey: '3_R74vzxKbWVOiWuMSjElPNubJi5gS7NQ-KkpquR6Y3zVBafukYzJSZRMHKtri2igs' },
-    
+
     features,
 
     global,
@@ -33,14 +33,14 @@ export default {
 
     error: {
         404: {
-            title: `Sorry, this page is broken.`,
+            title: 'Sorry, this page is broken.',
             symbol: null,
             content: [''],
             emojiSrc: '/assets/images/error.gif',
             returnHomeText: 'Try refreshing this page or join us back on the homepage'
         },
         503: {
-            title: `Sorry, this page is broken.`,
+            title: 'Sorry, this page is broken.',
             symbol: null,
             content: [''],
             emojiSrc: '/assets/images/error.gif',

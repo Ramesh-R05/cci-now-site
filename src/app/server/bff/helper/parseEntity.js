@@ -30,11 +30,9 @@ const entityPropertyMap = {
 };
 
 export function parseEntity(data, propertyMapOverride = {}) {
-    let entity = {};
+    const entity = {};
     const propertyMap = Object.assign({}, entityPropertyMap, propertyMapOverride);
-    const propertyMapKeys = Object.keys(propertyMap);
-
-    propertyMapKeys.map((key) => {
+    Object.keys(propertyMap).forEach((key) => {
         const propertyName = propertyMap[key];
         if (propertyName && data[key]) {
             entity[propertyName] = data[key];
@@ -45,7 +43,5 @@ export function parseEntity(data, propertyMapOverride = {}) {
 }
 
 export function parseEntities(entities, propertyMapOverride) {
-    return entities.map((entity) => {
-        return parseEntity(entity, propertyMapOverride);
-    });
+    return entities.map(entity => parseEntity(entity, propertyMapOverride));
 }

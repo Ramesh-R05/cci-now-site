@@ -1,13 +1,11 @@
-import proxyquire, {noCallThru} from 'proxyquire';
+import proxyquire,  {noCallThru } from 'proxyquire';
 
 noCallThru();
 
 let getModulesStub = () => {};
 
 const pageModulesMiddleware = proxyquire('../../../../app/server/bff/middleware/pageModules', {
-    '../api/module': {
-        getModules: () => { return getModulesStub() }
-    }
+    '../api/module': () => getModulesStub()
 }).default;
 
 describe('PageModules middleware', () => {
