@@ -7,6 +7,7 @@
     "test:med": "bash -c \"./node_modules/.bin/chimp chimp.js --format=rerun:@rerun.txt --jsonOutput=reports/regression.json --tags=@now --tags=@med && npm run html_report\"",
     "test:low": "bash -c \"./node_modules/.bin/chimp chimp.js --format=rerun:@rerun.txt --jsonOutput=reports/regression.json --tags=@now --tags=@low && npm run html_report\"",
     "test:nzlow": "bash -c \"./node_modules/.bin/chimp chimp.js --format=rerun:@rerun.txt --jsonOutput=reports/regression.json --tags=@nznow --tags=@low && npm run html_report\"",
+    "test:rerun": "bash -c \"./node_modules/.bin/chimp chimp.js @rerun.txt --jsonOutput=reports/regression.json && npm run html_report\"",
     "all:test": "bash -c \"./node_modules/.bin/chimp chimp.js --format=rerun:@rerun.txt --jsonOutput=reports/regression.json --tags=@now\"",
     "single": "bash -c \"./node_modules/.bin/chimp chimp.js --jsonOutput=reports/regression.json\"",
     "once": "npm run single",

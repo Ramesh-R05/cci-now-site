@@ -4,6 +4,7 @@ screenshots/
 reports/*.json
 reports/*.html
 cucumber.json
+@rerun.txt
 
 #Include
 !reports/template.html
