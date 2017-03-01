@@ -1,7 +1,7 @@
 var ads_widget = {
 
 
-    adTopLeaderboard: '.ad--section-top-leaderboard #gpt-slot-0', //homepage, section
+    adTopLeaderboard: '.ad--section-top-leaderboard #gpt-slot-0', //homepage, section, article
     adMrecUnderHero: '.hero-wrapper #gpt-slot-1', //homepage, section
     adMrecNextToTopFeed: '.page__top-container #gpt-slot-2', //homepage, section
     adMrecNextToTopFeedSticky: '.page__top-container .page__social-wrapper > div > div > span', //homepage, section
@@ -14,6 +14,13 @@ var ads_widget = {
     adMrecBottomRightGallery: '.ad.gallery__aside-ad.ad--top-label #gpt-slot-5', //gallery
     adMrecInSlideGallery: '.ad.gallery__slide-ad.ad--bottom-label #gpt-slot-6', //gallery
     adBottomLeaderboardGallery: '.ad.gallery__footer-ad.ad--top-label', //gallery
+    adBottomLeaderboardArticle: '.ad--section-top-leaderboard #gpt-slot-8', //article
+    adMrecRHRFeed1: '.feed-ad #gpt-slot-4', //article
+    adMrecRHRFeed2: '.feed-ad #gpt-slot-5', //article
+    adMrecRHRFeed3: '.feed-ad #gpt-slot-6', //article
+    adMrecRHRFeed4: '.feed-ad #gpt-slot-7', //article
+    adMrecUnderHeroArticle: '.ad--beneath-hero #gpt-slot-2', //article
+    adMrecAboveRecommendation: '.ad--article-before-recommendations #gpt-slot-3', //article
 
     adWallpaperHomepageSection: '.ad--wallpaper #gpt-slot-10', //homepage, section
     adLeftSideHomepageSection: '.ad--sidepanel-left #gpt-slot-8', //homepage, section
@@ -27,18 +34,5 @@ var ads_widget = {
     adLeftSideGallery: '.ad--sidepanel-left #gpt-slot-2', //gallery
     adRightSideGallery: '.ad--sidepanel-right #gpt-slot-3', //gallery
     adOutOfPageGallery: '.ad--out-of-page #gpt-slot-1', //gallery
-
-    //Below are the widget from the other sites. We will delete later.
-    leaderBoard: '.ad--section-top-leaderboard',
-    mrec: '.ad--section-mrec',
-    middleLeaderBoard: '.ad--section-leaderboard',
-    middleMrec: '.ad--teaser-list',
-    articleTopLeaderBoard: '.ad--article-top',
-    articleBottomLeaderBoard: '.ad--article-beneath-recommendations',
-    articleLHSMrec: '.article-feed-container .ad--bottom-label',//verifying MRECS in RHS, using article feed container to uniquely identify
-    articleBottomMrec: '.ad--article-before-recommendations',
-    topMobileBanner: '.ad--beneath-hero',
-    homesTopMobileBanner: '.ad--beneath-short-teaser',
-    homesBottomMobileBanner: '.ad--article-beneath-recommendations'
 };
 module.exports = ads_widget;

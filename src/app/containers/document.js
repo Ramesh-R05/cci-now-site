@@ -50,7 +50,7 @@ export default class Document extends Component {
     static headerAdConfig = {
         className: 'ad--beneath-hero',
         displayFor: 'small',
-        sizes: 'banner',
+        sizes: 'mrec',
         targets: { position: 1 }
     };
 

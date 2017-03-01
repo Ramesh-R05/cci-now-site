@@ -133,6 +133,44 @@ Feature: Ad
         * I should not see the MREC ad at the bottom right of the gallery
         * I should see the MREC ad after the 3 slide
 
+    @article @BXMA-326 @high
+    Scenario: Ads on article page in the desktop view
+        Given I switch to "desktop" view
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        * I should see the top leaderboard ad under navigation
+        * I should see the bottom leaderboard ad above the footer on article
+        * I should see four MREC ads in the RHR feed
+        * I should not see MREC ad under the hero image
+        * I should not see MREC ad above recommendation
+
+    @article @BXMA-326 @med
+    Scenario: Ads on article page in the tablet landscape view
+        Given I switch to "tablet landscape" view
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        * I should see the top leaderboard ad under navigation
+        * I should see the bottom leaderboard ad above the footer on article
+        * I should see four MREC ads in the RHR feed
+        * I should not see MREC ad under the hero image
+        * I should not see MREC ad above recommendation
+
+    @article @BXMA-326 @med
+    Scenario: Ads on article page in the tablet portrait view
+        Given I switch to "tablet portrait" view
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        * I should see the top leaderboard ad under navigation
+        * I should see MREC ad above recommendation
+        * I should see the bottom leaderboard ad above the footer on article
+        * I should not see MREC ad under the hero image
+
+    @article @BXMA-326 @high
+    Scenario: Ads on article page in the mobile view
+        Given I switch to "mobile" view
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        * I should see the top leaderboard ad under navigation
+        * I should see MREC ad under the hero image
+        * I should see MREC ad above recommendation
+        * I should see the bottom leaderboard ad above the footer on article
+
     @BXMA-156 @high
     Scenario Outline: Wallpaper ad and side panel ad should appear on "<page>" page in the desktop view
         Given I switch to "desktop" view

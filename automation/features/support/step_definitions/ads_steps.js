@@ -85,6 +85,37 @@ module.exports = function() {
         expect(browser.isVisible(wn_ads.adMrecInSlideGallery)).toBe(true);
     });
 
+    //BELOW ARE STEPS FOR ARTICLE
+    this.Then(/^I should see the native ad above the hero image$/, function () {
+        expect(browser.isVisible(wn_ads.adNativeAboveHeroImage)).toBe(true);
+    });
+
+    this.Then(/^I should see the bottom leaderboard ad above the footer on article$/, function () {
+        expect(browser.isVisible(wn_ads.adBottomLeaderboardArticle)).toBe(true);
+    });
+
+    this.Then(/^I should see four MREC ads in the RHR feed$/, function () {
+        expect(browser.isVisible(wn_ads.adMrecRHRFeed1)).toBe(true);
+        expect(browser.isVisible(wn_ads.adMrecRHRFeed2)).toBe(true);
+        expect(browser.isVisible(wn_ads.adMrecRHRFeed3)).toBe(true);
+        expect(browser.isVisible(wn_ads.adMrecRHRFeed4)).toBe(true);
+    });
+
+    this.Then(/^I should see MREC ad under the hero image$/, function () {
+        expect(browser.isVisible(wn_ads.adMrecUnderHeroArticle)).toBe(true);
+    });
+
+    this.Then(/^I should not see MREC ad under the hero image$/, function () {
+        expect(browser.isVisible(wn_ads.adMrecUnderHeroArticle)).toBe(false);
+    });
+
+    this.Then(/^I should see MREC ad above recommendation$/, function () {
+        expect(browser.isVisible(wn_ads.adMrecAboveRecommendation)).toBe(true);
+    });
+
+    this.Then(/^I should not see MREC ad above recommendation$/, function () {
+        expect(browser.isVisible(wn_ads.adMrecAboveRecommendation)).toBe(false);
+    });
 
     //BELOW ARE THE STEPS TO TEST WALLPAPER, SIDE PANEL, OUT OF PAGE ADs
     this.Then(/^I should "([^"]*)" the wallpaper ad slot on "([^"]*)"$/, function (visibility, page) {
