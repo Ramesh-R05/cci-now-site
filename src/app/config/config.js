@@ -7,7 +7,6 @@ import site from './site';
 import polar from './polar';
 
 export default {
-    typekit: { id: 'hsn1dgy' },
 
     gtm: { masthead: 'NOW', id: 'GTM-MSL9XB' },
 
