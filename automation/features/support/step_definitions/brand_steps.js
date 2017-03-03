@@ -89,6 +89,9 @@ module.exports = function(){
             case 'instagram':
                 var brandElement = brand.brandInstagramLink
                 break;
+            case 'pinterest':
+                var brandElement = brand.brandPinterestLink
+                break;
         }
 
         //Some brands do not require to have subscribe button

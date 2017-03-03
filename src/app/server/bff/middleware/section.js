@@ -31,7 +31,7 @@ export default async function sectionMiddleware(req, res, next) {
             const adBrand = find(req.app.config.brands.uniheader, b => b.title === source);
             req.data.entity.adBrand = get(adBrand, 'id', 'ntl');
 
-            teaserQuery = source.replace("'", "''");
+            teaserQuery = source.replace(/'/g, "''");
             teaserFilter = 'source';
             listingQuery = `${teaserFilter} eq %27${teaserQuery}%27 and nodeTypeAlias ne %27Brand%27`;
         }

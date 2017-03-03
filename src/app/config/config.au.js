@@ -7,9 +7,9 @@ export default {
         },
 
         socialUrls: {
-            facebookUrl: 'https://www.facebook.com/nowtolove',
-            twitterUrl: 'https://twitter.com/NowToLove',
-            instagramUrl: 'https://www.instagram.com/NowToLove'
+            facebook: 'https://www.facebook.com/nowtolove',
+            twitter: 'https://twitter.com/NowToLove',
+            instagram: 'https://www.instagram.com/NowToLove'
         }
     },
 
@@ -22,9 +22,9 @@ export default {
                 imageUrl: '/assets/images/headerlogos/AWW-logo.svg',
                 url: '/aww',
                 socialLinks: {
-                    facebookUrl: 'https://www.facebook.com/WomensWeeklyMag',
-                    twitterUrl: 'https://twitter.com/womensweeklymag',
-                    instagramUrl: 'https://www.instagram.com/womensweeklymag'
+                    facebook: 'https://www.facebook.com/WomensWeeklyMag',
+                    twitter: 'https://twitter.com/womensweeklymag',
+                    instagram: 'https://www.instagram.com/womensweeklymag'
                 }
             },
             {
@@ -33,9 +33,9 @@ export default {
                 imageUrl: '/assets/images/headerlogos/WD-logo.svg',
                 url: '/womansday',
                 socialLinks: {
-                    facebookUrl: 'https://www.facebook.com/WomansDayAUS',
-                    twitterUrl: 'https://twitter.com/womansdayaus',
-                    instagramUrl: 'https://www.instagram.com/Womansdayaus'
+                    facebook: 'https://www.facebook.com/WomansDayAUS',
+                    twitter: 'https://twitter.com/womansdayaus',
+                    instagram: 'https://www.instagram.com/Womansdayaus'
                 }
             },
             {
@@ -44,9 +44,9 @@ export default {
                 imageUrl: '/assets/images/headerlogos/GH-logo.svg',
                 url: '/good-health',
                 socialLinks: {
-                    facebookUrl: 'https://www.facebook.com/GoodHealthMag/',
-                    twitterUrl: 'https://twitter.com/goodhealthmag',
-                    instagramUrl: 'https://www.instagram.com/goodhealthmag'
+                    facebook: 'https://www.facebook.com/GoodHealthMag/',
+                    twitter: 'https://twitter.com/goodhealthmag',
+                    instagram: 'https://www.instagram.com/goodhealthmag'
                 }
             },
             {
@@ -55,9 +55,9 @@ export default {
                 imageUrl: '/assets/images/headerlogos/OK-logo.svg',
                 url: '/okmagazine',
                 socialLinks: {
-                    facebookUrl: 'https://www.facebook.com/OKmagAustralia',
-                    twitterUrl: 'https://twitter.com/okmagaustralia',
-                    instagramUrl: 'https://www.instagram.com/okmagaustralia'
+                    facebook: 'https://www.facebook.com/OKmagAustralia',
+                    twitter: 'https://twitter.com/okmagaustralia',
+                    instagram: 'https://www.instagram.com/okmagaustralia'
                 }
             },
             {
@@ -66,9 +66,9 @@ export default {
                 imageUrl: '/assets/images/headerlogos/SUMMERSHOP-logo.svg',
                 url: '/shop-til-you-drop',
                 socialLinks: {
-                    facebookUrl: 'https://www.facebook.com/shoptilyoudropmag/',
-                    twitterUrl: 'https://twitter.com/shoptilyoudrop',
-                    instagramUrl: 'https://www.instagram.com/shoptilyoudropmag/'
+                    facebook: 'https://www.facebook.com/shoptilyoudropmag/',
+                    twitter: 'https://twitter.com/shoptilyoudrop',
+                    instagram: 'https://www.instagram.com/shoptilyoudropmag/'
                 },
                 renderSubscribeElements: false
             },
@@ -78,9 +78,9 @@ export default {
                 imageUrl: '/assets/images/headerlogos/NW-logo.svg',
                 url: '/nw',
                 socialLinks: {
-                    facebookUrl: 'https://www.facebook.com/NWmagazine',
-                    twitterUrl: 'https://twitter.com/nwmag',
-                    instagramUrl: 'https://www.instagram.com/nwmag/'
+                    facebook: 'https://www.facebook.com/NWmagazine',
+                    twitter: 'https://twitter.com/nwmag',
+                    instagram: 'https://www.instagram.com/nwmag/'
                 }
             },
             {
@@ -89,9 +89,9 @@ export default {
                 imageUrl: '/assets/images/headerlogos/T5-logo.svg',
                 url: '/take5mag',
                 socialLinks: {
-                    facebookUrl: 'https://www.facebook.com/take5magazine',
-                    twitterUrl: 'https://twitter.com/take5magazine',
-                    instagramUrl: 'https://www.instagram.com/take5magazine/'
+                    facebook: 'https://www.facebook.com/take5magazine',
+                    twitter: 'https://twitter.com/take5magazine',
+                    instagram: 'https://www.instagram.com/take5magazine/'
                 }
             },
             {
@@ -100,9 +100,9 @@ export default {
                 imageUrl: '/assets/images/headerlogos/YOURS-logo.svg',
                 url: '/yours',
                 socialLinks: {
-                    facebookUrl: 'https://www.facebook.com/Yoursmagazineau/',
-                    twitterUrl: 'https://twitter.com/yoursmagazineau',
-                    instagramUrl: 'https://www.instagram.com/yoursmagazineau/'
+                    facebook: 'https://www.facebook.com/Yoursmagazineau/',
+                    twitter: 'https://twitter.com/yoursmagazineau',
+                    instagram: 'https://www.instagram.com/yoursmagazineau/'
                 }
             },
             {
@@ -111,9 +111,9 @@ export default {
                 imageUrl: '/assets/images/headerlogos/MB-logo.svg',
                 url: '/mother-and-baby',
                 socialLinks: {
-                    facebookUrl: 'https://www.facebook.com/mbmag/',
-                    twitterUrl: 'https://twitter.com/motherbaby_au',
-                    instagramUrl: 'https://www.instagram.com/motherbaby_au'
+                    facebook: 'https://www.facebook.com/mbmag/',
+                    twitter: 'https://twitter.com/motherbaby_au',
+                    instagram: 'https://www.instagram.com/motherbaby_au'
                 },
                 renderSubscribeElements: false
             },
@@ -123,9 +123,9 @@ export default {
                 imageUrl: '/assets/images/headerlogos/TVWEEK-logo.svg',
                 url: '/tvweek',
                 socialLinks: {
-                    facebookUrl: 'https://www.facebook.com/tvweekmag',
-                    twitterUrl: 'https://twitter.com/TVWEEKmag',
-                    instagramUrl: 'https://www.instagram.com/TVWEEK'
+                    facebook: 'https://www.facebook.com/tvweekmag',
+                    twitter: 'https://twitter.com/TVWEEKmag',
+                    instagram: 'https://www.instagram.com/TVWEEK'
                 }
             }
         ],

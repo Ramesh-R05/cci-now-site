@@ -16,6 +16,19 @@ const context = {
         }
     }
 };
+const contextNZ = {
+    context:{
+        config: {
+            defaultImageUrl: '',
+            global:  {
+                breakpoints: ''
+            },
+            site: {
+                region: 'nz'
+            }
+        }
+    }
+};
 const proxyquire = require('proxyquire').noCallThru();
 const Teaser = proxyquire('../../../app/components/teaser/teaser', {
     "react": React,
@@ -69,5 +82,14 @@ describe('Component', () => {
                 expect(elm.text()).to.contain('Australian women\'s weekly');
             });
         });
+
+        describe('when it is nz site', () => {
+            const wrapper = shallow(<Teaser
+            article={teaserMock.stores.homepageHeroItems.items[0]}/>,contextNZ);
+
+            it('it should has proper teaser classname for nz site', () => {
+                expect(wrapper.prop('className')).to.equal("teaser teaser--nz");
+            })
+        })
     });
 });

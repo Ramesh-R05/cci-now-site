@@ -9,13 +9,13 @@ export default class Social extends Component {
     };
 
     render() {
-        if (!this.props.socialUrls) return null;
+        const { socialUrls } = this.props;
+        if (!socialUrls) return null;
 
-        const links = [];
-
-        if (this.props.socialUrls.facebookUrl) links.push({ name: 'facebook', url: this.props.socialUrls.facebookUrl });
-        if (this.props.socialUrls.twitterUrl) links.push({ name: 'twitter', url: this.props.socialUrls.twitterUrl });
-        if (this.props.socialUrls.instagramUrl) links.push({ name: 'instagram', url: this.props.socialUrls.instagramUrl });
+        const links = Object.keys(socialUrls).map(socialItemName => ({
+            name: socialItemName,
+            url: socialUrls[socialItemName]
+        }));
 
         return (<SocialLinks links={links} />);
     }

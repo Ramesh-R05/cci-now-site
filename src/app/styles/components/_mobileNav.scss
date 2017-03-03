@@ -119,6 +119,7 @@
     li {
         display: inline-block;
         padding: 5px 21px 23px 0px;
+        min-width: 70%;
 
         &:nth-child(2) {
             width: 100%;
@@ -231,7 +232,7 @@
                 }
 
                 &--nzhomes {
-                    max-height: 57px;
+                    height: 57px;
                 }
 
                 &--nzfood {
@@ -239,17 +240,17 @@
                 }
 
                 &--missfq {
-                    max-height: 41px;
+                    height: 41px;
                     margin-right: 100px;
                 }
 
                 &--fq {
-                    max-height: 37px;
+                    height: 37px;
                     margin-right: 100px;
                 }
 
                 &--noted {
-                    max-height: 32px;
+                    height: 32px;
                 }
             }
         }
@@ -257,6 +258,8 @@
 
     img:not(:hover) {
         filter: brightness(0) invert(1);
+        -moz-filter: brightness(0) invert(1);
+        -ms-filter: brightness(0) invert(1);
     }
 }
 

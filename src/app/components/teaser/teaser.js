@@ -90,6 +90,7 @@ export default class Teaser extends Component {
     };
 
     render() {
+        const { config } = this.context;
         const { className, sourceClassName, showDate, sourceDefault } = this.props;
         let { article } = this.props;
 
@@ -99,7 +100,9 @@ export default class Teaser extends Component {
 
         const articleTitle = article.shortTitle || article.summaryTitle || article.title;
 
-        const containerClassNames = classNames(className, 'teaser', {
+        const siteRegionSuffix = get(config, 'site.region', '');
+        const siteRegionClass = siteRegionSuffix && `teaser--${siteRegionSuffix.toLowerCase()}`;
+        const containerClassNames = classNames(className, 'teaser', siteRegionClass, {
             'teaser--has-video': get(article, 'video.properties.videoConfiguration.statusCode') === 200,
             'teaser--gallery': get(article, 'nodeType', '').toLowerCase() === 'gallery'
         });

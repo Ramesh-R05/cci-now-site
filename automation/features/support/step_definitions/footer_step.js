@@ -18,8 +18,7 @@ module.exports = function() {
             var row = rows[i];
             //validates position of social icons on Index and their link
             console.log(row['social'] + ' : ' + socialLink[i]);
-            expect(socialLink[i]).toEqual(row['url']);
-
+            expect(socialLink[i]).toContain(row['url']);
         }
     });
 
@@ -66,7 +65,7 @@ module.exports = function() {
         //Validate the copyright text is correct
         expect(browser.getText(footer.footerElementCopyright)).toContain(text)
     });
-    
+
     this.Given(/^I can see all main elements in the footer$/, function () {
         //Validate that the four main elements in the footer appears
         expect(browser.isVisible(footer.footerElementSocialContainer)).toBe(true);

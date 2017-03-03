@@ -29,6 +29,6 @@ var homepage_widget = {
     bottomFeedTeaserImgLink: '.teaser__list.teaser-view-list .teaser__image',
     bottomFeedTeaserTitle: '.teaser__list.teaser-view-list .teaser__title a',
     bottomFeedTeaserSource: '.teaser__list.teaser-view-list .teaser__source',
-
+    rhsSocialLink: '.page__social-wrapper .social-link a',
 };
 module.exports = homepage_widget;

@@ -98,3 +98,34 @@
         }
     }
 }
+
+.feed-item.feed-item-nz {
+    .feed-item__source--next {
+        color: $nz-next-color;
+    }
+
+    .feed-item__source--woman-s-day {
+        color: $nz-womans-day-color;
+    }
+
+    .feed-item__source--the-australian-women-s-weekly {
+        color: $nz-aww-color;
+    }
+
+    .feed-item__source--new-zealand-s-woman-s-weekly {
+        color: $nz-womans-weekly-color;
+    }
+            
+    .feed-item__source--simply-you {
+        color: $nz-simply-you-color;
+    }
+
+    .feed-item__source--new-zealand-good-health-choices {
+        color: $nz-good-health-choices-color;
+    }
+
+    .feed-item__source--nadia-lim {
+        color: $nz-nadia-color;
+    }
+}
+

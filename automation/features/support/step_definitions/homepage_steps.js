@@ -217,4 +217,18 @@ module.exports = function(){
             expect(promotedTitleGTM[i]).toMatch(row['gtm']);
         }
     });
+
+    this.Given(/^I can see the social icons clickable to open its page in the RHS$/, function (dataTable) {
+        var rows = dataTable.hashes();
+
+        //below captures the array of social links to validate against the table
+        var socialLink = browser.getAttribute(home.rhsSocialLink, 'href');
+
+        for (var i = 0; i < rows.length; ++i) {
+            var row = rows[i];
+            //validates position of social icons on Index and their link
+            console.log(row['social'] + ' : ' + socialLink[i]);
+            expect(socialLink[i]).toContain(row['url']);
+        }
+    });
 };

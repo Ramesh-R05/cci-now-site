@@ -6,8 +6,10 @@ export default {
     },
 
     socialUrls: {
-        facebookUrl: 'https://www.facebook.com/nowtolovenz',
-        twitterUrl: 'https://twitter.com/NowToLovenz',
-        instagramUrl: 'https://www.instagram.com/NowToLovenz'
+        facebook: 'https://www.facebook.com/nowtolovenz',
+        twitter: 'https://twitter.com/NowToLovenz',
+        instagram: 'https://www.instagram.com/NowToLovenz',
+        pinterest: 'https://nz.pinterest.com/NowToLoveNZ/'
     }
 };
+

@@ -15,5 +15,6 @@ var brand_widget = {
     brandFacebookLink: '.page__get-social-container .social-link--facebook a',
     brandTwitterLink: '.page__get-social-container .social-link--twitter a',
     brandInstagramLink: '.page__get-social-container .social-link--instagram a',
+    brandPinterestLink: '.page__get-social-container .social-link--pinterest a',
 };
 module.exports = brand_widget;

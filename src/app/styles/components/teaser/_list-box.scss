@@ -203,5 +203,35 @@
                 padding-right: 20px;
             }
         }
+
+        &.teaser--nz {
+            .teaser__source--next span:first-child:not(.teaser__source__breaker) {
+                color: $nz-next-color;
+            }
+
+            .teaser__source--woman-s-day span:first-child:not(.teaser__source__breaker) {
+                color: $nz-womans-day-color;
+            }
+
+            .teaser__source--the-australian-women-s-weekly span:first-child:not(.teaser__source__breaker) {
+                color: $nz-aww-color;
+            }
+
+            .teaser__source--new-zealand-s-woman-s-weekly span:first-child:not(.teaser__source__breaker) {
+                color: $nz-womans-weekly-color;
+            }
+            
+            .teaser__source--simply-you span:first-child:not(.teaser__source__breaker) {
+                color: $nz-simply-you-color;
+            }
+
+            .teaser__source--new-zealand-good-health-choices span:first-child:not(.teaser__source__breaker) {
+                color: $nz-good-health-choices-color;
+            }
+
+            .teaser__source--nadia-lim span:first-child:not(.teaser__source__breaker) {
+                color: $nz-nadia-color;
+            }
+        }
     }
 }

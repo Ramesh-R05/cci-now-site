@@ -4,3 +4,4 @@ export default {
     prefix: 'NZNOW',
     region: 'nz'
 };
+

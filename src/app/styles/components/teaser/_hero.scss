@@ -111,6 +111,35 @@ $hero-teaser-line-height: 25px;
         }
     }
 
+    .hero-teaser.teaser--nz {
+        .hero-teaser__source--the-australian-women-s-weekly span:first-child:not(.hero-teaser__source__breaker) {
+            color: $nz-aww-color;
+        }
+        .hero-teaser__source--next span:first-child:not(.teaser__source__breaker) {
+            color: $nz-next-color;
+        }
+
+        .hero-teaser__source--woman-s-day span:first-child:not(.teaser__source__breaker) {
+            color: $nz-womans-day-color;
+        }
+
+        .hero-teaser__source--new-zealand-s-woman-s-weekly span:first-child:not(.teaser__source__breaker) {
+            color: $nz-womans-weekly-color;
+        }
+            
+        .hero-teaser__source--simply-you span:first-child:not(.teaser__source__breaker) {
+            color: $nz-simply-you-color;
+        }
+
+        .hero-teaser__source--new-zealand-good-health-choices span:first-child:not(.teaser__source__breaker) {
+            color: $nz-good-health-choices-color;
+        }
+
+        .hero-teaser__source--nadia-lim span:first-child:not(.teaser__source__breaker) {
+            color: $nz-nadia-color;
+        }
+    }
+
     &__social-logo {
         background: url('/assets/logos/NowToLove.svg') no-repeat;
         background-size: 230px;
