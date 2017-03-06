@@ -11,6 +11,8 @@ export default {
 
     services,
 
+    gigya: { apiKey: '3_Yq81-uJDdxXpZkQJw_lte1IiZ8cRnixdv4mzwpglI1Ft2AN3vZY0DuQQa4Be2gR1' },
+    
     site,
 
     brightcove,

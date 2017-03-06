@@ -11,6 +11,18 @@ export default {
             url: 'http://live.redirect.services.bauer-media.internal/v1/now/301'
         }
     },
+    loggly: {
+        inputToken: '9b4a2693-dc77-4e7e-a5ee-498845c59793',
+        subdomain: 'bauerdigital',
+        tags: [
+            'nznow',
+            'live'
+        ],
+        json: true,
+        level: 'error',
+        proxy: 'http://proxy.mgmt.local:3128'
+    },
+    gigya: { apiKey: '3_t9sNGuUPgwEUVDuOJ3g1BEMlqQWvKXQWS9toq53-iiMKRAbCWKXkW8yzltcsCF9N' },
     polar: {
         targets: {
             env: ''
