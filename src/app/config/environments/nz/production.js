@@ -1,4 +1,7 @@
 export default {
+    site: {
+        host: 'http://www.nowtolove.co.nz'
+    },
     services: {
         remote: {
             entity: 'http://live.entities.services.bauer-media.internal/v1/nznow',
