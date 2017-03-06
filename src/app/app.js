@@ -21,7 +21,8 @@ import TrackingStore from './stores/tracking';
 import { load, configPlugin } from '@bxm/config';
 const config = load();
 
-adConfig.init();
+const adTaggingId = config.site.adTaggingId;
+adConfig.init(adTaggingId);
 
 const app = new Flux({
     component: AppComponent,

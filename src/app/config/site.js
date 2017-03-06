@@ -5,5 +5,6 @@ export default {
     name: 'Now To Love',
     shortName: 'Now',
     prefix: 'NOW',
-    network: 'wn'
+    network: 'wn',
+    adTaggingId: 'NowToLove'
 };

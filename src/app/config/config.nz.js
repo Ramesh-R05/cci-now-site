@@ -4,6 +4,7 @@ import brightcove from './nzconfig/brightcove';
 import urls from './nzconfig/urls';
 import brands from './nzconfig/brands';
 import features from './nzconfig/features';
+import polar from './nzconfig/polar';
 
 export default {
     features,
@@ -16,5 +17,7 @@ export default {
 
     urls,
 
-    brands
+    brands,
+
+    polar
 };

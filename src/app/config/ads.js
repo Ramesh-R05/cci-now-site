@@ -4,13 +4,13 @@ import breakpoints from '../breakpoints';
 import adConfig from '@bxm/ad/lib/google/config';
 
 export default {
-    init() {
+    init(siteId) {
         merge(adConfig, {
             breakpoints,
             pageTypes: {
                 Brand: 'index'
             },
-            siteId: 'NowToLove',
+            siteId,
             tagsObject: 'tags',
             sizes: {
                 native: [250, 30],
