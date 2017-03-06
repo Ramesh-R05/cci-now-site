@@ -7,6 +7,9 @@ import features from './nzconfig/features';
 import polar from './nzconfig/polar';
 
 export default {
+
+	gtm: { masthead: 'NZNOW', id: 'GTM-W8G546R' },
+
     features,
 
     services,
