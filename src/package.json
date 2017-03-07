@@ -53,7 +53,7 @@
     "@bxm/node-apm": "^1.0.1",
     "@bxm/react-script-loader": "^2.1.0",
     "@bxm/recommendations": "^4.1.0",
-    "@bxm/server": "^17.4.0",
+    "@bxm/server": "^18.0.0",
     "@bxm/services-stubs": "^2.3.0",
     "@bxm/site-header": "^2.4.0",
     "@bxm/social": "^1.5.0",
