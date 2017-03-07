@@ -11,7 +11,7 @@ export default {
             tag: 'http://live.tags.services.bauer-media.internal/v1/nznow'
         },
         redirect: {
-            url: 'http://live.redirect.services.bauer-media.internal/v1/now/301'
+            url: 'http://live.redirect.services.bauer-media.internal/v1/nznow/301'
         }
     },
     loggly: {
