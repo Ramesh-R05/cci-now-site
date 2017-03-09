@@ -10,13 +10,15 @@ const PageStub = Context.createStubComponentWithChildren();
 const CustomisedTeaserStub = Context.createStubComponent();
 const FooterStub = Context.createStubComponent();
 const AdWrapperStub = Context.createStubComponentWithChildren();
+const SailthruStub = Context.createStubComponent();
 
 const Document = proxyquire('../../app/containers/document', {
     '@bxm/article/lib/article': ArticleStub,
     './gallery': GalleryPageStub,
     './page': PageStub,
     '../components/teaser/teaser': CustomisedTeaserStub,
-    '../components/article/footer': FooterStub
+    '../components/article/footer': FooterStub,
+    '../components/sailthru/sailthru': SailthruStub,
 }).default;
 
 describe('Document Component', () => {
@@ -72,10 +74,12 @@ describe('Document Component', () => {
             });
         });
 
-        it('should wrap the Article Component ', () => {
+        it('should wrap the Article Component and Sailthru Component', () => {
             const ArticleComponent = TestUtils.findRenderedComponentWithType(reactModule, ArticleStub);
+            const SailthruComponent = TestUtils.findRenderedComponentWithType(reactModule, SailthruStub);
             const PageComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
-            expect(ReactDOM.findDOMNode(PageComponent).innerHTML).to.eq(ReactDOM.findDOMNode(ArticleComponent).outerHTML);
+            expect(ReactDOM.findDOMNode(PageComponent).innerHTML).to.contain(ReactDOM.findDOMNode(ArticleComponent).outerHTML);
+            expect(ReactDOM.findDOMNode(PageComponent).innerHTML).to.contain(ReactDOM.findDOMNode(SailthruComponent).outerHTML);
         });
     });
 
@@ -89,6 +93,10 @@ describe('Document Component', () => {
 
         it(`should render the Gallery Component`, () => {
             TestUtils.findRenderedComponentWithType(reactModule, GalleryPageStub);
+        });
+
+        it(`should render the Sailthru Component`, () => {
+            TestUtils.findRenderedComponentWithType(reactModule, SailthruStub);
         });
     });
   });

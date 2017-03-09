@@ -4,6 +4,7 @@ import Gallery from './gallery';
 import Page from './page';
 import Article from '@bxm/article/lib/article';
 import Teaser from '../components/teaser/teaser';
+import Sailthru from '../components/sailthru/sailthru';
 
 function mapStateToProps(context) {
     return {
@@ -59,9 +60,12 @@ export default class Document extends Component {
 
         if (nodeType === 'Gallery') {
             return (
-                <Gallery
-                  customisedTeaser={Teaser} currentUrl={currentUrl}theme={theme}
-                />
+                <div>
+                    <Gallery
+                      customisedTeaser={Teaser} currentUrl={currentUrl}theme={theme}
+                    />
+                    <Sailthru />
+                </div>
             );
         }
 
@@ -97,6 +101,7 @@ export default class Document extends Component {
                   socialShare={socialShare}
                   theme={theme}
                 />
+                <Sailthru />
             </Page>
         );
     }
