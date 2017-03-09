@@ -22,13 +22,6 @@ Feature: Article
         * I can see the body video
         * I can see the body tips "body tips body tips EOM"
         * I can see the body competition
-        * I can see the body Twitter embed "697199025729048577"
-        * I can see the body Instagram embed with caption "https://www.instagram.com/p/BBda49yyr4J/embed/captioned/"
-        * I can see the body Instagram embed without caption "https://www.instagram.com/p/BA4NkZeSr_r/embed/"
-        * I can see the body Facebook embed "https://www.facebook.com/Foodtoloveau/posts/823515874446034"
-        * I can see the body Playbuzz embed "/cosmopolitanmagazine10/which-harry-styles-is-your-boyfriend"
-        * I can see the body Youtube embed "https://www.youtube.com/embed/4GpnNxjy6m0"
-        * I can see the body Vimeo embed "https://player.vimeo.com/video/181027959"
         * I can see the related tags "Gossip Girl," "Dolly Doctor"
         * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
         * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
@@ -51,13 +44,6 @@ Feature: Article
         * I can see the body video
         * I can see the body tips "body tips body tips EOM"
         * I can see the body competition
-        * I can see the body Twitter embed "697199025729048577"
-        * I can see the body Instagram embed with caption "https://www.instagram.com/p/BBda49yyr4J/embed/captioned/"
-        * I can see the body Instagram embed without caption "https://www.instagram.com/p/BA4NkZeSr_r/embed/"
-        * I can see the body Facebook embed "https://www.facebook.com/Foodtoloveau/posts/823515874446034"
-        * I can see the body Playbuzz embed "/cosmopolitanmagazine10/which-harry-styles-is-your-boyfriend"
-        * I can see the body Youtube embed "https://www.youtube.com/embed/4GpnNxjy6m0"
-        * I can see the body Vimeo embed "https://player.vimeo.com/video/181027959"
         * I can see the related tags "Gossip Girl," "Dolly Doctor"
         * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
         * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
@@ -81,13 +67,6 @@ Feature: Article
         * I can see the body video
         * I can see the body tips "body tips body tips EOM"
         * I can see the body competition
-        * I can see the body Twitter embed "697199025729048577"
-        * I can see the body Instagram embed with caption "https://www.instagram.com/p/BBda49yyr4J/embed/captioned/"
-        * I can see the body Instagram embed without caption "https://www.instagram.com/p/BA4NkZeSr_r/embed/"
-        * I can see the body Facebook embed "https://www.facebook.com/Foodtoloveau/posts/823515874446034"
-        * I can see the body Playbuzz embed "/cosmopolitanmagazine10/which-harry-styles-is-your-boyfriend"
-        * I can see the body Youtube embed "https://www.youtube.com/embed/4GpnNxjy6m0"
-        * I can see the body Vimeo embed "https://player.vimeo.com/video/181027959"
         * I can see the related tags "Gossip Girl," "Dolly Doctor"
         * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
         * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
@@ -145,3 +124,24 @@ Feature: Article
             | tablet portrait   |
             | tablet landscape  |
 
+    @must
+    Scenario Outline: Editorial team can add social feeds to the article body
+         Given I switch to "<device>" view
+         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+         Then I can see the body Twitter embed "697199025729048577"
+         * I can see the body Instagram embed with caption "https://www.instagram.com/p/BBda49yyr4J/embed/captioned/"
+         * I can see the body Instagram embed without caption "https://www.instagram.com/p/BA4NkZeSr_r/embed/"
+         * I can see the body Facebook embed "https://www.facebook.com/Foodtoloveau/posts/823515874446034"
+         * I can see the body Playbuzz embed "/cosmopolitanmagazine10/which-harry-styles-is-your-boyfriend"
+         * I can see the body Youtube embed "https://www.youtube.com/embed/4GpnNxjy6m0"
+         * I can see the body Vimeo embed "https://player.vimeo.com/video/181027959"
+    @high
+         Examples:
+             | device            |
+             | mobile            |
+             | desktop           |
+    @med
+         Examples:
+             | device            |
+             | tablet portrait   |
+             | tablet landscape  |
