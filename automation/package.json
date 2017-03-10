@@ -13,7 +13,7 @@
     "once": "npm run single",
     "html_report": "bash -c \"node generate_html.js\"",
     "debug": "bash -c \"./node_modules/.bin/chimp chimp.js --debug\"",
-    "watch": "bash -c \"./node_modules/.bin/chimp chimp.js --watch\"",
+    "watch": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --watch\"",
     "bs": "bash -c \"./node_modules/.bin/chimp chimp.bs.js\"",
     "features": "bash -c \"node runner.js --pMode=features\"",
     "browsers": "bash -c \"node runner.js\"",
@@ -22,7 +22,7 @@
     "share:live": "bash -c \"./node_modules/.bin/chimp chimp.js --tags=@livesharerepo --jsonOutput=reports/regression.json && npm run html_report\"",
     "general:live": "bash -c \"./node_modules/.bin/chimp chimp.js --tags=@live --jsonOutput=reports/regression.json && npm run html_report\"",
     "phantom": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --jsonOutput=reports/regression.json --tags=@now --tags=@must\" && npm run html_report",
-    "test:phantom": "export URL=http://dev-site-now-au-140875160.ap-southeast-2.elb.amazonaws.com/ && export APP_KEY=now-site && npm run phantom"
+    "test:phantom": "export APP_KEY=now-site && npm run phantom"
   },
   "dependencies": {
     "@bxm/automation": "^1.0.0",
