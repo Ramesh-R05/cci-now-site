@@ -1,0 +1,144 @@
+jobs:
+
+# sync pipeline to CI
+  - name: now-site_runCI
+    type: runCI
+    steps:
+      - OUT: now-site-img-master
+      - OUT: now-site-img-branch
+
+# manifest for a branch image
+  - name: now-site-man-branch
+    type: manifest
+    steps:
+      - IN: now-site-img-branch
+      - IN: now-site-opts-dev
+      - TASK: managed
+    flags:
+      - now-site
+
+# manifest for master image
+  - name: now-site-man-master
+    type: manifest
+    steps:
+      - IN: now-site-img-master
+      - IN: now-site-opts-dev
+      - TASK: managed
+
+# DEV deployment for a non-master branch
+  - name: now-site-dev-deploy-branch
+    type: deploy
+    always:
+      - NOTIFY: slack-notifications
+    steps:
+      - IN: now-site-man-branch # for non-master, don't auto deploy.
+        switch: off
+      - IN: env-dev-ecs
+      - IN: now-site-params-dev
+      - IN: now-site-alb-dev-branch
+        applyTo:
+          - manifest: now-site-man-branch
+            image: now-site-img-branch
+            port: 3001
+      - TASK: managed
+        deployMethod: upgrade
+
+# DEV deployment for master branch
+  - name: now-site-dev-deploy-master
+    type: deploy
+    always:
+      - NOTIFY: slack-notifications
+    steps:
+      - IN: now-site-man-master # for master - auto deploy to dev
+        switch: on
+      - IN: env-dev-ecs
+      - IN: now-site-params-dev
+      - IN: now-site-alb-dev
+        applyTo:
+          - manifest: now-site-man-master
+            image: now-site-img-master
+            port: 3001
+      - TASK: managed
+        deployMethod: upgrade
+
+# Stubbed deployment for automation tests
+  - name: now-site-stubbed-deploy-master
+    type: deploy
+    steps:
+      - IN: now-site-man-master # for master - auto deploy to dev
+        switch: on
+      - IN: env-dev-ecs
+      - IN: now-site-params-stubbed
+      - IN: now-site-alb-stubbed
+        applyTo:
+          - manifest: now-site-man-master
+            image: now-site-img-master
+            port: 3001
+      - TASK: managed
+        deployMethod: upgrade
+
+# Test Dev site
+  - name: now-site-automation-test
+    type: runSh
+    always:
+      - NOTIFY: slack-notifications
+    steps:
+     - IN: now-site-stubbed-deploy-master
+     - IN: now-site-repo
+     - TASK:
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+        - script: source ~/.nvm/nvm.sh
+        - script: nvm install "6.1.0"
+        - script: nvm use "6.1.0"
+        - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm install
+        - script: export URL=http://stubbed-site-now-au-37144507.ap-southeast-2.elb.amazonaws.com/
+        - script: npm run test:phantom
+
+# Test Stubbed Site Manually
+  - name: manual-now-site-automation-test
+    type: runSh
+    steps:
+     - IN: now-site-repo
+     - TASK:
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+        - script: source ~/.nvm/nvm.sh
+        - script: nvm install "6.1.0"
+        - script: nvm use "6.1.0"
+        - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm install
+        - script: export URL=http://stubbed-site-now-au-37144507.ap-southeast-2.elb.amazonaws.com/
+        - script: export APP_KEY=now-site
+        - script: ./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@high || true
+        - script: sleep 5s;actualsize=$(wc -c <"@rerun.txt");if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; ./node_modules/.bin/chimp chimp.js @rerun.txt; fi
+
+# Package release for production release
+  - name: now-site-release-master
+    type: release
+    steps:
+      - IN: now-site-automation-test
+      - IN: now-site-version
+      - TASK: managed
+        bump: minor
+
+  # - name: nz-now-site-staging-deploy
+  #   type: deploy
+  #   always:
+  #     - NOTIFY: slack-notifications
+  #   steps:
+  #     - IN: now-site-staging-release
+  #       switch: off # comment out if we want to autodeploy.
+  #     - IN: env-staging-ecs
+  #     - IN: now-site-staging-deploy-trigger
+  #     - IN: nz-now-site-params-staging
+  #     - IN: now-site-replicas-staging
+  #     - IN: nz-now-site-opts-staging
+  #     - IN: now-site-alb-staging
+  #       applyTo:
+  #         - manifest: now-site-man
+  #           image: now-site-img
+  #           port: 3001
+  #     - TASK: managed
+  #       deployMethod: upgrade
