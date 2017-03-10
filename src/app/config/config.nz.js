@@ -24,6 +24,12 @@ export default {
 
     brands,
 
-    polar
+    polar,
+
+    outbrain: {
+        templateId: 'NowtoLoveNZ',
+        widgetId: 'AR_1',
+        scriptUrl: 'http://widgets.outbrain.com/outbrain.js'
+    }
 };
 

@@ -1,6 +1,6 @@
 export default {
     outbrain: {
-        enabled: false
+        enabled: true
     },
     sailthru: {
         enabled: false
