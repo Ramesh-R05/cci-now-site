@@ -7,7 +7,7 @@ import { connectToStores } from '@bxm/flux';
 
 class BrandMagazine extends Component {
     static propTypes = {
-        magazineImageUrl: PropTypes.string.isRequired,
+        imageUrl: PropTypes.string.isRequired,
         brand: PropTypes.object.isRequired,
         imageSizes: PropTypes.object,
         responsiveConfig: PropTypes.object
@@ -32,7 +32,7 @@ class BrandMagazine extends Component {
     };
 
     render() {
-        const { imageSizes, responsiveConfig, magazineImageUrl, brand } = this.props;
+        const { imageSizes, responsiveConfig, imageUrl, brand } = this.props;
         const breakpoints = this.context.config.global.breakpoints;
         const { socialLinks, id, title, magazineTitle } = brand;
         const renderSubscribeElements = get(brand, 'renderSubscribeElements', true);
@@ -44,7 +44,7 @@ class BrandMagazine extends Component {
                     {renderSubscribeElements && <span className="brand--magazine-title">Subscribe to {magazineTitle || title}</span>}
                     <div className="brand--magazine-image">
                         <ResponsiveImage
-                          url={magazineImageUrl}
+                          url={imageUrl}
                           sizes={imageSizes}
                           breakpoints={breakpoints}
                           scale={responsiveConfig.scale}
@@ -70,6 +70,6 @@ class BrandMagazine extends Component {
 
 
 export default connectToStores(BrandMagazine, ['PageStore'], context => ({
-    magazineImageUrl: context.getStore('PageStore').getMagazineImageUrl()
+    imageUrl: context.getStore('PageStore').getImageUrl()
 }));
 
