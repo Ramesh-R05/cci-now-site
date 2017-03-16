@@ -26,8 +26,8 @@ export default createReducerStore({
             return state.nodeType;
         },
 
-        getMagazineImageUrl(state) {
-            return state.magazineImageUrl;
+        getImageUrl(state) {
+            return state.imageUrl;
         },
 
         getTrendingItems(state) {

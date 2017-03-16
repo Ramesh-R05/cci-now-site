@@ -13,7 +13,7 @@ const BrandMagazine = proxyquire('../../../app/components/brand/brandMagazine', 
 
 const magImageUrlStub = 'http://stubbedimages.biz/content.jpg';
 Context.addStore('PageStore', {
-    getMagazineImageUrl() {
+    getImageUrl() {
         return magImageUrlStub;
     }
 });

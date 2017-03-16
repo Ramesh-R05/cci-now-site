@@ -2,4 +2,21 @@
     .page-title__now {
         color: $color-primary;
     }
+
+    .container {
+        .banner-wrapper {
+            margin-bottom: 20px;
+            margin-left: -15px;
+            margin-right: -15px;
+
+            @media #{large-up} {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            image {
+                width: 100%;
+            }
+        }
+    }
 }

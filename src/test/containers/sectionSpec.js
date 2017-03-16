@@ -65,6 +65,9 @@ describe('Section Container', () => {
         },
         getSummary() {
             return 'Summary'
+        },
+        getImageUrl() {
+            return 'Image Url'
         }
     });
 
@@ -121,6 +124,12 @@ describe('Section Container', () => {
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
         expect(PageStubComponent.props.pageTitle.type).to.eq('h1');
     });
+
+    it('should render the section banner', () => {
+        const reactModule = Context.mountComponent(SectionContainer,{},[contextConfigStub]);
+        const div = TestUtils.findRenderedDOMComponentWithClass(reactModule, 'banner-wrapper');
+        expect(div).to.exist;
+    });
 });
 
 describe('Brand Container', () => {
@@ -146,5 +155,11 @@ describe('Brand Container', () => {
         const reactModule = Context.mountComponent(SectionContainer, {currentUrl: '/aww?pageNo=2', nodeType: 'Brand'}, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
         expect(PageStubComponent.props.pageTitle.props.brand).to.deep.eq(contextConfigStub.value.brands.uniheader[0]);
+    });
+
+    it('should render the section banner', () => {
+        const reactModule = Context.mountComponent(SectionContainer,{currentUrl: '/aww?pageNo=2', nodeType: 'Brand'},[contextConfigStub]);
+        const div = ReactDOM.findDOMNode(reactModule).querySelector('.banner-wrapper');
+        expect(div).to.not.exist;
     });
 });

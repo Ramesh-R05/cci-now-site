@@ -5,7 +5,7 @@ export const initialState = {
     footer: {},
     nodeType: '',
     title: '',
-    magazineImageUrl: '',
+    imageUrl: '',
     trendingItems: []
 };
 
@@ -25,7 +25,7 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
             summary: entity.summary,
             trendingItems,
             footer,
-            magazineImageUrl: entity.imageUrl,
+            imageUrl: entity.imageUrl,
             theme: payload.body.theme
         };
     }
@@ -39,7 +39,7 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
             title: '',
             trendingItems: [],
             footer: get(payload, 'response.body.footer', {}),
-            magazineImageUrl: '',
+            imageUrl: '',
             theme: '' };
     }
     default:

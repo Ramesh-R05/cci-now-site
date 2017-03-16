@@ -22,7 +22,7 @@ describe(`loadPage Reducer`, () => {
                     shortTitle: payload.body.entity.shortTitle,
                     summary: payload.body.entity.summary,
                     trendingItems: payload.body.trendingItems,
-                    magazineImageUrl: payload.body.entity.imageUrl
+                    imageUrl: payload.body.entity.imageUrl
                 });
             });
 
@@ -35,7 +35,7 @@ describe(`loadPage Reducer`, () => {
                     shortTitle: payload.body.entity.shortTitle,
                     summary: payload.body.entity.summary,
                     trendingItems: payload.body.trendingItems,
-                    magazineImageUrl: payload.body.entity.imageUrl
+                    imageUrl: payload.body.entity.imageUrl
                 });
             });
         });
@@ -72,7 +72,7 @@ describe(`loadPage Reducer`, () => {
                 nodeType: '',
                 title: '',
                 trendingItems: [],
-                magazineImageUrl: '',
+                imageUrl: '',
                 theme: ''
             });
         });
@@ -85,7 +85,7 @@ describe(`loadPage Reducer`, () => {
                 nodeType: '',
                 title: '',
                 trendingItems: [],
-                magazineImageUrl: '',
+                imageUrl: '',
                 theme: ''
             });
         });

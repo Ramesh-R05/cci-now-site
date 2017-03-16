@@ -3,6 +3,7 @@ import { connectToStores } from '@bxm/flux';
 import Page from './page';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import HeroTeaser from '../components/teaser/hero';
+import imageResize from '@bxm/ui/lib/common/ImageResize';
 import TeaserGridView from '../components/teaser/grid';
 import TeaserListView from '../components/teaser/list';
 import Repeatable from '../components/repeatable';
@@ -23,7 +24,8 @@ function mapStateToProps(context) {
         summary: pageStore.getSummary(),
         teasers: teaserStore.getLatestTeasers(),
         list: teaserStore.getList(),
-        listNextParams: teaserStore.getListNextParams()
+        listNextParams: teaserStore.getListNextParams(),
+        imageUrl: pageStore.getImageUrl()
     };
 }
 
@@ -40,12 +42,14 @@ export default class Section extends Component {
         currentUrl: PropTypes.string.isRequired,
         shortTitle: PropTypes.string.isRequired,
         summary: PropTypes.string.isRequired,
-        theme: PropTypes.object
+        theme: PropTypes.object,
+        imageUrl: PropTypes.string
     };
 
     static defaultProps = {
         teasers: [],
-        theme: {}
+        theme: {},
+        imageUrl: ''
     };
 
     static contextTypes = {
@@ -65,7 +69,7 @@ export default class Section extends Component {
     }
 
     render() {
-        const { nodeType, teasers, title, currentUrl, shortTitle, summary, theme } = this.props;
+        const { nodeType, teasers, title, currentUrl, shortTitle, summary, theme, imageUrl } = this.props;
         const heroTeaser = teasers[0];
         const firstTeaserList = teasers.slice(1, 7);
         const keyword = (nodeType === 'TagSection' && title) ? [title] : [];
@@ -82,6 +86,13 @@ export default class Section extends Component {
             </h1>
         );
         const polarLabels = this.context.config.polar.details;
+        const imageSrc = imageResize.url({
+            url: imageUrl,
+            width: 633,
+            mode: imageResize.mode.CROP,
+            anchor: imageResize.anchor.TC
+        });
+
         return (
             <Page
               currentUrl={currentUrl}
@@ -99,6 +110,13 @@ export default class Section extends Component {
                                       className="columns large-8 xlarge-9 section-page__teasers-container"
                                       ref={(c) => { this.top = c; }}
                                     >
+
+                                        {imageUrl && !isBrandPage &&
+                                            <div className="banner-wrapper">
+                                                <img src={imageSrc} alt={title} />
+                                            </div>
+                                        }
+
                                         <HeroTeaser showDate={!isBrandPage} article={heroTeaser} brand={brand} />
 
                                         <TeaserGridView
