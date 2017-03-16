@@ -85,10 +85,6 @@ module.exports = function() {
         var heroImgCaption = browser.getText(wn_article.heroImgCaption);
         expect(heroImgCaption).toContain(ImgCaption);
     });
-    this.When(/^I can see the LHR$/, function () {
-        var lhrFeed = browser.isVisible(wn_article.lhrFeed);
-        expect(lhrFeed).toBe(true);
-    });
     this.When(/^I should not see the LHR$/, function () {
         var lhrFeed = browser.isVisible(wn_article.lhrFeed);
         expect(lhrFeed).toBe(false);
@@ -99,7 +95,7 @@ module.exports = function() {
     });
     this.Given(/^I can see the created date "([^"]*)"$/, function (date) {
         var articleDate = browser.getText(wn_article.dateText);
-        expect(articleDate.toString()).toEqual(date);
+        expect(articleDate.toString()).toContain(date);
         console.log('article date is:' + articleDate)
     });
     this.Given(/^I can see the hero video instead of the main image$/, function () {

@@ -135,8 +135,11 @@ module.exports = function() {
     });
 
     this.When(/^I see the video ID "([^"]*)" on the gallery$/, function(videoId) {
-        browser.click(gallery.galleryNextButton);
-        browser.click(gallery.galleryNextButton);
+        for (var i = 0; i < 2; i++) {
+            browser.click(gallery.galleryNextButton);
+            wait(500);
+        }
+        browser.waitForVisible(gallery.videoWrapper, 3000);
         expect(browser.getAttribute(gallery.videoWrapper, gallery.videoId)).toEqual(videoId)
     });
 

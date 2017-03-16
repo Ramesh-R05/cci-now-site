@@ -17,7 +17,7 @@ module.exports = function() {
     });
 
     this.Given(/^I am currently viewing "([^"]*)"$/, function (pagename) {
-        browser.url(world.Urls.home_page+pagename)
+        browser.url(world.Urls.home_page+pagename);
         browser.waitUntil(function () {
             return browser.getUrl() === world.Urls.home_page+pagename;
         }, 20000, 1000);
