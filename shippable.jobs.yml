@@ -95,7 +95,6 @@ jobs:
         - script: npm install
         - script: export URL=http://stubbed-site-now-au-37144507.ap-southeast-2.elb.amazonaws.com/
         - script: npm run test:phantom
-        - script: cat reports/report.html
 
 # Test Dev site
   - name: now-site-mobile-automation-test
