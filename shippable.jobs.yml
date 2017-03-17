@@ -97,10 +97,13 @@ jobs:
         - script: npm run test:phantom
         - script: cat reports/report.html
 
-# Test Stubbed Site Manually
-  - name: manual-now-site-automation-test
+# Test Dev site
+  - name: now-site-mobile-automation-test
     type: runSh
+    always:
+      - NOTIFY: slack-notifications
     steps:
+     - IN: now-site-stubbed-deploy-master
      - IN: now-site-repo
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
@@ -111,15 +114,14 @@ jobs:
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://stubbed-site-now-au-37144507.ap-southeast-2.elb.amazonaws.com/
-        - script: export APP_KEY=now-site
-        - script: ./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@high || true
-        - script: sleep 5s;actualsize=$(wc -c <"@rerun.txt");if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; ./node_modules/.bin/chimp chimp.js @rerun.txt; fi
+        - script: npm run test:mobile
 
 # Package release for production release
   - name: now-site-release-master
     type: release
     steps:
       - IN: now-site-automation-test
+      - IN: now-site-mobile-automation-test
       - IN: now-site-version
       - TASK: managed
         bump: minor
