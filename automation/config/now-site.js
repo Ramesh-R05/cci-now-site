@@ -1,6 +1,6 @@
 {
-    "maxWorkers": 2,
-    "featurePath": "./features",
+    "maxWorkers": 3,
+    "featurePath": "./features/regression",
     "reportPath": "./reports",
     "chimpPath": "./node_modules/.bin/chimp",
     "chimpConfig": "chimp.shippable.js",

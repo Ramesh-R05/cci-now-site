@@ -7,7 +7,7 @@ var hooks = function () {
     nconf.argv().env();
     var domainName = nconf.get('APP_KEY');
 
-        this.After(function (scenario) {
+    this.After(function (scenario) {
             console.log('run on domain : ' + domainName);
             browser.deleteCookie();
         });

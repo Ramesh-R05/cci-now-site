@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "test:mobile": "bash -c \"./node_modules/.bin/chimp chimp.bs.js --tags=@mobile\"",
     "test:high": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --jsonOutput=reports/regression.json --tags=@now --tags=@high && npm run html_report\"",
     "test:med": "bash -c \"./node_modules/.bin/chimp chimp.js --format=rerun:@rerun.txt --jsonOutput=reports/regression.json --tags=@now --tags=@med && npm run html_report\"",
     "test:low": "bash -c \"./node_modules/.bin/chimp chimp.js --format=rerun:@rerun.txt --jsonOutput=reports/regression.json --tags=@now --tags=@low && npm run html_report\"",

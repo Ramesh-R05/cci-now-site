@@ -206,21 +206,25 @@ module.exports = function() {
         expect(instagramEmbed[1]).not.toMatch("captioned");
     });
     this.Given(/^I can see the body Facebook embed "([^"]*)"$/, function (facebookUrl) {
-       var facebookEmbed = browser.getAttribute(wn_article.facebookEmb1, 'data-href');
+       browser.waitForVisible(wn_article.facebookEmb1, 3000);
+        var facebookEmbed = browser.getAttribute(wn_article.facebookEmb1, 'data-href');
         console.log(facebookEmbed);
         expect(facebookEmbed).toEqual(facebookUrl);
     });
     this.Given(/^I can see the body Playbuzz embed "([^"]*)"$/, function (playbuzzUrl) {
+        browser.waitForVisible(wn_article.playbuzzEmb1, 3000);
         var playbuzzEmbed = browser.getAttribute(wn_article.playbuzzEmb1, 'data-game');
         console.log(playbuzzEmbed);
         expect(playbuzzEmbed).toEqual(playbuzzUrl);
     });
     this.Given(/^I can see the body Youtube embed "([^"]*)"$/, function (youtubeUrl) {
+        browser.waitForVisible(wn_article.videoEmbArry, 3000);
         var videoEmbArry = browser.getAttribute(wn_article.videoEmbArry, 'src');
         console.log(videoEmbArry[0]); //The stubbed data of Youtube is in the first iframe of video container.
         expect(videoEmbArry[0]).toEqual(youtubeUrl);
     });
     this.Given(/^I can see the body Vimeo embed "([^"]*)"$/, function (vimeoUrl) {
+        browser.waitForVisible(wn_article.videoEmbArry, 3000);
         var videoEmbArry = browser.getAttribute(wn_article.videoEmbArry, 'src');
         console.log(videoEmbArry[1]); //The stubbed data of Vimeo is in the second iframe of video container.
         expect(videoEmbArry[1]).toEqual(vimeoUrl);
@@ -475,5 +479,6 @@ module.exports = function() {
         expect(pinterest).toBe(true);
         expect(pinterestButton).toEqual('PIN IT');
     });
+
 };
 

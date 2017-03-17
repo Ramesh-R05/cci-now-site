@@ -17,10 +17,8 @@ module.exports = function() {
     });
 
     this.Given(/^I am currently viewing "([^"]*)"$/, function (pagename) {
+        browser.timeouts('page load', 90000);
         browser.url(world.Urls.home_page+pagename);
-        browser.waitUntil(function () {
-            return browser.getUrl() === world.Urls.home_page+pagename;
-        }, 20000, 1000);
     });
 
     this.When(/^I scroll the page down$/, function () {
