@@ -25,8 +25,7 @@
     "test:phantom": "export APP_KEY=now-site && npm run features"
   },
   "dependencies": {
-    "@bxm/automation": "1.0.2",
-    "chimp": "0.45.1",
+    "@bxm/automation": "1.0.0",
     "cucumber-html-report": "^0.2.8"
   }
 }
