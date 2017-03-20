@@ -12,6 +12,7 @@ module.exports = {
     saveScreenshotsToReport: false,
     screenshotsPath: 'screenshots',
     saveScreenshotsToDisk: true,
+    jsonOutput: 'reports/regression.json',
     webdriverio: {
         desiredCapabilities: {}
     }

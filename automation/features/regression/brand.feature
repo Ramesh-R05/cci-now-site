@@ -12,7 +12,7 @@ Feature: Brand Landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
         * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source without date
-        @high @must
+        @high
         Examples:
             |device           |
             |desktop          |
