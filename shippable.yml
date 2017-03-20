@@ -23,6 +23,7 @@ build:
     - npm install
     - echo "module.exports={buildNumber:'$BRANCH_NAME'};" > version.js
     - cat version.js
+    - npm run build
     - npm run test:ci
     - cd ..
     - if [ "$BRANCH" == "master" ]; then echo "versionName=$BRANCH_NAME" >> $JOB_STATE/now-site-img-master.env; fi
