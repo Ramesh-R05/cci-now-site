@@ -1,5 +1,6 @@
 var home = require('../page_objects/homepage_widget');
 var world = require('../world');
+var wait = require('../utils/wait');
 
 module.exports = function(){
 
@@ -144,6 +145,7 @@ module.exports = function(){
 
     this.Given(/^I should see (\d+) must read images and titles which are clickable to open their page$/, function(number) {
         //find elements of image and title of all must read items
+        wait(2000);
         var mustreadImage = browser.getAttribute(home.mustreadImage,'data-srcset');
         var mustreadImageLink = browser.getAttribute(home.mustreadImageLink,'href');
         var mustreadTitle = browser.getText(home.mustreadTitle);
