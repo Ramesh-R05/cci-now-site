@@ -235,6 +235,20 @@ export default{
                 "content": {
                     "url": "https://player.vimeo.com/video/181027959"
                 }
+            },
+            {
+                "type": "whooshka",
+                "label": "Whooshka",
+                "content": {
+                    "url": "https://www.whooshkaa.com/player/episode/id/90704?visual=true"
+                }
+            },
+            {
+                "type": "wirewax",
+                "label": "Wirewax",
+                "content": {
+                    "url": "http://embed.wirewax.com/8037657/ff0044/"
+                }
             }
         ],
         "authorProfiles": [
