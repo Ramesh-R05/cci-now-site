@@ -55,7 +55,7 @@ resources:
   - name: nz-now-site-alb-dev
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:loadbalancer/dev-site-now-nz/adb38f8d67bf1050"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/dev-site-now-nz/adb38f8d67bf1050"
       method: application
 
   - name: now-site-alb-dev
