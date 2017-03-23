@@ -64,7 +64,7 @@ var article_widget = {
     bottomSource: '.article-header-source--bottom a',
     bottomSourceImg: '.article-header-source--bottom img',
     articleFacebook: '.article__footer .social-share-block .icon-facebook',
-    articlePinterest: '.article__footer .social-share-block .icon-pinterest',
+    articlePinterest: '.article__footer .social-share-block .icon-pinterest'
 };
 
 module.exports = article_widget;

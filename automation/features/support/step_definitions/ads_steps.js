@@ -43,6 +43,7 @@ module.exports = function() {
     });
 
     this.Then(/^I should see the bottom leaderboard ad above the footer$/, function () {
+        browser.moveToObject(wn_ads.adBottomLeaderboard);
         expect(browser.isVisible(wn_ads.adBottomLeaderboard)).toBe(true);
     });
 
@@ -91,7 +92,8 @@ module.exports = function() {
     });
 
     this.Then(/^I should see the bottom leaderboard ad above the footer on article$/, function () {
-        expect(browser.isVisible(wn_ads.adBottomLeaderboardArticle)).toBe(true);
+        browser.moveToObject(wn_ads.adBottomLeaderboard);
+        expect(browser.isVisible(wn_ads.adBottomLeaderboard)).toBe(true);
     });
 
     this.Then(/^I should see four MREC ads in the RHR feed$/, function () {

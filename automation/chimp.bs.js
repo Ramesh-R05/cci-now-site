@@ -1,12 +1,10 @@
 module.exports = {
+
     featurePath: './features/mobile',
     offline: false,
     screenshotsOnError: false,
     captureAllStepScreenshots: false,
     saveScreenshotsToReport: false,
-    'browserName': 'iPhone',
-    'platform': 'MAC',
-    'deviceName': 'iPhone 6Plus',
 
     // - - - - SELENIUM  - - - -
       name: 'NTL Repo',
@@ -14,8 +12,14 @@ module.exports = {
       key: 'QmqNpg983H2ucStjNMu9',
       port: 80,
       host: 'hub.browserstack.com',
-      webdriverio: {
+
+    webdriverio: {
         desiredCapabilities: {
-            "browserstack.debug": false}
+            "browserstack.debug": false,
+            'realMobile': true,
+            'browserName': 'iPhone',
+            'platform': 'MAC',
+            'device': 'iPhone 6'
+            }
       }
 };

@@ -49,6 +49,12 @@ Ensure you update the browser or device the test will run on in the chimp.bs.js 
 Below are set in the ./runner.js file
 - `npm run features` (run multiple features concurrently)
 - `npm run browsers` (run multiple browsers concurrently)
+- `npm run test:high` (run all test marked as @high)
+- `npm run test:med` (run all test marked as @med)
+- `npm run test:low` (run all test marked as @low)
+- `npm run test:rerun` (run all test from file @rerun generated from fail test in `test:high`)
+- `npm run html_report` (generates html report from file `./reports/regression.json`)
+- `npm run general:live` (run and environment live)
 
 # Troubleshooting:
 ### Microsoft JScript compilation error
