@@ -147,7 +147,7 @@ jobs:
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://dev-site-now-nz-1643171746.ap-southeast-2.elb.amazonaws.com/
-        - script: npm run test:test:nzlow
+        - script: npm run test:nzlow
 
   - name: now-site-release-master # Package release for production release
     type: release
