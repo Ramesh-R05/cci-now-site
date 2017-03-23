@@ -1,8 +1,8 @@
 export default {
     uniheader: [{
         id: 'nzww',
-        title: "New Zealand's Woman's Weekly",
-        magazineTitle: "New Zealand's Woman's Weekly",
+        title: "New Zealand Woman's Weekly",
+        magazineTitle: "New Zealand Woman's Weekly",
         imageUrl: '/assets/images/nzheaderlogos/NZWW-logo.svg',
         url: '/nz-womans-weekly',
         socialLinks: {
@@ -33,8 +33,8 @@ export default {
         }
     }, {
         id: 'next',
-        title: 'Next',
-        magazineTitle: 'Next Magazine',
+        title: 'NEXT',
+        magazineTitle: 'NEXT Magazine',
         imageUrl: '/assets/images/nzheaderlogos/NEXT-logo.svg',
         url: '/next',
         socialLinks: {
@@ -44,8 +44,8 @@ export default {
         }
     }, {
         id: 'nzgh',
-        title: 'New Zealand Good Health Choices',
-        magazineTitle: 'New Zealand Good Health Choices',
+        title: 'Good Health Choices',
+        magazineTitle: 'Good Health Choices',
         imageUrl: '/assets/images/nzheaderlogos/GHC-logo.svg',
         url: '/good-health-choices',
         socialLinks: {
@@ -53,17 +53,6 @@ export default {
             twitter: 'https://twitter.com/good_health_nz',
             instagram: 'https://www.instagram.com/goodhealthnz/',
             pinterest: 'https://nz.pinterest.com/goodhealthmag/'
-        }
-    }, {
-        id: 'nadia',
-        title: 'Nadia Lim',
-        magazineTitle: 'Nadia Lim',
-        imageUrl: '/assets/images/nzheaderlogos/NADIA-logo.svg',
-        url: '/nadia',
-        socialLinks: {
-            facebook: 'https://www.facebook.com/NadiaLimCooks/',
-            twitter: 'https://twitter.com/nadialimchef',
-            instagram: 'https://www.instagram.com/nadialimcooks'
         }
     }, {
         id: 'simply',

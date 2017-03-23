@@ -8,12 +8,11 @@ Feature: Specific value for NZ NTL
         Given I am currently viewing the homepage
         * I can navigate to all sites in the desktop list on the header
             |title                              |url                    |gtm                    |
-            |New Zealand's Woman's Weekly       |/nz-womans-weekly      |gtm-uniheader-nzww     |
+            |New Zealand Woman's Weekly         |/nz-womans-weekly      |gtm-uniheader-nzww     |
             |Woman's Day                        |/womans-day            |gtm-uniheader-nzwd     |
             |The Australian Women's Weekly      |/aww                   |gtm-uniheader-awwnz    |
-            |Next                               |/next                  |gtm-uniheader-next     |
-            |New Zealand Good Health Choices    |/good-health-choices   |gtm-uniheader-nzgh     |
-            |Nadia Lim                          |/nadia                 |gtm-uniheader-nadia    |
+            |NEXT                               |/next                  |gtm-uniheader-next     |
+            |Good Health Choices                |/good-health-choices   |gtm-uniheader-nzgh     |
             |Simply You                         |/simply-you            |gtm-uniheader-simply   |
 
     Scenario: I can see the brand logos in the hamburger menu
@@ -43,7 +42,6 @@ Feature: Specific value for NZ NTL
             |aww                 |subscribe-awwnz   |https://www.facebook.com/awwmagazine           |none                               |https://www.instagram.com/awwmagazine      |none                                   |gtm-subscribe-awwnz  |
             |next                |subscribe-next    |https://www.facebook.com/nextmagazine          |https://twitter.com/nextmagazinenz |https://www.instagram.com/nextmagazinenz   |none                                   |gtm-subscribe-next   |
             |good-health-choices |subscribe-nzgh    |https://www.facebook.com/goodhealthchoicesnz   |https://twitter.com/good_health_nz |https://www.instagram.com/goodhealthnz     |https://nz.pinterest.com/goodhealthmag |gtm-subscribe-nzgh   |
-            |nadia               |subscribe-nadia   |https://www.facebook.com/NadiaLimCooks         |https://twitter.com/nadialimchef   |https://www.instagram.com/nadialimcooks    |none                                   |gtm-subscribe-nadia  |
             |simply-you          |subscribe-simply  |https://www.facebook.com/SimplyYouMagazine     |https://twitter.com/SimplyYouMag   |https://www.instagram.com/simplyyoumag     |none                                   |gtm-subscribe-simply |
 
     Scenario: Verify the footer in the "mobile" view
@@ -57,12 +55,11 @@ Feature: Specific value for NZ NTL
             |Pinterest  |https://nz.pinterest.com/NowToLoveNZ   |
         * I can navigate to all sites in the footer
             |title                              |url                    |gtm                             |
-            |New Zealand's Woman's Weekly       |/nz-womans-weekly      |gtm-footer__logos-list-nzww     |
+            |New Zealand Woman's Weekly         |/nz-womans-weekly      |gtm-footer__logos-list-nzww     |
             |Woman's Day                        |/womans-day            |gtm-footer__logos-list-nzwd     |
             |The Australian Women's Weekly      |/aww                   |gtm-footer__logos-list-awwnz    |
-            |Next                               |/next                  |gtm-footer__logos-list-next     |
-            |New Zealand Good Health Choices    |/good-health-choices   |gtm-footer__logos-list-nzgh     |
-            |Nadia Lim                          |/nadia                 |gtm-footer__logos-list-nadia    |
+            |NEXT                               |/next                  |gtm-footer__logos-list-next     |
+            |Good Health Choices                |/good-health-choices   |gtm-footer__logos-list-nzgh     |
             |Simply You                         |/simply-you            |gtm-footer__logos-list-simply   |
         * I can navigate to all standard pages in the footer
             |page           |url                                                    |
