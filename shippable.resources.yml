@@ -52,6 +52,12 @@ resources:
       sourceName : "dev_app_ecs"
       region: "ap-southeast-2"
 
+  - name: nz-now-site-alb-dev
+    type: loadBalancer
+    pointer:
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/dev-site-now-nz/adf823f09676e63c"
+      method: application
+
   - name: now-site-alb-dev
     type: loadBalancer
     pointer:
@@ -76,6 +82,12 @@ resources:
     version:
       params:
         NODE_ENV: "dev"  #change this to dev when we are ready
+
+  - name: now-site-params-nz-region
+    type: params
+    version:
+      params:
+        NODE_REGION: "nz"
 
   - name: now-site-params-stubbed
     type: params

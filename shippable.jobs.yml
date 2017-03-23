@@ -61,6 +61,25 @@ jobs:
       - TASK: managed
         deployMethod: upgrade
 
+# DEV deployment for master branch
+  - name: nz-now-site-dev-deploy-master
+    type: deploy
+    always:
+      - NOTIFY: slack-notifications
+    steps:
+      - IN: now-site-man-master # for master - auto deploy to dev
+        switch: on
+      - IN: env-dev-ecs
+      - IN: now-site-params-dev
+      - IN: now-site-params-nz-region
+      - IN: nz-now-site-alb-dev
+        applyTo:
+          - manifest: now-site-man-master
+            image: now-site-img-master
+            port: 3001
+      - TASK: managed
+        deployMethod: upgrade
+
 # Stubbed deployment for automation tests
   - name: now-site-stubbed-deploy-master
     type: deploy
