@@ -3,7 +3,7 @@ Feature: Homepage
     As a user
     I should be able to see homepage
 
-    @mustread @BXMA-81 @high
+    @mustread @BXMA-81
     Scenario Outline: Verify the must read module is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing the homepage
@@ -17,33 +17,37 @@ Feature: Homepage
             |4  |gtm-mustread4-homepage |
             |5  |gtm-mustread5-homepage |
             |6  |gtm-mustread6-homepage |
+        @high
         Examples:
             |device             | number |
             | mobile            | 2      |
+        @med
+        Examples:
+            |device             | number |
+            | desktop           | 6      |
+        @low
+        Examples:
+            |device             | number |
             | tablet portrait   | 4      |
             | tablet landscape  | 6      |
-            | desktop           | 6      |
 
-    @hero @BXMA-40
+
+    @hero @BXMA-40 @low
     Scenario Outline: Verify the hero teaser element is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing the homepage
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
         * I should see the main hero item containing source
-        @high
         Examples:
             |device|
             |mobile|
             |desktop|
-        @med
-        Examples:
-            |device|
             |tablet portrait |
             |tablet landscape|
 
 
-    @promoted @BXMA-205 @high
+    @promoted @BXMA-205 @low
     Scenario Outline: Verify the promoted module is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing the homepage
@@ -70,19 +74,19 @@ Feature: Homepage
         * I should see each top feed item containing its image and clickable to open its page
         * I should see each top feed item containing its title and clickable to open its page
         * I should see each top feed item containing source and date
-        @high
+        @med
         Examples:
             |device|
             |mobile|
             |desktop|
-        @med
+        @low
         Examples:
             |device|
             |tablet portrait |
             |tablet landscape|
 
 
-    @homepagefeed-bottom @BXMA-60
+    @homepagefeed-bottom @BXMA-60 @low
     Scenario Outline: Verify the bottom news feed is functional correctly in "<device>" view
         Given I am currently viewing the homepage
         When I switch to "<device>" view
@@ -90,14 +94,11 @@ Feature: Homepage
         * I should see each bottom feed item containing its image and clickable to open its page
         * I should see each bottom feed item containing its title and clickable to open its page
         * I should see each bottom feed item containing source and date
-        @high
+
         Examples:
             |device|
             |mobile|
             |desktop|
-        @med
-        Examples:
-            |device|
             |tablet portrait |
             |tablet landscape|
 

@@ -38,7 +38,8 @@ module.exports = function() {
     this.Given(/^I can see the created date on the gallery "([^"]*)"$/, function(date) {
         var galleryDate = browser.getText(gallery.galleryDate);
         console.log(galleryDate);
-        expect(galleryDate).toEqual(date);
+        expect(galleryDate).toContain(date);
+        console.log('gallery date is:' + galleryDate)
     });
 
     this.Given(/^I can see the gallery title containing "([^"]*)"$/, function(longTitle) {
@@ -144,10 +145,9 @@ module.exports = function() {
     });
 
     this.When(/^I can see the play button and click on it$/, function() {
-        browser.waitForVisible(gallery.playButton, 2000);
+        browser.waitForVisible(gallery.playButton, 3000);
         browser.click(gallery.playButton);
         expect(browser.isVisible(gallery.videoPlayWrap, gallery.videoAdPlay)).toBe(true);
-        //verify video is playing the Ad
     });
 
     this.When(/^I see the last image on the gallery$/, function() {
@@ -239,5 +239,10 @@ module.exports = function() {
         var pinterestButton = browser.getText(gallery.galleryPinterest);
         expect(pinterest).toBe(true);
         expect(pinterestButton).toEqual('PIN IT');
+    });
+
+    this.Given(/^I can see the author "([^"]*)" on the gallery$/, function (authorName) {
+        var author = browser.getText(gallery.authorText);
+        expect(author).toContain(authorName);
     });
 };

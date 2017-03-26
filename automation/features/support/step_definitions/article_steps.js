@@ -489,5 +489,9 @@ module.exports = function() {
         expect(pinterestButton).toEqual('PIN IT');
     });
 
+    this.Given(/^I can see the outbrain frame with "([^"]*)" template$/, function (templateName) {
+        var outbrainTemplate = browser.getAttribute(wn_article.outbrain, 'data-ob-template');
+        expect(outbrainTemplate).toEqual(templateName);
+    });
 };
 

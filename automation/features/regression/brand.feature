@@ -12,11 +12,11 @@ Feature: Brand Landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
         * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source without date
-        @high
+        @med
         Examples:
             |device           |
             |desktop          |
-        @med
+        @low
         Examples:
             |device           |
             |tablet landscape |
@@ -34,7 +34,7 @@ Feature: Brand Landing page
         Examples:
             |device          |
             |mobile          |
-        @med
+        @low
         Examples:
             |device          |
             |tablet portrait |
@@ -47,18 +47,18 @@ Feature: Brand Landing page
         * I should see each top feed item containing its image and clickable to open its page
         * I should see each top feed item containing its title and clickable to open its page
         * I should see each top feed item containing source without date
-        @high
+        @med
         Examples:
             |device|
             |mobile|
             |desktop|
-        @med
+        @low
         Examples:
             |device|
             |tablet portrait |
             |tablet landscape|
 
-    @BXMA-291
+    @BXMA-291 @low
     Scenario Outline: Verify the bottom news feed is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "aww"
@@ -66,18 +66,15 @@ Feature: Brand Landing page
         * I should see each bottom feed item containing its image and clickable to open its page
         * I should see each bottom feed item containing its title and clickable to open its page
         * I should see each top feed item containing source without date
-        @high
+
         Examples:
             |device|
             |mobile|
             |desktop|
-        @med
-        Examples:
-            |device|
             |tablet portrait |
             |tablet landscape|
 
-    @BXMA-292
+    @BXMA-292 @low
     Scenario Outline: Verify the subscribe now link and social links of "<brand>" landing page
         Given I switch to "desktop" view
         When I am currently viewing "<brand>"
@@ -86,14 +83,11 @@ Feature: Brand Landing page
         * I should see the correct brand "twitter" link as "<twitter>"
         * I should see the correct brand "instagram" link as "<instagram>"
         * I should see the subscribe button containing GTM "<gtm>"
-        @high
+
         Examples:
             |brand              |subscribe          |facebook                                   |twitter                                |instagram                                      |gtm                  |
             |aww                |subscribe-aww      |https://www.facebook.com/WomensWeeklyMag   |https://twitter.com/womensweeklymag    |https://www.instagram.com/womensweeklymag      |gtm-subscribe-aww    |
             |womansday          |subscribe-wd       |https://www.facebook.com/WomansDayAUS      |https://twitter.com/womansdayaus       |https://www.instagram.com/Womansdayaus         |gtm-subscribe-wd     |
-        @low
-        Examples:
-            |brand              |subscribe          |facebook                                   |twitter                                |instagram                                      |gtm                  |
             |good-health        |subscribe-gh       |https://www.facebook.com/GoodHealthMag/    |https://twitter.com/goodhealthmag      |https://www.instagram.com/goodhealthmag        |gtm-subscribe-gh     |
             |okmagazine         |subscribe-ok       |https://www.facebook.com/OKmagAustralia    |https://twitter.com/okmagaustralia     |https://www.instagram.com/okmagaustralia       |gtm-subscribe-ok     |
             |shop-til-you-drop  |none               |https://www.facebook.com/shoptilyoudropmag/|https://twitter.com/shoptilyoudrop     |https://www.instagram.com/shoptilyoudropmag/   |none                 |
@@ -103,19 +97,17 @@ Feature: Brand Landing page
             |mother-and-baby    |none               |https://www.facebook.com/mbmag/            |https://twitter.com/motherbaby_au      |https://www.instagram.com/motherbaby_au        |none                 |
             |tvweek             |subscribe-tvweek   |https://www.facebook.com/tvweekmag         |https://twitter.com/TVWEEKmag          |https://www.instagram.com/TVWEEK               |gtm-subscribe-tvweek |
 
+    @low
     Scenario Outline: Verify the subscribe now and social icons of "<brand>" landing page in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "<brand>"
         * I should see the subscribe element under "<position>" and containing title "<subscribe_title>" and image
         * I should see the follow us element under "<position>"
-        @high
+
         Examples:
             |device             |brand          |position   |subscribe_title                |
             |mobile             |aww            |hero teaser|Subscribe to The Weekly        |
             |desktop            |womansday      |MREC       |Subscribe to Woman's Day       |
-        @med
-        Examples:
-            |device             |brand          |position   |subscribe_title                |
             |tablet portrait    |good-health    |hero teaser|Subscribe to Good Health       |
             |tablet landscape   |tvweek         |MREC       |Subscribe to TV WEEK           |
 

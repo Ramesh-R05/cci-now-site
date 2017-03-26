@@ -3,7 +3,7 @@ Feature: Uniheader
     As a user
     I should be able to see the Uniheader
 
-    @homepage @high
+    @homepage @low
     Scenario: Verify desktop WN header is functional correctly on homepage
         When I switch to "desktop" view
         Given I am currently viewing the homepage

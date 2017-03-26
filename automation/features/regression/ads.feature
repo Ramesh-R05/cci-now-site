@@ -9,7 +9,7 @@ Feature: Ad
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         Then I can see the sticky ad when the top banner disappears from view
 
-# -------- Homepage Ads are High and Medium as this is an area with Commercial Value ---------------
+# -------- Homepage Ads on desktop and mobile are High as this is an area with Commercial Value ---------------
     @homepage @BXMA-90
     Scenario Outline: Ads on homepage in the <device> view
         Given I switch to "<device>" view
@@ -25,12 +25,12 @@ Feature: Ad
         Examples:
             |device             |
             |desktop            |
-    @med
+    @low
         Examples:
             |device             |
             |tablet landscape   |
 
-    @homepage @BXMA-90 @med
+    @homepage @BXMA-90 @low
     Scenario: Ads on homepage in the tablet portrait view
         Given I switch to "tablet portrait" view
         When I am currently viewing the homepage
@@ -52,7 +52,7 @@ Feature: Ad
         * I should not see the bottom leaderboard ad above the footer
 #-------- Homepage Ads end ---------------#
 
-# -------- Section Page Ads are High and Medium as this are areas with Commercial Value ---------------
+# -------- Section Page Ads on desktop are High as this are areas with Commercial Value ---------------
 
     @section @BXMA-34
     Scenario Outline: Ads on section landing page in the <device> view
@@ -68,12 +68,12 @@ Feature: Ad
         Examples:
             |device             |
             |desktop            |
-    @med
+    @low
         Examples:
             |device             |
             |tablet landscape   |
 
-    @section @BXMA-34 @med
+    @section @BXMA-34 @low
     Scenario: Ads on section landing page in the tablet portrait view
         Given I switch to "tablet portrait" view
         When I am currently viewing "fashion"
@@ -96,7 +96,7 @@ Feature: Ad
 
 #-------- Section Page Ads end ---------------#
 
-# -------- Gallery Page Ads are High and Medium as this is an area with Commercial Value ---------------
+# -------- Gallery Page Ads on desktop are High as this is an area with Commercial Value ---------------
 
     @gallery @BXMA-132
     Scenario Outline: Ads on gallery page in the <device> view
@@ -110,12 +110,12 @@ Feature: Ad
         Examples:
             |device             |
             |desktop            |
-    @med
+    @low
         Examples:
             |device             |
             |tablet landscape   |
 
-    @gallery @BXMA-132 @med
+    @gallery @BXMA-132 @low
     Scenario: Ads on gallery page in the tablet portrait view
         Given I switch to "tablet portrait" view
         When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
@@ -135,7 +135,7 @@ Feature: Ad
 
 #-------- Gallery Page Ads end ---------------#
 
-# -------- Article Page Ads are High and Medium as this is an area with Commercial Value ---------------
+# -------- Article Page Ads on desktop are High as this is an area with Commercial Value ---------------
     @article @BXMA-326
     Scenario Outline: Ads on article page in the <device> view
         Given I switch to "<device>" view
@@ -149,12 +149,12 @@ Feature: Ad
         Examples:
             |device             |
             |desktop            |
-    @med
+    @low
         Examples:
             |device             |
             |tablet landscape   |
 
-    @article @BXMA-326 @med
+    @article @BXMA-326 @low
     Scenario: Ads on article page in the tablet portrait view
         Given I switch to "tablet portrait" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
@@ -202,7 +202,7 @@ Feature: Ad
 
 #-------- Wall Paper Ads end ---------------#
 
-# -------- Inskin Ads are High and Medium as this is an area with Commercial Value ---------------
+# -------- Inskin Ads on desktop are High as this is an area with Commercial Value ---------------
 
     @BXMA-156
     Scenario Outline: Out of page (Inskin) ad should appear on "<page>" page in the "<device>" view
@@ -213,7 +213,7 @@ Feature: Ad
         Examples:
             |device             |page       |url                                                         |
             |desktop            |section    |beauty                                                      |
-    @med
+    @low
         Examples:
             |device             |page       |url                                                         |
             |tablet landscape   |article    |beauty/hair/automation-test-article-with-hero-video-3664    |

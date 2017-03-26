@@ -92,10 +92,10 @@ export default{
                 open: false,
                 valid: true,
                 ispoen: false,
-                videoId: "3976804555001",
+                videoId: "5066382704001",
                 mediaType: "video",
                 videoTitle: "",
-                brightcoveId: "3976804555001"
+                brightcoveId: "5066382704001"
             },
             {
                 url: "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68030/allisCapture.jpg",

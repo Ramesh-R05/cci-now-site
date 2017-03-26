@@ -4,15 +4,12 @@ Feature: Article
     I should be able to see the article page
 
 # -------- Creation Date is low priority   ---------------#
-    #--- time validation will need to  bew reviewed as testing with Shippable the server is on a different TimeZone
+    #--- time validation will need to be reviewed as testing with Shippable the server is on a different TimeZone
     @low
     Scenario Outline: Users can see the created date of content
         When I switch to "<device>" view
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the created date "FEB 12, 2016"
-        Given I am currently viewing "beauty/hair/automation-test-article-with-hero-video-3664"
-        * I can see the created date "FEB 12, 2016"
-#        * I can see the created date "FEB 12, 2016 4:00PM"
 
         Examples:
             | device            |
@@ -22,62 +19,108 @@ Feature: Article
             | tablet landscape  |
 # -------- Creation Date end   ---------------#
 
-# -------- Hero Image vs Hero Video is High and Med as this is main content   ---------------#
-    Scenario Outline: Editorial team can create contetn with hero image or hero video
+# -------- Hero Image is Med ---------------#
+    Scenario Outline: Editorial team can create content with hero image
         When I switch to "<device>" view
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the hero image
         * I should not see the hero image caption
         * I can see the image alt text in the hero image element "Image ALT TEXT"
-        Given I am currently viewing "beauty/hair/automation-test-article-with-hero-video-3664"
-        * I can see the hero video instead of the main image
-        * I should not see the hero image caption
 
-    @high
+    @med
         Examples:
             | device            |
             | mobile            |
             | desktop           |
-    @med
+    @low
         Examples:
             | device            |
             | tablet portrait   |
             | tablet landscape  |
-# -------- Hero Image vs Hero Video end   ---------------#
+# -------- Hero Image end   ---------------#
 
-# -------- content is High and Med as this is main content   ---------------#
+# -------- Hero Video on mobile is low (Pre-roll ad is not important). ---------------#
+    @low
+    Scenario Outline: Editorial team can create content with hero video
+        When I switch to "<device>" view
+        Given I am currently viewing "beauty/hair/automation-test-article-with-hero-video-3664"
+        * I can see the hero video instead of the main image
+        * I should not see the hero image caption
+
+        Examples:
+            | device            |
+            | mobile            |
+            | desktop           |
+            | tablet portrait   |
+            | tablet landscape  |
+# -------- Hero Video end   ---------------#
+
+# -------- primary content is High  ---------------#
     @DDO-46 @DAW-1125
-    Scenario Outline: Verify an article page which contains a hero image on <device>
+    Scenario Outline: Verify an article page with the primary content on <device>
         When I switch to "<device>" view
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the long title "Automation Test Article With Hero Image Test Title Long Title"
-        * I can see the author "EMILY KERR"
         * I can see the short teaser "Short Teaser EOM"
         * I can see the body paragraph "Test body paragraph"
         * I can see the body related content
-        * I can see the body image
-        * I can see the body image caption "Photography by"
-        * I can see the body gallery
-        * I can see the body video
-        * I can see the body tips "body tips body tips EOM"
-        * I can see the body competition
-        * I can see the related tags "Gossip Girl," "Dolly Doctor"
         * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
         * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
     @high
         Examples:
             | device            |
             | mobile            |
-            | desktop           |
     @med
+        Examples:
+            | device            |
+            | desktop           |
+    @low
         Examples:
             | device            |
             | tablet portrait   |
             | tablet landscape  |
-# -------- content end   ---------------#
+# -------- primary content end  ---------------#
 
+# -------- secondary content is Med   ---------------#
+    Scenario Outline: Verify an article page with the secondary content on <device>
+        When I switch to "<device>" view
+        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        * I can see the author "EMILY KERR"
+        * I can see the body image
+        * I can see the body image caption "Photography by"
+        * I can see the body video
+        * I can see the body competition
+        * I can see the related tags "Gossip Girl," "Dolly Doctor"
+        * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
+    @med
+        Examples:
+            | device            |
+            | mobile            |
+            | desktop           |
+    @low
+        Examples:
+            | device            |
+            | tablet portrait   |
+            | tablet landscape  |
+# -------- secondary content end   ---------------#
 
-# -------- LHR test are High and Medium as this Helps recirculate users ---------------#
+# -------- optional content is Low   ---------------#
+    Scenario Outline: Verify an article page with the optional content on <device>
+        When I switch to "<device>" view
+        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        * I can see the body gallery
+        * I can see the body tips "body tips body tips EOM"
+        * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
+    @low
+        Examples:
+            | device            |
+            | mobile            |
+            | desktop           |
+            | tablet portrait   |
+            | tablet landscape  |
+# -------- optional content end   ---------------#
+
+# -------- LHR are High and Medium as this Helps recirculate users ---------------#
     @DDO-160 @DDO-48 @BXMA-174
     Scenario Outline: Verify LHR on different screen sizes "<device>"
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
@@ -92,10 +135,11 @@ Feature: Article
         Examples:
             | device            |
             | desktop           |
-        @med
+        @low
         Examples:
             | device            |
             | tablet landscape  |
+
     #-- test cases to validate something is not present are low
     @low
     Scenario Outline: Verify LHR on different screen sizes "<device>"
@@ -108,24 +152,26 @@ Feature: Article
         | mobile            |
 #-------- LHR end ---------------#
 
-# -------- Social share is High and Medium as this Helps recirculate users ---------------#
+# -------- Social share is Medium as this Helps recirculate users ---------------#
     @BXMA-155
     Scenario Outline: Verify the share buttons on an article page in "<device>" view
         When I switch to "<device>" view
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the facebook share button on article page
         * I can see the pinterest share button on article page
-        @high
+        @med
         Examples:
             | device            |
             | mobile            |
             | desktop           |
-        @med
+        @low
         Examples:
             | device            |
             | tablet portrait   |
             | tablet landscape  |
+#-------- Social share end ---------------#
 
+# -------- Social embed is Medium ---------------#
     Scenario Outline: Editorial team can add social feeds to the article body
          Given I switch to "<device>" view
          When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
@@ -138,14 +184,35 @@ Feature: Article
          * I can see the body Vimeo embed "https://player.vimeo.com/video/181027959"
          * I can see the body Whooshka embed "https://www.whooshkaa.com/player/episode/id/90704?visual=true"
          * I can see the body Wirewax embed "http://embed.wirewax.com/8037657/ff0044/"
-    @high
+    @med
          Examples:
              | device            |
              | mobile            |
              | desktop           |
-    @med
+    @low
          Examples:
              | device            |
              | tablet portrait   |
              | tablet landscape  |
-#-------- Social share end ---------------#
+#-------- Social embed end ---------------#
+
+# -------- Outbrain is High  ---------------#
+    Scenario Outline: Users can see Outbrain on the article page
+        When I switch to "<device>" view
+        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        * I can see the outbrain frame with "NowtoLove" template
+    @high
+        Examples:
+            | device            |
+            | mobile            |
+    @med
+        Examples:
+            | device            |
+            | desktop           |
+    @low
+        Examples:
+            | device            |
+            | tablet portrait   |
+            | tablet landscape  |
+# -------- Outbrain end   ---------------#
+
