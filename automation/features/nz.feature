@@ -10,7 +10,7 @@ Feature: Specific value for NZ NTL
             |title                              |url                    |gtm                    |
             |New Zealand Woman's Weekly         |/nz-womans-weekly      |gtm-uniheader-nzww     |
             |Woman's Day                        |/womans-day            |gtm-uniheader-nzwd     |
-            |The Australian Women's Weekly      |/aww                   |gtm-uniheader-awwnz    |
+            |The Australian Women's Weekly      |/australianwomensweekly|gtm-uniheader-awwnz    |
             |NEXT                               |/next                  |gtm-uniheader-next     |
             |Good Health Choices                |/good-health-choices   |gtm-uniheader-nzgh     |
             |Simply You                         |/simply-you            |gtm-uniheader-simply   |
@@ -39,7 +39,7 @@ Feature: Specific value for NZ NTL
             |brand               |subscribe         |facebook                                       |twitter                            |instagram                                  |pinterest                              |gtm                  |
             |nz-womans-weekly    |subscribe-nzww    |https://www.facebook.com/nzwomansweekly        |https://twitter.com/nzwomansweekly |https://www.instagram.com/nzwomansweekly   |none                                   |gtm-subscribe-nzww   |
             |womans-day          |subscribe-nzwd    |https://www.facebook.com/womansdaynz           |https://twitter.com/WomansDayNZ    |https://www.instagram.com/womansdaynz      |none                                   |gtm-subscribe-nzwd   |
-            |aww                 |subscribe-awwnz   |https://www.facebook.com/awwmagazine           |none                               |https://www.instagram.com/awwmagazine      |none                                   |gtm-subscribe-awwnz  |
+            |australianwomensweekly                 |subscribe-awwnz   |https://www.facebook.com/awwmagazine           |none                               |https://www.instagram.com/awwmagazine      |none                                   |gtm-subscribe-awwnz  |
             |next                |subscribe-next    |https://www.facebook.com/nextmagazine          |https://twitter.com/nextmagazinenz |https://www.instagram.com/nextmagazinenz   |none                                   |gtm-subscribe-next   |
             |good-health-choices |subscribe-nzgh    |https://www.facebook.com/goodhealthchoicesnz   |https://twitter.com/good_health_nz |https://www.instagram.com/goodhealthnz     |https://nz.pinterest.com/goodhealthmag |gtm-subscribe-nzgh   |
             |simply-you          |subscribe-simply  |https://www.facebook.com/SimplyYouMagazine     |https://twitter.com/SimplyYouMag   |https://www.instagram.com/simplyyoumag     |none                                   |gtm-subscribe-simply |
@@ -57,7 +57,7 @@ Feature: Specific value for NZ NTL
             |title                              |url                    |gtm                             |
             |New Zealand Woman's Weekly         |/nz-womans-weekly      |gtm-footer__logos-list-nzww     |
             |Woman's Day                        |/womans-day            |gtm-footer__logos-list-nzwd     |
-            |The Australian Women's Weekly      |/aww                   |gtm-footer__logos-list-awwnz    |
+            |The Australian Women's Weekly      |/australianwomensweekly|gtm-footer__logos-list-awwnz    |
             |NEXT                               |/next                  |gtm-footer__logos-list-next     |
             |Good Health Choices                |/good-health-choices   |gtm-footer__logos-list-nzgh     |
             |Simply You                         |/simply-you            |gtm-footer__logos-list-simply   |

@@ -26,7 +26,7 @@ export default {
         title: "The Australian Women's Weekly",
         magazineTitle: "The Australian Women's Weekly",
         imageUrl: '/assets/images/nzheaderlogos/NZAWW-logo.svg',
-        url: '/aww',
+        url: '/australianwomensweekly',
         socialLinks: {
             facebook: 'https://www.facebook.com/awwmagazine',
             instagram: 'https://www.instagram.com/awwmagazine'
