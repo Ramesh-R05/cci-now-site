@@ -8,10 +8,6 @@ export default async function sitemap(req, res, next) {
     const requestUrl = section ? `${serviceUrl}/${section}` : serviceUrl;
 
     try {
-        if (config.site.region === 'nz') {
-            throw { status: 404, message: 'Page Not Found' };
-        }
-
         const sitemaps = await makeRequest(requestUrl, false);
         res.header('Cache-Control', 'public, max-age=0');
         res.header('Content-Type', 'text/xml');
