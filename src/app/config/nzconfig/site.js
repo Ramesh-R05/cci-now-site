@@ -3,6 +3,7 @@ export default {
     prodDomain: 'www.nowtolove.co.nz',
     prefix: 'NZNOW',
     region: 'nz',
-    adTaggingId: 'NowToLoveNZ'
+    adTaggingId: 'NowToLoveNZ',
+    alternateHrefLangUrl: 'http://www.nowtolove.com.au'
 };
 

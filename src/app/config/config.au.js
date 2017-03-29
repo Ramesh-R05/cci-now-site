@@ -25,7 +25,8 @@ export default {
                     facebook: 'https://www.facebook.com/WomensWeeklyMag',
                     twitter: 'https://twitter.com/womensweeklymag',
                     instagram: 'https://www.instagram.com/womensweeklymag'
-                }
+                },
+                alternateHrefLangUrl: '/australianwomensweekly'
             },
             {
                 id: 'wd',
@@ -36,7 +37,8 @@ export default {
                     facebook: 'https://www.facebook.com/WomansDayAUS',
                     twitter: 'https://twitter.com/womansdayaus',
                     instagram: 'https://www.instagram.com/Womansdayaus'
-                }
+                },
+                alternateHrefLangUrl: '/womans-day'
             },
             {
                 id: 'gh',
@@ -47,7 +49,8 @@ export default {
                     facebook: 'https://www.facebook.com/GoodHealthMag/',
                     twitter: 'https://twitter.com/goodhealthmag',
                     instagram: 'https://www.instagram.com/goodhealthmag'
-                }
+                },
+                alternateHrefLangUrl: '/good-health-choices'
             },
             {
                 id: 'ok',

@@ -7,5 +7,6 @@ export default {
     shortName: 'Now',
     prefix: 'NOW',
     network: 'wn',
-    adTaggingId: 'NowToLove'
+    adTaggingId: 'NowToLove',
+    alternateHrefLangUrl: 'http://www.nowtolove.co.nz'
 };

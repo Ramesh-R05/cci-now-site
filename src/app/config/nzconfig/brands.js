@@ -20,7 +20,8 @@ export default {
             facebook: 'https://www.facebook.com/womansdaynz',
             twitter: 'https://twitter.com/WomansDayNZ',
             instagram: 'https://www.instagram.com/womansdaynz'
-        }
+        },
+        alternateHrefLangUrl: '/womansday'
     }, {
         id: 'awwnz',
         title: "The Australian Women's Weekly",
@@ -30,7 +31,8 @@ export default {
         socialLinks: {
             facebook: 'https://www.facebook.com/awwmagazine',
             instagram: 'https://www.instagram.com/awwmagazine'
-        }
+        },
+        alternateHrefLangUrl: '/aww'
     }, {
         id: 'next',
         title: 'NEXT',
@@ -53,7 +55,8 @@ export default {
             twitter: 'https://twitter.com/good_health_nz',
             instagram: 'https://www.instagram.com/goodhealthnz/',
             pinterest: 'https://nz.pinterest.com/goodhealthmag/'
-        }
+        },
+        alternateHrefLangUrl: '/good-health'
     }, {
         id: 'simply',
         title: 'Simply You',
