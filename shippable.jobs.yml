@@ -154,10 +154,10 @@ jobs:
     type: release
     steps:
       - IN: now-site-automation-test
-        switch: on
+        switch: off
       - IN: now-site-mobile-automation-test
-        switch: on
+        switch: off
       - IN: nz-now-site-smoke-test
-        switch: on
+        switch: off
       - IN: now-site-version
       - TASK: managed
