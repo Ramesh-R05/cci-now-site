@@ -17,7 +17,7 @@ resources:
     pointer:
       sourceName: "317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site"
     seed:
-      versionName: approved
+      versionName: latest
 
 # Docker Image for the now-site
   - name: now-site-img-branch
