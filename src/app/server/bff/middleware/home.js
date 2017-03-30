@@ -3,6 +3,7 @@ import makeRequest from '../../makeRequest';
 import { getLatestTeasers } from '../api/listing';
 import getTrending from '../api/trending';
 import { parseEntities } from '../helper/parseEntity';
+import momentTimezone from 'moment-timezone';
 const trendingCount = 6;
 const latestTeaserCount = 6;
 const listCount = 14;
@@ -66,18 +67,25 @@ export default async function home(req, res, next) {
         req.data.entity = { ...pageData };
         req.data.latestTeasers = latestTeasers.data.slice(0, latestTeaserCount);
 
+        req.data.latestTeasers.map((teaser) => {
+            // TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
+            teaser.pageDateCreated = momentTimezone.tz(teaser.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
+            return teaser;
+        });
+
         req.data.list = {
             listName: 'home',
             params: {
                 pageNo
             },
             items: [
-                parseEntities(latestTeasers.data.slice(latestTeaserCount))
+                parseEntities(req.data.latestTeasers)
             ],
             previous: previousPage,
             current: currentPage,
             next: nextPage
         };
+
         req.data.videoGalleryTeasers = videoGalleryTeasers;
         req.data.trendingItems = trendingItems;
         req.data.section = { id: pageData.id, name: 'Home' }; // Initally used to set the ad slot within @bxm/ads + gtm in @bxm/server

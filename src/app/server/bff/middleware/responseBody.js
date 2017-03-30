@@ -2,6 +2,7 @@ import { parseEntity, parseEntities } from '../helper/parseEntity';
 import parseHeaderMetaData from '../helper/parseHeaderMetaData';
 import parseModule from '../helper/parseModule';
 import get from 'lodash/object/get';
+import momentTimezone from 'moment-timezone';
 
 export default function responseBody(req, res, next) {
     try {
@@ -40,6 +41,9 @@ export default function responseBody(req, res, next) {
             const lhsData = req.data.leftHandSide.data.map((lhsTeaser) => {
                 const withDefaultImg = { ...lhsTeaser };
                 withDefaultImg.contentImageUrl = withDefaultImg.contentImageUrl || req.app.config.defaultImageUrl;
+                //  TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
+                withDefaultImg.pageDateCreated = momentTimezone.tz(withDefaultImg.pageDateCreated, 'Australia/Sydney')
+                    .format('YYYY-MM-DDTHH:mm:ss');
                 return withDefaultImg;
             });
             res.body.leftHandSide = { items: parseEntities(lhsData) };
@@ -56,6 +60,9 @@ export default function responseBody(req, res, next) {
         }
 
         if (get(req, 'data.hero')) {
+            //  TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
+            req.data.hero.pageDateCreated = momentTimezone.tz(req.data.hero.pageDateCreated, 'Australia/Sydney')
+                .format('YYYY-MM-DDTHH:mm:ss');
             res.body.heroTeaser = parseEntity(req.data.hero);
         }
 

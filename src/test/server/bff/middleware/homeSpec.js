@@ -27,10 +27,11 @@ describe('Home middleware', () => {
         services: {remote: {entity: 'http://entitiesUrl.com/'}, module: 'http://module.url'},
         site: {host: 'http://site-host.com'}
     };
-    const latestTeasers = { data: ['Teaser 1', 'Teaser 2'] };
+    const latestTeasers = { data: [{pageDateCreated: '2017-03-29T04:27:09.00Z'}, {pageDateCreated: '2017-03-29T04:27:09.00Z'}] };
     const hero = { name: 'hero' };
     const entity = {
-        id: 'DOLLY-ID'
+        id: 'DOLLY-ID',
+
     };
     const res = {};
     let next;
