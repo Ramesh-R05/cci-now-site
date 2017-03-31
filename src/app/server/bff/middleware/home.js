@@ -39,6 +39,12 @@ export default async function home(req, res, next) {
             data: []
         };
 
+        latestTeasers.data.map((teaser) => {
+            // TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
+            teaser.pageDateCreated = momentTimezone.tz(teaser.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
+            return teaser;
+        });
+
         let previousPage = null;
         if (pageNo > 1) {
             const path = pageNo === 2 ? '/' : `/?pageNo=${pageNo - 1}`;
@@ -67,19 +73,13 @@ export default async function home(req, res, next) {
         req.data.entity = { ...pageData };
         req.data.latestTeasers = latestTeasers.data.slice(0, latestTeaserCount);
 
-        req.data.latestTeasers.map((teaser) => {
-            // TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
-            teaser.pageDateCreated = momentTimezone.tz(teaser.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
-            return teaser;
-        });
-
         req.data.list = {
             listName: 'home',
             params: {
                 pageNo
             },
             items: [
-                parseEntities(req.data.latestTeasers)
+                parseEntities(latestTeasers.data.slice(latestTeaserCount))
             ],
             previous: previousPage,
             current: currentPage,
