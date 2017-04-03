@@ -43,41 +43,41 @@ resources:
       versionName: "1.0.0"
 
 #
-# DEV environment configuration
+# SIT environment configuration
 #
-  - name: env-dev-ecs
+  - name: env-sit-ecs
     type: cluster
     integration: AWS-digital-nonprod
     pointer:
-      sourceName : "dev_app_ecs"
+      sourceName : "app_ecs"
       region: "ap-southeast-2"
 
-  - name: nz-now-site-alb-dev
+  - name: nz-now-site-alb-sit
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/dev-site-now-nz/adb38f8d67bf1050"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/sit-site-now-nz/1eda62720d2930fc"
       method: application
 
-  - name: now-site-alb-dev
+  - name: now-site-alb-sit
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/dev-site-now-au/440e2f8716fd2a53"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/sit-site-now-au/6fd926e6c76fda6b"
       method: application
 
-  - name: now-site-alb-dev-branch
+  - name: now-site-alb-sit-branch
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/dev-site-branch-now-au/317a47999c72692f"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/sit-site-now-au/6fd926e6c76fda6b"
       method: application
 
-  - name: now-site-alb-stubbed
+  - name: now-site-alb-test
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/stubbed-site-now-au/7b1ac13d3e8afd78"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/test-site-now/506fd1ebb960354d"
       method: application
 
 # TO BE UPDATED
-  - name: now-site-params-dev
+  - name: now-site-params-sit
     type: params
     version:
       params:
@@ -89,14 +89,14 @@ resources:
       params:
         NODE_REGION: "nz"
 
-  - name: now-site-params-stubbed
+  - name: now-site-params-test
     type: params
     version:
       params:
         NODE_ENV: "stubbed"
 
 # Docker Image Options
-  - name: now-site-opts-dev
+  - name: now-site-opts-sit
     type: dockerOptions
     version:
       memory: 512
@@ -108,7 +108,7 @@ resources:
       logConfig:
         type: awslogs
         options:
-          awslogs-group: "dev_app_ecs"
+          awslogs-group: "app_ecs"
           awslogs-region: "ap-southeast-2"
           awslogs-stream-prefix: "app-now-site"
 

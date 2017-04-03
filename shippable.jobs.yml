@@ -11,7 +11,7 @@ jobs:
     type: manifest
     steps:
       - IN: now-site-img-branch
-      - IN: now-site-opts-dev
+      - IN: now-site-opts-sit
       - TASK: managed
     flags:
       - now-site
@@ -21,36 +21,36 @@ jobs:
     type: manifest
     steps:
       - IN: now-site-img-master
-      - IN: now-site-opts-dev
+      - IN: now-site-opts-sit
       - TASK: managed
 
 
-  - name: now-site-dev-deploy-branch # DEV deployment for FEATURE BRANCH
+  - name: now-site-sit-deploy-branch # DEV deployment for FEATURE BRANCH
     type: deploy
     always:
       - NOTIFY: slack-notifications
     steps:
       - IN: now-site-man-branch # for non-master, don't auto deploy.
         switch: off
-      - IN: env-dev-ecs
-      - IN: now-site-params-dev
-      - IN: now-site-alb-dev-branch
+      - IN: env-sit-ecs
+      - IN: now-site-params-sit
+      - IN: now-site-alb-sit-branch
         applyTo:
           - manifest: now-site-man-branch
             image: now-site-img-branch
             port: 3001
       - TASK: managed
         deployMethod: upgrade
-  - name: now-site-dev-deploy-master # DEV deployment for MASTER
+  - name: now-site-sit-deploy-master # DEV deployment for MASTER
     type: deploy
     always:
       - NOTIFY: slack-notifications
     steps:
-      - IN: now-site-man-master # for master - auto deploy to dev
+      - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
-      - IN: env-dev-ecs
-      - IN: now-site-params-dev
-      - IN: now-site-alb-dev
+      - IN: env-sit-ecs
+      - IN: now-site-params-sit
+      - IN: now-site-alb-sit
         applyTo:
           - manifest: now-site-man-master
             image: now-site-img-master
@@ -59,17 +59,17 @@ jobs:
         deployMethod: upgrade
 
 
-  - name: nz-now-site-dev-deploy-master # DEV deployment for MASTER with Region NZ
+  - name: nz-now-site-sit-deploy-master # DEV deployment for MASTER with Region NZ
     type: deploy
     always:
       - NOTIFY: slack-notifications
     steps:
-      - IN: now-site-man-master # for master - auto deploy to dev
+      - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
-      - IN: env-dev-ecs
-      - IN: now-site-params-dev
+      - IN: env-sit-ecs
+      - IN: now-site-params-sit
       - IN: now-site-params-nz-region
-      - IN: nz-now-site-alb-dev
+      - IN: nz-now-site-alb-sit
         applyTo:
           - manifest: now-site-man-master
             image: now-site-img-master
@@ -78,14 +78,14 @@ jobs:
         deployMethod: upgrade
 
 
-  - name: now-site-stubbed-deploy-master # Stubbed deployment for automation tests
+  - name: now-site-test-deploy-master # Stubbed deployment for automation tests
     type: deploy
     steps:
-      - IN: now-site-man-master # for master - auto deploy to dev
+      - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
-      - IN: env-dev-ecs
-      - IN: now-site-params-stubbed
-      - IN: now-site-alb-stubbed
+      - IN: env-sit-ecs
+      - IN: now-site-params-test
+      - IN: now-site-alb-test
         applyTo:
           - manifest: now-site-man-master
             image: now-site-img-master
@@ -99,7 +99,7 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
-     - IN: now-site-stubbed-deploy-master
+     - IN: now-site-test-deploy-master
      - IN: now-site-repo
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
@@ -109,7 +109,7 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://stubbed-site-now-au-37144507.ap-southeast-2.elb.amazonaws.com/
+        - script: export URL=http://test-site-now-au-37144507.ap-southeast-2.elb.amazonaws.com/
         - script: npm run test:phantom
 
 
@@ -118,7 +118,7 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
-     - IN: now-site-stubbed-deploy-master
+     - IN: now-site-test-deploy-master
      - IN: now-site-repo
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
@@ -128,7 +128,7 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://stubbed-site-now-au-37144507.ap-southeast-2.elb.amazonaws.com/
+        - script: export URL=http://test-site-now-au-37144507.ap-southeast-2.elb.amazonaws.com/
         - script: npm run test:mobile
 
   - name: nz-now-site-smoke-test # Test Dev Site with NZ config
@@ -136,7 +136,7 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
-     - IN: nz-now-site-dev-deploy-master
+     - IN: nz-now-site-sit-deploy-master
      - IN: now-site-repo
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
@@ -146,7 +146,7 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://dev-site-now-nz-1643171746.ap-southeast-2.elb.amazonaws.com/
+        - script: export URL=http://sit-site-now-nz-1643171746.ap-southeast-2.elb.amazonaws.com/
         - script: npm run test:nzlow
 
   - name: now-site-smoke-test # Test Dev Site with AU config
@@ -154,7 +154,7 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
-     - IN: now-site-dev-deploy-master
+     - IN: now-site-sit-deploy-master
      - IN: now-site-repo
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
@@ -164,7 +164,7 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://dev-site-now-au-140875160.ap-southeast-2.elb.amazonaws.com/
+        - script: export URL=http://sit-site-now-au-140875160.ap-southeast-2.elb.amazonaws.com/
         - script: npm run sit:au
 
   - name: now-site-release-master # Package release for production release
