@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "sit:au": "bash -c \"./node_modules/.bin/chimp chimp.shippable.js --browser=phantomjs --tags=@sitAU\"",
     "test:mobile": "bash -c \"./node_modules/.bin/chimp chimp.bs.js --tags=@mobile\"",
     "test:high": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@high\"",
     "test:med": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@med\"",
