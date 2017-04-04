@@ -151,14 +151,13 @@ jobs:
 
   - name: now-site-smoke-test # Test Dev Site with AU config
     type: runSh
-    on_start:                                   #optional
-      - script: curl dev.publishing-broker.services.bauer-media.internal
     always:
       - NOTIFY: slack-notifications
     steps:
      - IN: now-site-sit-deploy-master
      - IN: now-site-repo
      - TASK:
+        - script: curl dev.publishing-broker.services.bauer-media.internal
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
         - script: nvm install "6.1.0"
