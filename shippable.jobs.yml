@@ -151,6 +151,8 @@ jobs:
 
   - name: now-site-smoke-test # Test Dev Site with AU config
     type: runSh
+    on_start:                                   #optional
+      - script: curl dev.publishing-broker.services.bauer-media.internal
     always:
       - NOTIFY: slack-notifications
     steps:
@@ -165,7 +167,6 @@ jobs:
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://sit-site-now-au-1673941537.ap-southeast-2.elb.amazonaws.com/
-        - script: curl dev.publishing-broker.services.bauer-media.internal
         - script: APP_KEY=now-site npm run sit:au
 
   - name: now-site-release-master # Package release for production release
