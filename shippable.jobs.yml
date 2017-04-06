@@ -187,6 +187,8 @@ jobs:
         - script: npm install
         - script: export URL=http://test-site-now-1875523710.ap-southeast-2.elb.amazonaws.com/
         - script: APP_KEY=now-site npm run all:test
+    flags:
+      - now-site
 
 
   - name: now-site-release-master # Package release for production release
