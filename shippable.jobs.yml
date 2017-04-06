@@ -173,8 +173,8 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
-     - IN: now-site-sit-deploy-master
      - IN: now-site-repo
+        switch: off
      - IN: morning-trigger
      - TASK:
         - script: curl dev.publishing-broker.services.bauer-media.internal
