@@ -113,10 +113,13 @@ resources:
           awslogs-stream-prefix: "app-now-site"
 
 #Schedule Run of automation
+# This is using Shippable timezone
+# CRON is (15 22 * * *") this is 10:15pm every day refer to https://en.wikipedia.org/wiki/Cron
+# will run at 8:15am Sydney time
   - name: morning-trigger
     type: time
     seed:
-      interval: "0 16 * * *"
+      interval: "15 22 * * *"
 
 # PRODUCTION environment configuration (TO BE DONE)
 #
