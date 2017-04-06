@@ -168,6 +168,27 @@ jobs:
         - script: export URL=http://sit-site-now-au-1673941537.ap-southeast-2.elb.amazonaws.com/
         - script: APP_KEY=now-site npm run sit:au
 
+  - name: FULL-now-site-regression-test # Test Site full regression
+    type: runSh
+    always:
+      - NOTIFY: slack-notifications
+    steps:
+     - IN: now-site-sit-deploy-master
+     - IN: now-site-repo
+     - IN: morning-trigger
+     - TASK:
+        - script: curl dev.publishing-broker.services.bauer-media.internal
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+        - script: source ~/.nvm/nvm.sh
+        - script: nvm install "6.1.0"
+        - script: nvm use "6.1.0"
+        - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm install
+        - script: export URL=http://test-site-now-1875523710.ap-southeast-2.elb.amazonaws.com/
+        - script: APP_KEY=now-site npm run all:test
+
+
   - name: now-site-release-master # Package release for production release
     type: release
     steps:
