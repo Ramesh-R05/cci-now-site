@@ -93,7 +93,7 @@ resources:
     type: params
     version:
       params:
-        NODE_ENV: "stubbed"
+        NODE_ENV: "automation"
 
 # Docker Image Options
   - name: now-site-opts-sit
