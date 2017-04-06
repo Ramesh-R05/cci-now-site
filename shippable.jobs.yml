@@ -101,6 +101,7 @@ jobs:
     steps:
      - IN: now-site-test-deploy-master
      - IN: now-site-repo
+       switch: off
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
@@ -120,6 +121,7 @@ jobs:
     steps:
      - IN: now-site-test-deploy-master
      - IN: now-site-repo
+       switch: off
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
@@ -138,6 +140,7 @@ jobs:
     steps:
      - IN: nz-now-site-sit-deploy-master
      - IN: now-site-repo
+       switch: off
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
@@ -156,6 +159,7 @@ jobs:
     steps:
      - IN: now-site-sit-deploy-master
      - IN: now-site-repo
+       switch: off
      - TASK:
         - script: curl dev.publishing-broker.services.bauer-media.internal
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
