@@ -116,7 +116,7 @@ resources:
   - name: morning-trigger
     type: time
     seed:
-      interval: "30 15 * * 0-6"
+      interval: "0 16 * * *"
 
 # PRODUCTION environment configuration (TO BE DONE)
 #
