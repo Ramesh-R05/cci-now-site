@@ -67,7 +67,7 @@ resources:
   - name: now-site-alb-sit-branch
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/sit-site-now-au/6fd926e6c76fda6b"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/branch-sit-site-now-au/2b0b90341f8ced5d"
       method: application
 
   - name: now-site-alb-test
