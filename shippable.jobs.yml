@@ -174,7 +174,7 @@ jobs:
       - NOTIFY: slack-notifications
     steps:
      - IN: now-site-repo
-        switch: off
+       switch: off
      - IN: morning-trigger
      - TASK:
         - script: curl dev.publishing-broker.services.bauer-media.internal
