@@ -21,7 +21,8 @@
     "browsers": "bash -c \"node runner.js\"",
     "now:automation": "bash -c \"export URL= && export APP_KEY=now-site && export APP_ENV=automation && npm run all:test\"",
     "now:automation:high": "bash -c \"export URL= && export APP_KEY=now-site && export APP_ENV=automation && npm run test:high\"",
-    "share:live": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@livesharerepo\"",
+    "share:aulive": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@aulive\"",
+    "share:nzlive": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@nzlive\"",
     "general:live": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@live\"",
     "test:phantom": "export APP_KEY=now-site && npm run features"
   },
