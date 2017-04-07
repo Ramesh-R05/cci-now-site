@@ -8,7 +8,6 @@ Feature: Brand Landing page
         Given I switch to "<device>" view
         When I am currently viewing "aww"
         * I should see the brand title logo on the brand landing page
-        * I should see the breadcrumb of "AUSTRALIAN WOMEN'S WEEKLY" on the brand landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
         * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source without date
@@ -26,7 +25,6 @@ Feature: Brand Landing page
         Given I switch to "<device>" view
         When I am currently viewing "aww"
         * I should see the brand title logo on the brand landing page
-        * I should not see the breadcrumb on the brand landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
         * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source without date

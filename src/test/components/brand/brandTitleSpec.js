@@ -20,24 +20,29 @@ describe(`BrandTitle`, () => {
     };
 
     describe('when passing in /aww as the currentUrl prop', () => {
-			before(() => {
-		        reactModule = Context.mountComponent(BrandTitle, {brand: brandPropStub});
-		    });
+        before(() => {
+            reactModule = Context.mountComponent(BrandTitle, {brand: brandPropStub});
+        });
 
-            it('should render a component with a class of brand-title-aww', () => {
-                const div = TestUtils.findRenderedDOMComponentWithClass(reactModule, 'brand-title-aww');
-                expect(div).to.exist;
-            });
+        it('should render a component with a class of brand-title-aww', () => {
+            const div = TestUtils.findRenderedDOMComponentWithClass(reactModule, 'brand-title-aww');
+            expect(div).to.exist;
+        });
 
-            it('should render two hr tags', () => {
-                const hrs = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'hr');
-                expect(hrs.length).to.eq(2);
-            });
+        it('should render two hr tags', () => {
+            const hrs = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'hr');
+            expect(hrs.length).to.eq(2);
+        });
 
-            it('should render an img with a src of aww-logo.svg', () => {
-                const image = TestUtils.findRenderedDOMComponentWithTag(reactModule, 'img');
-                expect(image.src).to.eq("/assets/images/headerlogos/AWW-logo.svg")
-            });
+        it('should render an img with a src of aww-logo.svg', () => {
+            const image = TestUtils.findRenderedDOMComponentWithTag(reactModule, 'img');
+            expect(image.src).to.eq("/assets/images/headerlogos/AWW-logo.svg");
+        });
+
+        it('should render an img with a alt text of Australian Women\'s Weekly', () => {
+            const image = TestUtils.findRenderedDOMComponentWithTag(reactModule, 'img');
+            expect(image.alt).to.eq("Australian Women's Weekly");
+        });
     });
 });
 
