@@ -4,7 +4,7 @@ var fs = require("fs");
 var request = require('request');
 
 function randomValue() {
-    return Date.now();
+    return Math.floor(Math.random() * 60000) + 50000
 }
 var randomId = randomValue();
 

@@ -2,7 +2,7 @@
     "site":"now",
     "status":"published",
     "document":{
-        "id":"------ THIS IS UPDATED RANDONMLY ------",
+        "id":"------ THIS IS UPDATED RANDOMLY ------",
         "parentID":"-1",
         "level":"1",
         "creatorID":"0",
@@ -11,7 +11,7 @@
         "updateDate":"2017-03-30T09:53:32",
         "nodeName":"alejandro test",
         "urlName":"alejandro-test",
-        "path":"-1,1159,1168,1169,32037,32674,------ THIS IS UPDATED RANDONMLY ------",
+        "path":"------ THIS IS UPDATED RANDOMLY ------",
         "isDoc":"",
         "nodeType":"1162",
         "creatorName":"admin",
@@ -22,7 +22,7 @@
         "contentAccessLevels":"-1",
         "pageExcludeFromSitemap":"0",
         "pageExcludeDescendantsFromSitemap":"0",
-        "contentTitle":"------ THIS IS UPDATED RANDONMLY ------",
+        "contentTitle":"------ THIS IS UPDATED RANDOMLY ------",
         "contentSummaryTitle":"alejandro test",
         "contentSummary":"alejandro test",
         "contentImageUrl":"http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AWW/2017/01/09/30284/head.jpg",
@@ -32,10 +32,11 @@
         "pageTitle":"alejandro test",
         "pageMetaDescription":"alejandro test",
         "contentFacebookImageUrl":"{\"credits\":[],\"tags\":[],\"source\":\"\"}",
-        "contentBody":"[{\"type\":\"heading\",\"label\":\"Heading\",\"content\":\"Heading 12345\"},{\"type\":\"paragraph\",\"label\":\"Paragraph\",\"content\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mollis quam. Fusce sed mauris tellus. Etiam luctus augue leo, vel lobortis dolor facilisis at. Curabitur quis interdum risus. Nunc mi eros, vulputate eget lobortis tincidunt, condimentum nec elit. Proin eget risus eu enim porttitor sodales sit amet sit amet libero. Quisque magna urna, dictum quis turpis at, facilisis suscipit quam. Morbi finibus neque quis massa varius, sit amet varius lectus vehicula. Nullam aliquet nunc ut justo tempor, eget vulputate neque feugiat. Etiam sed lacinia ex. Nullam consequat dui augue. Proin suscipit fringilla purus id cursus. Nulla molestie sagittis enim, et commodo ante molestie a.\"},{\"type\":\"twitter\",\"label\":\"Twitter\",\"content\":{\"url\":\"https://twitter.com/goldenglobes/status/818279918291165185\"}},{\"type\":\"heading\",\"label\":\"Heading\",\"content\":\"Heding 2\"},{\"type\":\"paragraph\",\"label\":\"Paragraph\",\"content\":\"Sed et dignissim nunc. Fusce gravida sed turpis vel mollis. Cras rhoncus nisl ut dolor blandit maximus. Cras tempor posuere purus. Praesent fermentum leo nec orci convallis ultricies. Vivamus in elementum risus. Quisque a quam arcu. Phasellus commodo id augue at vehicula. Mauris sed nisi placerat, fringilla ipsum sit amet, vestibulum nisl. Vivamus fringilla eros vel ex tincidunt auctor. Vivamus sit amet eleifend est. Vestibulum efficitur ex lacinia, luctus dui non, suscipit urna. Nulla id mollis felis. Aliquam erat volutpat. Proin ante risus, sagittis nec tincidunt id, vulputate sit amet nunc. Maecenas nec euismod mi.\"}]",
+        "contentBody":"[{\"type\":\"heading\",\"label\":\"Heading\",\"content\":\"Heading 12345\"},{\"type\":\"paragraph\",\"label\":\"Paragraph\",\"content\":\"HELLO.\"},{\"type\":\"twitter\",\"label\":\"Twitter\",\"content\":{\"url\":\"https://twitter.com/goldenglobes/status/818279918291165185\"}},{\"type\":\"heading\",\"label\":\"Heading\",\"content\":\"Heding 2\"},{\"type\":\"paragraph\",\"label\":\"Paragraph\",\"content\":\"HELLO.\"}]",
         "contentAuthor":"[\"NOW-1238\"]",
-        "contentTags":"[]",
+        "contentTags":"[\"common:topic:Test Joe\"]",
         "articleSource":"NW",
-        "contentCampaign":"[]"
+        "contentCampaign":"[\"NOW-31873\"]"
     }
 }
+

@@ -34,8 +34,8 @@ build:
     - docker build -f Dockerfile.ecs -t $IMAGE:$BRANCH_NAME --label build-number=$BUILD_NUMBER .
     - docker tag $IMAGE:$BRANCH_NAME $IMAGE:latest
   push:
-    - docker push $IMAGE:$BRANCH_NAME
-    - docker push $IMAGE:latest
+    - if [ $IS_PULL_REQUEST == false ]; then docker push $IMAGE:$BRANCH_NAME; fi
+    - if [ $IS_PULL_REQUEST == false ]; then docker push $IMAGE:latest; fi
 
 branches:
   only:
