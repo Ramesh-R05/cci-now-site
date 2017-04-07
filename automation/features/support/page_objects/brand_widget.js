@@ -1,6 +1,6 @@
 var brand_widget = {
 
-    brandTitleLogo: '.page-title-container .brand-title img',
+    brandTitleLogo: '.page-title-container h1.brand-title img',
     brandBreadcrumb: '.page-title-container .brand-breadcrumb',
     heroSource: '.hero-wrapper .hero-teaser__source',
     brandSubscribeTitleDesktop: '.page__social-wrapper .brand--magazine-title',

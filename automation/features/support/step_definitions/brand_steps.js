@@ -11,25 +11,6 @@ module.exports = function(){
         expect(brandTitleLogo).not.toBeUndefined();
     });
 
-    this.When(/^I should see the breadcrumb of "([^"]*)" on the brand landing page$/, function (name) {
-        //Verify the breadcrumb
-        var brandBreadcrumb = browser.getText(brand.brandBreadcrumb);
-        console.log(brandBreadcrumb);
-        var valueBreadcrumb = brandBreadcrumb.split(">");
-        console.log("Site: " + valueBreadcrumb[0]);
-        console.log("Brand: " + valueBreadcrumb[1]);
-        //validate the site
-        expect(valueBreadcrumb[0]).toEqual("NOW TO LOVE ");
-        //validate the brand
-        expect(valueBreadcrumb[1]).toMatch(name);
-    });
-
-    this.When(/^I should not see the breadcrumb on the brand landing page$/, function () {
-        //Verify the breadcrumb is not visible
-        var brandBreadcrumb = browser.isVisible(brand.brandBreadcrumb);
-        expect(brandBreadcrumb).toBe(false);
-    });
-
     this.When(/^I should see the main hero item containing "([^"]*)" source without date$/, function (name) {
         //verify source and date of the main hero item
         var heroSource = browser.getText(brand.heroSource);
