@@ -37,7 +37,7 @@
   "homepage": "https://github.com/bauerxcelmedia/now-site#readme",
   "dependencies": {
     "@bxm/ad": "^10.4.0",
-    "@bxm/article": "^21.9.0",
+    "@bxm/article": "^22.0.0",
     "@bxm/behaviour": "^1.2.0",
     "@bxm/config": "^4.1.1",
     "@bxm/datetime": "^3.0.0",
@@ -76,6 +76,7 @@
     "fluxible-addons-react": "^0.2.2",
     "fluxible-reducer-store": "^0.1.0",
     "fluxible-router": "^0.4.11",
+    "lazysizes": "^3.0.0",
     "lodash": "^3.10.1",
     "lru-cache": "^4.0.1",
     "moment": "^2.10.2",

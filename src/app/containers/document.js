@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connectToStores } from '@bxm/flux';
 import Gallery from './gallery';
+import VerticalGallery from '@bxm/article/lib/gallery';
 import Page from './page';
 import Article from '@bxm/article/lib/article';
 import Teaser from '../components/teaser/teaser';
@@ -20,11 +21,13 @@ export default class Document extends Component {
         content: PropTypes.object.isRequired,
         currentUrl: PropTypes.string.isRequired,
         nodeType: PropTypes.string.isRequired,
-        theme: PropTypes.object
+        theme: PropTypes.object,
+        isVerticalGallery: PropTypes.bool
     };
 
     static defaultProps = {
-        theme: {}
+        theme: {},
+        isVerticalGallery: false
     };
 
     static articleContentBodyConfig = {
@@ -56,18 +59,7 @@ export default class Document extends Component {
     };
 
     render() {
-        const { content, currentUrl, nodeType, theme } = this.props;
-
-        if (nodeType === 'Gallery') {
-            return (
-                <div>
-                    <Gallery
-                      customisedTeaser={Teaser} currentUrl={currentUrl}theme={theme}
-                    />
-                    <Sailthru />
-                </div>
-            );
-        }
+        const { content, currentUrl, nodeType, theme, isVerticalGallery } = this.props;
 
         const headerAd = {
             type: 'Ad',
@@ -83,6 +75,36 @@ export default class Document extends Component {
             facebook: true,
             pinterest: true
         };
+
+        if (nodeType === 'Gallery') {
+            if (isVerticalGallery) {
+                return (
+                    <Page
+                      currentUrl={currentUrl}
+                      headerExpanded={false}
+                      hideFooter={false}
+                      theme={theme}
+                    >
+                        <VerticalGallery
+                          articleHeaderOrder={['Hero', 'Source', 'Title', 'Summary', 'Date', 'Author']}
+                          contentBodyConfig={Document.articleContentBodyConfig}
+                          enableTeads
+                          CustomisedTeaser={Teaser}
+                          showAdBeforeRecommendations
+                          showSocialShare
+                          socialShare={socialShare}
+                          theme={theme}
+                        />
+                        <Sailthru />
+                    </Page>
+                );
+            }
+            return (
+                <Gallery
+                  customisedTeaser={Teaser} currentUrl={currentUrl}theme={theme}
+                />
+            );
+        }
 
         return (
             <Page

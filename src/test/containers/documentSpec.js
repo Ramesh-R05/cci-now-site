@@ -6,6 +6,7 @@ noCallThru();
 
 const ArticleStub = Context.createStubComponent();
 const GalleryPageStub = Context.createStubComponent();
+const VerticalGalleryStub = Context.createStubComponent();
 const PageStub = Context.createStubComponentWithChildren();
 const CustomisedTeaserStub = Context.createStubComponent();
 const FooterStub = Context.createStubComponent();
@@ -15,6 +16,7 @@ const SailthruStub = Context.createStubComponent();
 const Document = proxyquire('../../app/containers/document', {
     '@bxm/article/lib/article': ArticleStub,
     './gallery': GalleryPageStub,
+    '@bxm/article/lib/gallery': VerticalGalleryStub,
     './page': PageStub,
     '../components/teaser/teaser': CustomisedTeaserStub,
     '../components/article/footer': FooterStub,
@@ -64,7 +66,6 @@ describe('Document Component', () => {
             });
         });
 
-    describe(`Page Component`, () => {
         it ('should pass the appropriate props', () => {
             const PageComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
             expect(PageComponent.props).to.deep.contain({
@@ -87,17 +88,29 @@ describe('Document Component', () => {
         const nodeType = 'Gallery';
         let reactModule;
 
-        before(() => {
-            reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType});
+        describe('and is default Gallery', () => {
+            before(() => {
+                reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType, isVerticalGallery: false });
+            });
+
+            it(`should render the Gallery Component`, () => {
+                TestUtils.findRenderedComponentWithType(reactModule, GalleryPageStub);
+            });
         });
 
-        it(`should render the Gallery Component`, () => {
-            TestUtils.findRenderedComponentWithType(reactModule, GalleryPageStub);
-        });
+        describe('and is Vertical Gallery', () => {
+            before(() => {
+                reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType, isVerticalGallery: true });
+            });
 
-        it(`should render the Sailthru Component`, () => {
-            TestUtils.findRenderedComponentWithType(reactModule, SailthruStub);
+            it(`should render the Gallery Component`, () => {
+                TestUtils.findRenderedComponentWithType(reactModule, VerticalGalleryStub);
+            });
+
+            it(`should render the Sailthru Component`, () => {
+                TestUtils.findRenderedComponentWithType(reactModule, SailthruStub);
+            });
         });
     });
-  });
 });
+
