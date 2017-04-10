@@ -53,7 +53,7 @@
     "@bxm/recommendations": "^4.1.0",
     "@bxm/server": "20.0.2",
     "@bxm/services-stubs": "^2.3.0",
-    "@bxm/site-header": "^2.4.0",
+    "@bxm/site-header": "^2.5.0",
     "@bxm/social": "^1.5.0",
     "@bxm/tags": "^3.0.0",
     "@bxm/teaser": "^5.3.0",

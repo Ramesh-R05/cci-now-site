@@ -89,3 +89,10 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
             |Cosmopolitan               |http://cosmopolitan.com.au/        |gtm-hamburger-cosmo        |
             |Dolly                      |http://dolly.com.au/               |gtm-hamburger-dolly        |
             |Beauty Heaven              |http://beautyheaven.com.au/        |gtm-hamburger-beautyheaven |
+
+    
+    @BXMA-412 @med
+    Scenario: Mobile users menu will fade out as they scroll down the page
+        Given I switch to "mobile portrait" view
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        Then the menu fades out as I scroll down the page

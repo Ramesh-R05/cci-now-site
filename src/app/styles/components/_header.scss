@@ -36,6 +36,13 @@
 
     &--pinned {
         position: fixed;
+        &.header--hide {
+            @media #{$small-only} {
+                transition: all 1500ms ease;
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+        }
     }
 
     .header__sections {

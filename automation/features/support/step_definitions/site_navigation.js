@@ -116,4 +116,11 @@ module.exports = function() {
         var headerLogoLink = browser.getAttribute(site_nav.siteHeaderBanner,'href');
         expect(headerLogoLink).not.toEqual('');
     });
+
+    this.Then(/^the menu fades out as I scroll down the page$/, function () {
+        expect(browser.isVisible(site_nav.menuHeader)).toBe(true);
+        browser.scroll(0,1000);
+        wait(500);
+        expect(browser.getAttribute(site_nav.menuHeader,'class')).toContain('header--hide');
+    });
 };

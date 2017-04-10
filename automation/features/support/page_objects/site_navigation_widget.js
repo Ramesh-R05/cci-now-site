@@ -1,4 +1,5 @@
 var site_navigation_widget = {
+    menuHeader: ".header.header--pinned",
     siteHamburger: "button.header-menu__button-menu",
     siteNavLogos: ".mobile-menu-list a",
     siteNavSection: "nav.header-nav__nav",
