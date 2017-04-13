@@ -111,7 +111,7 @@ jobs:
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://now.test.bxm.net.au/
-        - script: npm run test:phantom
+        - script: npm run test:high
 
 
   - name: now-site-mobile-automation-test # Test Stub site on Browser Stack
