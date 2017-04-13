@@ -1,4 +1,6 @@
 module.exports = {
+
+    featurePath: './features/regression',
     //Generic config
     tags: '@high',
     screenshotsOnError: false,

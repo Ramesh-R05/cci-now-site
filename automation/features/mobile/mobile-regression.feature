@@ -1,4 +1,4 @@
-@mobile
+@devices
 Feature: Users can navigate the site using a mobile device
 
     Scenario: Verify sticky ad on article page

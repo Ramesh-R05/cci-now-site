@@ -1,7 +1,10 @@
-var automation = require('@bxm/automation').default;
+'use strict';
 
-var hooks = function () {
-    var world = require('./world');
+module.exports = function hooks() {
+
+    this.setDefaultTimeout(120 * 1000);
+    console.log("Update timeout to 120000");
+
 
     var nconf = require('nconf');
     nconf.argv().env();
@@ -12,5 +15,3 @@ var hooks = function () {
             browser.deleteCookie();
         });
 };
-
-module.exports = hooks;

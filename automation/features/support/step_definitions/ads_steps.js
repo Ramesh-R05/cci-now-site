@@ -35,6 +35,7 @@ module.exports = function() {
     });
 
     this.Then(/^I should see the top leaderboard ad under navigation$/, function () {
+        browser.waitForVisible(wn_ads.adTopLeaderboard,10000); // long wait due to browser stack load times over the cloud
         expect(browser.isVisible(wn_ads.adTopLeaderboard)).toBe(true);
     });
 
@@ -112,6 +113,7 @@ module.exports = function() {
     });
 
     this.Then(/^I should see MREC ad above recommendation$/, function () {
+        browser.moveToObject(wn_ads.adMrecAboveRecommendation);
         expect(browser.isVisible(wn_ads.adMrecAboveRecommendation)).toBe(true);
     });
 

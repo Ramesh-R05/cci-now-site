@@ -17,7 +17,6 @@ module.exports = function() {
     });
 
     this.Given(/^I am currently viewing "([^"]*)"$/, function (pagename) {
-        browser.timeouts('page load', 90000);
         browser.url(world.Urls.home_page+pagename);
     });
 
