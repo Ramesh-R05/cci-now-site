@@ -110,7 +110,7 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://test-site-now-199061462.ap-southeast-2.elb.amazonaws.com/
+        - script: export URL=http://now.test.bxm.net.au/
         - script: npm run test:phantom
 
 
@@ -130,7 +130,7 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://test-site-now-199061462.ap-southeast-2.elb.amazonaws.com/
+        - script: export URL=http://now.test.bxm.net.au/
         - script: npm run test:mobile
 
   - name: nz-now-site-smoke-test # Test Dev Site with NZ config
@@ -149,7 +149,7 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://sit-site-now-nz-131013681.ap-southeast-2.elb.amazonaws.com/
+        - script: export URL=http://nznow.sit.bxm.net.au/
         - script: npm run test:nzlow
 
   - name: now-site-smoke-test # Test Dev Site with AU config
@@ -169,7 +169,7 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://sit-site-now-au-881362940.ap-southeast-2.elb.amazonaws.com/
+        - script: export URL=http://now.sit.bxm.net.au/
         - script: APP_KEY=now-site npm run sit:au
 
   - name: FULL-now-site-regression-test # Test Site full regression
@@ -188,7 +188,7 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://test-site-now-199061462.ap-southeast-2.elb.amazonaws.com/
+        - script: export URL=http://now.test.bxm.net.au/
         - script: APP_KEY=now-site npm run all:test
     flags:
       - now-site
