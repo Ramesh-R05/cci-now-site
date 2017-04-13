@@ -130,6 +130,8 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
+        - script: rm -rf node_modules/chimp/dist/lib/cucumberjs/hooks.js
+        - script: cp features/support/files/chimp_hooks.backup node_modules/chimp/dist/lib/cucumberjs/hooks.js
         - script: export URL=http://now.test.bxm.net.au/
         - script: npm run test:mobile
 
