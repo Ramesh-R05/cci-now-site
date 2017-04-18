@@ -90,8 +90,9 @@ module.exports = function() {
         expect(lhrFeed).toBe(false);
     });
     this.Given(/^I can see the long title "([^"]*)"$/, function (articleTitle) {
-           var longTitle = browser.getText(wn_article.longTitle);
-           expect(longTitle).toContain(articleTitle);
+        browser.waitForVisible(wn_article.longTitle, 10000);
+        var longTitle = browser.getText(wn_article.longTitle);
+        expect(longTitle).toContain(articleTitle);
     });
     this.Given(/^I can see the created date "([^"]*)"$/, function (date) {
         var articleDate = browser.getText(wn_article.dateText);

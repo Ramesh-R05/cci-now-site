@@ -153,25 +153,25 @@ module.exports = function() {
         //Identify the element
         switch(visibility) {
             case 'see':
-                var valueVisible = true
+                var valueVisible = true;
                 break;
             case 'not see':
-                var valueVisible = false
+                var valueVisible = false;
                 break;
         }
         switch(page) {
             case 'homepage':
             case 'section':
-                var adLeftSide = wn_ads.adLeftSideHomepageSection
-                var adRightSide = wn_ads.adRightSideHomepageSection
+                var adLeftSide = wn_ads.adLeftSideHomepageSection;
+                var adRightSide = wn_ads.adRightSideHomepageSection;
                 break;
             case 'article':
-                var adLeftSide = wn_ads.adLeftSideArticle
-                var adRightSide = wn_ads.adRightSideArticle
+                var adLeftSide = wn_ads.adLeftSideArticle;
+                var adRightSide = wn_ads.adRightSideArticle;
                 break;
             case 'gallery':
-                var adLeftSide = wn_ads.adLeftSideGallery
-                var adRightSide = wn_ads.adRightSideGallery
+                var adLeftSide = wn_ads.adLeftSideGallery;
+                var adRightSide = wn_ads.adRightSideGallery;
                 break;
         }
 
@@ -184,26 +184,27 @@ module.exports = function() {
         //Identify the element
         switch(visibility) {
             case 'see':
-                var valueVisible = true
+                var valueVisible = true;
                 break;
             case 'not see':
-                var valueVisible = false
+                var valueVisible = false;
                 break;
         }
         switch(page) {
             case 'homepage':
             case 'section':
-                var adOutOfPage = wn_ads.adOutOfPageHomepageSection
+                var adOutOfPage = wn_ads.adOutOfPageHomepageSection;
                 break;
             case 'article':
-                var adOutOfPage = wn_ads.adOutOfPageArticle
+                var adOutOfPage = wn_ads.adOutOfPageArticle;
                 break;
             case 'gallery':
-                var adOutOfPage = wn_ads.adOutOfPageGallery
+                var adOutOfPage = wn_ads.adOutOfPageGallery;
                 break;
         }
 
         //Validate
+        browser.waitForVisible(adOutOfPage, 10000);
         expect(browser.isVisible(adOutOfPage)).toBe(valueVisible);
     });
 

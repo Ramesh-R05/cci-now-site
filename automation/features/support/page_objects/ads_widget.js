@@ -1,6 +1,4 @@
 var ads_widget = {
-
-
     adTopLeaderboard: '.side-menu-wrapper > .ad--section-top-leaderboard [id^=gpt-slot-]', //homepage, section, article
     adMrecUnderHero: '.hero-wrapper [id^=gpt-slot-]', //homepage, section
     adMrecNextToTopFeed: '.page__top-container [id^=gpt-slot-]', //homepage, section
@@ -9,11 +7,18 @@ var ads_widget = {
     adMrecInBottomNewsFeed: '.ad--teaser-list [id^=gpt-slot-]', //homepage, section
     adMrecNextToBottomFeed: '.bottom-news-feed [id^=gpt-slot-]', //homepage, section
     adMrecNextToBottomFeedSticky: '.bottom-news-feed div.carriage', //homepage, section
+
+    adWallpaperHomepageSection: '.ad--wallpaper [id^=gpt-slot-]', //homepage, section
+    adLeftSideHomepageSection: '.ad--sidepanel-left [id^=gpt-slot-]', //homepage, section
+    adRightSideHomepageSection: '.ad--sidepanel-right [id^=gpt-slot-]', //homepage, section
+    adOutOfPageHomepageSection: '#inskinanchor', //homepage, section
     adBottomLeaderboard: '.content-wrapper .ad--section-top-leaderboard > [id^=gpt-slot-]', //homepage, section, article
+
     adTopLeaderboardGallery: '.ad.gallery__mobile-ad.ad--bottom-label [id^=gpt-slot-]', //gallery
     adMrecBottomRightGallery: '.ad.gallery__aside-ad.ad--top-label [id^=gpt-slot-]', //gallery
     adMrecInSlideGallery: '.ad.gallery__slide-ad.ad--bottom-label [id^=gpt-slot-]', //gallery
     adBottomLeaderboardGallery: '.ad.gallery__footer-ad.ad--top-label', //gallery
+
     adMrecRHRFeed1: '.feed-ad #gpt-slot-4', //article
     adMrecRHRFeed2: '.feed-ad #gpt-slot-5', //article
     adMrecRHRFeed3: '.feed-ad #gpt-slot-6', //article
@@ -21,10 +26,6 @@ var ads_widget = {
     adMrecUnderHeroArticle: '.ad--beneath-hero [id^=gpt-slot-]', //article
     adMrecAboveRecommendation: '.ad--article-before-recommendations [id^=gpt-slot-]', //article
 
-    adWallpaperHomepageSection: '.ad--wallpaper [id^=gpt-slot-]', //homepage, section
-    adLeftSideHomepageSection: '.ad--sidepanel-left [id^=gpt-slot-]', //homepage, section
-    adRightSideHomepageSection: '.ad--sidepanel-right [id^=gpt-slot-]', //homepage, section
-    adOutOfPageHomepageSection: '.ad--out-of-page #gpt-slot-7', //homepage, section
     adWallpaperArticle: '.ad--wallpaper [id^=gpt-slot-]', //article
     adLeftSideArticle: '.ad--sidepanel-left [id^=gpt-slot-]', //article
     adRightSideArticle: '.ad--sidepanel-right [id^=gpt-slot-]', //article

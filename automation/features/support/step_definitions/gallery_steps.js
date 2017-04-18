@@ -6,6 +6,7 @@ var findValue = require('../utils/findValue');
 module.exports = function() {
 
     this.Given(/^I can see the logo on the gallery header$/, function() {
+        browser.waitForVisible(gallery.headerLogo, 10000);
         expect(browser.isVisible(gallery.headerLogo)).toBe(true);
     });
 

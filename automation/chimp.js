@@ -6,6 +6,10 @@ module.exports = {
     saveScreenshotsToDisk: false,
     jsonOutput: 'reports/regression.json',
     webdriverio: {
-        desiredCapabilities: {}
+        desiredCapabilities: {
+            chromeOptions: {
+                args: ["--enable-automation"]
+            }
+        }
     }
 };
