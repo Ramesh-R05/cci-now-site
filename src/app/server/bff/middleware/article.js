@@ -18,6 +18,7 @@ export default async function article(req, res, next) {
         req.data.entity.adBrand = get(adBrand, 'id', 'ntl');
         // TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
         req.data.entity.pageDateCreated = momentTimezone.tz(req.data.entity.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
+
         const sectionId = req.data.entity.sectionId;
         const listingQuery = `path eq %27${sectionId}%27`;
         if (sectionId) {
