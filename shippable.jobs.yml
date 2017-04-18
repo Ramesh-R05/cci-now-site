@@ -111,7 +111,10 @@ jobs:
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://now.test.bxm.net.au/
-        - script: npm run test:high
+        - script: npm run test:high || true
+        - script: actualsize=$(wc -c <"@rerun.txt")
+        - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
+
 
 
   - name: now-site-mobile-automation-test # Test Stub site on Browser Stack
