@@ -30,6 +30,7 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
+      - IN: now-site-replicas-non-prod #number of running tasks
       - IN: now-site-man-branch # for non-master, don't auto deploy.
         switch: off
       - IN: env-sit-ecs
@@ -46,6 +47,7 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
+      - IN: now-site-replicas-non-prod #number of running tasks
       - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
       - IN: env-sit-ecs
@@ -64,6 +66,7 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
+      - IN: now-site-replicas-non-prod #number of running tasks
       - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
       - IN: env-sit-ecs
@@ -81,6 +84,7 @@ jobs:
   - name: now-site-test-deploy-master # Stubbed deployment for automation tests
     type: deploy
     steps:
+      - IN: now-site-replicas-non-prod #number of running tasks
       - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
       - IN: env-sit-ecs

@@ -121,6 +121,11 @@ resources:
     seed:
       interval: "15 22 * * *"
 
+  - name: now-site-replicas-non-prod
+    type: replicas
+    version:
+      count: 2
+
 # PRODUCTION environment configuration (TO BE DONE)
 #
   - name: now-site-replicas-production
