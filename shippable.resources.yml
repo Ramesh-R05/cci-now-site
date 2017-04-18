@@ -55,25 +55,25 @@ resources:
   - name: nz-now-site-alb-sit
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/sit-site-now-nz/171e6ea1f61925bd"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/nznow-site-sit-nz/e16aa0e0afc6dcc8"
       method: application
 
   - name: now-site-alb-sit
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/sit-site-now-au/91ee8d9908cb7501"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-sit-now-au/e972f0d5ce478be2"
       method: application
 
   - name: now-site-alb-sit-branch
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/branch-sit-site-now-au/12db422343e48400"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/branch-now-site-sit-au/a5522dba93f4b773"
       method: application
 
   - name: now-site-alb-test
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/test-site-now/ace685cc3cfb3aef"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-test/3640de7200782c72"
       method: application
 
 # TO BE UPDATED
