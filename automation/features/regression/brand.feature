@@ -93,7 +93,7 @@ Feature: Brand Landing page
             |take5mag           |subscribe-take5    |https://www.facebook.com/take5magazine     |https://twitter.com/take5magazine      |https://www.instagram.com/take5magazine/       |gtm-subscribe-take5  |
             |yours              |subscribe-yours    |https://www.facebook.com/Yoursmagazineau/  |https://twitter.com/yoursmagazineau    |https://www.instagram.com/yoursmagazineau/     |gtm-subscribe-yours  |
             |mother-and-baby    |none               |https://www.facebook.com/mbmag/            |https://twitter.com/motherbaby_au      |https://www.instagram.com/motherbaby_au        |none                 |
-            |tvweek             |subscribe-tvweek   |https://www.facebook.com/tvweekmag         |https://twitter.com/TVWEEKmag          |https://www.instagram.com/TVWEEK               |gtm-subscribe-tvweek |
+            |tvweek             |subscribe-tvweek   |https://www.facebook.com/tvweekmag         |https://twitter.com/TVWEEKmag          |https://www.instagram.com/TVWEEKmag            |gtm-subscribe-tvweek |
 
     @low
     Scenario Outline: Verify the subscribe now and social icons of "<brand>" landing page in "<device>" view

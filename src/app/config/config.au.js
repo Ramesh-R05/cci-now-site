@@ -128,7 +128,7 @@ export default {
                 socialLinks: {
                     facebook: 'https://www.facebook.com/tvweekmag',
                     twitter: 'https://twitter.com/TVWEEKmag',
-                    instagram: 'https://www.instagram.com/TVWEEK'
+                    instagram: 'https://www.instagram.com/TVWEEKmag'
                 }
             }
         ],
