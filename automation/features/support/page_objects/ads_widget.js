@@ -11,7 +11,7 @@ var ads_widget = {
     adWallpaperHomepageSection: '.ad--wallpaper [id^=gpt-slot-]', //homepage, section
     adLeftSideHomepageSection: '.ad--sidepanel-left [id^=gpt-slot-]', //homepage, section
     adRightSideHomepageSection: '.ad--sidepanel-right [id^=gpt-slot-]', //homepage, section
-    adOutOfPageHomepageSection: '#inskinanchor', //homepage, section
+    adOutOfPage: '#inskinanchor', //all
     adBottomLeaderboard: '.content-wrapper .ad--section-top-leaderboard > [id^=gpt-slot-]', //homepage, section, article
 
     adTopLeaderboardGallery: '.ad.gallery__mobile-ad.ad--bottom-label [id^=gpt-slot-]', //gallery
@@ -29,10 +29,8 @@ var ads_widget = {
     adWallpaperArticle: '.ad--wallpaper [id^=gpt-slot-]', //article
     adLeftSideArticle: '.ad--sidepanel-left [id^=gpt-slot-]', //article
     adRightSideArticle: '.ad--sidepanel-right [id^=gpt-slot-]', //article
-    adOutOfPageArticle: '.ad--out-of-page [id^=gpt-slot-]', //article
     adWallpaperGallery: '.ad--wallpaper [id^=gpt-slot-]', //gallery
     adLeftSideGallery: '.ad--sidepanel-left [id^=gpt-slot-]', //gallery
-    adRightSideGallery: '.ad--sidepanel-right [id^=gpt-slot-]', //gallery
-    adOutOfPageGallery: '.ad--out-of-page [id^=gpt-slot-]' //gallery
+    adRightSideGallery: '.ad--sidepanel-right [id^=gpt-slot-]' //gallery
 };
 module.exports = ads_widget;

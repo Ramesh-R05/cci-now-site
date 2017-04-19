@@ -188,18 +188,6 @@ Feature: Ad
             |article    |fashion/red-carpet/automation-test-article-with-hero-image-3663    |
             |gallery    |fashion/red-carpet/automation-test-gallery-13302                   |
 
-    @BXMA-156 @low
-    Scenario Outline: Wallpaper ad and side panel ad should not appear on "<page>" page in the "<device>" view
-        Given I switch to "<device>" view
-        When I am currently viewing "<url>"
-        * I should "not see" the wallpaper ad slot on "<page>"
-        * I should "not see" the left and right side ad slot on "<page>"
-        Examples:
-            |device             |page       |url                                                                |
-            |tablet portrait    |section    |fashion                                                            |
-            |tablet portrait    |article    |fashion/red-carpet/automation-test-article-with-hero-image-3663    |
-            |mobile             |gallery    |fashion/red-carpet/automation-test-gallery-13302                   |
-
 #-------- Wall Paper Ads end ---------------#
 
 # -------- Inskin Ads on desktop are High as this is an area with Commercial Value ---------------
@@ -209,13 +197,10 @@ Feature: Ad
         Given I switch to "<device>" view
         When I am currently viewing "<url>"
         * I should "see" the out of page ad slot on "<page>"
-    @high
+    @manual
         Examples:
             |device             |page       |url                                                         |
             |desktop            |section    |beauty                                                      |
-    @low
-        Examples:
-            |device             |page       |url                                                         |
             |tablet landscape   |article    |beauty/hair/automation-test-article-with-hero-video-3664    |
             |tablet portrait    |gallery    |beauty/hair/automation-test-gallery-inskin-13303            |
 #-------- Inskin Ads end ---------------#

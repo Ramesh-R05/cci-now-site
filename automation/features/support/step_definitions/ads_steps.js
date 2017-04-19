@@ -123,25 +123,27 @@ module.exports = function() {
 
     //BELOW ARE THE STEPS TO TEST WALLPAPER, SIDE PANEL, OUT OF PAGE ADs
     this.Then(/^I should "([^"]*)" the wallpaper ad slot on "([^"]*)"$/, function (visibility, page) {
+        var valueVisible, adWallpaper;
+
         //Identify the element
         switch(visibility) {
             case 'see':
-                var valueVisible = true
+                valueVisible = true;
                 break;
             case 'not see':
-                var valueVisible = false
+                valueVisible = false;
                 break;
         }
         switch(page) {
             case 'homepage':
             case 'section':
-                var adWallpaper = wn_ads.adWallpaperHomepageSection
+                adWallpaper = wn_ads.adWallpaperHomepageSection;
                 break;
             case 'article':
-                var adWallpaper = wn_ads.adWallpaperArticle
+                adWallpaper = wn_ads.adWallpaperArticle;
                 break;
             case 'gallery':
-                var adWallpaper = wn_ads.adWallpaperGallery
+                adWallpaper = wn_ads.adWallpaperGallery;
                 break;
         }
 
@@ -150,28 +152,29 @@ module.exports = function() {
     });
 
     this.Then(/^I should "([^"]*)" the left and right side ad slot on "([^"]*)"$/, function (visibility, page) {
+        var valueVisible, adLeftSide, adRightSide;
         //Identify the element
         switch(visibility) {
             case 'see':
-                var valueVisible = true;
+                valueVisible = true;
                 break;
             case 'not see':
-                var valueVisible = false;
+                valueVisible = false;
                 break;
         }
         switch(page) {
             case 'homepage':
             case 'section':
-                var adLeftSide = wn_ads.adLeftSideHomepageSection;
-                var adRightSide = wn_ads.adRightSideHomepageSection;
+                adLeftSide = wn_ads.adLeftSideHomepageSection;
+                adRightSide = wn_ads.adRightSideHomepageSection;
                 break;
             case 'article':
-                var adLeftSide = wn_ads.adLeftSideArticle;
-                var adRightSide = wn_ads.adRightSideArticle;
+                adLeftSide = wn_ads.adLeftSideArticle;
+                adRightSide = wn_ads.adRightSideArticle;
                 break;
             case 'gallery':
-                var adLeftSide = wn_ads.adLeftSideGallery;
-                var adRightSide = wn_ads.adRightSideGallery;
+                adLeftSide = wn_ads.adLeftSideGallery;
+                adRightSide = wn_ads.adRightSideGallery;
                 break;
         }
 
@@ -181,80 +184,18 @@ module.exports = function() {
     });
 
     this.Then(/^I should "([^"]*)" the out of page ad slot on "([^"]*)"$/, function (visibility, page) {
+        var valueVisible;
         //Identify the element
         switch(visibility) {
             case 'see':
-                var valueVisible = true;
+                valueVisible = true;
                 break;
             case 'not see':
-                var valueVisible = false;
+                valueVisible = false;
                 break;
         }
-        switch(page) {
-            case 'homepage':
-            case 'section':
-                var adOutOfPage = wn_ads.adOutOfPageHomepageSection;
-                break;
-            case 'article':
-                var adOutOfPage = wn_ads.adOutOfPageArticle;
-                break;
-            case 'gallery':
-                var adOutOfPage = wn_ads.adOutOfPageGallery;
-                break;
-        }
-
         //Validate
-        browser.waitForVisible(adOutOfPage, 10000);
-        expect(browser.isVisible(adOutOfPage)).toBe(valueVisible);
+        browser.waitForVisible(wn_ads.adOutOfPage, 10000);
+        expect(browser.isVisible(wn_ads.adOutOfPage)).toBe(valueVisible);
     });
-
-
-    //BELOW ARE THE STEPS FROM OTHER SITES. I WILL DECIDE TO KEEP OR DELETE LATER
-
-    this.Then(/^I should see (\d+) leaderboard ad slots$/, function (slot_count) {
-        var adSlots = browser.elements(wn_ads.leaderBoard, 5000);
-        expect((adSlots.value.length.toString())).toEqual(slot_count);
-    });
-    this.Then(/^I should see (\d+) mrec ad slots$/, function (slot_count) {
-        var adSlots = browser.elements(wn_ads.mrec, 5000);
-        expect((adSlots.value.length.toString())).toEqual(slot_count);
-    });
-    this.Then(/^I should see (\d+) middle leaderboard ad slots$/, function (slot_count) {
-        var adSlots = browser.elements(wn_ads.middleLeaderBoard, 5000);
-        expect((adSlots.value.length.toString())).toEqual(slot_count);
-    });
-    this.Then(/^I should see (\d+) middle mrec ad slots$/, function (slot_count) {
-        var adSlots = browser.elements(wn_ads.middleMrec, 5000);
-        expect((adSlots.value.length.toString())).toEqual(slot_count);
-    });
-    this.Then(/^I should see (\d+) top leaderboard ad slots$/, function (slot_count) {
-        var adSlots = browser.elements(wn_ads.articleTopLeaderBoard, 5000);
-        expect((adSlots.value.length.toString())).toEqual(slot_count);
-    });
-    this.Then(/^I should see (\d+) bottom leaderboard ad slots$/, function (slot_count) {
-        var adSlots = browser.elements(wn_ads.articleBottomLeaderBoard, 5000);
-        expect((adSlots.value.length.toString())).toEqual(slot_count);
-    });
-    this.Then(/^I should see (\d+) mrec ad slots in LHS feed$/, function (slot_count) {
-        var adSlots = browser.elements(wn_ads.articleLHSMrec, 6000);
-        expect((adSlots.value.length.toString())).toEqual(slot_count);
-    });
-    this.Then(/^I should see (\d+) mrec ad slots above recommendation$/, function (slot_count) {
-        var adSlots = browser.elements(wn_ads.articleBottomMrec, 5000);
-        expect((adSlots.value.length.toString())).toEqual(slot_count);
-    });
-    this.Then(/^I should see (\d+) top mobile banner ad slots$/, function (slot_count) {
-        var adSlots = browser.elements(wn_ads.topMobileBanner, 5000);
-        expect((adSlots.value.length.toString())).toEqual(slot_count);
-    });
-    this.Then(/^I should see (\d+) top mobile banner ad slots under short teaser$/, function (slot_count) {
-        var adSlots = browser.elements(wn_ads.homesTopMobileBanner, 5000);
-        expect((adSlots.value.length.toString())).toEqual(slot_count);
-    });
-    this.Then(/^I should see (\d+) bottom leaderboard ad slots above recommendation$/, function (slot_count) {
-        var adSlots = browser.elements(wn_ads.homesBottomMobileBanner, 5000);
-        expect((adSlots.value.length.toString())).toEqual(slot_count);
-    });
-
-
 };
