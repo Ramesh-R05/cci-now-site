@@ -98,10 +98,10 @@ module.exports = function() {
     });
 
     this.Then(/^I should see four MREC ads in the RHR feed$/, function () {
-        expect(browser.isVisible(wn_ads.adMrecRHRFeed1)).toBe(true);
-        expect(browser.isVisible(wn_ads.adMrecRHRFeed2)).toBe(true);
-        expect(browser.isVisible(wn_ads.adMrecRHRFeed3)).toBe(true);
-        expect(browser.isVisible(wn_ads.adMrecRHRFeed4)).toBe(true);
+        browser.moveToObject(wn_ads.adMrecRHRFeed1);
+        browser.moveToObject(wn_ads.adMrecRHRFeed2);
+        browser.moveToObject(wn_ads.adMrecRHRFeed3);
+        browser.moveToObject(wn_ads.adMrecRHRFeed4);
     });
 
     this.Then(/^I should see MREC ad under the hero image$/, function () {

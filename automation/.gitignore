@@ -5,6 +5,7 @@ reports/*.json
 reports/*.html
 cucumber.json
 @rerun.txt
+node_modules/
 
 #Include
 !reports/template.html

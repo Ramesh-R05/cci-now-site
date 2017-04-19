@@ -19,10 +19,10 @@ var ads_widget = {
     adMrecInSlideGallery: '.ad.gallery__slide-ad.ad--bottom-label [id^=gpt-slot-]', //gallery
     adBottomLeaderboardGallery: '.ad.gallery__footer-ad.ad--top-label', //gallery
 
-    adMrecRHRFeed1: '.feed-ad #gpt-slot-4', //article
-    adMrecRHRFeed2: '.feed-ad #gpt-slot-5', //article
-    adMrecRHRFeed3: '.feed-ad #gpt-slot-6', //article
-    adMrecRHRFeed4: '.feed-ad #gpt-slot-7', //article
+    adMrecRHRFeed1: 'ul.feed__items li.feed-ad:nth-child(3) [id^=gpt-slot-] iframe', //article
+    adMrecRHRFeed2: 'ul.feed__items li.feed-ad:nth-child(9) [id^=gpt-slot-] iframe', //article
+    adMrecRHRFeed3: 'ul.feed__items li.feed-ad:nth-child(15) [id^=gpt-slot-] iframe', //article
+    adMrecRHRFeed4: 'ul.feed__items li.feed-ad:nth-child(21) [id^=gpt-slot-] iframe', //article
     adMrecUnderHeroArticle: '.ad--beneath-hero [id^=gpt-slot-]', //article
     adMrecAboveRecommendation: '.ad--article-before-recommendations [id^=gpt-slot-]', //article
 
