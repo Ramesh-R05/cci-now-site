@@ -209,7 +209,7 @@ jobs:
   - name: now-site-release-master # Package release for production release
     type: release
     steps:
-      - IN: now-site-test-deploy-master
+      - IN: now-site-man-master
         switch: off
       - IN: now-site-automation-test
         switch: off
