@@ -161,12 +161,12 @@ jobs:
         - script: export URL=http://nznow.sit.bxm.net.au/
         - script: npm run test:nzlow
 
-  - name: now-site-smoke-test # Test Dev Site with AU config
+  - name: now-site-e2e-test # Test e2e test for NOW au dev
     type: runSh
     always:
       - NOTIFY: slack-notifications
     steps:
-     - IN: now-site-sit-deploy-master
+     - IN: morning-trigger
      - IN: now-site-repo
        switch: off
      - TASK:
@@ -180,6 +180,9 @@ jobs:
         - script: npm install
         - script: export URL=http://now.sit.bxm.net.au/
         - script: APP_KEY=now-site npm run sit:au
+    flags:
+      - now-site
+
 
   - name: FULL-now-site-regression-test # Test Site full regression
     type: runSh
@@ -211,8 +214,6 @@ jobs:
       - IN: now-site-mobile-automation-test
         switch: off
       - IN: nz-now-site-smoke-test
-        switch: off
-      - IN: now-site-smoke-test
         switch: off
       - IN: now-site-version
       - TASK: managed
