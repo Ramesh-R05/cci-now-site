@@ -154,4 +154,4 @@ resources:
   - name: now-site-replicas-production
     type: replicas
     version:
-      count: 2
+      count: 3
