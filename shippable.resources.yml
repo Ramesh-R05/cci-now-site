@@ -149,7 +149,7 @@ resources:
     type: params
     version:
       params:
-        NODE_ENV: "live"
+        NODE_ENV: "production"
 
   - name: now-site-replicas-production
     type: replicas
