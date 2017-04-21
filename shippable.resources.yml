@@ -144,6 +144,12 @@ resources:
       sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:622156575630:targetgroup/now-site-prod-now-au/763f0b126f52508d"
       method: application
 
+  - name: nz-now-site-alb-prod
+    type: loadBalancer
+    pointer:
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:622156575630:targetgroup/nznow-site-prod-nz/452a0a41643ae426"
+      method: application
+
 # ENV parameters
   - name: now-site-params-prod
     type: params

@@ -237,3 +237,21 @@ jobs:
             port: 3001
       - TASK: managed
         deployMethod: upgrade
+
+  - name: nz-now-site-prod-deploy-master # PROD deployment for MASTER with Region NZ
+    type: deploy
+    always:
+      - NOTIFY: slack-notifications
+    steps:
+      - IN: now-site-replicas-production #number of running tasks
+      - IN: now-site-release-master
+      - IN: env-prod-ecs
+      - IN: now-site-params-prod
+      - IN: now-site-params-nz-region
+      - IN: nz-now-site-alb-prod
+        applyTo:
+          - manifest: now-site-man-master
+            image: now-site-img-master
+            port: 3001
+      - TASK: managed
+        deployMethod: upgrade
