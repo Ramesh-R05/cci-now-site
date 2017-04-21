@@ -150,6 +150,7 @@ resources:
     version:
       params:
         NODE_ENV: "production"
+        APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
 
   - name: now-site-replicas-production
     type: replicas
