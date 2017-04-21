@@ -145,7 +145,7 @@ module.exports = function(){
 
     this.Given(/^I should see (\d+) must read images and titles which are clickable to open their page$/, function(number) {
         //find elements of image and title of all must read items
-        wait(2000);
+        wait(5000); //wait due to polar ads
         var mustreadImage = browser.getAttribute(home.mustreadImage,'data-srcset');
         var mustreadImageLink = browser.getAttribute(home.mustreadImageLink,'href');
         var mustreadTitle = browser.getText(home.mustreadTitle);

@@ -10,7 +10,7 @@
     "test:low": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@low\"",
     "test:nzlow": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@nznow --tags=@low\"",
     "test:rerun": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs @rerun.txt\"",
-    "all:test": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now\"",
+    "all:test": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=~@manual\"",
     "single": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs\"",
     "once": "npm run single",
     "html_report": "bash -c \"node generate_html.js\"",
