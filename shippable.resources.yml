@@ -157,8 +157,6 @@ resources:
       params:
         NODE_ENV: "production"
         APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
-        NEW_RELIC_PROXY_HOST: ""
-        NEW_RELIC_PROXY_PORT: ""
 
   - name: now-site-replicas-production
     type: replicas
