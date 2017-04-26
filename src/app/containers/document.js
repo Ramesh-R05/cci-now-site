@@ -9,25 +9,32 @@ import Sailthru from '../components/sailthru/sailthru';
 
 function mapStateToProps(context) {
     return {
-        content: context.getStore('articleStore').getContent()
+        content: context.getStore('articleStore').getContent(),
+        request: context.getStore('PageStore').getRequest()
     };
 }
 
-@connectToStores(['articleStore'], mapStateToProps)
+@connectToStores(['articleStore', 'PageStore'], mapStateToProps)
 export default class Document extends Component {
     static displayName = 'Document';
 
     static propTypes = {
-        content: PropTypes.object.isRequired,
+        content: PropTypes.shape({
+            tagsDetails: PropTypes.array.isRequired
+        }).isRequired,
         currentUrl: PropTypes.string.isRequired,
         nodeType: PropTypes.string.isRequired,
         theme: PropTypes.object,
-        isVerticalGallery: PropTypes.bool
+        request: PropTypes.shape({
+            query: PropTypes.object
+        })
     };
 
     static defaultProps = {
         theme: {},
-        isVerticalGallery: false
+        request: {
+            query: {}
+        }
     };
 
     static articleContentBodyConfig = {
@@ -59,7 +66,7 @@ export default class Document extends Component {
     };
 
     render() {
-        const { content, currentUrl, nodeType, theme, isVerticalGallery } = this.props;
+        const { content, currentUrl, nodeType, theme, request } = this.props;
 
         const headerAd = {
             type: 'Ad',
@@ -77,7 +84,7 @@ export default class Document extends Component {
         };
 
         if (nodeType === 'Gallery') {
-            if (isVerticalGallery) {
+            if (request.query.g === 'v') {
                 return (
                     <Page
                       currentUrl={currentUrl}

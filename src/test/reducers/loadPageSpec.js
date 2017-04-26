@@ -1,14 +1,15 @@
-import {initialState, reducer} from '../../app/reducers/loadPage';
+import { initialState, reducer } from '../../app/reducers/loadPage';
 
 describe(`loadPage Reducer`, () => {
-    let body;
     let payload;
+    let body = {entity: { nodeType: 'Article', title: 'Title',  imageUrl: '', shortTitle: 'Short Title', summary: 'Summary' },
+        footer: {}, trendingItems: [], mustRead: [], theme: {}};
     describe(`on LOAD_CONTENT`, () => {
         beforeEach(() => {
-            body = {entity: { nodeType: 'Article', title: 'Title',  imageUrl: '', shortTitle: 'Short Title', summary: 'Summary' }, footer: {}, trendingItems: [], mustRead: []};
             payload = {
                 type: 'LOAD_CONTENT',
-                body
+                body: body,
+                request: { payload: {} }
             };
         });
 
@@ -22,20 +23,8 @@ describe(`loadPage Reducer`, () => {
                     shortTitle: payload.body.entity.shortTitle,
                     summary: payload.body.entity.summary,
                     trendingItems: payload.body.trendingItems,
-                    imageUrl: payload.body.entity.imageUrl
-                });
-            });
-
-            it(`should still return the new items `, () => {
-                expect(reducer(initialState, {body}, 'LOAD_CONTENT')).to.contain.all.keys({
-                    error: null,
-                    footer: payload.body.footer,
-                    nodeType: payload.body.entity.nodeType,
-                    title: payload.body.entity.title,
-                    shortTitle: payload.body.entity.shortTitle,
-                    summary: payload.body.entity.summary,
-                    trendingItems: payload.body.trendingItems,
-                    imageUrl: payload.body.entity.imageUrl
+                    imageUrl: payload.body.entity.imageUrl,
+                    request: payload.request.payload
                 });
             });
         });
@@ -72,8 +61,7 @@ describe(`loadPage Reducer`, () => {
                 nodeType: '',
                 title: '',
                 trendingItems: [],
-                imageUrl: '',
-                theme: ''
+                imageUrl: ''
             });
         });
 
@@ -85,8 +73,7 @@ describe(`loadPage Reducer`, () => {
                 nodeType: '',
                 title: '',
                 trendingItems: [],
-                imageUrl: '',
-                theme: ''
+                imageUrl: ''
             });
         });
     });

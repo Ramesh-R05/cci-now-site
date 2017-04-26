@@ -45,6 +45,10 @@ export default createReducerStore({
         getModule: (state, module) => {
             if (!module) return [];
             return state[module] || [];
+        },
+
+        getRequest(state) {
+            return state.request;
         }
     }
 });

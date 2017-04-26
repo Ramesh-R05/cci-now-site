@@ -1,7 +1,7 @@
-import {betterMockComponentContext} from '@bxm/flux';
+import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
-const {React, ReactDOM, TestUtils} = Context;
-import proxyquire, {noCallThru} from 'proxyquire';
+const { React, ReactDOM, TestUtils } = Context;
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 const ArticleStub = Context.createStubComponent();
@@ -28,10 +28,17 @@ describe('Document Component', () => {
     const navItems = [];
     const siteName = 'Dolly';
     const articleContent = { title: 'Title Test' };
+    let requestContent = { query: {} };
 
     Context.addStore('articleStore', {
         getContent() {
             return articleContent;
+        }
+    });
+
+    Context.addStore('PageStore', {
+        getRequest() {
+            return requestContent;
         }
     });
 
@@ -90,7 +97,7 @@ describe('Document Component', () => {
 
         describe('and is default Gallery', () => {
             before(() => {
-                reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType, isVerticalGallery: false });
+                reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType, request: requestContent });
             });
 
             it(`should render the Gallery Component`, () => {
@@ -100,7 +107,8 @@ describe('Document Component', () => {
 
         describe('and is Vertical Gallery', () => {
             before(() => {
-                reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType, isVerticalGallery: true });
+                requestContent = { query: { g: 'v'} };
+                reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType, request: requestContent });
             });
 
             it(`should render the Gallery Component`, () => {
