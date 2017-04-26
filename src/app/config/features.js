@@ -15,8 +15,5 @@ export default {
         enabled: true,
         paths: ['/preview/']
     },
-    lazyLoadAds: {
-        enabled: false
-    },
     showTeaserBadgeLink: false
 };
