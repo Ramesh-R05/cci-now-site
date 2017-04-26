@@ -225,7 +225,7 @@ jobs:
         - script: npm install
         - script: export URL=http://now.test.bxm.net.au/
         - script: export APP_KEY=now-site
-        - script: $ ./node_modules/.bin/chimp chimp.js --browser=phantomjs --debug --tags=@ad,@now,@gallery,@BXMA-132,@high
+        - script: ./node_modules/.bin/chimp chimp.js --browser=phantomjs --debug --tags=@ad,@now,@gallery,@BXMA-132,@high
     flags:
       - now-site
 
