@@ -207,29 +207,6 @@ jobs:
     flags:
       - now-site
 
-  - name: DEBUG-now-site-regression-test # Test on DEBUG mode
-    type: runSh
-    always:
-      - NOTIFY: slack-notifications
-    steps:
-     - IN: now-site-repo
-       switch: off
-     - IN: morning-trigger
-     - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-        - script: source ~/.nvm/nvm.sh
-        - script: nvm install "6.1.0"
-        - script: nvm use "6.1.0"
-        - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm set registry http://npm.digital.bauer-media.net.au
-        - script: npm install
-        - script: export URL=http://now.test.bxm.net.au/
-        - script: export APP_KEY=now-site
-        - script: ./node_modules/.bin/chimp chimp.js --browser=phantomjs --debug --tags=@ad,@now,@gallery,@BXMA-132,@high
-    flags:
-      - now-site
-
-
   - name: now-site-release-master # Package release for production release
     type: release
     steps:
@@ -279,3 +256,33 @@ jobs:
             port: 3001
       - TASK: managed
         deployMethod: upgrade
+
+
+###### DEBUG MODE ###
+#Tags use for DEBUG
+#Use --tags <EXPRESSION> to run specific features or scenarios.
+
+#--tags @dev: tagged with @dev
+#--tags ~@dev: NOT tagged with @dev
+#--tags @foo,@bar: tagged with @foo OR bar
+#--tags @foo --tags @bar: tagged with @foo AND bar
+  - name: DEBUG-now-site-regression-test # Test on DEBUG mode
+    type: runSh
+    always:
+      - NOTIFY: slack-notifications
+    steps:
+     - IN: now-site-repo
+       switch: off
+     - TASK:
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+        - script: source ~/.nvm/nvm.sh
+        - script: nvm install "6.1.0"
+        - script: nvm use "6.1.0"
+        - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm install
+        - script: export URL=http://now.test.bxm.net.au/
+        - script: export APP_KEY=now-site
+        - script: ./node_modules/.bin/chimp chimp.js --browser=phantomjs --debug --tags=@ad --tags=@now --tags=@gallery --tags=@BXMA-132 --tags=@high
+    flags:
+      - now-site
