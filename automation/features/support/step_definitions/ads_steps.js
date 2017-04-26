@@ -35,7 +35,7 @@ module.exports = function() {
     });
 
     this.Then(/^I should see the top leaderboard ad under navigation$/, function () {
-        browser.waitForVisible(wn_ads.adTopLeaderboard,10000); // long wait due to browser stack load times over the cloud
+        browser.waitForVisible(wn_ads.adTopLeaderboard, 15000); // long wait due to browser stack load times over the cloud
         expect(browser.isVisible(wn_ads.adTopLeaderboard)).toBe(true);
     });
 
