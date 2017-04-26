@@ -207,6 +207,30 @@ jobs:
     flags:
       - now-site
 
+  - name: DEBUG-now-site-regression-test # Test on DEBUG mode
+    type: runSh
+    always:
+      - NOTIFY: slack-notifications
+    steps:
+     - IN: now-site-repo
+       switch: off
+     - IN: morning-trigger
+     - TASK:
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+        - script: source ~/.nvm/nvm.sh
+        - script: nvm install "6.1.0"
+        - script: nvm use "6.1.0"
+        - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm install
+        - script: export URL=http://now.test.bxm.net.au/
+        - script: export APP_KEY=now-site
+        - script: ./node_modules/.bin/chimp chimp.js --browser=phantomjs --debug --tags=@high
+        - script: actualsize=$(wc -c <"@rerun.txt")
+        - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
+    flags:
+      - now-site
+
 
   - name: now-site-release-master # Package release for production release
     type: release
