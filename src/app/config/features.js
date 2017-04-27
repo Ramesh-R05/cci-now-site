@@ -15,5 +15,8 @@ export default {
         enabled: true,
         paths: ['/preview/']
     },
-    showTeaserBadgeLink: false
+    showTeaserBadgeLink: false,
+    useDefaultPolar: {
+        enabled: true
+    }
 };
