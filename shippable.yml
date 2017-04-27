@@ -31,7 +31,7 @@ build:
     - ./src/node_modules/.bin/babel-istanbul report cobertura --dir  ./shippable/codecoverage/
     - docker --version
     - if [ $IS_PULL_REQUEST == false ]; then docker build -f Dockerfile.ecs -t $IMAGE:$BRANCH_NAME .; fi
-    - if [ $IS_PULL_REQUEST == false ]; then docker tag -f $IMAGE:$BRANCH_NAME $IMAGE:latest; fi
+    - if [ $IS_PULL_REQUEST == false ]; then docker tag $IMAGE:$BRANCH_NAME $IMAGE:latest; fi
   push:
     - if [ $IS_PULL_REQUEST == false ]; then docker push $IMAGE:$BRANCH_NAME; fi
     - if [ $IS_PULL_REQUEST == false ]; then docker push $IMAGE:latest; fi
