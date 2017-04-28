@@ -37,7 +37,7 @@
   "homepage": "https://github.com/bauerxcelmedia/now-site#readme",
   "dependencies": {
     "@bxm/ad": "^10.6.0",
-    "@bxm/article": "^23.5.0",
+    "@bxm/article": "^23.6.0",
     "@bxm/behaviour": "^1.2.0",
     "@bxm/config": "^4.1.1",
     "@bxm/datetime": "^3.0.0",
