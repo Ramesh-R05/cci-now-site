@@ -204,3 +204,11 @@ Feature: Ad
             |tablet landscape   |article    |beauty/hair/automation-test-article-with-hero-video-3664    |
             |tablet portrait    |gallery    |beauty/hair/automation-test-gallery-inskin-13303            |
 #-------- Inskin Ads end ---------------#
+
+    @BXMA-415 @high
+    Scenario: Ads will autorefresh on Vertical gallery
+        Given I switch to "desktop" view
+        When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302?g=v"
+        Then I can see last RHR add is sticky
+        And the sticky add will auto refresh every 6 seconds when is in View
+#        And after 15 seconds the page will go idle and the add will no refresh anymore # This is tested manually

@@ -1,5 +1,6 @@
 var wn_ads = require('../page_objects/ads_widget');
 var gallery = require('../page_objects/gallery_widget');
+var wait = require('../utils/wait');
 
 module.exports = function() {
 
@@ -198,4 +199,23 @@ module.exports = function() {
         browser.waitForVisible(wn_ads.adOutOfPage, 10000);
         expect(browser.isVisible(wn_ads.adOutOfPage)).toBe(valueVisible);
     });
+
+    this.Then(/^I can see last RHR add is sticky$/, function () {
+        browser.waitForVisible(wn_ads.adMrecRHRFeed5, 5000);
+        browser.moveToObject(wn_ads.adMrecRHRFeed5);
+    });
+
+    this.Then(/^the sticky add will auto refresh every (\d+) seconds when is in View$/, function (seconds) {
+        // check the iframe ID before change
+        var first_googleId = browser.getAttribute(wn_ads.adMrecRHRFeed5,"data-google-query-id");
+
+        wait(seconds * 1000);
+
+        // check the iframe ID after change
+        var second_googleId = browser.getAttribute(wn_ads.adMrecRHRFeed5,"data-google-query-id");
+
+        expect(first_googleId).not.toEqual(second_googleId);
+
+    });
+
 };
