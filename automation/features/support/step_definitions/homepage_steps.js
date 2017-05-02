@@ -1,6 +1,7 @@
 var home = require('../page_objects/homepage_widget');
 var world = require('../world');
 var wait = require('../utils/wait');
+var validatePolar = require('../utils/validatePolar');
 
 module.exports = function(){
 
@@ -232,5 +233,31 @@ module.exports = function(){
             console.log(row['social'] + ' : ' + socialLink[i]);
             expect(socialLink[i]).toContain(row['url']);
         }
+    });
+
+    this.Given(/^the below position top teasers are replaced with polar ads$/, function (table) {
+        browser.waitForExist('.teaser--polar', 3000);
+        var listOfItems = browser.getAttribute(home.topTeasers, 'class');
+        var rows = table.hashes();
+        var count = rows.length;
+        validatePolar(listOfItems, rows, count);
+    });
+
+    this.Given(/^the below position bottom teasers are replaced with polar ads$/, function (table) {
+        browser.waitForExist('.teaser--polar', 3000);
+        var listOfItems = browser.getAttribute(home.bottomTeasers, 'class');
+        console.log(listOfItems.length);
+        var rows = table.hashes();
+        var count = rows.length;
+        validatePolar(listOfItems, rows, count);
+    });
+
+    this.Given(/^the below position added more teasers are replaced with polar ads$/, function (table) {
+        browser.waitForExist('.teaser--polar', 3000);
+        var listOfItems = browser.getAttribute(home.loadMoreFeed, 'class');
+        console.log(listOfItems.length);
+        var rows = table.hashes();
+        var count = rows.length;
+        validatePolar(listOfItems, rows, count);
     });
 };

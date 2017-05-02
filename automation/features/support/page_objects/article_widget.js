@@ -65,7 +65,8 @@ var article_widget = {
     bottomSourceImg: '.article-header-source--bottom img',
     articleFacebook: '.article__footer .social-share-block .icon-facebook',
     articlePinterest: '.article__footer .social-share-block .icon-pinterest',
-    outbrain: '.article .OUTBRAIN'
+    outbrain: '.article .OUTBRAIN',
+    relatedPolarFeed: '.related-content-items > .polar-feed-item'
 };
 
 module.exports = article_widget;

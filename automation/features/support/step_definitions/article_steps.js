@@ -1,6 +1,7 @@
 var lhr = require('../page_objects/lhr_widget');
 var wn_article = require('../page_objects/article_widget');
 var wait = require('../utils/wait');
+var validatePolar = require('../utils/validatePolar');
 var nconf = require('nconf');
 var site_domain = nconf.get('APP_KEY');
 
@@ -493,6 +494,18 @@ module.exports = function() {
     this.Given(/^I can see the outbrain frame with "([^"]*)" template$/, function (templateName) {
         var outbrainTemplate = browser.getAttribute(wn_article.outbrain, 'data-ob-template');
         expect(outbrainTemplate).toEqual(templateName);
+    });
+
+    this.Then(/^the below position in RHR are replaced with Polar ads$/, function (table) {
+        wait(1000);
+        var listOfItems = browser.getAttribute(wn_article.lhrFeedItems, 'class');
+        var rows = table.hashes();
+        var count = rows.length;
+        validatePolar(listOfItems, rows, count);
+    });
+
+    this.Then(/^I can see a polar placement on the first teaser in a Related Content module$/, function () {
+        browser.waitForExist(wn_article.relatedPolarFeed, 2000);
     });
 };
 

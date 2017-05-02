@@ -30,5 +30,8 @@ var homepage_widget = {
     bottomFeedTeaserTitle: '.teaser__list.teaser-view-list .teaser__title a',
     bottomFeedTeaserSource: '.teaser__list.teaser-view-list .teaser__source',
     rhsSocialLink: '.page__social-wrapper .social-link a',
+    topTeasers: '.teaser-view-grid .teaser__list-item article',
+    bottomTeasers: '.teaser-view-list .teaser__list-item article',
+    loadMoreFeed: '.repeatable-component .section__row:nth-child(2) .teaser--img-left'
 };
 module.exports = homepage_widget;
