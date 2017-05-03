@@ -37,7 +37,7 @@
   "homepage": "https://github.com/bauerxcelmedia/now-site#readme",
   "dependencies": {
     "@bxm/ad": "^10.8.0",
-    "@bxm/article": "^23.9.0",
+    "@bxm/article": "23.9.1-beta-yi-fix-video-autoplay",
     "@bxm/behaviour": "^1.2.0",
     "@bxm/config": "^4.1.1",
     "@bxm/datetime": "^3.0.0",
@@ -58,7 +58,7 @@
     "@bxm/tags": "^3.0.0",
     "@bxm/teaser": "^5.3.0",
     "@bxm/ui": "^15.0.1",
-    "@bxm/video": "^4.0.0",
+    "@bxm/video": "4.1.2-beta-yi-disable-autoplay",
     "@bxm/winston-logger": "^1.1.0",
     "babel-core": "^6.5.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
