@@ -22,6 +22,7 @@ export default async function gallery(req, res, next) {
 
         const sectionId = req.data.entity.sectionId;
         const listingQuery = `path eq %27${sectionId}%27`;
+
         if (sectionId) {
             req.data.leftHandSide = await getLatestTeasers(TOP, undefined, listingQuery);
         }

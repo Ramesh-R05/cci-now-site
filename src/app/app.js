@@ -7,6 +7,7 @@ import networkHeaderService from '@bxm/header/lib/header/headerService';
 import adConfig from './config/ads';
 import AdStore from '@bxm/ad/lib/google/stores/ad';
 import ArticleStore from '@bxm/article/lib/stores/articleStore';
+import VerticalGalleryStore from '@bxm/article/lib/stores/verticalGalleryStore';
 import GalleryPageStore from '@bxm/gallery/lib/stores/galleryPage';
 import GalleryStore from '@bxm/gallery/lib/stores/gallery';
 import HtmlStore from '@bxm/server/lib/stores/html';
@@ -29,6 +30,7 @@ const app = new Flux({
     stores: [
         AdStore,
         ArticleStore,
+        VerticalGalleryStore,
         GalleryPageStore,
         GalleryStore,
         HtmlStore,
