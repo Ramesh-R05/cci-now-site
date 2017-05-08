@@ -64,18 +64,6 @@ export default {
                 }
             },
             {
-                id: 'shop',
-                title: 'SHOP Til You Drop',
-                imageUrl: '/assets/images/headerlogos/SUMMERSHOP-logo.svg',
-                url: '/shop-til-you-drop',
-                socialLinks: {
-                    facebook: 'https://www.facebook.com/shoptilyoudropmag/',
-                    twitter: 'https://twitter.com/shoptilyoudrop',
-                    instagram: 'https://www.instagram.com/shoptilyoudropmag/'
-                },
-                renderSubscribeElements: false
-            },
-            {
                 id: 'nw',
                 title: 'NW',
                 imageUrl: '/assets/images/headerlogos/NW-logo.svg',

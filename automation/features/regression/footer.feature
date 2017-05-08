@@ -12,7 +12,6 @@ Feature: Footer
             |Woman's Day                |/womansday         |gtm-footer__logos-list-wd     |
             |Good Health                |/good-health       |gtm-footer__logos-list-gh     |
             |OK! Magazine               |/okmagazine        |gtm-footer__logos-list-ok     |
-            |SHOP Til You Drop          |/shop-til-you-drop |gtm-footer__logos-list-shop   |
             |NW                         |/nw                |gtm-footer__logos-list-nw     |
             |Take 5                     |/take5mag          |gtm-footer__logos-list-take5  |
             |Yours                      |/yours             |gtm-footer__logos-list-yours  |

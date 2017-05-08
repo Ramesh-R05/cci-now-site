@@ -173,7 +173,6 @@ hr {
 .brand-title-yours,
 .brand-title-take5,
 .brand-title-ok,
-.brand-title-shop,
 .brand-title-tvweek {
     .brand-title--right-line, .brand-title--left-line { width: 32%; }
     .brand-title--logo { 
@@ -239,8 +238,6 @@ hr {
 
     &-ok { color: $ok-color; }
 
-    &-shop { color: $shop-color; }
-
     &-nw { color: $nw-color; }
 
     &-take5 { color: $take-5-color; }
@@ -291,8 +288,6 @@ hr {
 
     &-ok { background-color: $ok-color; }
 
-    &-shop { background-color: $shop-color; }
-
     &-nw { background-color: $nw-color; }
 
     &-take5 { background-color: $take-5-color; }
@@ -325,8 +320,6 @@ hr {
 
     &-ok { background-color: $ok-color; }
 
-    &-shop { background-color: $shop-color; }
-
     &-nw { background-color: $nw-color; }
 
     &-take5 { background-color: $take-5-color; }
@@ -350,7 +343,7 @@ hr {
     &-simply { background-color: $nz-simply-you-color; }
 }
 
-.header-gh, .header-aww, .header-wd, .header-ok, .header-shop, .header-nw, .header-take5, .header-yours, .header-mb {
+.header-gh, .header-aww, .header-wd, .header-ok, .header-nw, .header-take5, .header-yours, .header-mb {
     .header-nav:before {
         border-left: 1px solid #FFF;
     }

@@ -13,7 +13,6 @@ Feature: Uniheader
             |Woman's Day                |/womansday                         |gtm-uniheader-wd     |
             |Good Health                |/good-health                       |gtm-uniheader-gh     |
             |OK! Magazine               |/okmagazine                        |gtm-uniheader-ok     |
-            |SHOP Til You Drop          |/shop-til-you-drop                 |gtm-uniheader-shop   |
             |NW                         |/nw                                |gtm-uniheader-nw     |
             |Take 5                     |/take5mag                          |gtm-uniheader-take5  |
             |Yours                      |/yours                             |gtm-uniheader-yours  |

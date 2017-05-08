@@ -51,7 +51,7 @@ function trackGalleryItemChanged(action) {
     const items = action.items;
     const numAds = getNumAds(items);
     const newItem = newItemIndex !== null ? items[newItemIndex] : '';
-    const isAd = newItem.ad ? true : false;
+    const isAd = !!newItem.ad;
     const slideNumber = isAd ? null : newItem.index;
 
     const data = {

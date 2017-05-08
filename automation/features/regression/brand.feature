@@ -88,7 +88,6 @@ Feature: Brand Landing page
             |womansday          |subscribe-wd       |https://www.facebook.com/WomansDayAUS      |https://twitter.com/womansdayaus       |https://www.instagram.com/Womansdayaus         |gtm-subscribe-wd     |
             |good-health        |subscribe-gh       |https://www.facebook.com/GoodHealthMag/    |https://twitter.com/goodhealthmag      |https://www.instagram.com/goodhealthmag        |gtm-subscribe-gh     |
             |okmagazine         |subscribe-ok       |https://www.facebook.com/OKmagAustralia    |https://twitter.com/okmagaustralia     |https://www.instagram.com/okmagaustralia       |gtm-subscribe-ok     |
-            |shop-til-you-drop  |none               |https://www.facebook.com/shoptilyoudropmag/|https://twitter.com/shoptilyoudrop     |https://www.instagram.com/shoptilyoudropmag/   |none                 |
             |nw                 |subscribe-nw       |https://www.facebook.com/NWmagazine        |https://twitter.com/nwmag              |https://www.instagram.com/nwmag/               |gtm-subscribe-nw     |
             |take5mag           |subscribe-take5    |https://www.facebook.com/take5magazine     |https://twitter.com/take5magazine      |https://www.instagram.com/take5magazine/       |gtm-subscribe-take5  |
             |yours              |subscribe-yours    |https://www.facebook.com/Yoursmagazineau/  |https://twitter.com/yoursmagazineau    |https://www.instagram.com/yoursmagazineau/     |gtm-subscribe-yours  |
