@@ -255,7 +255,7 @@ jobs:
             image: now-site-img-master
             port: 3001
       - TASK: managed
-        deployMethod: blueGreen
+        deployMethod: upgrade
 
 
 ###### DEBUG MODE ###
