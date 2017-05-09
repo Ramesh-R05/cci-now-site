@@ -67,7 +67,7 @@ describe('ResponseBody middleware', () => {
     describe('when parsing default body properties', () => {
         const additionalHeader = { test: '123' };
         let reqData = { entity: article, headerMetaData: additionalHeader };
-        let reqBase = { data: reqData, app: { config } };
+        let reqBase = { data: reqData, app: { locals: { config } } };
         let req = { ...reqBase };
         let res = {};
         let next;
@@ -88,7 +88,7 @@ describe('ResponseBody middleware', () => {
 
     describe('when data contains `leftHandSide`', () => {
         let reqData = { entity: article, leftHandSide: listing };
-        let reqBase = { data: reqData, app: { config } };
+        let reqBase = { data: reqData, app: { locals: { config } } };
         let req = { ...reqBase };
         let res = {};
         let next;
@@ -124,7 +124,7 @@ describe('ResponseBody middleware', () => {
 
     describe('when data contains `res.body.trendingItems`', () => {
         let reqData = { entity: article, trendingItems: trending };
-        let reqBase = { data: reqData, app: { config } };
+        let reqBase = { data: reqData, app: { locals: { config } } };
         let req = { ...reqBase };
         let res = {};
         let next;
@@ -142,7 +142,7 @@ describe('ResponseBody middleware', () => {
 
     describe('when data contains `res.body.trendingItems`', () => {
         let reqData = { entity: article, trendingItems: trending };
-        let reqBase = { data: reqData, app: { config } };
+        let reqBase = { data: reqData, app: { locals: { config } } };
         let req = { ...reqBase };
         let res = {};
         let next;
@@ -163,7 +163,7 @@ describe('ResponseBody middleware', () => {
 
     describe('when data contains `moreGalleries`', () => {
         let reqData = { entity: article, moreGalleries: moreGalleries };
-        let reqBase = { data: reqData, app: { config } };
+        let reqBase = { data: reqData, app: { locals: { config } } };
         let req = { ...reqBase };
         let res = {};
         let next;
@@ -182,7 +182,7 @@ describe('ResponseBody middleware', () => {
     describe('when data contains `latestTeasers`', () => {
         const latestTeasers = { data: ['Teaser 1', 'Teaser 2'] };
         let reqData = { entity: article, latestTeasers: latestTeasers };
-        let reqBase = { data: reqData, app: { config } };
+        let reqBase = { data: reqData, app: { locals: { config } } };
         let req = { ...reqBase };
         let res = {};
         let next;
@@ -201,7 +201,7 @@ describe('ResponseBody middleware', () => {
     describe('when data contains `headernavigation`', () => {
         const headernavigation = ['Nav item 1', 'Nav Item 2'];
         let reqData = { entity: article, headernavigation };
-        let reqBase = { data: reqData, app: { config } };
+        let reqBase = { data: reqData, app: { locals: { config } } };
         let req = { ...reqBase };
         let res = {};
         let next;
@@ -221,7 +221,7 @@ describe('ResponseBody middleware', () => {
     describe('when data contains `hamburgernavigation`', () => {
         const hamburgernavigation = ['Nav item 1', 'Nav Item 2'];
         let reqData = { entity: article, hamburgernavigation };
-        let reqBase = { data: reqData, app: { config } };
+        let reqBase = { data: reqData, app: { locals: { config } } };
         let req = { ...reqBase };
         let res = {};
         let next;
@@ -241,7 +241,7 @@ describe('ResponseBody middleware', () => {
     describe('when data contains `heroTeaser`', () => {
         const heroTeaser = { id: 'HERO_123' };
         let reqData = { entity: article, hero: heroTeaser };
-        let reqBase = { data: reqData, app: { config } };
+        let reqBase = { data: reqData, app: { locals: { config } } };
         let req = { ...reqBase };
         let res = {};
         let next;

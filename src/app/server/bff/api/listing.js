@@ -1,7 +1,6 @@
 import makeRequest from '../../makeRequest';
-import { load } from '@bxm/config';
+import config from '../../../config';
 import { backendLogger as logger } from '@bxm/winston-logger';
-const config = load();
 const FEEDPATH = '/teasers';
 
 export function getLatestTeasers(top = 20, skip = 0, filter) {
@@ -12,7 +11,7 @@ export function getLatestTeasers(top = 20, skip = 0, filter) {
 
     query += `&$orderby=pageDateCreated desc&$top=${top}&$skip=${skip}`;
     return makeRequest(`${config.services.remote.listings}${FEEDPATH}/${query}`).then(res => res).catch((err) => {
-        logger.log('error', err);
+        logger.error(err);
         return [];
     });
 }

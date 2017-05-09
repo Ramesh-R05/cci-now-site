@@ -50,7 +50,7 @@ class GallerySection extends Component {
     };
 
     static defaultProps = {
-        theme: {}
+        theme: null
     };
 
     static contextTypes = {

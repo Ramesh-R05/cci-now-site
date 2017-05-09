@@ -71,10 +71,6 @@ describe('App Component', () => {
             ErrorComponent = TestUtils.scryRenderedComponentsWithType(reactModule, ErrorStub)
         });
 
-        it(`should have called platform.set()`, () => {
-            platformStub.set.should.have.been.called;
-        });
-
         it(`should pass appropriate props to the Handler Component`, () => {
             expect(HandlerComponent.props).to.deep.eq({ currentUrl: currentRoute.url, nodeType, theme: themeMock })
         });

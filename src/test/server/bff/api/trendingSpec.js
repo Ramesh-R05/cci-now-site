@@ -7,14 +7,12 @@ let makeRequestStub = (args) => {};
 
 const remoteTrendingUrl = 'http://remoteTrendingUrl.com?sites=dolly.com.au';
 const configStub = {
-load() {
-    return { services: { remote: { trending: remoteTrendingUrl } } }
-}
+    services: { remote: { trending: remoteTrendingUrl } }
 };
 
 const getTrending = proxyquire('../../../../app/server/bff/api/trending', {
 '../../makeRequest': (args) => { return makeRequestStub(args) },
-'@bxm/config': configStub
+'../../../config': configStub
 }).default;
 
 

@@ -28,8 +28,8 @@ class StickyAndDockAd extends Component {
         adStyle: PropTypes.object,
         adContainerStyle: PropTypes.object,
         customiseBreakpoint: PropTypes.number,
-        topElm: PropTypes.element.isRequired,
-        bottomElm: PropTypes.element.isRequired
+        topElm: PropTypes.element,
+        bottomElm: PropTypes.element
     };
 
     static defaultProps = {
@@ -38,7 +38,9 @@ class StickyAndDockAd extends Component {
         children: [],
         adStyle: {},
         adContainerStyle: {},
-        customiseBreakpoint: 0
+        customiseBreakpoint: 0,
+        topElm: null,
+        bottomElm: null
     };
 
     state = {

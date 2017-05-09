@@ -40,7 +40,7 @@ export default function responseBody(req, res, next) {
         if (get(req, 'data.leftHandSide')) {
             const lhsData = req.data.leftHandSide.data.map((lhsTeaser) => {
                 const withDefaultImg = { ...lhsTeaser };
-                withDefaultImg.contentImageUrl = withDefaultImg.contentImageUrl || req.app.config.defaultImageUrl;
+                withDefaultImg.contentImageUrl = withDefaultImg.contentImageUrl || req.app.locals.config.defaultImageUrl;
                 //  TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
                 withDefaultImg.pageDateCreated = momentTimezone.tz(withDefaultImg.pageDateCreated, 'Australia/Sydney')
                     .format('YYYY-MM-DDTHH:mm:ss');

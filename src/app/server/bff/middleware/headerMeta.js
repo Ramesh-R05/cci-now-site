@@ -2,9 +2,9 @@ import has from 'lodash/object/has';
 import get from 'lodash/object/get';
 
 export default function headerMeta(req, res, next) {
-    const config = req.app.config;
+    const config = req.app.locals.config;
     const { hostname } = req.query || {};
-    const NODE_ENV = process.env.NODE_ENV || 'development'; // If not defaulting to dev, then local will be using live
+    const env = process.env.APP_ENV || process.env.NODE_ENV || 'development';
     const isProdDomain = hostname === config.site.prodDomain;
     let robotsIndex = 'INDEX';
     let robotsFollow = 'FOLLOW';
@@ -31,7 +31,7 @@ export default function headerMeta(req, res, next) {
 
     req.data = req.data || {};
     req.data.headerMetaData = {
-        googleTagManagerEnvironment: NODE_ENV,
+        googleTagManagerEnvironment: env,
         googleTagManagerMasthead: config.gtm.masthead,
         robots: `${robotsIndex},${robotsFollow}`
     };

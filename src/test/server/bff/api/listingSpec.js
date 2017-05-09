@@ -6,15 +6,13 @@ let makeRequestStub = (args) => {};
 
 const remoteListingUrl = 'http://remoteListingUrl.com/api';
 const configStub = {
-    load() {
-        return { services: { remote: { listings: remoteListingUrl } } }
-    }
+    services: { remote: { listings: remoteListingUrl } }
 };
 
 const SectionApi = proxyquire('../../../../app/server/bff/api/listing', {
     '../../makeRequest': (args) => { return makeRequestStub(args) },
-    '@bxm/config': configStub,
-    '@bxm/winston-logger': { backendLogger: { log(){} } }
+    '../../../config': configStub,
+    '@bxm/winston-logger': { backendLogger: { error(){} } }
 });
 
 describe('ListingAPI', () => {

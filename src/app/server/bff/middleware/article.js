@@ -14,7 +14,7 @@ export default async function article(req, res, next) {
         }
 
         const source = get(req, 'data.entity.articleSource', '');
-        const adBrand = find(req.app.config.brands.uniheader, b => b.title === source);
+        const adBrand = find(req.app.locals.config.brands.uniheader, b => b.title === source);
         req.data.entity.adBrand = get(adBrand, 'id', 'ntl');
         // TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
         req.data.entity.pageDateCreated = momentTimezone.tz(req.data.entity.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');

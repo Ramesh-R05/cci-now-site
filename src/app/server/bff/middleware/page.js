@@ -14,7 +14,7 @@ export default async function pageMiddleware(req, res, next) {
         if (!pageID) throw { status: 404, message: 'Invalid page ID', section, page };
 
         const saved = `?saved=${!!preview}`;
-        const pageData = await makeRequest(`${req.app.config.services.remote.entity}/${pageID}${saved}`);
+        const pageData = await makeRequest(`${req.app.locals.config.services.remote.entity}/${pageID}${saved}`);
 
         const path = `/${section}/${subsection}/${page}`;
         if (!pageData.url || pageData.url !== path) {

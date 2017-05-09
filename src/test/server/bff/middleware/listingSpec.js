@@ -15,7 +15,7 @@ describe('Listing middleware', () => {
     let next;
 
     describe('when there is a section in the query param', () => {
-        const reqBase = { query: { section: 'sec' }, app: {config} };
+        const reqBase = { query: { section: 'sec' }, app: { locals: { config } } };
         describe('when the remote returns an error response', () => {
             const req = { ...reqBase };
             const rejectedResponse = {
@@ -76,7 +76,7 @@ describe('Listing middleware', () => {
     });
 
     describe('when there is a page query param', () => {
-        const req = { app: { config }, query: { page: 'page' } };
+        const req = { app: { locals: { config } }, query: { page: 'page' } };
 
         before(() => {
             next = sinon.stub();
@@ -93,7 +93,7 @@ describe('Listing middleware', () => {
     });
 
     describe('when there is a page and section query param', () => {
-        const req = { app: { config }, query: { page: 'page', section: 'section' } };
+        const req = { app: { locals: { config } }, query: { page: 'page', section: 'section' } };
 
         before(() => {
             next = sinon.stub();
@@ -111,7 +111,7 @@ describe('Listing middleware', () => {
 
     describe('when there is an existing data.entity in the req', () => {
         const overridenEntity = { entity: 'Override' };
-        const req = { app: { config }, data: { ...overridenEntity }, query: { section: 'section' } };
+        const req = { app: { locals: { config } }, data: { ...overridenEntity }, query: { section: 'section' } };
 
         before(() => {
             next = sinon.stub();

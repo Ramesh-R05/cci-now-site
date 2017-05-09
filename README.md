@@ -3,26 +3,44 @@
 [![Run Status](https://api.shippable.com/projects/583638adf207180f005cec9e/badge?branch=master)](https://app.shippable.com/projects/583638adf207180f005cec9e)
 [![Run Status](https://api.shippable.com/projects/583638adf207180f005cec9e/coverageBadge?branch=master)](https://app.shippable.com/projects/583638adf207180f005cec9e)
 
-A news and lifestyle hub site which includes popular magazine products for women.
+A news and lifestyle hub site for women, with content from popular magazine brands.
 
 ## Platform Requirements
+
+### Node
 
 Use NVM to manage Node versions and `nvm install` in this repo for correct Node version to use.
 
 - OSX/Linux: https://github.com/creationix/nvm
 - Windows: https://github.com/coreybutler/nvm-windows
 
-## APP_KEY Environment Variable
+### Bash
 
-`APP_KEY` environment variable is required for the app to know which resources (components, styles, assets) to use.
+Use Git Bash only.
 
-```shell
-cd src/ && nvm install && npm install && APP_KEY=now-site npm run dev
-```
+## Environment Variable
 
-(Windows in Git Bash: `setx APP_KEY now-site` then `npm run dev-win`)
+### `APP_KEY` (not used in NTL)
+
+Only used in multi site setup. NTL is a single site setup and APP_KEY is hard coded in start.js.
+
+Required for the app to know which resources (components, styles, assets) to use in a multi site setup.
+
+### `APP_DEBUG`
+
+Puts a try catch around the entire app, and sets winston-logger debug logging on. EG. `APP_DEBUG=true npm run dev`
+
+### `APP_STUBBED`
+
+Loads data from local stubs, does not use content services. Use with start or dev run scripts to work locally. EG `APP_STUBBED=true npm run dev`.
 
 ## Run Scripts
+
+Node module [npm-run-all](https://github.com/mysticatea/npm-run-all) cli is used to provide cross platform script parallelisation control.
+
+### start
+
+- starts the site.
 
 ### test
 
@@ -33,6 +51,10 @@ cd src/ && nvm install && npm install && APP_KEY=now-site npm run dev
  - cobertura reporter produces an xml file that the coverage app running on the TV screens use
  - html reporter produces the browsable html report in the coverage folder. teamcity is configured to pick this up as a build artefact.
 - the mocha command is short as defaults provide most functionality. it automatically looks in the test folder for tests. the recursive switch tells it to look in all sub folders as well. the check-leaks switch will tell you if it find global variables with leaky state across tests.
+
+### test:ci
+
+- runs unit tests with additional xunit mocha reporter used for Shippable CI.
 
 ### test:unit
 
@@ -70,22 +92,19 @@ cd src/ && nvm install && npm install && APP_KEY=now-site npm run dev
 
 ### dev:css
 
-- uses nodemon to watch the styles folder, all the scss files, and when the change run the build:css script. can't use the node-sass built-in watcher as the output piping to postcss will not run.
+- uses chokidar to watch the styles folder, all the scss files, and when the change run the build:css script. can't use the node-sass built-in watcher as the output piping to postcss will not run.
 
 ### dev:js
 
-- watchify is a wrapper around browserify. it does file watching and incremental compilation. initial build is normal speed but subsequent build on file change are around 1second.
-- watchify watches all js files
+- watchify is a wrapper around browserify. it does file watching and incremental compilation. initial build is normal speed but subsequent build on file change are around 1 second.
+- watchify watches all js files.
 - watchify verbose switch is added as otherwise there is no output at all.
-- minifify isnt used in dev
+- watchify debug switch is added as it produces source maps.
+- minifify isnt used in dev.
 
 ### dev:serve
 
 - node does not re-require files on change. the node sever must restart in order to see changes to files. this is such a thing as node hot module replacement but we use nodemon to watch the app folder and restart node when files are changed.
-
-### stubbed
-
- - sets NODE\_ENV=stubbed using cross env so it works on windows. NODE\_ENV=stubbed tells the @bxm/server to load up some stub default APIs.
 
 ### lint:scss
 
@@ -105,8 +124,10 @@ The incumbent data flow libary is [Fluxible](http://fluxible.io). Forward thinki
 
 - Components that connect to stores are Containers
 - Avoid shared state, otherwise move towards using a single store
-- Reduce state to store using reducer modules 
+- Reduce state to store using reducers
 - Fetch data in response to route events
+- Take notice and fix all warnings
+- Use React Prop Types full functionality to define and document data
 
 ## BFF
 

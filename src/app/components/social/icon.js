@@ -4,15 +4,19 @@ import { canUseDOM } from 'exenv';
 
 export default class SocialIcon extends Component {
     static propTypes = {
-        svgFile: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        url: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
+        svgFile: PropTypes.string,
+        name: PropTypes.string,
+        url: PropTypes.string,
+        label: PropTypes.string,
         target: PropTypes.string
     };
 
     static defaultProps = {
-        target: '_blank'
+        target: '_blank',
+        svgFile: '',
+        name: '',
+        url: '',
+        label: ''
     };
 
     fireEvent = () => {
@@ -27,8 +31,8 @@ export default class SocialIcon extends Component {
         const image = <img src={src} alt={`${name} icon`} />;
 
         const iconWithLabel = [
-            <span className="social-link__icon">{ canUseDOM ? <InlineSVG src={src}>{ image }</InlineSVG> : image }</span>,
-            <span className="social-link__label">{ label || name }</span>
+            <span key="icon-0" className="social-link__icon">{ canUseDOM ? <InlineSVG src={src}>{ image }</InlineSVG> : image }</span>,
+            <span key="label-1" className="social-link__label">{ label || name }</span>
         ];
 
         return (

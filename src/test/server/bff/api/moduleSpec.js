@@ -6,14 +6,12 @@ let makeRequestStub = (args) => {};
 
 const remoteModuleUrl = 'http://remoteModuleUrl.com/api';
 const configStub = {
-    load() {
-        return { services: { remote: { module: remoteModuleUrl } } }
-    }
+    services: { remote: { module: remoteModuleUrl } }
 };
 
 const getModules = proxyquire('../../../../app/server/bff/api/module', {
     '../../makeRequest': args => makeRequestStub(args),
-    '@bxm/config': configStub
+    '../../../config': configStub
 }).default;
 
 describe(`Module API`, () => {

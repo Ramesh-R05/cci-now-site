@@ -10,7 +10,7 @@ export default async function pageModules(req, res, next) {
             'headernavigation', 'hamburgernavigation', 'footer', 'mustread', 'promoted', 'hero', `${section}theme`
         );
     } catch (error) {
-        logger.log('error', error);
+        logger.error(error);
     }
 
     next();

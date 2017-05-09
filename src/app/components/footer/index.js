@@ -8,12 +8,13 @@ import FooterSubscribe from './footerSubscribe';
 export default class Footer extends Component {
     static propTypes = {
         iframeKey: PropTypes.string,
-        modifier: PropTypes.string.isRequired,
-        logoList: PropTypes.arrayOf(PropTypes.element).isRequired
+        modifier: PropTypes.string,
+        logoList: PropTypes.array.isRequired
     };
 
     static defaultProps = {
-        iframeKey: 'wnfooter'
+        iframeKey: 'wnfooter',
+        modifier: ''
     };
 
     static contextTypes = {
@@ -36,7 +37,6 @@ export default class Footer extends Component {
                     </div>
                     <FooterSubscribe
                       url={`${config.get('newsletterIframeUrl')}!${iframeKey}`}
-                      content={config.get('subscribe')}
                       isDisplayed={false}
                     />
                     <div className="footer__logos">

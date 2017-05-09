@@ -9,7 +9,7 @@ export default async function listing(req, res, next) {
             return;
         }
 
-        const listingData = await makeRequest(`${req.app.config.services.remote.entity}/section/${section}`);
+        const listingData = await makeRequest(`${req.app.locals.config.services.remote.entity}/section/${section}`);
 
         req.data = req.data || {};
         req.data.entity = { ...listingData };

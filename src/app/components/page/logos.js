@@ -4,12 +4,13 @@ export default class Logos extends Component {
     static propTypes = {
         logoList: PropTypes.array.isRequired,
         className: PropTypes.string.isRequired,
-        gtmPrefix: PropTypes.string.isRequired,
+        gtmPrefix: PropTypes.string,
         openInNewTab: PropTypes.bool
     };
 
     static defaultProps = {
-        openInNewTab: false
+        openInNewTab: false,
+        gtmPrefix: ''
     };
 
     render() {
@@ -24,12 +25,12 @@ export default class Logos extends Component {
                 .toLowerCase();
 
             return (
-                <li>
+                <li key={item.id}>
                     <a
                       key={item.id} href={item.url} target={this.props.openInNewTab ? '_blank' : '_self'}
                       title={item.title} className={gtmClassName}
                     >
-                        <img src={item.imageUrl} alt={item.title} className={imgClassName} />
+                        <img key={item.id} src={item.imageUrl} alt={item.title} className={imgClassName} />
                     </a>
                 </li>
             );

@@ -29,8 +29,8 @@ describe(`Social Block`, () => {
 
 	it(`should pass proper props to links component`, () => {
         expect(links.props.links).to.deep.equal([
-        	{ name: 'facebook', url: "https://www.facebook.com/WomensWeeklyMag" },
-     		{ name: 'instagram',url: "https://www.instagram.com/womensweeklymag" } 
+        	{ id: 0, name: 'facebook', url: "https://www.facebook.com/WomensWeeklyMag" },
+     		{ id: 1, name: 'instagram',url: "https://www.instagram.com/womensweeklymag" }
      	]);
     });
 });

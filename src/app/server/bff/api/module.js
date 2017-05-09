@@ -1,10 +1,8 @@
 import makeRequest from '../../makeRequest';
-import { load } from '@bxm/config';
+import config from '../../../config';
 import { backendLogger as logger } from '@bxm/winston-logger';
 import get from 'lodash/object/get';
 import find from 'lodash/collection/find';
-
-const config = load();
 
 export default async function getModules(...args) {
     try {
@@ -33,7 +31,7 @@ export default async function getModules(...args) {
 
         return moduleList;
     } catch (error) {
-        logger.log('error', error);
+        logger.error(error);
         return {};
     }
 }

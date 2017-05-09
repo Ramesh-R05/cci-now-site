@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connectToStores, provideContext } from '@bxm/flux';
 import { handleHistory } from 'fluxible-router';
-import platform from '@bxm/ui/lib/common/platform';
 import ErrorPage from '../components/page/error';
 import { canUseDOM } from 'exenv';
 
@@ -19,7 +18,6 @@ class Application extends Component {
 
     static propTypes = {
         currentRoute: PropTypes.object.isRequired,
-        userAgent: PropTypes.string.isRequired,
         nodeType: PropTypes.string.isRequired,
         error: PropTypes.object,
         theme: PropTypes.object
@@ -34,11 +32,6 @@ class Application extends Component {
         getStore: PropTypes.func,
         executeAction: PropTypes.func
     };
-
-    constructor(props, context) {
-        super(props, context);
-        platform.set(props.userAgent);
-    }
 
     componentDidMount() {
         // Temp added here due to unforseen update of versions when updating react.

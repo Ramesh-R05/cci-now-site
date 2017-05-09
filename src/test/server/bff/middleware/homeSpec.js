@@ -1,6 +1,5 @@
 import proxyquire, { noCallThru } from 'proxyquire';
-import sinonAsPromised from 'sinon-as-promised';
-import trending from '../../../mocks/trending'
+import trending from '../../../mocks/trending';
 import videoGalleryMock from '../../../mocks/galleryOfGalleries';
 
 noCallThru();
@@ -42,7 +41,7 @@ describe('Home middleware', () => {
             err: 'Error 404',
             status: 404
         };
-        const req = { app: { config } };
+        const req = { app: { locals: { config } } };
 
         before(() => {
             next = sinon.spy();
@@ -63,7 +62,7 @@ describe('Home middleware', () => {
 
     describe('when the remote returns an entity in the response', () => {
         describe('and getLatestTeasers returns the teasers and video gallery teasers', () => {
-            const req = { app: { config } };
+            const req = { app: { locals: { config } } };
 
             before(() => {
                 next = sinon.spy();
@@ -123,7 +122,7 @@ describe('Home middleware', () => {
         });
 
         describe('and getLatestTeasers returns an error when getting video gallery teasers', () => {
-            const req = { app: { config } };
+            const req = { app: { locals: { config } } };
 
             before(() => {
                 next = sinon.spy();
@@ -144,7 +143,7 @@ describe('Home middleware', () => {
     });
 
     describe('when the request contains existing data', () => {
-        const req = { data: { header: 'Test' }, app: { config } };
+        const req = { data: { header: 'Test' }, app: { locals: { config } } };
 
         before(() => {
             next = sinon.spy();
@@ -163,7 +162,7 @@ describe('Home middleware', () => {
     });
 
     describe('when there is a query param', () => {
-        const req = { app: { config }, query: {} };
+        const req = { app: { locals: { config } }, query: {} };
         const skippedQueries = ['page', 'section', 'tag'];
         after(() => {
             req.query = {};
@@ -189,7 +188,7 @@ describe('Home middleware', () => {
     });
 
     describe('when a query param of pageNo 2 is passed in', () => {
-        const req = { app: { config }, query: {pageNo: 2} };
+        const req = { app: { locals: { config } }, query: {pageNo: 2} };
         before(() => {
                 next = sinon.stub();
                 makeRequestStub = sinon.stub().resolves(entity);

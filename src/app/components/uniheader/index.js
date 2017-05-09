@@ -3,8 +3,12 @@ import Logos from '../page/logos';
 
 export default class UniHeader extends Component {
     static propTypes = {
-        logoList: PropTypes.array.isRequired,
+        logoList: PropTypes.array,
         className: PropTypes.string.isRequired
+    };
+
+    static defaultProps = {
+        logoList: []
     };
 
     render() {

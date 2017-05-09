@@ -1,5 +1,4 @@
-import { load } from '@bxm/config';
-const config = load();
+import config from '../../../config';
 
 export default function getPageID(slug) {
     const idMatch = slug.match(/\d+$/);

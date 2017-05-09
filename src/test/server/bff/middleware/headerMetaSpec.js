@@ -9,7 +9,7 @@ const headerMetaMiddleware = proxyquire('../../../../app/server/bff/middleware/h
 describe('HeaderMeta middleware', () => {
     let currentEnv;
     const config = { ...configStub, gtm: { masthead: 'dolly' } };
-    let baseReq = { app: { config } };
+    let baseReq = { app: { locals: { config } } };
     let res = {};
     let next;
 

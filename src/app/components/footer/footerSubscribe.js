@@ -6,7 +6,6 @@ export default class FooterSubscribe extends Component {
 
     static propTypes = {
         url: PropTypes.string.isRequired,
-        content: PropTypes.object.isRequired,
         isDisplayed: PropTypes.bool
     };
 
@@ -15,12 +14,12 @@ export default class FooterSubscribe extends Component {
     };
 
     render() {
-        const { content, url, isDisplayed } = this.props;
+        const { url, isDisplayed } = this.props;
 
         return isDisplayed ? (
             <div id="footer-sign-up" className="row">
                 <Newsletter url={url} />
-                <Subscribe content={content} />
+                <Subscribe />
             </div>
         ) : null;
     }

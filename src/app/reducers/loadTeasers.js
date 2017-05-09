@@ -9,7 +9,6 @@ export const initialState = {
 
 export function reducer(state = initialState, payload = { body: {} }, eventName = '') {
     const actionType = eventName || payload.type || '';
-
     switch (actionType) {
     case 'LOAD_CONTENT': {
         const {

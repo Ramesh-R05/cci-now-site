@@ -12,23 +12,34 @@ import tag from './bff/middleware/tag';
 import headerMeta from './bff/middleware/headerMeta';
 import sitemap from './bff/middleware/sitemap';
 import list from './bff/middleware/list';
+import stubServer from '../../automation/test_data/contentApi';
+import { backendLogger as logger } from '@bxm/winston-logger';
 
 export default function bff(server) {
-    server.get('/sitemap/:section?', sitemap, error);
-    server.get(server.config.services.endpoints.list, list, render, error);
-    server.get(
-        server.config.services.endpoints.page, // Config set inside @bxm/server
-        pageModules,
-        home,
-        listing,
-        tag,
-        section,
-        page,
-        article,
-        gallery,
-        headerMeta,
-        responseBody,
-        render,
-        error
-    );
+    if (process.env.APP_STUBBED === 'true' ||
+        process.env.APP_ENV === 'automation' ||
+        process.env.NODE_ENV === 'stubbed' ||
+        process.env.NODE_ENV === 'automation'
+    ) {
+        stubServer(server, server.locals.config);
+        logger.warn('stubbing does not exercise BFF code');
+    } else {
+        server.get('/sitemap/:section?', sitemap, error);
+        server.get(server.locals.config.services.endpoints.list, list, render, error);
+        server.get(
+            server.locals.config.services.endpoints.page,
+            pageModules,
+            home,
+            listing,
+            tag,
+            section,
+            page,
+            article,
+            gallery,
+            headerMeta,
+            responseBody,
+            render,
+            error
+        );
+    }
 }

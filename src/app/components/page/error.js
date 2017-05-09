@@ -5,7 +5,7 @@ export default class Error extends Component {
     static displayName = 'ErrorPage';
 
     static propTypes = {
-        status: PropTypes.string.isRequired,
+        status: PropTypes.number.isRequired,
         currentUrl: PropTypes.string.isRequired
     };
 
@@ -38,7 +38,8 @@ export default class Error extends Component {
                     </h1>
 
                     {content.map((item, i) => (
-                        <p className="error-page-container__body-item">{item} {
+                        // eslint-disable-next-line react/no-array-index-key
+                        <p key={`error-page-p-${i}`} className="error-page-container__body-item">{item} {
                             emojiSrc && i === content.length - 1 ? <img className="emoji emoji--grin" alt="emoji grin" src={emojiSrc} /> : null
                         }</p>
                     ))}

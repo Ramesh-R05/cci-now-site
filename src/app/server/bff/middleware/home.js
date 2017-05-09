@@ -24,7 +24,7 @@ export default async function home(req, res, next) {
 
         const skip = ((pageNo - 1) * listCount);
         const [pageData, latestTeasersResp, videoGalleryTeasers, trendingItems] = await Promise.all([
-            makeRequest(`${req.app.config.services.remote.entity}/homepage`),
+            makeRequest(`${req.app.locals.config.services.remote.entity}/homepage`),
             getLatestTeasers(listCount, skip),
             getLatestTeasers(videoGalleryTeaserCount, undefined, 'video eq %27$contentTags%27').catch(() => ({ data: [] })),
             getTrending(trendingCount)
@@ -50,7 +50,7 @@ export default async function home(req, res, next) {
             const path = pageNo === 2 ? '/' : `/?pageNo=${pageNo - 1}`;
             previousPage = {
                 path,
-                url: `${req.app.config.site.host}${path}`
+                url: `${req.app.locals.config.site.host}${path}`
             };
         }
 
@@ -59,14 +59,14 @@ export default async function home(req, res, next) {
             const path = `/?pageNo=${pageNo + 1}`;
             nextPage = {
                 path,
-                url: `${req.app.config.site.host}${path}`
+                url: `${req.app.locals.config.site.host}${path}`
             };
         }
 
         const path = pageNo > 1 ? `/?pageNo=${pageNo}` : '/';
         const currentPage = {
             path,
-            url: `${req.app.config.site.host}${path}`
+            url: `${req.app.locals.config.site.host}${path}`
         };
 
         req.data = req.data || {};

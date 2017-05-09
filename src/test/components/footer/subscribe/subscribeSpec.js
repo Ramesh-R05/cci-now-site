@@ -4,6 +4,21 @@ const {React, ReactDOM, TestUtils} = Context;
 import proxyquire, {noCallThru} from 'proxyquire';
 noCallThru();
 
+const contextConfigStub = {
+    key: 'config',
+    type: '',
+    value: {
+        get() {
+            return {
+                subscribeCoverAltText: 'Women\'s Weekly Cookbooks',
+                subscribeHeading: 'More ways to read',
+                subscribeText: 'Subscribe to our homes mags to gain access to more inspiring homes and gardens, plus renovating, decorating, food and travel stories.',
+                subscribeMagUrl: 'https://www.magshop.com.au/store/homestolove',
+                subscribeIpadUrl: 'https://www.magshop.com.au/store/homestolove'
+            };
+        }
+    }
+};
 
 const SubscribeMagBlockStub = Context.createStubComponent();
 
@@ -12,33 +27,14 @@ const Subscribe = proxyquire('../../../../app/components/footer/subscribe/subscr
     './subscribeMagBlock': SubscribeMagBlockStub
 }).default;
 
-const dataLayerStub = {
-    push: sinon.spy()
-};
-
 describe(`Subscribe`, () => {
-    const configData = {
-        localeData: {
-            subscribe: {
-                subscribeCoverAltText: 'Women\'s Weekly Cookbooks',
-                subscribeHeading: 'More ways to read',
-                subscribeText: 'Subscribe to our homes mags to gain access to more inspiring homes and gardens, plus renovating, decorating, food and travel stories.',
-                subscribeMagUrl: 'https://www.magshop.com.au/store/homestolove',
-                subscribeIpadUrl: 'https://www.magshop.com.au/store/homestolove'
-            },
-            newsletterIframeUrl: 'https://iframe.url.com'
-        }
-    };
-    const subscribeData = configData.localeData.subscribe;
-    let previousDataLayer;
     let reactModule;
     let domElement;
 
     beforeEach( () => {
         reactModule = Context.mountComponent(Subscribe, {
-            content: subscribeData,
             inSideNav : false
-        });
+        }, [contextConfigStub]);
         domElement = ReactDOM.findDOMNode(reactModule);
     });
 

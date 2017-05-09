@@ -10,11 +10,11 @@ const navigation = {
             "url": "/celebrity"
         },
         {
-            "id": "NOW-1172",
-            "name": "News",
-            "dateCreated": "2016-11-23T02:25:43.00Z",
+            "id": "NOW-1206",
+            "name": "Fashion",
+            "dateCreated": "2016-11-23T02:25:50.00Z",
             "nodeType": "Section",
-            "url": "/news"
+            "url": "/fashion"
         },
         {
             "id": "NOW-1180",

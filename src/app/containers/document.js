@@ -31,7 +31,7 @@ export default class Document extends Component {
     };
 
     static defaultProps = {
-        theme: {},
+        theme: null,
         request: {
             query: {}
         }

@@ -6,17 +6,6 @@ export default {
     site: {
         host: 'http://www.nowtolove.com.au'
     },
-    loggly: {
-        inputToken: '9b4a2693-dc77-4e7e-a5ee-498845c59793',
-        subdomain: 'bauerdigital',
-        tags: [
-            'now',
-            'live'
-        ],
-        json: true,
-        level: 'info',
-        proxy: 'http://proxy.mgmt.local:3128'
-    },
     services: {
         remote: {
             entity: 'http://live.entities.services.bauer-media.internal/v1/now',

@@ -78,8 +78,8 @@ describe('Section middleware', () => {
 
         describe('when the remote returns the list of teasers', () => {
             before(() => {
-                req = { ...reqBase, app: { config: { site: { host: 'http://site-host.com'},
-                    services: { remote: { module: 'http://module.url' } } } } };
+                req = { ...reqBase, app: { locals: { config: { site: { host: 'http://site-host.com'},
+                    services: { remote: { module: 'http://module.url' } } } } } };
                 req.data.headerNav = [1, 2, 3];
                 next = sinon.spy();
                 getLatestTeasersStub = sinon.stub().resolves(validRes);
@@ -102,8 +102,8 @@ describe('Section middleware', () => {
 
         describe('when a query param of pageNo 2 is passed in', () => {
             before(() => {
-                req = { ...reqBase, app: { config: { site: { host: 'http://site-host.com'},
-                    services: { remote: { module: 'http://module.url' } } } } };
+                req = { ...reqBase, app: { locals: { config: { site: { host: 'http://site-host.com'},
+                    services: { remote: { module: 'http://module.url' } } } } } };
                 req.query.pageNo = 2;
                 next = sinon.spy();
                 getLatestTeasersStub = sinon.stub().resolves(validRes);
@@ -181,7 +181,7 @@ describe('Section middleware', () => {
         describe('when source is Australian Women\'s Weekly', () => {
             before(() => {
                 reqBase = {
-                    app: { config },
+                    app: { locals: { config } },
                     query: {
                         section: validSection
                     },
@@ -207,7 +207,7 @@ describe('Section middleware', () => {
         describe('when articleSource is undefined', () => {
             before(() => {
                 reqBase = {
-                    app: { config },
+                    app: { locals: { config } },
                     query: {
                         section: validSection
                     },
@@ -233,7 +233,7 @@ describe('Section middleware', () => {
         describe('when the remote returns the list of teasers', () => {
             before(() => {
                 reqBase = {
-                    app: { config },
+                    app: { locals: { config } },
                     query: {
                         section: validSection
                     },

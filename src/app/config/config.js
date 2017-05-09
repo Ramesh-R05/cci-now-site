@@ -47,6 +47,13 @@ export default {
         }
     },
 
-    polar
+    polar,
+
+    newrelic: {
+        browser: {
+            licenseKey: '81938b3952',
+            applicationID: '37598318'
+        }
+    }
 };
 

@@ -3,7 +3,6 @@ import SubscribeMagBlock from './subscribeMagBlock';
 
 export default class Subscribe extends Component {
     static propTypes = {
-        content: PropTypes.object.isRequired,
         inSideNav: PropTypes.bool
     };
 
@@ -11,12 +10,18 @@ export default class Subscribe extends Component {
         inSideNav: false
     };
 
+    static contextTypes = {
+        config: PropTypes.object
+    };
+
     fireEvent = () => {
         window.dataLayer.push({ event: 'subscribe.click' });
     };
 
     render() {
-        const { inSideNav, content } = this.props;
+        const content = this.context.config.get('subscribe');
+        if (!content) return null;
+        const { inSideNav } = this.props;
         const { subscribeHeading, subscribeText, subscribeMagUrl, subscribeIpadUrl, subscribeButtonUrl } = content;
         const xLargeGridClass = (!inSideNav) ? 'xlarge-6' : '';
         return (

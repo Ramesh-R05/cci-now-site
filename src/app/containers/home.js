@@ -27,7 +27,7 @@ export default class Home extends Component {
 
     static propTypes = {
         heroTeaser: PropTypes.object.isRequired,
-        list: PropTypes.array.isRequired,
+        list: PropTypes.object.isRequired,
         listNextParams: PropTypes.object.isRequired,
         teasers: PropTypes.array.isRequired,
         currentUrl: PropTypes.string.isRequired,
@@ -36,7 +36,7 @@ export default class Home extends Component {
 
     static defaultProps = {
         teasers: [],
-        theme: {}
+        theme: null
     };
 
     static contextTypes = {

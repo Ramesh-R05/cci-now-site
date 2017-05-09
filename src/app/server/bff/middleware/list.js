@@ -17,7 +17,7 @@ export default async function list(req, res, next) {
             const path = `${basePath}?pageNo=${pageNo - 1}`;
             previousPage = {
                 path,
-                url: `${req.app.config.site.host}${path}`
+                url: `${req.app.locals.config.site.host}${path}`
             };
         }
 
@@ -26,14 +26,14 @@ export default async function list(req, res, next) {
             const path = `${basePath}?pageNo=${pageNo + 1}`;
             nextPage = {
                 path,
-                url: `${req.app.config.site.host}${path}`
+                url: `${req.app.locals.config.site.host}${path}`
             };
         }
 
         const path = pageNo > 1 ? `${basePath}?pageNo=${pageNo}` : basePath;
         const currentPage = {
             path,
-            url: `${req.app.config.site.host}${path}`
+            url: `${req.app.locals.config.site.host}${path}`
         };
 
         res.body = {

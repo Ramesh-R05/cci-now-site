@@ -4,9 +4,9 @@ import classNames from 'classnames';
 export default class Repeatable extends Component {
 
     static propTypes = {
-        component: PropTypes.instanceOf(Component).isRequired,
+        component: PropTypes.func.isRequired,
         action: PropTypes.func.isRequired,
-        dataSource: PropTypes.array.isRequired,
+        dataSource: PropTypes.object.isRequired,
         nextParams: PropTypes.object.isRequired
     };
 

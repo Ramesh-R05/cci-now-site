@@ -25,21 +25,21 @@ export default class Page extends Component {
     static displayName = 'Page';
 
     static propTypes = {
-        className: PropTypes.string.isRequired,
+        className: PropTypes.string,
         children: PropTypes.oneOfType([
             PropTypes.element, PropTypes.array
         ]).isRequired,
-        content: PropTypes.array.isRequired,
+        content: PropTypes.object.isRequired,
         headerExpanded: PropTypes.bool.isRequired,
-        hideFooter: PropTypes.bool.isRequired,
+        hideFooter: PropTypes.bool,
         menuClasses: PropTypes.string.isRequired,
         headerNavItems: PropTypes.array.isRequired,
         hamburgerNavItems: PropTypes.array.isRequired,
         toggleSideMenu: PropTypes.func.isRequired,
         currentUrl: PropTypes.string.isRequired,
-        showUniheader: PropTypes.bool.isRequired,
+        showUniheader: PropTypes.bool,
         hideLeaderboard: PropTypes.bool,
-        pageTitle: PropTypes.string.isRequired,
+        pageTitle: PropTypes.string,
         headerClassName: PropTypes.string,
         theme: PropTypes.object
     };
@@ -50,8 +50,12 @@ export default class Page extends Component {
 
     static defaultProps = {
         hideLeaderboard: false,
+        hideFooter: false,
         headerClassName: '',
-        theme: {}
+        className: '',
+        pageTitle: '',
+        theme: null,
+        showUniheader: false
     };
 
     toggleMenu = () => {
@@ -93,7 +97,8 @@ export default class Page extends Component {
                       navItems={headerNavItems}
                       siteName={this.context.config.get('site.name')}
                       toggleMenu={this.toggleMenu}
-                      headerClassName={headerClassName}theme={this.props.theme}
+                      headerClassName={headerClassName}
+                      theme={this.props.theme}
                     />
                     {!hideLeaderboard && <Ad
                       className="ad--section-top-leaderboard"

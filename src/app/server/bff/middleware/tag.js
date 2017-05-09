@@ -26,7 +26,7 @@ export default async function tagMiddleware(req, res, next) {
         }
 
         let title = tag.split('-').map(capitalize).join(' ');
-        const { entity: entityService, tag: tagService } = req.app.config.services.remote;
+        const { entity: entityService, tag: tagService } = req.app.locals.config.services.remote;
 
         // TODO(thatzi): I don't like this. Need a better way to handle tag pages, tag data and tag canonicals
         // Check the current entity url if it is a /:section page. If this is a /tags/:tag page, then this won't exist.
@@ -68,7 +68,7 @@ export default async function tagMiddleware(req, res, next) {
             const path = pageNo === 2 ? `${basePath}` : `${basePath}?pageNo=${pageNo - 1}`;
             previousPage = {
                 path,
-                url: `${req.app.config.site.host}${path}`
+                url: `${req.app.locals.config.site.host}${path}`
             };
         }
 
@@ -77,14 +77,14 @@ export default async function tagMiddleware(req, res, next) {
             const path = `${basePath}?pageNo=${pageNo + 1}`;
             nextPage = {
                 path,
-                url: `${req.app.config.site.host}${path}`
+                url: `${req.app.locals.config.site.host}${path}`
             };
         }
 
         const path = pageNo > 1 ? `${url}?pageNo=${pageNo}` : url;
         const currentPage = {
             path,
-            url: `${req.app.config.site.host}${path}`
+            url: `${req.app.locals.config.site.host}${path}`
         };
 
         req.data = req.data || {};

@@ -99,7 +99,7 @@ describe('Article middleware', () => {
         describe('when articleSource is Good Health', () => {
             before(() => {
                 reqBase = {
-                    app: { config },
+                    app: { locals: { config } },
                     query: {
                         section: validSection,
                         subsection: validSubsection,
@@ -130,7 +130,7 @@ describe('Article middleware', () => {
         describe('when articleSource is undefined', () => {
             before(() => {
                 reqBase = {
-                    app: { config },
+                    app: { locals: { config } },
                     query: {
                         section: validSection,
                         subsection: validSubsection,
@@ -162,7 +162,7 @@ describe('Article middleware', () => {
 
             before(() => {
                 reqBase = {
-                    app: { config },
+                    app: { locals: { config } },
                     query: {
                         section: validSection,
                         subsection: validSubsection,

@@ -3,13 +3,9 @@ noCallThru();
 
 const sitePrefix = 'DOLLY';
 const getPageID = proxyquire('../../../../app/server/bff/helper/getPageID', {
-    '@bxm/config': {
-        load: () => {
-            return {
-                site: {
-                    prefix: sitePrefix
-                }
-            }
+    '../../../config': {
+        site: {
+            prefix: sitePrefix
         }
     }
 }).default;

@@ -28,7 +28,7 @@ export default async function sectionMiddleware(req, res, next) {
         }
         if (nodeTypeAlias === 'Brand') {
             const source = get(req, 'data.entity.source', '');
-            const adBrand = find(req.app.config.brands.uniheader, b => b.title === source);
+            const adBrand = find(req.app.locals.config.brands.uniheader, b => b.title === source);
             req.data.entity.adBrand = get(adBrand, 'id', 'ntl');
 
             teaserQuery = source.replace(/'/g, "''");
@@ -49,7 +49,7 @@ export default async function sectionMiddleware(req, res, next) {
             const path = pageNo === 2 ? `/${section}` : `/${section}?pageNo=${pageNo - 1}`;
             previousPage = {
                 path,
-                url: `${req.app.config.site.host}${path}`
+                url: `${req.app.locals.config.site.host}${path}`
             };
         }
 
@@ -58,14 +58,14 @@ export default async function sectionMiddleware(req, res, next) {
             const path = `/${section}?pageNo=${pageNo + 1}`;
             nextPage = {
                 path,
-                url: `${req.app.config.site.host}${path}`
+                url: `${req.app.locals.config.site.host}${path}`
             };
         }
 
         const path = pageNo > 1 ? `/${section}?pageNo=${pageNo}` : `/${section}`;
         const currentPage = {
             path,
-            url: `${req.app.config.site.host}${path}`
+            url: `${req.app.locals.config.site.host}${path}`
         };
 
         req.data.latestTeasers = latestTeasers.data.slice(0, latestTeaserCount);
