@@ -57,7 +57,7 @@ module.exports = function(){
                 return browser.getUrl() === world.Urls.home_page+"version";
             }, 20000, 1000);
             console.log(browser.getSource());
-            expect(browser.getSource()).toContain('"version":{"buildNumber"')
+            expect(browser.getSource()).toContain('buildNumber')
         });
 
         this.Given(/^I can validate that "([^"]*)" is NOT present$/, function (tag) {
