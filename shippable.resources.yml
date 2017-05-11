@@ -82,18 +82,21 @@ resources:
     version:
       params:
         NODE_ENV: "dev"  #change this to dev when we are ready
+        APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
 
   - name: now-site-params-nz-region
     type: params
     version:
       params:
         NODE_REGION: "nz"
+        APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
 
   - name: now-site-params-test
     type: params
     version:
       params:
         NODE_ENV: "automation"
+        APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
 
 # Docker Image Options
   - name: now-site-opts-sit
