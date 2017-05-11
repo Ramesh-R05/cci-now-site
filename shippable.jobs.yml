@@ -136,7 +136,7 @@ jobs:
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
-        - script: yarn install
+        - script: npm install
         - script: rm -rf node_modules/chimp/dist/lib/cucumberjs/hooks.js
         - script: cp features/support/files/chimp_hooks.backup node_modules/chimp/dist/lib/cucumberjs/hooks.js
         - script: export URL=http://now.test.bxm.net.au/
@@ -157,7 +157,7 @@ jobs:
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
-        - script: yarn install
+        - script: npm install
         - script: export URL=http://nznow.sit.bxm.net.au/
         - script: npm run test:nzlow
 
@@ -177,7 +177,7 @@ jobs:
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
-        - script: yarn install
+        - script: npm install
         - script: export URL=http://now.sit.bxm.net.au/
         - script: APP_KEY=now-site npm run sit:au
     flags:
@@ -199,7 +199,7 @@ jobs:
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
-        - script: yarn install
+        - script: npm install
         - script: export URL=http://now.test.bxm.net.au/
         - script: APP_KEY=now-site npm run all:test || true
         - script: actualsize=$(wc -c <"@rerun.txt")
