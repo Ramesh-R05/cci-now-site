@@ -82,22 +82,22 @@ resources:
     version:
       params:
         NODE_ENV: "production"  #change this to dev when we are ready
-        APP_REGION: "au"
-        APP_ENV: "dev"
+        APP_ENV: "sit"
+        APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
 
   - name: now-site-params-nz-region
     type: params
     version:
       params:
-        NODE_REGION: "nz"
-        APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
+        APP_REGION: "nz"
 
   - name: now-site-params-test
     type: params
     version:
       params:
-        NODE_ENV: "automation"
-        APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
+        NODE_ENV: "production"
+        APP_ENV: "automation"
+        APP_STUBBED: true
 
 # Docker Image Options
   - name: now-site-opts-sit
@@ -160,6 +160,7 @@ resources:
     version:
       params:
         NODE_ENV: "production"
+        APP_ENV: "production"
         APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
 
   - name: now-site-replicas-production
