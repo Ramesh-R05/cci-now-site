@@ -25,7 +25,7 @@ class Application extends Component {
 
     static defaultProps = {
         error: null,
-        theme: null
+        theme: {}
     };
 
     static contextTypes = {

@@ -170,21 +170,6 @@
         }
     }
 
-    .icon-logo {
-        display: inline-block;
-        background-image: url($header-logo-path);
-        background-repeat: no-repeat;
-        background-size: 122px 28px;
-        width: 122px;
-        height: 28px;
-
-        @media #{$medium-up} {
-            background-size: 153px 33px;
-            width: 153px;
-            height: 33px;
-        }
-    }
-
     &__header {
         border-width: 0;
         box-shadow: none;

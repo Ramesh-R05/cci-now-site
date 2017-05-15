@@ -48,7 +48,7 @@ export default class Section extends Component {
 
     static defaultProps = {
         teasers: [],
-        theme: null,
+        theme: {},
         imageUrl: ''
     };
 

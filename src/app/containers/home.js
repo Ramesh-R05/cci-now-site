@@ -36,7 +36,7 @@ export default class Home extends Component {
 
     static defaultProps = {
         teasers: [],
-        theme: null
+        theme: {}
     };
 
     static contextTypes = {

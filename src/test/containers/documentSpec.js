@@ -69,7 +69,7 @@ describe('Document Component', () => {
                 CustomisedTeaser: CustomisedTeaserStub,
                 showSocialShare: true,
                 socialShare: socialShare,
-                theme: null
+                theme: {}
             });
         });
 
