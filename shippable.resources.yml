@@ -83,8 +83,7 @@ resources:
       params:
         NODE_ENV: "production"  #change this to dev when we are ready
         APP_REGION: "au"
-        APP_ENV: "development"
-        APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
+        APP_ENV: "dev"
 
   - name: now-site-params-nz-region
     type: params
