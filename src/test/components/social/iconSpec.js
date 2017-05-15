@@ -83,7 +83,7 @@ describe(`SocialIcon without URL`, () => {
     let labelSpan;
 
     before(() => {
-        reactModule = Context.mountComponent(SocialIcon, { svgFile, name, null, label });
+        reactModule = Context.mountComponent(SocialIcon, { svgFile, name, label });
         anchor = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'a')[0];
         svgSpan = TestUtils.scryRenderedDOMComponentsWithClass(reactModule, 'social-link__icon')[0];
         labelSpan = TestUtils.scryRenderedDOMComponentsWithClass(reactModule, 'social-link__label')[0];

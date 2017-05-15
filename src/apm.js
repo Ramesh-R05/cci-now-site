@@ -1,9 +1,6 @@
 import { backendLogger as logger } from '@bxm/winston-logger';
 
-if (process.env.APM_KEY && (
-        (process.env.APP_ENV === 'production' || process.env.APP_ENV === 'prd') ||
-        process.env.NODE_ENV === 'production'
-    )) {
+if (process.env.APM_KEY && process.env.NODE_ENV === 'production') {
     // New Relic environment variable configuration options
     // https://docs.newrelic.com/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration
     process.env.NEW_RELIC_APP_NAME = process.env.APP_KEY;

@@ -7,6 +7,7 @@ env:
   global:
     - APP_STUBBED=true
     - APP_KEY=now-site
+    - NODE_ENV=production
     - IMAGE=317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site
     - XUNIT_FILE=$SHIPPABLE_BUILD_DIR/shippable/testresults/result.xml # location to store test results
     - BRANCH_NAME="$(sed 's/\//-/g' <<< $BRANCH).$BUILD_NUMBER" # need to replace '/' in the branch name with '-'
@@ -23,8 +24,8 @@ build:
     - npm install
     - echo "module.exports={buildNumber:'$BRANCH_NAME'};" > version.js
     - cat version.js
-    - npm run build
     - npm run test:ci
+    - npm run build
     - cd ..
     - ./src/node_modules/.bin/babel-istanbul report cobertura --dir  ./shippable/codecoverage/
     - if [ $IS_PULL_REQUEST == false ]; then docker build -f Dockerfile.ecs -t $IMAGE:$BRANCH_NAME .; fi
