@@ -246,6 +246,7 @@ jobs:
     steps:
       - IN: now-site-replicas-production #number of running tasks
       - IN: now-site-release-master
+        switch: off
       - IN: env-prod-ecs
       - IN: now-site-params-prod
       - IN: now-site-params-nz-region
