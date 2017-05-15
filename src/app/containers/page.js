@@ -54,7 +54,7 @@ export default class Page extends Component {
         headerClassName: '',
         className: '',
         pageTitle: '',
-        theme: null,
+        theme: {},
         showUniheader: false
     };
 
