@@ -124,3 +124,6 @@ automation/now/artifacts
 automation/screenshots/
 .screenshots
 .vscode/
+
+# Shippable
+shippable/
