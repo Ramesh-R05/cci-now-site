@@ -29,6 +29,12 @@ export default function stubServer(siteServer, siteConfig) {
         }
     });
 
+    // Load More
+    server.get(config.services.endpoints.list, function(req, res, next) {
+        const loadMoreData = require('../test_data/listing/loadMore').default;
+        res.json(loadMoreData);
+    });
+
     // For pages with url /section (a section page)
     server.get(config.services.endpoints.page, (req, res, next) => {
         const { page, section, tag } = req.query;

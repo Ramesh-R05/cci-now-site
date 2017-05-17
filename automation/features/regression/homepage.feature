@@ -90,7 +90,7 @@ Feature: Homepage
     Scenario Outline: Verify the bottom news feed is functional correctly in "<device>" view
         Given I am currently viewing the homepage
         When I switch to "<device>" view
-        * I should see 6 bottom half feed
+        * I should see 8 bottom half feed
         * I should see each bottom feed item containing its image and clickable to open its page
         * I should see each bottom feed item containing its title and clickable to open its page
         * I should see each bottom feed item containing source and date
@@ -130,7 +130,7 @@ Feature: Homepage
             |pos|
             | 2 |
             | 6 |
-    @@high
+    @high
         Examples:
             | device    |
             | mobile    |
@@ -144,22 +144,24 @@ Feature: Homepage
             | tablet portrait  |
             | tablet landscape |
 
-## Will enable the below scenario once the stubbed data of items from load more is added  ##
-#    Scenario Outline: Load More teasers are showing polar ads on "<device>"
-#        Given I switch to "<device>" view
-#        And I am currently viewing the homepage
-#        When I click on the Load More button
-#        Then the below position added more teasers are replaced with polar ads
-#            |pos|
-#            | 2 |
-#            | 6 |
-#    @high
-#        Examples:
-#            | device |
-#            | mobile          |
-#            | desktop         |
-#    @low
-#        Examples:
-#            | device |
-#            | tablet portrait  |
-#            | tablet landscape |
+    Scenario Outline: Load More teasers are showing polar ads on "<device>"
+        Given I switch to "<device>" view
+        And I am currently viewing the homepage
+        When I click on the Load More button
+        Then the below position added more teasers are replaced with polar ads
+            |pos|
+            | 2 |
+            | 6 |
+    @high
+        Examples:
+            | device    |
+            | mobile    |
+    @med
+        Examples:
+            | device    |
+            | desktop   |
+    @low
+        Examples:
+            | device |
+            | tablet portrait  |
+            | tablet landscape |

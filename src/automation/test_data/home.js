@@ -436,14 +436,23 @@ export default {
     },
     "trendingItems": [],
     heroTeaser: heroTeaser.getData(),
-    latestTeasers: latestTeasers.slice(0, 7),
+    latestTeasers: latestTeasers.slice(0, 6),
     list: {
         params: {
             pageNo: 1
         },
         items: [
-            latestTeasers.slice(7)
-        ]
+            latestTeasers.slice(5)
+        ],
+        "previous": null,
+        "current": {
+            "path": "/",
+            "url": "http://automation.now-site.bauer-media.net.au/"
+        },
+        "next": {
+            "path": "/?pageNo=2",
+            "url": "http://automation.now-site.bauer-media.net.au/?pageNo=2"
+        }
     },
     "request": {
         "queryString": {

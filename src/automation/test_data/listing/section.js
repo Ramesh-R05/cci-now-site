@@ -31,8 +31,17 @@ export default {
             pageNo: 1
         },
         items: [
-            latestTeasers.slice(7)
-        ]
+            latestTeasers.slice(6)
+        ],
+        "previous": null,
+        "current": {
+            "path": "/",
+            "url": "http://automation.now-site.bauer-media.net.au/fashion"
+        },
+        "next": {
+            "path": "/?pageNo=2",
+            "url": "http://automation.now-site.bauer-media.net.au/fashion/?pageNo=2"
+        }
     },
     request: {
         queryString: {

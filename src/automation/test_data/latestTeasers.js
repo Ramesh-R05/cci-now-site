@@ -280,57 +280,6 @@ export default [
         ]
     },
     {
-        "id": "NOW-21407",
-        "title": "Five celebrities get real about light bladder leakage",
-        "dateCreated": "2016-11-23T01:37:00.00Z",
-        "imageAltText": "kris Jenner",
-        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/11/02/17004/kris-jenner.jpg",
-        "nodeType": "Article",
-        "summary": "These ladies have owned their issues with incontinence, in a majorly public way.",
-        "source": "NW",
-        "url": "/health/fitness/five-celebrities-talk-about-light-bladder-leakage-21407",
-        "parentName": "Fitness",
-        "parentUrl": "/health/fitness",
-        "tagsDetails": [
-            {
-                "name": "people:profession:actor:Kate Winslet",
-                "urlName": "kate-winslet",
-                "fullName": "people_profession_actor_Kate_Winslet",
-                "displayName": "Kate Winslet"
-            },
-            {
-                "name": "people:profession:presenter:Kris Jenner",
-                "urlName": "kris-jenner",
-                "fullName": "people_profession_presenter_Kris_Jenner",
-                "displayName": "Kris Jenner"
-            },
-            {
-                "name": "book:periodical_subject:Women's health",
-                "urlName": "womens-health",
-                "fullName": "book_periodical_subject_Womens_health",
-                "displayName": "Women's health"
-            },
-            {
-                "name": "music:artist:Katy Perry",
-                "urlName": "katy-perry",
-                "fullName": "music_artist_Katy_Perry",
-                "displayName": "Katy Perry"
-            },
-            {
-                "name": "music:genre:dance-pop:Fergie",
-                "urlName": "fergie",
-                "fullName": "music_genre_dance_pop_Fergie",
-                "displayName": "Fergie"
-            },
-            {
-                "name": "business:industry:Health",
-                "urlName": "health",
-                "fullName": "business_industry_Health",
-                "displayName": "Health"
-            }
-        ]
-    },
-    {
         "id": "NOW-28602",
         "title": "Rocco Ritchie arrested for cannabis possession",
         "dateCreated": "2016-11-23T01:33:00.00Z",
@@ -493,5 +442,24 @@ export default [
                 "displayName": "Health"
             }
         ]
-    }
+    },
+    {
+        "id": "NOW-31899",
+        "title": "Vote in 2017's Beauty Ballot!",
+        "dateCreated": "2016-12-16T03:47:07.00Z",
+        "imageUrl": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/Now/2016/12/16/31899/BEAUTY-TREATMENTS-VAYO-MASSAGE-PATONG3.jpg",
+        "nodeType": "Article",
+        "summary": "Vote for your beauty favourites for a chance to win an awesome prize pack each month!",
+        "url": "/news/real-life/vote-beauty-ballot-31899",
+        "parentName": "Real Life",
+        "parentUrl": "/news/real-life",
+        "tagsDetails": [
+            {
+                "name": "media_common:quotation_subject:Beauty",
+                "urlName": "beauty",
+                "fullName": "media_common_quotation_subject_Beauty",
+                "displayName": "Beauty"
+            }
+        ]
+    },
 ];
