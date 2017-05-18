@@ -22,17 +22,38 @@ Use Git Bash only.
 
 ### `APP_KEY` (not used in NTL)
 
-Only used in multi site setup. NTL is a single site setup and APP_KEY is hard coded in start.js.
+Used in multi site setup to set the site to use, the correct assets and identifies the app in logs and apm.
 
-Required for the app to know which resources (components, styles, assets) to use in a multi site setup.
+Example:
+
+- `APP_KEY=now-site npm start`
+
+NTL is a single site setup and APP_KEY is hard coded in start.js so is not require to be set externally.
 
 ### `APP_DEBUG`
 
-Puts a try catch around the entire app, and sets winston-logger debug logging on. EG. `APP_DEBUG=true npm run dev`
+Sets debug mode to output extra logs. Also wraps the start function in a try/catch to display hidden errors.
+
+Example:
+
+- `APP_DEBUG=true yarn start` Sets winston-logger debug level logs.
+- `APP_DEBUG=silly yarn start` Sets winston-logger silly level logs.
 
 ### `APP_STUBBED`
 
-Loads data from local stubs, does not use content services. Use with start or dev run scripts to work locally. EG `APP_STUBBED=true npm run dev`.
+Loads data from local stubs, does not use content services. Use with start or dev run scripts to work locally. Automation tests use stubbed mode.
+
+Example:
+
+- `APP_STUBBED=true yarn start`
+
+### `APP_REGION`
+
+Sets the region. Used by config loader to load region specific config.
+
+Example:
+
+- `APP_REGION=nz yarn start` loads the NZ NTL site
 
 ## Run Scripts
 

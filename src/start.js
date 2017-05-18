@@ -25,4 +25,12 @@ function startWhenReady() {
     }
 }
 
-startWhenReady();
+if (process.env.APP_DEBUG === 'true' || process.env.APP_DEBUG === 'silly') {
+    try {
+        startWhenReady();
+    } catch (e) {
+        logger.error(e);
+    }
+} else {
+    startWhenReady();
+}
