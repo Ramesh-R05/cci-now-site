@@ -98,6 +98,13 @@ module.exports = function() {
         expect(browser.isVisible(wn_ads.adBottomLeaderboard)).toBe(true);
     });
 
+    this.Then(/^I should see MREC ad between images$/, function () {
+        browser.moveToObject(wn_ads.adMrecBetweenGalleryImages1);
+        expect(browser.isVisible(wn_ads.adMrecBetweenGalleryImages1)).toBe(true);
+        browser.moveToObject(wn_ads.adMrecBetweenGalleryImages2);
+        expect(browser.isVisible(wn_ads.adMrecBetweenGalleryImages2)).toBe(true);
+    });
+
     this.Then(/^I should see four MREC ads in the RHR feed$/, function () {
         browser.moveToObject(wn_ads.adMrecRHRFeed1);
         browser.moveToObject(wn_ads.adMrecRHRFeed2);
@@ -201,8 +208,8 @@ module.exports = function() {
     });
 
     this.Then(/^I can see last RHR add is sticky$/, function () {
-        browser.waitForVisible(wn_ads.adMrecRHRFeed5, 5000);
         browser.moveToObject(wn_ads.adMrecRHRFeed5);
+        expect(browser.isVisible(wn_ads.adMrecRHRFeed5)).toBe(true);
     });
 
     this.Then(/^the sticky add will auto refresh every (\d+) seconds when is in View$/, function (seconds) {

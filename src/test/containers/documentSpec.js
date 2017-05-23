@@ -28,17 +28,10 @@ describe('Document Component', () => {
     const navItems = [];
     const siteName = 'Dolly';
     const articleContent = { title: 'Title Test' };
-    let requestContent = { query: {} };
 
     Context.addStore('articleStore', {
         getContent() {
             return articleContent;
-        }
-    });
-
-    Context.addStore('PageStore', {
-        getRequest() {
-            return requestContent;
         }
     });
 
@@ -95,29 +88,16 @@ describe('Document Component', () => {
         const nodeType = 'Gallery';
         let reactModule;
 
-        describe('and is default Gallery', () => {
-            before(() => {
-                reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType, request: requestContent });
-            });
-
-            it(`should render the Gallery Component`, () => {
-                TestUtils.findRenderedComponentWithType(reactModule, GalleryPageStub);
-            });
+        before(() => {
+            reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType});
         });
 
-        describe('and is Vertical Gallery', () => {
-            before(() => {
-                requestContent = { query: { g: 'v'} };
-                reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType, request: requestContent });
-            });
+        it(`should render the Gallery Component`, () => {
+            TestUtils.findRenderedComponentWithType(reactModule, VerticalGalleryStub);
+        });
 
-            it(`should render the Gallery Component`, () => {
-                TestUtils.findRenderedComponentWithType(reactModule, VerticalGalleryStub);
-            });
-
-            it(`should render the Sailthru Component`, () => {
-                TestUtils.findRenderedComponentWithType(reactModule, SailthruStub);
-            });
+        it(`should render the Sailthru Component`, () => {
+            TestUtils.findRenderedComponentWithType(reactModule, SailthruStub);
         });
     });
 });

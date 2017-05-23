@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connectToStores } from '@bxm/flux';
-import Gallery from './gallery';
 import VerticalGallery from '@bxm/article/lib/gallery';
 import Page from './page';
 import Article from '@bxm/article/lib/article';
@@ -9,12 +8,11 @@ import Sailthru from '../components/sailthru/sailthru';
 
 function mapStateToProps(context) {
     return {
-        content: context.getStore('articleStore').getContent(),
-        request: context.getStore('PageStore').getRequest()
+        content: context.getStore('articleStore').getContent()
     };
 }
 
-@connectToStores(['articleStore', 'PageStore'], mapStateToProps)
+@connectToStores(['articleStore'], mapStateToProps)
 export default class Document extends Component {
     static displayName = 'Document';
 
@@ -24,17 +22,11 @@ export default class Document extends Component {
         }).isRequired,
         currentUrl: PropTypes.string.isRequired,
         nodeType: PropTypes.string.isRequired,
-        theme: PropTypes.object,
-        request: PropTypes.shape({
-            query: PropTypes.object
-        })
+        theme: PropTypes.object
     };
 
     static defaultProps = {
-        theme: {},
-        request: {
-            query: {}
-        }
+        theme: {}
     };
 
     static articleContentBodyConfig = {
@@ -66,7 +58,7 @@ export default class Document extends Component {
     };
 
     render() {
-        const { content, currentUrl, nodeType, theme, request } = this.props;
+        const { content, currentUrl, nodeType, theme } = this.props;
 
         const headerAd = {
             type: 'Ad',
@@ -84,32 +76,25 @@ export default class Document extends Component {
         };
 
         if (nodeType === 'Gallery') {
-            if (request.query.g === 'v') {
-                return (
-                    <Page
-                      currentUrl={currentUrl}
-                      headerExpanded={false}
-                      hideFooter={false}
-                      theme={theme}
-                    >
-                        <VerticalGallery
-                          articleHeaderOrder={['Hero', 'Source', 'Title', 'Summary', 'Date', 'Author']}
-                          contentBodyConfig={Document.articleContentBodyConfig}
-                          enableTeads
-                          CustomisedTeaser={Teaser}
-                          showAdBeforeRecommendations
-                          showSocialShare
-                          socialShare={socialShare}
-                          theme={theme}
-                        />
-                        <Sailthru />
-                    </Page>
-                );
-            }
             return (
-                <Gallery
-                  customisedTeaser={Teaser} currentUrl={currentUrl}theme={theme}
-                />
+                <Page
+                  currentUrl={currentUrl}
+                  headerExpanded={false}
+                  hideFooter={false}
+                  theme={theme}
+                >
+                    <VerticalGallery
+                      articleHeaderOrder={['Hero', 'Source', 'Title', 'Summary', 'Date', 'Author']}
+                      contentBodyConfig={Document.articleContentBodyConfig}
+                      enableTeads
+                      CustomisedTeaser={Teaser}
+                      showAdBeforeRecommendations
+                      showSocialShare
+                      socialShare={socialShare}
+                      theme={theme}
+                    />
+                    <Sailthru />
+                </Page>
             );
         }
 

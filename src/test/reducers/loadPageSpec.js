@@ -8,8 +8,7 @@ describe(`loadPage Reducer`, () => {
         beforeEach(() => {
             payload = {
                 type: 'LOAD_CONTENT',
-                body: body,
-                request: { payload: {} }
+                body: body
             };
         });
 
@@ -23,8 +22,7 @@ describe(`loadPage Reducer`, () => {
                     shortTitle: payload.body.entity.shortTitle,
                     summary: payload.body.entity.summary,
                     trendingItems: payload.body.trendingItems,
-                    imageUrl: payload.body.entity.imageUrl,
-                    request: payload.request.payload
+                    imageUrl: payload.body.entity.imageUrl
                 });
             });
         });

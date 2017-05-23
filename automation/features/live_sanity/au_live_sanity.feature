@@ -29,8 +29,4 @@ Feature: I have an automated sanity for my live environments
         When I switch to "mobile" view
         Given I am currently viewing "celebrity/celeb-news/natalie-portman-is-pregnant-with-second-child-5734"
         * I can see an image appearing on the gallery
-        * I can see the source appearing on the gallery with gtm "gtm-brandlogotop-gallery"
-        * I can click the right arrow on the gallery to check the next image
-        When I see the image no "2" on the gallery
-        * I can see the left arrow on the gallery
-        * I can see an image appearing on the gallery
+        * I can see the source appearing on the gallery with gtm "gtm-brandlogotop-article"

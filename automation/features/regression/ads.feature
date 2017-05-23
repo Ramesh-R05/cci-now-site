@@ -102,10 +102,12 @@ Feature: Ad
     Scenario Outline: Ads on gallery page in the <device> view
         Given I switch to "<device>" view
         When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
-        * I should see the top leaderboard ad above the gallery slide
-        * I should not see the bottom leaderboard ad under the gallery slide
-        * I should see the MREC ad at the bottom right of the gallery
-        * I should see the MREC ad after the 3 slide
+        * I should see the top leaderboard ad under navigation
+        * I should see the bottom leaderboard ad above the footer on article
+        * I should see four MREC ads in the RHR feed
+        * I should not see MREC ad under the hero image
+        * I should not see MREC ad above recommendation
+        * I should see MREC ad between images
     @high
         Examples:
             |device             |
@@ -119,19 +121,21 @@ Feature: Ad
     Scenario: Ads on gallery page in the tablet portrait view
         Given I switch to "tablet portrait" view
         When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
-        * I should see the top leaderboard ad above the gallery slide
-        * I should not see the bottom leaderboard ad under the gallery slide
-        * I should not see the MREC ad at the bottom right of the gallery
-        * I should see the MREC ad after the 3 slide
+        * I should see the top leaderboard ad under navigation
+        * I should see MREC ad above recommendation
+        * I should see the bottom leaderboard ad above the footer on article
+        * I should not see MREC ad under the hero image
+        * I should see MREC ad between images
 
     @gallery @BXMA-132 @high
     Scenario: Ads on gallery page in the mobile view
         Given I switch to "mobile" view
         When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
-        * I should see the top leaderboard ad above the gallery slide
-        * I should not see the bottom leaderboard ad under the gallery slide
-        * I should not see the MREC ad at the bottom right of the gallery
-        * I should see the MREC ad after the 3 slide
+        * I should see the top leaderboard ad under navigation
+        * I should not see MREC ad under the hero image
+        * I should see MREC ad above recommendation
+        * I should see the bottom leaderboard ad above the footer on article
+        * I should see MREC ad between images
 
 #-------- Gallery Page Ads end ---------------#
 
@@ -208,7 +212,7 @@ Feature: Ad
     @BXMA-415 @high
     Scenario: Ads will autorefresh on Vertical gallery
         Given I switch to "desktop" view
-        When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302?g=v"
+        When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
         Then I can see last RHR add is sticky
         And the sticky add will auto refresh every 6 seconds when is in View
 #        And after 15 seconds the page will go idle and the add will no refresh anymore # This is tested manually
