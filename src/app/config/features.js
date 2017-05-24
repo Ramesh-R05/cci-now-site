@@ -2,9 +2,6 @@ export default {
     galleryOfGalleries: {
         enabled: true
     },
-    socialShareBlock: {
-        enabled: true
-    },
     loadMoreBtn: {
         enabled: true
     },
