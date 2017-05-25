@@ -48,7 +48,7 @@ describe('Listing middleware', () => {
 
                 it('should store the entity in `req.data`', (done) => {
                     listingMiddleware(req, res, next).then(() => {
-                        expect(req.data).to.deep.equal({ entity, section: { id: entity.id, name: entity.contentTitle } });
+                        expect(req.data).to.deep.equal({ entity, section: { id: entity.id, name: entity.contentTitle, urlName: entity.urlName } });
                         done();
                     }).catch(done);
                 });

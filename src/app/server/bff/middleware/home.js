@@ -88,7 +88,7 @@ export default async function home(req, res, next) {
 
         req.data.videoGalleryTeasers = videoGalleryTeasers;
         req.data.trendingItems = trendingItems;
-        req.data.section = { id: pageData.id, name: 'Home' }; // Initally used to set the ad slot within @bxm/ads + gtm in @bxm/server
+        req.data.section = { id: pageData.id, name: 'Home', urlName: 'home' }; // Initally used to set the ad slot within @bxm/ads + gtm in @bxm/server
         next();
     } catch (error) {
         next(error);

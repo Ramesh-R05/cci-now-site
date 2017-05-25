@@ -109,7 +109,7 @@ export default async function tagMiddleware(req, res, next) {
             current: currentPage,
             next: nextPage
         };
-        req.data.section = { name: 'Tag' }; // Initally used to set the ad slot within @bxm/ads
+        req.data.section = { name: 'Tag', urlName: 'tag' }; // Initally used to set the ad slot within @bxm/ads
         next();
     } catch (error) {
         next(error);

@@ -82,7 +82,7 @@ describe('Home middleware', () => {
 
             it('should store the section in `req.data`', (done) => {
                 homeMiddleware(req, res, next).then(() => {
-                    expect(req.data.section).to.deep.equal({ id: entity.id, name: 'Home' });
+                    expect(req.data.section).to.deep.equal({ id: entity.id, name: 'Home', urlName: 'home' });
                     done();
                 }).catch(done);
             });

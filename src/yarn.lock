@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@bxm/ad@^10.9.0":
-  version "10.9.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fad/-/ad-10.9.0.tgz#492afd8282de663790a6278e059387d62334a313"
+"@bxm/ad@^10.9.2":
+  version "10.9.2"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fad/-/ad-10.9.2.tgz#6ea6755a82203a6cc578bc7a0f70c54f20034e96"
   dependencies:
     "@bxm/react-script-loader" "^2.0.0"
     classnames "^2.2.1"
@@ -13,9 +13,9 @@
     q "^1.4.1"
     react-script-loader "0.0.1"
 
-"@bxm/article@23.12.1-beta-gigyagone2":
-  version "23.12.1-beta-gigyagone2"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2farticle/-/article-23.12.1-beta-gigyagone2.tgz#6aebf18a4597f48e3b75c07cb077b3ad4787e82f"
+"@bxm/article@23.12.0":
+  version "23.12.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2farticle/-/article-23.12.0.tgz#14e2812d2384ef15269c52b228b07e98a9105ec5"
   dependencies:
     "@bxm/behaviour" "^1.1.0"
     "@bxm/image" "^2.0.0"
@@ -52,9 +52,9 @@
     react-addons-test-utils "^0.14.2"
     setimmediate "^1.0.2"
 
-"@bxm/gallery@15.0.0-rip-gigya-beta1":
-  version "15.0.0-rip-gigya-beta1"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fgallery/-/gallery-15.0.0-rip-gigya-beta1.tgz#46d93dd447ea25e8979c3ee1c6801ca06b329ccf"
+"@bxm/gallery@15.0.0":
+  version "15.0.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fgallery/-/gallery-15.0.0.tgz#0c805ae665a71ee3be57ba547c1fd3442b58497f"
   dependencies:
     classnames "^2.1.1"
     exenv "^1.2.0"
@@ -146,9 +146,9 @@
     lodash "^3.10.1"
     matchmedia "^0.1.2"
 
-"@bxm/social@^2.0.0-rip-gigya-beta":
-  version "2.0.0-rip-gigya-beta"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fsocial/-/social-2.0.0-rip-gigya-beta.tgz#710c9a33d6b52f8cd524e30d83ff3165137b8b9f"
+"@bxm/social@^2.0.0":
+  version "2.0.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fsocial/-/social-2.0.0.tgz#00e46cc92550b3c049fdddb8f8d3485f0bc10cdc"
   dependencies:
     classnames "^2.2.5"
     keymirror "^0.1.1"
@@ -172,13 +172,13 @@
     moment "~2.8.3"
     moment-timezone "^0.5.0"
 
-"@bxm/ui@^16.0.0-rip-gigya-beta":
-  version "16.0.0-rip-gigya-beta"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fui/-/ui-16.0.0-rip-gigya-beta.tgz#1e0b091c04335a3c47762c55737a206ca2b95357"
+"@bxm/ui@^16.0.0":
+  version "16.0.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fui/-/ui-16.0.0.tgz#623d733ea2dd6e728eae30a31a95425f9fffdc43"
   dependencies:
     "@bxm/markdown" "^1.0.0"
     "@bxm/react-script-loader" "^2.0.0"
-    "@bxm/social" "^2.0.0-rip-gigya-beta"
+    "@bxm/social" "^2.0.0"
     axios "^0.4.1"
     classnames "2.1.1"
     html5-history-api "^4.2.0"
@@ -5862,10 +5862,6 @@ split@0.3:
   dependencies:
     through "2"
 
-sprintf-js@^1.0.3:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.1.0.tgz#cffcaf702daf65ea39bb4e0fa2b299cec1a1be46"
-
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
@@ -6287,22 +6283,11 @@ undefsafe@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/undefsafe/-/undefsafe-0.0.3.tgz#ecca3a03e56b9af17385baac812ac83b994a962f"
 
-underscore.string@:
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/underscore.string/-/underscore.string-3.3.4.tgz#2c2a3f9f83e64762fdc45e6ceac65142864213db"
-  dependencies:
-    sprintf-js "^1.0.3"
-    util-deprecate "^1.0.2"
-
-underscore.string@~2.4.0:
+underscore.string@, underscore.string@~2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/underscore.string/-/underscore.string-2.4.0.tgz#8cdd8fbac4e2d2ea1e7e2e8097c42f442280f85b"
 
-underscore@^1.7.0:
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
-
-underscore@~1.7.0:
+underscore@^1.7.0, underscore@~1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.7.0.tgz#6bbaf0877500d36be34ecaa584e0db9fef035209"
 
@@ -6349,7 +6334,7 @@ user-home@^2.0.0:
   dependencies:
     os-homedir "^1.0.0"
 
-util-deprecate@^1.0.2, util-deprecate@~1.0.1:
+util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
 

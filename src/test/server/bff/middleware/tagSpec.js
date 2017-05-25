@@ -115,7 +115,7 @@ describe('Tag middleware', () => {
 
                     it('should set the section property', (done) => {
                         tagMiddleware(req, res, next).then(() => {
-                            expect(req.data.section).to.deep.eq({ name: 'Tag' });
+                            expect(req.data.section).to.deep.eq({ name: 'Tag', urlName: 'tag' });
                             done();
                         }).catch(done);
                     })
