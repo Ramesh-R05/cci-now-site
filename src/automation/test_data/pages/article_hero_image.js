@@ -1161,9 +1161,11 @@ export default{
     },
     "section": {
         "id": "NOW-1206",
-        "name": "fashion"
+        "name": "fashion",
+        "urlName": "fashion"
     },
     "subsection": {
-        "name": "red-carpet"
+        "name": "red-carpet",
+        "urlName": "red-carpet"
     }
 };

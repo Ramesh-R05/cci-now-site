@@ -41,7 +41,8 @@ export default {
     },
     section: {
         id: "NOW-1210",
-        name: "Beauty"
+        name: "Beauty",
+        urlName: "beauty"
     },
     headerNavigation: navigation.getData()
 }

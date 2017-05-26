@@ -776,7 +776,8 @@ export default {
     },
     "section": {
         "id": "NOW-31922",
-        "name": "Mother and Baby"
+        "name": "Mother and Baby",
+        "urlName": "mother-baby"
     },
     "promoted": {
         "title": "KICKSTART 2017",
