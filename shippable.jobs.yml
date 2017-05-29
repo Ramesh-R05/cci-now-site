@@ -1,13 +1,22 @@
+# This jobs are only used for NOWTOLOVE
+
+####################################################################
+# Refer to http://docs.shippable.com/reference/jobs-overview/      #
+# Resources are located in shippable.resources.yml file            #
+# Jobs are numbered to visualize sequence                          #
+####################################################################
+
 jobs:
 
-  - name: now-site_runCI # sync pipeline to CI
+  # 1. Sync pipeline to CI
+  - name: now-site_runCI
     type: runCI
     steps:
       - OUT: now-site-img-master
       - OUT: now-site-img-branch
 
-
-  - name: now-site-man-branch # manifest for a branch image
+  # 2branch. Manifest for a BRANCH image
+  - name: now-site-man-branch
     type: manifest
     steps:
       - IN: now-site-img-branch
@@ -16,16 +25,8 @@ jobs:
     flags:
       - now-site
 
-
-  - name: now-site-man-master # manifest for master image
-    type: manifest
-    steps:
-      - IN: now-site-img-master
-      - IN: now-site-opts-sit
-      - TASK: managed
-
-
-  - name: now-site-sit-deploy-branch # DEV deployment for FEATURE BRANCH
+  # 3Branch. SIT deployment for feature BRANCH
+  - name: now-site-sit-deploy-branch
     type: deploy
     always:
       - NOTIFY: slack-notifications
@@ -41,8 +42,18 @@ jobs:
             image: now-site-img-branch
             port: 3001
       - TASK: managed
-        deployMethod: upgrade
-  - name: now-site-sit-deploy-master # DEV deployment for MASTER
+        deployMethod: replace
+
+  # 2. Manifest for MASTER image
+  - name: now-site-man-master
+    type: manifest
+    steps:
+      - IN: now-site-img-master
+      - IN: now-site-opts-sit
+      - TASK: managed
+
+  # 3a. AU SIT deployment for MASTER
+  - name: au-now-site-sit-deploy-master
     type: deploy
     always:
       - NOTIFY: slack-notifications
@@ -52,7 +63,7 @@ jobs:
         switch: on
       - IN: env-sit-ecs
       - IN: now-site-params-sit
-      - IN: now-site-alb-sit
+      - IN: au-now-site-alb-sit
         applyTo:
           - manifest: now-site-man-master
             image: now-site-img-master
@@ -60,8 +71,8 @@ jobs:
       - TASK: managed
         deployMethod: replace
 
-
-  - name: nz-now-site-sit-deploy-master # DEV deployment for MASTER with Region NZ
+  # 3b. NZ SIT deployment for MASTER
+  - name: nz-now-site-sit-deploy-master
     type: deploy
     always:
       - NOTIFY: slack-notifications
@@ -80,8 +91,8 @@ jobs:
       - TASK: managed
         deployMethod: replace
 
-
-  - name: now-site-test-deploy-master # Stubbed deployment for automation tests
+  # 3c. TEST deployment for MASTER - stubbed
+  - name: now-site-test-deploy-master
     type: deploy
     steps:
       - IN: now-site-replicas-non-prod #number of running tasks
@@ -97,7 +108,7 @@ jobs:
       - TASK: managed
         deployMethod: replace
 
-
+  # 4a. Run regression test on TEST environment
   - name: now-site-automation-test # Test Stub site
     type: runSh
     always:
@@ -114,14 +125,14 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://now.test.bxm.net.au/
+        - script: export URL=http://now-site.test.bxm.net.au/
         - script: npm run test:high || true
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
 
 
-
-  - name: now-site-mobile-automation-test # Test Stub site on Browser Stack
+  # 4b. Run mobile regression test on TEST environment - Browser Stack
+  - name: mobile-now-site-automation-test
     type: runSh
     always:
       - NOTIFY: slack-notifications
@@ -139,10 +150,11 @@ jobs:
         - script: npm install
         - script: rm -rf node_modules/chimp/dist/lib/cucumberjs/hooks.js
         - script: cp features/support/files/chimp_hooks.backup node_modules/chimp/dist/lib/cucumberjs/hooks.js
-        - script: export URL=http://now.test.bxm.net.au/
+        - script: export URL=http://now-site.test.bxm.net.au/
         - script: npm run test:mobile
 
-  - name: nz-now-site-smoke-test # Test Dev Site with NZ config
+  # 4c. Run smoke test on SIT NZ environment
+  - name: nz-now-site-smoke-test
     type: runSh
     always:
       - NOTIFY: slack-notifications
@@ -158,70 +170,21 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://nznow.sit.bxm.net.au/
+        - script: export URL=http://now-site-nz.sit.bxm.net.au/
         - script: npm run test:nzlow
 
-  - name: now-site-e2e-test # Test e2e test for NOW au dev
-    type: runSh
-    always:
-      - NOTIFY: slack-notifications
-    steps:
-     - IN: morning-trigger
-     - IN: now-site-repo
-       switch: off
-     - TASK:
-        - script: curl dev.publishing-broker.services.bauer-media.internal
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-        - script: source ~/.nvm/nvm.sh
-        - script: nvm install "6.1.0"
-        - script: nvm use "6.1.0"
-        - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm set registry http://npm.digital.bauer-media.net.au
-        - script: npm install
-        - script: export URL=http://now.sit.bxm.net.au/
-        - script: APP_KEY=now-site npm run sit:au
-    flags:
-      - now-site
-
-
-  - name: FULL-now-site-regression-test # Test Site full regression
-    type: runSh
-    always:
-      - NOTIFY: slack-notifications
-    steps:
-     - IN: now-site-repo
-       switch: off
-     - IN: morning-trigger
-     - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-        - script: source ~/.nvm/nvm.sh
-        - script: nvm install "6.1.0"
-        - script: nvm use "6.1.0"
-        - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm set registry http://npm.digital.bauer-media.net.au
-        - script: npm install
-        - script: export URL=http://now.test.bxm.net.au/
-        - script: APP_KEY=now-site npm run all:test || true
-        - script: actualsize=$(wc -c <"@rerun.txt")
-        - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
-    flags:
-      - now-site
-
-  - name: now-site-release-master # Package release for production release
+  # 5. Package release for production release
+  - name: now-site-release-master
     type: release
     steps:
-      - IN: now-site-man-master
-        switch: off
       - IN: now-site-automation-test
-      - IN: now-site-mobile-automation-test
-        switch: off
-      - IN: nz-now-site-smoke-test
+      - IN: now-site-man-master
         switch: off
       - IN: now-site-version
       - TASK: managed
 
-
-  - name: au-now-site-prod-deploy-master # PROD deployment for MASTER with Region AU
+  # 6a. PROD deployment for MASTER with Region AU
+  - name: au-now-site-prod-deploy-master
     type: deploy
     always:
       - NOTIFY: slack-notifications
@@ -231,7 +194,7 @@ jobs:
       - IN: now-site-replicas-production #number of running tasks
       - IN: env-prod-ecs
       - IN: now-site-params-prod
-      - IN: now-site-alb-prod
+      - IN: au-now-site-alb-prod
         applyTo:
           - manifest: now-site-man-master
             image: now-site-img-master
@@ -239,7 +202,8 @@ jobs:
       - TASK: managed
         deployMethod: upgrade
 
-  - name: nz-now-site-prod-deploy-master # PROD deployment for MASTER with Region NZ
+  # 6b. PROD deployment for MASTER with Region NZ
+  - name: nz-now-site-prod-deploy-master
     type: deploy
     always:
       - NOTIFY: slack-notifications
@@ -258,22 +222,42 @@ jobs:
       - TASK: managed
         deployMethod: upgrade
 
+  ##############################################
+  # Schedule jobs - not attached to the pipeline
+  ##############################################
 
-###### DEBUG MODE ###
-#Tags use for DEBUG
-#Use --tags <EXPRESSION> to run specific features or scenarios.
+  # i. E2E regression in SIT AU
+  - name: e2e-now-site-test
+    type: runSh
+    always:
+      - NOTIFY: slack-notifications
+    steps:
+     - IN: morning-trigger
+     - IN: now-site-repo
+       switch: off
+     - TASK:
+        - script: curl dev.publishing-broker.services.bauer-media.internal
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+        - script: source ~/.nvm/nvm.sh
+        - script: nvm install "6.1.0"
+        - script: nvm use "6.1.0"
+        - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm install
+        - script: export URL=http://now-site-au.sit.bxm.net.au/
+        - script: APP_KEY=now-site npm run sit:au
+    flags:
+      - now-site
 
-#--tags @dev: tagged with @dev
-#--tags ~@dev: NOT tagged with @dev
-#--tags @foo,@bar: tagged with @foo OR bar
-#--tags @foo --tags @bar: tagged with @foo AND bar
-  - name: DEBUG-now-site-regression-test # Test on DEBUG mode
+  # ii. Full regression in SIT AU
+  - name: FULL-now-site-regression-test
     type: runSh
     always:
       - NOTIFY: slack-notifications
     steps:
      - IN: now-site-repo
        switch: off
+     - IN: morning-trigger
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
@@ -282,8 +266,9 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://now.test.bxm.net.au/
-        - script: export APP_KEY=now-site
-        - script: ./node_modules/.bin/chimp chimp.js --browser=phantomjs --debug --tags=@ad --tags=@now --tags=@gallery --tags=@BXMA-132 --tags=@high
+        - script: export URL=http://now-site.test.bxm.net.au/
+        - script: APP_KEY=now-site npm run all:test || true
+        - script: actualsize=$(wc -c <"@rerun.txt")
+        - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
     flags:
       - now-site

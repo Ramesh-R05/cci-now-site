@@ -1,105 +1,12 @@
+# This resources are only used for NOWTOLOVE
+
+####################################################################
+# Refer to http://docs.shippable.com/reference/resources-overview/ #
+####################################################################
+
 resources:
 
-#
-# Common setup that should be moved into a common shippable repo
-#
-  - name: slack-notifications
-    type: notification                          #required
-    integration: slack-bauerxcelmedia
-    pointer:
-      recipients:
-        - "#au-shippable"
-
-# Docker Image for the now-site
-  - name: now-site-img-master
-    type: image
-    integration: AWS-digital-services-ECR
-    pointer:
-      sourceName: "317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site"
-    seed:
-      versionName: master.1695
-
-# Docker Image for the now-site
-  - name: now-site-img-branch
-    type: image
-    integration: AWS-digital-services-ECR
-    pointer:
-      sourceName: "317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site"
-    seed:
-      versionName: latest
-
-# Github repo
-  - name: now-site-repo
-    type: gitRepo
-    integration: production-github
-    pointer:
-      sourceName: bauerxcelmedia/now-site
-      branch: master
-
-# Release version
-  - name: now-site-version
-    type: version
-    seed:
-      versionName: "1.0.0"
-
-#
-# SIT environment configuration
-#
-  - name: env-sit-ecs
-    type: cluster
-    integration: AWS-digital-nonprod
-    pointer:
-      sourceName : "app_ecs"
-      region: "ap-southeast-2"
-
-  - name: nz-now-site-alb-sit
-    type: loadBalancer
-    pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/nznow-site-sit-nz/e16aa0e0afc6dcc8"
-      method: application
-
-  - name: now-site-alb-sit
-    type: loadBalancer
-    pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-sit-now-au/e972f0d5ce478be2"
-      method: application
-
-  - name: now-site-alb-sit-branch
-    type: loadBalancer
-    pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/branch-now-site-sit-au/a5522dba93f4b773"
-      method: application
-
-  - name: now-site-alb-test
-    type: loadBalancer
-    pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-test/3640de7200782c72"
-      method: application
-
-# TO BE UPDATED
-  - name: now-site-params-sit
-    type: params
-    version:
-      params:
-        NODE_ENV: "production"  #change this to dev when we are ready
-        APP_ENV: "sit"
-        APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
-
-  - name: now-site-params-nz-region
-    type: params
-    version:
-      params:
-        APP_REGION: "nz"
-
-  - name: now-site-params-test
-    type: params
-    version:
-      params:
-        NODE_ENV: "production"
-        APP_ENV: "automation"
-        APP_STUBBED: true
-
-# Docker Image Options
+  # Docker Image Options to run the container
   - name: now-site-opts-sit
     type: dockerOptions
     version:
@@ -116,45 +23,158 @@ resources:
           awslogs-region: "ap-southeast-2"
           awslogs-stream-prefix: "app-now-site"
 
-#Schedule Run of automation
-# This is using Shippable timezone
-# CRON is (15 22 * * *") this is 10:15pm every day refer to https://en.wikipedia.org/wiki/Cron
-# will run at 8:15am Sydney time
+  # Seed image version MASTER Docker Image for the now-site
+  - name: now-site-img-master
+    type: image
+    integration: AWS-digital-services-ECR
+    pointer:
+      sourceName: "317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site"
+    seed:
+      versionName: latest  # This can be changed for Roll back
+
+  # Seed image version Feature BRANCH Docker Image for the now-site
+  - name: now-site-img-branch
+    type: image
+    integration: AWS-digital-services-ECR
+    pointer:
+      sourceName: "317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site"
+    seed:
+      versionName: latest
+
+  # NOW Github repo
+  - name: now-site-repo
+    type: gitRepo
+    integration: production-github
+    pointer:
+      sourceName: bauerxcelmedia/now-site
+      branch: master
+
+  # Slack connection
+  - name: slack-notifications
+    type: notification                          #required
+    integration: slack-bauerxcelmedia
+    pointer:
+      recipients:
+        - "#au-shippable"
+
+  # Seed Release version
+    # for Rollback refer to below URL
+    # http://docs.shippable.com/deploy/rollback/#rolling-back-your-deployments
+  - name: now-site-version
+    type: version
+    seed:
+      versionName: "1.0.0" # This can be changed for Roll back
+
+  # REGION Parameter
+  - name: now-site-params-nz-region
+    type: params
+    version:
+      params:
+        APP_REGION: "nz"
+
+  #Schedule Run of automation
+  # This is using Shippable timezone
+  # CRON is (15 22 * * *") this is 10:15pm every day refer to https://en.wikipedia.org/wiki/Cron
+  # will run at 8:15am Sydney time
   - name: morning-trigger
     type: time
     seed:
       interval: "15 22 * * *"
 
+  ####################################
+  # NON PROD environment configuration
+  ####################################
+
+  # AWS Non Prod Cluster
+  - name: env-sit-ecs
+    type: cluster
+    integration: AWS-digital-nonprod
+    pointer:
+      sourceName : "app_ecs"
+      region: "ap-southeast-2"
+
+  # AWS SIT load Balancer - NOW AU - MASTER branch
+  - name: au-now-site-alb-sit
+    type: loadBalancer
+    pointer:
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-au-sit/40d9881a0008f4b1"
+      method: application
+
+  # AWS SIT load Balancer - NOW NZ - MASTER branch
+  - name: nz-now-site-alb-sit
+    type: loadBalancer
+    pointer:
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-nz-sit/46fe04e2d10ce191"
+      method: application
+
+  # AWS SIT:8080 load Balancer - NOW AU - feature BRANCH
+  - name: now-site-alb-sit-branch
+    type: loadBalancer
+    pointer:
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-au-branch-sit/e20cca1138db8557"
+      method: application
+
+  # AWS TEST load Balancer - Homes STUBBED - MASTER branch
+  - name: now-site-alb-test
+    type: loadBalancer
+    pointer:
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-test/3640de7200782c72"
+      method: application
+
+  # SIT Parameter
+  - name: now-site-params-sit
+    type: params
+    version:
+      params:
+        NODE_ENV: "production"  #change this to dev when we are ready
+        APP_ENV: "sit"
+        APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
+
+  # TEST Parameter
+  - name: now-site-params-test
+    type: params
+    version:
+      params:
+        NODE_ENV: "production"
+        APP_ENV: "automation"
+        APP_STUBBED: true
+
+  # SIT/TEST - Number of task to run in AWS cluster
   - name: now-site-replicas-non-prod
     type: replicas
     version:
       count: 2
 
-# PRODUCTION environment configuration (TO BE DONE)
-#
-#
-# PROD environment configuration
-#
+  ####################################
+  # PROD environment configuration
+  # DO NOT DELETE
+  # DO NOT DELETE
+  # DO NOT DELETE
+  ####################################
+
+  # AWS Prod Cluster
   - name: env-prod-ecs
     type: cluster
-    integration: AWS-digital-prod #pending to be created
+    integration: AWS-digital-prod
     pointer:
       sourceName : "app_ecs"
       region: "ap-southeast-2"
 
-  - name: now-site-alb-prod
+  # AWS PROD load Balancer - AU NOW PROD - MASTER branch
+  - name: au-now-site-alb-prod
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:622156575630:targetgroup/now-site-prod-now-au/763f0b126f52508d"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:622156575630:targetgroup/now-site-prod/d470fcdb27032289"
       method: application
 
+  # AWS PROD load Balancer - NZ NOW PROD - MASTER branch
   - name: nz-now-site-alb-prod
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:622156575630:targetgroup/nznow-site-prod-nz/452a0a41643ae426"
+      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:622156575630:targetgroup/now-site-nz-prod/954d2eeb427e106a"
       method: application
 
-# ENV parameters
+  # PROD parameters
   - name: now-site-params-prod
     type: params
     version:
@@ -163,6 +183,7 @@ resources:
         APP_ENV: "production"
         APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
 
+  # PROD - Number of task to run in AWS cluster
   - name: now-site-replicas-production
     type: replicas
     version:
