@@ -31,7 +31,6 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
-      - IN: now-site-replicas-non-prod #number of running tasks
       - IN: now-site-man-branch # for non-master, don't auto deploy.
         switch: off
       - IN: env-sit-ecs
@@ -58,7 +57,6 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
-      - IN: now-site-replicas-non-prod #number of running tasks
       - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
       - IN: env-sit-ecs
@@ -77,7 +75,6 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
-      - IN: now-site-replicas-non-prod #number of running tasks
       - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
       - IN: env-sit-ecs
@@ -95,7 +92,6 @@ jobs:
   - name: now-site-test-deploy-master
     type: deploy
     steps:
-      - IN: now-site-replicas-non-prod #number of running tasks
       - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
       - IN: env-sit-ecs
@@ -191,7 +187,6 @@ jobs:
     steps:
       - IN: now-site-release-master
         switch: off
-      - IN: now-site-replicas-production #number of running tasks
       - IN: env-prod-ecs
       - IN: now-site-params-prod
       - IN: au-now-site-alb-prod
@@ -208,7 +203,6 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
-      - IN: now-site-replicas-production #number of running tasks
       - IN: now-site-release-master
         switch: off
       - IN: env-prod-ecs

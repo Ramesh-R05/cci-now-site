@@ -139,12 +139,6 @@ resources:
         APP_ENV: "automation"
         APP_STUBBED: true
 
-  # SIT/TEST - Number of task to run in AWS cluster
-  - name: now-site-replicas-non-prod
-    type: replicas
-    version:
-      count: 2
-
   ####################################
   # PROD environment configuration
   # DO NOT DELETE
@@ -182,9 +176,3 @@ resources:
         NODE_ENV: "production"
         APP_ENV: "production"
         APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
-
-  # PROD - Number of task to run in AWS cluster
-  - name: now-site-replicas-production
-    type: replicas
-    version:
-      count: 3
