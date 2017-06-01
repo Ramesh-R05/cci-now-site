@@ -15,6 +15,15 @@ const HeroTeaser = proxyquire('../../../app/components/teaser/hero', {
     '../promoted/promoted': PromotedStub
 }).default;
 
+AdStub.pos = {
+    aside: 'rhs',
+    outside: 'outside',
+    body: 'body',
+    wallpaper: 'wallpaper',
+    inskin: 'inskin',
+    panel: 'panel'
+}
+
 describe('Hero Teaser Component', () => {
     const article = {id: 'HERO-TEASER', title: 'title', source: 'Australian women\'s weekly'};
     const defaultImageSizes = {

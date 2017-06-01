@@ -35,6 +35,15 @@ const PageWrapper = proxyquire('../../app/containers/page', {
     '@bxm/ad/lib/google/components/standardPageAdsWrapper': StandardPageAdsWrapperStub
 }).default;
 
+AdStub.pos = {
+    aside: 'rhs',
+    outside: 'outside',
+    body: 'body',
+    wallpaper: 'wallpaper',
+    inskin: 'inskin',
+    panel: 'panel'
+};
+
 describe('Page Container', () => {
     const siteName = 'Dolly';
     const brandStubData = {
@@ -200,7 +209,7 @@ describe('Page Container', () => {
 
         it('should render a top ad banner', () => {
             expect(adStub[0].props.className).to.be.equal('ad--section-top-leaderboard');
-            expect(adStub[0].props.targets).to.deep.eq({position: 1, keyword: ['homes_Topic_Garden_planner', 'homes_Homes_navigation_Outdoor']});
+            expect(adStub[0].props.targets).to.deep.eq({ keyword: ['homes_Topic_Garden_planner', 'homes_Homes_navigation_Outdoor']});
         });
 
         describe(`when the close button is clicked`, () => {

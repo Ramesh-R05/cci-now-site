@@ -29,6 +29,7 @@ export default class HeroTeaser extends Component {
     render() {
         if (!this.props.article) return null;
         const { article, imageSizes, showPromoted, brand, showDate } = this.props;
+        const pageLocation = Ad.pos.outside;
 
         return (
             <div className="hero-wrapper">
@@ -44,7 +45,7 @@ export default class HeroTeaser extends Component {
                   displayFor={['small', 'medium']}
                   className="ad--section-top-mrec"
                   sizes="mrec"
-                  targets={{ position: 1 }}
+                  pageLocation={pageLocation}
                 />
 
                 { showPromoted && <Promoted /> }

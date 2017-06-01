@@ -225,4 +225,14 @@ module.exports = function() {
 
     });
 
+    this.Then(/^I should see each ad slot element containing proper class name$/, function(dataTable){
+        var rows = dataTable.hashes();
+        
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var className = browser.getAttribute('#' + row['no'],'class');
+            expect(className).toEqual(row['class-name']);
+        }
+    });
+
 };

@@ -1,5 +1,6 @@
 var ads_widget = {
-    adTopLeaderboard: '.side-menu-wrapper > .ad--section-top-leaderboard [id^=gpt-slot-] iframe', //homepage, section, article
+    adTopLeaderboard: '.side-menu-wrapper > .ad--section-top-leaderboard [id^=gpt-slot-]', //homepage, section, article
+    //adTopLeaderboard: '.side-menu-wrapper > .ad--section-top-leaderboard .home_outside_1 iframe',
     adMrecUnderHero: '.hero-wrapper [id^=gpt-slot-]', //homepage, section
     adMrecNextToTopFeed: '.page__top-container [id^=gpt-slot-]', //homepage, section
     adMrecNextToTopFeedSticky: '.page__top-container .page__social-wrapper > div > div > span', //homepage, section

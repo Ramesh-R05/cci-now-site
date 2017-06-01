@@ -75,6 +75,7 @@ export default class Page extends Component {
             headerClassName,
             content
         } = this.props;
+        const pageLocation = Ad.pos.outside;
         const mobileNav = hamburgerNavItems ? hamburgerNavItems.slice() : headerNavItems.slice();
         mobileNav.unshift({ name: 'Home', url: '/' });
         const pageClassName = classnames('page', this.props.className);
@@ -107,7 +108,8 @@ export default class Page extends Component {
                           leaderboard: 'leaderboard',
                           billboard: ['billboard', 'leaderboard']
                       }}
-                      targets={{ position: 1, keyword }}
+                      targets={{ keyword }}
+                      pageLocation={pageLocation}
                     />}
 
                     {pageTitle && <div className="page-title-container"> { pageTitle } </div>}

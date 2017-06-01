@@ -32,6 +32,15 @@ const HomeContainer = proxyquire('../../app/containers/home', {
     '../components/mustRead/mustRead':  MustReadStub
 }).default;
 
+AdStub.pos = {
+    aside: 'rhs',
+    outside: 'outside',
+    body: 'body',
+    wallpaper: 'wallpaper',
+    inskin: 'inskin',
+    panel: 'panel'
+};
+
 describe('Home Container', () => {
 
     let reactModule;

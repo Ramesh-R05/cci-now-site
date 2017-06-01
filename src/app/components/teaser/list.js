@@ -25,7 +25,7 @@ export default class TeaserListView extends Component {
         showDate: true,
         teasers: [],
         className: '',
-        adTargets: { position: 1 },
+        adTargets: {},
         nativeAdConfig: {},
         loadAgain: true
     };
@@ -38,7 +38,8 @@ export default class TeaserListView extends Component {
             sizes: { medium: ['mrec', 'double-mrec'] },
             targets: {
                 ...adTargets
-            }
+            },
+            pageLocation: Ad.pos.aside
         };
 
         if (index) adProps.targets.position += index;
@@ -66,7 +67,8 @@ export default class TeaserListView extends Component {
                               className: 'ad--teaser-list',
                               displayFor: 'small',
                               sizes: 'mrec',
-                              targets: adProps.targets
+                              targets: adProps.targets,
+                              pageLocation: Ad.pos.body
                           }}
                           nativeAdConfig={nativeAdConfig}
                           loadAgain={loadAgain}

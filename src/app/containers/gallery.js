@@ -146,13 +146,13 @@ class GallerySection extends Component {
 
     render() {
         const { gallery, hamburgerNavItems, headerNavItems, customisedTeaser, theme } = this.props;
+        const pageLocation = Ad.pos.outside;
         if (!gallery) return null;
 
         const tags = gallery.tagsDetails;
         const keyword = tags ? tags.map(tag => tag.fullName) : '';
         const targets = {
-            keyword,
-            position: 1
+            keyword
         };
         const mobileNav = hamburgerNavItems ? hamburgerNavItems.slice() : headerNavItems.slice();
         mobileNav.unshift({ name: 'Home', url: '/' });
@@ -173,6 +173,7 @@ class GallerySection extends Component {
 
                     <Ad
                       className="gallery__mobile-ad"
+                      pageLocation={pageLocation}
                       label={{ active: false }}
                       reloadOnResourceChange={this.props.activeGalleryItemIndex || 0}
                       displayFor={['small', 'medium', 'large', 'xlarge']}

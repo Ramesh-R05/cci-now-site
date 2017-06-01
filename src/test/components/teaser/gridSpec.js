@@ -50,7 +50,12 @@ describe('TeaserGridView', () => {
                 showDate: true,
                 showSubSection: true,
                 CustomisedTeaser: TeaserStub,
-                nativeAdConfig: {}
+                nativeAdConfig: {},
+                adConfig: {
+                    targets: {},
+                    pageLocation: "body"
+                }
+
             })
         });
     });

@@ -73,6 +73,7 @@ export default class Section extends Component {
         const heroTeaser = teasers[0];
         const firstTeaserList = teasers.slice(1, 7);
         const keyword = (nodeType === 'TagSection' && title) ? [title] : [];
+        const pageLocation = Ad.pos.outside;
 
         const isBrandPage = nodeType === 'Brand';
         const brand = isBrandPage ? find(this.context.config.brands.uniheader, b => b.url === currentUrl.match(/\/[^/|?]*/)[0]) : null;
@@ -124,7 +125,7 @@ export default class Section extends Component {
                                           showDate={!isBrandPage}
                                           className="news-feed top-news-feed"
                                           adPosition={8}
-                                          adTargets={{ position: 1, keyword }}
+                                          adTargets={{ keyword }}
                                           nativeAdConfig={isBrandPage || {
                                               slotPositionIndex: polarLabels.sectionTopFeed
                                           }}
@@ -143,7 +144,7 @@ export default class Section extends Component {
                                                   className="ad--section-mrec"
                                                   sizes="mrec"
                                                   displayFor="large"
-                                                  targets={{ position: 1 }}
+                                                  pageLocation={Ad.pos.aside}
                                                 />
                                                 { isBrandPage ? <BrandMagazine brand={brand} /> :
                                                 <div className="page__get-social-container">
@@ -167,7 +168,8 @@ export default class Section extends Component {
                           banner: 'banner',
                           leaderboard: 'leaderboard',
                           billboard: ['billboard', 'leaderboard'] }}
-                      targets={{ position: 2, keyword }}
+                      targets={{ keyword }}
+                      pageLocation={pageLocation}
                     /> : null }
 
                     <Repeatable
@@ -177,7 +179,7 @@ export default class Section extends Component {
                       dataSource={this.props.list}
                       nextParams={this.props.listNextParams}
                       className="news-feed bottom-news-feed"
-                      adTargets={{ position: 2, keyword }}
+                      adTargets={{ keyword }}
                       nativeAdConfig={isBrandPage || {
                           slotPositionIndex: polarLabels.sectionBottomFeed
                       }}
@@ -191,7 +193,7 @@ export default class Section extends Component {
                           banner: 'banner',
                           leaderboard: 'leaderboard',
                           billboard: ['billboard', 'leaderboard'] }}
-                      targets={{ position: 3, keyword }}
+                      pageLocation={pageLocation}
                     /> : null }
                 </div>
             </Page>

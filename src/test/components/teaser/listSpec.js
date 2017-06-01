@@ -23,6 +23,15 @@ const TeaserListView = proxyquire('../../../app/components/teaser/list', {
     './teaser': TeaserStub
 }).default;
 
+AdStub.pos = {
+    aside: 'rhs',
+    outside: 'outside',
+    body: 'body',
+    wallpaper: 'wallpaper',
+    inskin: 'inskin',
+    panel: 'panel'
+};
+
 describe('TeaserListView', () => {
     const imageSizes = {
         s: { w: 323, h: 269 },
@@ -68,9 +77,8 @@ describe('TeaserListView', () => {
                         className: "ad--teaser-list",
                         displayFor: "small",
                         sizes: "mrec",
-                        targets: {
-                            position: 1
-                        }
+                        targets: {},
+                        pageLocation: "body"
                     },
                     nativeAdConfig: {},
                     adPosition: 4
@@ -85,7 +93,8 @@ describe('TeaserListView', () => {
                     className: 'ad--section-mrec',
                     displayFor: ['medium', 'large', 'xlarge'],
                     sizes: { medium: ['mrec', 'double-mrec'] },
-                    targets: { position: 1 }
+                    targets: {},
+                    pageLocation: 'rhs'
                 });
             });
         });
@@ -103,7 +112,8 @@ describe('TeaserListView', () => {
                     className: 'ad--section-mrec',
                     displayFor: ['medium', 'large', 'xlarge'],
                     sizes: { medium: ['mrec', 'double-mrec'] },
-                    targets: {position: 1}
+                    targets: {},
+                    pageLocation: 'rhs'
                 });
             });
         });
@@ -121,7 +131,7 @@ describe('TeaserListView', () => {
 
     describe('when setting the adTargets', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(TeaserListView, {items, adTargets: { position: 2 }});
+            reactModule = Context.mountComponent(TeaserListView, {items, adTargets: { keywords: "keywords" }});
             AdComponent = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
         });
 
@@ -130,7 +140,8 @@ describe('TeaserListView', () => {
                 className: 'ad--section-mrec',
                 displayFor: ['medium', 'large', 'xlarge'],
                 sizes: { medium: ['mrec', 'double-mrec'] },
-                targets: reactModule.props.adTargets
+                targets: reactModule.props.adTargets,
+                pageLocation: 'rhs'
             });
         })
     });

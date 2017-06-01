@@ -36,7 +36,12 @@ if (region) {
     }
 }
 
+const env = {
+    APP_DEBUG: process.env.APP_DEBUG
+};
+
 export default mergeWith(
+    env,
     configApi,
     config,
     environmentConfig,

@@ -54,6 +54,15 @@ const contextConfigStub = {
     }
 };
 
+AdStub.pos = {
+    aside: 'rhs',
+    outside: 'outside',
+    body: 'body',
+    wallpaper: 'wallpaper',
+    inskin: 'inskin',
+    panel: 'panel'
+};
+
 describe('Section Container', () => {
 
     Context.addStore('PageStore', {

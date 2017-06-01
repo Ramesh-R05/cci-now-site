@@ -57,6 +57,7 @@ export default class Home extends Component {
 
     render() {
         const polarLabels = this.context.config.polar.details;
+        const pageLocation = Ad.pos.outside;
         return (
             <Page
               currentUrl={this.props.currentUrl}
@@ -86,7 +87,6 @@ export default class Home extends Component {
                                               className="news-feed top-news-feed"
                                               adPosition={8}
                                               adSizes={{ small: 'mrec', medium: ['mrec', 'double-mrec'] }}
-                                              adTargets={{ position: 2 }}
                                               nativeAdConfig={{
                                                   slotPositionIndex: polarLabels.homeTopFeed
                                               }}
@@ -105,7 +105,7 @@ export default class Home extends Component {
                                                       className="ad--section-mrec"
                                                       sizes="mrec"
                                                       displayFor="large"
-                                                      targets={{ position: 1 }}
+                                                      pageLocation={Ad.pos.aside}
                                                     />
                                                     <div className="page__get-social-container">
                                                         <span className="page__social-logo">Now To Love</span>
@@ -128,7 +128,7 @@ export default class Home extends Component {
                           banner: 'banner',
                           leaderboard: 'leaderboard',
                           billboard: ['billboard', 'leaderboard'] }}
-                      targets={{ position: 2 }}
+                      pageLocation={pageLocation}
                     />
 
                     <Repeatable
@@ -137,7 +137,6 @@ export default class Home extends Component {
                       dataSource={this.props.list}
                       nextParams={this.props.listNextParams}
                       className="news-feed bottom-news-feed"
-                      adTargets={{ position: 3 }}
                       nativeAdConfig={{
                           slotPositionIndex: polarLabels.homeBottomFeed
                       }}
@@ -151,7 +150,7 @@ export default class Home extends Component {
                           banner: 'banner',
                           leaderboard: 'leaderboard',
                           billboard: ['billboard', 'leaderboard'] }}
-                      targets={{ position: 3 }}
+                      pageLocation={pageLocation}
                     />
 
                 </div>
