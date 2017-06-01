@@ -9,7 +9,7 @@ Feature: Gallery
     Scenario Outline: Users can see the created date of content
         When I switch to "<device>" view
         Given I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
-        * I can see the created date on the gallery "DEC 15, 2016 2:25PM"
+        * I can see the created date on the gallery "DEC 15, 2016"
 
         Examples:
             | device            |
