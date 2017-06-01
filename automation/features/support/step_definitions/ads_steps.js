@@ -208,19 +208,28 @@ module.exports = function() {
     });
 
     this.Then(/^I can see last RHR add is sticky$/, function () {
-        browser.moveToObject(wn_ads.adMrecRHRFeed5);
-        expect(browser.isVisible(wn_ads.adMrecRHRFeed5)).toBe(true);
+
+        // Scrolling down to the last RHR feed with keeping ad in view
+        var x = browser.getLocation(wn_ads.lastFeed, 'x');
+        var y = browser.getLocation(wn_ads.lastFeed, 'y');
+        browser.scroll(x-50,y-50);
+        // ad will auto refresh once in view on the screen
+        browser.waitForVisible(wn_ads.lastFeed, 2000);
+
     });
 
     this.Then(/^the sticky add will auto refresh every (\d+) seconds when is in View$/, function (seconds) {
+
+        browser.isVisible(wn_ads.adMrecRHRFeed5);
+        // scrolling down a little makes the ad appear on the screen
+        var x = browser.getLocation(wn_ads.adMrecRHRFeed5, 'x');
+        var y = browser.getLocation(wn_ads.adMrecRHRFeed5, 'y');
+        browser.scroll(x-1,y-1);
         // check the iframe ID before change
         var first_googleId = browser.getAttribute(wn_ads.adMrecRHRFeed5,"data-google-query-id");
-
-        wait(seconds * 1000);
-
+        wait(6000);
         // check the iframe ID after change
         var second_googleId = browser.getAttribute(wn_ads.adMrecRHRFeed5,"data-google-query-id");
-
         expect(first_googleId).not.toEqual(second_googleId);
 
     });

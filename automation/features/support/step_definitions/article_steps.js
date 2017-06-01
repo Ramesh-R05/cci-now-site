@@ -488,7 +488,7 @@ module.exports = function() {
         var pinterest = browser.isVisible(wn_article.articlePinterest);
         var pinterestButton = browser.getText(wn_article.articlePinterest);
         expect(pinterest).toBe(true);
-        expect(pinterestButton).toEqual('PIN IT');
+        expect(pinterestButton).toEqual('PIN');
     });
 
     this.Given(/^I can see the outbrain frame with "([^"]*)" template$/, function (templateName) {

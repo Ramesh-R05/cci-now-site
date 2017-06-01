@@ -63,8 +63,8 @@ var article_widget = {
     headerSourceImg: 'header.article__header .article-header-source img',
     bottomSource: '.article-header-source--bottom a',
     bottomSourceImg: '.article-header-source--bottom img',
-    articleFacebook: '.article__footer .social-share-block .icon-facebook',
-    articlePinterest: '.article__footer .social-share-block .icon-pinterest',
+    articleFacebook: '.article__footer .fb-xfbml-parse-ignore',
+    articlePinterest: '.article__footer .pinterest-share-link',
     outbrain: '.article .OUTBRAIN',
     relatedPolarFeed: '.related-content-items > .polar-feed-item'
 };

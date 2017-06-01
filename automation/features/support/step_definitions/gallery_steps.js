@@ -37,6 +37,7 @@ module.exports = function() {
     });
 
     this.Given(/^I can see the created date on the gallery "([^"]*)"$/, function(date) {
+        wait(2000);
         browser.waitForExist(gallery.galleryDate,5000);
         browser.scroll(gallery.galleryDate);
         var galleryDate = browser.getText(gallery.galleryDate);
@@ -107,7 +108,7 @@ module.exports = function() {
         var pinterest = browser.isVisible(gallery.galleryPinterest);
         var pinterestButton = browser.getText(gallery.galleryPinterest);
         expect(pinterest).toBe(true);
-        expect(pinterestButton).toEqual('PIN IT');
+        expect(pinterestButton).toEqual('PIN');
     });
 
     this.Given(/^I can see the author "([^"]*)" on the gallery$/, function (authorName) {

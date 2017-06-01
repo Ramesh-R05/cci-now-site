@@ -16,12 +16,12 @@ var gallery_widget = {
     videoId: 'data-video-id',
     playButton: '.vjs-big-play-button',
     imageCount: ".gallery__item-count:nth-child(1)",
-    galleryFacebook: '.social-share-block .icon-facebook',
-    galleryPinterest: '.social-share-block .icon-pinterest',
+    galleryFacebook: '.article__footer .fb-xfbml-parse-ignore',
+    galleryPinterest: '.article__footer .pinterest-share-link',
     authorText: '.article-header-author__name',
     //Locators identified by Xpath
     imgCount: "//*[@id='app']/div/section/section[1]/section/footer/div[1]/span",
-    imgCountMobile: "//*[@id='app']/div/section/header/div/span",
+    imgCountMobile: "//*[@id='app']/div/section/header/div/span"
 
 };
 module.exports = gallery_widget;
