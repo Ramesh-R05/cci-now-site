@@ -9,7 +9,7 @@ export default function loggerPlugin() {
                     const originalActionDispatch = actionContext.dispatch;
                     actionContext.dispatch = function dispatch(type, payload) {
                         if (type.includes('_FAILED') || type === 'PAGE_NOT_FOUND') {
-                            logger.error(`${type} ${this.rootId}`, { error: payload.response.error });
+                            logger.error(`${type} ${this.rootId}`, payload);
                         } else if (process.env.APP_DEBUG === 'true') {
                             logger.debug(`${type} ${this.rootId}`);
                         }
