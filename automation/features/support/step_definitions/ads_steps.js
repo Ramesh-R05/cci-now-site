@@ -234,12 +234,126 @@ module.exports = function() {
 
     });
 
-    this.Then(/^I should see each ad slot element containing proper class name$/, function(dataTable){
+    this.Then(/^I should see each outside ad slot element containing proper class name$/, function (dataTable) {
         var rows = dataTable.hashes();
-        
         for (var i = 0; i < rows.length; i++) {
             var row = rows[i];
-            var className = browser.getAttribute('#' + row['no'],'class');
+            switch(row['ad']) {
+                case 'Top Leaderboard':
+                    var adElement = wn_ads.ad_TopLeaderboard;
+                    break;
+                case 'Middle Leaderboard':
+                    var adElement = wn_ads.ad_MiddleLeaderboard;
+                    break;
+                case 'Bottom Leaderboard':
+                    var adElement = wn_ads.ad_BottomLeaderboard;
+                    break;
+                case 'Teads':
+                    var adElement = wn_ads.ad_Teads;
+                    break;
+                case 'MREC Under Hero Teaser': //mobile
+                    var adElement = wn_ads.ad_MrecUnderHeroTeader;
+                    break;
+            }
+            var className = browser.getAttribute(adElement,'class');
+            expect(className).toEqual(row['class-name']);
+        }
+    });
+
+    this.Then(/^I should see each body ad slot element containing proper class name$/, function (dataTable) {
+        var rows = dataTable.hashes();
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            switch(row['ad']) {
+                case 'MREC After Slide 3':
+                    var adElement = wn_ads.ad_MrecAfterSlide3;
+                    break;
+                case 'MREC After Slide 7':
+                    var adElement = wn_ads.ad_MrecAfterSlide7;
+                    break;
+                case 'MREC In Bottom Feed': //mobile
+                    var adElement = wn_ads.ad_MrecInBottomFeed;
+                    break;
+                case 'MREC Before Recommendation': //mobile
+                    var adElement = wn_ads.ad_MrecBeforeRecommendation;
+                    break;
+                case 'MREC Under Hero Image': //mobile
+                    var adElement = wn_ads.ad_MrecUnderHeroImage;
+                    break;
+            }
+            var className = browser.getAttribute(adElement,'class');
+            expect(className).toEqual(row['class-name']);
+        }
+    });
+
+    this.Then(/^I should see each RHS ad slot element containing proper class name$/, function (dataTable) {
+        var rows = dataTable.hashes();
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            switch(row['ad']) {
+                case 'Top MREC RHS':
+                    var adElement = wn_ads.ad_TopMrecRhs;
+                    break;
+                case 'Bottom MREC RHS':
+                    var adElement = wn_ads.ad_BottomMrecRhs;
+                    break;
+                case 'MREC RHS 1':
+                    var adElement = wn_ads.ad_MrecRhs1;
+                    break;
+                case 'MREC RHS 2':
+                    var adElement = wn_ads.ad_MrecRhs2;
+                    break;
+                case 'MREC RHS 3':
+                    var adElement = wn_ads.ad_MrecRhs3;
+                    break;
+                case 'MREC RHS 4':
+                    var adElement = wn_ads.ad_MrecRhs4;
+                    break;
+                case 'Sticky MREC RHS':
+                    var adElement = wn_ads.ad_StickyMrecRhs;
+                    break;
+            }
+            var className = browser.getAttribute(adElement,'class');
+            expect(className).toEqual(row['class-name']);
+        }
+    });
+
+    this.Then(/^I should see each additional ad slot element containing proper class name$/, function (dataTable) {
+        var rows = dataTable.hashes();
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            switch(row['ad']) {
+                case 'Out Of Page':
+                    var adElement = wn_ads.ad_OutOfPage;
+                    break;
+                case 'Left Side Panel':
+                    var adElement = wn_ads.ad_LeftSidePanel;
+                    break;
+                case 'Right Side Panel':
+                    var adElement = wn_ads.ad_RightSidePanel;
+                    break;
+                case 'Wallpaper':
+                    var adElement = wn_ads.ad_Wallpaper;
+                    break;
+            }
+            var className = browser.getAttribute(adElement,'class');
+            expect(className).toEqual(row['class-name']);
+        }
+    });
+
+    this.Then(/^I should see each load more ad slot element containing proper class name$/, function (dataTable) {
+        var rows = dataTable.hashes();
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            switch (row['ad']) {
+                case 'Load More MREC RHS':
+                    var adElement = wn_ads.ad_LoadMoreMrecRhs;
+                    break;
+                case 'Load More MREC In Bottom Feed': //mobile
+                    var adElement = wn_ads.ad_LoadMoreMrecInBottomFeed;
+                    break;
+            }
+            var className = browser.getAttribute(adElement, 'class');
             expect(className).toEqual(row['class-name']);
         }
     });
