@@ -249,6 +249,13 @@ export default{
                 "content": {
                     "url": "http://embed.wirewax.com/8037657/ff0044/"
                 }
+            },
+            {
+                "type": "linklay",
+                "label": "Linklay",
+                "content": {
+                    "url": "https://www.linklay.com/app/linklay/embed/linklay59151f750e2a94.81058944"
+                }
             }
         ],
         "authorProfiles": [

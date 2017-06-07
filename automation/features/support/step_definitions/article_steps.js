@@ -194,11 +194,13 @@ module.exports = function() {
         expect(competiton).toMatch("engagesciences");
     });
     this.Given(/^I can see the body Twitter embed "([^"]*)"$/, function (twitterId) {
-       var twitEmbed = browser.getAttribute(wn_article.twitterEmb1, 'data-tweet-id');
+        browser.waitForVisible(wn_article.twitterEmb1, 3000);
+        var twitEmbed = browser.getAttribute(wn_article.twitterEmb1, 'data-tweet-id');
         console.log(twitEmbed);
         expect(twitEmbed).toEqual(twitterId);
        });
     this.Given(/^I can see the body Instagram embed with caption "([^"]*)"$/, function (instagramSrc) {
+        browser.waitForVisible(wn_article.instagramEmb1, 3000);
         var instagramEmbed = browser.getAttribute(wn_article.instagramEmb1, 'src');
         expect(instagramEmbed[0]).toMatch(instagramSrc);
     });
@@ -242,6 +244,12 @@ module.exports = function() {
         var wirewaxEmb = browser.getAttribute(wn_article.wirewaxEmb, 'src');
         console.log(wirewaxEmb);
         expect(wirewaxEmb).toEqual(wirewaxUrl);
+    });
+    this.Given(/^I can see the body Linklay embed "([^"]*)"$/, function (linklayUrl) {
+        browser.waitForVisible(wn_article.linklayEmb, 3000);
+        var linklayEmb = browser.getAttribute(wn_article.linklayEmb, 'src');
+        console.log(linklayEmb);
+        expect(linklayEmb).toEqual(linklayUrl);
     });
     this.Given(/^I can see the related tags "([^"]*)"$/, function (rTag1) {
         var relatedTags = browser.getText(wn_article.relatedTags, 'href');

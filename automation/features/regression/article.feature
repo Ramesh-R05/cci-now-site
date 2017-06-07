@@ -172,6 +172,7 @@ Feature: Article
 #-------- Social share end ---------------#
 
 # -------- Social embed is Medium ---------------#
+    @embeds
     Scenario Outline: Editorial team can add social feeds to the article body
          Given I switch to "<device>" view
          When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
@@ -184,6 +185,7 @@ Feature: Article
          * I can see the body Vimeo embed "https://player.vimeo.com/video/181027959"
          * I can see the body Whooshka embed "https://www.whooshkaa.com/player/episode/id/90704?visual=true"
          * I can see the body Wirewax embed "http://embed.wirewax.com/8037657/ff0044/"
+         * I can see the body Linklay embed "http://www.linklay.com/app/linklay/embed/linklay59151f750e2a94.81058944"
     @med
          Examples:
              | device            |
