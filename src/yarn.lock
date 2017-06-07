@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@bxm/ad@^11.1.0":
-  version "11.1.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fad/-/ad-11.1.0.tgz#6c04409da06f09e056fd88f26b99afa54e4f2f08"
+"@bxm/ad@^11.2.0":
+  version "11.2.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fad/-/ad-11.2.0.tgz#1156fb3702234b37fa0648caff17aa0688f70d40"
   dependencies:
     "@bxm/react-script-loader" "^2.0.0"
     classnames "^2.2.1"
@@ -13,9 +13,9 @@
     q "^1.4.1"
     react-script-loader "0.0.1"
 
-"@bxm/article@^24.0.0":
-  version "24.0.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2farticle/-/article-24.0.0.tgz#6b36dbd9c4eb97b89405fa7a3f81cd0f62ed922e"
+"@bxm/article@^25.1.0":
+  version "25.2.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2farticle/-/article-25.2.0.tgz#e3e947ffbdab86ecd787a91dff214ddffd469770"
   dependencies:
     "@bxm/behaviour" "^1.1.0"
     "@bxm/image" "^2.0.0"
