@@ -1,6 +1,6 @@
 
 export default {
     site: {
-        host: 'http://dev.nznow-site.bauer-media.net.au'
+        host: 'http://now-site-nz.sit.bxm.net.au'
     }
 };

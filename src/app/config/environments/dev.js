@@ -3,7 +3,7 @@ const playerId = 'VkuyApojl';
 
 export default {
     site: {
-        host: 'http://dev.now-site.bauer-media.net.au'
+        host: 'http://now-site-au.sit.bxm.net.au'
     },
     brightcove: {
         playerId,
