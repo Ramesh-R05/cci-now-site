@@ -22,11 +22,11 @@ var ads_widget = {
     adMrecInSlideGallery: '.ad.gallery__slide-ad.ad--bottom-label [id^=gpt-slot-]', //gallery
     adBottomLeaderboardGallery: '.ad.gallery__footer-ad.ad--top-label', //gallery
 
-    adMrecRHRFeed1: 'ul.feed__items li.feed-ad:nth-child(3) [id^=gpt-slot-] iframe', //article
-    adMrecRHRFeed2: 'ul.feed__items li.feed-ad:nth-child(9) [id^=gpt-slot-] iframe', //article
-    adMrecRHRFeed3: 'ul.feed__items li.feed-ad:nth-child(15) [id^=gpt-slot-] iframe', //article
-    adMrecRHRFeed4: 'ul.feed__items li.feed-ad:nth-child(21) [id^=gpt-slot-] iframe', //article
-    adMrecRHRFeed5: '.carriage  [id^=gpt-slot-]', //only on vertical gallery
+    adMrecRHRFeed1: 'ul.feed__items li.feed-ad:nth-child(3) [id^=gpt-slot-] iframe', //article and vertical gallery
+    adMrecRHRFeed2: 'ul.feed__items li.feed-ad:nth-child(9) [id^=gpt-slot-] iframe', //article and vertical gallery
+    adMrecRHRFeed3: 'ul.feed__items li.feed-ad:nth-child(15) [id^=gpt-slot-] iframe', //article and vertical gallery
+    adMrecRHRFeed4: 'ul.feed__items li.feed-ad:nth-child(21) [id^=gpt-slot-] iframe', //article and vertical gallery
+    adMrecRHRFeed5: '.carriage [id^=gpt-slot-]', //article and vertical gallery
     lastFeed: '.feed__items .feed-item:nth-child(24)', //recorded for reference to auto ad
     adMrecUnderHeroArticle: '.ad--beneath-hero [id^=gpt-slot-]', //article
     adMrecAboveRecommendation: '.ad--article-before-recommendations [id^=gpt-slot-]', //article

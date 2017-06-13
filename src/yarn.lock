@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@bxm/ad@^11.2.0":
-  version "11.2.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fad/-/ad-11.2.0.tgz#1156fb3702234b37fa0648caff17aa0688f70d40"
+"@bxm/ad@^11.3.0":
+  version "11.3.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fad/-/ad-11.3.0.tgz#6066475d5d5fd1961e3250651bd3699d78e35d84"
   dependencies:
     "@bxm/react-script-loader" "^2.0.0"
     classnames "^2.2.1"
@@ -13,9 +13,9 @@
     q "^1.4.1"
     react-script-loader "0.0.1"
 
-"@bxm/article@^25.1.0":
-  version "25.2.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2farticle/-/article-25.2.0.tgz#e3e947ffbdab86ecd787a91dff214ddffd469770"
+"@bxm/article@^25.3.0":
+  version "25.3.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2farticle/-/article-25.3.0.tgz#5342423ae4bffbc109ed9c7a5a77e8615b660077"
   dependencies:
     "@bxm/behaviour" "^1.1.0"
     "@bxm/image" "^2.0.0"
@@ -3497,11 +3497,11 @@ husky@^0.13.3:
     is-ci "^1.0.9"
     normalize-path "^1.0.0"
 
-iconv-lite@0.4.13, iconv-lite@^0.4.5, iconv-lite@~0.4.13:
+iconv-lite@0.4.13:
   version "0.4.13"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
 
-iconv-lite@0.4.15:
+iconv-lite@0.4.15, iconv-lite@^0.4.5, iconv-lite@~0.4.13:
   version "0.4.15"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"
 

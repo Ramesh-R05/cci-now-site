@@ -176,6 +176,13 @@ Feature: Ad
         * I should see MREC ad above recommendation
         * I should see the bottom leaderboard ad above the footer on article
 
+    @BXMA-406 @high
+    Scenario: Ads will autorefresh on article page
+        Given I switch to "desktop" view
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        Then I can see last RHR add is sticky
+        And the sticky add will auto refresh every 6 seconds when is in View
+
 #-------- Article Page Ads end ---------------#
 
 # -------- Wall Paper Ads are High and Medium as this is an area with Commercial Value ---------------
