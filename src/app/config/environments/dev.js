@@ -9,11 +9,6 @@ export default {
         playerId,
         script: `//players.brightcove.net/${brightcove.accountId}/${playerId}_default/index.min.js`
     },
-    features: {
-        sailthru: {
-            enabled: true
-        }
-    },
     services: {
         faceBookAppID: '520578108132544'
     }

@@ -4,7 +4,6 @@ import VerticalGallery from '@bxm/article/lib/gallery';
 import Page from './page';
 import Article from '@bxm/article/lib/article';
 import Teaser from '../components/teaser/teaser';
-import Sailthru from '../components/sailthru/sailthru';
 import Ad from '@bxm/ad/lib/google/components/ad';
 
 function mapStateToProps(context) {
@@ -95,7 +94,6 @@ export default class Document extends Component {
                       socialShare={socialShare}
                       theme={theme}
                     />
-                    <Sailthru />
                 </Page>
             );
         }
@@ -117,7 +115,6 @@ export default class Document extends Component {
                   socialShare={socialShare}
                   theme={theme}
                 />
-                <Sailthru />
             </Page>
         );
     }

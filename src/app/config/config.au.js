@@ -177,18 +177,11 @@ export default {
     features: {
         outbrain: {
             enabled: true
-        },
-        sailthru: {
-            enabled: false
         }
     },
     outbrain: {
         templateId: 'NowtoLove',
         widgetId: 'AR_1',
         scriptUrl: 'http://widgets.outbrain.com/outbrain.js'
-    },
-    sailthru: {
-        scriptUrl: 'https://ak.sail-horizon.com/spm/spm.v1.min.js',
-        customerId: 'c4069ef0b89e8045516a10115a1f4216'
     }
 };

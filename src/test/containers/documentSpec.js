@@ -11,7 +11,6 @@ const PageStub = Context.createStubComponentWithChildren();
 const CustomisedTeaserStub = Context.createStubComponent();
 const FooterStub = Context.createStubComponent();
 const AdWrapperStub = Context.createStubComponentWithChildren();
-const SailthruStub = Context.createStubComponent();
 
 const Document = proxyquire('../../app/containers/document', {
     '@bxm/article/lib/article': ArticleStub,
@@ -19,8 +18,7 @@ const Document = proxyquire('../../app/containers/document', {
     '@bxm/article/lib/gallery': VerticalGalleryStub,
     './page': PageStub,
     '../components/teaser/teaser': CustomisedTeaserStub,
-    '../components/article/footer': FooterStub,
-    '../components/sailthru/sailthru': SailthruStub,
+    '../components/article/footer': FooterStub
 }).default;
 
 describe('Document Component', () => {
@@ -74,14 +72,6 @@ describe('Document Component', () => {
                 hideFooter: false
             });
         });
-
-        it('should wrap the Article Component and Sailthru Component', () => {
-            const ArticleComponent = TestUtils.findRenderedComponentWithType(reactModule, ArticleStub);
-            const SailthruComponent = TestUtils.findRenderedComponentWithType(reactModule, SailthruStub);
-            const PageComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
-            expect(ReactDOM.findDOMNode(PageComponent).innerHTML).to.contain(ReactDOM.findDOMNode(ArticleComponent).outerHTML);
-            expect(ReactDOM.findDOMNode(PageComponent).innerHTML).to.contain(ReactDOM.findDOMNode(SailthruComponent).outerHTML);
-        });
     });
 
     describe('when nodeType is Gallery', () => {
@@ -92,13 +82,10 @@ describe('Document Component', () => {
             reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType});
         });
 
-        it(`should render the Gallery Component`, () => {
-            TestUtils.findRenderedComponentWithType(reactModule, VerticalGalleryStub);
-        });
+            it(`should render the Gallery Component`, () => {
+                TestUtils.findRenderedComponentWithType(reactModule, VerticalGalleryStub);
+            });
 
-        it(`should render the Sailthru Component`, () => {
-            TestUtils.findRenderedComponentWithType(reactModule, SailthruStub);
-        });
     });
 });
 
