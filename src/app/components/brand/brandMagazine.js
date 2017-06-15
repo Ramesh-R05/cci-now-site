@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import BrandNewsletter from './brandNewsletter';
 import imageResize from '@bxm/ui/lib/common/ImageResize';
 import ResponsiveImage from '@bxm/ui/lib/common/ResponsiveImage';
 import SocialContainer from '../social/block';
@@ -60,9 +61,11 @@ class BrandMagazine extends Component {
                     }
                 </div>
                 <hr />
+                <BrandNewsletter brand={brand} />
                 <div className="page__get-social-container">
                     <SocialContainer socialUrls={socialLinks} />
                 </div>
+                <hr />
             </div>
         );
     }

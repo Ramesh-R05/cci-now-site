@@ -10,6 +10,7 @@ import Repeatable from '../components/repeatable';
 import loadList from '../actions/loadList';
 import StickyAndDockAd from '../components/page/stickyAndDockAd';
 import MustRead from '../components/mustRead/mustRead';
+import BrandNewsletter from '../components/brand/brandNewsletter';
 
 function mapStateToProps(context) {
     const teaserStore = context.getStore('TeaserStore');
@@ -108,6 +109,7 @@ export default class Home extends Component {
                                                       pageLocation={Ad.pos.aside}
                                                     />
                                                     <div className="page__get-social-container">
+                                                        <BrandNewsletter />
                                                         <span className="page__social-logo">Now To Love</span>
                                                         <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
                                                     </div>

@@ -1,5 +1,4 @@
 var brand_widget = {
-
     brandTitleLogo: '.page-title-container h1.brand-title img',
     brandBreadcrumb: '.page-title-container .brand-breadcrumb',
     heroSource: '.hero-wrapper .hero-teaser__source',
@@ -16,5 +15,7 @@ var brand_widget = {
     brandTwitterLink: '.page__get-social-container .social-link--twitter a',
     brandInstagramLink: '.page__get-social-container .social-link--instagram a',
     brandPinterestLink: '.page__get-social-container .social-link--pinterest a',
+    newsletterSignUpBtnDesktop: '.page__social-wrapper .newsletter-subscribe__button a',
+    newsletterSignUpBtnMobile: '.hero-wrapper .newsletter-subscribe__button a',
 };
 module.exports = brand_widget;

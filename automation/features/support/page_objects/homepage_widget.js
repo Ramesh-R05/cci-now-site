@@ -32,6 +32,6 @@ var homepage_widget = {
     rhsSocialLink: '.page__social-wrapper .social-link a',
     topTeasers: '.teaser-view-grid .teaser__list-item article',
     bottomTeasers: '.teaser-view-list .teaser__list-item article',
-    loadMoreFeed: '.repeatable-component div:nth-child(2) article',
+    loadMoreFeed: '.repeatable-component div:nth-child(2) article'
 };
 module.exports = homepage_widget;

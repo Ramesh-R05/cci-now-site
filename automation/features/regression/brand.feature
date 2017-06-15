@@ -3,6 +3,38 @@ Feature: Brand Landing page
     As a user
     I should be able to see brand landing page
 
+    @BXMA-482 @high
+    Scenario Outline: Verify the sign-up URL on <page> brand landing page in mobile view
+        Given I switch to "mobile" view
+        When I am currently viewing "<page>"
+        Then I should see the sign up button containing "<link>" url and "gtm-subs-brand" gtm in "mobile" view
+        Examples:
+            | page                  | link                                                   |
+            | aww/                  | http://www.nowtolove.com.au/aww-newsletter             |
+            | womansday/            | http://www.nowtolove.com.au/womansday-newsletter       |
+            | good-health/          | http://www.nowtolove.com.au/good-health-newsletter     |
+            | okmagazine/           | http://www.nowtolove.com.au/okmagazine-newsletter      |
+            | nw/                   | http://www.nowtolove.com.au/nw-newsletter              |
+            | take5mag/             | http://www.nowtolove.com.au/take5mag-newsletter        |
+            | yours/                | http://www.nowtolove.com.au/yours-newsletter           |
+            | mother-and-baby/      | http://www.nowtolove.com.au/mother-and-baby-newsletter |
+            | tvweek/               | http://www.nowtolove.com.au/tvweek-newsletter          |
+
+    @BXMA-482
+    Scenario Outline: Verify the sign-up URL on <page> brand landing page in <device> view
+        Given I switch to "<device>" view
+        When I am currently viewing "<page>"
+        Then I should see the sign up button containing "<link>" url and "gtm-subs-brand" gtm in "<device>" view
+        @med
+        Examples:
+            | device            | page         | link                                                   |
+            | desktop           | aww/         | http://www.nowtolove.com.au/aww-newsletter             |
+        @low
+        Examples:
+            | device            | page         | link                                                   |
+            | tablet landscape  | womansday/   | http://www.nowtolove.com.au/womansday-newsletter       |
+            | tablet portrait   | good-health/ | http://www.nowtolove.com.au/good-health-newsletter     |
+
     @BXMA-291
     Scenario Outline: Verify the brand title and hero teaser element are functional correctly in "<device>" view
         Given I switch to "<device>" view

@@ -78,3 +78,25 @@ Feature: Specific value for NZ NTL
             |Twitter    |https://twitter.com/NowToLovenz        |
             |Instagram  |https://www.instagram.com/NowToLovenz  |
             |Pinterest  |https://nz.pinterest.com/NowToLoveNZ   |
+
+    @BXMA-482
+    #Test on desktop for homepage. We will change to mobile after the existing known issue is solved in the future.
+    Scenario: Verify the sign-up URL on homepage
+        Given I switch to "desktop" view
+        When I am currently viewing the homepage
+        Then I should see the sign up button containing "http://www.nowtolove.co.nz/now-nz-newsletter" url and "gtm-subs-homepage" gtm in "desktop" view
+
+
+    @BXMA-482
+    Scenario Outline: Verify the sign-up URL on <page> brand landing page in mobile view
+        Given I switch to "mobile" view
+        When I am currently viewing "<page>"
+        Then I should see the sign up button containing "<link>" url and "gtm-subs-brand" gtm in "mobile" view
+        Examples:
+            | page                    | link                                                         |
+            | nz-womans-weekly/       | http://www.nowtolove.co.nz/nz-womans-weekly-newsletter       |
+            | womans-day/             | http://www.nowtolove.co.nz/womans-day-newsletter             |
+            | australianwomensweekly/ | http://www.nowtolove.co.nz/australianwomensweekly-newsletter |
+            | next/                   | http://www.nowtolove.co.nz/next-newsletter                   |
+            | good-health-choices     | http://www.nowtolove.co.nz/good-health-choices-newsletter    |
+            | simply-you/             | http://www.nowtolove.co.nz/simply-you-newsletter             |

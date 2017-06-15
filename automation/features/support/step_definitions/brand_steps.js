@@ -147,4 +147,28 @@ module.exports = function(){
             expect(browser.isExisting(brand.brandSubscribeLink)).toBe(false);
         }
     });
+
+    this.When(/^I should see the sign up button containing "([^"]*)" url and "([^"]*)" gtm in "([^"]*)" view$/, function (url, gtm, device) {
+        var signUpBtn, signUpBtnLink, signUpBtnClass;
+
+        switch(device) {
+            case 'mobile':
+            case 'tablet portrait':
+                signUpBtn = brand.newsletterSignUpBtnMobile;
+                signUpBtnLink = browser.getAttribute(signUpBtn, 'href');
+                signUpBtnClass = browser.getAttribute(signUpBtn, 'class');
+                break;
+            case 'desktop':
+            case 'tablet landscape':
+                signUpBtn = brand.newsletterSignUpBtnDesktop;
+                signUpBtnLink = browser.getAttribute(signUpBtn, 'href');
+                signUpBtnClass = browser.getAttribute(signUpBtn, 'class');
+                break;
+        }
+
+        browser.moveToObject(signUpBtn);
+        expect(browser.isVisible(signUpBtn)).toEqual(true);
+        expect(signUpBtnLink).toEqual(url);
+        expect(signUpBtnClass).toContain(gtm);
+    });
 };

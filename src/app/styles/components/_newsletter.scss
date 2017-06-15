@@ -1,0 +1,92 @@
+.newsletter-subscribe { 
+    font-size: 14px;
+    text-align: center;
+    font-family: $font-family-sans-serif-primary;
+
+    a {
+        width: 148px;
+        height: 42px;
+        color: #fff;
+        display: inline-block;
+        padding-top: 10px;
+        margin: 20px 0 20px;
+        letter-spacing: 0.7px;
+        text-decoration: none;
+    }
+
+    &__button-default a {
+        background-color: $nl-color;
+    }
+
+    &__button-wd a {
+        background-color: $wd-color;
+    }
+
+    &__button-aww a {
+        background-color: $aww-color;
+    }
+
+    &__button-gh a {
+        background-color: $good-health-color;
+    }
+
+    &__button-ok a {
+        background-color: $ok-color;
+    }
+
+    &__button-nw a {
+        background-color: $nw-color;
+    }
+
+    &__button-take5 a {
+        background-color: $wd-color;
+    }
+
+    &__button-yours a {
+        background-color: $yours-color;
+    }
+
+    &__button-mb a {
+        background-color: $mother-baby-color;
+    }
+
+    &__button-tvweek a {
+        background-color: $tv-color;
+    }
+
+    &__button-nzww a {
+        background-color: $nz-womans-weekly-color;
+    }
+
+    &__button-nzwd a {
+        background-color: $nz-womans-day-color;
+    }
+
+    &__button-awwnz a {
+        background-color: $nz-aww-color;
+    }
+
+    &__button-next a {
+        background-color: $nz-next-color;
+    }
+
+    &__button-nzgh a {
+        background-color: $nz-good-health-choices-color;
+    }
+
+    &__button-simply a {
+        background-color: $nz-simply-you-color;
+    }
+}
+
+
+.newsletter-subscribe__text {
+    margin: 5px 0 -5px 0;
+}
+
+.newsletter-subscribe__title {
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+}
+

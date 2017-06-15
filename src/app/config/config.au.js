@@ -10,7 +10,9 @@ export default {
             facebook: 'https://www.facebook.com/nowtolove',
             twitter: 'https://twitter.com/NowToLove',
             instagram: 'https://www.instagram.com/NowToLove'
-        }
+        },
+
+        newsletterUrl: '//www.nowtolove.com.au/now-newsletter'
     },
 
     brands: {
@@ -26,6 +28,7 @@ export default {
                     twitter: 'https://twitter.com/womensweeklymag',
                     instagram: 'https://www.instagram.com/womensweeklymag'
                 },
+                newsletterUrl: '//www.nowtolove.com.au/aww-newsletter',
                 alternateHrefLangUrl: '/australianwomensweekly'
             },
             {
@@ -38,6 +41,7 @@ export default {
                     twitter: 'https://twitter.com/womansdayaus',
                     instagram: 'https://www.instagram.com/Womansdayaus'
                 },
+                newsletterUrl: '//www.nowtolove.com.au/womansday-newsletter',
                 alternateHrefLangUrl: '/womans-day'
             },
             {
@@ -50,6 +54,7 @@ export default {
                     twitter: 'https://twitter.com/goodhealthmag',
                     instagram: 'https://www.instagram.com/goodhealthmag'
                 },
+                newsletterUrl: '//www.nowtolove.com.au/good-health-newsletter',
                 alternateHrefLangUrl: '/good-health-choices'
             },
             {
@@ -61,7 +66,8 @@ export default {
                     facebook: 'https://www.facebook.com/OKmagAustralia',
                     twitter: 'https://twitter.com/okmagaustralia',
                     instagram: 'https://www.instagram.com/okmagaustralia'
-                }
+                },
+                newsletterUrl: '//www.nowtolove.com.au/okmagazine-newsletter'
             },
             {
                 id: 'nw',
@@ -72,7 +78,8 @@ export default {
                     facebook: 'https://www.facebook.com/NWmagazine',
                     twitter: 'https://twitter.com/nwmag',
                     instagram: 'https://www.instagram.com/nwmag/'
-                }
+                },
+                newsletterUrl: '//www.nowtolove.com.au/nw-newsletter'
             },
             {
                 id: 'take5',
@@ -83,7 +90,8 @@ export default {
                     facebook: 'https://www.facebook.com/take5magazine',
                     twitter: 'https://twitter.com/take5magazine',
                     instagram: 'https://www.instagram.com/take5magazine/'
-                }
+                },
+                newsletterUrl: '//www.nowtolove.com.au/take5mag-newsletter'
             },
             {
                 id: 'yours',
@@ -94,7 +102,8 @@ export default {
                     facebook: 'https://www.facebook.com/Yoursmagazineau/',
                     twitter: 'https://twitter.com/yoursmagazineau',
                     instagram: 'https://www.instagram.com/yoursmagazineau/'
-                }
+                },
+                newsletterUrl: '//www.nowtolove.com.au/yours-newsletter'
             },
             {
                 id: 'mb',
@@ -106,6 +115,7 @@ export default {
                     twitter: 'https://twitter.com/motherbaby_au',
                     instagram: 'https://www.instagram.com/motherbaby_au'
                 },
+                newsletterUrl: '//www.nowtolove.com.au/mother-and-baby-newsletter',
                 renderSubscribeElements: false
             },
             {
@@ -117,7 +127,8 @@ export default {
                     facebook: 'https://www.facebook.com/tvweekmag',
                     twitter: 'https://twitter.com/TVWEEKmag',
                     instagram: 'https://www.instagram.com/TVWEEKmag'
-                }
+                },
+                newsletterUrl: '//www.nowtolove.com.au/tvweek-newsletter'
             }
         ],
         hamburgers: [

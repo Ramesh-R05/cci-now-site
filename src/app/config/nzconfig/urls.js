@@ -10,6 +10,8 @@ export default {
         twitter: 'https://twitter.com/NowToLovenz',
         instagram: 'https://www.instagram.com/NowToLovenz',
         pinterest: 'https://nz.pinterest.com/NowToLoveNZ/'
-    }
+    },
+
+    newsletterUrl: '//www.nowtolove.co.nz/now-nz-newsletter'
 };
 

@@ -6,6 +6,7 @@ noCallThru();
 
 const ResponsiveImageStub = Context.createStubComponent();
 const SocialContainerStub = Context.createStubComponent();
+
 const BrandMagazine = proxyquire('../../../app/components/brand/brandMagazine', {
     '@bxm/ui/lib/common/ResponsiveImage': ResponsiveImageStub,
     '../social/block': SocialContainerStub
@@ -18,6 +19,18 @@ Context.addStore('PageStore', {
     }
 });
 
+const contextConfigStub = {
+    key: 'config',
+    type: '',
+    value: {
+        global:  {
+            breakpoints: ''
+        },
+        urls: {
+            newsletterUrl: "http://defaulturl.com"
+        }
+    }
+};
 
 describe(`BrandMagazine`, () => {
     let reactModule;
@@ -25,28 +38,20 @@ describe(`BrandMagazine`, () => {
     let responsiveImageStub;
 
     const brandPropStub = {
-        "id": "aww",
-        "title": "Australian Women's Weekly",
-        "magazineTitle": "The Weekly",
-        "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
-        "url": "/aww",
-        "socialLinks": {
-            "facebookUrl": "https://www.facebook.com/WomensWeeklyMag",
-            "twitterUrl": "https://twitter.com/womensweeklymag",
-            "instagramUrl": "http://instagram.com/womensweeklymag"
-        }
+    "id": "aww",
+    "title": "Australian Women's Weekly",
+    "magazineTitle": "The Weekly",
+    "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
+    "url": "/aww",
+    "socialLinks": {
+        "facebookUrl": "https://www.facebook.com/WomensWeeklyMag",
+        "twitterUrl": "https://twitter.com/womensweeklymag",
+        "instagramUrl": "http://instagram.com/womensweeklymag"
+    },
+        "newsletterUrl": "http://bones.com"
     };
-    const brandPropRenderSubFalseStub = {"renderSubscribeElements": false, ...brandPropStub};
 
-    const contextConfigStub = {
-        key: 'config',
-        type: '',
-        value: {
-            global:  {
-                breakpoints: ''
-            }
-        }
-    };
+    const brandPropRenderSubFalseStub = {"renderSubscribeElements": false, ...brandPropStub};
 
     describe('when passing in /aww as the brand prop', () => {
 			before(() => {

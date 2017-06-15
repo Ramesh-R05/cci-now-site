@@ -9,7 +9,8 @@ export default {
             facebook: 'https://www.facebook.com/nzwomansweekly',
             twitter: 'https://twitter.com/nzwomansweekly',
             instagram: 'https://www.instagram.com/nzwomansweekly'
-        }
+        },
+        newsletterUrl: '//www.nowtolove.co.nz/nz-womans-weekly-newsletter'
     }, {
         id: 'nzwd',
         title: "Woman's Day",
@@ -21,6 +22,7 @@ export default {
             twitter: 'https://twitter.com/WomansDayNZ',
             instagram: 'https://www.instagram.com/womansdaynz'
         },
+        newsletterUrl: '//www.nowtolove.co.nz/womans-day-newsletter',
         alternateHrefLangUrl: '/womansday'
     }, {
         id: 'awwnz',
@@ -32,6 +34,7 @@ export default {
             facebook: 'https://www.facebook.com/awwmagazine',
             instagram: 'https://www.instagram.com/awwmagazine'
         },
+        newsletterUrl: '//www.nowtolove.co.nz/australianwomensweekly-newsletter',
         alternateHrefLangUrl: '/aww'
     }, {
         id: 'next',
@@ -43,7 +46,8 @@ export default {
             facebook: 'https://www.facebook.com/nextmagazine/',
             twitter: 'https://twitter.com/nextmagazinenz',
             instagram: 'https://www.instagram.com/nextmagazinenz/'
-        }
+        },
+        newsletterUrl: '//www.nowtolove.co.nz/next-newsletter'
     }, {
         id: 'nzgh',
         title: 'Good Health Choices',
@@ -56,6 +60,7 @@ export default {
             instagram: 'https://www.instagram.com/goodhealthnz/',
             pinterest: 'https://nz.pinterest.com/goodhealthmag/'
         },
+        newsletterUrl: '//www.nowtolove.co.nz/good-health-choices-newsletter',
         alternateHrefLangUrl: '/good-health'
     }, {
         id: 'simply',
@@ -67,7 +72,8 @@ export default {
             facebook: 'https://www.facebook.com/SimplyYouMagazine/',
             twitter: 'https://twitter.com/SimplyYouMag',
             instagram: 'https://www.instagram.com/simplyyoumag'
-        }
+        },
+        newsletterUrl: '//www.nowtolove.co.nz/simply-you-newsletter'
     }],
     hamburgers: [{
         id: 'nzhomes',

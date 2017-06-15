@@ -3,6 +3,23 @@ Feature: Homepage
     As a user
     I should be able to see homepage
 
+    @BXMA-482
+    Scenario Outline: Verify the sign-up URL on homepage
+        Given I switch to "<device>" view
+        When I am currently viewing the homepage
+        Then I should see the sign up button containing "http://www.nowtolove.com.au/now-newsletter" url and "gtm-subs-homepage" gtm in "<device>" view
+        @high
+        #Test desktop as the high priority for now until the moblile issue is fixed. Then desktop one can be @med
+        Examples:
+            | device            |
+            | desktop           |
+#           | mobile            |  #the button on mobile is not ready to test on homepage as there is an existing known issue that we will fix in a separate ticket
+        @low
+        Examples:
+            | device            |
+            | tablet landscape  |
+#           | tablet portrait   |  #the button on mobile is not ready to test on homepage as there is an existing known issue that we will fix in a separate ticket
+
     @mustread @BXMA-81
     Scenario Outline: Verify the must read module is functional correctly in "<device>" view
         Given I switch to "<device>" view
