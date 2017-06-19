@@ -113,6 +113,7 @@ Feature: Ads Location
             |MREC RHS 2      |article_rhs_2  |
             |MREC RHS 3      |article_rhs_3  |
             |MREC RHS 4      |article_rhs_4  |
+            |Sticky MREC RHS |article_rhs_5  |
         And I should see each additional ad slot element containing proper class name
             |ad                 |class-name          |
             |Out Of Page        |article_outofpage_1 |
