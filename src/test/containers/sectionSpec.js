@@ -15,9 +15,11 @@ const RepeatableStub = Context.createStubComponent();
 const SocialLinks = Context.createStubComponent();
 const StickyAndDockStub = Context.createStubComponent();
 const BrandTitleStub = Context.createStubComponent();
+const StickyAdStub = Context.createStubComponent();
 
 const SectionContainer = proxyquire('../../app/containers/section', {
     '@bxm/ad/lib/google/components/ad': AdStub,
+    '@bxm/ad/lib/google/components/stickyAd': StickyAdStub,
     '../components/teaser/grid': TeaserGridViewStub,
     '../components/teaser/list': TeaserListViewStub,
     './page': PageStub,
@@ -104,10 +106,16 @@ describe('Section Container', () => {
 
     after(Context.cleanup);
 
-    it(`should render 2 ads in total`, () => {
+    it(`should render 1 normal ad in total`, () => {
         const reactModule = Context.mountComponent(SectionContainer,{},[contextConfigStub]);
         const AdComponents = TestUtils.scryRenderedComponentsWithType(reactModule, AdStub);
-        expect(AdComponents.length).to.eq(2);
+        expect(AdComponents.length).to.eq(1);
+    });
+
+    it(`should render 1 sticky ad in total`, () => {
+        const reactModule = Context.mountComponent(SectionContainer,{},[contextConfigStub]);
+        const AdComponents = TestUtils.scryRenderedComponentsWithType(reactModule, StickyAdStub);
+        expect(AdComponents.length).to.eq(1);
     });
 
     it('should render a teaser grid', () => {

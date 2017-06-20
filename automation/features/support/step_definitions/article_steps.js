@@ -324,8 +324,7 @@ module.exports = function() {
     });
 
     this.Then(/^I can see the sticky ad when the top banner disappears from view$/, function () {
-        //move to the image to simulate scroll (works on BrowserStack as well)
-        browser.moveToObject(wn_article.bodyImg);
+        browser.scroll(0,1000);
         expect(browser.waitForVisible(wn_article.stickyAdSection,2000)).toBe(true);
     });
 

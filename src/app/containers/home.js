@@ -11,6 +11,7 @@ import loadList from '../actions/loadList';
 import StickyAndDockAd from '../components/page/stickyAndDockAd';
 import MustRead from '../components/mustRead/mustRead';
 import BrandNewsletter from '../components/brand/brandNewsletter';
+import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
 
 function mapStateToProps(context) {
     const teaserStore = context.getStore('TeaserStore');
@@ -59,6 +60,16 @@ export default class Home extends Component {
     render() {
         const polarLabels = this.context.config.polar.details;
         const pageLocation = Ad.pos.outside;
+        const adProps = {
+            className: 'ad--section-top-leaderboard',
+            displayFor: ['small', 'medium', 'large', 'xlarge'],
+            sizes: {
+                banner: 'banner',
+                leaderboard: 'leaderboard',
+                billboard: ['billboard', 'leaderboard'] },
+            pageLocation
+        };
+
         return (
             <Page
               currentUrl={this.props.currentUrl}
@@ -145,14 +156,10 @@ export default class Home extends Component {
                     />
 
                     {/* 3rd Leaderboard to show on tablet and up */}
-                    <Ad
-                      className="ad--section-top-leaderboard"
-                      displayFor={['medium', 'large', 'xlarge']}
-                      sizes={{
-                          banner: 'banner',
-                          leaderboard: 'leaderboard',
-                          billboard: ['billboard', 'leaderboard'] }}
-                      pageLocation={pageLocation}
+                    <StickyAd
+                      adProps={adProps}
+                      minHeight={450}
+                      stickyAtViewPort="mediumRangeMax"
                     />
 
                 </div>

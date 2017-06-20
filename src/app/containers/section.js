@@ -14,6 +14,7 @@ import BrandMagazine from '../components/brand/brandMagazine';
 import BrandTitle from '../components/brand/brandTitle';
 import get from 'lodash/object/get';
 import { find } from 'lodash';
+import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
 
 function mapStateToProps(context) {
     const pageStore = context.getStore('PageStore');
@@ -93,6 +94,16 @@ export default class Section extends Component {
             mode: imageResize.mode.CROP,
             anchor: imageResize.anchor.TC
         });
+
+        const adProps = {
+            className: 'ad--section-top-leaderboard',
+            displayFor: ['small', 'medium', 'large', 'xlarge'],
+            sizes: {
+                banner: 'banner',
+                leaderboard: 'leaderboard',
+                billboard: ['billboard', 'leaderboard'] },
+            pageLocation
+        };
 
         return (
             <Page
@@ -186,16 +197,14 @@ export default class Section extends Component {
                     />
 
                     {/* 3rd Leaderboard to show on tablet and up */}
-                    { get(this.props.list, 'items[0].length') ? <Ad
-                      className="ad--section-top-leaderboard"
-                      displayFor={['medium', 'large', 'xlarge']}
-                      sizes={{
-                          banner: 'banner',
-                          leaderboard: 'leaderboard',
-                          billboard: ['billboard', 'leaderboard'] }}
-                      pageLocation={pageLocation}
+                    { get(this.props.list, 'items[0].length') ? <StickyAd
+                      adProps={adProps}
+                      minHeight={450}
+                      stickyAtViewPort="mediumRangeMax"
                     /> : null }
                 </div>
+
+
             </Page>
         );
     }

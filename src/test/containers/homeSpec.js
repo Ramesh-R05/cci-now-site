@@ -15,11 +15,13 @@ const RepeatableStub = Context.createStubComponent();
 const StickyAndDockStub = Context.createStubComponent();
 const PromotedStub = Context.createStubComponent();
 const MustReadStub = Context.createStubComponent();
+const StickyAdStub = Context.createStubComponent();
 
 import polarConfig from '../mocks/polar';
 
 const HomeContainer = proxyquire('../../app/containers/home', {
     '@bxm/ad/lib/google/components/ad': AdStub,
+    '@bxm/ad/lib/google/components/stickyAd': StickyAdStub,
     './page': PageStub,
     '../components/teaser/hero': HeroTeaserStub,
     '../components/teaser/grid': TeaserGridViewStub,
@@ -98,10 +100,16 @@ describe('Home Container', () => {
 
     after(Context.cleanup);
 
-    it(`should render 2 ads in total`, () => {
+    it(`should render 1 normal ad in total`, () => {
         reactModule = Context.mountComponent(HomeContainer, {}, [contextConfigStub]);
         const AdComponents = TestUtils.scryRenderedComponentsWithType(reactModule, AdStub);
-        expect(AdComponents.length).to.eq(2);
+        expect(AdComponents.length).to.eq(1);
+    });
+
+    it(`should render 1 sticky ad in total`, () => {
+        reactModule = Context.mountComponent(HomeContainer, {}, [contextConfigStub]);
+        const AdComponents = TestUtils.scryRenderedComponentsWithType(reactModule, StickyAdStub);
+        expect(AdComponents.length).to.eq(1);
     });
 
     it(`should render MustRead Component`, () => {
