@@ -15,6 +15,19 @@ Feature: Ad
             |Section           |fashion                                                                   |
             |brand             |womansday                                                                 | 
             |homepage          |#                                                                         | 
+            
+    @high @BXMA-499    
+    Scenario Outline: Add sticky bottom leaderboard to bottom of the <page>
+        Given I switch to "tablet portrait" view
+        When I am currently viewing "<pageUrl>"
+        Then I can see the sticky ad when the top banner disappears from view
+        Examples:
+            |page              |pageUrl                                                                   | 
+            |article           |fashion/red-carpet/automation-test-article-with-hero-image-3663           |
+            |gallery           |fashion/red-carpet/automation-test-gallery-13302                          |
+            |Section           |fashion                                                                   |
+            |brand             |womansday                                                                 | 
+            |homepage          |#                                                                         | 
 
 # -------- Homepage Ads on desktop and mobile are High as this is an area with Commercial Value ---------------
     @homepage @BXMA-90 
