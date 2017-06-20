@@ -57,6 +57,15 @@ resources:
       recipients:
         - "#au-shippable"
 
+ # Slack connection
+  - name: deployment-notifications
+    type: notification                          #required
+    integration: slack-bauerxcelmedia
+    pointer:
+      recipients:
+        - "#avengers-team-au"
+        - "#justice_league_au"
+
   # Seed Release version
     # for Rollback refer to below URL
     # http://docs.shippable.com/deploy/rollback/#rolling-back-your-deployments

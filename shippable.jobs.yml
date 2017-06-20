@@ -184,6 +184,7 @@ jobs:
     type: deploy
     always:
       - NOTIFY: slack-notifications
+      - NOTIFY: deployment-notifications
     steps:
       - IN: now-site-release-master
         switch: off
@@ -202,6 +203,7 @@ jobs:
     type: deploy
     always:
       - NOTIFY: slack-notifications
+      - NOTIFY: deployment-notifications
     steps:
       - IN: now-site-release-master
         switch: off
