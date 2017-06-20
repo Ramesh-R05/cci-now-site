@@ -48,7 +48,7 @@ Feature: Ad
         * I should see the middle leaderboard ad under the top news feed
         * I should see the bottom leaderboard ad above the footer
 
-    @homepage @BXMA-90 @high
+    @homepage @BXMA-90 @high 
     Scenario: Ads on homepage in the mobile view
         Given I switch to "mobile" view
         When I am currently viewing the homepage
@@ -56,7 +56,7 @@ Feature: Ad
         * I should see MREC ad under the hero teaser
         * I should see the middle leaderboard ad under the top news feed
         * I should see MREC ad in the bottom news feed
-        * I should not see the bottom leaderboard ad above the footer
+        * I should see the bottom leaderboard ad above the footer
 #-------- Homepage Ads end ---------------#
 
 # -------- Section Page Ads on desktop are High as this are areas with Commercial Value ---------------
@@ -91,7 +91,7 @@ Feature: Ad
         * I should see the middle leaderboard ad under the top news feed
         * I should see the bottom leaderboard ad above the footer
 
-    @section @BXMA-34 @high
+    @section @BXMA-34 @high 
     Scenario: Ads on section landing page in the mobile view
         Given I switch to "mobile" view
         When I am currently viewing "fashion"
@@ -99,7 +99,7 @@ Feature: Ad
         * I should see MREC ad under the hero teaser
         * I should see the middle leaderboard ad under the top news feed
         * I should see MREC ad in the bottom news feed
-        * I should not see the bottom leaderboard ad above the footer
+        * I should see the bottom leaderboard ad above the footer
 
 #-------- Section Page Ads end ---------------#
 
