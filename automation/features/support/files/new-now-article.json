@@ -32,7 +32,7 @@
         "pageTitle":"alejandro test",
         "pageMetaDescription":"alejandro test",
         "contentFacebookImageUrl":"{\"credits\":[],\"tags\":[],\"source\":\"\"}",
-        "contentBody":"[{\"type\":\"heading\",\"label\":\"Heading\",\"content\":\"Heading 12345\"},{\"type\":\"paragraph\",\"label\":\"Paragraph\",\"content\":\"HELLO.\"},{\"type\":\"twitter\",\"label\":\"Twitter\",\"content\":{\"url\":\"https://twitter.com/goldenglobes/status/818279918291165185\"}},{\"type\":\"heading\",\"label\":\"Heading\",\"content\":\"Heding 2\"},{\"type\":\"paragraph\",\"label\":\"Paragraph\",\"content\":\"HELLO.\"}]",
+        "contentBody":"[{\"type\":\"heading\",\"label\":\"Heading\",\"content\":\"Heading 12345\"},{\"type\":\"paragraph\",\"label\":\"Paragraph\",\"content\":\"HELLO.\"},{\"type\":\"twitter\",\"label\":\"Twitter\",\"content\":{\"url\":\"https://twitter.com/goldenglobes/status/818279918291165185\"}},{\"type\":\"heading\",\"label\":\"Heading\",\"content\":\"Heding 2\"},{\"type\":\"paragraph\",\"label\":\"Paragraph\",\"content\":\"HELLO.\"},{\"type\":\"image-revealer\",\"label\":\"image-revealer\",\"content\":{\"left\":{\"url\":\"image1\"},\"right\":{\"url\":\"image2\"}}}]",
         "contentAuthor":"[\"NOW-1238\"]",
         "contentTags":"[\"common:topic:Test Joe\"]",
         "articleSource":"NW",

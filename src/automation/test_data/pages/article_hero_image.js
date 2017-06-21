@@ -256,6 +256,18 @@ export default{
                 "content": {
                     "url": "https://www.linklay.com/app/linklay/embed/linklay59151f750e2a94.81058944"
                 }
+            },
+            {
+                "type": "image-revealer",
+                "label": "image-revealer",
+                "content": {
+                    "left": {
+                        "url": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/hb/2017/06/14/1497396990978_helen-before.png"
+                    },
+                    "right": {
+                        "url": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/hb/2017/06/14/1497396999493_jennifer-after.png"
+                    }
+                }
             }
         ],
         "authorProfiles": [

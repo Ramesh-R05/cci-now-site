@@ -67,7 +67,10 @@ var article_widget = {
     articleFacebook: '.article__footer .fb-xfbml-parse-ignore',
     articlePinterest: '.article__footer .pinterest-share-link',
     outbrain: '.article .OUTBRAIN',
-    relatedPolarFeed: '.related-content-items > .polar-feed-item'
+    relatedPolarFeed: '.related-content-items > .polar-feed-item',
+    imageRevealer: '.content-body .image-revealer',
+    imageRevealerLeftImg: '.content-body .image-revealer__left img',
+    imageRevealerRightImg: '.content-body .image-revealer__right img',
 };
 
 module.exports = article_widget;
