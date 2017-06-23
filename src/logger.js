@@ -1,7 +1,7 @@
 import { backendLogger as logger } from '@bxm/winston-logger';
 
 logger.transports.console.handleExceptions = false;
-logger.transports.console.level = (process.env.APP_DEBUG === 'true') ? 'debug' : 'warn';
+logger.transports.console.level = (process.env.APP_DEBUG === 'true') ? 'debug' : 'info';
 
 if (process.env.APP_ENV === 'production' || process.env.APP_ENV === 'prod' || process.env.APP_ENV === 'sit') {
     logger.addTransports([{
@@ -12,7 +12,7 @@ if (process.env.APP_ENV === 'production' || process.env.APP_ENV === 'prod' || pr
             subdomain: 'bauerdigital',
             tags: [process.env.APP_KEY, process.env.APP_ENV],
             json: true,
-            level: (process.env.APP_DEBUG === 'true') ? 'debug' : 'warn',
+            level: (process.env.APP_DEBUG === 'true') ? 'debug' : 'info',
             proxy: process.env.HTTP_PROXY,
             colorize: false
         }

@@ -123,9 +123,9 @@
   version "4.1.0"
   resolved "http://npm.digital.bauer-media.net.au/@bxm%2frecommendations/-/recommendations-4.1.0.tgz#d876ea5d5126943e9fbd252d7395f3c4405f6c22"
 
-"@bxm/server@^21.5.0":
-  version "21.5.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fserver/-/server-21.5.0.tgz#895678123a1e0b72ec21d43fc70c5b30910a2284"
+"@bxm/server@^21.5.1":
+  version "21.5.1"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fserver/-/server-21.5.1.tgz#521e612fffa5b941b554a3af50accc774c89ade3"
   dependencies:
     "@bxm/flux" "^4.4.1"
     "@bxm/winston-logger" "^1.1.0"
