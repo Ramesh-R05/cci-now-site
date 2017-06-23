@@ -14,19 +14,19 @@ describe('HeaderMeta middleware', () => {
     let next;
 
     afterEach(() => {
-        process.env.NODE_ENV = currentEnv;
+        process.env.APP_ENV = currentEnv;
     });
 
     beforeEach(() => {
-        currentEnv = get(process, 'env.NODE_ENV');
+        currentEnv = get(process, 'env.APP_ENV');
         next = sinon.spy();
     });
 
-    describe(`when there is no NODE_ENV set and is not on prod domain` , () => {
+    describe(`when there is no APP_ENV set and is not on prod domain` , () => {
         let req;
 
         beforeEach(() => {
-            process.env.NODE_ENV = '';
+            process.env.APP_ENV = '';
             req = {
                 ...baseReq, query: { hostname: 'dev.url.com' }
             };
@@ -40,7 +40,7 @@ describe('HeaderMeta middleware', () => {
             it(`should set the req data object to contain 'headerMetaData' object`, () => {
                 expect(req.data).to.deep.eq({
                     headerMetaData: {
-                        googleTagManagerEnvironment: 'development',
+                        googleTagManagerEnvironment: 'local',
                         googleTagManagerMasthead: config.gtm.masthead,
                         robots: 'NOINDEX,NOFOLLOW'
                     }
@@ -72,7 +72,7 @@ describe('HeaderMeta middleware', () => {
                             pageMetaDescription: contentSummary
                         },
                         headerMetaData: {
-                            googleTagManagerEnvironment: 'development',
+                            googleTagManagerEnvironment: 'local',
                             googleTagManagerMasthead: config.gtm.masthead,
                             robots: 'NOINDEX,NOFOLLOW'
                         }
@@ -106,7 +106,7 @@ describe('HeaderMeta middleware', () => {
                         pageMetaDescription
                     },
                     headerMetaData: {
-                        googleTagManagerEnvironment: 'development',
+                        googleTagManagerEnvironment: 'local',
                         googleTagManagerMasthead: config.gtm.masthead,
                         robots: 'NOINDEX,NOFOLLOW'
                     }
@@ -119,11 +119,11 @@ describe('HeaderMeta middleware', () => {
         });
     });
 
-    describe(`when NODE_ENV equals to 'production' and is not on prod domain` , () => {
+    describe(`when APP_ENV equals to 'prod' and is not on prod domain` , () => {
         let req;
 
         beforeEach(() => {
-            process.env.NODE_ENV = 'production';
+            process.env.APP_ENV = 'prod';
             req = {
                 ...baseReq, query: { hostname: 'prelive.url.com' }
             };
@@ -133,7 +133,7 @@ describe('HeaderMeta middleware', () => {
         it(`should set the req data object to contain 'headerMetaData' object`, () => {
             expect(req.data).to.deep.eq({
                 headerMetaData: {
-                    googleTagManagerEnvironment: 'production',
+                    googleTagManagerEnvironment: 'prod',
                     googleTagManagerMasthead: config.gtm.masthead,
                     robots: 'NOINDEX,NOFOLLOW'
                 }
@@ -145,12 +145,12 @@ describe('HeaderMeta middleware', () => {
         });
     });
 
-    describe(`when NODE_ENV equals to 'production' and is on prod domain` , () => {
+    describe(`when APP_ENV equals to 'production' and is on prod domain` , () => {
         let req;
 
         describe(`and is not the preview site` , () => {
             beforeEach(() => {
-                process.env.NODE_ENV = 'production';
+                process.env.APP_ENV = 'prod';
                 req = {
                     ...baseReq, query: { hostname: configStub.site.prodDomain }
                 };
@@ -160,7 +160,7 @@ describe('HeaderMeta middleware', () => {
             it(`should set the req data object to contain 'headerMetaData' object`, () => {
                 expect(req.data).to.deep.eq({
                     headerMetaData: {
-                        googleTagManagerEnvironment: 'production',
+                        googleTagManagerEnvironment: 'prod',
                         googleTagManagerMasthead: config.gtm.masthead,
                         robots: 'INDEX,FOLLOW'
                     }
@@ -174,7 +174,7 @@ describe('HeaderMeta middleware', () => {
 
         describe(`and is the preview site` , () => {
             beforeEach(() => {
-                process.env.NODE_ENV = 'production';
+                process.env.APP_ENV = 'prod';
                 req = {
                     ...baseReq, query: { hostname: configStub.site.prodDomain, preview: 'preview' }
                 };

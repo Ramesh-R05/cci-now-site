@@ -1,10 +1,14 @@
 process.env.APP_KEY = 'now-site';
 process.title = process.env.APP_KEY;
+if (process.env.APP_DEBUG === 'true') {
+    process.on('uncaughtException', function(e) {
+        throw e;
+    });
+}
 require('babel-polyfill');
 require('babel-register');
-require('./logger');
+var logger = require('./logger').default;
 require('./apm');
-var logger = require('@bxm/winston-logger').backendLogger;
 var fs = require('fs');
 var requiredFile = './dist/scripts/main.js';
 var retryDelay = 5000;

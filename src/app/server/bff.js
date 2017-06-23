@@ -16,11 +16,7 @@ import stubServer from '../../automation/test_data/contentApi';
 import { backendLogger as logger } from '@bxm/winston-logger';
 
 export default function bff(server) {
-    if (process.env.APP_STUBBED === 'true' ||
-        process.env.APP_ENV === 'automation' ||
-        process.env.NODE_ENV === 'stubbed' ||
-        process.env.NODE_ENV === 'automation'
-    ) {
+    if (process.env.APP_STUBBED === 'true') {
         stubServer(server, server.locals.config);
         logger.warn('stubbing does not exercise BFF code');
     } else {

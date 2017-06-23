@@ -3,8 +3,8 @@ import mergeWith from 'lodash.mergewith';
 
 logger.info(`loading config for ${process.env.APP_KEY}`);
 
-const environment = (process.env.APP_ENV || process.env.NODE_ENV || 'local').toLowerCase();
-const region = (process.env.APP_REGION || process.env.NODE_REGION || 'au').toLowerCase();
+const environment = (process.env.APP_ENV || 'local').toLowerCase();
+const region = (process.env.APP_REGION || 'au').toLowerCase();
 const configApi = {
     get(path, defaultValue = '') {
         return path.split('.').reduce((prev, curr) => prev ? prev[curr] : undefined, this) || defaultValue;
