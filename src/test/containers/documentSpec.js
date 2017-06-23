@@ -43,10 +43,7 @@ describe('Document Component', () => {
 
         it(`should render the Article Component passing down relevant props`, () => {
             const ArticleComponent = TestUtils.findRenderedComponentWithType(reactModule, ArticleStub);
-            const headerAd = {
-                type: 'Ad',
-                config: Document.headerAdConfig
-            };
+            
             const socialShare = {
                 facebook: true,
                 pinterest: true
@@ -54,7 +51,7 @@ describe('Document Component', () => {
 
             expect(ArticleComponent.props).to.deep.eq({
                 enableTeads: true,
-                articleHeaderOrder: ['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd],
+                articleHeaderOrder: ['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero'],
                 contentBodyConfig: Document.articleContentBodyConfig,
                 showAdBeforeRecommendations: true,
                 CustomisedTeaser: CustomisedTeaserStub,

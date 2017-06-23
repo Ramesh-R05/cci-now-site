@@ -192,7 +192,7 @@ Feature: Ad
         Given I switch to "mobile" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I should see the top leaderboard ad under navigation
-        * I should see MREC ad under the hero image
+        * I should not see MREC ad under the hero image
         * I should see MREC ad above recommendation
         * I should see the bottom leaderboard ad above the footer on article
 

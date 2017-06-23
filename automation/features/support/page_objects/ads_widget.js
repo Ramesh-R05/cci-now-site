@@ -39,6 +39,12 @@ var ads_widget = {
     ad_LoadMoreMrecInBottomFeed: '.bottom-news-feed:nth-child(2) [id^=gpt-slot-]', //mobile homepage, index, brand
     ad_MrecBeforeRecommendation: '.ad--article-before-recommendations [id^=gpt-slot-]', //mobile gallery
     ad_MrecUnderHeroImage: '.ad--beneath-hero [id^=gpt-slot-]', //mobile article
+    ad_MrecAfterParagraph6: 'article .content-body:nth-child(1) p.content-body__paragraph:nth-child(6) + .ad--content-body [id^=gpt-slot]',//mobile article
+    ad_MrecAfterParagraph12: 'article .content-body:nth-child(1) p.content-body__paragraph:nth-child(13) + .ad--content-body [id^=gpt-slot]',//mobile article
+    ad_MrecAfterParagraph18: 'article .content-body:nth-child(3) p.content-body__paragraph:nth-child(2) + .ad--content-body [id^=gpt-slot]',//mobile article
+    ad_MrecAfterParagraph24: 'article .content-body:nth-child(4) p.content-body__paragraph:nth-child(2) + .ad--content-body [id^=gpt-slot]',//mobile article
+
+
 
 //For non-ad element
     topFeedItem6: '.top-news-feed .teaser__list-item:nth-child(6)', //for 'I should see sticky MREC ad next to the top news feed'

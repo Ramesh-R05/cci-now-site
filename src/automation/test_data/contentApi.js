@@ -118,6 +118,9 @@ export default function stubServer(siteServer, siteConfig) {
             case 'automation-test-article-with-hero-image-3663':
                 data = require('../test_data/pages/article_hero_image').default;
                 break;
+            case 'automation-test-article-with-ad-in-paragraph-18396':
+                data = require('../test_data/pages/article_ad_in_paragraph').default;
+                break;   
             case 'automation-test-gallery-13302':
                 data = require('../test_data/pages/gallery').default;
                 break;

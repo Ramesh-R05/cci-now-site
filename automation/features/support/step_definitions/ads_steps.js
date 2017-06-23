@@ -209,6 +209,18 @@ module.exports = function() {
                 case 'MREC Under Hero Image': //mobile
                     adElement = wn_ads.ad_MrecUnderHeroImage;
                     break;
+                case 'MREC After Paragraph 6':
+                    adElement = wn_ads.ad_MrecAfterParagraph6;
+                    break;
+                case 'MREC After Paragraph 12':
+                    adElement = wn_ads.ad_MrecAfterParagraph12;
+                    break;
+                case 'MREC After Paragraph 18':
+                    adElement = wn_ads.ad_MrecAfterParagraph18;
+                    break;
+                case 'MREC After Paragraph 24':
+                    adElement = wn_ads.ad_MrecAfterParagraph24;
+                    break;
             }
             var className = browser.getAttribute(adElement,'class');
             expect(className).toEqual(row['class-name']);

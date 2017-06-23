@@ -1,25 +1,14 @@
 import React, { Component, PropTypes } from 'react';
-import { connectToStores } from '@bxm/flux';
 import VerticalGallery from '@bxm/article/lib/gallery';
 import Page from './page';
 import Article from '@bxm/article/lib/article';
 import Teaser from '../components/teaser/teaser';
-import Ad from '@bxm/ad/lib/google/components/ad';
 
-function mapStateToProps(context) {
-    return {
-        content: context.getStore('articleStore').getContent()
-    };
-}
 
-@connectToStores(['articleStore'], mapStateToProps)
 export default class Document extends Component {
     static displayName = 'Document';
 
     static propTypes = {
-        content: PropTypes.shape({
-            tagsDetails: PropTypes.array.isRequired
-        }).isRequired,
         currentUrl: PropTypes.string.isRequired,
         nodeType: PropTypes.string.isRequired,
         theme: PropTypes.object
@@ -30,7 +19,8 @@ export default class Document extends Component {
     };
 
     static articleContentBodyConfig = {
-        disableAds: true,
+        disableAds: false,
+        paragraphsPerAd: 6,
         inlineImage: {
             imageSizes: {
                 s: { w: 690 },
@@ -39,6 +29,7 @@ export default class Document extends Component {
                 xl: { w: 640 }
             }
         },
+        displayFor: ['small', 'medium'],
         relatedContent: {
             headingText: 'Read this next',
             imageSizes: {
@@ -50,31 +41,16 @@ export default class Document extends Component {
         }
     };
 
-    static headerAdConfig = {
-        className: 'ad--beneath-hero',
-        displayFor: 'small',
-        sizes: 'mrec',
-        targets: {}
-    };
 
     render() {
-        const { content, currentUrl, nodeType, theme } = this.props;
-
-        const headerAd = {
-            type: 'Ad',
-            config: Document.headerAdConfig
-        };
-
-        const tags = content.tagsDetails;
-        const keyword = tags ? tags.map(tag => tag.fullName) : '';
-
-        headerAd.config.targets.keyword = keyword;
-        headerAd.config.pageLocation = Ad.pos.body;
+        const { currentUrl, nodeType, theme } = this.props;
 
         const socialShare = {
             facebook: true,
             pinterest: true
         };
+
+        const galleryContentBodyConfig = Object.assign({}, Document.articleContentBodyConfig, { disableAds: true });
 
         if (nodeType === 'Gallery') {
             return (
@@ -86,7 +62,7 @@ export default class Document extends Component {
                 >
                     <VerticalGallery
                       articleHeaderOrder={['Hero', 'Source', 'Title', 'Summary', 'Date', 'Author']}
-                      contentBodyConfig={Document.articleContentBodyConfig}
+                      contentBodyConfig={galleryContentBodyConfig}
                       enableTeads
                       CustomisedTeaser={Teaser}
                       showAdBeforeRecommendations
@@ -106,7 +82,7 @@ export default class Document extends Component {
               theme={theme}
             >
                 <Article
-                  articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero', headerAd]}
+                  articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero']}
                   contentBodyConfig={Document.articleContentBodyConfig}
                   enableTeads
                   CustomisedTeaser={Teaser}

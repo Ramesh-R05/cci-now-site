@@ -101,7 +101,7 @@ Feature: Ads Location
 
     Scenario: Ads slot elements should have proper class name on article page in desktop view
         Given I switch to "desktop" view
-        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-ad-in-paragraph-18396"
         Then I should see each outside ad slot element containing proper class name
             |ad                 |class-name        |
             |Top Leaderboard    |article_outside_1 |
@@ -196,18 +196,22 @@ Feature: Ads Location
             |ad                 |class-name          |
             |Out Of Page        |gallery_outofpage_1 |
 
+    @watch
     Scenario: Ads slot elements should have proper class name on article page in mobile view
         Given I switch to "mobile" view
-        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-ad-in-paragraph-18396"
         Then I should see each outside ad slot element containing proper class name
             |ad                 |class-name        |
             |Top Leaderboard    |article_outside_1 |
             |Teads              |article_outside_2 |
             |Bottom Leaderboard |article_outside_3 |
         And I should see each body ad slot element containing proper class name
-            |ad                         |class-name     |
-            |MREC Under Hero Image      |article_body_1 |
-            |MREC Before Recommendation |article_body_2 |
+            |ad                     |class-name     |
+            |MREC After Paragraph 6 |article_body_1 |
+            |MREC After Paragraph 12|article_body_2 |
+            |MREC After Paragraph 18|article_body_3 |
+            |MREC After Paragraph 24|article_body_4 |
+            |MREC Before Recommendation     |article_body_5 |
         And I should see each additional ad slot element containing proper class name
             |ad                 |class-name          |
             |Out Of Page        |article_outofpage_1 |
