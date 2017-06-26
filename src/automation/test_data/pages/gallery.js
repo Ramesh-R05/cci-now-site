@@ -56,7 +56,46 @@ export default{
             credits: [ ]
         },
         imageUrl: "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68027/main.jpg",
-        campaign: [ ],
+        campaign: [
+            {
+                "id": "NOW-31873",
+                "url": "/aquatest",
+                "name": "Aquatest",
+                "level": 3,
+                "title": "Aquatest",
+                "endDate": "4/29/2025 12:00:00 AM",
+                "pathIds": [
+                    "NOW--1",
+                    "NOW-1159",
+                    "NOW-31872",
+                    "NOW-31873"
+                ],
+                "siteUrl": "http://now-site-au.sit.bxm.net.au",
+                "sponsor": "Aquatest",
+                "summary": "Aquatest",
+                "urlName": "aquatest",
+                "nodeType": "Campaign",
+                "parentId": "NOW-31872",
+                "redirect": {
+                    "mode": 2
+                },
+                "siteCode": "8507aea9-5ac4-4831-90e5-f567f9a3c63a",
+                "siteName": "now",
+                "typeName": "CampaignTeaserDto",
+                "parentUrl": "/",
+                "startDate": "11/01/2016 12:00:00 AM",
+                "parentName": "Now To Love 738",
+                "dateIndexed": "2017-06-23T15:33:41",
+                "campaignType": "Native",
+                "summaryTitle": "Aquatest",
+                "nodeTypeAliasPath": [
+                    "Page",
+                    "Editorial",
+                    "Articles",
+                    "Campaign"
+                ]
+            }
+        ],
         nodeType: "Gallery",
         summary: "Automation Test Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser EOM",
         source: "Australian Women's Weekly",

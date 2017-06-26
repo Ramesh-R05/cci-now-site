@@ -44,6 +44,10 @@ module.exports = function() {
         expect(browser.isVisible(wn_ads.ad_TopLeaderboard)).toBe(true);
     });
 
+    this.Then(/^I should see native ad below author$/, function () {
+        expect(browser.isVisible(wn_ads.galleryNativeAd)).toBe(true);
+    });
+
     this.Then(/^I should see the middle leaderboard ad under the top news feed$/, function () {
         expect(browser.isVisible(wn_ads.ad_MiddleLeaderboard)).toBe(true);
     });
