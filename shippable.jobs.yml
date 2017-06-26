@@ -249,7 +249,7 @@ jobs:
   - name: FULL-now-site-regression-test
     type: runSh
     always:
-      - NOTIFY: slack-notifications
+      - NOTIFY: now-qa-team-notifications
     steps:
      - IN: now-site-repo
        switch: off
