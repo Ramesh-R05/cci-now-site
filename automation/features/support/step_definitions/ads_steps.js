@@ -45,7 +45,7 @@ module.exports = function() {
     });
 
     this.Then(/^I should see native ad below author$/, function () {
-        expect(browser.isVisible(wn_ads.galleryNativeAd)).toBe(true);
+        expect(browser.waitForExist(wn_ads.galleryNativeAd,5000)).toBe(true); //use waitForExist instead of waitForVisible to allow it work on localhost
     });
 
     this.Then(/^I should see the middle leaderboard ad under the top news feed$/, function () {
@@ -54,7 +54,7 @@ module.exports = function() {
 
     this.Then(/^I should see the bottom leaderboard ad above the footer$/, function () {
         browser.scroll(wn_ads.ad_BottomLeaderboard);
-        expect(browser.isVisible(wn_ads.ad_BottomLeaderboard)).toBe(true);
+        expect(browser.waitForVisible(wn_ads.ad_BottomLeaderboard,5000)).toBe(true);
     });
 
     this.Then(/^I should not see the bottom leaderboard ad above the footer$/, function () {
@@ -140,29 +140,61 @@ module.exports = function() {
 
     //----------------------------------------
 
-    this.Then(/^I can see last RHR add is sticky$/, function () {
+    this.Then(/^I can see last RHR ad is sticky$/, function () {
 
         // Scrolling down to the last RHR feed with keeping ad in view
         var x = browser.getLocation(wn_ads.ad_StickyMrecRhs, 'x');
         var y = browser.getLocation(wn_ads.ad_StickyMrecRhs, 'y');
         browser.scroll(x-50,y-50);
         // ad will auto refresh once in view on the screen
-        browser.waitForVisible(wn_ads.ad_StickyMrecRhs, 2000);
+        expect(browser.waitForVisible(wn_ads.ad_StickyMrecRhs,2000)).toBe(true);
 
     });
 
-    this.Then(/^the sticky add will auto refresh every (\d+) seconds when is in View$/, function (seconds) {
-        browser.isVisible(wn_ads.ad_StickyMrecRhs);
-        // scrolling down a little makes the ad appear on the screen
-        var x = browser.getLocation(wn_ads.ad_StickyMrecRhs, 'x');
-        var y = browser.getLocation(wn_ads.ad_StickyMrecRhs, 'y');
-        browser.scroll(x-1,y-1);
-        // check the iframe ID before change
-        var first_googleId = browser.getAttribute(wn_ads.ad_StickyMrecRhs,"data-google-query-id");
-        wait(6000);
+    this.Then(/^the "([^"]*)" will "([^"]*)" refresh every (\d+) seconds when is in View$/, function (ad, auto, seconds) {
+        // Find an element of the ad
+        var adElement;
+        switch(ad) {
+            case 'sticky MREC ad':
+                adElement = wn_ads.ad_StickyMrecRhs;
+                break;
+            case 'bottom leaderboard ad':
+            case 'mobile banner ad':
+                adElement = wn_ads.ad_BottomLeaderboard;
+                break;
+        }
+
+        // declare variables
+        var first_googleId;
+        var second_googleId;
+        var loopCount = 0;
+
+        // check the iframe ID before change and ensure the value is not NULL
+        do {
+            browser.scroll(adElement);
+            browser.waitForVisible(adElement, 5000);
+            first_googleId = browser.getAttribute(adElement, "data-google-query-id");
+            console.log(loopCount, first_googleId);
+            loopCount++;
+        }
+        while (first_googleId === null && loopCount < 6); // to exist the loop if it does more than 5 times.
+
+        // waiting for x seconds as it is a rule of ad auto refreshing.
+        // 1050 is a better number to ensure it has passed x seconds. E.g. 6 seconds is going to be 6.05 seconds.
+        wait(seconds*1050);
+
         // check the iframe ID after change
-        var second_googleId = browser.getAttribute(wn_ads.ad_StickyMrecRhs,"data-google-query-id");
-        expect(first_googleId).not.toEqual(second_googleId);
+        second_googleId = browser.getAttribute(adElement,"data-google-query-id");
+
+        // verify if the ad is auto-refreshing
+        switch(auto) {
+            case 'auto':
+                expect(first_googleId).not.toEqual(second_googleId);
+                break;
+            case 'not auto':
+                expect(first_googleId).toEqual(second_googleId);
+                break;
+        }
     });
 
     this.Then(/^I should see each outside ad slot element containing proper class name$/, function (dataTable) {

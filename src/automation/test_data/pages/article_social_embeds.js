@@ -185,6 +185,89 @@ export default{
                 "type": "competition",
                 "label": "Competition",
                 "content": "http://display.engagesciences.com/display/container/dc/5ea47964-3c4b-4b54-9155-ab753683ddc5/entry"
+            },
+            {
+                "type": "twitter",
+                "label": "Twitter",
+                "content": {
+                    "url": "https://twitter.com/dollymag/status/697199025729048577"
+                }
+            },
+            {
+                "type": "instagram",
+                "label": "Instagram",
+                "content": {
+                    "url": "https://www.instagram.com/p/BBda49yyr4J/",
+                    "includeCaption": true
+                }
+            },
+            {
+                "type": "instagram",
+                "label": "Instagram",
+                "content": {
+                    "url": "https://www.instagram.com/p/BA4NkZeSr_r/"
+                }
+            },
+            {
+                "type": "facebook",
+                "label": "Facebook",
+                "content": {
+                    "url": "https://www.facebook.com/Foodtoloveau/posts/823515874446034"
+                }
+            },
+            {
+                "type": "playbuzz",
+                "label": "Playbuzz",
+                "content": {
+                    "game": "/cosmopolitanmagazine10/which-harry-styles-is-your-boyfriend"
+                }
+            },
+            {
+                "type": "youtube",
+                "label": "Youtube",
+                "content": {
+                    "url": "https://www.youtube.com/embed/4GpnNxjy6m0"
+                }
+            },
+            {
+                "type": "vimeo",
+                "label": "Vimeo",
+                "content": {
+                    "url": "https://player.vimeo.com/video/181027959"
+                }
+            },
+            {
+                "type": "whooshka",
+                "label": "Whooshka",
+                "content": {
+                    "url": "https://www.whooshkaa.com/player/episode/id/90704?visual=true"
+                }
+            },
+            {
+                "type": "wirewax",
+                "label": "Wirewax",
+                "content": {
+                    "url": "http://embed.wirewax.com/8037657/ff0044/"
+                }
+            },
+            {
+                "type": "linklay",
+                "label": "Linklay",
+                "content": {
+                    "url": "https://www.linklay.com/app/linklay/embed/linklay59151f750e2a94.81058944"
+                }
+            },
+            {
+                "type": "image-revealer",
+                "label": "image-revealer",
+                "content": {
+                    "left": {
+                        "url": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/hb/2017/06/14/1497396990978_helen-before.png"
+                    },
+                    "right": {
+                        "url": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/hb/2017/06/14/1497396999493_jennifer-after.png"
+                    }
+                }
             }
         ],
         "authorProfiles": [

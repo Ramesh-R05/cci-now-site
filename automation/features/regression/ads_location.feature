@@ -196,7 +196,6 @@ Feature: Ads Location
             |ad                 |class-name          |
             |Out Of Page        |gallery_outofpage_1 |
 
-    @watch
     Scenario: Ads slot elements should have proper class name on article page in mobile view
         Given I switch to "mobile" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-ad-in-paragraph-18396"
