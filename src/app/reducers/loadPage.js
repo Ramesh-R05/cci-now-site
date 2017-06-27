@@ -16,6 +16,7 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
         const entity = payload.body.entity;
         const trendingItems = payload.body.trendingItems || [];
         const footer = payload.body.footer || {};
+        const request = payload.request.payload;
         if (!entity) return state;
         return {
             error: null,
@@ -26,7 +27,8 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
             trendingItems,
             footer,
             imageUrl: entity.imageUrl,
-            theme: payload.body.theme
+            theme: payload.body.theme,
+            request
         };
     }
     case 'LOAD_CONTENT_FAILED': {

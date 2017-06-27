@@ -8,7 +8,8 @@ describe(`loadPage Reducer`, () => {
         beforeEach(() => {
             payload = {
                 type: 'LOAD_CONTENT',
-                body: body
+                body: body,
+                request: 1
             };
         });
 
