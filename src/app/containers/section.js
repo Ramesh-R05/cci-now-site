@@ -105,6 +105,8 @@ export default class Section extends Component {
             pageLocation
         };
 
+        const sectionClassNames = isBrandPage ? 'section-page brand-section-page' : 'section-page';
+
         return (
             <Page
               currentUrl={currentUrl}
@@ -113,7 +115,7 @@ export default class Section extends Component {
               headerClassName={headerClassName}
               theme={theme}
             >
-                <div className="section-page">
+                <div className={sectionClassNames}>
                     <div className="container">
                         <div className="row">
                             <div className="page__top-container columns">

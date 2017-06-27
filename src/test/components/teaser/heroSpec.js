@@ -35,6 +35,19 @@ describe('Hero Teaser Component', () => {
     const imageSizes = { xl: { w: 619, h: 515 } };
     let reactModule;
     let TeaserComponent;
+    const contextConfigStub = {
+        key: 'config',
+        type: '',
+        value: {
+            urls: {
+                socialUrls: {
+                    facebookUrl: 'https://www.facebook.com/nowtolovenz',
+                    twitterUrl: 'https://twitter.com/NowToLovenz',
+                    instagramUrl: 'https://www.instagram.com/NowToLovenz'
+                }
+            }
+        }
+    };
 
     after(Context.cleanup);
 
@@ -50,7 +63,7 @@ describe('Hero Teaser Component', () => {
 
     describe('when passing an article', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(HeroTeaser, {article});
+            reactModule = Context.mountComponent(HeroTeaser, {article}, [contextConfigStub]);
             TeaserComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserStub);
         });
 
@@ -70,7 +83,10 @@ describe('Hero Teaser Component', () => {
         });
 
         it('should render 1 ad', () => {
-            const wrapper =  shallow(<HeroTeaser article={article} />);
+            const wrapper =  shallow(
+                <HeroTeaser article={article} />,
+                { context: { config: { urls: { socialUrls: {} } } } }
+            );
             const elm = wrapper.find(TeaserStub);
             expect(elm.length).to.be.equal(1);
         });
@@ -78,7 +94,7 @@ describe('Hero Teaser Component', () => {
 
     describe('when passing both article, imageSizes and showDate prop', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(HeroTeaser, {article, imageSizes, showDate: false});
+            reactModule = Context.mountComponent(HeroTeaser, {article, imageSizes, showDate: false}, [contextConfigStub]);
             TeaserComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserStub);
         });
 
@@ -88,6 +104,6 @@ describe('Hero Teaser Component', () => {
 
         it(`should pass the showDate to the Teaser component`, () => {
             expect(TeaserComponent.props.showDate).to.eq(false);
-        });         
+        });
     });
 });

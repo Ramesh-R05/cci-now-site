@@ -13,12 +13,12 @@ Feature: Homepage
         Examples:
             | device            |
             | desktop           |
-#           | mobile            |  #the button on mobile is not ready to test on homepage as there is an existing known issue that we will fix in a separate ticket
+            | mobile            |
         @low
         Examples:
             | device            |
             | tablet landscape  |
-#           | tablet portrait   |  #the button on mobile is not ready to test on homepage as there is an existing known issue that we will fix in a separate ticket
+            | tablet portrait   |
 
     @mustread @BXMA-81
     Scenario Outline: Verify the must read module is functional correctly in "<device>" view

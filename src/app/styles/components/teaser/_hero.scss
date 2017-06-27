@@ -7,7 +7,7 @@ $hero-teaser-line-height: 25px;
         right: -$column-gutter/2;
     }
 
-    @media #{$medium-up} {
+    @media #{$medium-only} {
         margin: 0;
         padding-bottom: 20px;
 
@@ -17,13 +17,17 @@ $hero-teaser-line-height: 25px;
 
             .promoted-teaser-view-grid + .hero-wrapper__get-social-container {
                 position: absolute;
-                bottom: 35%;
+                bottom: 29%;
             }
         }
     }
 
     @media #{$large-up} {
+        margin: 0;
+        padding-bottom: 20px;
+
         .home-page & {
+            padding-bottom: 0px;
             position: static;
 
             .promoted-teaser-view-grid + .hero-wrapper__get-social-container {
@@ -31,7 +35,7 @@ $hero-teaser-line-height: 25px;
                 bottom: auto;
             }
         }
-    }    
+    }
 
     .ad--section-top-mrec {
         margin-top: 30px;
@@ -122,7 +126,7 @@ $hero-teaser-line-height: 25px;
         .hero-teaser__source--new-zealand-woman-s-weekly span:first-child:not(.teaser__source__breaker) {
             color: $nz-womans-weekly-color;
         }
-            
+
         .hero-teaser__source--simply-you span:first-child:not(.teaser__source__breaker) {
             color: $nz-simply-you-color;
         }

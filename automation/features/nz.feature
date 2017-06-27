@@ -80,11 +80,10 @@ Feature: Specific value for NZ NTL
             |Pinterest  |https://nz.pinterest.com/NowToLoveNZ   |
 
     @BXMA-482
-    #Test on desktop for homepage. We will change to mobile after the existing known issue is solved in the future.
     Scenario: Verify the sign-up URL on homepage
-        Given I switch to "desktop" view
+        Given I switch to "mobile" view
         When I am currently viewing the homepage
-        Then I should see the sign up button containing "http://www.nowtolove.co.nz/now-nz-newsletter" url and "gtm-subs-homepage" gtm in "desktop" view
+        Then I should see the sign up button containing "http://www.nowtolove.co.nz/now-nz-newsletter" url and "gtm-subs-homepage" gtm in "mobile" view
 
 
     @BXMA-482

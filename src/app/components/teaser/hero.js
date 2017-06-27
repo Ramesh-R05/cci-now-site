@@ -4,6 +4,7 @@ import Ad from '@bxm/ad/lib/google/components/ad';
 import SocialContainer from '../social/block';
 import Promoted from '../promoted/promoted';
 import BrandMagazine from '../brand/brandMagazine';
+import BrandNewsletter from '../brand/brandNewsletter';
 
 export default class HeroTeaser extends Component {
     static propTypes = {
@@ -24,6 +25,10 @@ export default class HeroTeaser extends Component {
         },
         showPromoted: false,
         brand: null
+    };
+
+    static contextTypes = {
+        config: PropTypes.object
     };
 
     render() {
@@ -52,8 +57,9 @@ export default class HeroTeaser extends Component {
 
                 { brand ? <div className="hide-for-large-up"><BrandMagazine brand={brand} /> </div> :
                 <div className="hero-wrapper__get-social-container">
+                    <BrandNewsletter />
                     <span className="hero-wrapper__social-logo">Now To Love</span>
-                    <SocialContainer />
+                    <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
                 </div> }
             </div>
         );
