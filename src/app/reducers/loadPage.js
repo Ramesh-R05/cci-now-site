@@ -16,7 +16,7 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
         const entity = payload.body.entity;
         const trendingItems = payload.body.trendingItems || [];
         const footer = payload.body.footer || {};
-        const request = payload.request.payload;
+        const request = payload.request.payload || {};
         if (!entity) return state;
         return {
             error: null,
@@ -40,7 +40,8 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
             title: '',
             trendingItems: [],
             footer: get(payload, 'response.body.footer', {}),
-            imageUrl: ''
+            imageUrl: '',
+            request: {}
         };
     }
     default:

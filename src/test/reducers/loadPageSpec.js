@@ -60,7 +60,8 @@ describe(`loadPage Reducer`, () => {
                 nodeType: '',
                 title: '',
                 trendingItems: [],
-                imageUrl: ''
+                imageUrl: '',
+                request: {}
             });
         });
 
@@ -72,7 +73,8 @@ describe(`loadPage Reducer`, () => {
                 nodeType: '',
                 title: '',
                 trendingItems: [],
-                imageUrl: ''
+                imageUrl: '',
+                request: {}
             });
         });
     });
