@@ -185,6 +185,18 @@ export default{
                 "type": "competition",
                 "label": "Competition",
                 "content": "http://display.engagesciences.com/display/container/dc/5ea47964-3c4b-4b54-9155-ab753683ddc5/entry"
+            },
+            {
+                "type": "image-revealer",
+                "label": "image-revealer",
+                "content": {
+                    "left": {
+                        "url": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/hb/2017/06/14/1497396990978_helen-before.png"
+                    },
+                    "right": {
+                        "url": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/hb/2017/06/14/1497396999493_jennifer-after.png"
+                    }
+                }
             }
         ],
         "authorProfiles": [
