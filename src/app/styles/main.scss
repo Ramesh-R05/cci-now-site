@@ -34,17 +34,13 @@
 @import 'components/buttons'; // Needs to be before `@bxm/page` as back to top button shows incorrectly
 
 // @BXM Components
-@import '../../node_modules/@bxm/ui/lib/to-love/common';
 @import '../../node_modules/@bxm/social/styles/socialicons';
-@import '../../node_modules/@bxm/modal/styles/modal';
 @import '../../node_modules/@bxm/article/styles/page';
 @import '../../node_modules/@bxm/ui/lib/to-love/video/videoPlayer';
 @import '../../node_modules/@bxm/article/styles/components/content-body/content-body';
 @import '../../node_modules/@bxm/gallery/styles/page';
 @import '../../node_modules/@bxm/gallery/styles/carousel/main';
 @import '../../node_modules/@bxm/ad/styles/google/adverts';
-@import '../../node_modules/@bxm/header/lib/header/header';
-@import '../../node_modules/@bxm/header/lib/connect/connect';
 @import '../../node_modules/@bxm/site-header/styles/main';
 @import '../../node_modules/@bxm/nav/scss/nav';
 @import '../../node_modules/@bxm/ui/lib/back-to-top/styles';
