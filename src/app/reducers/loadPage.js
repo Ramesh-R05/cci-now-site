@@ -6,7 +6,8 @@ export const initialState = {
     nodeType: '',
     title: '',
     imageUrl: '',
-    trendingItems: []
+    trendingItems: [],
+    request: {}
 };
 
 export function reducer(state = initialState, payload = {}, eventName = '') {
@@ -19,29 +20,32 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
         const request = payload.request.payload || {};
         if (!entity) return state;
         return {
-            error: null,
-            nodeType: entity.nodeType,
-            title: entity.title,
-            shortTitle: entity.shortTitle,
-            summary: entity.summary,
-            trendingItems,
-            footer,
-            imageUrl: entity.imageUrl,
-            theme: payload.body.theme,
-            request
+            ...state,
+            ...{
+                nodeType: entity.nodeType,
+                title: entity.title,
+                shortTitle: entity.shortTitle,
+                summary: entity.summary,
+                trendingItems,
+                footer,
+                imageUrl: entity.imageUrl,
+                theme: payload.body.theme,
+                request
+            }
         };
     }
     case 'LOAD_CONTENT_FAILED': {
-        const { response } = payload;
+        const { response } = { ...payload };
         response.status = response.status || 400;
         return {
-            error: response,
-            nodeType: '',
-            title: '',
-            trendingItems: [],
-            footer: get(payload, 'response.body.footer', {}),
-            imageUrl: '',
-            request: {}
+            ...state,
+            ...{ error: response, footer: get(payload, 'response.body.footer', {}) }
+        };
+    }
+    case 'PAGE_NOT_FOUND': {
+        return {
+            ...state,
+            ...{ error: { ...payload } }
         };
     }
     default:
