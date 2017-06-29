@@ -34,12 +34,12 @@ var config = {
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [
-                        { loader: 'css-loader', options: { sourceMap: true } },
+                        { loader: 'css-loader', options: { sourceMap: true, minimize: (process.env.NODE_ENV === 'production') } },
                         { loader: 'postcss-loader',
                             options: {
                                 sourceMap: true,
                                 plugins: () => [autoprefixer({
-                                    browsers: ['last 2 versions', 'ie >= 10', 'ios >= 7', 'Android >= 4']
+                                    browsers: ['last 2 versions', 'ie >= 10', 'ios >= 9', 'Android >= 4']
                                 })]
                             }
                         },
