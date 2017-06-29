@@ -54,7 +54,8 @@ var ads_widget = {
     gallerySlide7: '.gallery__feed-item:nth-child(8)', //for 'I should see MREC ad between images'
 
     // Vertical Gallery
-    galleryNativeAd: '.ad--article-native'
+    galleryNativeAd: '.ad--article-native',
+    galleryNativeAdDfp: '.ad--article-native [id^=gpt-slot-]'
 
 };
 module.exports = ads_widget;

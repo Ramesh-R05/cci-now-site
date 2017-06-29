@@ -13,13 +13,13 @@
     q "^1.4.1"
     react-script-loader "0.0.1"
 
-"@bxm/article@^25.5.0":
-  version "25.5.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2farticle/-/article-25.5.0.tgz#284ddd6701cdf023371519a62757be9bacb8c58e"
+"@bxm/article@^25.6.0":
+  version "25.6.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2farticle/-/article-25.6.0.tgz#f24153f1666e989e8754ef5efe957768e3cf01f9"
   dependencies:
     "@bxm/behaviour" "^1.1.0"
     "@bxm/image" "^2.0.0"
-    "@bxm/image-revealer" "^1.0.0"
+    "@bxm/image-revealer" "^1.0.1"
     "@bxm/markdown" "^1.1.0"
     classnames "^2.1.1"
     exenv "^1.2.0"
@@ -76,9 +76,9 @@
     reactify "^1.1.1"
     request "2.55.0"
 
-"@bxm/image-revealer@^1.0.0":
-  version "1.0.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fimage-revealer/-/image-revealer-1.0.0.tgz#46f948bcce074c2290644a470ac49732c9668c0e"
+"@bxm/image-revealer@^1.0.1":
+  version "1.0.1"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fimage-revealer/-/image-revealer-1.0.1.tgz#b909c12a2d255767a53dd604e3caa52ee8365523"
 
 "@bxm/image@^2.0.0":
   version "2.0.1"
@@ -3601,11 +3601,11 @@ husky@^0.13.3:
     is-ci "^1.0.9"
     normalize-path "^1.0.0"
 
-iconv-lite@0.4.13, iconv-lite@^0.4.5, iconv-lite@~0.4.13:
+iconv-lite@0.4.13:
   version "0.4.13"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
 
-iconv-lite@0.4.15:
+iconv-lite@0.4.15, iconv-lite@^0.4.5, iconv-lite@~0.4.13:
   version "0.4.15"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"
 

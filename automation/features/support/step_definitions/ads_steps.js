@@ -45,7 +45,7 @@ module.exports = function() {
     });
 
     this.Then(/^I should see native ad below author$/, function () {
-        expect(browser.waitForExist(wn_ads.galleryNativeAd,5000)).toBe(true); //use waitForExist instead of waitForVisible to allow it work on localhost
+        expect(browser.isVisible(wn_ads.galleryNativeAd)).toBe(true);
     });
 
     this.Then(/^I should see the middle leaderboard ad under the top news feed$/, function () {
@@ -214,6 +214,9 @@ module.exports = function() {
                     break;
                 case 'Teads':
                     adElement = wn_ads.ad_Teads;
+                    break;
+                case 'Native':
+                    adElement = wn_ads.galleryNativeAdDfp;
                     break;
                 case 'MREC Under Hero Teaser': //mobile
                     adElement = wn_ads.ad_MrecUnderHeroTeaser;

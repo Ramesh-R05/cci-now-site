@@ -80,7 +80,8 @@ Feature: Ads Location
             |ad                 |class-name        |
             |Top Leaderboard    |gallery_outside_1 |
             |Teads              |gallery_outside_2 |
-            |Bottom Leaderboard |gallery_outside_4 |
+            |Native             |gallery_outside_3 |
+            |Bottom Leaderboard |gallery_outside_5 |
         And I should see each body ad slot element containing proper class name
             |ad                 |class-name     |
             |MREC After Slide 3 |gallery_body_1 |
@@ -186,7 +187,8 @@ Feature: Ads Location
             |ad                 |class-name        |
             |Top Leaderboard    |gallery_outside_1 |
             |Teads              |gallery_outside_2 |
-            |Bottom Leaderboard |gallery_outside_3 |
+            |Native             |gallery_outside_3 |
+            |Bottom Leaderboard |gallery_outside_4 |
         And I should see each body ad slot element containing proper class name
             |ad                         |class-name     |
             |MREC After Slide 3         |gallery_body_1 |
