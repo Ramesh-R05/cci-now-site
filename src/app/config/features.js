@@ -8,10 +8,6 @@ export default {
     recommendations: {
         enabled: true
     },
-    noCachePages: {
-        enabled: true,
-        paths: ['/preview/']
-    },
     showTeaserBadgeLink: false,
     useDefaultPolar: {
         enabled: true
