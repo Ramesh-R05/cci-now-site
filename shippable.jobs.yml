@@ -169,6 +169,30 @@ jobs:
         - script: export URL=http://now-site-nz.sit.bxm.net.au/
         - script: npm run test:nzlow
 
+  # 4d. Run performance test on test environment
+  - name: performance-test
+    type: runSh
+    always:
+      - NOTIFY: slack-notifications
+    steps:
+      - IN: now-site-test-deploy-master
+      - IN: now-site-repo
+        switch: off
+      - TASK:
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+        - script: source ~/.nvm/nvm.sh
+        - script: nvm install "6.1.0"
+        - script: nvm use "6.1.0"
+        - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
+        - script: yarn
+        - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        - script: sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+        - script: sudo apt-get update
+        - script: sudo apt-get install google-chrome-stable
+        - script: google-chrome --product-version
+        - script: npm run test:perf
+
   # 5. Package release for production release
   - name: now-site-release-master
     type: release
