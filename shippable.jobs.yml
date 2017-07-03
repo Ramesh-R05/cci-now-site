@@ -183,7 +183,7 @@ jobs:
         - script: source ~/.nvm/nvm.sh
         - script: nvm install "6.1.0"
         - script: nvm use "6.1.0"
-        - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: cd ./IN/now-site-repo/gitRepo/src
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: yarn
         - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
