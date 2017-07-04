@@ -6,22 +6,22 @@ const testLinks = [
     {
         title: 'article',
         url: 'http://now-site.test.bxm.net.au/fashion/red-carpet/automation-test-article-with-hero-image-3663/',
-        expectedScore: 54
+        expectedScore: 45
     },
     {
         title: 'homepage',
         url: 'http://now-site.test.bxm.net.au/',
-        expectedScore: 54
+        expectedScore: 45
     },
     {
         title: 'section',
         url: 'http://now-site.test.bxm.net.au/fashion/',
-        expectedScore: 57
+        expectedScore: 48
     },
     {
         title: 'gallery',
         url: 'http://now-site.test.bxm.net.au/fashion/red-carpet/automation-test-gallery-13302/',
-        expectedScore: 56
+        expectedScore: 47
     }
 ];
 
@@ -41,7 +41,7 @@ function lighthouseTests(testObject) {
     };
     const { title, url, expectedScore } = testObject;
     describe(`Now To Love site performance testing for ${title} : ${url}`, function loopedTests() {
-        this.retries(2);
+        this.retries(3);
         this.timeout(40000);
         let result;
 
@@ -64,6 +64,8 @@ function lighthouseTests(testObject) {
     });
 
 }
+
+process.setMaxListeners(12);
 
 testLinks.forEach((doctypeSetting) => {
     lighthouseTests(doctypeSetting);
