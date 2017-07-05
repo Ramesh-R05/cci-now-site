@@ -30,7 +30,7 @@ resources:
     pointer:
       sourceName: "317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site"
     seed:
-      versionName: latest  # This can be changed for Roll back
+      versionName: "master.2213"  # This can be changed for Roll back
 
   # Seed image version Feature BRANCH Docker Image for the now-site
   - name: now-site-img-branch
