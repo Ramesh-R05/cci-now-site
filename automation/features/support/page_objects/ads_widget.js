@@ -50,7 +50,6 @@ var ads_widget = {
     bottomFeedItem4: '.teaser-view-list .teaser__list-item:nth-child(4)', //for 'I should see sticky MREC ad next to the bottom news feed'
     bottomFeedItem7: '.teaser-view-list .teaser__list-item:nth-child(7)', //for 'I should see sticky MREC ad next to the bottom news feed'
     gallerySlide3: '.gallery__feed-item:nth-child(3)', //for 'I should see MREC ad between images'
-    gallerySlide6: '.gallery__feed-item:nth-child(7)', //for 'I should see MREC ad between images'
     gallerySlide7: '.gallery__feed-item:nth-child(8)', //for 'I should see MREC ad between images'
 
     // Vertical Gallery
