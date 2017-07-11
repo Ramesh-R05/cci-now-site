@@ -19,6 +19,7 @@
     "clean": "rimraf dist/ coverage/ && mkdir dist",
     "build": "npm run clean && NODE_ENV=production webpack --hide-modules",
     "dev": "npm run clean && webpack --hide-modules --progress --watch & npm run serve",
+    "dev:win": "npm run clean && webpack --hide-modules --progress && npm run serve",
     "serve": "nodemon --watch app --ext js ./start.js",
     "lint:scss": "sass-lint --config .sass-lint.yml --ignore './**/vendor/**' --no-exit --verbose './app*/styles/**/*.scss'",
     "lint:js": "eslint --fix --ext .js app/",
@@ -80,6 +81,9 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-inlinesvg": "^0.5.3",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.1",
+    "redux-thunk": "^2.2.0",
     "request": "^2.67.0",
     "superagent": "^3.5.2"
   },
