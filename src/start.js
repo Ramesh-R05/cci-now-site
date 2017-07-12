@@ -14,27 +14,34 @@ var requiredFile = './dist/manifest.json';
 var retryDelay = 5000;
 var attemptCount = 0;
 var maxAttempts = 12;
+var timerId = null;
 
 function startWhenReady() {
     attemptCount++;
-    clearTimeout(startWhenReady);
+    if (timerId){
+        clearTimeout(timerId);
+        timerId = null;
+    }
     if (fs.existsSync(requiredFile)) {
         logger.info(`${requiredFile} exists, ok to start`);
         require('./app/server/server');
     } else if (attemptCount <= maxAttempts) {
         logger.debug(`${requiredFile} in progress - waiting ${retryDelay / 1000} more seconds`);
-        setTimeout(startWhenReady, retryDelay);
+        timerId = setTimeout(startWhenReady, retryDelay);
     } else {
         throw new Error(`requiredFile not found within ${(maxAttempts * retryDelay) / 1000} seconds`);
     }
 }
 
-if (process.env.APP_DEBUG === 'true' || process.env.APP_DEBUG === 'silly') {
-    try {
+switch (process.env.APP_DEBUG){
+    case 'true':
+    case 'silly':
+        try {
+            startWhenReady();
+        } catch (e) {
+            logger.error(e);
+        }
+        break;
+    default:
         startWhenReady();
-    } catch (e) {
-        logger.error(e);
-    }
-} else {
-    startWhenReady();
 }
