@@ -173,12 +173,13 @@ module.exports = function() {
         // check the iframe ID before change and ensure the value is not NULL
         do {
             browser.scroll(adElement);
-            browser.waitForVisible(adElement, 5000);
+            browser.waitForVisible(adElement, 10000);
             first_googleId = browser.getAttribute(adElement, "data-google-query-id");
             console.log(loopCount, first_googleId);
             loopCount++;
         }
         while (first_googleId === null && loopCount < 10); // to exist the loop if it does more than 10 times.
+
 
         // waiting for x seconds as it is a rule of ad auto refreshing.
         // 1050 is a better number to ensure it has passed x seconds. E.g. 6 seconds is going to be 6.05 seconds.
@@ -348,4 +349,56 @@ module.exports = function() {
         }
     });
 
+    this.Then(/^I should see sticky top leaderboard as I scroll down and "([^"]*)" sticky bottom leaderboard once top dissapears$/, function (shouldSee) {
+
+        // verify before scrolling down    
+        browser.scroll(0,0);
+        expect(browser.isVisible(wn_ads.stickyTopBanner)).toBe(false);
+        expect(browser.isVisible(wn_ads.stickyBottomBanner)).toBe(false);
+
+        browser.scroll(0,500);
+        //After 2 sec delay for the browser fully load the page, the viewability sticky will apply.
+        expect(browser.waitForVisible(wn_ads.stickyTopBanner, 2000)).toBe(true);
+
+        // verify the ad disappears after 5 seconds
+        wait(3500);//the top ad will be sticky for 3.5sec 
+        expect(browser.isVisible(wn_ads.stickyTopBanner)).toBe(false);
+        switch (shouldSee) {
+            case 'see':
+                expect(browser.isVisible(wn_ads.stickyBottomBanner)).toBe(true);
+                break;
+            case 'not see':
+                expect(browser.isVisible(wn_ads.stickyBottomBanner)).toBe(false);
+                break;
+        }
+    });
+
+    this.Then(/^I should "([^"]*)" bottom leaderboard ad sticky at the bottom of the "([^"]*)" page$/, function (shouldSee, page) {
+        // Specify the element name of the ad wrapper type
+        var adWrapperType;
+        switch (page) {
+            case 'article':
+            case 'gallery':
+                adWrapperType = wn_ads.adWrapper_BottomLeaderboard_Content;
+                break;
+            case 'section':
+            case 'brand':
+            case 'homepage':
+                adWrapperType = wn_ads.adWrapper_BottomLeaderboard_Landing;
+                break;
+        }
+
+        wait(500);
+        expect(browser.isVisible(adWrapperType)).toBe(true);
+        switch (shouldSee) {
+            case 'see':
+                expect(browser.getAttribute(adWrapperType, 'class')).toContain('sticky-block--at-bottom');
+                break;
+            case 'not see':
+                expect(browser.getAttribute(adWrapperType, 'class')).not.toContain('sticky-block--at-bottom');
+                break;
+        }
+
+
+    });
 };

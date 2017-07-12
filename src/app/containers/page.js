@@ -10,6 +10,7 @@ import Navigation from '@bxm/site-header/lib/components/navigation';
 import classnames from 'classnames';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import StandardPageAdsWrapper from '@bxm/ad/lib/google/components/standardPageAdsWrapper';
+import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
 
 function mapStateToProps(context) {
     return {
@@ -86,6 +87,20 @@ export default class Page extends Component {
             keyword = tags ? tags.map(tag => tag.fullName) : '';
         }
 
+        const stickyAdProps = {
+            className: 'ad--section-top-leaderboard',
+            displayFor: ['small', 'medium', 'large', 'xlarge'],
+            sizes: {
+                banner: 'banner',
+                leaderboard: 'leaderboard',
+                billboard: ['billboard', 'leaderboard']
+            },
+            targets: {
+                keyword
+            },
+            pageLocation
+        };
+
         return (
             <div className={pageClassName}>
                 <div className={this.props.menuClasses}>
@@ -101,15 +116,13 @@ export default class Page extends Component {
                       headerClassName={headerClassName}
                       theme={this.props.theme}
                     />
-                    {!hideLeaderboard && <Ad
-                      className="ad--section-top-leaderboard"
-                      sizes={{
-                          banner: 'banner',
-                          leaderboard: 'leaderboard',
-                          billboard: ['billboard', 'leaderboard']
-                      }}
-                      targets={{ keyword }}
-                      pageLocation={pageLocation}
+                    {!hideLeaderboard && <StickyAd
+                      adProps={stickyAdProps}
+                      minHeight={450}
+                      stickyAtViewPort="largeRangeMax"
+                      stickyDelay={2000}
+                      isStickyTemporary
+                      stickyDuration={3500}
                     />}
 
                     {pageTitle && <div className="page-title-container"> { pageTitle } </div>}

@@ -4,11 +4,16 @@ var ads_widget = {
     adMrecNextToTopFeedSticky: '.page__top-container .page__social-wrapper > div > div > span', //homepage, section
     adMrecNextToBottomFeedSticky: '.bottom-news-feed div.carriage', //homepage, section
 
+    // For ad wrapper
+    adWrapper_TopLeaderboard_For_Viewability : '.side-menu-wrapper .header-wrapper + div  .sticky-block', //homepage, index, brand, gallery, article
+    adWrapper_BottomLeaderboard_Landing: '.side-menu-wrapper .repeatable-component + div .sticky-block', //homepage, index, brand, gallery, article
+    adWrapper_BottomLeaderboard_Content: '.side-menu-wrapper .article-section + div .sticky-block', //homepage, index, brand, gallery, article
+
 // =======For Ads Location
     //Outside
-    ad_TopLeaderboard: '.side-menu-wrapper > .ad--section-top-leaderboard [id^=gpt-slot-]', //homepage, index, brand, gallery, article
+    ad_TopLeaderboard: '.side-menu-wrapper .header-wrapper + div .sticky-block .ad--section-top-leaderboard [id^=gpt-slot-]', //homepage, index, brand, gallery, article
     ad_MiddleLeaderboard: '.content-wrapper .ad--section-leaderboard [id^=gpt-slot-]', //homepage, index, brand
-    ad_BottomLeaderboard: '.content-wrapper .ad--section-top-leaderboard [id^=gpt-slot-]', //homepage, index, brand, gallery, article
+    ad_BottomLeaderboard: '.content-wrapper .ad--section-bottom-leaderboard [id^=gpt-slot-]', //homepage, index, brand, gallery, article
     ad_Teads: '.ad--slot-teads [id^=gpt-slot-]', //gallery, article
 
     //RHS
@@ -54,7 +59,12 @@ var ads_widget = {
 
     // Vertical Gallery
     galleryNativeAd: '.ad--article-native',
-    galleryNativeAdDfp: '.ad--article-native [id^=gpt-slot-]'
+    galleryNativeAdDfp: '.ad--article-native [id^=gpt-slot-]',
+
+    //
+    stickyTopBanner: '.sticky-block--at-top',
+    stickyBottomBanner: '.sticky-block--at-bottom'
+
 
 };
 module.exports = ads_widget;
