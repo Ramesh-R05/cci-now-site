@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-//import { connectToStores } from '@bxm/flux';
+// import { connectToStores } from '@bxm/flux';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import SocialContainer from '../components/social/block';
 import HeroTeaser from '../components/teaser/hero';
@@ -12,9 +12,9 @@ import StickyAndDockAd from '../components/page/stickyAndDockAd';
 import MustRead from '../components/mustRead/mustRead';
 import BrandNewsletter from '../components/brand/brandNewsletter';
 import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
-import {connect} from 'react-redux';
-var provideContext = require('fluxible-addons-react/provideContext');
-var connectToStores = require('fluxible-addons-react/connectToStores');
+import { connect } from 'react-redux';
+const provideContext = require('fluxible-addons-react/provideContext');
+const connectToStores = require('fluxible-addons-react/connectToStores');
 import TeaserStore from '../stores/teaser';
 
 class Home extends Component {
@@ -42,7 +42,6 @@ class Home extends Component {
 
     constructor(props, context) {
         super(props, context);
-
     }
 
     state = {

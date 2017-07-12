@@ -11,8 +11,8 @@ import { Provider } from 'react-redux';
 import configureStore from './stores/configureStore';
 
 const dehydratedState = window.App;
-//const reduxStore = configureStore(dehydratedState.reduxStoreState);
-//const reduxStore = configureStore(dehydratedState.reduxStoreState);
+// const reduxStore = configureStore(dehydratedState.reduxStoreState);
+// const reduxStore = configureStore(dehydratedState.reduxStoreState);
 const reduxStore = configureStore(dehydratedState.reduxStoreState);
 
 window.React = React; // For chrome dev tool support

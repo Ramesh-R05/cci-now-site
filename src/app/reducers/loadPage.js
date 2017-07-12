@@ -54,4 +54,4 @@ function loadPage(state = initialState, action) {
     }
 }
 
-export default loadPage
+export default loadPage;

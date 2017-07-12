@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react';
-//import { connectToStores, provideContext } from '@bxm/flux';
+// import { connectToStores, provideContext } from '@bxm/flux';
 import { handleHistory } from 'fluxible-router';
 import ErrorPage from '../components/page/error';
 import { canUseDOM } from 'exenv';
 import PageStore from '../stores/page';
 import RouteStore from '../stores/route';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-var provideContext = require('fluxible-addons-react/provideContext');
-var connectToStores = require('fluxible-addons-react/connectToStores');
+const provideContext = require('fluxible-addons-react/provideContext');
+const connectToStores = require('fluxible-addons-react/connectToStores');
 
 
 class Application extends Component {
@@ -82,8 +82,8 @@ class Application extends Component {
 // Unit tests break when provideContext is used as a decorator. handleHistory works fine as a decorator, but to keep
 // the pattern consistent with other containers, only the connectToStore is used as a decorator.
 export const mapStateToProps = (state, props) => {
-    console.log("state: ", state);
-    return {myPropsFromRedux: 'test'};
+    console.log('state: ', state);
+    return { myPropsFromRedux: 'test' };
 };
 
 connectToStores(
