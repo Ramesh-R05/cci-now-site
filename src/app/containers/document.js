@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import VerticalGallery from '@bxm/article/lib/gallery';
+import Gallery from '@bxm/article/lib/gallery';
 import Page from './page';
 import Article from '@bxm/article/lib/article';
 import Teaser from '../components/teaser/teaser';
@@ -60,7 +60,7 @@ export default class Document extends Component {
                   hideFooter={false}
                   theme={theme}
                 >
-                    <VerticalGallery
+                    <Gallery
                       articleHeaderOrder={['Hero', 'Source', 'Title', 'Summary', 'Date', 'Author', 'NativeAd']}
                       contentBodyConfig={galleryContentBodyConfig}
                       enableTeads

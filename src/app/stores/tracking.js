@@ -10,66 +10,9 @@ function dataLayerPush(data) {
     dataLayer.push(data);
 }
 
-function getNumAds(items) {
-    const adItems = items.filter(item => !isUndefined(item.ad));
-
-    return adItems.length;
-}
-
 // ---------------------------------------------------------------------------- action tracking
 
-function trackGalleryOpen(action) {
-    const activeItem = action.activeItem;
-    const numAds = getNumAds(action.items);
-
-    const data = {
-        event: 'galleryOpen',
-        eventInfo: {
-            galleryName: action.galleryTitle,
-            prevImage: '',
-            currImage: activeItem.url,
-            currImageNo: activeItem.index,
-            totalImages: action.totalItems - numAds,
-            numAds,
-            isAd: !!activeItem.ad
-        }
-    };
-    dataLayerPush(data);
-}
-
-// https://jira.bauermedia.net.au/confluence/display/DACRM/Galleries
 function trackGalleryItemChanged(action) {
-    // dont trigger galleryImageChange if we
-    // are on the link to the next gallery or
-    // next item index is null
-    const newItemIndex = action.newItemIndex;
-    const totalItems = action.totalItems;
-    if (newItemIndex === null || newItemIndex > totalItems - 1) {
-        return;
-    }
-
-    const items = action.items;
-    const numAds = getNumAds(items);
-    const newItem = newItemIndex !== null ? items[newItemIndex] : '';
-    const isAd = !!newItem.ad;
-    const slideNumber = isAd ? null : newItem.index;
-
-    const data = {
-        event: 'galleryImageChange',
-        eventInfo: {
-            galleryName: action.galleryTitle,
-            prevImage: action.activeItem.url,
-            currImage: newItem.url,
-            currImageNo: slideNumber,
-            totalImages: totalItems - numAds,
-            numAds,
-            isAd: !!newItem.ad
-        }
-    };
-    dataLayerPush(data);
-}
-
-function trackVerticalGalleryItemChanged(action) {
     const activeItem = action.activeItem;
     const totalGalleryItems = action.totalGalleryItems;
     // don't trigger galleryImageChange if the item index is 0
@@ -91,23 +34,6 @@ function trackVerticalGalleryItemChanged(action) {
 }
 
 function trackGalleryComplete(action) {
-    const items = action.items;
-    const numAds = getNumAds(items);
-
-    const data = {
-        event: 'galleryComplete',
-        eventInfo: {
-            galleryName: action.galleryTitle,
-            prevImage: action.activeItem.url,
-            totalImages: action.totalItems - numAds,
-            numAds,
-            isAd: false
-        }
-    };
-    dataLayerPush(data);
-}
-
-function trackVerticalGalleryComplete(action) {
     const data = {
         event: 'galleryComplete',
         eventInfo: {
@@ -117,20 +43,6 @@ function trackVerticalGalleryComplete(action) {
         }
     };
     dataLayerPush(data);
-}
-
-function trackFollowOnClick(source) {
-    const data = {
-        event: 'followOnClick',
-        eventInfo: {
-            followOnSource: source
-        }
-    };
-    dataLayerPush(data);
-}
-
-function trackGalleryChanged() {
-    trackFollowOnClick('Next gallery');
 }
 
 function trackLoadList(payload) {
@@ -153,47 +65,22 @@ module.exports = createStore({
     // ------------------------------------------------------------------------ handlers
 
     handlers: {
-        GALLERY_OPENED: 'onGalleryOpened',
-        GALLERY_NEXT_ITEM: 'onGalleryNextItem',
-        GALLERY_PREVIOUS_ITEM: 'onGalleryPreviousItem',
-        VERTICAL_GALLERY_NEXT_ITEM: 'onVerticalGalleryNextItemTrack',
-        VERTICAL_GALLERY_PREVIOUS_ITEM: 'onVerticalGalleryPreviousItemTrack',
-        GALLERY_COMPLETED: 'onGalleryCompleted',
-        VERTICAL_GALLERY_COMPLETED: 'onVerticalGalleryCompleted',
-        GALLERY_NEXT_GALLERY: 'onNextGallery',
+        VERTICAL_GALLERY_NEXT_ITEM: 'onGalleryNextItemTrack',
+        VERTICAL_GALLERY_PREVIOUS_ITEM: 'onGalleryPreviousItemTrack',
+        VERTICAL_GALLERY_COMPLETED: 'onGalleryCompleted',
         LOAD_LIST: 'onLoadList'
     },
 
-    onGalleryOpened: (payload) => {
-        trackGalleryOpen(payload);
-    },
-
-    onGalleryNextItem: (payload) => {
+    onGalleryNextItemTrack: (payload) => {
         trackGalleryItemChanged(payload);
     },
 
-    onGalleryPreviousItem: (payload) => {
+    onGalleryPreviousItemTrack: (payload) => {
         trackGalleryItemChanged(payload);
-    },
-
-    onVerticalGalleryNextItemTrack: (payload) => {
-        trackVerticalGalleryItemChanged(payload);
-    },
-
-    onVerticalGalleryPreviousItemTrack: (payload) => {
-        trackVerticalGalleryItemChanged(payload);
     },
 
     onGalleryCompleted: (payload) => {
         trackGalleryComplete(payload);
-    },
-
-    onVerticalGalleryCompleted: (payload) => {
-        trackVerticalGalleryComplete(payload);
-    },
-
-    onNextGallery: (payload) => {
-        trackGalleryChanged(payload);
     },
 
     onLoadList: (payload) => {

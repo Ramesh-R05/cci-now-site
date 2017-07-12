@@ -38,8 +38,6 @@
 @import '../../node_modules/@bxm/article/styles/page';
 @import '../../node_modules/@bxm/ui/lib/to-love/video/videoPlayer';
 @import '../../node_modules/@bxm/article/styles/components/content-body/content-body';
-@import '../../node_modules/@bxm/gallery/styles/page';
-@import '../../node_modules/@bxm/gallery/styles/carousel/main';
 @import '../../node_modules/@bxm/ad/styles/google/adverts';
 @import '../../node_modules/@bxm/site-header/styles/main';
 @import '../../node_modules/@bxm/nav/scss/nav';
@@ -58,7 +56,6 @@
 @import 'components/video';
 @import 'components/header';
 @import 'components/uniheader';
-@import 'components/gallery';
 @import 'components/news-feed';
 @import 'components/title';
 @import 'components/ads';
@@ -101,10 +98,6 @@
 
 //Homepage
 @import 'components/trending';
-
-//inline gallery homepage
-@import 'components/inline-gallery/item';
-@import 'components/inline-gallery/carousel';
 
 //Social
 @import 'components/social/icon';

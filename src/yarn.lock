@@ -53,18 +53,6 @@
     react-addons-test-utils "^0.14.2"
     setimmediate "^1.0.2"
 
-"@bxm/gallery@15.0.0":
-  version "15.0.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fgallery/-/gallery-15.0.0.tgz#0c805ae665a71ee3be57ba547c1fd3442b58497f"
-  dependencies:
-    classnames "^2.1.1"
-    exenv "^1.2.0"
-    has-touch "^1.0.1"
-    keymirror "^0.1.1"
-    lodash "^3.3.1"
-    react-swipe "^3.0.0"
-    swipe-js-iso "^2.0.0"
-
 "@bxm/header@^11.0.1":
   version "11.0.1"
   resolved "http://npm.digital.bauer-media.net.au/@bxm%2fheader/-/header-11.0.1.tgz#e38b722a7a9aba269be8631ee05917df643fad13"
@@ -3536,10 +3524,6 @@ has-flag@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-2.0.0.tgz#e8207af1cc7b30d446cc70b734b5e8be18f88d51"
 
-has-touch@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/has-touch/-/has-touch-1.0.1.tgz#63ef34353b1c0c08bcaf8e804f95dee257ee9516"
-
 has-unicode@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/has-unicode/-/has-unicode-2.0.1.tgz#e0e6fe6a28cf51138855e086d1691e771de2a8b9"
@@ -3729,11 +3713,11 @@ husky@^0.13.3:
     is-ci "^1.0.9"
     normalize-path "^1.0.0"
 
-iconv-lite@0.4.13, iconv-lite@^0.4.5, iconv-lite@~0.4.13:
+iconv-lite@0.4.13:
   version "0.4.13"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
 
-iconv-lite@0.4.15:
+iconv-lite@0.4.15, iconv-lite@^0.4.5, iconv-lite@~0.4.13:
   version "0.4.15"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"
 
@@ -5951,12 +5935,6 @@ react-script-loader@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/react-script-loader/-/react-script-loader-0.0.1.tgz#9e33c88f26ad7a5cd418553a8d2188b9056dd385"
 
-react-swipe@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-swipe/-/react-swipe-3.0.0.tgz#ab3a78481c630df8da6d70ca27ca09faa3f62fbb"
-  dependencies:
-    object-assign "^4.0.1"
-
 react-tools@~0.13.0:
   version "0.13.3"
   resolved "https://registry.yarnpkg.com/react-tools/-/react-tools-0.13.3.tgz#da6ac7d4d7777a59a5e951cf46e72fd4b6b40a2c"
@@ -6937,10 +6915,6 @@ svgo@^0.7.0:
     mkdirp "~0.5.1"
     sax "~1.2.1"
     whet.extend "~0.9.9"
-
-swipe-js-iso@^2.0.0:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/swipe-js-iso/-/swipe-js-iso-2.0.3.tgz#76892ca4fc2928f384ac042739a25f7afe6fcf74"
 
 symbol-tree@^3.2.1:
   version "3.2.2"
