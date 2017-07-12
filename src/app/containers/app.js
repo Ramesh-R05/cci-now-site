@@ -1,19 +1,16 @@
 import React, { Component, PropTypes } from 'react';
-import { connectToStores, provideContext } from '@bxm/flux';
+//import { connectToStores, provideContext } from '@bxm/flux';
 import { handleHistory } from 'fluxible-router';
 import ErrorPage from '../components/page/error';
 import { canUseDOM } from 'exenv';
+import PageStore from '../stores/page';
+import RouteStore from '../stores/route';
+import {connect} from 'react-redux';
 
-function mapStateToProps(context) {
-    return {
-        nodeType: context.getStore('PageStore').getNodeType(),
-        error: context.getStore('PageStore').getErrorStatus(),
-        theme: context.getStore('PageStore').getModule('theme'),
-        isNavigateComplete: context.getStore('RouteStore').isNavigateComplete()
-    };
-}
+var provideContext = require('fluxible-addons-react/provideContext');
+var connectToStores = require('fluxible-addons-react/connectToStores');
 
-@connectToStores(['PageStore', 'RouteStore'], mapStateToProps)
+
 class Application extends Component {
 
     static propTypes = {
@@ -29,9 +26,14 @@ class Application extends Component {
     };
 
     static contextTypes = {
+        config: PropTypes.object,
         getStore: PropTypes.func,
         executeAction: PropTypes.func
     };
+
+    constructor(props, context) {
+        super(props, context);
+    }
 
     componentDidMount() {
         // Temp added here due to unforseen update of versions when updating react.
@@ -79,4 +81,21 @@ class Application extends Component {
 
 // Unit tests break when provideContext is used as a decorator. handleHistory works fine as a decorator, but to keep
 // the pattern consistent with other containers, only the connectToStore is used as a decorator.
+export const mapStateToProps = (state, props) => {
+    console.log("state: ", state);
+    return {myPropsFromRedux: 'test'};
+};
+
+connectToStores(
+    connect(mapStateToProps)(Application),
+    [PageStore, RouteStore],
+    (context, props) => ({
+        nodeType: context.getStore('PageStore').getNodeType(),
+        error: context.getStore('PageStore').getErrorStatus(),
+        theme: context.getStore('PageStore').getModule('theme'),
+        isNavigateComplete: context.getStore('RouteStore').isNavigateComplete()
+    })
+);
+
 export default provideContext(handleHistory(Application), { config: PropTypes.object });
+

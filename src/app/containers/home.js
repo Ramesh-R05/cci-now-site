@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { connectToStores } from '@bxm/flux';
+//import { connectToStores } from '@bxm/flux';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import SocialContainer from '../components/social/block';
 import HeroTeaser from '../components/teaser/hero';
@@ -12,19 +12,12 @@ import StickyAndDockAd from '../components/page/stickyAndDockAd';
 import MustRead from '../components/mustRead/mustRead';
 import BrandNewsletter from '../components/brand/brandNewsletter';
 import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
+import {connect} from 'react-redux';
+var provideContext = require('fluxible-addons-react/provideContext');
+var connectToStores = require('fluxible-addons-react/connectToStores');
+import TeaserStore from '../stores/teaser';
 
-function mapStateToProps(context) {
-    const teaserStore = context.getStore('TeaserStore');
-    return {
-        heroTeaser: teaserStore.getHeroTeaser(),
-        teasers: teaserStore.getLatestTeasers(),
-        list: teaserStore.getList(),
-        listNextParams: teaserStore.getListNextParams()
-    };
-}
-
-@connectToStores(['TeaserStore'], mapStateToProps)
-export default class Home extends Component {
+class Home extends Component {
     static displayName = 'HomePage';
 
     static propTypes = {
@@ -42,8 +35,15 @@ export default class Home extends Component {
     };
 
     static contextTypes = {
-        config: PropTypes.object
+        config: PropTypes.object,
+        getStore: PropTypes.func,
+        executeAction: PropTypes.func
     };
+
+    constructor(props, context) {
+        super(props, context);
+
+    }
 
     state = {
         bottomElm: null,
@@ -167,3 +167,21 @@ export default class Home extends Component {
         );
     }
 }
+
+export default connectToStores(Home, [TeaserStore], (context) => {
+    const teaserStore = context.getStore('TeaserStore');
+    return {
+        heroTeaser: teaserStore.getHeroTeaser(),
+        teasers: teaserStore.getLatestTeasers(),
+        list: teaserStore.getList(),
+        listNextParams: teaserStore.getListNextParams()
+    };
+});
+
+// const mapStateToProps = state => {
+//     console.log("state: ", state);
+//     return {myPropsFromRedux: 'test'};
+// };
+//
+// //export default connect(mapStateToProps)(Home);
+// export default Home;
