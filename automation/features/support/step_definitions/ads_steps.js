@@ -46,7 +46,8 @@ module.exports = function() {
     });
 
     this.Then(/^I should see native ad below author$/, function () {
-        expect(browser.isVisible(wn_ads.galleryNativeAd)).toBe(true);
+        // Change from isVisible to waitForExist for now since we are using APP_DEBUG as false
+        expect(browser.waitForExist(wn_ads.galleryNativeAd,5000));
     });
 
     this.Then(/^I should see the middle leaderboard ad under the top news feed$/, function () {
