@@ -4,7 +4,7 @@ export const initialState = {
     videoGalleryTeasers: [],
     mustRead: [],
     promoted: { title: '', items: [] },
-    list: []
+    list: {}
 };
 
 export function reducer(state = initialState, payload = { body: {} }, eventName = '') {
@@ -15,7 +15,7 @@ export function reducer(state = initialState, payload = { body: {} }, eventName 
                 heroTeaser = null,
                 latestTeasers = [],
                 videoGalleryTeasers = [],
-                list = [],
+                list = {},
                 mustRead = [],
                 promoted = { title: '', items: [] }
             } = payload.body;
@@ -36,7 +36,7 @@ export function reducer(state = initialState, payload = { body: {} }, eventName 
             videoGalleryTeasers: [],
             mustRead: [],
             promoted: { title: '', items: [] },
-            list: []
+            list: {}
         };
     }
     case 'LOAD_LIST': {
@@ -52,6 +52,6 @@ export function reducer(state = initialState, payload = { body: {} }, eventName 
         };
     }
     default:
-        return { ...state };
+        return state;
     }
 }
