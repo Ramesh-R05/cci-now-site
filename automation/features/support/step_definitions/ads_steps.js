@@ -350,9 +350,9 @@ module.exports = function() {
         }
     });
 
-    this.Then(/^I should see sticky top leaderboard as I scroll down and "([^"]*)" sticky bottom leaderboard once top dissapears$/, function (shouldSee) {
+    this.Then(/^I should see sticky top leaderboard as I scroll down and "([^"]*)" sticky bottom leaderboard once top disappears$/, function (shouldSee) {
 
-        // verify before scrolling down    
+        // verify before scrolling down
         browser.scroll(0,0);
         expect(browser.isVisible(wn_ads.stickyTopBanner)).toBe(false);
         expect(browser.isVisible(wn_ads.stickyBottomBanner)).toBe(false);
@@ -362,7 +362,7 @@ module.exports = function() {
         expect(browser.waitForVisible(wn_ads.stickyTopBanner, 2000)).toBe(true);
 
         // verify the ad disappears after 5 seconds
-        wait(3500);//the top ad will be sticky for 3.5sec 
+        wait(3500);//the top ad will be sticky for 3.5sec
         expect(browser.isVisible(wn_ads.stickyTopBanner)).toBe(false);
         switch (shouldSee) {
             case 'see':

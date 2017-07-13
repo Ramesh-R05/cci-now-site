@@ -325,6 +325,7 @@ module.exports = function() {
 
     this.Then(/^I can see the sticky ad when the top banner disappears from view$/, function () {
         browser.scroll(0,1000);
+        wait(3500);//the top ad will be sticky for 3.5sec
         expect(browser.waitForVisible(wn_article.stickyAdSection,2000)).toBe(true);
     });
 
