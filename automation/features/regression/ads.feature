@@ -208,76 +208,120 @@ Feature: Ad
 
 #-------- Test Auto-refreshing Ads for MREC in RHR -----------#
 
-    @BXMA-415 @BXMA-406 @high
+    @BXMA-415 @BXMA-406
     Scenario Outline: Sticky MREC ad in RHS will autorefresh on <page> in desktop view
         Given I switch to "desktop" view
         When I am currently viewing "<pageUrl>"
         Then I can see last RHR ad is sticky
-        And the "sticky MREC ad" will "auto" refresh every 6 seconds on "<page>" when is in View
+        And the "sticky MREC ad" will "auto" refresh every 30 seconds on "<page>" when is in View
         # And after 15 seconds the page will go idle and the add will no refresh anymore # This is tested manually
+        @high
         Examples:
             |page     |pageUrl                                                         |
             |article  |fashion/red-carpet/automation-test-article-with-hero-image-3663 |
+        @med
+        Examples:
+            |page     |pageUrl                                                         |
             |gallery  |fashion/red-carpet/automation-test-gallery-13302                |
 
 #-------- Test Auto-refreshing ad for MREC end-----------#
 
-#-------- Test viewability of sticky top leaderboard ad and stiky bottom leaderboard auto refreshing-----------#
+#-------- Test viewability of sticky top leaderboard ad and sticky bottom leaderboard-----------#
     @high @BXMA-409 @BXMA-410 
-    Scenario Outline: Verify the sticky top leaderboard and the autorefreshing mobile banner on <page> in mobile view
+    Scenario Outline: Verify the sticky top leaderboard on <page> in mobile view
         Given I switch to "mobile" view
         When I am currently viewing "<pageUrl>"
         * I should "not see" bottom leaderboard ad sticky at the bottom of the "<page>" page
         * I should see sticky top leaderboard as I scroll down and "see" sticky bottom leaderboard once top dissapears
-        * the "bottom leaderboard ad" will "<auto>" refresh every 6 seconds on "<page>" when is in View
         Examples:
-            |page      |auto        |pageUrl                                                                   |
-            |article   |auto        |fashion/red-carpet/automation-test-article-with-hero-image-3663           |
-            |gallery   |auto        |fashion/red-carpet/automation-test-gallery-13302                          |
-            |section   |not auto    |fashion                                                                   |
-            |brand     |not auto    |womansday                                                                 |
-            |homepage  |not auto    |                                                                          |
+            |page              |pageUrl                                                                   |
+            |gallery           |fashion/red-carpet/automation-test-gallery-13302                          |
+            |section           |fashion                                                                   |
+            |brand             |womansday                                                                 |
 
     @low @BXMA-409 @BXMA-41 
-    Scenario Outline: Verify the sticky top leaderboard and the autorefreshing bottom leaderboard on <page> in tablet portrait view
+    Scenario Outline: Verify the sticky top leaderboard on <page> in tablet portrait view
         Given I switch to "tablet portrait" view
         When I am currently viewing "<pageUrl>"
         * I should "not see" bottom leaderboard ad sticky at the bottom of the "<page>" page
         * I should see sticky top leaderboard as I scroll down and "see" sticky bottom leaderboard once top dissapears
-        * the "sticky bottom leaderboard ad" will "<auto>" refresh every 6 seconds on "<page>" when is in View
-        Examples:
-            |page      |auto        |pageUrl                                                                   |
-            |article   |auto        |fashion/red-carpet/automation-test-article-with-hero-image-3663           |
-            |gallery   |auto        |fashion/red-carpet/automation-test-gallery-13302                          |
-            |section   |not auto    |fashion                                                                   |
-            |brand     |not auto    |womansday                                                                 |
-            |homepage  |not auto    |                                                                          |
-
-    @low @BXMA-409 @BXMA-410 
-    Scenario Outline: Verify the sticky top leaderboard and the autorefreshing bottom leaderboard on <page> in tablet landscape view
-        Given I switch to "tablet landscape" view
-        When I am currently viewing "<pageUrl>"
-        * I should see sticky top leaderboard as I scroll down and "not see" sticky bottom leaderboard once top dissapears
-        * the "bottom leaderboard ad" will "not auto" refresh every 6 seconds on "<page>" when is in View
         Examples:
             |page              |pageUrl                                                                   |
             |article           |fashion/red-carpet/automation-test-article-with-hero-image-3663           |
-            |gallery           |fashion/red-carpet/automation-test-gallery-13302                          |
             |section           |fashion                                                                   |
+            |homepage          |                                                                          |
+
+    @low @BXMA-409 @BXMA-410 
+    Scenario Outline: Verify the sticky top leaderboard on <page> in tablet landscape view
+        Given I switch to "tablet landscape" view
+        When I am currently viewing "<pageUrl>"
+        * I should see sticky top leaderboard as I scroll down and "not see" sticky bottom leaderboard once top dissapears
+        Examples:
+            |page              |pageUrl                                                                   |
+            |gallery           |fashion/red-carpet/automation-test-gallery-13302                          |
             |brand             |womansday                                                                 |
             |homepage          |                                                                          |
 
     @high @BXMA-409 @BXMA-410
-    Scenario Outline: Verify the sticky top leaderboard and the autorefreshing bottom leaderboard on <page> in desktop view 
+    Scenario Outline: Verify the sticky top leaderboard on <page> in desktop view 
         Given I switch to "desktop" view
         When I am currently viewing "<pageUrl>"
         * I should see sticky top leaderboard as I scroll down and "not see" sticky bottom leaderboard once top dissapears
-        * the "bottom leaderboard ad" will "not auto" refresh every 6 seconds on "<page>" when is in View
         Examples:
             |page              |pageUrl                                                                   |
             |article           |fashion/red-carpet/automation-test-article-with-hero-image-3663           |
-            |gallery           |fashion/red-carpet/automation-test-gallery-13302                          |
             |section           |fashion                                                                   |
             |brand             |womansday                                                                 |
-            |homepage          |                                                                          |
 #-------- Test viewability top leaderboard ad end-----------#
+
+
+#-------- Test viewability of sticky top leaderboard ad and stiky bottom leaderboard auto refreshing-----------#
+    @BXMA-409 @BXMA-410 
+    Scenario Outline: Verify the autorefreshing mobile banner on <page> in mobile view
+        Given I switch to "mobile" view
+        When I am currently viewing "<pageUrl>"
+        * I should see sticky top leaderboard as I scroll down and "see" sticky bottom leaderboard once top dissapears
+        * the "mobile banner ad" will "<auto>" refresh every 30 seconds on "<page>" when is in View
+        @high
+        Examples:
+            |page      |auto        |pageUrl                                                                   |
+            |article   |auto        |fashion/red-carpet/automation-test-article-with-hero-image-3663           |
+        @med
+        Examples:
+            |page      |auto        |pageUrl                                                                   |
+            |homepage  |not auto    |                                                                          |
+
+    @low @BXMA-409 @BXMA-41 
+    Scenario Outline: Verify the autorefreshing bottom leaderboard on <page> in tablet portrait view
+        Given I switch to "tablet portrait" view
+        When I am currently viewing "<pageUrl>"
+        * I should see sticky top leaderboard as I scroll down and "see" sticky bottom leaderboard once top dissapears
+        * the "sticky bottom leaderboard ad" will "<auto>" refresh every 30 seconds on "<page>" when is in View
+        Examples:
+            |page      |auto        |pageUrl                                                                   |
+            |gallery   |auto        |fashion/red-carpet/automation-test-gallery-13302                          |
+            |brand     |not auto    |womansday                                                                 |
+
+    @low @BXMA-409 @BXMA-410 
+    Scenario Outline: Verify the autorefreshing bottom leaderboard on <page> in tablet landscape view
+        Given I switch to "tablet landscape" view
+        When I am currently viewing "<pageUrl>"
+        * I should see sticky top leaderboard as I scroll down and "not see" sticky bottom leaderboard once top dissapears
+        * the "bottom leaderboard ad" will "not auto" refresh every 30 seconds on "<page>" when is in View
+        Examples:
+            |page              |pageUrl                                                                   |
+            |article           |fashion/red-carpet/automation-test-article-with-hero-image-3663           |
+            |section           |fashion                                                                   |
+
+    @med @BXMA-409 @BXMA-410
+    Scenario Outline: Verify the autorefreshing bottom leaderboard on <page> in desktop view 
+        Given I switch to "desktop" view
+        When I am currently viewing "<pageUrl>"
+        * I should see sticky top leaderboard as I scroll down and "not see" sticky bottom leaderboard once top dissapears
+        * the "bottom leaderboard ad" will "not auto" refresh every 30 seconds on "<page>" when is in View
+        Examples:
+            |page              |pageUrl                                                                   |
+            |gallery           |fashion/red-carpet/automation-test-gallery-13302                          |
+            |homepage          |                                                                          |
+#-------- Test sticky bottom leaderboard auto refreshing end-----------#
+
