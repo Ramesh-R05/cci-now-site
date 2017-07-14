@@ -71,3 +71,30 @@
     max-width: 1024px;
     background-color: #fff;
 }
+
+.sticky-block {
+    &.sticky-block--in-view {
+        .ad--section-bottom-leaderboard {
+            padding-top: 15px;
+        }
+    }
+
+    &.sticky-block--at-top {
+        bottom: auto;
+        .ad {
+            padding-bottom: 0;
+            @media #{$small-only} {
+                margin-bottom: 0px;
+            }
+            @media #{$medium-only} {
+                margin-bottom: 20px;
+            }
+            @media #{$medium-up} {
+                margin-bottom: 30px;
+            }
+        }
+    }
+    &.sticky-block--at-bottom {
+        top: auto;
+    }
+}
