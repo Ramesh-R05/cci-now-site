@@ -71,8 +71,7 @@ resources:
     integration: slack-bauerxcelmedia
     pointer:
       recipients:
-        - "#avengers-team-au"
-        - "#justice_league_au"
+        - "#survivors_outlast_au"
 
   # Seed Release version
     # for Rollback refer to below URL
