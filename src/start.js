@@ -1,10 +1,8 @@
 process.env.APP_KEY = 'now-site';
 process.title = process.env.APP_KEY;
-if (process.env.APP_DEBUG === 'true') {
-    process.on('uncaughtException', function(e) {
-        throw e;
-    });
-}
+process.on('uncaughtException', function(e) {
+    throw e;
+});
 require('babel-polyfill');
 require('babel-register');
 var logger = require('./logger').default;
@@ -18,7 +16,7 @@ var timerId = null;
 
 function startWhenReady() {
     attemptCount++;
-    if (timerId){
+    if (timerId) {
         clearTimeout(timerId);
         timerId = null;
     }
@@ -33,15 +31,12 @@ function startWhenReady() {
     }
 }
 
-switch (process.env.APP_DEBUG){
-    case 'true':
-    case 'silly':
-        try {
-            startWhenReady();
-        } catch (e) {
-            logger.error(e);
-        }
-        break;
-    default:
+if (process.env.APP_DEBUG === 'true') {
+    try {
         startWhenReady();
+    } catch (e) {
+        logger.error(e);
+    }
+} else {
+    startWhenReady();
 }
