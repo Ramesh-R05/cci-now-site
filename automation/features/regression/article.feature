@@ -218,45 +218,6 @@ Feature: Article
             | tablet landscape  |
 # -------- Outbrain end   ---------------#
 
-# -------- Polar is High  ---------------#
-    Scenario Outline: Verify polar ads in RHR on "<device>"
-        Given I switch to "<device>" view
-        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
-        Then the below position in RHR are replaced with Polar ads
-            | pos |
-            | 2   |
-            | 5   |
-            | 9   |
-            | 14  |
-    @high
-        Examples:
-            | device            |
-            | desktop           |
-    @low
-        Examples:
-            | device            |
-            | tablet landscape  |
-
-    Scenario Outline: I can see a polar placement on the first teaser in a Related Content module on "<device>"
-        Given I switch to "<device>" view
-        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
-        Then I can see a polar placement on the first teaser in a Related Content module
-
-    @high
-        Examples:
-            | device    |
-            | mobile    |
-    @med
-        Examples:
-            | device    |
-            | desktop   |
-    @low
-        Examples:
-            | device            |
-            | tablet landscape  |
-            | tablet portrait   |
-# -------- Polar end  ---------------#
-
     Scenario Outline: Users can see the Image Revealer component on the article page
         When I switch to "<device>" view
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"

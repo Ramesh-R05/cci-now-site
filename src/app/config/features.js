@@ -9,9 +9,6 @@ export default {
         enabled: true
     },
     showTeaserBadgeLink: false,
-    useDefaultPolar: {
-        enabled: true
-    },
     sailthru: {
         enabled: true
     }

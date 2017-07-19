@@ -157,9 +157,9 @@
     classnames "^2.2.5"
     lodash "^3.3.1"
 
-"@bxm/teaser@^5.3.0":
-  version "5.3.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fteaser/-/teaser-5.3.0.tgz#d410106df0784d3123a5c930271ccedad246e9d0"
+"@bxm/teaser@^6.0.0":
+  version "6.0.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fteaser/-/teaser-6.0.0.tgz#86b050002d30525309a4ad8905691c5ee2644674"
   dependencies:
     classnames "^2.1.1"
     lodash "~3.10.0"

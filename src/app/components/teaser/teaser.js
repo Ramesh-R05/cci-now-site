@@ -5,6 +5,7 @@ import TeaserImage from '@bxm/teaser/lib/components/image';
 import TeaserSummary from '@bxm/teaser/lib/components/summary';
 import Date from '@bxm/datetime/lib/components/Date';
 import teaserContentOverride from '@bxm/teaser/lib/teaserContentOverride';
+import Ad from '@bxm/ad/lib/google/components/ad';
 import has from 'lodash/object/has';
 import get from 'lodash/object/get';
 
@@ -19,7 +20,16 @@ export default class Teaser extends Component {
         sourceClassName: PropTypes.string,
         onClick: PropTypes.func,
         showDate: PropTypes.bool,
-        sourceDefault: PropTypes.string
+        sourceDefault: PropTypes.string,
+        polar: PropTypes.oneOfType([
+            PropTypes.shape({
+                targets: PropTypes.shape({
+                    kw: PropTypes.string
+                }),
+                label: PropTypes.string
+            }),
+            PropTypes.bool
+        ])
     };
 
     static contextTypes = {
@@ -49,7 +59,8 @@ export default class Teaser extends Component {
             xl: { w: 880, h: 710 }
         },
         onClick: function onClick() {},
-        sourceDefault: ''
+        sourceDefault: '',
+        polar: false
     };
 
     getGTMClass = () => {
@@ -91,7 +102,7 @@ export default class Teaser extends Component {
 
     render() {
         const { config } = this.context;
-        const { className, sourceClassName, showDate, sourceDefault } = this.props;
+        const { className, sourceClassName, showDate, sourceDefault, polar } = this.props;
         let { article } = this.props;
 
         if (!article) return null;
@@ -135,6 +146,17 @@ export default class Teaser extends Component {
                         </p>
                     </div>
                 </div>
+
+                {polar && (
+                    <Ad
+                      sizes={'nativeAdTeaser'}
+                      label={polar.label}
+                      targets={polar.targets}
+                      nativeAd
+                      pageLocation={Ad.pos.body}
+                    />
+                )}
+
             </article>
         );
     }
