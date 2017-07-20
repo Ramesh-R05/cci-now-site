@@ -17,8 +17,7 @@ const homeMiddleware = proxyquire('../../../../app/server/bff/middleware/home', 
     '../api/trending': () => { return getTrendingStub() },
     '../api/module': {
         getHeroTeaser() { return getHeroTeaserStub() }
-    },
-    '@bxm/winston-logger': { backendLogger: { log(){} } }
+    }
 }).default;
 
 describe('Home middleware', () => {

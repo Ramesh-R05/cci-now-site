@@ -12,7 +12,7 @@ const configStub = {
 const SectionApi = proxyquire('../../../../app/server/bff/api/listing', {
     '../../makeRequest': (args) => { return makeRequestStub(args) },
     '../../../config': configStub,
-    '@bxm/winston-logger': { backendLogger: { error(){} } }
+    '../../../../logger': { error(){} }
 });
 
 describe('ListingAPI', () => {

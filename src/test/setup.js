@@ -1,4 +1,4 @@
-import { backendLogger as logger } from '@bxm/winston-logger';
+import logger from '../logger';
 import { jsdom } from 'jsdom';
 import chai from 'chai';
 import sinon from 'sinon';

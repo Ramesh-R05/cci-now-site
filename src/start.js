@@ -24,7 +24,7 @@ function startWhenReady() {
         logger.info(`${requiredFile} exists, ok to start`);
         require('./app/server/server');
     } else if (attemptCount <= maxAttempts) {
-        logger.debug(`${requiredFile} in progress - waiting ${retryDelay / 1000} more seconds`);
+        logger.info(`${requiredFile} in progress - waiting ${retryDelay / 1000} more seconds`);
         timerId = setTimeout(startWhenReady, retryDelay);
     } else {
         throw new Error(`requiredFile not found within ${(maxAttempts * retryDelay) / 1000} seconds`);

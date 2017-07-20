@@ -1,6 +1,6 @@
 import makeRequest from '../../makeRequest';
 import config from '../../../config';
-import { backendLogger as logger } from '@bxm/winston-logger';
+import logger from '../../../../logger';
 const FEEDPATH = '/teasers';
 
 export function getLatestTeasers(top = 20, skip = 0, filter) {

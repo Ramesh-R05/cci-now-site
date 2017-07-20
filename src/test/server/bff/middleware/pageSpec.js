@@ -7,8 +7,7 @@ let getPageIDStub = () => {};
 
 const pageMiddleware = proxyquire('../../../../app/server/bff/middleware/page', {
     '../../makeRequest': (...args) => { return makeRequestStub(...args) },
-    '../helper/getPageID': () => { return getPageIDStub() },
-    '@bxm/winston-logger': { backendLogger: { log(){} } }
+    '../helper/getPageID': () => { return getPageIDStub() }
 }).default;
 
 describe('Page middleware', () => {

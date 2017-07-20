@@ -13,7 +13,7 @@ import headerMeta from './bff/middleware/headerMeta';
 import sitemap from './bff/middleware/sitemap';
 import list from './bff/middleware/list';
 import stubServer from '../../automation/test_data/contentApi';
-import { backendLogger as logger } from '@bxm/winston-logger';
+import logger from '../../logger';
 
 export default function bff(server) {
     if (process.env.APP_STUBBED === 'true') {
