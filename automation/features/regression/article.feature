@@ -123,8 +123,8 @@ Feature: Article
 # -------- LHR are High and Medium as this Helps recirculate users ---------------#
     @DDO-160 @DDO-48 @BXMA-174
     Scenario Outline: Verify LHR on different screen sizes "<device>"
-        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
-        When I switch to "<device>" view
+        Given I switch to "<device>" view
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see 20 items in the list of items in LHR
         * I can see the 20 images of each item in LHR
         * Image in LHR is clickable to open its page
@@ -143,8 +143,8 @@ Feature: Article
     #-- test cases to validate something is not present are low
     @low
     Scenario Outline: Verify LHR on different screen sizes "<device>"
-        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
-        When I switch to "<device>" view
+        Given I switch to "<device>" view
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I should not see the LHR
     Examples:
         | device            |
@@ -155,8 +155,8 @@ Feature: Article
 # -------- Social share is Medium as this Helps recirculate users ---------------#
     @BXMA-155
     Scenario Outline: Verify the share buttons on an article page in "<device>" view
-        When I switch to "<device>" view
-        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        Given I switch to "<device>" view
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the facebook share button on article page
         * I can see the pinterest share button on article page
         @med
@@ -200,8 +200,8 @@ Feature: Article
 
 # -------- Outbrain is High  ---------------#
     Scenario Outline: Users can see Outbrain on the article page
-        When I switch to "<device>" view
-        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
+        Given I switch to "<device>" view
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the outbrain frame with "NowtoLove" template
     @high
         Examples:

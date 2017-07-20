@@ -1,7 +1,7 @@
 var home = require('../page_objects/homepage_widget');
 var world = require('../world');
-var wait = require('../utils/wait');
-var validatePolar = require('../utils/validatePolar');
+var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
+var validatePolar = require('../../../node_modules/@bxm/automation/lib/utils/validatePolar');
 
 module.exports = function(){
 

@@ -1,4 +1,4 @@
-var wait = require('../utils/wait');
+var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
 var world = require('../world');
 var fs = require("fs");
 var request = require('request');

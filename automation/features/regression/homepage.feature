@@ -20,6 +20,7 @@ Feature: Homepage
             | tablet landscape  |
             | tablet portrait   |
 
+
     @mustread @BXMA-81
     Scenario Outline: Verify the must read module is functional correctly in "<device>" view
         Given I switch to "<device>" view

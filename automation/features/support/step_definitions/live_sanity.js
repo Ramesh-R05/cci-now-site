@@ -1,5 +1,5 @@
 var world = require('../world');
-var waitUtl = require('../utils/wait');
+var waitUtl = require('../../../node_modules/@bxm/automation/lib/utils/wait');
 var wn_article = require('../page_objects/article_widget');
 var wn_social = require('../page_objects/social_widget');
 var food_search = require('../page_objects/search_widget');

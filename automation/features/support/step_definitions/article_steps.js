@@ -1,7 +1,7 @@
 var lhr = require('../page_objects/lhr_widget');
 var wn_article = require('../page_objects/article_widget');
-var wait = require('../utils/wait');
-var validatePolar = require('../utils/validatePolar');
+var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
+var validatePolar = require('../../../node_modules/@bxm/automation/lib/utils/validatePolar');
 var nconf = require('nconf');
 var site_domain = nconf.get('APP_KEY');
 

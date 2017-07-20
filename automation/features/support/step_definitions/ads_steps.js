@@ -1,7 +1,7 @@
 var wn_ads = require('../page_objects/ads_widget');
-var wait = require('../utils/wait');
-var visibilityFunctions = require('../utils/visibilityFunctions');
-var loadAllElements = require('../utils/loadAllElements');
+var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
+var visibilityFunctions = require('../../../node_modules/@bxm/automation/lib/utils/visibilityFunctions');
+var loadAllElements = require('../../../node_modules/@bxm/automation/lib/utils/loadAllElements');
 
 module.exports = function() {
 
@@ -85,7 +85,7 @@ module.exports = function() {
 
     this.Then(/^I should see MREC ad between images$/, function () {
         // To load all elements on the page before validating the bottom ads
-        loadAllElements('gallery');
+        loadAllElements('gallery', browser);
 
         // Verify the mrec ad after slide no. 3
         browser.scroll(wn_ads.gallerySlide3); // Scroll to the slide no.3 to make sure the header will not overlap the MREC element. This has fixed the Browser Stack issue when running on iPhone 6 plus
@@ -122,16 +122,16 @@ module.exports = function() {
 
     //BELOW ARE THE STEPS TO TEST WALLPAPER, SIDE PANEL, OUT OF PAGE ADs
     this.Then(/^I should "([^"]*)" the wallpaper ad slot on "([^"]*)"$/, function (visibility, page) {
-        visibilityFunctions.isAdVisible(page, visibility,wn_ads.ad_Wallpaper);
+        visibilityFunctions.isAdVisible(page, visibility, wn_ads.ad_Wallpaper, browser);
     });
 
     this.Then(/^I should "([^"]*)" the left and right side ad slot on "([^"]*)"$/, function (visibility, page) {
-        visibilityFunctions.isAdVisible(page, visibility,wn_ads.ad_LeftSidePanel);
-        visibilityFunctions.isAdVisible(page, visibility,wn_ads.ad_RightSidePanel);
+        visibilityFunctions.isAdVisible(page, visibility, wn_ads.ad_LeftSidePanel, browser);
+        visibilityFunctions.isAdVisible(page, visibility, wn_ads.ad_RightSidePanel, browser);
     });
 
     this.Then(/^I should "([^"]*)" the out of page ad slot on "([^"]*)"$/, function (visibility, page) {
-        visibilityFunctions.isAdVisible(page, visibility,wn_ads.ad_OutOfPage);
+        visibilityFunctions.isAdVisible(page, visibility, wn_ads.ad_OutOfPage, browser);
     });
 
     //----------------------------------------
@@ -153,11 +153,11 @@ module.exports = function() {
         var adElement;
         switch(ad) {
             case 'sticky MREC ad': //desktop, tablet landscape
-                loadAllElements(page); // To load all elements on the page before validating the ad
+                loadAllElements(page, browser); // To load all elements on the page before validating the ad
                 adElement = wn_ads.ad_StickyMrecRhs;
                 break;
             case 'bottom leaderboard ad': //desktop, tablet landscape
-                loadAllElements(page); // To load all elements on the page before validating the ad
+                loadAllElements(page, browser); // To load all elements on the page before validating the ad
                 adElement = wn_ads.ad_BottomLeaderboard;
                 break;
             case 'sticky bottom leaderboard ad': //mobile, tablet portrait
