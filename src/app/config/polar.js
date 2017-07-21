@@ -100,7 +100,9 @@ export default {
             label: 'article_related_1',
             targets: {
                 kw: 'article_related_1'
-            }
+            },
+            pos: 'body' // most polar positions are hard coded, to define it in config you must extend the functionality of the component that uses it
+                        // example @ https://github.com/bauerxcelmedia/wn-article/blob/master/src/components/feed/feedItem.jsx
         }
     }
 };
