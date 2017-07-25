@@ -13,9 +13,9 @@
     q "^1.4.1"
     react-script-loader "0.0.1"
 
-"@bxm/article@^25.7.6":
-  version "25.7.6"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2farticle/-/article-25.7.6.tgz#18a035884c26332b8559916235315f7597af8bd7"
+"@bxm/article@^25.9.1":
+  version "25.9.1"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2farticle/-/article-25.9.1.tgz#0d534ccb676403860a378f387bcdaec106869f4e"
   dependencies:
     "@bxm/behaviour" "^1.1.0"
     "@bxm/image" "^2.0.0"
@@ -166,9 +166,9 @@
     moment "~2.8.3"
     moment-timezone "^0.5.0"
 
-"@bxm/ui@^16.0.0":
-  version "16.0.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fui/-/ui-16.0.0.tgz#623d733ea2dd6e728eae30a31a95425f9fffdc43"
+"@bxm/ui@^17.1.0":
+  version "17.1.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fui/-/ui-17.1.0.tgz#203ff9b52bc42d41beccc69f343e946707ce8eb0"
   dependencies:
     "@bxm/markdown" "^1.0.0"
     "@bxm/react-script-loader" "^2.0.0"
@@ -6696,11 +6696,7 @@ split@0.3:
   dependencies:
     through "2"
 
-sprintf-js@^1.0.3:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.1.1.tgz#36be78320afe5801f6cea3ee78b6e5aab940ea0c"
-
-sprintf-js@~1.0.2:
+sprintf-js@^1.0.3, sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
