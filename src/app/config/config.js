@@ -30,6 +30,8 @@ export default {
 
     cache,
 
+    headerBaseHeight: 193,
+
     error: {
         404: {
             title: 'Sorry, this page is broken.',
