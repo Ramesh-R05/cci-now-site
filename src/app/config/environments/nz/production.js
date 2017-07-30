@@ -8,7 +8,7 @@ export default {
             listings: 'http://services.prod.bxm.internal/listing/v1/nznow',
             module: 'http://services.prod.bxm.internal/module/v1/nznow',
             sitemap: 'http://live.sitemaps.services.bauer-media.internal/v1/nznow',
-            tag: 'http://live.tags.services.bauer-media.internal/v1/nznow'
+            tag: 'http://services.prod.bxm.internal/tag/v1/nznow'
         },
         redirect: {
             url: 'http://live.redirect.services.bauer-media.internal/v1/nznow/301'

@@ -5,7 +5,7 @@ export default {
         module: 'http://services.sit.bxm.internal/module/v1/nznow',
         sitemap: 'http://dev.sitemaps.services.bauer-media.internal/v1/nznow',
         trending: 'http://trending.bauer.mg/today?sites=nowtolove.co.nz',
-        tag: 'http://dev.tags.services.bauer-media.internal/v1/nznow'
+        tag: 'http://services.sit.bxm.internal/tag/v1/nznow'
     },
     redirect: {
         url: 'http://dev.redirect.services.bauer-media.internal/v1/nznow/301'
