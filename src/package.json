@@ -48,7 +48,7 @@
     "@bxm/site-header": "^4.0.0",
     "@bxm/social": "^2.0.0",
     "@bxm/tags": "^3.0.0",
-    "@bxm/teaser": "^6.0.0",
+    "@bxm/teaser": "^6.1.0",
     "@bxm/ui": "^17.1.0",
     "@bxm/video": "^4.1.2",
     "@bxm/winston-logger": "^1.1.0",
