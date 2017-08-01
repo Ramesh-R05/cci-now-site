@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@bxm/ad@^11.6.0":
-  version "11.6.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fad/-/ad-11.6.0.tgz#b856027b90a2cac1399e82621ed6c25089564422"
+"@bxm/ad@^12.0.0":
+  version "12.0.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fad/-/ad-12.0.0.tgz#a155d4429d9ee8ce3d6b7bb47e37b89e6d5aced6"
   dependencies:
     "@bxm/react-script-loader" "^2.0.0"
     classnames "^2.2.1"
@@ -131,9 +131,9 @@
     request "^2.81.0"
     serialize-javascript "^1.3.0"
 
-"@bxm/site-header@^2.7.2":
-  version "2.7.2"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fsite-header/-/site-header-2.7.2.tgz#d1d74cd909c8d07120fd39c60f5074edc35d6f1c"
+"@bxm/site-header@^4.0.0":
+  version "4.0.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fsite-header/-/site-header-4.0.0.tgz#51b6430e2aa43005829effdc66e43de7782cc62f"
   dependencies:
     "@bxm/behaviour" "^1.3.0"
     classnames "^2.2.3"
