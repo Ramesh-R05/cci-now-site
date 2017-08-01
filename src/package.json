@@ -10,7 +10,7 @@
   },
   "scripts": {
     "prepush": "run-p lint test",
-    "start": "NODE_ENV=production node ./start.js",
+    "start": "NODE_ENV=production node $NODE_DEBUG_OPTION ./start.js",
     "test": "babel-node ./node_modules/babel-istanbul/lib/cli cover --root ./ --include-all-sources --report teamcity --report cobertura --report html ./node_modules/mocha/bin/_mocha -- --require ./test/setup.js --recursive --check-leaks",
     "test:ci": "npm run test -- --reporter=xunit --reporter-options output=./../shippable/testresults/result.xml",
     "test:unit": "mocha --require babel-polyfill --require babel-register --require test/setup.js --reporter min --recursive --check-leaks",
@@ -44,7 +44,7 @@
     "@bxm/newsletter": "^3.0.0",
     "@bxm/react-script-loader": "^2.1.0",
     "@bxm/recommendations": "^4.1.0",
-    "@bxm/server": "^22.2.1",
+    "@bxm/server": "^22.3.0",
     "@bxm/site-header": "^4.0.0",
     "@bxm/social": "^2.0.0",
     "@bxm/tags": "^3.0.0",

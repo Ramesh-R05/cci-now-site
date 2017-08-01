@@ -168,7 +168,7 @@ module.exports = function(){
 
         browser.scroll(signUpBtn);
         expect(browser.isVisible(signUpBtn)).toEqual(true);
-        expect(signUpBtnLink).toEqual(url);
+        expect(signUpBtnLink).toContain(url);
         expect(signUpBtnClass).toContain(gtm);
     });
 };

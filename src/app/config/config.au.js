@@ -193,6 +193,6 @@ export default {
     outbrain: {
         templateId: 'NowtoLove',
         widgetId: 'AR_1',
-        scriptUrl: 'http://widgets.outbrain.com/outbrain.js'
+        scriptUrl: '//widgets.outbrain.com/outbrain.js'
     }
 };

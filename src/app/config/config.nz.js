@@ -29,7 +29,7 @@ export default {
     outbrain: {
         templateId: 'NowtoLoveNZ',
         widgetId: 'AR_1',
-        scriptUrl: 'http://widgets.outbrain.com/outbrain.js'
+        scriptUrl: '//widgets.outbrain.com/outbrain.js'
     }
 };
 

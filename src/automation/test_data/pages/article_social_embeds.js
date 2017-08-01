@@ -247,7 +247,7 @@ export default{
                 "type": "wirewax",
                 "label": "Wirewax",
                 "content": {
-                    "url": "http://embed.wirewax.com/8037657/ff0044/"
+                    "url": "https://embed.wirewax.com/8037657/ff0044/"
                 }
             },
             {
