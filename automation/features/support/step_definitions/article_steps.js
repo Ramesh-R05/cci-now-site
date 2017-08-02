@@ -249,7 +249,7 @@ module.exports = function() {
         browser.waitForVisible(wn_article.linklayEmb, 3000);
         var linklayEmb = browser.getAttribute(wn_article.linklayEmb, 'src');
         console.log(linklayEmb);
-        expect(linklayEmb).toEqual(linklayUrl);
+        expect(linklayEmb).toContain(linklayUrl);
     });
     this.Given(/^I can see the related tags "([^"]*)"$/, function (rTag1) {
         var relatedTags = browser.getText(wn_article.relatedTags, 'href');

@@ -185,7 +185,7 @@ Feature: Article
          * I can see the body Vimeo embed "https://player.vimeo.com/video/181027959"
          * I can see the body Whooshka embed "https://www.whooshkaa.com/player/episode/id/90704?visual=true"
          * I can see the body Wirewax embed "https://embed.wirewax.com/8037657/ff0044/"
-         * I can see the body Linklay embed "https://www.linklay.com/app/linklay/embed/linklay59151f750e2a94.81058944"
+         * I can see the body Linklay embed "//www.linklay.com/app/linklay/embed/linklay59151f750e2a94.81058944"
     @med
          Examples:
              | device            |
