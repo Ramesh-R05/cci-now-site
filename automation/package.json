@@ -10,7 +10,8 @@
     "test:low": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@low\"",
     "test:nzlow": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@nznow --tags=@low\"",
     "test:rerun": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs @rerun.txt\"",
-    "all:test": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=~@manual\"",
+    "all:test": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=~@cms --tags=~@manual\"",
+    "test:cms": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@cms --tags=~@manual\"",
     "single": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs\"",
     "once": "npm run single",
     "html_report": "bash -c \"node generate_html.js\"",
@@ -29,7 +30,7 @@
     "test:phantom": "export APP_KEY=now-site && npm run features"
   },
   "dependencies": {
-    "@bxm/automation": "^2.0.0",
+    "@bxm/automation": "^2.1.0",
     "cucumber-html-report": "^0.2.8"
   }
 }
