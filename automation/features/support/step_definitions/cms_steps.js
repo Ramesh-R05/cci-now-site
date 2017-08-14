@@ -30,6 +30,25 @@ module.exports = function() {
         expect(browser.waitForVisible(cms.cmsRightSide,3000)).toBe(true);
     });
 
+    this.Given(/^I am currently viewing the create form$/, function () {
+        var cmsSectionID;
+
+        switch (world.Urls.site) {
+            case 'now-site':
+                cmsSectionID = '1169'; //Celebrity > Celeb News
+                break;
+            case 'nznow-site':
+                cmsSectionID = '1169'; //Celebrity > Celeb News
+                break;
+            default:
+                cmsSectionID = '1169';
+        }
+
+        console.log('Section/Subsection ID: ' + cmsSectionID);
+        browser.url(world.Urls.home_page + 'create.aspx?nodeId=' + cmsSectionID + '&nodeType=content');
+        expect(browser.waitForVisible(cms.createDocumentType,5000)).toBe(true);
+    });
+
     this.Then(/^I should be able to select "([^"]*)" doc type$/, function (type) {
         docType = type;
         browser.selectByVisibleText(cms.createDocumentType, docType);

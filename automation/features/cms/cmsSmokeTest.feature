@@ -3,10 +3,9 @@ Feature: CMS Smoke Test
     As an editor
     I should be able to use CMS to create and update content
 
-    # 1169 is the nodeId of the Celebrity>Celeb News sub-section in the NTL AU Dev CMS
     Scenario Outline: Create the <doctype> item
         Given I am logging in CMS
-        When I am currently viewing "create.aspx?nodeId=1169&nodeType=content"
+        When I am currently viewing the create form
         * I should be able to select "<doctype>" doc type
         * I should be able to add the name
         * I should be able to click the create button
