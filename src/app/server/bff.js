@@ -12,6 +12,7 @@ import tag from './bff/middleware/tag';
 import headerMeta from './bff/middleware/headerMeta';
 import sitemap from './bff/middleware/sitemap';
 import list from './bff/middleware/list';
+import amp from './amp';
 import stubServer from '../../automation/test_data/contentApi';
 import logger from '../../logger';
 
@@ -20,6 +21,7 @@ export default function bff(server) {
         stubServer(server, server.locals.config);
         logger.warn('stubbing does not exercise BFF code');
     } else {
+        server.get('/amp/:section/:subsection/:page', pageModules, page, headerMeta, responseBody, amp);
         server.get('/sitemap/:section?', sitemap, error);
         server.get(server.locals.config.services.endpoints.list, list, render, error);
         server.get(

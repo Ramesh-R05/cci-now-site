@@ -1,0 +1,84 @@
+include admixin
+
+<!doctype html>
+html(⚡ lang="en")
+    head
+        meta(charset='utf-8')
+        title #{entity.contentTitle} | #{locals.config.site.name}
+        link(rel="icon" href="/assets/favicon.ico")
+        link(rel="canonical" href=locals.config.site.host + entity.url)
+
+        meta(name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1')
+        script(type='application/ld+json')
+            include schema.json
+        include boilerplate
+        style(amp-custom)
+            include style.css
+        script(async src="https://cdn.ampproject.org/v0.js")
+        script(async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js")
+        script(async custom-element="amp-vimeo" src="https://cdn.ampproject.org/v0/amp-vimeo-0.1.js")
+        script(async custom-element="amp-brightcove" src="https://cdn.ampproject.org/v0/amp-brightcove-0.1.js")
+        script(async custom-element="amp-vine" src="https://cdn.ampproject.org/v0/amp-vine-0.1.js")
+        script(async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js")
+        script(async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js")
+        script(async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js")
+        script(async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js")
+        script(async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js")
+        script(async custom-element="amp-sticky-ad" src="https://cdn.ampproject.org/v0/amp-sticky-ad-1.0.js")
+        script(async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js")
+        script(async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js")
+
+    body
+        amp-sidebar(
+            id='sidebar'
+            layout='nodisplay'
+            side='left'
+        )
+            button(on='tap:sidebar.close')
+                svg(xmlns='http://www.w3.org/2000/svg' 'xmlns:xlink'='http://www.w3.org/1999/xlink' preserveAspectRatio='xMidYMid' width='22' height='22' viewBox='0 0 22 22')
+                    path(d='M12.757,10.979 C12.757,10.979 21.608,19.830 21.608,19.830 C22.099,20.321 22.099,21.117 21.608,21.607 C21.117,22.098 20.322,22.098 19.831,21.607 C19.831,21.607 10.980,12.756 10.980,12.756 C10.980,12.756 2.129,21.607 2.129,21.607 C1.639,22.098 0.843,22.098 0.352,21.607 C-0.138,21.117 -0.138,20.321 0.352,19.830 C0.352,19.830 9.203,10.979 9.203,10.979 C9.203,10.979 0.352,2.129 0.352,2.129 C-0.138,1.638 -0.138,0.843 0.352,0.351 C0.843,-0.139 1.639,-0.139 2.129,0.351 C2.129,0.351 10.980,9.202 10.980,9.202 C10.980,9.202 19.831,0.351 19.831,0.351 C20.322,-0.139 21.117,-0.139 21.608,0.351 C22.099,0.843 22.099,1.638 21.608,2.129 C21.608,2.129 12.757,10.979 12.757,10.979 Z' id='path-1' class='cls-2' fill-rule='evenodd')
+            ul
+                li
+                    a(href='/') Home
+                each navItem in hamburgernavigation
+                    li
+                        a(href=navItem.url)= navItem.contentTitle
+        div(class="site-logo")
+            button(on='tap:sidebar.open')
+                svg(xmlns="http://www.w3.org/2000/svg" 'xmlns:xlink'="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="20" height="20" viewBox="0 0 20 20")
+                    path(d="M-0.006,16.994 C-0.006,16.994 -0.006,13.996 -0.006,13.996 C-0.006,13.996 20.006,13.996 20.006,13.996 C20.006,13.996 20.006,16.994 20.006,16.994 C20.006,16.994 -0.006,16.994 -0.006,16.994 ZM-0.006,6.995 C-0.006,6.995 20.006,6.995 20.006,6.995 C20.006,6.995 20.006,9.995 20.006,9.995 C20.006,9.995 -0.006,9.995 -0.006,9.995 C-0.006,9.995 -0.006,6.995 -0.006,6.995 ZM-0.006,-0.005 C-0.006,-0.005 20.006,-0.005 20.006,-0.005 C20.006,-0.005 20.006,2.995 20.006,2.995 C20.006,2.995 -0.006,2.995 -0.006,2.995 C-0.006,2.995 -0.006,-0.005 -0.006,-0.005 Z" id="path-1" class="cls-2" fill-rule="evenodd")
+            amp-img(src="/assets/images/now-logo-white.svg" layout="fixed" alt="Now To Love" height="50" width="207")
+
+        +ampAd(728, 90, 1)(
+            data-multi-size="320x50"
+            data-multi-size-validation="false"
+        )
+        amp-sticky-ad(layout="nodisplay")
+            +ampAd(320, 50, 2, "fixed")
+
+        div(class="main")
+            h1(itemProp="headline") #{entity.contentTitle}
+            span(itemProp="description")
+                p(class="article__summary") #{entity.contentSummary}
+            div(class="social-share")
+                amp-social-share(
+                    type="facebook"
+                    width="60"
+                    height="44"
+                    data-param-text=entity.contentTitle
+                    data-param-app_id=locals.config.services.faceBookAppID
+                )
+                amp-social-share(
+                    type="pinterest"
+                    width="60"
+                    height="44"
+                )
+            amp-img(
+                src=entity.contentImageUrl
+                layout="responsive"
+                alt="Welcome"
+                height=574
+                width=690
+            )
+
+            include contentBody

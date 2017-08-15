@@ -9,7 +9,8 @@ export default async function pageMiddleware(req, res, next) {
             return;
         }
 
-        const { page, preview, section, subsection } = req.query;
+        const query = 'page' in req.query ? req.query : req.params;
+        const { page, preview, section, subsection } = query;
         const pageID = getPageID(page);
         if (!pageID) throw { status: 404, message: 'Invalid page ID', section, page };
 

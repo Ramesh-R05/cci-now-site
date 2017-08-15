@@ -1,0 +1,9 @@
+mixin ampAd(width, height, pos, layout)
+    amp-ad(
+        width=width
+        height=height
+        type="doubleclick"
+        layout=(layout ? layout : "responsive")
+        data-slot="/13534306/"+locals.config.site.adTaggingId+"Amp"+entity.parentUrl
+        json='{"targeting":{"env": "test", "pos":'+pos+', "pageId": "'+entity.id+'"}}'
+    )&attributes(attributes)
