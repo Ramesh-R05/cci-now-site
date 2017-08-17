@@ -15,6 +15,7 @@ import BrandTitle from '../components/brand/brandTitle';
 import get from 'lodash/object/get';
 import { find } from 'lodash';
 import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
+import SubsectionList from '../components/subsectionList';
 
 function mapStateToProps(context) {
     const pageStore = context.getStore('PageStore');
@@ -26,7 +27,8 @@ function mapStateToProps(context) {
         teasers: teaserStore.getLatestTeasers(),
         list: teaserStore.getList(),
         listNextParams: teaserStore.getListNextParams(),
-        imageUrl: pageStore.getImageUrl()
+        imageUrl: pageStore.getImageUrl(),
+        subsections: pageStore.getSubsections()
     };
 }
 
@@ -44,13 +46,15 @@ export default class Section extends Component {
         shortTitle: PropTypes.string.isRequired,
         summary: PropTypes.string.isRequired,
         theme: PropTypes.object,
-        imageUrl: PropTypes.string
+        imageUrl: PropTypes.string,
+        subsections: PropTypes.object
     };
 
     static defaultProps = {
         teasers: [],
         theme: {},
-        imageUrl: ''
+        imageUrl: '',
+        subsections: { data: {}, totalCount: 0 }
     };
 
     static contextTypes = {
@@ -70,23 +74,12 @@ export default class Section extends Component {
     }
 
     render() {
-        const { nodeType, teasers, title, currentUrl, shortTitle, summary, theme, imageUrl } = this.props;
+        const { nodeType, teasers, title, currentUrl, shortTitle, summary, theme, imageUrl, subsections } = this.props;
         const heroTeaser = teasers[0];
         const firstTeaserList = teasers.slice(1, 7);
         const keyword = (nodeType === 'TagSection' && title) ? [title] : [];
         const pageLocation = Ad.pos.outside;
-
-        const isBrandPage = nodeType === 'Brand';
-        const brand = isBrandPage ? find(this.context.config.brands.uniheader, b => b.url === currentUrl.match(/\/[^/|?]*/)[0]) : null;
-        const headerClassName = isBrandPage ? `header-${brand.id}` : '';
-        const pageTitle = isBrandPage ? (
-            <BrandTitle brand={brand} shortTitle={shortTitle} summary={summary} />
-        ) : (
-            <h1 className="page-title">
-                <span className="page-title__symbol" />
-                {title}
-            </h1>
-        );
+        const subsection = find(subsections.data, s => s.url === currentUrl);
         const polarLabels = this.context.config.polar.details;
         const imageSrc = imageResize.url({
             url: imageUrl,
@@ -105,7 +98,23 @@ export default class Section extends Component {
             pageLocation
         };
 
-        const sectionClassNames = isBrandPage ? 'section-page brand-section-page' : 'section-page';
+        let headerClassName = '';
+        let sectionClassNames = 'section-page';
+        let pageTitle = (
+            <h1 className="page-title">
+                <span className="page-title__symbol" />
+                {subsection ? subsection.contentTitle : title}
+            </h1>
+        );
+
+        const isBrandPage = nodeType === 'Brand';
+        const brand = isBrandPage ? find(this.context.config.brands.uniheader, b => b.url === currentUrl.match(/\/[^/|?]*/)[0]) : null;
+
+        if (isBrandPage) {
+            headerClassName = `header-${brand.id}`;
+            pageTitle = (<BrandTitle brand={brand} shortTitle={shortTitle} summary={summary} />);
+            sectionClassNames += ' brand-section-page';
+        }
 
         return (
             <Page
@@ -129,6 +138,13 @@ export default class Section extends Component {
                                             <div className="banner-wrapper">
                                                 <img src={imageSrc} alt={title} />
                                             </div>
+                                        }
+
+                                        {subsections.totalCount > 1 && <SubsectionList
+                                          subsections={subsections.data}
+                                          themeColour={theme.themeColour || false}
+                                          currentUrl={currentUrl}
+                                        />
                                         }
 
                                         <HeroTeaser showDate={!isBrandPage} article={heroTeaser} brand={brand} />

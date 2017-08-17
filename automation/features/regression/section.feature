@@ -52,3 +52,44 @@ Feature: Section Landing page
             |desktop|
             |tablet portrait |
             |tablet landscape|
+
+    @BXMA-562
+    Scenario Outline: Verify the subsection button on section page in "<device>" view
+        Given I am currently viewing "fashion"
+        When I switch to "<device>" view
+        * I should see 3 subsection buttons clickable to its subsection page
+        @high
+        Examples:
+            |device|
+            |mobile|
+        @med
+        Examples:
+            |device |
+            |desktop|
+        @low
+        Examples:
+            |device|
+            |tablet portrait |
+            |tablet landscape|
+
+    @BXMA-562
+    Scenario Outline: Verify the subsection button on subsection page in "<device>" view
+        Given I am currently viewing "fashion/fashion-news"
+        When I switch to "<device>" view
+        * I should see 3 subsection buttons clickable to its subsection page
+        * I should see the "/fashion/fashion-news" button highlighted
+        * I should see the title changes to "FASHION NEWS"
+
+        @high
+        Examples:
+            |device|
+            |mobile|
+        @med
+        Examples:
+            |device |
+            |desktop|
+        @low
+        Examples:
+            |device|
+            |tablet portrait |
+            |tablet landscape|

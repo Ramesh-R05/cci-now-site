@@ -86,6 +86,10 @@ export default function responseBody(req, res, next) {
             res.body.subsection = req.data.subsection;
         }
 
+        if (get(req, 'data.subsectionList')) {
+            res.body.subsectionList = req.data.subsectionList;
+        }
+
         if (get(req, 'data.promoted')) {
             res.body.promoted = {
                 title: '',

@@ -26,6 +26,10 @@ export default createReducerStore({
             return state.nodeType;
         },
 
+        getSubsections(state) {
+            return state.subsections;
+        },
+
         getImageUrl(state) {
             return state.imageUrl;
         },

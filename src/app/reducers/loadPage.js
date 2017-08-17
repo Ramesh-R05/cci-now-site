@@ -18,6 +18,7 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
         const trendingItems = payload.body.trendingItems || [];
         const footer = payload.body.footer || {};
         const request = payload.request.payload || {};
+        const subsections = payload.body.subsectionList;
         if (!entity) return state;
         return {
             ...state,
@@ -30,7 +31,8 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 footer,
                 imageUrl: entity.imageUrl,
                 theme: payload.body.theme,
-                request
+                request,
+                subsections
             }
         };
     }

@@ -52,7 +52,7 @@ describe('Section middleware', () => {
 
     describe('when there is a section in the query param and nodeTypeAlias equal to Section', () => {
         before(() => {
-            reqBase = { data: { entity: { nodeTypeAlias: 'Section', nodeName: 'travel' } }, query: { section: 'sec' } };
+            reqBase = { app: { locals: { config: { services: { remote: { module: ''}}}}}, data: { entity: { nodeTypeAlias: 'Section', nodeName: 'travel' } }, query: { section: 'sec' } };
         });
 
         describe('when the remote returns an error response', () => {

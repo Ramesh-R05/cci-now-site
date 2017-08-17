@@ -16,6 +16,7 @@ const SocialLinks = Context.createStubComponent();
 const StickyAndDockStub = Context.createStubComponent();
 const BrandTitleStub = Context.createStubComponent();
 const StickyAdStub = Context.createStubComponent();
+const SubsectionsListStub = Context.createStubComponent();
 
 const SectionContainer = proxyquire('../../app/containers/section', {
     '@bxm/ad/lib/google/components/ad': AdStub,
@@ -27,7 +28,8 @@ const SectionContainer = proxyquire('../../app/containers/section', {
     '../components/teaser/hero': HeroTeaserStub,
     '../components/social/block': SocialLinks,
     '../components/page/stickyAndDockAd': StickyAndDockStub,
-    '../components/brand/brandTitle': BrandTitleStub
+    '../components/brand/brandTitle': BrandTitleStub,
+    '../components/brandTitle': SubsectionsListStub
 }).default;
 
 const contextConfigStub = {
@@ -79,6 +81,9 @@ describe('Section Container', () => {
         },
         getImageUrl() {
             return 'Image Url'
+        },
+        getSubsections() {
+            return {}
         }
     });
 

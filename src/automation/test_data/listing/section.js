@@ -1,5 +1,6 @@
 import navigation from '../modules/navigation';
 import latestTeasers from '../latestTeasers';
+import subsectionList from '../subsectionList';
 
 export default {
     entity: {
@@ -53,5 +54,6 @@ export default {
         name: "Fashion",
         urlName: "fashion"
     },
+    subsectionList: subsectionList,
     headerNavigation: navigation.getData()
 }
