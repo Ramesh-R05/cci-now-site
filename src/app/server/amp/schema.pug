@@ -1,0 +1,30 @@
+script(type='application/ld+json').
+    {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "mainEntityOfPage": "#{locals.config.site.host}#{entity.url}",
+        "headline": "#{entity.contentTitle}",
+        "datePublished": "#{entity.pageDateCreated}",
+        "dateModified": "#{entity.updated_at}",
+        "description": "#{entity.contentSummary}",
+        "author": {
+            "@type": "Person",
+            "name": "Staff"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "#{locals.config.site.name}",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "#{locals.config.site.host}/assets/logos/NowToLove.svg",
+                "width": 124,
+                "height": 30
+            }
+        },
+        "image": {
+            "@type": "ImageObject",
+            "url": "#{entity.contentImageUrl}",
+            "height": 574,
+            "width": 696
+        }
+    }
