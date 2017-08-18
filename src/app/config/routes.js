@@ -19,14 +19,14 @@ export default {
         handler: SectionPage,
         action: loadPageContent
     },
-    subsection: {
-        path: '/:section/:subsection',
+    tags: {
+        path: '/tags/:tag',
         method: 'get',
         handler: SectionPage,
         action: loadPageContent
     },
-    tags: {
-        path: '/tags/:tag',
+    subsection: {
+        path: '/:section/:subsection',
         method: 'get',
         handler: SectionPage,
         action: loadPageContent
