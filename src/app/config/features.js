@@ -11,8 +11,5 @@ export default {
     showTeaserBadgeLink: false,
     sailthru: {
         enabled: true
-    },
-    facebookPageTag: {
-        enabled: true
     }
 };
