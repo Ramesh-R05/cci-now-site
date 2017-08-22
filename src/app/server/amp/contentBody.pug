@@ -1,26 +1,29 @@
-- var paragraphsPerAd = 5
+- var paragraphsPerAd = 6
 - var paragraphCount = 0
 - var adCount = 0
 
-each item in entity.contentBody
-    case item.type
-        when 'heading'
-            include heading
-        when 'paragraph'
-            include paragraph
-        when 'image'
-            include image
-        when 'instagram'
-            include instagram
-        when 'youtube'
-            include youtube
-        when 'vimeo'
-            include vimeo
-        when 'video'
-            include video
-        when 'giphy'
-            include giphy
-        when 'facebook'
-            include facebook
-        when 'twitter'
-            include twitter
+section(class="content-body-container")
+    each item in entity.body
+        case item.type
+            when 'heading'
+                include heading
+            when 'paragraph'
+                include paragraph
+            when 'image'
+                include image
+            when 'related-content'
+                include relatedContent
+            when 'instagram'
+                include instagram
+            when 'youtube'
+                include youtube
+            when 'vimeo'
+                include vimeo
+            when 'video'
+                include video
+            when 'giphy'
+                include giphy
+            when 'facebook'
+                include facebook
+            when 'twitter'
+                include twitter

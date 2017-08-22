@@ -4,7 +4,7 @@ include admixin
 html(⚡ lang="en")
     head
         meta(charset='utf-8')
-        title #{entity.contentTitle} | #{locals.config.site.name}
+        title #{entity.title} | #{locals.config.site.name}
         link(rel="icon" href="/assets/favicon.ico")
         link(rel="canonical" href=locals.config.site.host + entity.url)
 
@@ -13,21 +13,10 @@ html(⚡ lang="en")
         include boilerplate
         style(amp-custom)
             include style.css
-        script(async src="https://cdn.ampproject.org/v0.js")
-        script(async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js")
-        script(async custom-element="amp-vimeo" src="https://cdn.ampproject.org/v0/amp-vimeo-0.1.js")
-        script(async custom-element="amp-brightcove" src="https://cdn.ampproject.org/v0/amp-brightcove-0.1.js")
-        script(async custom-element="amp-vine" src="https://cdn.ampproject.org/v0/amp-vine-0.1.js")
-        script(async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js")
-        script(async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js")
-        script(async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js")
-        script(async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js")
-        script(async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js")
-        script(async custom-element="amp-sticky-ad" src="https://cdn.ampproject.org/v0/amp-sticky-ad-1.0.js")
-        script(async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js")
-        script(async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js")
+        include ampScripts
 
     body
+        include gaPageView
         amp-sidebar(
             id='sidebar'
             layout='nodisplay'
@@ -39,14 +28,16 @@ html(⚡ lang="en")
             ul
                 li
                     a(href='/') Home
-                each navItem in hamburgernavigation
+                - var navItems = (hamburgerNavigation && hamburgerNavigation.items) || []
+                each navItem in navItems
                     li
-                        a(href=navItem.url)= navItem.contentTitle
+                        a(href=navItem.url)= navItem.name
         div(class="site-logo")
             button(on='tap:sidebar.open')
                 svg(xmlns="http://www.w3.org/2000/svg" 'xmlns:xlink'="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="20" height="20" viewBox="0 0 20 20")
                     path(d="M-0.006,16.994 C-0.006,16.994 -0.006,13.996 -0.006,13.996 C-0.006,13.996 20.006,13.996 20.006,13.996 C20.006,13.996 20.006,16.994 20.006,16.994 C20.006,16.994 -0.006,16.994 -0.006,16.994 ZM-0.006,6.995 C-0.006,6.995 20.006,6.995 20.006,6.995 C20.006,6.995 20.006,9.995 20.006,9.995 C20.006,9.995 -0.006,9.995 -0.006,9.995 C-0.006,9.995 -0.006,6.995 -0.006,6.995 ZM-0.006,-0.005 C-0.006,-0.005 20.006,-0.005 20.006,-0.005 C20.006,-0.005 20.006,2.995 20.006,2.995 C20.006,2.995 -0.006,2.995 -0.006,2.995 C-0.006,2.995 -0.006,-0.005 -0.006,-0.005 Z" id="path-1" class="cls-2" fill-rule="evenodd")
-            amp-img(src="/assets/images/now-logo-white.svg" layout="fixed" alt="Now To Love" height="50" width="207")
+            a(href="/")
+                amp-img(src="/assets/images/now-logo-white.svg" layout="fixed" alt="Now To Love" height="50" width="207")
 
         +ampAd(728, 90, 1)(
             data-multi-size="320x50"
@@ -55,29 +46,55 @@ html(⚡ lang="en")
         amp-sticky-ad(layout="nodisplay")
             +ampAd(320, 50, 2, "fixed")
 
-        div(class="main")
-            h1(itemProp="headline") #{entity.contentTitle}
-            span(itemProp="description")
-                p(class="article__summary") #{entity.contentSummary}
-            div(class="social-share")
-                amp-social-share(
-                    type="facebook"
-                    width="60"
-                    height="44"
-                    data-param-text=entity.contentTitle
-                    data-param-app_id=locals.config.services.faceBookAppID
+        article(class="article")
+            header(class="article__header")
+                h1(class="article__title" itemProp="headline") #{entity.title}
+                span(itemProp="description")
+                    p(class="article__summary") #{entity.summary}
+                span(class="article__date-created")= locals.formatDateCreated(entity.dateCreated, locals.config.site.dateTimeFormat)
+            figure
+                amp-img(
+                    src=entity.imageUrl
+                    layout="responsive"
+                    alt=entity.imageAltText
+                    height=574
+                    width=690
                 )
-                amp-social-share(
-                    type="pinterest"
-                    width="60"
-                    height="44"
-                )
-            amp-img(
-                src=entity.contentImageUrl
-                layout="responsive"
-                alt="Welcome"
-                height=574
-                width=690
-            )
 
             include contentBody
+
+            footer(class="article__footer")
+                section(class="article__tags")
+                    span(class="tags__title")= "Related Tags: "
+                        ul(class="related-tags")
+                            each tag, index in entity.tagsDetails
+                                - var separator = index < entity.tagsDetails.length - 1 ? ', ' : '';
+                                li
+                                    a(href="/tags/"+tag.urlName class="gtm-taglink "+ tag.urlName)= tag.displayName
+                                    |#{separator}
+                div(class="social-share")
+                    amp-social-share(
+                        type="facebook"
+                        width="60"
+                        height="44"
+                        data-param-text=entity.title
+                        data-param-app_id=locals.config.services.faceBookAppID
+                    )
+                    amp-social-share(
+                        type="pinterest"
+                        width="60"
+                        height="44"
+                    )
+        footer(class="footer")
+            nav(class="footer__navigation" role="contentinfo")
+                ul
+                    li
+                        a(href="http://www.bauer-media.com.au/privacy" target="_blank") Privacy Policy
+                    li
+                        a(href="http://www.bauer-media.com.au/advertising/advertise-with-us" target="_blank") Advertise
+                    li
+                        a(href="http://www.bauer-media.com.au/terms/website-terms" target="_blank") Terms of Use
+                    li
+                        a(href="/contact-us") Contact Us
+            div(class="footer__copyright")
+                span © Copyright Bauer Media Pty Ltd All Rights Reserved

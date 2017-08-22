@@ -4,6 +4,6 @@ each paragraph in splitParagraphs
     - paragraphCount = paragraphCount + 1
     - if (paragraphCount % paragraphsPerAd === 0)
         - adCount= adCount + 1
-        +ampAd(320, 50, adCount)
+        +ampAd(300, 250, adCount)
 
-    p!= locals.parse(paragraph)
+    p(class="content-body__paragraph")!= locals.parse(paragraph)

@@ -1,4 +1,5 @@
 import { parse, splitParagraphs } from '@bxm/markdown';
+import { formatDateCreated } from '@bxm/datetime';
 
 // eslint-disable-next-line no-unused-vars
 export default function (req, res, next) {
@@ -7,6 +8,7 @@ export default function (req, res, next) {
 
     req.app.locals.splitParagraphs = splitParagraphs;
     req.app.locals.parse = parse;
+    req.app.locals.formatDateCreated = formatDateCreated;
 
-    res.render('index', { ...req.data, locals: req.app.locals });
+    res.render('index', { ...res.body, locals: req.app.locals });
 }
