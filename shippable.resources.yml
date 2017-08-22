@@ -144,7 +144,7 @@ resources:
       params:
         NODE_ENV: "production"  #change this to dev when we are ready
         APP_ENV: "sit"
-        APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
+        APM_KEY: "c777240932e6282ffacc6a42ae6a0709426522b"
         APP_DEBUG: true
 
   # TEST Parameter
@@ -193,4 +193,4 @@ resources:
       params:
         NODE_ENV: "production"
         APP_ENV: "production"
-        APM_KEY: "d182e4391d2b340c7ae190bcb7a24b754f148ec4"
+        APM_KEY: "c777240932e6282ffacc6a42ae6a0709426522b"
