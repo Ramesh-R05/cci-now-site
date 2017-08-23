@@ -10,9 +10,37 @@
 - breadcrumbs.map(function(breadcrumb) { breadcrumbs.push(breadcrumb.name) });
 - breadcrumbNames = JSON.stringify(breadcrumbNames);
 
+- var contentSource = "Now To Love";
+case entity.brand
+    when 'aww'
+        - contentSource = "AWW";
+    when 'wd'
+        - contentSource = "Woman\'s Day";
+    when 'gh'
+        - contentSource ='Good Health';
+    when 'ok'
+        - contentSource = 'OK Magazine';
+    when 'nw'
+        - contentSource = 'NW';
+    when 'take5'
+        - contentSource = 'Take5';
+    when 'yours'
+        - contentSource = 'Yours';
+    when 'mb'
+        - contentSource = "Mother and Baby";
+    when 'tvweek'
+        - contentSource = 'TV Week'
+
 amp-analytics(type="googleanalytics")
     script(type="application/json").
         {
+            "extraUrlParams" : {
+                cd1: "#{authorName}",
+                cg1: "#{authorName}",
+                cg2: "#{contentSource}",
+                cg3: "#{entity.nodeType}",
+                cg5: "#{headerMetaData.GroupingCategory}"
+            }
             "vars": {
                 "account": "#{locals.config.ga.id}"
             },

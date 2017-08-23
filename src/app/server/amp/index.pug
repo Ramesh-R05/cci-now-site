@@ -67,8 +67,9 @@ html(⚡ lang="en")
                 section(class="article__tags")
                     span(class="tags__title")= "Related Tags: "
                         ul(class="related-tags")
-                            each tag, index in entity.tagsDetails
-                                - var separator = index < entity.tagsDetails.length - 1 ? ', ' : '';
+                            - var tagsDetails = entity.tagsDetails || []
+                            each tag, index in tagsDetails
+                                - var separator = index < tagsDetails.length - 1 ? ', ' : '';
                                 li
                                     a(href="/tags/"+tag.urlName class="gtm-taglink "+ tag.urlName)= tag.displayName
                                     |#{separator}

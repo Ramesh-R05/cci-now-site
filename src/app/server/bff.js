@@ -21,7 +21,7 @@ export default function bff(server) {
         stubServer(server, server.locals.config);
         logger.warn('stubbing does not exercise BFF code');
     } else {
-        server.get('/amp/:section/:subsection/:page', pageModules, section, page, headerMeta, responseBody, amp);
+        server.get('/amp/:section/:subsection/:page', pageModules, section, page, article, gallery, headerMeta, responseBody, amp);
         server.get('/sitemap/:section?', sitemap, error);
         server.get(server.locals.config.services.endpoints.list, list, render, error);
         server.get(
