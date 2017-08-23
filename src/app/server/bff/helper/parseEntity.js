@@ -26,7 +26,8 @@ const entityPropertyMap = {
     contentVideo: 'video',
     contentGallery: 'galleryItems',
     siteUrl: 'siteUrl',
-    tagsDetails: 'tagsDetails'
+    tagsDetails: 'tagsDetails',
+    subsections: 'subsections'
 };
 
 export function parseEntity(data, propertyMapOverride = {}) {

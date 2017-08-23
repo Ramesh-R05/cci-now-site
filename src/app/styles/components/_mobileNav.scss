@@ -1,7 +1,7 @@
 .off-canvas {
     height: 100%;
     overflow: auto;
-    padding: 0; 
+    padding: 0;
 }
 
 .off-canvas--left {
@@ -11,7 +11,7 @@
     @media #{$small-only} {
         transform: translateX(-270px);
     }
-    
+
     @media #{$medium-up} {
         transform: translateX(-450px);
     }
@@ -83,21 +83,49 @@
         position: relative;
         display: inline-block;
     }
+
+    span {
+        list-style-type: none;
+
+        ul {
+            list-style-type: none;
+            margin: -5px;
+            li {
+                margin: 15px 0;
+                font-weight: 300;
+                a {
+                    color: #FFF;
+                }
+            }
+        }
+    }
+
+    @media #{$small-only} {
+        padding-left: 8px;
+        span ul {
+            li {
+                margin: 10px 0;
+                font-size: 21px;
+            }
+            margin: -5px 0 16px 0;
+        }
+    }
 }
 
 .mobile-menu__nav .nav-item {
     color: $color-white;
-    display: block;
+    display: inline-block;
     padding: 5px 0;
-    font-size: 28px;    
+    font-size: 28px;
     font-weight: 400;
+    width: 72%;
 
     @media #{$small-only} {
         font-size: 23px;
         padding: 11px 0;
 
         &:first-child {
-            padding: 0px 0px 10px;
+            padding: 5px 0px 10px;
         };
     }
 
@@ -107,6 +135,12 @@
             bottom: 14px;
         };
     }
+}
+
+.mobile-menu-dropdown-button {
+    margin-top: -33px;
+    padding: 0px 20px;
+    color: #FFF;
 }
 
 .mobile-menu__nav .nav-item--active {
@@ -133,10 +167,10 @@
             }
 
             &:nth-child(4) {
-                padding-right: 10px;   
-            }   
+                padding-right: 10px;
+            }
         }
-        
+
         @media #{$small-only} {
             padding: 5px 15px 18px 0px;
         }
@@ -152,7 +186,7 @@
                         width: 210px;
                     }
                 }
-                
+
                 &--food {
                     width: 90px;
                     height: 36px;
@@ -292,12 +326,12 @@
     height: 0px;
 
     @media #{$small-only} {
-        font-size: 11px; 
+        font-size: 11px;
         margin: 25px 0px 34px;
     }
 }
 
-@-moz-document url-prefix() { 
+@-moz-document url-prefix() {
     .off-canvas-wrapper {
         transition: 0s all;
     }

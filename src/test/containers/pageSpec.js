@@ -197,7 +197,8 @@ describe('Page Container', () => {
             expect(navigationStub.props).to.deep.eq({
                 className: 'mobile-menu',
                 items: mobileNav,
-                currentUrl: props.currentUrl
+                currentUrl: props.currentUrl,
+                parentClassName: 'mobile-menu'
             });
         });
 
@@ -299,7 +300,8 @@ describe('Page Container', () => {
             expect(navigationStub.props).to.deep.eq({
                 className: 'mobile-menu',
                 items: mobileNav,
-                currentUrl: props.currentUrl
+                currentUrl: props.currentUrl,
+                parentClassName: 'mobile-menu'
             });
         });
     });
