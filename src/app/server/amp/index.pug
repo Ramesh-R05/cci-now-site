@@ -48,6 +48,15 @@ html(⚡ lang="en")
 
         article(class="article")
             header(class="article__header")
+                div(class="article-header-source")
+                    - var brand;
+                    - locals.config.brands.uniheader.map(function(item) {
+                    -     if (item.title === entity.source) brand = item;
+                    - });
+                    - if (brand) {
+                        a(href=brand.url class="gtm-brandlogotop-article")
+                            amp-img(src=brand.imageUrl layout="fixed-height" height="35")
+                    - }
                 h1(class="article__title" itemProp="headline") #{entity.title}
                 span(itemProp="description")
                     p(class="article__summary") #{entity.summary}
