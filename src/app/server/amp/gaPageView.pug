@@ -35,11 +35,11 @@ amp-analytics(type="googleanalytics")
     script(type="application/json").
         {
             "extraUrlParams" : {
-                cd1: "#{authorName}",
-                cg1: "#{authorName}",
-                cg2: "#{contentSource}",
-                cg3: "#{entity.nodeType}",
-                cg5: "#{headerMetaData.GroupingCategory}"
+                "cd1": "#{authorName}",
+                "cg1": "#{authorName}",
+                "cg2": "#{contentSource}",
+                "cg3": "#{entity.nodeType}",
+                "cg5": "#{headerMetaData.GroupingCategory}"
             },
             "vars": {
                 "account": "#{locals.config.ga.id}"
