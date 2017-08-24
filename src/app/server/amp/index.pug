@@ -39,12 +39,9 @@ html(⚡ lang="en")
             a(href="/")
                 amp-img(src="/assets/images/now-logo-white.svg" layout="fixed" alt="Now To Love" height="50" width="207")
 
-        +ampAd(728, 90, 1)(
-            data-multi-size="320x50"
-            data-multi-size-validation="false"
-        )
+        +ampAd(320, 50, 1, "outside")
         amp-sticky-ad(layout="nodisplay")
-            +ampAd(320, 50, 2, "fixed")
+            +ampAd(320, 50, 2, "outside", "fixed")
 
         article(class="article")
             header(class="article__header")
