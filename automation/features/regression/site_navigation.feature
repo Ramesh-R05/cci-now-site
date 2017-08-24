@@ -90,7 +90,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
             |Dolly                      |http://dolly.com.au/               |gtm-hamburger-dolly        |
             |Beauty Heaven              |http://beautyheaven.com.au/        |gtm-hamburger-beautyheaven |
 
-    
+
     @BXMA-412 @med
     Scenario: Mobile users menu will fade out as they scroll down the page
         Given I switch to "mobile portrait" view
