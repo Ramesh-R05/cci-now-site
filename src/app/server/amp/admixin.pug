@@ -6,7 +6,6 @@ mixin ampAd(width, height, pos, location, layout)
     -
         var adJson = {
             targeting: {
-                env: locals.config.ads.targets.env,
                 pos: pos.toString(),
                 pageId: entity.id,
                 adlocation: adLocation,
@@ -15,6 +14,8 @@ mixin ampAd(width, height, pos, location, layout)
                 kw: keywords
             }
         };
+    - var env = locals.config.ads.targets.env;
+    - if (env) adJson.targeting.env = env;
     amp-ad(
         width=width
         height=height
