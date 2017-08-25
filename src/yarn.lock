@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@bxm/ad@^12.0.0":
-  version "12.0.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fad/-/ad-12.0.0.tgz#a155d4429d9ee8ce3d6b7bb47e37b89e6d5aced6"
+"@bxm/ad@^12.1.0":
+  version "12.1.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fad/-/ad-12.1.0.tgz#bd8eb5eccb56a15d96874c7cb86bc1b0764b0933"
   dependencies:
     "@bxm/react-script-loader" "^2.0.0"
     classnames "^2.2.1"

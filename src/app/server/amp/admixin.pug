@@ -11,7 +11,8 @@ mixin ampAd(width, height, pos, location, layout)
                 adlocation: adLocation,
                 pagetype: nodeType,
                 brand: entity.brand,
-                kw: keywords
+                kw: keywords,
+                amp: "true"
             }
         };
     - var env = locals.config.ads.targets.env;
