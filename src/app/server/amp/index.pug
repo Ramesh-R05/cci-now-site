@@ -4,7 +4,7 @@ include admixin
 html(⚡ lang="en")
     head
         meta(charset='utf-8')
-        title #{entity.title} | #{locals.config.site.name}
+        title= headerMetaData.title
         link(rel="icon" href="/assets/favicon.ico")
         link(rel="canonical" href=locals.config.site.host + entity.url)
 
@@ -39,7 +39,6 @@ html(⚡ lang="en")
             a(href="/")
                 amp-img(src="/assets/images/now-logo-white.svg" layout="fixed" alt="Now To Love" height="50" width="207")
 
-        +ampAd(320, 50, 1, "outside")
         amp-sticky-ad(layout="nodisplay")
             +ampAd(320, 50, 2, "outside", "fixed")
 
@@ -66,6 +65,7 @@ html(⚡ lang="en")
                     height=574
                     width=690
                 )
+            +ampAd(320, 50, 1, "outside")(class="ad-top-leaderboard")
 
             include contentBody
 

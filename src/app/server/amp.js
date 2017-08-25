@@ -10,5 +10,9 @@ export default function (req, res, next) {
     req.app.locals.parse = parse;
     req.app.locals.formatDateCreated = formatDateCreated;
 
+    const nodeType = res.body.entity.nodeType;
+    let maxAge = nodeType ? req.app.locals.config.cache[nodeType]: 180;
+    res.header('Cache-Control', `public, max-age=${maxAge}`);
+
     res.render('index', { ...res.body, locals: req.app.locals });
 }
