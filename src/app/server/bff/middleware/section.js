@@ -13,7 +13,7 @@ export default async function sectionMiddleware(req, res, next) {
         pageNo = parseInt(req.query.pageNo || pageNo, 10);
 
         const nodeTypeAlias = get(req, 'data.entity.nodeTypeAlias', '');
-        if ((nodeTypeAlias !== 'Section' && nodeTypeAlias !== 'Brand') || !section || page) {
+        if ((nodeTypeAlias !== 'Section' && nodeTypeAlias !== 'Subsection' && nodeTypeAlias !== 'Brand') || !section || page) {
             next();
             return;
         }
@@ -22,7 +22,7 @@ export default async function sectionMiddleware(req, res, next) {
         let teaserQuery;
         let teaserFilter;
 
-        if (nodeTypeAlias === 'Section') {
+        if (nodeTypeAlias === 'Section' || nodeTypeAlias === 'Subsection') {
             teaserQuery = `/${section}/${subsection || ''}`;
             teaserFilter = 'parentUrl';
             listingQuery = `${teaserFilter} eq %27${teaserQuery}%27`;
