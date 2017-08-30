@@ -1,30 +1,45 @@
+- var siteUrl = locals.fixUrlProtocol(entity.siteUrl);
+- var pageDescription = headerMetaData.pageDescription || '';
+- var escapedDescription = pageDescription.replace(/"/g, '\\"');
+- var escapedHeadline = entity.title.replace(/"/g, '\\"');
+- var authorProfiles = entity.authorProfiles ? entity.authorProfiles : [];
+- var authorNames = authorProfiles.map(function(profile) { return profile.name });
+- var authorName = authorNames.join(', ').replace(singleQuoteRE, '\\\'');
+- var imageFacebook = entity.imageFacebookUrl || {};
+- var socialImageUrl = imageFacebook.url || entity.imageUrl || locals.config.defaultImageUrl || '';
+- socialImageUrl = socialImageUrl ? socialImageUrl + '?width=600&height=315&quality=75&mode=crop' : '';
+
 script(type='application/ld+json').
     {
         "@context": "http://schema.org",
-        "@type": "NewsArticle",
-        "mainEntityOfPage": "#{locals.config.site.host}#{entity.url}",
-        "headline": "#{entity.contentTitle}",
-        "datePublished": "#{entity.pageDateCreated}",
-        "dateModified": "#{entity.updated_at}",
-        "description": "#{entity.contentSummary}",
-        "author": {
-            "@type": "Person",
-            "name": "Staff"
-        },
+        "url": "#{locals.fixUrlProtocol(entity.siteUrl)}",
+        "@type": "Article",
+        "headline": "#{escapedHeadline}",
+        "description": "#{escapedDescription}",
         "publisher": {
             "@type": "Organization",
-            "name": "#{locals.config.site.name}",
+            "name": "#{entity.source}",
             "logo": {
                 "@type": "ImageObject",
-                "url": "#{locals.config.site.host}/assets/logos/NowToLove.svg",
-                "width": 124,
-                "height": 30
+                "url": "#{locals.fixUrlProtocol(entity.siteUrl + '/assets/logos/NowToLove.png')}",
+                "height": 60,
+                "width": 600
             }
+        },
+        "author": {
+            "@type": "Person",
+            "name": "#{authorName}"
         },
         "image": {
             "@type": "ImageObject",
-            "url": "#{entity.contentImageUrl}",
-            "height": 574,
-            "width": 696
+            "url": "#{locals.fixUrlProtocol(socialImageUrl)}",
+            "height": 800,
+            "width": 800
+        },
+        "datePublished": "#{entity.dateCreated}",
+        "dateModified": "#{entity.dateModified}",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "#{siteUrl}"
         }
     }
