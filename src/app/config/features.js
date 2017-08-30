@@ -11,5 +11,8 @@ export default {
     showTeaserBadgeLink: false,
     sailthru: {
         enabled: true
+    },
+    navigationSubSectionDropdown: {
+        enabled: true
     }
 };

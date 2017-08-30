@@ -54,6 +54,6 @@ export default {
         name: "Fashion",
         urlName: "fashion"
     },
-    subsectionList: subsectionList,
+    subsectionList: subsectionList,
     headerNavigation: navigation.getData()
 }

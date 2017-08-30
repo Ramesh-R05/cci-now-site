@@ -25,23 +25,33 @@ module.exports = function() {
         expect(headerLogoClass).toContain(gtm);
     });
 
-    this.Then(/^I should see the site navigation links and "([^"]*)" class name in "([^"]*)"$/, function (gtm, position) {
+    this.Then(/^I should see the site navigation "([^"]*)" links and "([^"]*)" class name in "([^"]*)"$/, function (section, gtm, position) {
+
+        var sectionDetail = null;
+
         //Identify the element
         switch(position) {
             case 'header':
-                var sectionDetail = site_nav.siteNavSectionDetail
+                switch (section) {
+                    case 'section':
+                        sectionDetail = site_nav.siteNavSectionDetail;
+                        break;
+                    case 'subsection':
+                        sectionDetail = site_nav.siteNavSubSectionListDetail;
+                        break;
+                }
                 break;
             case 'hamburger':
                 browser.click(site_nav.siteHamburger);
                 browser.waitForVisible(site_nav.siteHamburgerDetail, 3000);
-                var sectionDetail = site_nav.siteHamburgerDetail
+                sectionDetail = site_nav.siteHamburgerDetail;
                 break;
         }
 
         //Get values of class, href, and name
         var navClass = browser.getAttribute(sectionDetail,'class');
         var navLink = browser.getAttribute(sectionDetail,'href');
-        var navName = browser.getText(sectionDetail);
+        var navName = browser.getAttribute(sectionDetail,'textContent');
 
         //Validate the values
         for (var i=0; i<navName.length; i++){

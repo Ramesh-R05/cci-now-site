@@ -31,3 +31,10 @@
 	}
 }
 
+@mixin sub-menu-hover--hover {
+
+    &:after,
+    &:before {
+        width: 50%;
+    }
+}

@@ -132,9 +132,9 @@
     request "^2.81.0"
     serialize-javascript "^1.3.0"
 
-"@bxm/site-header@5.0.0":
-  version "5.0.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fsite-header/-/site-header-5.0.0.tgz#d1858f0e0a19bb9ff28b89c3f5aa7da4a0fa7f68"
+"@bxm/site-header@^5.2.0":
+  version "5.2.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fsite-header/-/site-header-5.2.0.tgz#a5223230e41e7e8e27a0f256d5cc90b0268e9239"
   dependencies:
     "@bxm/behaviour" "^1.3.0"
     classnames "^2.2.3"
