@@ -1,4 +1,5 @@
 var site_nav = require('../page_objects/site_navigation_widget');
+var wn_ads = require('../page_objects/ads_widget');
 var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
 
 module.exports = function() {
@@ -78,6 +79,7 @@ module.exports = function() {
     });
 
     this.Then(/^I can see the link "([^"]*)" is highlighted on the hamburger navigation links$/, function (section) {
+        browser.waitForVisible(site_nav.siteHamburger,3000); //to ensure the hamburger menu is visible before clicking
         browser.click(site_nav.siteHamburger);
         browser.waitForVisible(site_nav.siteHamburgerDetail, 3000);
         var activeLink = (browser.getText(site_nav.siteHamburgerActiveLink));
@@ -109,6 +111,14 @@ module.exports = function() {
 
     this.Then(/^when I scroll down in the page$/, function () {
         browser.scroll(0, 1000);
+
+        // Wait to make sure the top sticky banner appear and then disappear before verifying the nav bar in the next step
+        browser.waitUntil(function () {
+            return browser.isVisible(wn_ads.stickyTopBanner) === true
+        }, 5000, 'expected the sticky top banner appears')
+        browser.waitUntil(function () {
+            return browser.isVisible(wn_ads.stickyTopBanner) === false
+        }, 5000, 'expected the sticky top banner disappears');
     });
 
     this.Then(/^I should see the hamburger menu$/, function () {
