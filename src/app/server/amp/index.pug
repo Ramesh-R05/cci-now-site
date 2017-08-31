@@ -10,6 +10,9 @@ html(⚡ lang="en")
 
         meta(name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1')
         include schema
+        - if (entity.video && entity.video.type) {
+            include schemaVideo
+        - }
         include boilerplate
         style(amp-custom)
             include style.css
