@@ -58,6 +58,10 @@ export default {
             licenseKey: '81938b3952',
             applicationID: '37598318'
         }
+    },
+
+    oriel: {
+        scriptUrl: '//f92j5.com/gks7m1ojipkc3pg6y79ct5xpm73slf5p5a.js'
     }
 };
 
