@@ -1,14 +1,29 @@
 script(async src="https://cdn.ampproject.org/v0.js")
-script(async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js")
-script(async custom-element="amp-vimeo" src="https://cdn.ampproject.org/v0/amp-vimeo-0.1.js")
-script(async custom-element="amp-brightcove" src="https://cdn.ampproject.org/v0/amp-brightcove-0.1.js")
-script(async custom-element="amp-vine" src="https://cdn.ampproject.org/v0/amp-vine-0.1.js")
-script(async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js")
-script(async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js")
-script(async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js")
-script(async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js")
 script(async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js")
 script(async custom-element="amp-sticky-ad" src="https://cdn.ampproject.org/v0/amp-sticky-ad-1.0.js")
 script(async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js")
 script(async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js")
 script(async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js")
+
+- var ampScriptsAdded = {};
+- entity.body.map(function (t) {
+-   if (ampScriptsAdded[t.type]) return;
+-   ampScriptsAdded[t.type] = true;
+    case t.type
+        when 'instagram'
+            script(async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js")
+        when 'youtube'
+            script(async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js")
+        when 'vimeo'
+            script(async custom-element="amp-vimeo" src="https://cdn.ampproject.org/v0/amp-vimeo-0.1.js")
+        when 'vine'
+            script(async custom-element="amp-vine" src="https://cdn.ampproject.org/v0/amp-vine-0.1.js")
+        when 'video'
+            script(async custom-element="amp-brightcove" src="https://cdn.ampproject.org/v0/amp-brightcove-0.1.js")
+        when 'facebook'
+            script(async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js")
+        when 'twitter'
+            script(async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js")
+        when 'giphy'
+            script(async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js")
+- })

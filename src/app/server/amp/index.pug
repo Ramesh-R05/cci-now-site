@@ -4,7 +4,7 @@ include admixin
 html(⚡ lang="en")
     head
         meta(charset='utf-8')
-        title= headerMetaData.title
+        title #{headerMetaData.title} | #{locals.config.site.name}
         link(rel="icon" href="/assets/favicon.ico")
         link(rel="canonical" href=locals.config.site.host + entity.url)
 

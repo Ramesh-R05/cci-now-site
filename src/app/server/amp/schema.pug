@@ -15,8 +15,8 @@ script(type='application/ld+json').
         "@context": "http://schema.org",
         "url": "#{locals.fixUrlProtocol(entity.siteUrl)}",
         "@type": "Article",
-        "headline": "#{escapedHeadline}",
-        "description": "#{escapedDescription}",
+        "headline": "!{escapedHeadline} | #{locals.config.site.name}",
+        "description": "!{escapedDescription}",
         "publisher": {
             "@type": "Organization",
             "name": "Now To Love",
@@ -33,7 +33,7 @@ script(type='application/ld+json').
         },
         "image": {
             "@type": "ImageObject",
-            "url": "#{locals.fixUrlProtocol(socialImageUrl)}",
+            "url": "!{locals.fixUrlProtocol(socialImageUrl)}",
             "height": 800,
             "width": 800
         },

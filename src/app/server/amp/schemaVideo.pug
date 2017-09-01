@@ -7,7 +7,7 @@ script(type='application/ld+json').
     {
         "@context": "http://schema.org",
         "@type": "VideoObject",
-        "description": "#{escapedDescription}",
+        "description": "!{escapedDescription}",
         "publisher": {
             "@type": "Organization",
             "name": "Now To Love",
@@ -18,7 +18,7 @@ script(type='application/ld+json').
                 "width": 600
             }
         },
-        "name": "#{escapedHeadline}",
+        "name": "!{escapedHeadline} | #{locals.config.site.name}",
         "thumbnailUrl": "#{locals.fixUrlProtocol(entity.video.properties.videoConfiguration.thumbnailUrl)}",
         "uploadDate": "#{entity.dateCreated}",
         "playerType": "HTML5 Flash"
