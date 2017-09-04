@@ -6,22 +6,22 @@ const testLinks = [
     {
         title: 'article',
         url: 'http://now-site.test.bxm.net.au/fashion/red-carpet/automation-test-article-with-hero-image-3663/',
-        expectedScore: 49
+        expectedScore: 45
     },
     {
         title: 'homepage',
         url: 'http://now-site.test.bxm.net.au/',
-        expectedScore: 48
+        expectedScore: 43
     },
     {
         title: 'section',
         url: 'http://now-site.test.bxm.net.au/fashion/',
-        expectedScore: 50
+        expectedScore: 48
     },
     {
         title: 'gallery',
         url: 'http://now-site.test.bxm.net.au/fashion/red-carpet/automation-test-gallery-13302/',
-        expectedScore: 50
+        expectedScore: 46
     }
 ];
 
