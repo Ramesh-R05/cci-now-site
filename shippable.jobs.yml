@@ -252,7 +252,7 @@ jobs:
     always:
       - NOTIFY: slack-notifications
     steps:
-     - IN: morning-trigger
+     - IN: now-morning-trigger
      - IN: now-site-repo
        switch: off
      - TASK:
@@ -277,7 +277,7 @@ jobs:
     steps:
      - IN: now-site-repo
        switch: off
-     - IN: morning-trigger
+     - IN: now-morning-trigger
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
@@ -301,7 +301,7 @@ jobs:
     steps:
      - IN: now-site-repo
        switch: off
-     - IN: morning-trigger
+     - IN: now-weekly-trigger
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
@@ -325,7 +325,7 @@ jobs:
     steps:
      - IN: now-site-repo
        switch: off
-     - IN: morning-trigger
+     - IN: nznow-weekly-trigger
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh

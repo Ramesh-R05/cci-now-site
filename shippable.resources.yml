@@ -92,10 +92,22 @@ resources:
   # This is using Shippable timezone
   # CRON is (15 22 * * *") this is 10:15pm every day refer to https://en.wikipedia.org/wiki/Cron
   # will run at 8:15am Sydney time
-  - name: morning-trigger
+  - name: now-morning-trigger
     type: time
     seed:
       interval: "15 22 * * *"
+
+  #"15 22 * * 1" is 10:15pm Monday which is Tuesday morning in Sydney
+  - name: now-weekly-trigger
+    type: time
+    seed:
+      interval: "15 22 * * 1"
+
+  #"15 22 * * 3" is 10:15pm Wednesday which is Thursday morning in Sydney
+  - name: nznow-weekly-trigger
+    type: time
+    seed:
+      interval: "15 22 * * 3"
 
   ####################################
   # NON PROD environment configuration
