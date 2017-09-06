@@ -2,7 +2,6 @@ import {betterMockComponentContext} from '@bxm/flux';
 const Context = betterMockComponentContext();
 const {React, ReactDOM, TestUtils} = Context;
 import proxyquire, {noCallThru} from 'proxyquire';
-import { shallow } from 'enzyme';
 noCallThru();
 
 const clidComponentStub =  Context.createStubComponent();
@@ -38,7 +37,7 @@ describe('Repeatable Component', () => {
         it(`loadAgain prop of last childComponent should be true, the one of others should be false`, () => {
             ClidComponent.forEach((comItem, index) => {
                 if (index < ClidComponent.length-1){
-                    expect(comItem.props.loadAgain).to.be.false;    
+                    expect(comItem.props.loadAgain).to.be.false;
                 }
                 else {
                     expect(comItem.props.loadAgain).to.be.true;
@@ -47,7 +46,7 @@ describe('Repeatable Component', () => {
             expect(ClidComponent[0].props.loadAgain).to.be.false;
             expect(ClidComponent[1].props.loadAgain).to.be.false;
             expect(ClidComponent[2].props.loadAgain).to.be.false;
-            expect(ClidComponent[3].props.loadAgain).to.be.true;      
+            expect(ClidComponent[3].props.loadAgain).to.be.true;
         });
     });
 });

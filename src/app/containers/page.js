@@ -6,7 +6,7 @@ import Header from '@bxm/site-header';
 import Footer from '../components/footer';
 import UniHeader from '../components/uniheader';
 import Logos from '../components/page/logos';
-import Navigation from '@bxm/site-header/lib/components/navigation';
+import HamburgerNav from '@bxm/site-header/lib/components/hamburgerNav';
 import classnames from 'classnames';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import StandardPageAdsWrapper from '@bxm/ad/lib/google/components/standardPageAdsWrapper';
@@ -146,7 +146,7 @@ export default class Page extends Component {
                         </svg>
                     ` }}
                             />
-                            <Navigation className="mobile-menu" parentClassName="mobile-menu" items={mobileNav} currentUrl={currentUrl} />
+                            <HamburgerNav className="mobile-menu" items={mobileNav} currentUrl={currentUrl} />
                             <Logos className="mobile-menu-list" gtmPrefix="hamburger" openInNewTab logoList={this.context.config.brands.hamburgers} />
                         </div>
                     </MobileOffCanvas>

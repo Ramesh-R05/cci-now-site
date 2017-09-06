@@ -8,7 +8,7 @@ const OffCanvasStub = Context.createStubComponentWithChildren();
 const UniHeaderStub = Context.createStubComponent();
 const SiteHeaderStub = Context.createStubComponent();
 const SiteFooterStub = Context.createStubComponent();
-const NavigationStub = Context.createStubComponent();
+const HamburgerNavStub = Context.createStubComponent();
 const LogosStub = Context.createStubComponent();
 const AdStub = Context.createStubComponent();
 const StickyAdStub = Context.createStubComponent();
@@ -31,7 +31,7 @@ const PageWrapper = proxyquire('../../app/containers/page', {
     '../components/footer': SiteFooterStub,
     '../components/uniheader': UniHeaderStub,
     '../components/page/logos': LogosStub,
-    '@bxm/site-header/lib/components/navigation': NavigationStub,
+    '@bxm/site-header/lib/components/hamburgerNav': HamburgerNavStub,
     '@bxm/ad/lib/google/components/ad': AdStub,
     '@bxm/ad/lib/google/components/stickyAd': StickyAdStub,
     '@bxm/ad/lib/google/components/standardPageAdsWrapper': StandardPageAdsWrapperStub
@@ -75,7 +75,7 @@ describe('Page Container', () => {
     let uniHeaderStub;
     let siteHeaderStub;
     let siteFooterStub;
-    let navigationStub;
+    let hamburgerNavStub;
     let logosStub;
     let closeButton;
     let currentInstance;
@@ -132,7 +132,7 @@ describe('Page Container', () => {
             uniHeaderStub = TestUtils.findRenderedComponentWithType(reactModule, UniHeaderStub, [contextConfigStub]);
             siteHeaderStub = TestUtils.findRenderedComponentWithType(reactModule, SiteHeaderStub);
             siteFooterStub = TestUtils.findRenderedComponentWithType(reactModule, SiteFooterStub);
-            navigationStub = TestUtils.findRenderedComponentWithType(reactModule, NavigationStub);
+            hamburgerNavStub = TestUtils.findRenderedComponentWithType(reactModule, HamburgerNavStub);
             logosStub = TestUtils.findRenderedComponentWithType(reactModule, LogosStub);
             adStub = TestUtils.scryRenderedComponentsWithType(reactModule, AdStub);
             stickyAdStub = TestUtils.scryRenderedComponentsWithType(reactModule, StickyAdStub);
@@ -194,11 +194,10 @@ describe('Page Container', () => {
             const mobileNav = hamburgerItems.slice();
             mobileNav.unshift({name: 'Home', url: '/'});
 
-            expect(navigationStub.props).to.deep.eq({
+            expect(hamburgerNavStub.props).to.deep.eq({
                 className: 'mobile-menu',
                 items: mobileNav,
-                currentUrl: props.currentUrl,
-                parentClassName: 'mobile-menu'
+                currentUrl: props.currentUrl
             });
         });
 
@@ -208,7 +207,7 @@ describe('Page Container', () => {
 
         it(`should render close button and Navigation component as children of the offCanvas component`, () => {
             const offCanvasInnterHTML = ReactDOM.findDOMNode(offCanvas).innerHTML;
-            expect(offCanvasInnterHTML).to.contain(React.findDOMNode(navigationStub).outerHTML);
+            expect(offCanvasInnterHTML).to.contain(React.findDOMNode(hamburgerNavStub).outerHTML);
             expect(offCanvasInnterHTML).to.contain(React.findDOMNode(closeButton).outerHTML);
         });
 
@@ -286,7 +285,7 @@ describe('Page Container', () => {
             hamburgerItems = null;
             reactModule = Context.mountComponent(PageWrapper, props, [contextConfigStub]);
             siteHeaderStub = TestUtils.findRenderedComponentWithType(reactModule, SiteHeaderStub);
-            navigationStub = TestUtils.findRenderedComponentWithType(reactModule, NavigationStub);
+            hamburgerNavStub = TestUtils.findRenderedComponentWithType(reactModule, HamburgerNavStub);
         });
 
         after(() => {
@@ -297,11 +296,10 @@ describe('Page Container', () => {
             const mobileNav = headerItems.slice();
             mobileNav.unshift({name: 'Home', url: '/'});
 
-            expect(navigationStub.props).to.deep.eq({
+            expect(hamburgerNavStub.props).to.deep.eq({
                 className: 'mobile-menu',
                 items: mobileNav,
-                currentUrl: props.currentUrl,
-                parentClassName: 'mobile-menu'
+                currentUrl: props.currentUrl
             });
         });
     });
