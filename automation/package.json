@@ -18,7 +18,6 @@
     "debug": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --debug\"",
     "watch": "bash -c \"./node_modules/.bin/chimp chimp.js --watch\"",
     "watch:phantom": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --watch\"",
-    "bs": "bash -c \"./node_modules/.bin/chimp chimp.bs.js\"",
     "mobile": "bash -c \"node runner.js --pMode=mobile\"",
     "features": "bash -c \"node runner.js --pMode=features\"",
     "browsers": "bash -c \"node runner.js\"",
@@ -30,7 +29,7 @@
     "test:phantom": "export APP_KEY=now-site && npm run features"
   },
   "dependencies": {
-    "@bxm/automation": "^2.1.0",
+    "@bxm/automation": "^3.0.0",
     "cucumber-html-report": "^0.2.8"
   }
 }
