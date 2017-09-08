@@ -127,8 +127,8 @@ jobs:
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
 
 
-  # 4b. Run mobile regression test on TEST environment - Browser Stack
-  - name: mobile-now-site-automation-test
+  # 4b. Run compatibility regression test on TEST environment - Browser Stack
+  - name: compatibility-now-site-automation-test
     type: runSh
     always:
       - NOTIFY: slack-notifications
@@ -148,6 +148,7 @@ jobs:
         - script: cp features/support/files/chimp_hooks.backup node_modules/chimp/dist/lib/cucumberjs/hooks.js
         - script: export URL=http://now-site.test.bxm.net.au/
         - script: npm run test:mobile
+        - script: npm run test:browser
 
   # 4c. Run smoke test on SIT NZ environment
   - name: nz-now-site-smoke-test
