@@ -3,6 +3,18 @@ Feature: Section Landing page
     As a user
     I should be able to see section landing page which has the same layout as homepage
 
+    @high
+    Scenario Outline: Verify the page loads correctly with pageNo query parameter in "desktop" view
+        When I switch to "desktop" view
+        Given I am currently viewing "<url>"
+        Then I should see the page load correctly
+
+        Examples:
+            |url                |
+            |fashion/           |
+            |fashion/?pageNo=2  |
+            |fashion?pageNo=2   |
+
     @hero @BXMA-34 @low
     Scenario Outline: Verify the hero teaser element is functional correctly in "<device>" view
         Given I am currently viewing "fashion"
