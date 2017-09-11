@@ -27,6 +27,7 @@ Feature: CMS Smoke Test
             | Body Paragraph| Editorial         |
             | Body Heading  | Editorial         |
             | Page Title    | Search and Social |
+            | Created at    | Properties        |
         * I should be able to publish the item
         * I should be able to see the "preview" URL
         * I should be able to see the "live" URL

@@ -22,7 +22,8 @@ var cms_widget = {
     searchBox: '#umbSearchField',
     searchResult: '.ac_results',
     menuDelete: '.menuSpr.sprDelete',
-    unpublishButton: '[value="Unpublish"]'
+    unpublishButton: '[value="Unpublish"]',
+    propertiesCreatedAt: '.tabpageContent div:nth-child(9) .umbDateTimePicker input'
 
 };
 
