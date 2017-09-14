@@ -11,7 +11,7 @@ export default {
             entity: 'http://services.prod.bxm.internal/entity/v1/now',
             listings: 'http://services.prod.bxm.internal/listing/v1/now',
             module: 'http://services.prod.bxm.internal/module/v1/now',
-            sitemap: 'http://live.sitemaps.services.bauer-media.internal/v1/now',
+            sitemap: 'http://sitemap-service.prod.bxm.net.au/v1/now',
             tag: 'http://services.prod.bxm.internal/tag/v1/now'
         },
         redirect: {
