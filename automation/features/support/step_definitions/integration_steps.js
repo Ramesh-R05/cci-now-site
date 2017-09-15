@@ -19,7 +19,7 @@ module.exports = function() {
 
         // Post File to PUBLISHING BR0KER
         var options = { method: 'POST',
-            url: 'http://dev.publishing-broker.services.bauer-media.internal/',
+            url: 'http://services.sit.bxm.internal/publishing-broker/',
             json: true,
             headers: {
                 'postman-token': '98215063-b20d-eb89-4865-35af75c73e11',
