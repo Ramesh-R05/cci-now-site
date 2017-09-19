@@ -8,6 +8,6 @@ export default {
         tag: 'http://services.sit.bxm.internal/tag/v1/nznow'
     },
     redirect: {
-        url: 'http://dev.redirect.services.bauer-media.internal/v1/nznow/301'
+        url: 'http://services.sit.bxm.internal/redirect/v1/nznow/301'
     }
 };

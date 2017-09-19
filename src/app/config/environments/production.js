@@ -15,7 +15,7 @@ export default {
             tag: 'http://services.prod.bxm.internal/tag/v1/now'
         },
         redirect: {
-            url: 'http://live.redirect.services.bauer-media.internal/v1/now/301'
+            url: 'http://services.prod.bxm.internal/redirect/v1/now/301'
         }
     },
     polar: {

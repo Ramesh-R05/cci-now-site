@@ -11,7 +11,7 @@ export default {
             tag: 'http://services.prod.bxm.internal/tag/v1/nznow'
         },
         redirect: {
-            url: 'http://live.redirect.services.bauer-media.internal/v1/nznow/301'
+            url: 'http://services.prod.bxm.internal/redirect/v1/nznow/301'
         }
     },
     gigya: { apiKey: '3_t9sNGuUPgwEUVDuOJ3g1BEMlqQWvKXQWS9toq53-iiMKRAbCWKXkW8yzltcsCF9N' },
