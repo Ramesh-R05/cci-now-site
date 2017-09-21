@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "sit:au": "bash -c \"./node_modules/.bin/chimp chimp.shippable.js --browser=phantomjs --tags=@sitAU\"",
+    "sit:au": "bash -c \"./node_modules/.bin/chimp chimp.shippable.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@sitAU\"",
     "test:mobile": "bash -c \"APP_KEY=now-mobile npm run mobile\"",
     "test:browser": "bash -c \"APP_KEY=now-browser npm run browsers\"",
     "test:high": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@high\"",
@@ -12,25 +12,24 @@
     "test:nzlow": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@nznow --tags=@low\"",
     "test:rerun": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs @rerun.txt\"",
     "all:test": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=~@cms --tags=~@manual\"",
-    "test:cms": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@cms --tags=~@manual\"",
+    "test:cms": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@cms --tags=~@manual\"",
     "single": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs\"",
     "once": "npm run single",
-    "html_report": "bash -c \"node generate_html.js\"",
     "debug": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --debug\"",
     "watch": "bash -c \"./node_modules/.bin/chimp chimp.js --watch\"",
     "watch:phantom": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --watch\"",
     "mobile": "bash -c \"node runner.js --pMode=mobile\"",
     "features": "bash -c \"node runner.js --pMode=features\"",
     "browsers": "bash -c \"node runner.js\"",
-    "now:automation": "bash -c \"export URL= && export APP_KEY=now-site && export APP_ENV=automation && npm run all:test\"",
-    "now:automation:high": "bash -c \"export URL= && export APP_KEY=now-site && export APP_ENV=automation && npm run test:high\"",
+    "now:automation": "bash -c \"URL=http://now-site.test.bxm.net.au/ APP_KEY=now-site npm run all:test\"",
+    "now:automation:high": "bash -c \"URL=http://now-site.test.bxm.net.au/ APP_KEY=now-site npm run test:high\"",
     "share:aulive": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@aulive\"",
     "share:nzlive": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@nzlive\"",
     "general:live": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@live\"",
-    "test:phantom": "export APP_KEY=now-site && npm run features"
+    "test:phantom": "bash -c \"URL=http://car-site.test.bxm.net.au/ APP_KEY=now-site npm run features\""
   },
   "dependencies": {
-    "@bxm/automation": "^3.0.0",
+    "@bxm/automation": "^4.0.3",
     "cucumber-html-report": "^0.2.8"
   }
 }

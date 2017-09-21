@@ -2,7 +2,7 @@ module.exports = {
 
     featurePath: './features/regression',
     //Generic config
-    tags: '@high',
+    tags: '@now, ~@manual',
     screenshotsOnError: false,
     captureAllStepScreenshots: false,
     saveScreenshotsToReport: false,

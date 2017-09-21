@@ -1,9 +1,8 @@
 {
     "maxWorkers": 2,
-    "reportPath": "./reports/regression",
+    "reportPath": "./reports",
     "chimpPath": "./node_modules/.bin/chimp",
     "chimpConfig": "chimp.shippable.js",
-    "browsers": "firefox, chrome",
-    "tags": "@now",
+    "featurePath": "./features/regression",
     "offline": false
 }

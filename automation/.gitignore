@@ -3,9 +3,11 @@
 screenshots/
 reports/*.json
 reports/*.html
+rerun/*.*
 cucumber.json
 @rerun.txt
 node_modules/
 
 #Include
 !reports/template.html
+!rerun/rerun.log

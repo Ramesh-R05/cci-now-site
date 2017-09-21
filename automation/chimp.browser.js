@@ -15,14 +15,14 @@ module.exports = {
     saveScreenshotsToReport: false,
 
     // - - - - SELENIUM  - - - -
-      name: 'NTL Repo',
       user: 'bxmdeveloper1',
       key: 'QmqNpg983H2ucStjNMu9',
       port: 80,
-      host: 'hub.browserstack.com',
+      host: 'hub-cloud.browserstack.com',
 
     webdriverio: {
         desiredCapabilities: {
+            "project": 'NTL Repo',
             "browser_version": run_version,
             "os": run_os,
             "os_version": run_osversion,
