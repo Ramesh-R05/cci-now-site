@@ -79,7 +79,7 @@ resources:
   - name: now-site-version
     type: version
     seed:
-      versionName: "1.0.0" # This can be changed for Roll back
+      versionName: "1.180.0" # This can be changed for Roll back
 
   # REGION Parameter
   - name: now-site-params-nz-region
