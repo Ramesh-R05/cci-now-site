@@ -125,6 +125,8 @@ jobs:
         - script: npm run test:high || true
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
+    on_failure:
+      - NOTIFY: deployment-notifications
 
 
   # 4b. Run compatibility regression test on TEST environment - Browser Stack
@@ -169,6 +171,8 @@ jobs:
         - script: npm install
         - script: export URL=http://now-site-nz.sit.bxm.net.au/
         - script: npm run test:nzlow
+    on_failure:
+      - NOTIFY: deployment-notifications
 
   # 4d. Run performance test on test environment
   - name: performance-test
@@ -199,6 +203,7 @@ jobs:
     type: release
     steps:
       - IN: now-site-automation-test
+      - IN: nz-now-site-smoke-test
       - IN: now-site-man-master
         switch: off
       - IN: now-site-version
