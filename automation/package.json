@@ -26,7 +26,7 @@
     "share:aulive": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@aulive\"",
     "share:nzlive": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@nzlive\"",
     "general:live": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@live\"",
-    "test:phantom": "bash -c \"URL=http://car-site.test.bxm.net.au/ APP_KEY=now-site npm run features\""
+    "test:phantom": "URL=http://now-site.test.bxm.net.au/ APP_KEY=now-site npm run features"
   },
   "dependencies": {
     "@bxm/automation": "^4.0.3",
