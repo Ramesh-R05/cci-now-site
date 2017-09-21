@@ -170,7 +170,9 @@ jobs:
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://now-site-nz.sit.bxm.net.au/
-        - script: npm run test:nzlow
+        - script: npm run test:nzlow || true
+        - script: actualsize=$(wc -c <"@rerun.txt")
+        - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
     on_failure:
       - NOTIFY: deployment-notifications
 
@@ -271,7 +273,9 @@ jobs:
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://now-site-au.sit.bxm.net.au/
-        - script: APP_KEY=now-site npm run sit:au
+        - script: APP_KEY=now-site npm run sit:au || true
+        - script: actualsize=$(wc -c <"@rerun.txt")
+        - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
     flags:
       - now-site
 
