@@ -10,12 +10,27 @@ var randomId = randomValue();
 
 module.exports = function() {
 
-    this.Given(/^Emilly just published "([^"]*)"$/, function (content_json) {
+    this.Given(/^Emily just published the "([^"]*)" doc type item$/, function (page) {
+        var content_json;
+        var documentPath;
+
+        //Specify json file and path
+        switch(page) {
+            case 'article':
+                content_json = 'test-article-on-sit.json'; //The data in this json file is from http://dev.umbraco.services.bauer-media.internal/v1/now/documents/32106
+                documentPath = '-1,1159,1172,1173,32098,32099,'; //Parent nodes in dev CMS
+                break;
+            case 'gallery':
+                content_json = 'test-gallery-on-sit.json'; //The data in this json file is from http://dev.umbraco.services.bauer-media.internal/v1/now/documents/32045
+                documentPath = '-1,1159,1168,1169,32037,32038,'; //Parent nodes in dev CMS
+                break;
+        }
+
         //Read Json File and update Title and ID
-        var body_content = JSON.parse(fs.readFileSync('../automation/features/support/files/' + content_json + '.json', 'utf8'));
+        var body_content = JSON.parse(fs.readFileSync('../automation/features/support/files/' + content_json , 'utf8'));
         body_content['document']['contentTitle'] = "Integration Test " + randomId;
         body_content['document']['id'] = randomId;
-        body_content['document']['path'] = "-1,1159,1168,1169,32037,32674," + randomId;
+        body_content['document']['path'] = documentPath  + randomId;
 
         // Post File to PUBLISHING BR0KER
         var options = { method: 'POST',
@@ -34,12 +49,12 @@ module.exports = function() {
 
     });
 
-    this.When(/^I navigate to the article "([^"]*)"$/, function (content_uri) {
+    this.When(/^I navigate to the "([^"]*)" page$/, function (content_url) {
         for(var i = 0; i < 11; i++) {
             browser.refresh();
-            browser.url(world.Urls.home_page + content_uri + '-' + randomId);
+            browser.url(world.Urls.home_page + content_url + '-' + randomId);
             if(browser.isExisting(".article__title") == true){
-               console.log("Page Loaded Successfully : ID-" + randomId);
+                console.log("Page Loaded Successfully : ID-" + randomId);
                 break;
             } else {
                 var page_url =browser.getUrl();
