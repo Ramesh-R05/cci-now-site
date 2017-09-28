@@ -158,6 +158,7 @@ resources:
         APP_ENV: "sit"
         APM_KEY: "c777240932e6282ffacc6a42ae6a0709426522bb"
         APP_DEBUG: true
+        APP_SSS: true
 
   # TEST Parameter
   - name: now-site-params-test
@@ -168,6 +169,7 @@ resources:
         APP_ENV: "automation"
         APP_STUBBED: true
         APP_DEBUG: true
+        APP_SSS: true
 
   ####################################
   # PROD environment configuration
