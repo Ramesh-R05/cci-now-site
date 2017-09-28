@@ -11,7 +11,8 @@ const configStub = {
 
 const getModules = proxyquire('../../../../app/server/bff/api/module', {
     '../../makeRequest': args => makeRequestStub(args),
-    '../../../config': configStub
+    '../../../config': configStub,
+    '../../../../logger': { error(){} }
 }).default;
 
 describe(`Module API`, () => {

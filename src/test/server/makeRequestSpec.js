@@ -16,7 +16,8 @@ const lruResponse = {
 
 const makeRequest = proxyquire('../../app/server/makeRequest', {
     'request': requestStub,
-    'lru-cache': (...args) => { return lruResponse }
+    'lru-cache': (...args) => { return lruResponse },
+    '../../logger': { debug(){}, error(){} }
 }).default;
 
 describe('#makeRequest()', () => {

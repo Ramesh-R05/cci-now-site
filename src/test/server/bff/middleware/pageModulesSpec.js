@@ -5,7 +5,8 @@ noCallThru();
 let getModulesStub = () => {};
 
 const pageModulesMiddleware = proxyquire('../../../../app/server/bff/middleware/pageModules', {
-    '../api/module': () => getModulesStub()
+    '../api/module': () => getModulesStub(),
+    '../../../../logger': { error(){} }
 }).default;
 
 describe('PageModules middleware', () => {

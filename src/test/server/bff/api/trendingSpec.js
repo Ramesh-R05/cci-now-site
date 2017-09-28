@@ -11,8 +11,9 @@ const configStub = {
 };
 
 const getTrending = proxyquire('../../../../app/server/bff/api/trending', {
-'../../makeRequest': (args) => { return makeRequestStub(args) },
-'../../../config': configStub
+    '../../makeRequest': (args) => { return makeRequestStub(args) },
+    '../../../config': configStub,
+    '../../../../logger': { error(){} }
 }).default;
 
 
