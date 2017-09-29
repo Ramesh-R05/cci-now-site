@@ -9,7 +9,6 @@ const AdStub = Context.createStubComponent();
 const HeroTeaserStub = Context.createStubComponent();
 const TeaserGridViewStub = Context.createStubComponent();
 const TeaserListViewStub = Context.createStubComponent();
-const TrendingStub = Context.createStubComponent();
 const SocialLinks = Context.createStubComponent();
 const RepeatableStub = Context.createStubComponent();
 const StickyAndDockStub = Context.createStubComponent();
@@ -26,7 +25,6 @@ const HomeContainer = proxyquire('../../app/containers/home', {
     '../components/teaser/hero': HeroTeaserStub,
     '../components/teaser/grid': TeaserGridViewStub,
     '../components/teaser/list': TeaserListViewStub,
-    '../components/trending/trending': TrendingStub,
     '../components/repeatable': RepeatableStub,
     '../components/social/block': SocialLinks,
     '../components/page/stickyAndDockAd': StickyAndDockStub,
@@ -63,10 +61,6 @@ describe('Home Container', () => {
     };
 
     Context.addStore('PageStore', {
-        getTrendingItems() {
-            return [];
-        },
-
         promotedItems() {
             return [];
         },

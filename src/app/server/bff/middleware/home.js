@@ -1,10 +1,8 @@
 import get from 'lodash/object/get';
 import makeRequest from '../../makeRequest';
 import { getLatestTeasers } from '../api/listing';
-import getTrending from '../api/trending';
 import { parseEntities } from '../helper/parseEntity';
 import momentTimezone from 'moment-timezone';
-const trendingCount = 6;
 const latestTeaserCount = 6;
 const listCount = 14;
 const videoGalleryTeaserCount = 6;
@@ -23,11 +21,10 @@ export default async function home(req, res, next) {
         }
 
         const skip = ((pageNo - 1) * listCount);
-        const [pageData, latestTeasersResp, videoGalleryTeasers, trendingItems] = await Promise.all([
+        const [pageData, latestTeasersResp, videoGalleryTeasers] = await Promise.all([
             makeRequest(`${req.app.locals.config.services.remote.entity}/homepage`),
             getLatestTeasers(listCount, skip),
-            getLatestTeasers(videoGalleryTeaserCount, undefined, 'video eq %27$contentTags%27').catch(() => ({ data: [] })),
-            getTrending(trendingCount)
+            getLatestTeasers(videoGalleryTeaserCount, undefined, 'video eq %27$contentTags%27').catch(() => ({ data: [] }))
         ]);
         videoGalleryTeasers.data = videoGalleryTeasers.data.map((gallery) => {
             gallery.contentImageUrl = get(gallery, 'contentVideo.properties.videoConfiguration.videoStillUrl', gallery.contentImageUrl);
@@ -87,7 +84,6 @@ export default async function home(req, res, next) {
         };
 
         req.data.videoGalleryTeasers = videoGalleryTeasers;
-        req.data.trendingItems = trendingItems;
         req.data.section = { id: pageData.id, name: 'Home', urlName: 'home' }; // Initally used to set the ad slot within @bxm/ads + gtm in @bxm/server
         next();
     } catch (error) {

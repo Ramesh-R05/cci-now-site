@@ -49,12 +49,6 @@ export default function responseBody(req, res, next) {
             res.body.leftHandSide = { items: parseEntities(lhsData) };
         }
 
-        if (get(req, 'data.trendingItems')) {
-            res.body.trendingItems = parseEntities(req.data.trendingItems, {
-                title: 'title', imageUrl: 'imageUrl', location: 'url'
-            });
-        }
-
         if (req.data.moreGalleries) {
             res.body.moreGalleries = parseEntities(req.data.moreGalleries.data);
         }

@@ -5,7 +5,6 @@ export default {
         listings: 'http://services.sit.bxm.internal/listing/v1/now',
         module: 'http://services.sit.bxm.internal/module/v1/now',
         sitemap: 'http://sitemap-service.sit.bxm.net.au/v1/now',
-        trending: 'http://trending.bauer.mg/today?sites=nowtolove.com.au',
         tag: 'http://services.sit.bxm.internal/tag/v1/now'
     },
     endpoints: {

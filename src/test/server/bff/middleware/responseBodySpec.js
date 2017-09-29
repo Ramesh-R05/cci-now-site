@@ -1,7 +1,6 @@
 import proxyquire, {noCallThru} from 'proxyquire';
 import article from '../../../mocks/article';
 import listing from '../../../mocks/listing';
-import trending from '../../../mocks/trending';
 import moreGalleries from '../../../mocks/moreGalleries';
 noCallThru();
 
@@ -120,45 +119,6 @@ describe('ResponseBody middleware', () => {
 				expect(res.body.leftHandSide).to.deep.equal({items: listing.data});
 			});
 		});
-    });
-
-    describe('when data contains `res.body.trendingItems`', () => {
-        let reqData = { entity: article, trendingItems: trending };
-        let reqBase = { data: reqData, app: { locals: { config } } };
-        let req = { ...reqBase };
-        let res = {};
-        let next;
-
-        before(() => {
-            next = sinon.spy();
-            parseEntitiesStub = sinon.stub().returns(trending.data);
-        });
-
-        it('should set `res.body.trendingItems`', () => {
-            responseBodyMiddleware(req, res, next);
-            expect(res.body.trendingItems).to.deep.equal(trending.data);
-        });
-    });
-
-    describe('when data contains `res.body.trendingItems`', () => {
-        let reqData = { entity: article, trendingItems: trending };
-        let reqBase = { data: reqData, app: { locals: { config } } };
-        let req = { ...reqBase };
-        let res = {};
-        let next;
-
-        before(() => {
-            next = sinon.spy();
-            parseEntitiesStub = sinon.stub().returns(trending.data);
-        });
-
-        it('should set `res.body.trendingItems`', () => {
-            responseBodyMiddleware(req, res, next);
-            expect(parseEntitiesStub).to.have.been.calledWith(req.data.trendingItems, {
-                title: 'title', imageUrl: 'imageUrl', location: 'url'
-            });
-            expect(res.body.trendingItems).to.deep.equal(trending.data);
-        });
     });
 
     describe('when data contains `moreGalleries`', () => {

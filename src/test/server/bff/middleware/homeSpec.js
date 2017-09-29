@@ -1,12 +1,10 @@
 import proxyquire, { noCallThru } from 'proxyquire';
-import trending from '../../../mocks/trending';
 import videoGalleryMock from '../../../mocks/galleryOfGalleries';
 
 noCallThru();
 
 let makeRequestStub = () => {};
 let getLatestTeasersStub = () => {};
-let getTrendingStub = () => {};
 let getHeroTeaserStub = () => {};
 
 const homeMiddleware = proxyquire('../../../../app/server/bff/middleware/home', {
@@ -14,7 +12,6 @@ const homeMiddleware = proxyquire('../../../../app/server/bff/middleware/home', 
     '../api/listing': {
         getLatestTeasers: () => { return getLatestTeasersStub(); }
     },
-    '../api/trending': () => { return getTrendingStub() },
     '../api/module': {
         getHeroTeaser() { return getHeroTeaserStub() }
     }
@@ -48,7 +45,6 @@ describe('Home middleware', () => {
             getLatestTeasersStub = sinon.stub();
             getLatestTeasersStub.onFirstCall().resolves([]);
             getLatestTeasersStub.onSecondCall().resolves([]);
-            getTrendingStub = sinon.stub().resolves([]);
         });
 
         it('should pass error to next middleware', (done) => {
@@ -69,7 +65,6 @@ describe('Home middleware', () => {
                 getLatestTeasersStub = sinon.stub();
                 getLatestTeasersStub.onFirstCall().resolves(latestTeasers);
                 getLatestTeasersStub.onSecondCall().resolves(videoGalleryMock);
-                getTrendingStub = sinon.stub().resolves(trending);
             });
 
             it('should store the entity in `req.data`', (done) => {
@@ -109,15 +104,6 @@ describe('Home middleware', () => {
                     done();
                 }).catch(done);
             });
-
-            it('should set trendingItems in req.data with `getTrending` response', (done) => {
-                homeMiddleware(req, res, next).then(() => {
-                    expect(req.data).to.include.keys('trendingItems');
-                    expect(req.data.trendingItems).to.equal(trending);
-                    expect(next).to.be.called;
-                    done();
-                }).catch(done);
-            });
         });
 
         describe('and getLatestTeasers returns an error when getting video gallery teasers', () => {
@@ -128,7 +114,6 @@ describe('Home middleware', () => {
                 makeRequestStub = sinon.stub().resolves(entity);
                 getLatestTeasersStub = sinon.stub();
                 getLatestTeasersStub.onSecondCall().rejects();
-                getTrendingStub = sinon.stub().resolves(trending);
             });
 
             it('should return an empty object for videoGalleryTeasers in `req.data.videoGalleryTeasers`', (done) => {
@@ -194,7 +179,6 @@ describe('Home middleware', () => {
                 getLatestTeasersStub = sinon.stub();
                 getLatestTeasersStub.onFirstCall().resolves(latestTeasers);
                 getLatestTeasersStub.onSecondCall().resolves(videoGalleryMock);
-                getTrendingStub = sinon.stub().resolves(trending);
             });
 
         it('should not have a query param in the previous page url', (done) => {

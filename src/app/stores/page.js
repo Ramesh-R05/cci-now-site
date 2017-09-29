@@ -34,10 +34,6 @@ export default createReducerStore({
             return state.imageUrl;
         },
 
-        getTrendingItems(state) {
-            return state.trendingItems;
-        },
-
         getFooter(state) {
             return state.footer;
         },

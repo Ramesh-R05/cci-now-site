@@ -6,7 +6,6 @@ export const initialState = {
     nodeType: '',
     title: '',
     imageUrl: '',
-    trendingItems: [],
     request: {}
 };
 
@@ -15,7 +14,6 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
     switch (actionType) {
     case 'LOAD_CONTENT': {
         const entity = payload.body.entity;
-        const trendingItems = payload.body.trendingItems || [];
         const footer = payload.body.footer || {};
         const request = payload.request.payload || {};
         const subsections = payload.body.subsectionList;
@@ -27,7 +25,6 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 title: entity.title,
                 shortTitle: entity.shortTitle,
                 summary: entity.summary,
-                trendingItems,
                 footer,
                 imageUrl: entity.imageUrl,
                 theme: payload.body.theme,

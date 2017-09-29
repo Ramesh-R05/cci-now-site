@@ -434,7 +434,6 @@ export default {
             }
         ]
     },
-    "trendingItems": [],
     heroTeaser: heroTeaser.getData(),
     latestTeasers: latestTeasers.slice(0, 6),
     list: {

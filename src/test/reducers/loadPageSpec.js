@@ -3,7 +3,7 @@ import { initialState, reducer } from '../../app/reducers/loadPage';
 describe(`loadPage Reducer`, () => {
     let payload;
     let body = {entity: { nodeType: 'Article', title: 'Title',  imageUrl: '', shortTitle: 'Short Title', summary: 'Summary' },
-        footer: {}, trendingItems: [], mustRead: [], theme: {}};
+        footer: {}, mustRead: [], theme: {}};
     describe(`on LOAD_CONTENT`, () => {
         beforeEach(() => {
             payload = {
@@ -22,7 +22,6 @@ describe(`loadPage Reducer`, () => {
                     title: payload.body.entity.title,
                     shortTitle: payload.body.entity.shortTitle,
                     summary: payload.body.entity.summary,
-                    trendingItems: payload.body.trendingItems,
                     imageUrl: payload.body.entity.imageUrl
                 });
             });
@@ -59,7 +58,6 @@ describe(`loadPage Reducer`, () => {
                 footer: {},
                 nodeType: '',
                 title: '',
-                trendingItems: [],
                 imageUrl: '',
                 request: {}
             });
@@ -72,7 +70,6 @@ describe(`loadPage Reducer`, () => {
                 footer: {},
                 nodeType: '',
                 title: '',
-                trendingItems: [],
                 imageUrl: '',
                 request: {}
             });
