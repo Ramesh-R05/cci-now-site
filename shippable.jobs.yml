@@ -29,7 +29,7 @@ jobs:
   - name: now-site-sit-deploy-branch
     type: deploy
     always:
-      - NOTIFY: slack-notifications
+      - NOTIFY: now-slack-notifications
     steps:
       - IN: now-site-man-branch # for non-master, don't auto deploy.
         switch: off
@@ -55,7 +55,7 @@ jobs:
   - name: au-now-site-sit-deploy-master
     type: deploy
     always:
-      - NOTIFY: slack-notifications
+      - NOTIFY: now-slack-notifications
     steps:
       - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
@@ -73,7 +73,7 @@ jobs:
   - name: nz-now-site-sit-deploy-master
     type: deploy
     always:
-      - NOTIFY: slack-notifications
+      - NOTIFY: now-slack-notifications
     steps:
       - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
@@ -108,7 +108,7 @@ jobs:
   - name: now-site-automation-test # Test Stub site
     type: runSh
     always:
-      - NOTIFY: slack-notifications
+      - NOTIFY: now-slack-notifications
     steps:
      - IN: now-site-test-deploy-master
      - IN: now-site-repo
@@ -126,14 +126,14 @@ jobs:
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
     on_failure:
-      - NOTIFY: deployment-notifications
+      - NOTIFY: now-deployment-notifications
 
 
   # 4b. Run compatibility regression test on TEST environment - Browser Stack
   - name: compatibility-now-site-automation-test
     type: runSh
     always:
-      - NOTIFY: slack-notifications
+      - NOTIFY: now-slack-notifications
     steps:
      - IN: now-site-test-deploy-master
      - IN: now-site-repo
@@ -156,7 +156,7 @@ jobs:
   - name: nz-now-site-smoke-test
     type: runSh
     always:
-      - NOTIFY: slack-notifications
+      - NOTIFY: now-slack-notifications
     steps:
      - IN: nz-now-site-sit-deploy-master
      - IN: now-site-repo
@@ -174,13 +174,13 @@ jobs:
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
     on_failure:
-      - NOTIFY: deployment-notifications
+      - NOTIFY: now-deployment-notifications
 
   # 4d. Run smoke test on SIT AU environment
   - name: au-now-site-smoke-test
     type: runSh
     always:
-      - NOTIFY: slack-notifications
+      - NOTIFY: now-slack-notifications
     steps:
      - IN: au-now-site-sit-deploy-master
      - IN: now-site-repo
@@ -198,13 +198,13 @@ jobs:
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
     on_failure:
-      - NOTIFY: deployment-notifications
+      - NOTIFY: now-deployment-notifications
 
   # 4e. Run performance test on test environment
   - name: performance-test
     type: runSh
     always:
-      - NOTIFY: slack-notifications
+      - NOTIFY: now-slack-notifications
     steps:
       - IN: now-site-test-deploy-master
       - IN: now-site-repo
@@ -240,8 +240,8 @@ jobs:
   - name: au-now-site-prod-deploy-master
     type: deploy
     always:
-      - NOTIFY: slack-notifications
-      - NOTIFY: deployment-notifications
+      - NOTIFY: now-slack-notifications
+      - NOTIFY: now-deployment-notifications
     steps:
       - IN: now-site-release-master
         switch: off
@@ -259,8 +259,8 @@ jobs:
   - name: nz-now-site-prod-deploy-master
     type: deploy
     always:
-      - NOTIFY: slack-notifications
-      - NOTIFY: deployment-notifications
+      - NOTIFY: now-slack-notifications
+      - NOTIFY: now-deployment-notifications
     steps:
       - IN: now-site-release-master
         switch: off
@@ -283,7 +283,7 @@ jobs:
   - name: e2e-now-site-test
     type: runSh
     always:
-      - NOTIFY: slack-notifications
+      - NOTIFY: now-slack-notifications
     steps:
      - IN: now-morning-trigger
      - IN: now-site-repo

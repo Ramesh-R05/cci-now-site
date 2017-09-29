@@ -50,7 +50,7 @@ resources:
       branch: master
 
   # Slack connection
-  - name: slack-notifications
+  - name: now-slack-notifications
     type: notification                          #required
     integration: slack-bauerxcelmedia
     pointer:
@@ -66,7 +66,7 @@ resources:
         - "#bxm_qa_notifications"
 
  # Slack connection
-  - name: deployment-notifications
+  - name: now-deployment-notifications
     type: notification                          #required
     integration: slack-bauerxcelmedia
     pointer:
