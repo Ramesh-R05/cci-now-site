@@ -22,8 +22,6 @@ jobs:
       - IN: now-site-img-branch
       - IN: now-site-opts-sit
       - TASK: managed
-    flags:
-      - now-site
 
   # 3Branch. SIT deployment for feature BRANCH
   - name: now-site-sit-deploy-branch
@@ -301,8 +299,6 @@ jobs:
         - script: APP_KEY=now-site npm run sit:au || true
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
-    flags:
-      - now-site
 
   # ii. Full regression in SIT AU
   - name: FULL-now-site-regression-test
@@ -325,8 +321,6 @@ jobs:
         - script: APP_KEY=now-site npm run all:test || true
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
-    flags:
-      - now-site
 
   # iii. Smoke Test in AU NOW Dev CMS
   - name: CMS-au-now-smoke-test
@@ -349,8 +343,6 @@ jobs:
         - script: APP_KEY=now-site npm run test:cms || true
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
-    flags:
-      - now-site
 
   # iv. Smoke Test in NZ NOW Dev CMS
   - name: CMS-nz-now-smoke-test
@@ -373,5 +365,3 @@ jobs:
         - script: APP_KEY=nznow-site npm run test:cms || true
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
-    flags:
-      - now-site
