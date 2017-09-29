@@ -158,6 +158,16 @@ resources:
         APP_ENV: "sit"
         APM_KEY: "c777240932e6282ffacc6a42ae6a0709426522bb"
         APP_DEBUG: true
+
+  # SIT Parameter for Branch
+  - name: now-site-params-sit-branch
+    type: params
+    version:
+      params:
+        NODE_ENV: "production"  #change this to dev when we are ready
+        APP_ENV: "sit"
+        APM_KEY: "c777240932e6282ffacc6a42ae6a0709426522bb"
+        APP_DEBUG: true
         APP_SSS: true
 
   # TEST Parameter
@@ -169,7 +179,8 @@ resources:
         APP_ENV: "automation"
         APP_STUBBED: true
         APP_DEBUG: true
-        APP_SSS: true
+
+
 
   ####################################
   # PROD environment configuration
