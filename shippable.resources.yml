@@ -90,24 +90,24 @@ resources:
 
   #Schedule Run of automation
   # This is using Shippable timezone
-  # CRON is (15 22 * * *") this is 10:15pm every day refer to https://en.wikipedia.org/wiki/Cron
-  # will run at 8:15am Sydney time
+  # CRON is (0 19 * * *") this is 7:00pm every day refer to https://en.wikipedia.org/wiki/Cron
+  # will run at 6:00am daylight saving or 5:00am standard time in Sydney
   - name: now-morning-trigger
     type: time
     seed:
-      interval: "15 22 * * *"
+      interval: "0 19 * * *"
 
-  #"15 22 * * 1" is 10:15pm Monday which is Tuesday morning in Sydney
+  #"0 19 * * 1" is 7:00pm Monday which is Tuesday morning in Sydney
   - name: now-weekly-trigger
     type: time
     seed:
-      interval: "15 22 * * 1"
+      interval: "0 19 * * 1"
 
-  #"15 22 * * 3" is 10:15pm Wednesday which is Thursday morning in Sydney
+  #"0 19 * * 3" is 7:00pm Wednesday which is Thursday morning in Sydney
   - name: nznow-weekly-trigger
     type: time
     seed:
-      interval: "15 22 * * 3"
+      interval: "0 19 * * 3"
 
   ####################################
   # NON PROD environment configuration
