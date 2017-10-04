@@ -20,7 +20,7 @@ export default {
         "id": "DOLLY-3640",
         "imageAltText": "Test Image Alt Text",
         "imageCaption": "Test Image Caption",
-        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2016/01/13/72089/kendallllllzzz-(1).jpg",
+        "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2016/01/13/72089/kendallllllzzz-(1).jpg",
         "nodeType": "Article",
         "summary": "If it gets us lookin' like Kendall then sure!",
         "tags": ["food:Renovating:Trims and fittings", "food:Topic:Feature garden"],

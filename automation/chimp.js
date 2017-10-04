@@ -8,8 +8,9 @@ module.exports = {
     jsonOutput: 'reports/regression.json',
     webdriverio: {
         desiredCapabilities: {
+            // go to https://peter.sh/experiments/chromium-command-line-switches/
             chromeOptions: {
-                args: ["--enable-automation"]
+                args: ["--enable-automation", "--allow-insecure-localhost"]
             }
         }
     },
@@ -30,5 +31,5 @@ module.exports = {
             }
         }
     }
-    
+
 };

@@ -1,6 +1,6 @@
 import navigation from '../modules/navigation';
 
-export default{
+export default {
     "entity": {
         "id": "NOW-31896",
         "title": "Automation Test Gallery long title long title long title long title long title long title EOM",
@@ -55,7 +55,7 @@ export default{
             "source": "",
             "credits": []
         },
-        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68027/main.jpg",
+        "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68027/main.jpg",
         "campaign": [],
         "nodeType": "Gallery",
         "summary": "Automation Test Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser EOM",
@@ -65,7 +65,7 @@ export default{
         "parentUrl": "/beauty/hair",
         "galleryItems": [
             {
-                "url": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68028/11116790_439600422865308_1787337382_n.jpg",
+                "url": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68028/11116790_439600422865308_1787337382_n.jpg",
                 "link": "http://www.testimagelink1.com.au",
                 "open": false,
                 "tags": [],
@@ -77,7 +77,7 @@ export default{
                 "mediaType": "image"
             },
             {
-                "url": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68029/11334401_1407669102891124_804010271_n.jpg",
+                "url": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68029/11334401_1407669102891124_804010271_n.jpg",
                 "link": "http://www.testimagelink2.com.au",
                 "open": false,
                 "tags": [],
@@ -98,7 +98,7 @@ export default{
                 "brightcoveId": "3976804555001"
             },
             {
-                "url": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68030/allisCapture.jpg",
+                "url": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68030/allisCapture.jpg",
                 "open": false,
                 "tags": [],
                 "title": "",
@@ -109,7 +109,7 @@ export default{
                 "mediaType": "image"
             },
             {
-                "url": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68031/arianaCapture.jpg",
+                "url": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68031/arianaCapture.jpg",
                 "open": false,
                 "tags": [],
                 "title": "",
@@ -120,7 +120,7 @@ export default{
                 "mediaType": "image"
             },
             {
-                "url": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68032/blake.jpg",
+                "url": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68032/blake.jpg",
                 "open": false,
                 "tags": [],
                 "title": "",
@@ -131,7 +131,7 @@ export default{
                 "mediaType": "image"
             },
             {
-                "url": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68033/cara-delevingne-selfie---Copy.jpg",
+                "url": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68033/cara-delevingne-selfie---Copy.jpg",
                 "open": false,
                 "tags": [],
                 "title": "",
@@ -142,7 +142,7 @@ export default{
                 "mediaType": "image"
             },
             {
-                "url": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68042/Untitled.jpg",
+                "url": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68042/Untitled.jpg",
                 "open": true,
                 "tags": [],
                 "title": "",
@@ -281,7 +281,7 @@ export default{
             "dateCreated": "2016-12-15T03:25:34.00Z",
             "imageAltText": "Test Image Alt Text",
             "imageCaption": "Test Image Caption",
-            "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68027/main.jpg",
+            "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Dolly/2015/06/11/68027/main.jpg",
             "nodeType": "Gallery",
             "summary": "Automation Test Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser EOM",
             "source": "Australian Women's Weekly",
@@ -307,7 +307,7 @@ export default{
             "id": "NOW-31877",
             "title": "Joe Test New Gallery Long Title",
             "dateCreated": "2016-11-30T22:27:22.00Z",
-            "imageUrl": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/Now/2016/12/01/31877/image2.JPG",
+            "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/now/2017/10/03/1506983325796_image2.JPG",
             "nodeType": "Gallery",
             "url": "/lifestyle/homes/joe-test-new-gallery-31877",
             "parentName": "Homes",
@@ -318,7 +318,7 @@ export default{
             "title": "The hottest moments from the 2016 American Music Awards",
             "dateCreated": "2016-11-23T23:09:00.00Z",
             "imageAltText": "The 2016 American Music Awards, Gigi Hadid, Jay Pharoah",
-            "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/11/21/17153/MAIN.jpg",
+            "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/11/21/17153/MAIN.jpg",
             "nodeType": "Gallery",
             "summary": "All the hottest moments from the 2016 American Music Awards!",
             "source": "Woman's Day",
@@ -369,7 +369,7 @@ export default{
             "title": "Inside the 30th annual ARIA Awards",
             "dateCreated": "2016-11-23T03:00:00.00Z",
             "imageAltText": "30th annual ARIA Awards",
-            "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/11/23/17168/NEW-MAIN-(1).jpg",
+            "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/11/23/17168/NEW-MAIN-(1).jpg",
             "nodeType": "Gallery",
             "summary": "We bring you all the goss, frocks and shocks from inside the 30th annual ARIA Awards at The Star in Sydney.",
             "source": "Woman's Day",
@@ -426,7 +426,7 @@ export default{
             "title": "Prince Harry's royal tour of the Caribbean",
             "dateCreated": "2016-11-23T01:00:00.00Z",
             "imageAltText": "Prince Harry",
-            "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/wd/2016/11/23/1479862020279_5.jpg",
+            "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/wd/2016/11/23/1479862020279_5.jpg",
             "nodeType": "Gallery",
             "summary": "Prince Harry has arrived in Antigua as he kicks off his two-week visit to the Caribbean.",
             "url": "/royals/british-royal-family/prince-harrys-royal-tour-of-the-caribbean-2911",
@@ -464,7 +464,7 @@ export default{
             "title": "ARIA Awards most memorable moments",
             "dateCreated": "2016-11-22T03:00:00.00Z",
             "imageAltText": "Delta Goodrem, Sia, Jessica Mauboy ",
-            "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2015/11/25/14194/ARIA-MOMENTS-THUMB.jpg",
+            "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2015/11/25/14194/ARIA-MOMENTS-THUMB.jpg",
             "nodeType": "Gallery",
             "summary": "As the 30th annual ARIA Awards kick off, we look back at the event's most memorable moments.",
             "source": "Woman's Day",
@@ -539,7 +539,7 @@ export default{
             "title": "Celebs with their gorgeous kids!",
             "dateCreated": "2016-11-21T23:00:00.00Z",
             "imageAltText": "Drew Barrymore",
-            "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/wd/2016/11/22/1479771390782_Drew-Barrymore.jpg",
+            "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/wd/2016/11/22/1479771390782_Drew-Barrymore.jpg",
             "nodeType": "Gallery",
             "summary": "The stars adore spending time with their family.",
             "source": "Woman's Day",
@@ -638,7 +638,7 @@ export default{
             "title": "Home and Away hangs: Your favourite Summer Bay stars on and off set",
             "dateCreated": "2016-11-20T22:00:00.00Z",
             "imageAltText": "James Stewart and Isabella Giovinazzo",
-            "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/11/18/14318/Home-6.jpg",
+            "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/11/18/14318/Home-6.jpg",
             "nodeType": "Gallery",
             "summary": "We check out your favourite Summer Bay stars on and off set!",
             "source": "Woman's Day",
@@ -671,7 +671,7 @@ export default{
             "title": "Golden girl: Jessica Marais’ best Logies moments",
             "dateCreated": "2016-11-20T22:00:00.00Z",
             "imageAltText": "Jessica Marais",
-            "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/wd/2016/11/18/1479441430312_Jess-Marais-2009.jpg",
+            "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/wd/2016/11/18/1479441430312_Jess-Marais-2009.jpg",
             "nodeType": "Gallery",
             "summary": "As the voting for the 2017 TV Week Logie Awards officially opens, we look back at one of the nation's stand-out stars and her road to success!",
             "source": "Woman's Day",
@@ -698,7 +698,7 @@ export default{
             "title": "10 quick and easy on-the-go lunches",
             "dateCreated": "2016-11-20T21:30:00.00Z",
             "imageAltText": "Mexican beef wraps",
-            "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AWW/2016/10/31/29477/HL0846A03-mexican-beef-wraps_5050.jpg",
+            "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AWW/2016/10/31/29477/HL0846A03-mexican-beef-wraps_5050.jpg",
             "nodeType": "Gallery",
             "summary": "Struggling for lunch inspiration? These quick and easy wraps will get you back on track! They're as easy as they are delicious.",
             "source": "Australian Women's Weekly",

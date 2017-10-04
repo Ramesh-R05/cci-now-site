@@ -4,7 +4,7 @@ const hero = {
     id: "NOW-19532",
     title: "Prince Harry makes secret trip to see Meghan Markle in Toronto",
     dateCreated: "2016-11-03T20:44:00.00Z",
-    imageUrl: "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/11/04/17021/Prince-harry-meghan-markle-main.jpg",
+    imageUrl: "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/11/04/17021/Prince-harry-meghan-markle-main.jpg",
     nodeType: "Article",
     summary: "It seems the loved-up royal can’t bear to be away from his new lady for too long.",
     source: "Woman's Day",

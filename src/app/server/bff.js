@@ -3,6 +3,7 @@ import home from './bff/middleware/home';
 import article from './bff/middleware/article';
 import gallery from './bff/middleware/gallery';
 import responseBody from './bff/middleware/responseBody';
+import https from './bff/middleware/https';
 import render from './bff/middleware/render';
 import error from './bff/middleware/error';
 import pageModules from './bff/middleware/pageModules';
@@ -40,6 +41,7 @@ export default function bff(server) {
             article,
             gallery,
             headerMeta,
+            https,
             responseBody,
             render,
             error
