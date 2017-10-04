@@ -4,9 +4,10 @@
 }
 
 .header-wrapper {
-    overflow: auto;
     margin-bottom: 54px;
     padding-bottom: 1px;
+    z-index: 100;
+    position: relative;
 
     @media #{$medium-up} {
         margin-bottom: 95px;
@@ -232,7 +233,8 @@
                 background-color: $color-primary;
                 list-style-type: none;
                 padding: 15px;
-                left: 0;
+                left: 50%;
+                transform: translateX(-50%);
                 top: 23px; // Distance from bottom of nav item to top of sub-nav drop-down
                 width: 130px;
                 text-align: center;

@@ -129,6 +129,18 @@ export default {
                     instagram: 'https://www.instagram.com/TVWEEKmag'
                 },
                 newsletterUrl: '//www.nowtolove.com.au/tvweek-newsletter'
+            },
+            {
+                id: 'ptl',
+                title: 'Prizes To Love',
+                imageUrl: '/assets/images/headerlogos/PTL-logo.svg',
+                url: '/prizestolove',
+                socialLinks: {
+                    facebook: 'https://www.facebook.com/prizestolove/',
+                    instagram: 'https://www.instagram.com/prizestolove'
+                },
+                newsletterUrl: '//www.nowtolove.com.au/prizestolove-newsletter',
+                renderSubscribeElements: false
             }
         ],
         hamburgers: [

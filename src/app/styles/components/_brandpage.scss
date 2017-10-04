@@ -52,13 +52,13 @@ hr {
 }
 
 .brand-title {
-
+    text-align: center;
+    
     @media #{$small-only} {
         width: 224px;
         margin: 0 auto;
         margin-top: 5px;
         margin-bottom: -20px;
-        text-align: center;
 
         &-nzww {
             margin-top: 15px;
@@ -138,36 +138,9 @@ hr {
     }
 }
 
-.brand-title--left-line {
-    position: relative;
-    top: 10px;
-    width: 24%;
-    display: inline-block;
-    margin-right: 50px;
-
-    @media #{$small-only} {
-        display: none;
-    }
-
-    @media #{$medium-only} {
-        display: none;
-    }
-}
-
+.brand-title--left-line,
 .brand-title--right-line {
-    position: relative;
-    top: 10px;
-    width: 20%;
-    display: inline-block;
-    margin-left: 50px;
-
-    @media #{$small-only} {
-        display: none;
-    }
-
-    @media #{$medium-only} {
-        display: none;
-    }
+    display: none;
 }
 
 .brand-title-yours,
@@ -246,6 +219,8 @@ hr {
 
     &-mb { color: $mother-baby-color }
 
+    &-ptl { color: $ptl-color; }
+
     &-tvweek { color: $tv-color }
 
     &-nzww { color: $nz-womans-weekly-color; }
@@ -259,6 +234,7 @@ hr {
     &-nzwd { color: $nz-womans-day-color; }
 
     &-simply { color: $nz-simply-you-color; }
+
 
     @media #{$small-only} {
         display: none;
@@ -296,6 +272,8 @@ hr {
 
     &-mb { background-color: $mother-baby-color }
 
+    &-ptl { background-color: $ptl-color; }
+
     &-tvweek { background-color: $tv-color }
 
     &-nzww { background-color: $nz-womans-weekly-color; }
@@ -327,6 +305,8 @@ hr {
     &-yours { background-color: $yours-color; }
 
     &-mb { background-color: $mother-baby-color }
+
+    &-ptl { background-color: $ptl-color; }
 
     &-tvweek { background-color: $tv-color }
     

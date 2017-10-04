@@ -60,7 +60,6 @@ class BrandMagazine extends Component {
                         </a>
                     }
                 </div>
-                <hr />
                 <BrandNewsletter brand={brand} />
                 <div className="page__get-social-container">
                     <SocialContainer socialUrls={socialLinks} />

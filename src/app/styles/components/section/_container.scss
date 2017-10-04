@@ -27,7 +27,6 @@
         @media #{$medium-only} {
             float: left;
             width: 50%;
-            border-right: 1px solid #e5e5e5;
         }
     }
 
@@ -38,7 +37,7 @@
                 @media #{$medium-only} {
                     margin: 8px auto 20px;
                     float: right;
-                    width: 346px;
+                    width: 50%;
                 }
             }
         }

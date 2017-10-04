@@ -50,7 +50,11 @@
 
     &--tv-week span:first-child {
         color: $tv-color;
-    }    
+    }
+
+    &--prizes-to-love span:first-child {
+        color: $ptl-color;
+    }  
 
     &__breaker span:first-child {
         margin: 0 5px;

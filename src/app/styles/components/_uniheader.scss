@@ -22,10 +22,10 @@
 
                 a {
                     text-decoration: none;
-                    padding: 0 14px;
+                    padding: 0 6px;
 
                     @media #{$medium-only} {
-                        padding: 0 9px 0 9px;
+                        padding: 0 6px 0 6px;
                     }
                 }
 
@@ -75,6 +75,10 @@
 
                     &simply {
                         height: 24px;
+                    }
+
+                    &ptl {
+                        height: 18px;
                     }
                 }
 

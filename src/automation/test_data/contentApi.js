@@ -80,6 +80,9 @@ export default function stubServer(siteServer, siteConfig) {
         } if (section === 'tvweek') { //TV Week brand page
             const section = require('../test_data/pages/brand_tvweek').default;
             return res.json(section);
+        } if (section === 'prizestolove') { //Prizes To Love brand page
+            const section = require('../test_data/pages/brand_ptl').default;
+            return res.json(section);
         } else {
             return next({body: "Could not find the section page", err: null, status: 404});
         }

@@ -19,6 +19,7 @@ Feature: Brand Landing page
             | yours/                | //www.nowtolove.com.au/yours-newsletter           |
             | mother-and-baby/      | //www.nowtolove.com.au/mother-and-baby-newsletter |
             | tvweek/               | //www.nowtolove.com.au/tvweek-newsletter          |
+            | prizestolove/         | //www.nowtolove.com.au/prizestolove-newsletter    |
 
     @BXMA-482
     Scenario Outline: Verify the sign-up URL on <page> brand landing page in <device> view

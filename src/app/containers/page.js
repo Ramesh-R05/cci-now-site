@@ -115,6 +115,7 @@ export default class Page extends Component {
                       toggleMenu={this.toggleMenu}
                       headerClassName={headerClassName}
                       theme={this.props.theme}
+                      permanentlyFixedIfShorterThan={10}
                     />
                     {!hideLeaderboard && <StickyAd
                       adProps={stickyAdProps}

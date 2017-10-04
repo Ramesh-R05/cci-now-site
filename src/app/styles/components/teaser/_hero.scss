@@ -103,6 +103,11 @@ $hero-teaser-line-height: 25px;
             color: $tv-color;
         }
 
+
+        &--prizes-to-love span:first-child:not(.hero-teaser__source__breaker) {
+            color: $ptl-color;
+        }
+
         .home-page & {
             .hero-teaser__source__breaker,
             .hero-teaser__source__breaker + span {
@@ -133,6 +138,10 @@ $hero-teaser-line-height: 25px;
 
         .hero-teaser__source--good-health-choices span:first-child:not(.teaser__source__breaker) {
             color: $nz-good-health-choices-color;
+        }
+
+        .hero-teaser__source--prizes-to-love span:first-child:not(.hero-teaser__source__breaker) {
+            color: $ptl-color;
         }
     }
 

@@ -22,6 +22,7 @@ describe(`Module API`, () => {
         let themeModuleData;
         let heroModuleData;
         let expectedHeroData;
+        let awwHeroModuleData;
 
         describe(`when passing no arguments`, () => {
             it(`should return an empty object`, (done) => {
@@ -153,6 +154,27 @@ describe(`Module API`, () => {
                         });
                     });
                 });
+
+                describe(`and there is a moduleName equal to 'awwhero'`, () => {
+                    before(() => {
+                        heroModuleData = { moduleName: 'hero', moduleManualContent: { data: [ { id: "NOW-19532" } ] } };
+                        awwHeroModuleData = { moduleName: 'awwhero', moduleManualContent: { data: [ { id: "NOW-19533" } ] } };
+                        expectedHeroData = awwHeroModuleData.moduleManualContent.data[0];
+                        makeRequestStub = sinon.stub().resolves({
+                            data: [
+                                heroModuleData,
+                                awwHeroModuleData
+                            ]
+                        });
+                    })
+
+                    it(`should return awwHreoModuleData in hero section`, (done) => {
+                        getModules('hero', 'awwhero').then((modules) => {
+                            expect(modules).to.contain({ hero: expectedHeroData });
+                            done();
+                        }).catch(done);
+                    })
+                })
             });
         });
     });

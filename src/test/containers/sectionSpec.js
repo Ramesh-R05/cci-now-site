@@ -106,6 +106,10 @@ describe('Section Container', () => {
 
         getListNextParams() {
             return {};
+        },
+
+        getHeroTeaser() {
+            return {}
         }
     });
 

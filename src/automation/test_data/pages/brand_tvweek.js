@@ -356,6 +356,40 @@ export default {
             "url": "/beauty/skincare/five-older-women-you-need-to-follow-on-instagram-14342"
         }
     ],
+    "heroTeaser": {
+        "id": "NOW-21366",
+        "title": "5 foods that banish bloating",
+        "shortTitle": "5 foods that banish bloating",
+        "dateCreated": "2016-07-29T16:30:00",
+        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/07/29/16060/blaoting-head.jpg",
+        "nodeType": "Article",
+        "summary": "We all hate it, but preventing that dreaded food baby feeling is actually a lot easier (and tastier) then you think!",
+        "source": "Prizes To Love",
+        "url": "//5-foods-that-banish-bloating-21366",
+        "parentName": "Now To Love",
+        "parentUrl": "/",
+        "tagsDetails": [{
+            "name": "common:topic:Body love",
+            "urlName": "body-love",
+            "fullName": "common_topic_Body_love",
+            "displayName": "Body love"
+        }, {
+            "name": "biology:gene_group:Menstruation",
+            "urlName": "menstruation",
+            "fullName": "biology_gene_group_Menstruation",
+            "displayName": "Menstruation"
+        }, {
+            "name": "book:periodical_subject:Women's health",
+            "urlName": "womens-health",
+            "fullName": "book_periodical_subject_Womens_health",
+            "displayName": "Women's health"
+        }, {
+            "name": "medicine:symptom:Bloating",
+            "urlName": "bloating",
+            "fullName": "medicine_symptom_Bloating",
+            "displayName": "Bloating"
+        }]
+    },
     "latestTeasers": [
         {
             "id": "NOW-10501",

@@ -26,6 +26,7 @@ function mapStateToProps(context) {
         summary: pageStore.getSummary(),
         teasers: teaserStore.getLatestTeasers(),
         list: teaserStore.getList(),
+        heroTeaser: teaserStore.getHeroTeaser(),
         listNextParams: teaserStore.getListNextParams(),
         imageUrl: pageStore.getImageUrl(),
         subsections: pageStore.getSubsections()
@@ -41,6 +42,7 @@ export default class Section extends Component {
         list: PropTypes.array.isRequired,
         listNextParams: PropTypes.object.isRequired,
         teasers: PropTypes.array.isRequired,
+        heroTeaser: PropTypes.object.isRequired,
         title: PropTypes.array.isRequired,
         currentUrl: PropTypes.string.isRequired,
         shortTitle: PropTypes.string.isRequired,
@@ -74,9 +76,9 @@ export default class Section extends Component {
     }
 
     render() {
-        const { nodeType, teasers, title, currentUrl, shortTitle, summary, theme, imageUrl, subsections } = this.props;
-        const heroTeaser = teasers[0];
-        const firstTeaserList = teasers.slice(1, 7);
+        const { nodeType, teasers, title, currentUrl, shortTitle, summary, theme, imageUrl, subsections, heroTeaser } = this.props;
+        let sectionHeroTeaser = teasers[0];
+        let firstTeaserList = teasers.slice(1);
         const keyword = (nodeType === 'TagSection' && title) ? [title] : [];
         const pageLocation = Ad.pos.outside;
         const subsection = find(subsections.data, s => s.url === currentUrl);
@@ -109,11 +111,14 @@ export default class Section extends Component {
 
         const isBrandPage = nodeType === 'Brand';
         const brand = isBrandPage ? find(this.context.config.brands.uniheader, b => b.url === currentUrl.match(/\/[^/|?]*/)[0]) : null;
+        const themeColour = theme.themeColour || false;
 
         if (isBrandPage) {
             headerClassName = `header-${brand.id}`;
             pageTitle = (<BrandTitle brand={brand} shortTitle={shortTitle} summary={summary} />);
             sectionClassNames += ' brand-section-page';
+            sectionHeroTeaser = heroTeaser;
+            firstTeaserList = teasers.slice();
         }
 
         return (
@@ -142,12 +147,12 @@ export default class Section extends Component {
 
                                         {subsections.totalCount > 1 && <SubsectionList
                                           subsections={subsections.data}
-                                          themeColour={theme.themeColour || false}
+                                          themeColour={themeColour}
                                           currentUrl={currentUrl}
                                         />
                                         }
 
-                                        <HeroTeaser showDate={!isBrandPage} article={heroTeaser} brand={brand} />
+                                        <HeroTeaser showDate={!isBrandPage} article={sectionHeroTeaser} brand={brand} />
 
                                         <TeaserGridView
                                           teasers={firstTeaserList}

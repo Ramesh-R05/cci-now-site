@@ -1,23 +1,19 @@
-import navigation from '../modules/navigation';
-
 export default {
     "entity": {
-        "id": "NOW-31915",
-        "title": "Australian Women's Weekly",
-        "shortTitle": "Welcome to the new home of the Australian Women's Weekly",
-        "dateCreated": "2010-12-21T13:00:00.00Z",
-        "dateModified": "2017-10-03T00:48:02.245Z",
+        "id": "NOW-33553",
+        "title": "Prize To Love",
+        "shortTitle": "Prize To Love",
+        "dateCreated": "2017-09-28T04:26:16.00Z",
+        "dateModified": "2017-10-03T22:16:53.862Z",
         "imageFacebookUrl": {
             "tags": [],
             "source": "",
             "credits": []
         },
-        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/now/2017/10/03/1506991672824_0018135australian-womens-weekly220.jpeg",
         "nodeType": "Brand",
-        "summary": "Now with more news, fascinating people, health, fashion, food, fiction and frivolity",
-        "source": "Australian Women's Weekly",
-        "brand": "aww",
-        "url": "/aww",
+        "source": "Prizes To Love",
+        "brand": "ptl",
+        "url": "/prizestolove",
         "siteName": "now",
         "siteUrl": "http://now-site-au.sit.bxm.net.au"
     },
@@ -25,10 +21,10 @@ export default {
         "googleTagManagerEnvironment": "local",
         "googleTagManagerMasthead": "NOW",
         "robots": "NOINDEX,NOFOLLOW",
-        "canonicalUrl": "http://localhost:3001/aww",
-        "pageDescription": "Food Recipes, Latest Recipe Collections, Celebrity News, Diet, Living, Family, Parenting, Relationships, Style",
-        "pageName": "aww",
-        "title": "Australian Women's Weekly"
+        "canonicalUrl": "http://localhost:3001/prizestolove",
+        "pageDescription": "Prize To Love",
+        "pageName": "prizestolove",
+        "title": "Prize To Love"
     },
     "headerNavigation": {
         "items": [{
@@ -696,371 +692,351 @@ export default {
         }]
     }],
     "heroTeaser": {
-        "id": "NOW-11326",
-        "title": "Outsmart your fat genes",
-        "dateCreated": "2001-06-26T12:00:00",
+        "id": "NOW-21366",
+        "title": "5 foods that banish bloating",
+        "shortTitle": "5 foods that banish bloating",
+        "dateCreated": "2016-07-29T16:30:00",
+        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/07/29/16060/blaoting-head.jpg",
         "nodeType": "Article",
-        "source": "Australian Women's Weekly",
-        "url": "/health/diet-and-nutrition/outsmart-your-fat-genes-11326",
-        "parentName": "Diet & Nutrition",
-        "parentUrl": "/health/diet-and-nutrition",
+        "summary": "We all hate it, but preventing that dreaded food baby feeling is actually a lot easier (and tastier) then you think!",
+        "source": "Prizes To Love",
+        "url": "//5-foods-that-banish-bloating-21366",
+        "parentName": "Now To Love",
+        "parentUrl": "/",
         "tagsDetails": [{
-            "name": "business:industry:Diet",
-            "urlName": "diet",
-            "fullName": "business_industry_Diet",
-            "displayName": "Diet"
+            "name": "common:topic:Body love",
+            "urlName": "body-love",
+            "fullName": "common_topic_Body_love",
+            "displayName": "Body love"
+        }, {
+            "name": "biology:gene_group:Menstruation",
+            "urlName": "menstruation",
+            "fullName": "biology_gene_group_Menstruation",
+            "displayName": "Menstruation"
+        }, {
+            "name": "book:periodical_subject:Women's health",
+            "urlName": "womens-health",
+            "fullName": "book_periodical_subject_Womens_health",
+            "displayName": "Women's health"
+        }, {
+            "name": "medicine:symptom:Bloating",
+            "urlName": "bloating",
+            "fullName": "medicine_symptom_Bloating",
+            "displayName": "Bloating"
         }]
     },
     "latestTeasers": [{
-        "id": "NOW-33541",
-        "title": "Test article with all the content types",
-        "dateCreated": "2017-09-21T05:28:54.00Z",
-        "imageUrl": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/Now/2017/09/22/33541/Screen-Shot-2017-09-06-at-6.13.43-pm.png",
+        "id": "NOW-33510",
+        "title": "Real-life \"mermaid baby\" born with scales is bound to break your heart",
+        "dateCreated": "2017-09-14T13:57:00.00Z",
+        "imageAltText": "Baby Maryam",
+        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Now/2017/09/15/41015/hero.jpg",
         "nodeType": "Article",
-        "summary": "Test article with all the content types",
-        "source": "Australian Women's Weekly",
-        "url": "/celebrity/celeb-news/test-article-with-all-the-content-types-33541",
-        "parentName": "Celeb News",
-        "parentUrl": "/celebrity/celeb-news",
+        "summary": "The gorgeous, little nine-month-old has had a really rough welcome into the world.",
+        "source": "Prizes To Love",
+        "url": "/body/mermaid-baby-born-with-scales-33510",
+        "parentName": "Body",
+        "parentUrl": "/body",
         "video": {
-            "id": "4248027253001",
-            "name": "Puppy is scared of his own hiccups",
+            "id": "5576551860001",
+            "name": "'Mermaid' baby born with scales",
             "type": "VideoItem",
             "properties": {
                 "videoConfiguration": {
                     "status": "",
-                    "videoId": "4248027253001",
+                    "videoId": "5576551860001",
                     "statusCode": 200,
-                    "brightcoveId": "4248027253001",
-                    "thumbnailUrl": "http://brightcove04.o.brightcove.com/761709621001/761709621001_4248117038001_th-555d1cb3e4b06fe3db188f5e-782203300001.jpg?pubId=761709621001",
-                    "videoStillUrl": "http://brightcove04.o.brightcove.com/761709621001/761709621001_4248117037001_vs-555d1cb3e4b06fe3db188f5e-782203300001.jpg?pubId=761709621001"
-                }
-            }
-        },
-        "enableAmp": "0"
-    }, {
-        "id": "NOW-33512",
-        "title": "Police boss DEFENDS police officer who shot dead Justine Damond",
-        "dateCreated": "2017-09-14T13:26:00.00Z",
-        "imageAltText": "Investigation into Justine Damond's shooting complete",
-        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Now/2017/07/19/39279/Justine-Damon-HERO.jpg",
-        "nodeType": "Article",
-        "summary": "The police union president has hit back at a lawyer for saying he was \"saddened\" by Justine's death, calling it \"unprofessional\".",
-        "source": "Australian Women's Weekly",
-        "url": "/news/latest-news/police-boss-defends-officer-shot-justine-damond-33512",
-        "parentName": "Latest News",
-        "parentUrl": "/news/latest-news",
-        "video": {
-            "id": "5511911086001",
-            "name": "Justine Damond dawn vigil",
-            "type": "VideoItem",
-            "properties": {
-                "videoConfiguration": {
-                    "status": "",
-                    "videoId": "5511911086001",
-                    "statusCode": 200,
-                    "brightcoveId": "5511911086001",
-                    "thumbnailUrl": "http://brightcove04.o.brightcove.com/761709621001/761709621001_5511911542001_5511911086001-th.jpg?pubId=761709621001",
-                    "videoStillUrl": "http://brightcove04.o.brightcove.com/761709621001/761709621001_5511911539001_5511911086001-vs.jpg?pubId=761709621001"
+                    "brightcoveId": "5576551860001",
+                    "thumbnailUrl": "http://brightcove04.o.brightcove.com/761709621001/761709621001_5576594106001_5576551860001-th.jpg?pubId=761709621001",
+                    "videoStillUrl": "http://brightcove04.o.brightcove.com/761709621001/761709621001_5576590643001_5576551860001-vs.jpg?pubId=761709621001"
                 }
             }
         },
         "tagsDetails": [{
-            "name": "food:Location and setting:Rest of World:North America:USA",
-            "urlName": "usa",
-            "fullName": "food_Location_and_setting_Rest_of_World_North_America_usa",
-            "displayName": "USA"
+            "name": "common:topic:Motherhood",
+            "urlName": "motherhood",
+            "fullName": "common_topic_motherhood",
+            "displayName": "Motherhood"
         }, {
-            "name": "people:cause_of_death:Murder",
-            "urlName": "murder",
-            "fullName": "people_cause_of_death_Murder",
-            "displayName": "Murder"
+            "name": "media_common:media_genre:Parenting",
+            "urlName": "parenting",
+            "fullName": "media_common_media_genre_Parenting",
+            "displayName": "Parenting"
         }, {
-            "name": "business:industry:Crime",
-            "urlName": "crime",
-            "fullName": "business_industry_Crime",
-            "displayName": "Crime"
+            "name": "medicine:anatomical_structure:Skin",
+            "urlName": "skin",
+            "fullName": "medicine_anatomical_structure_Skin",
+            "displayName": "Skin"
+        }, {
+            "name": "business:industry:Health",
+            "urlName": "health",
+            "fullName": "business_industry_Health",
+            "displayName": "Health"
         }],
         "enableAmp": "0"
     }, {
-        "id": "NOW-32625",
-        "title": "Joe Test Latest News - News stories",
-        "dateCreated": "2017-01-19T00:02:38.00Z",
-        "imageUrl": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/aww/2017/01/19/25908/Chrysanthemum.jpg",
+        "id": "NOW-33502",
+        "title": "This is a test article",
+        "dateCreated": "2017-09-13T23:41:53.00Z",
+        "imageUrl": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/Now/2017/09/14/33502/Jellyfish.jpg",
         "nodeType": "Article",
-        "summary": "Joe Test Latest News - News stories",
-        "source": "Australian Women's Weekly",
-        "url": "/lifestyle/pets/joe-test-latest-news-news-stories-32625",
-        "parentName": "Pets",
-        "parentUrl": "/lifestyle/pets"
+        "summary": "This is a test article",
+        "source": "Prizes To Love",
+        "url": "/tech-science/device-and-apps/this-is-a-test-article-33502",
+        "parentName": "Device & Apps",
+        "parentUrl": "/tech-science/device-and-apps",
+        "enableAmp": "0"
     }, {
-        "id": "NOW-32618",
-        "title": "Long title Joe test gallery double republishing1",
-        "dateCreated": "2017-01-17T06:20:39.00Z",
-        "imageAltText": "Image alt text Joe test gallery double republishing",
-        "imageCaption": "Image caption Joe test gallery double republishing",
-        "imageUrl": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/aww/2017/01/17/25887/image2.JPG",
-        "nodeType": "Gallery",
-        "summary": "Short Teaser Joe test gallery double republishing3",
-        "source": "Australian Women's Weekly",
-        "url": "/royals/british-royal-family/joe-test-gallery-double-republishing-new-32618",
-        "parentName": "British Royal Family",
-        "parentUrl": "/royals/british-royal-family",
-        "tagsDetails": [{
-            "name": "people:profession:actor:Amy Adams",
-            "urlName": "amy-adams",
-            "fullName": "people_profession_actor_Amy_Adams",
-            "displayName": "Amy Adams"
-        }, {
-            "name": "music:genre:blues:Adele",
-            "urlName": "adele",
-            "fullName": "music_genre_blues_Adele",
-            "displayName": "Adele"
-        }]
-    }, {
-        "id": "NOW-32616",
-        "title": "Test long title Joe Test Article for double publishing",
-        "dateCreated": "2017-01-17T05:48:35.00Z",
-        "imageAltText": "Image ALt Text Joe Test Article for double publishing",
-        "imageCaption": "Image Caption Joe Test Article for double publishing",
-        "imageUrl": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/aww/2017/01/17/25882/image2-(1).JPG",
+        "id": "NOW-33121",
+        "title": "Science says your kitchen sponge is disgusting and cleaning it won't help",
+        "dateCreated": "2017-08-02T13:30:00.00Z",
+        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Now/2017/08/03/39700/sponge-meme.jpg",
         "nodeType": "Article",
-        "summary": "Short Teaser Joe Test Article for double publishing",
-        "source": "Australian Women's Weekly",
-        "url": "/royals/british-royal-family/joe-test-article-for-double-publishing-32616",
-        "parentName": "British Royal Family",
-        "parentUrl": "/royals/british-royal-family",
+        "summary": "Don't waste your time, just chuck it in the bin.",
+        "source": "Prizes To Love",
+        "url": "/lifestyle/homes/dirty-kitchen-sponge-cant-be-cleaned-33121",
+        "parentName": "Homes",
+        "parentUrl": "/lifestyle/homes",
+        "enableAmp": "0"
+    }, {
+        "id": "NOW-33074",
+        "title": "How to work out on your commute to work (and not look ridiculous doing it)",
+        "dateCreated": "2017-08-01T19:39:00.00Z",
+        "imageAltText": "Seinfeld's Jerry and Elaine",
+        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Now/2017/08/02/39677/giphy-(1).gif",
+        "nodeType": "Article",
+        "summary": "On-the-bus Commuter Crunches for the win!",
+        "source": "Prizes To Love",
+        "url": "//how-to-work-out-on-your-commute-33074",
+        "parentName": "Now To Love",
+        "parentUrl": "/",
+        "enableAmp": "0"
+    }, {
+        "id": "NOW-32598",
+        "title": "Win tickets to a screening of Hidden Figures",
+        "dateCreated": "2017-01-08T22:15:00.00Z",
+        "imageAltText": "Hidden Figures",
+        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/12/21/17403/Hidden-Figures.jpg",
+        "nodeType": "Article",
+        "summary": "The incredible untold story of three African-American women working at NASA is already earning Oscar buzz.",
+        "source": "Prizes To Love",
+        "url": "/win/win-tickets-to-a-screening-of-hidden-figures-32598",
+        "parentName": "Win",
+        "parentUrl": "/win",
         "video": {
-            "id": "4066659625001",
-            "name": "Moroccan Lamb Salad",
+            "id": "5270988517001",
+            "name": "Hidden Figures Trailer",
             "type": "VideoItem",
             "properties": {
                 "videoConfiguration": {
                     "status": "",
-                    "videoId": "4066659625001",
+                    "videoId": "5270988517001",
                     "statusCode": 200,
-                    "brightcoveId": "4066659625001",
-                    "thumbnailUrl": "http://brightcove01.brightcove.com/21/761709621001/201502/2281/761709621001_4067151975001_6456e206-940d-417e-b5e4-f0feac52bea5-AWSAccessKeyId-AKIAJWBBMGHEBQ6SISMA-Expires-1424389300-Signature-Wix42n8wHQfzZGIK8e2628VbazY-3D-th.jpg?pubId=761709621001",
-                    "videoStillUrl": "http://brightcove04.o.brightcove.com/761709621001/761709621001_4067088485001_vlcsnap-00149.jpg?pubId=761709621001"
+                    "brightcoveId": "5270988517001",
+                    "thumbnailUrl": "http://brightcove04.o.brightcove.com/761709621001/761709621001_5270993415001_5270988517001-th.jpg?pubId=761709621001",
+                    "videoStillUrl": "http://brightcove04.o.brightcove.com/761709621001/761709621001_5270995314001_5270988517001-vs.jpg?pubId=761709621001"
                 }
             }
         },
         "tagsDetails": [{
-            "name": "award:award_winning_work:Gossip Girl",
-            "urlName": "gossip-girl",
-            "fullName": "award_award_winning_work_Gossip_Girl",
-            "displayName": "Gossip Girl"
+            "name": "common:topic:Competition",
+            "urlName": "competition",
+            "fullName": "common_topic_Competition",
+            "displayName": "Competition"
         }, {
-            "name": "people:person:Madeleine Pulver",
-            "urlName": "madeleine-pulver",
-            "fullName": "people_person_Madeleine_Pulver",
-            "displayName": "Madeleine Pulver"
-        }]
+            "name": "common:topic:movies",
+            "urlName": "movies",
+            "fullName": "common_topic_movies",
+            "displayName": "movies"
+        }],
+        "enableAmp": "0"
     }, {
-        "id": "NOW-32140",
-        "title": "Young couple change homeless man’s life after random act of kindness",
-        "dateCreated": "2017-01-15T22:05:00.00Z",
-        "imageAltText": "Young couple change homeless man’s life after his random act of kindness",
-        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AWW/2017/01/16/30357/charlotte-taylor-holding.jpg",
+        "id": "NOW-21366",
+        "title": "5 foods that banish bloating",
+        "dateCreated": "2016-07-29T06:30:00.00Z",
+        "imageAltText": "Gigi Hadid",
+        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/07/29/16060/blaoting-head.jpg",
         "nodeType": "Article",
-        "summary": "He offered them a coat and doona after they missed their train. What happens next will give you the warm and fuzzies!",
-        "source": "Australian Women's Weekly",
-        "url": "/lifestyle/pets/young-couple-change-homeless-mans-life-32140",
-        "parentName": "Pets",
-        "parentUrl": "/lifestyle/pets"
+        "summary": "We all hate it, but preventing that dreaded food baby feeling is actually a lot easier (and tastier) then you think!",
+        "source": "Prizes To Love",
+        "url": "//5-foods-that-banish-bloating-21366",
+        "parentName": "Now To Love",
+        "parentUrl": "/",
+        "tagsDetails": [{
+            "name": "common:topic:Body love",
+            "urlName": "body-love",
+            "fullName": "common_topic_Body_love",
+            "displayName": "Body love"
+        }, {
+            "name": "biology:gene_group:Menstruation",
+            "urlName": "menstruation",
+            "fullName": "biology_gene_group_Menstruation",
+            "displayName": "Menstruation"
+        }, {
+            "name": "book:periodical_subject:Women's health",
+            "urlName": "womens-health",
+            "fullName": "book_periodical_subject_Womens_health",
+            "displayName": "Women's health"
+        }, {
+            "name": "medicine:symptom:Bloating",
+            "urlName": "bloating",
+            "fullName": "medicine_symptom_Bloating",
+            "displayName": "Bloating"
+        }],
+        "enableAmp": "0"
     }],
     "list": {
-        "listName": "aww",
+        "listName": "prizestolove",
         "params": {
             "pageNo": 1,
-            "section": "Australian Women''s Weekly",
+            "section": "Prizes To Love",
             "filter": "source"
         },
         "items": [
             [{
-                "id": "NOW-32139",
-                "title": "A pendant ‘identical’ to one belonging to Anne Frank has been found",
-                "dateCreated": "2017-01-15T21:24:56.00Z",
-                "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AWW/2017/01/16/30356/anne-frank.jpg",
+                "id": "NOW-21365",
+                "title": "Sam Frost has pre-cancerous cells removed after abnormal pap smear",
+                "dateCreated": "2016-07-29T04:58:00.00Z",
+                "imageAltText": "Sam Frost",
+                "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/07/29/16058/head.jpg",
                 "nodeType": "Article",
-                "summary": "Archaeologists digging up the Sobibór death camp made the discovery.",
-                "source": "Australian Women's Weekly",
-                "url": "/lifestyle/pets/a-pendant-thought-to-belong-to-anne-frank-has-been-found-at-nazi-death-camp-32139",
-                "parentName": "Pets",
-                "parentUrl": "/lifestyle/pets"
-            }, {
-                "id": "NOW-32138",
-                "title": "Heat claims young dad-to-be in the Sunshine Coast",
-                "dateCreated": "2017-01-15T21:03:08.00Z",
-                "imageAltText": "Heatwave claims young dad-to-be in the Sunshine Coast",
-                "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AWW/2017/01/16/30355/emily-holding.jpg",
-                "nodeType": "Article",
-                "summary": "Matthew Hall's death comes two weeks before the birth of his first child. His devastated widow says she “can’t fathom life without him”.",
-                "source": "Australian Women's Weekly",
-                "url": "/lifestyle/pets/heat-claims-young-dad-to-be-sunshine-coast-32138",
-                "parentName": "Pets",
-                "parentUrl": "/lifestyle/pets"
-            }, {
-                "id": "NOW-32137",
-                "title": "Michelle Obama’s emotional goodbye",
-                "dateCreated": "2017-01-13T06:16:27.00Z",
-                "imageAltText": "Michelle Obama ",
-                "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AWW/2017/01/13/30354/main.jpg",
-                "nodeType": "Article",
-                "summary": "“We're ready. We're good. It's been eight years, eight years is enough.\"",
-                "source": "Australian Women's Weekly",
-                "url": "/lifestyle/pets/michelle-obamas-emotional-final-tv-interview-32137",
-                "parentName": "Pets",
-                "parentUrl": "/lifestyle/pets",
+                "summary": "The former Bachelorette revealed her health scare on air to raise awareness.",
+                "source": "Prizes To Love",
+                "url": "//sam-frost-undergoes-minor-surgery-amid-cancer-scare-21365",
+                "parentName": "Now To Love",
+                "parentUrl": "/",
                 "tagsDetails": [{
-                    "name": "people:profession:comedian:Jimmy Fallon",
-                    "urlName": "jimmy-fallon",
-                    "fullName": "people_profession_comedian_Jimmy_Fallon",
-                    "displayName": "Jimmy Fallon"
+                    "name": "tv:tv_program:The Bachelorette",
+                    "urlName": "the-bachelorette",
+                    "fullName": "tv_tv_program_The_Bachelorette",
+                    "displayName": "The Bachelorette"
                 }, {
-                    "name": "celebrities:celebrity:Michelle Obama",
-                    "urlName": "michelle-obama",
-                    "fullName": "celebrities_celebrity_Michelle_Obama",
-                    "displayName": "Michelle Obama"
+                    "name": "people:profession:australian_rules_football_player:Sam Frost",
+                    "urlName": "sam-frost",
+                    "fullName": "people_profession_australian_rules_football_player_Sam_Frost",
+                    "displayName": "Sam Frost"
                 }, {
-                    "name": "government:us_president:Barack Obama",
-                    "urlName": "barack-obama",
-                    "fullName": "government_us_president_Barack_Obama",
-                    "displayName": "Barack Obama"
-                }]
+                    "name": "book:periodical_subject:Women's health",
+                    "urlName": "womens-health",
+                    "fullName": "book_periodical_subject_Womens_health",
+                    "displayName": "Women's health"
+                }, {
+                    "name": "medicine:disease:Cancer",
+                    "urlName": "cancer",
+                    "fullName": "medicine_disease_Cancer",
+                    "displayName": "Cancer"
+                }],
+                "enableAmp": "0"
             }, {
-                "id": "NOW-32060",
-                "title": "The extreme lengths Carrie Bickmore goes to get her kids to sleep in",
-                "dateCreated": "2017-01-13T04:08:44.00Z",
-                "imageAltText": "The extreme lengths Carrie Bickmore goes to for sleep",
-                "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AWW/2017/01/13/30352/Holder.jpg",
+                "id": "NOW-21364",
+                "title": "Time to kick start your fitness! 5 reasons to try boxing",
+                "dateCreated": "2016-07-27T06:28:00.00Z",
+                "imageAltText": "Erin Heatherton",
+                "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/07/27/16036/head-2.jpg",
                 "nodeType": "Article",
-                "summary": "The things parents do for extra shut-eye.",
-                "source": "Australian Women's Weekly",
-                "url": "/celebrity/celeb-news/carrie-bickmore-alfoils-kids-room-32060",
-                "parentName": "Celeb News",
-                "parentUrl": "/celebrity/celeb-news",
+                "summary": "Kicking ass has never been so good for you!",
+                "source": "Prizes To Love",
+                "url": "//5-reasons-to-take-up-boxing-21364",
+                "parentName": "Now To Love",
+                "parentUrl": "/",
                 "tagsDetails": [{
-                    "name": "people:profession:radio_personality:Carrie Bickmore",
-                    "urlName": "carrie-bickmore",
-                    "fullName": "people_profession_radio_personality_Carrie_Bickmore",
-                    "displayName": "Carrie Bickmore"
-                }]
+                    "name": "media_common:media_genre:Fitness",
+                    "urlName": "fitness",
+                    "fullName": "media_common_media_genre_Fitness",
+                    "displayName": "Fitness"
+                }, {
+                    "name": "sports:sport:Boxing",
+                    "urlName": "boxing",
+                    "fullName": "sports_sport_Boxing",
+                    "displayName": "Boxing"
+                }, {
+                    "name": "interests:interest:Physical exercise",
+                    "urlName": "physical-exercise",
+                    "fullName": "interests_interest_Physical_exercise",
+                    "displayName": "Physical exercise"
+                }],
+                "enableAmp": "0"
             }, {
-                "id": "NOW-32136",
-                "title": "The Australian Women's Weekly announces new website, Now to Love...",
-                "dateCreated": "2017-01-13T04:02:42.00Z",
-                "imageAltText": "now to love website launch",
-                "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AWW/2017/01/13/30351/Now-To-Love.jpg",
+                "id": "NOW-21342",
+                "title": "5 reasons why you’re not losing weight",
+                "dateCreated": "2016-06-28T06:11:00.00Z",
+                "imageAltText": "Kate Winslet",
+                "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/06/28/15754/MAIN-Recovered.jpg",
                 "nodeType": "Article",
-                "summary": "For women who love to know. Now.",
-                "source": "Australian Women's Weekly",
-                "url": "/lifestyle/pets/now-to-love-new-website-launch-32136",
-                "parentName": "Pets",
-                "parentUrl": "/lifestyle/pets"
-            }, {
-                "id": "NOW-32135",
-                "title": "Young girl takes her own life, streams it online",
-                "dateCreated": "2017-01-13T03:43:25.00Z",
-                "imageAltText": "Young girl takes her own life and streams it online",
-                "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AWW/2017/01/13/30350/hero.jpg",
-                "nodeType": "Article",
-                "summary": "Apparently police say they are ‘powerless’ in ordering websites to take the video down.",
-                "source": "Australian Women's Weekly",
-                "url": "/lifestyle/pets/young-girl-takes-her-own-life-streams-it-online-32135",
-                "parentName": "Pets",
-                "parentUrl": "/lifestyle/pets",
+                "summary": "You regularly work out and you’ve been on that boring diet since Christmas – so why haven’t you seen results? Let’s find out.",
+                "source": "Prizes To Love",
+                "url": "//5-reasons-why-youre-not-losing-weight-21342",
+                "parentName": "Now To Love",
+                "parentUrl": "/",
                 "tagsDetails": [{
-                    "name": "media_common:quotation_subject:Suicide",
-                    "urlName": "suicide",
-                    "fullName": "media_common_quotation_subject_Suicide",
-                    "displayName": "Suicide"
+                    "name": "food:Tip:Healthy eating",
+                    "urlName": "healthy-eating",
+                    "fullName": "food_Tip_Healthy_eating",
+                    "displayName": "Healthy eating"
                 }, {
-                    "name": "education:field_of_study:Mental health",
-                    "urlName": "mental-health",
-                    "fullName": "education_field_of_study_Mental_health",
-                    "displayName": "Mental health"
+                    "name": "common:topic:Body love",
+                    "urlName": "body-love",
+                    "fullName": "common_topic_Body_love",
+                    "displayName": "Body love"
                 }, {
-                    "name": "common:topic:teens",
-                    "urlName": "teens",
-                    "fullName": "common_topic_teens",
-                    "displayName": "teens"
-                }]
+                    "name": "medicine:symptom:Weight loss",
+                    "urlName": "weight-loss",
+                    "fullName": "medicine_symptom_Weight_loss",
+                    "displayName": "Weight loss"
+                }, {
+                    "name": "business:industry:Health",
+                    "urlName": "health",
+                    "fullName": "business_industry_Health",
+                    "displayName": "Health"
+                }],
+                "enableAmp": "0"
             }, {
-                "id": "NOW-32134",
-                "title": "Nicole Kidman says Americans need to support Trump",
-                "dateCreated": "2017-01-13T02:27:35.00Z",
-                "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AWW/2017/01/13/30348/nicole-art.jpg",
+                "id": "NOW-21341",
+                "title": "Introducing the new beauty elixir: Aloe vera juice",
+                "dateCreated": "2016-06-27T05:21:00.00Z",
+                "imageAltText": "Aloe Vera",
+                "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/06/27/15737/head.jpg",
                 "nodeType": "Article",
-                "summary": "“We, as a country, need to support whoever’s the president because that’s what the country’s based on.”",
-                "source": "Australian Women's Weekly",
-                "url": "/lifestyle/pets/nicole-kidman-says-americans-need-to-support-trump-32134",
-                "parentName": "Pets",
-                "parentUrl": "/lifestyle/pets",
-                "video": {
-                    "id": "5280375254001",
-                    "name": "Nicole Kidman says America needs to support Trump",
-                    "type": "VideoItem",
-                    "properties": {
-                        "videoConfiguration": {
-                            "status": "",
-                            "videoId": "5280375254001",
-                            "statusCode": 200,
-                            "brightcoveId": "5280375254001",
-                            "thumbnailUrl": "http://brightcove04.o.brightcove.com/761709621001/761709621001_5280374328001_5280375254001-th.jpg?pubId=761709621001",
-                            "videoStillUrl": "http://brightcove04.o.brightcove.com/761709621001/761709621001_5280375768001_5280375254001-vs.jpg?pubId=761709621001"
-                        }
-                    }
-                },
+                "summary": "Coconut water is so last year. Now, it’s all about aloe.",
+                "source": "Prizes To Love",
+                "url": "//aloe-vera-juice-is-the-new-beauty-elixir-21341",
+                "parentName": "Now To Love",
+                "parentUrl": "/",
                 "tagsDetails": [{
-                    "name": "organization:organization_leader:Donald Trump",
-                    "urlName": "donald-trump",
-                    "fullName": "organization_organization_leader_Donald_Trump",
-                    "displayName": "Donald Trump"
+                    "name": "media_common:quotation_subject:Beauty",
+                    "urlName": "beauty",
+                    "fullName": "media_common_quotation_subject_Beauty",
+                    "displayName": "Beauty"
                 }, {
-                    "name": "people:profession:actor:Nicole Kidman",
-                    "urlName": "nicole-kidman",
-                    "fullName": "people_profession_actor_Nicole_Kidman",
-                    "displayName": "Nicole Kidman"
+                    "name": "biology:organism_classification_rank:species:Aloe vera",
+                    "urlName": "aloe-vera",
+                    "fullName": "biology_organism_classification_rank_species_Aloe_vera",
+                    "displayName": "Aloe vera"
                 }, {
-                    "name": "people:profession:actor:Meryl Streep",
-                    "urlName": "meryl-streep",
-                    "fullName": "people_profession_actor_Meryl_Streep",
-                    "displayName": "Meryl Streep"
-                }]
-            }, {
-                "id": "NOW-32133",
-                "title": "Joe Biden crying as he receives surprise Presidential Medal of Freedom will emotionally break you",
-                "dateCreated": "2017-01-12T21:56:25.00Z",
-                "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AWW/2017/01/13/30345/biden-holding.jpg",
-                "nodeType": "Article",
-                "summary": "President Barack Obama awarded his best friend, Vice President Joe Biden, the highest civilian honour possible.",
-                "source": "Australian Women's Weekly",
-                "url": "/lifestyle/pets/vice-president-joe-biden-highest-civilian-honour-32133",
-                "parentName": "Pets",
-                "parentUrl": "/lifestyle/pets",
-                "tagsDetails": [{
-                    "name": "government:us_president:Barack Obama",
-                    "urlName": "barack-obama",
-                    "fullName": "government_us_president_Barack_Obama",
-                    "displayName": "Barack Obama"
-                }]
+                    "name": "business:product_category:Skincare",
+                    "urlName": "skincare",
+                    "fullName": "business_product_category_Skincare",
+                    "displayName": "Skincare"
+                }, {
+                    "name": "business:industry:Health",
+                    "urlName": "health",
+                    "fullName": "business_industry_Health",
+                    "displayName": "Health"
+                }],
+                "enableAmp": "0"
             }]
         ],
         "previous": null,
         "current": {
-            "path": "/aww",
-            "url": "http://localhost:3001/aww"
+            "path": "/prizestolove",
+            "url": "http://localhost:3001/prizestolove"
         },
-        "next": {
-            "path": "/aww?pageNo=2",
-            "url": "http://localhost:3001/aww?pageNo=2"
-        }
+        "next": null
     },
     "section": {
-        "id": "NOW-31915",
-        "name": "Australian Women's Weekly",
-        "urlName": "aww"
+        "id": "NOW-33553",
+        "name": "Prize To Love",
+        "urlName": "prizestolove"
     },
     "promoted": {
         "title": "KICKSTART 2017",
