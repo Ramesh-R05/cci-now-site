@@ -32,6 +32,8 @@ Feature: Smoke test for AU NOW
             | yours                | http://www.nowtolove.com.au/yours-newsletter           |
             | mother-and-baby      | http://www.nowtolove.com.au/mother-and-baby-newsletter |
             | tvweek               | http://www.nowtolove.com.au/tvweek-newsletter          |
+            | prizestolove         | http://www.nowtolove.com.au/prizestolove-newsletter    |
+
 
     Scenario: Verify the section landing page
         Given I switch to "mobile" view

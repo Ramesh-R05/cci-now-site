@@ -26,6 +26,11 @@ $hero-teaser-line-height: 25px;
         margin: 0;
         padding-bottom: 20px;
 
+        &--no-teaser {
+            padding-bottom: 0px; 
+            margin-top: -14px;           
+        }
+
         .home-page & {
             padding-bottom: 0px;
             position: static;

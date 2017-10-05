@@ -3,7 +3,9 @@ import get from 'lodash/object/get';
 import { getLatestTeasers } from '../api/listing';
 import { parseEntities } from '../helper/parseEntity';
 import makeRequest from '../../makeRequest';
-let latestTeaserCount = 7;
+const latestTeaserCountForBrand = 6;
+const latestTeaserCountDefault = 7;
+let latestTeaserCount = latestTeaserCountDefault;
 const listCount = 14;
 
 export default async function sectionMiddleware(req, res, next) {
@@ -23,6 +25,7 @@ export default async function sectionMiddleware(req, res, next) {
         let teaserFilter;
 
         if (nodeTypeAlias === 'Section' || nodeTypeAlias === 'Subsection') {
+            latestTeaserCount = latestTeaserCountDefault;
             teaserQuery = `/${section}/${subsection || ''}`;
             teaserFilter = 'parentUrl';
             listingQuery = `${teaserFilter} eq %27${teaserQuery}%27`;
@@ -30,7 +33,7 @@ export default async function sectionMiddleware(req, res, next) {
         }
 
         if (nodeTypeAlias === 'Brand') {
-            latestTeaserCount = 6;
+            latestTeaserCount = latestTeaserCountForBrand;
             const source = get(req, 'data.entity.source', '');
             const adBrand = find(req.app.locals.config.brands.uniheader, b => b.title === source);
             req.data.entity.adBrand = get(adBrand, 'id', 'ntl');

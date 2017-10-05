@@ -27,13 +27,12 @@ export default async function getModules(...args) {
                 moduleList.theme = moduleConfig;
             } else if (arg === 'hero') {
                 moduleList[arg] = get(brandHeroModule, 'moduleManualContent.data', []).length > 0 ?
-                                    brandHeroModule.moduleManualContent.data[0] :
+                                    Object.assign({}, brandHeroModule.moduleManualContent.data[0], { isBrandHero: true }) :
                                     get(moduleConfig, 'moduleManualContent.data[0]', null);
             } else {
                 moduleList[arg] = get(moduleConfig, 'moduleManualContent.data', []);
             }
         });
-
         return moduleList;
     } catch (error) {
         logger.error(error);

@@ -117,7 +117,8 @@ export default class Section extends Component {
             headerClassName = `header-${brand.id}`;
             pageTitle = (<BrandTitle brand={brand} shortTitle={shortTitle} summary={summary} />);
             sectionClassNames += ' brand-section-page';
-            sectionHeroTeaser = heroTeaser;
+
+            sectionHeroTeaser = heroTeaser.isBrandHero && heroTeaser;
             firstTeaserList = teasers.slice();
         }
 

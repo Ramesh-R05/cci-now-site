@@ -170,7 +170,7 @@ describe(`Module API`, () => {
 
                     it(`should return awwHreoModuleData in hero section`, (done) => {
                         getModules('hero', 'awwhero').then((modules) => {
-                            expect(modules).to.contain({ hero: expectedHeroData });
+                            expect(modules.hero).to.deep.eq( {...expectedHeroData, isBrandHero: true });
                             done();
                         }).catch(done);
                     })

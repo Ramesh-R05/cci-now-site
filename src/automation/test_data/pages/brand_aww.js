@@ -709,7 +709,8 @@ export default {
             "urlName": "diet",
             "fullName": "business_industry_Diet",
             "displayName": "Diet"
-        }]
+        }],
+        "isBrandHero": true
     },
     "latestTeasers": [{
         "id": "NOW-33541",

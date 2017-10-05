@@ -32,19 +32,23 @@ export default class HeroTeaser extends Component {
     };
 
     render() {
-        if (!this.props.article) return null;
         const { article, imageSizes, showPromoted, brand, showDate } = this.props;
         const pageLocation = Ad.pos.outside;
+        const shouldDisplayHeroTeaser = !!this.props.article;
+        const heroClassName = shouldDisplayHeroTeaser ? 'hero-wrapper' : 'hero-wrapper hero-wrapper--no-teaser';
 
         return (
-            <div className="hero-wrapper">
-                <Teaser
-                  sourceClassName="hero-teaser__source"
-                  className="hero-teaser"
-                  showDate={showDate}
-                  article={article}
-                  imageSizes={imageSizes}
-                />
+            <div className={heroClassName}>
+
+                {
+                    shouldDisplayHeroTeaser && <Teaser
+                      sourceClassName="hero-teaser__source"
+                      className="hero-teaser"
+                      showDate={showDate}
+                      article={article}
+                      imageSizes={imageSizes}
+                    />
+                }
 
                 <Ad
                   displayFor={['small', 'medium']}

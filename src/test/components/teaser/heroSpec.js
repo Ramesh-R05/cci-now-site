@@ -53,12 +53,22 @@ describe('Hero Teaser Component', () => {
 
     describe('when not passing an article', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(HeroTeaser);
+            reactModule = Context.mountComponent(HeroTeaser, {}, [contextConfigStub]);
+            
         });
 
-        it(`should not render`, () => {
-            expect(ReactDOM.findDOMNode(reactModule)).to.not.exist;
+        it(`should not render hero teaser`, () => {
+            TeaserComponent = TestUtils.scryRenderedComponentsWithType(reactModule, TeaserStub);
+            expect(TeaserComponent.length).to.eq(0);
         });
+
+        it(`should attach \'hero-wrapper--no-teaser\' to wrapper`, () => {
+            const wrapper =  shallow(
+                <HeroTeaser />,
+                { context: { config: { urls: { socialUrls: {} } } } }
+            );
+            expect(wrapper.props().className).to.eq('hero-wrapper hero-wrapper--no-teaser');
+        })
     });
 
     describe('when passing an article', () => {

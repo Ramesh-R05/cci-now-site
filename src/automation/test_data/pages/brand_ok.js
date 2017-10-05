@@ -388,7 +388,8 @@ export default {
             "urlName": "bloating",
             "fullName": "medicine_symptom_Bloating",
             "displayName": "Bloating"
-        }]
+        }],
+        "isBrandHero": true
     },
     "latestTeasers": [
         {
