@@ -72,6 +72,12 @@ export default function https(req, res, next) {
             });
         });
 
+        get(res, 'body.list.items', []).forEach((item) => {
+            item.forEach((listItem) => {
+                httpsSet(listItem, 'imageUrl');
+            });
+        });
+
         next();
     } catch (error) {
         next(error);
