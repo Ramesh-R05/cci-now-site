@@ -57,6 +57,9 @@ Feature: Smoke test for AU NOW
         Given Emily just published the "article" doc type item
         When I navigate to the "news/latest-news/test-article" page
         Then our readers can enjoy the latest content
+        Given I switch to "mobile" view
+        When I navigate to the "amp/news/latest-news/test-article" page
+        Then our readers can enjoy the latest content
 
     Scenario: Verify the gallery page
         Given Emily just published the "gallery" doc type item
