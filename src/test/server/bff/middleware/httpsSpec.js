@@ -9,7 +9,8 @@ const contentBody = [
     {type: 'image', content: {url: "http://test.com"}},
     {type: 'image-revealer', content: {left: {url: "http://test.com"}, right: {url: "http://test.com"}}},
     {type: 'related-content', content: [{imageUrl: "http://test.com"}, {imageUrl: "http://test.com"}]},
-    {type: 'whooshka', content: {url: "http://test.com"}}
+    {type: 'whooshka', content: {url: "http://test.com"}},
+    {type: 'gallery', content: [{imageUrl: "http://test.com/image.jpg"}]}
 ];
 
 const contentGallery = [
@@ -70,6 +71,7 @@ describe('https middleware', () => {
             expect(req.data.entity.contentBody[2].content[0].imageUrl).to.equal('https://test.com');
             expect(req.data.entity.contentBody[2].content[1].imageUrl).to.equal('https://test.com');
             expect(req.data.entity.contentBody[3].content.url).to.equal('https://test.com');
+            expect(req.data.entity.contentBody[4].content[0].imageUrl).to.equal('https://test.com/image.jpg');
             expect(next).to.be.called;
         });
     });

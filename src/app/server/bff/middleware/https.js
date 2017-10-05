@@ -53,6 +53,10 @@ export default function https(req, res, next) {
                     httpsSet(related, 'imageUrl');
                 });
                 break;
+
+            case 'gallery':
+                httpsSet(item, 'content[0].imageUrl');
+                break;
             default:
             }
         });
