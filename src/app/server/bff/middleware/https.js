@@ -15,7 +15,8 @@ const itemLists = [
     'data.leftHandSide.data',
     'data.moreGalleries.data',
     'data.mustread',
-    'data.hamburgernavigation'
+    'data.hamburgernavigation',
+    'data.teasers'
 ];
 
 const imageUrls = [
@@ -66,7 +67,9 @@ export default function https(req, res, next) {
         });
 
         get(req, 'data.list.items', []).forEach((item) => {
-            httpsSet(item, 'imageUrl');
+            item.forEach((listItem) => {
+                httpsSet(listItem, 'imageUrl');
+            });
         });
 
         next();

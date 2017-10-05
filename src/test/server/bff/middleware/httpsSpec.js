@@ -106,13 +106,14 @@ describe('https middleware', () => {
 
     describe('mapping over data.list.items', () => {
         before(() => {
-            req = {data: {list: {items: dataListItems}}};
+            req = {data: {list: {items: [dataListItems, dataListItems]}}};
             next = sinon.spy();
         });
     
         it('should set all the urls to https', () => {
             httpsMiddleware(req, res, next);
-            expect(req.data.list.items[0].imageUrl).to.equal('https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Now/2017/09/15/41019/Carol-Susan.jpg');
+            expect(req.data.list.items[0][0].imageUrl).to.equal('https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Now/2017/09/15/41019/Carol-Susan.jpg');
+            expect(req.data.list.items[1][0].imageUrl).to.equal('https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Now/2017/09/15/41019/Carol-Susan.jpg');
             expect(next).to.be.called;
         });
     });

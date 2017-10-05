@@ -1,6 +1,7 @@
 export default {
     site: {
-        host: 'http://www.nowtolove.co.nz'
+        host: 'http://www.nowtolove.co.nz',
+        protocol: 'http'
     },
     services: {
         remote: {

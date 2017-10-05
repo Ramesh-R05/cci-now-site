@@ -4,7 +4,8 @@ export default {
     },
     gigya: { apiKey: '3_gzVo_oseZLARo4_VUUqJBB2Y9zC2eDqp8Puo28P_UsBV1lHkIe8V8WX5-sKKdp56' },
     site: {
-        host: 'http://www.nowtolove.com.au'
+        host: 'http://www.nowtolove.com.au',
+        protocol: 'https'
     },
     services: {
         remote: {
