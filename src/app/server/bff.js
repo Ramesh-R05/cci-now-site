@@ -13,7 +13,7 @@ import tag from './bff/middleware/tag';
 import headerMeta from './bff/middleware/headerMeta';
 import sitemap from './bff/middleware/sitemap';
 import list from './bff/middleware/list';
-import amp from './amp';
+import amp from '@bxm/server/lib/middleware/amp';
 import rss from './rss';
 import rssInfo from './rss/info';
 import stubServer from '../../automation/test_data/contentApi';
