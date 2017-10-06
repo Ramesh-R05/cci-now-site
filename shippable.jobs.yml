@@ -191,7 +191,7 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=http://now-site-au.sit.bxm.net.au/
+        - script: export URL=https://www.sit.nowtolove.com.au/
         - script: npm run sit:au || true
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
