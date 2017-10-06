@@ -8,9 +8,9 @@ var homepage_widget = {
     promotedImage: '.promoted-teaser-view-grid .teaser__list-item .teaser__inner img',
     promotedImageLink: '.promoted-teaser-view-grid .teaser__list-item .teaser__inner > a',
     promotedTitle: '.promoted-teaser-view-grid .teaser__list-item .teaser__title a',
-    heroImg: '.hero-wrapper',
-    heroImgUrl: '.hero-wrapper img',
-    heroImgLink: '.hero-wrapper .teaser__image',
+    heroImg: '.hero-wrapper .hero-teaser',
+    heroImgUrl: '.hero-wrapper .hero-teaser img',
+    heroImgLink: '.hero-wrapper .hero-teaser .teaser__image',
     heroCustomLabel: '.hero-wrapper .teaser__badge',
     heroLabelPosition: '.hero-wrapper .teaser__sub-section-container',
     heroTitle: '.hero-wrapper .teaser__title a',
@@ -32,6 +32,8 @@ var homepage_widget = {
     rhsSocialLink: '.page__social-wrapper .social-link a',
     topTeasers: '.teaser-view-grid .teaser__list-item article',
     bottomTeasers: '.teaser-view-list .teaser__list-item article',
-    loadMoreFeed: '.repeatable-component div:nth-child(2) article'
+    loadMoreFeed: '.repeatable-component div:nth-child(2) article',
+    loadMoreFeedTeaserImg: '.repeatable-component div:nth-child(2) article .teaser__image img',
+    loadMoreFeedTeaserImgLink: '.repeatable-component div:nth-child(2) article .teaser__image'
 };
 module.exports = homepage_widget;

@@ -362,7 +362,7 @@ export default {
         "title": "5 foods that banish bloating",
         "shortTitle": "5 foods that banish bloating",
         "dateCreated": "2016-07-29T16:30:00",
-        "imageUrl": "http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/07/29/16060/blaoting-head.jpg",
+        "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/07/29/16060/blaoting-head.jpg",
         "nodeType": "Article",
         "summary": "We all hate it, but preventing that dreaded food baby feeling is actually a lot easier (and tastier) then you think!",
         "source": "Prizes To Love",
@@ -589,66 +589,6 @@ export default {
                     "displayName": "Ellen DeGeneres"
                 }
             ]
-        },
-        {
-            "id": "NOW-21426",
-            "title": "Karl Stefanovic’s impressive weight loss!",
-            "dateCreated": "2016-11-22T03:16:34.00Z",
-            "imageAltText": "Karl Stefanovic",
-            "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/11/22/17162/karl_weightloss.jpg",
-            "nodeType": "Article",
-            "summary": "The veteran TV host revealed all on the *Today Show*.",
-            "source": "Woman's Day",
-            "url": "/health/fitness/karl-stefanovics-impressive-weight-loss-21426",
-            "parentName": "Fitness",
-            "parentUrl": "/health/fitness",
-            "video": {
-                "id": "5219972778001",
-                "name": "Karl Stefanovic's weightloss reveal",
-                "type": "VideoItem",
-                "properties": {
-                    "videoConfiguration": {
-                        "status": "",
-                        "videoId": "5219972778001",
-                        "statusCode": 200,
-                        "brightcoveId": "5219972778001",
-                        "thumbnailUrl": "http://brightcove01.brightcove.com/5/761709621001/201611/114/761709621001_5219971845001_5219972778001-th.jpg?pubId=761709621001",
-                        "videoStillUrl": "http://brightcove01.brightcove.com/5/761709621001/201611/114/761709621001_5219971846001_5219972778001-vs.jpg?pubId=761709621001"
-                    }
-                }
-            },
-            "tagsDetails": [
-                {
-                    "name": "media_common:media_genre:Fitness",
-                    "urlName": "fitness",
-                    "fullName": "media_common_media_genre_Fitness",
-                    "displayName": "Fitness"
-                },
-                {
-                    "name": "people:profession:presenter:Lisa Wilkinson",
-                    "urlName": "lisa-wilkinson",
-                    "fullName": "people_profession_presenter_Lisa_Wilkinson",
-                    "displayName": "Lisa Wilkinson"
-                },
-                {
-                    "name": "people:profession:presenter:Karl Stefanovic",
-                    "urlName": "karl-stefanovic",
-                    "fullName": "people_profession_presenter_Karl_Stefanovic",
-                    "displayName": "Karl Stefanovic"
-                },
-                {
-                    "name": "medicine:symptom:Weight loss",
-                    "urlName": "weight-loss",
-                    "fullName": "medicine_symptom_Weight_loss",
-                    "displayName": "Weight loss"
-                },
-                {
-                    "name": "interests:interest:Physical exercise",
-                    "urlName": "physical-exercise",
-                    "fullName": "interests_interest_Physical_exercise",
-                    "displayName": "Physical exercise"
-                }
-            ]
         }
     ],
     "list": {
@@ -660,6 +600,66 @@ export default {
         },
         "items": [
             [
+                {
+                    "id": "NOW-21426",
+                    "title": "Karl Stefanovic’s impressive weight loss!",
+                    "dateCreated": "2016-11-22T03:16:34.00Z",
+                    "imageAltText": "Karl Stefanovic",
+                    "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/11/22/17162/karl_weightloss.jpg",
+                    "nodeType": "Article",
+                    "summary": "The veteran TV host revealed all on the *Today Show*.",
+                    "source": "Woman's Day",
+                    "url": "/health/fitness/karl-stefanovics-impressive-weight-loss-21426",
+                    "parentName": "Fitness",
+                    "parentUrl": "/health/fitness",
+                    "video": {
+                        "id": "5219972778001",
+                        "name": "Karl Stefanovic's weightloss reveal",
+                        "type": "VideoItem",
+                        "properties": {
+                            "videoConfiguration": {
+                                "status": "",
+                                "videoId": "5219972778001",
+                                "statusCode": 200,
+                                "brightcoveId": "5219972778001",
+                                "thumbnailUrl": "http://brightcove01.brightcove.com/5/761709621001/201611/114/761709621001_5219971845001_5219972778001-th.jpg?pubId=761709621001",
+                                "videoStillUrl": "http://brightcove01.brightcove.com/5/761709621001/201611/114/761709621001_5219971846001_5219972778001-vs.jpg?pubId=761709621001"
+                            }
+                        }
+                    },
+                    "tagsDetails": [
+                        {
+                            "name": "media_common:media_genre:Fitness",
+                            "urlName": "fitness",
+                            "fullName": "media_common_media_genre_Fitness",
+                            "displayName": "Fitness"
+                        },
+                        {
+                            "name": "people:profession:presenter:Lisa Wilkinson",
+                            "urlName": "lisa-wilkinson",
+                            "fullName": "people_profession_presenter_Lisa_Wilkinson",
+                            "displayName": "Lisa Wilkinson"
+                        },
+                        {
+                            "name": "people:profession:presenter:Karl Stefanovic",
+                            "urlName": "karl-stefanovic",
+                            "fullName": "people_profession_presenter_Karl_Stefanovic",
+                            "displayName": "Karl Stefanovic"
+                        },
+                        {
+                            "name": "medicine:symptom:Weight loss",
+                            "urlName": "weight-loss",
+                            "fullName": "medicine_symptom_Weight_loss",
+                            "displayName": "Weight loss"
+                        },
+                        {
+                            "name": "interests:interest:Physical exercise",
+                            "urlName": "physical-exercise",
+                            "fullName": "interests_interest_Physical_exercise",
+                            "displayName": "Physical exercise"
+                        }
+                    ]
+                },
                 {
                     "id": "NOW-29617",
                     "title": "ARIA Awards most memorable moments",
@@ -1029,7 +1029,7 @@ export default {
                 "id": "NOW-31818",
                 "title": "Readers' Pets gallery: Too cute! Long title",
                 "dateCreated": "2013-01-29T13:00:00.00Z",
-                "imageUrl": "http://cdn.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets/WomansDay/2013/11/18/18213/Lilly.jpg",
+                "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Now/2017/10/06/38614/Lilly-(1).jpg",
                 "nodeType": "Gallery",
                 "source": "TV WEEK",
                 "url": "/lifestyle/pets/readers-pets-gallery-too-cute-31818"

@@ -53,7 +53,7 @@ module.exports = function(){
         var topFeedTeaserImgLink = browser.getAttribute(home.topFeedTeaserImgLink,'href');
         for (var i=0; i<topFeedTeaserImgUrl.length; i++){
             console.log( i + ":" + topFeedTeaserImgUrl[i] + " => " + topFeedTeaserImgLink[i]);
-            expect(topFeedTeaserImgUrl[i]).not.toEqual('');
+            expect(topFeedTeaserImgUrl[i]).toContain(world.Urls.securedURL);
             expect(topFeedTeaserImgLink[i]).not.toEqual('');
         }
     });
@@ -102,7 +102,7 @@ module.exports = function(){
         var bottomFeedTeaserImgLink = browser.getAttribute(home.bottomFeedTeaserImgLink,'href');
         for (var i=0; i<bottomFeedTeaserImgUrl.length; i++){
             console.log( i + ":" + bottomFeedTeaserImgUrl[i] + " => " + bottomFeedTeaserImgLink[i]);
-            expect(bottomFeedTeaserImgUrl[i]).not.toEqual('');
+            expect(bottomFeedTeaserImgUrl[i]).toContain(world.Urls.securedURL);
             expect(bottomFeedTeaserImgLink[i]).not.toEqual('');
         }
     });
@@ -155,7 +155,7 @@ module.exports = function(){
         //validate image and title and their links
         for (var i=0; i<number; i++){
             console.log( i + ":" + mustreadImage[i] + " => " + mustreadTitle[i] + " => " + mustreadImageLink[i]);
-            expect(mustreadImage[i]).not.toEqual('');
+            expect(mustreadImage[i]).toContain(world.Urls.securedURL);
             expect(mustreadImageLink[i]).not.toEqual('');
             expect(mustreadTitle[i]).not.toEqual('');
             expect(mustreadTitleLink[i]).toEqual(mustreadImageLink[i]);
@@ -199,7 +199,7 @@ module.exports = function(){
         //validate image and title and their links
         for (var i=0; i<number; i++){
             console.log( i + ":" + promotedImage[i] + " => " + promotedTitle[i] + " => " + promotedImageLink[i]);
-            expect(promotedImage[i]).not.toEqual('');
+            expect(promotedImage[i]).toContain(world.Urls.securedURL);
             expect(promotedImageLink[i]).not.toEqual('');
             expect(promotedTitle[i]).not.toEqual('');
             expect(promotedTitleLink[i]).toEqual(promotedImageLink[i]);
@@ -260,4 +260,17 @@ module.exports = function(){
         var count = rows.length;
         validatePolar(listOfItems, rows, count);
     });
+
+    this.When(/^I should see each load more feed item containing its image and clickable to open its page$/, function () {
+        //verify images of all teasers
+        console.log(browser.elements(home.loadMoreFeedTeaserImg).value.length);
+        var loadMoreFeedTeaserImgUrl = browser.getAttribute(home.loadMoreFeedTeaserImg,'data-srcset');
+        var loadMoreFeedTeaserImgLink = browser.getAttribute(home.loadMoreFeedTeaserImgLink,'href');
+        for (var i=0; i<loadMoreFeedTeaserImgUrl.length; i++){
+            console.log( i + ":" + loadMoreFeedTeaserImgUrl[i] + " => " + loadMoreFeedTeaserImgLink[i]);
+            expect(loadMoreFeedTeaserImgUrl[i]).toContain(world.Urls.securedURL);
+            expect(loadMoreFeedTeaserImgLink[i]).not.toEqual('');
+        }
+    });
+
 };

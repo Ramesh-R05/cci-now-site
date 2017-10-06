@@ -18,3 +18,4 @@ Feature: Uniheader
             |Yours                      |/yours                             |gtm-uniheader-yours  |
             |Mother and Baby            |/mother-and-baby                   |gtm-uniheader-mb     |
             |TV WEEK                    |/tvweek                            |gtm-uniheader-tvweek |
+            |Prizes To Love             |/prizestolove                      |gtm-uniheader-ptl    |

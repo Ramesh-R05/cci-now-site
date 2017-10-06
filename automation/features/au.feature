@@ -6,7 +6,7 @@ Feature: Smoke test for AU NOW
     Scenario: Verify the homepage
         Given I switch to "mobile" view
         When I am currently viewing the homepage
-        Then I should see the sign up button containing "http://www.nowtolove.com.au/now-newsletter" url and "gtm-subs-homepage" gtm in "mobile" view
+        Then I should see the sign up button containing "https://www.nowtolove.com.au/now-newsletter" url and "gtm-subs-homepage" gtm in "mobile" view
         And I should see 2 must read images and titles which are clickable to open their page
         And I should see the main hero item containing its image and clickable to open its page
         And I should see 2 promoted images and titles which are clickable to open their page
@@ -14,6 +14,7 @@ Feature: Smoke test for AU NOW
         And I should see each bottom feed item containing its image and clickable to open its page
         When I click on the Load More button
         Then I should see extra 14 teasers after loading more
+        And I should see each load more feed item containing its image and clickable to open its page
 
     Scenario Outline: Verify the <page> brand landing page
         Given I switch to "mobile" view
@@ -23,16 +24,16 @@ Feature: Smoke test for AU NOW
         And I should see the main hero item containing its image and clickable to open its page
         Examples:
             | page                 | link                                                   |
-            | aww                  | http://www.nowtolove.com.au/aww-newsletter             |
-            | womansday            | http://www.nowtolove.com.au/womansday-newsletter       |
-            | good-health          | http://www.nowtolove.com.au/good-health-newsletter     |
-            | okmagazine           | http://www.nowtolove.com.au/okmagazine-newsletter      |
-            | nw                   | http://www.nowtolove.com.au/nw-newsletter              |
-            | take5mag             | http://www.nowtolove.com.au/take5mag-newsletter        |
-            | yours                | http://www.nowtolove.com.au/yours-newsletter           |
-            | mother-and-baby      | http://www.nowtolove.com.au/mother-and-baby-newsletter |
-            | tvweek               | http://www.nowtolove.com.au/tvweek-newsletter          |
-            | prizestolove         | http://www.nowtolove.com.au/prizestolove-newsletter    |
+            | aww                  | https://www.nowtolove.com.au/aww-newsletter             |
+            | womansday            | https://www.nowtolove.com.au/womansday-newsletter       |
+            | good-health          | https://www.nowtolove.com.au/good-health-newsletter     |
+            | okmagazine           | https://www.nowtolove.com.au/okmagazine-newsletter      |
+            | nw                   | https://www.nowtolove.com.au/nw-newsletter              |
+            | take5mag             | https://www.nowtolove.com.au/take5mag-newsletter        |
+            | yours                | https://www.nowtolove.com.au/yours-newsletter           |
+            | mother-and-baby      | https://www.nowtolove.com.au/mother-and-baby-newsletter |
+            | tvweek               | https://www.nowtolove.com.au/tvweek-newsletter          |
+            | prizestolove         | https://www.nowtolove.com.au/prizestolove-newsletter    |
 
 
     Scenario: Verify the section landing page
@@ -43,6 +44,7 @@ Feature: Smoke test for AU NOW
         And I should see each bottom feed item containing its image and clickable to open its page
         When I click on the Load More button
         Then I should see extra 14 teasers after loading more
+        And I should see each load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the tag landing page
         Given I switch to "mobile" view
@@ -52,6 +54,7 @@ Feature: Smoke test for AU NOW
         And I should see each bottom feed item containing its image and clickable to open its page
         When I click on the Load More button
         Then I should see extra 14 teasers after loading more
+        And I should see each load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the article page
         Given Emily just published the "article" doc type item

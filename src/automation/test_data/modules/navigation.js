@@ -43,7 +43,7 @@ const navigation = {
             "id": "NOW-1186",
             "name": "Lifestyle",
             "dateCreated": "2016-11-23T02:25:46.00Z",
-            "imageUrl": "http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/Now/2017/03/16/32678/debsie_2.jpg",
+            "imageUrl": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Now/2017/03/17/35755/deb_4.jpg",
             "nodeType": "Section",
             "url": "/lifestyle",
             "parentName": "Lifestyle",
