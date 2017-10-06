@@ -51,7 +51,7 @@ module.exports = function() {
 
     this.When(/^I navigate to the "([^"]*)" page$/, function (content_url) {
         console.log(world.Urls.home_page + content_url + '-' + randomId);
-        for(var i = 0; i < 11; i++) {
+        for(var i = 0; i < 15; i++) {
             browser.refresh();
             browser.url(world.Urls.home_page + content_url + '-' + randomId);
             if(browser.isExisting(".article__title") == true){
