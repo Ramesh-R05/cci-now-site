@@ -6,7 +6,7 @@ var run_device = nconf.get('DEVICE');
 module.exports = {
 
     featurePath: './features/compatibility',
-    tags: '@devices',
+    tags: '@mobile',
     offline: false,
     screenshotsOnError: false,
     captureAllStepScreenshots: false,

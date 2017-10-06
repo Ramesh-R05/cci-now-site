@@ -8,7 +8,7 @@ var run_osversion = nconf.get('BrowserOsVersion');
 module.exports = {
 
     featurePath: './features/compatibility',
-    tags: '@devices',
+    tags: '@browser',
     offline: false,
     screenshotsOnError: false,
     captureAllStepScreenshots: false,
@@ -26,9 +26,14 @@ module.exports = {
             "browser_version": run_version,
             "os": run_os,
             "os_version": run_osversion,
-            'resolution' : '1920x1080',
-            "browserstack.debug": true
+            "resolution" : '1920x1080',
+            "browserstack.debug": true,
+            'safari.options': {
+                'technologyPreview': true
+            },
+            chromeOptions: {
+                args: ["--start-fullscreen"]
+            }
         }
-
-        }
+    }
 };
