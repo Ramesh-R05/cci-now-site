@@ -277,30 +277,7 @@ jobs:
   # Schedule jobs - not attached to the pipeline
   ##############################################
 
-  # i. E2E regression in SIT AU
-  - name: e2e-now-site-test
-    type: runSh
-    always:
-      - NOTIFY: now-slack-notifications
-    steps:
-     - IN: now-morning-trigger
-     - IN: now-site-repo
-       switch: off
-     - TASK:
-        - script: curl services.sit.bxm.internal/publishing-broker/
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-        - script: source ~/.nvm/nvm.sh
-        - script: nvm install "6.1.0"
-        - script: nvm use "6.1.0"
-        - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm set registry http://npm.digital.bauer-media.net.au
-        - script: npm install
-        - script: export URL=http://now-site-au.sit.bxm.net.au/
-        - script: APP_KEY=now-site npm run sit:au || true
-        - script: actualsize=$(wc -c <"@rerun.txt")
-        - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
-
-  # ii. Full regression in SIT AU
+  # i. Full regression in SIT AU
   - name: FULL-now-site-regression-test
     type: runSh
     always:
@@ -322,7 +299,7 @@ jobs:
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
 
-  # iii. Smoke Test in AU NOW Dev CMS
+  # ii. Smoke Test in AU NOW Dev CMS
   - name: CMS-au-now-smoke-test
     type: runSh
     always:
@@ -344,7 +321,7 @@ jobs:
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
 
-  # iv. Smoke Test in NZ NOW Dev CMS
+  # iii. Smoke Test in NZ NOW Dev CMS
   - name: CMS-nz-now-smoke-test
     type: runSh
     always:
