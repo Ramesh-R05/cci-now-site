@@ -5,7 +5,6 @@ var run_env = nconf.get('APP_ENV');
 var site_domain = nconf.get('APP_KEY');
 var baseUrl = nconf.get('URL');
 var domain_sufx = '.bauer-media.net.au/';
-var securedURL = 'https://';
 
 if (typeof baseUrl === 'string' && baseUrl !== ''){
     // Ensure valid URL path has been specified
@@ -26,7 +25,6 @@ console.log('running on url: ' + baseUrl);
 module.exports = {
     Urls: {
         'home_page': baseUrl,
-        'site': site_domain,
-        'securedURL': securedURL
+        'site': site_domain
     }
 };

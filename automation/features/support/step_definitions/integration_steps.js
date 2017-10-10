@@ -58,9 +58,9 @@ module.exports = function() {
                 console.log("Page Loaded Successfully : ID-" + randomId);
                 break;
             } else {
-                var page_url =browser.getUrl();
+                var page_url = browser.getUrl();
                 console.log("Page not created yet, current page url is : " + page_url);
-                wait(1000);
+                wait(2000);
             }
         }
     });

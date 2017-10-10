@@ -35,7 +35,6 @@ Feature: Smoke test for AU NOW
             | tvweek               | https://www.nowtolove.com.au/tvweek-newsletter          |
             | prizestolove         | https://www.nowtolove.com.au/prizestolove-newsletter    |
 
-
     Scenario: Verify the section landing page
         Given I switch to "mobile" view
         When I am currently viewing "celebrity"

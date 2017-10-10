@@ -2,6 +2,7 @@ var home = require('../page_objects/homepage_widget');
 var world = require('../world');
 var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
 var validatePolar = require('../../../node_modules/@bxm/automation/lib/utils/validatePolar');
+var validateImageURL = require('../../../node_modules/@bxm/automation/lib/utils/validateImageURL');
 
 module.exports = function(){
 
@@ -9,7 +10,7 @@ module.exports = function(){
         //Verify the hero image
         var heroImgUrl = browser.getAttribute(home.heroImgUrl, 'data-srcset');
         console.log(heroImgUrl);
-        expect(heroImgUrl).not.toBeUndefined();
+        validateImageURL(heroImgUrl);
         //Verify the hero image's link
         var heroImgLink = browser.getAttribute(home.heroImgLink, 'href');
         console.log(heroImgLink);
@@ -53,7 +54,7 @@ module.exports = function(){
         var topFeedTeaserImgLink = browser.getAttribute(home.topFeedTeaserImgLink,'href');
         for (var i=0; i<topFeedTeaserImgUrl.length; i++){
             console.log( i + ":" + topFeedTeaserImgUrl[i] + " => " + topFeedTeaserImgLink[i]);
-            expect(topFeedTeaserImgUrl[i]).toContain(world.Urls.securedURL);
+            validateImageURL(topFeedTeaserImgUrl[i]);
             expect(topFeedTeaserImgLink[i]).not.toEqual('');
         }
     });
@@ -102,7 +103,7 @@ module.exports = function(){
         var bottomFeedTeaserImgLink = browser.getAttribute(home.bottomFeedTeaserImgLink,'href');
         for (var i=0; i<bottomFeedTeaserImgUrl.length; i++){
             console.log( i + ":" + bottomFeedTeaserImgUrl[i] + " => " + bottomFeedTeaserImgLink[i]);
-            expect(bottomFeedTeaserImgUrl[i]).toContain(world.Urls.securedURL);
+            validateImageURL(bottomFeedTeaserImgUrl[i]);
             expect(bottomFeedTeaserImgLink[i]).not.toEqual('');
         }
     });
@@ -155,7 +156,7 @@ module.exports = function(){
         //validate image and title and their links
         for (var i=0; i<number; i++){
             console.log( i + ":" + mustreadImage[i] + " => " + mustreadTitle[i] + " => " + mustreadImageLink[i]);
-            expect(mustreadImage[i]).toContain(world.Urls.securedURL);
+            validateImageURL(mustreadImage[i]);
             expect(mustreadImageLink[i]).not.toEqual('');
             expect(mustreadTitle[i]).not.toEqual('');
             expect(mustreadTitleLink[i]).toEqual(mustreadImageLink[i]);
@@ -199,7 +200,7 @@ module.exports = function(){
         //validate image and title and their links
         for (var i=0; i<number; i++){
             console.log( i + ":" + promotedImage[i] + " => " + promotedTitle[i] + " => " + promotedImageLink[i]);
-            expect(promotedImage[i]).toContain(world.Urls.securedURL);
+            validateImageURL(promotedImage[i]);
             expect(promotedImageLink[i]).not.toEqual('');
             expect(promotedTitle[i]).not.toEqual('');
             expect(promotedTitleLink[i]).toEqual(promotedImageLink[i]);
@@ -268,7 +269,7 @@ module.exports = function(){
         var loadMoreFeedTeaserImgLink = browser.getAttribute(home.loadMoreFeedTeaserImgLink,'href');
         for (var i=0; i<loadMoreFeedTeaserImgUrl.length; i++){
             console.log( i + ":" + loadMoreFeedTeaserImgUrl[i] + " => " + loadMoreFeedTeaserImgLink[i]);
-            expect(loadMoreFeedTeaserImgUrl[i]).toContain(world.Urls.securedURL);
+            validateImageURL(loadMoreFeedTeaserImgUrl[i]);
             expect(loadMoreFeedTeaserImgLink[i]).not.toEqual('');
         }
     });
