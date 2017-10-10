@@ -120,9 +120,9 @@
     moment "^2.17.1"
     xml "^1.0.0"
 
-"@bxm/server@22.8.0":
-  version "22.8.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fserver/-/server-22.8.0.tgz#30927bd4462ee5585a24cea8a4a8c4678f7c32ed"
+"@bxm/server@^22.9.1":
+  version "22.9.1"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fserver/-/server-22.9.1.tgz#8d19367243818fd8e6f20538a650653ee283b03d"
   dependencies:
     "@bxm/datetime" "^3.0.0"
     "@bxm/flux" "^4.4.1"
