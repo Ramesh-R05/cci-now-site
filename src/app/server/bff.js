@@ -18,8 +18,10 @@ import rss from './rss';
 import rssInfo from './rss/info';
 import stubServer from '../../automation/test_data/contentApi';
 import logger from '../../logger';
+import assetProxy from './bff/middleware/assetProxy';
 
 export default function bff(server) {
+    server.get('/api/asset', assetProxy);
     if (process.env.APP_STUBBED === 'true') {
         stubServer(server, server.locals.config);
         logger.warn('stubbing does not exercise BFF code');

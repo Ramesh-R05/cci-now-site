@@ -2,10 +2,12 @@ import get from 'lodash.get';
 import set from 'lodash.set';
 
 const httpsSet = (obj, path) => {
-    const url = get(obj, path);
-    if (typeof url === 'string') {
-        set(obj, path, url.replace(/http:\/\/+/g, 'https://'));
-    }
+    let url = get(obj, path);
+    if (typeof url !== 'string' || url.startsWith('https') || url.startsWith('/api/asset?url=')) return;
+    url = url.replace('http://d3lp4xedbqa8a5.cloudfront.net', 'https://d3lp4xedbqa8a5.cloudfront.net');
+    url = url.replace('http://cdn.assets.cougar.bauer-media.net.au', 'https://d3lp4xedbqa8a5.cloudfront.net');
+    if (url.startsWith('https')) set(obj, path, url);
+    else set(obj, path, `/api/asset?url=${encodeURIComponent(url)}`);
 };
 
 const itemLists = [
@@ -40,6 +42,9 @@ export default function https(req, res, next) {
         get(req, 'data.entity.contentBody', []).forEach((item) => {
             switch (item.type) {
             case 'image':
+                httpsSet(item, 'content.url');
+                break;
+
             case 'whooshka':
                 httpsSet(item, 'content.url');
                 break;
