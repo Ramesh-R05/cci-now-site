@@ -70,4 +70,33 @@ describe('#assetProxy()', () => {
         expect(stubSuperagentEndCallbackSpy).to.have.been.called;
         expect(setSpy).to.have.been.called;
     });
+
+    it('should not return pass through content length header', () => {
+        const res = {
+            sendStatus(){
+                return this;
+            },
+            set() {
+                return this;
+            },
+            status() {
+                return this;
+            },
+            send() {
+                return this;
+            }
+        };
+        stubSuperagentEndCallbackResStub = {
+            header: {
+                'cache-control': 'max-age=1',
+                'content-length': '1'
+            },
+            status: 200,
+            text: 'x',
+            body: 'x'
+        };
+        const setSpy = sinon.spy(res, 'set');
+        assetProxy({ originalUrl: 'http://a-url.com' }, res, () => {});
+        expect(setSpy.args[0][0]).to.not.have.any.keys(['content-length']);
+    });
 });
