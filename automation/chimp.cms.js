@@ -10,7 +10,7 @@ module.exports = {
         desiredCapabilities: {
             // go to https://peter.sh/experiments/chromium-command-line-switches/
             chromeOptions: {
-                args: ["--enable-automation", "--allow-insecure-localhost"]
+                args: ["--enable-automation", "--allow-insecure-localhost", "--headless"]
             }
         }
     },

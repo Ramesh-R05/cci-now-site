@@ -16,9 +16,9 @@ Feature: CMS Smoke Test
             | Article    |
             | Gallery    |
 
-    Scenario Outline: Update and publish the <doctype> item
+    Scenario: Update and publish the Article item
         Given I am logging in CMS
-        When I am currently viewing "editContent.aspx?id=" of "<doctype>"
+        When I am currently viewing "editContent.aspx?id=" of "Article"
         * I should be able to add content in the item
             | field         | tab               |
             | Long Title    | Editorial         |
@@ -32,10 +32,23 @@ Feature: CMS Smoke Test
         * I should be able to see the "preview" URL
         * I should be able to see the "live" URL
 
-        Examples:
-            | doctype    |
-            | Article    |
-            | Gallery    |
+    Scenario: Update and publish the Gallery item
+        Given I am logging in CMS
+        When I am currently viewing "editContent.aspx?id=" of "Gallery"
+        * I should be able to add content in the item
+            | field         | tab               |
+            | Long Title    | Editorial         |
+            | Short Teaser  | Editorial         |
+            | Image         | Editorial         |
+            | Body Paragraph| Editorial         |
+            | Body Heading  | Editorial         |
+            | Page Title    | Search and Social |
+            | Created at    | Properties        |
+            | Gallery Image | Gallery           |
+        * I should be able to publish the item
+        * I should be able to see the "preview" URL
+        * I should be able to see the "live" URL
+
 
     #This scenario won't be run in phantomjs because we haven't found a solution to work with the alert popup
     @manual

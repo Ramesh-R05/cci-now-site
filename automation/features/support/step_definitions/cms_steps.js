@@ -1,3 +1,4 @@
+const path = require('path');
 var cms = require('../page_objects/cms_widget');
 var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
 var cmsGoToTab = require('../../../node_modules/@bxm/automation/lib/utils/cmsGoToTab');
@@ -31,18 +32,7 @@ module.exports = function() {
     });
 
     this.Given(/^I am currently viewing the create form$/, function () {
-        var cmsSectionID;
-
-        switch (world.Urls.site) {
-            case 'now-site':
-                cmsSectionID = '1169'; //Celebrity > Celeb News
-                break;
-            case 'nznow-site':
-                cmsSectionID = '1169'; //Celebrity > Celeb News
-                break;
-            default:
-                cmsSectionID = '1169';
-        }
+        var cmsSectionID = '1169';
 
         console.log('Section/Subsection ID: ' + cmsSectionID);
         browser.url(world.Urls.home_page + 'create.aspx?nodeId=' + cmsSectionID + '&nodeType=content');
@@ -112,9 +102,12 @@ module.exports = function() {
                     console.log(valueShortTeaser);
                     break;
                 case 'Image':
-                    var valueImage = 'http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/whichcar/2016/04/28/-1/adjust-seat-height-driving-position.jpg';
+                    var valueImage = 'http://dev.assets.cougar.bauer-media.net.au/s3/digital-cougar-assets-dev/Now/2017/10/10/33819/testimage.jpg';
                     browser.setValue(cms.editorialImage, valueImage);
                     console.log(valueImage);
+                    // Need to keep investigating how to test the below with PhantomJs but this works in Chrome and headless chrome
+                    //var toUpload = path.join(__dirname, '..', 'files', 'testimage.jpg');
+                    //browser.chooseFile("#body_body_prop_contentImageUrl_fuCougarUploader",toUpload);
                     break;
                 case 'Body Paragraph':
                     browser.click(tabElement + cms.editorialBodyParagraphOption);
@@ -143,6 +136,13 @@ module.exports = function() {
                     var valuePropertiesCreatedAt = '2017-01-02 08:00';
                     browser.setValue(tabElement + cms.propertiesCreatedAt, valuePropertiesCreatedAt);
                     break;
+                case 'Gallery Image':
+                    var galleryImage = 'http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/whichcar/2016/04/28/-1/adjust-seat-height-driving-position.jpg';
+                    for (var x = 0; x < 3; x++) {
+                        browser.click(cms.galleryImageButton);
+                        browser.setValue(cms.galleryImage, galleryImage);
+                    }
+                    break;
             }
         }
 
@@ -151,7 +151,7 @@ module.exports = function() {
     this.Then(/^I should be able to publish the item$/, function () {
         //Click the publish button
         browser.click('#body_TabView1_tab0' + tabNo + 'layer_publish');
-        wait(2000);
+        wait(5000);
 
         //Open the page again to see the publish status
         browser.url(world.Urls.home_page + page + nodeId[docType]);
@@ -163,12 +163,14 @@ module.exports = function() {
     this.Then(/^I should be able to see the "([^"]*)" URL$/, function (urlType) {
         switch (urlType) {
             case 'preview':
+                browser.waitForVisible('.document-link .propertyItem:nth-child(1) .propertyItemContent a', 5000);
                 previewUrl = browser.getAttribute('.document-link .propertyItem:nth-child(1) .propertyItemContent a', 'href');
                 console.log(previewUrl);
                 expect(previewUrl).toContain('/preview/');
                 expect(previewUrl).toContain(nodeId[docType]);
                 break;
             case 'live':
+                browser.waitForVisible('.document-link .propertyItem:nth-child(2) .propertyItemContent a', 5000);
                 liveUrl = browser.getAttribute('.document-link .propertyItem:nth-child(2) .propertyItemContent a', 'href');
                 console.log(liveUrl);
                 expect(liveUrl).not.toContain('/preview/');
