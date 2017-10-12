@@ -27,8 +27,8 @@ $hero-teaser-line-height: 25px;
         padding-bottom: 20px;
 
         &--no-teaser {
-            padding-bottom: 0px; 
-            margin-top: -14px;           
+            padding-bottom: 0px;
+            margin-top: -14px;
         }
 
         .home-page & {
@@ -151,7 +151,7 @@ $hero-teaser-line-height: 25px;
     }
 
     &__social-logo {
-        background: url('/assets/logos/NowToLove.svg') no-repeat;
+        background: url('/assets/logos/logo.svg') no-repeat;
         background-size: 230px;
         width: 230px;
         display: inline-block;

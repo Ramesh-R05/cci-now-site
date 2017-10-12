@@ -33,7 +33,7 @@
             font-family: $small-text-font;
             font-size: 12px;
             letter-spacing: .020em;
-            text-transform:  uppercase;  
+            text-transform: uppercase;
 
             @media #{$large-up} {
                 font-size: 12px;
@@ -66,7 +66,7 @@
     }
 
     .home-page__social-logo {
-        background: url(/assets/logos/FollowNowToLove.svg) no-repeat;
+        background: url('/assets/logos/follow-logo.svg') no-repeat;
         background-size: contain;
         height: 0;
         padding-bottom: 6%;
@@ -123,7 +123,7 @@
         &-title {
             display: none;
         }
-        
+
         &__links {
 
             @media #{$large-up} {
