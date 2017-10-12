@@ -81,15 +81,15 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         Given I switch to "mobile" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
          * I can navigate to all sites in the hamburger navigation menu
-            |title                      |url                                |gtm                        |
-            |Homes To Love              |http://homestolove.com.au/         |gtm-hamburger-homes        |
-            |Food To Love               |http://foodtolove.com.au/          |gtm-hamburger-food         |
-            |Elle                       |http://elle.com.au/                |gtm-hamburger-elle         |
-            |Harper's Bazaar            |http://harpersbazaar.com.au/       |gtm-hamburger-harpers      |
-            |Gourmet Traveller          |http://gourmettraveller.com.au/    |gtm-hamburger-gt           |
-            |Cosmopolitan               |http://cosmopolitan.com.au/        |gtm-hamburger-cosmo        |
-            |Dolly                      |http://dolly.com.au/               |gtm-hamburger-dolly        |
-            |Beauty Heaven              |http://beautyheaven.com.au/        |gtm-hamburger-beautyheaven |
+            |title                      |url                                    |gtm                        |
+            |Homes To Love              |http://www.homestolove.com.au/         |gtm-hamburger-homes        |
+            |Food To Love               |http://www.foodtolove.com.au/          |gtm-hamburger-food         |
+            |Elle                       |http://www.elle.com.au/                |gtm-hamburger-elle         |
+            |Harper's Bazaar            |http://www.harpersbazaar.com.au/       |gtm-hamburger-harpers      |
+            |Gourmet Traveller          |http://www.gourmettraveller.com.au/    |gtm-hamburger-gt           |
+            |Cosmopolitan               |http://www.cosmopolitan.com.au/        |gtm-hamburger-cosmo        |
+            |Dolly                      |http://www.dolly.com.au/               |gtm-hamburger-dolly        |
+            |Beauty Heaven              |https://www.beautyheaven.com.au/       |gtm-hamburger-beautyheaven |
 
 
     @BXMA-412 @med
