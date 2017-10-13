@@ -140,6 +140,7 @@ export default {
                     instagram: 'https://www.instagram.com/prizestolove'
                 },
                 newsletterUrl: '//www.nowtolove.com.au/prizestolove-newsletter',
+                subscribeText: 'The latest competitions delivered to your inbox',
                 renderSubscribeElements: false
             }
         ],

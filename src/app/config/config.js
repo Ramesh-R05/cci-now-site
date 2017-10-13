@@ -62,6 +62,8 @@ export default {
 
     oriel: {
         scriptUrl: '//f92j5.com/gks7m1ojipkc3pg6y79ct5xpm73slf5p5a.js'
-    }
+    },
+
+    subscribeText: 'The latest news delivered to your inbox'
 };
 

@@ -31,7 +31,7 @@
             width: 30px;
             margin-bottom: 3px;
             vertical-align: middle;
-           
+
             @media #{$medium-up} {
                 height: 45px;
                 width: 45px;
@@ -52,7 +52,7 @@
 
     &--facebook:hover svg,
     &--facebook:hover &__icon svg {
-        fill:  #3B5998;   
+        fill:  #3B5998;
     }
 
     &--twitter:hover svg,
@@ -62,13 +62,13 @@
 
     &--instagram:hover svg,
     &--instagram:hover &__icon svg {
-        fill: #FFA800;
+        fill: #ec008c;
     }
 
     &--pinterest:hover svg,
     &--pinterest:hover &__icon svg {
         fill: #fc3959;
     }
-    
+
 }
 
