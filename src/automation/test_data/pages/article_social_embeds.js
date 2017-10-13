@@ -330,7 +330,8 @@ export default {
                 "fullName": "internet_website_category_Dolly_Doctor",
                 "displayName": "Dolly Doctor"
             }
-        ]
+        ],
+        "enableAmp": 1
     },
     "headerMetaData": {
         "googleTagManagerEnvironment": "dev",

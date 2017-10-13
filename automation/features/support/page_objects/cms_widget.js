@@ -24,8 +24,9 @@ var cms_widget = {
     menuDelete: '.menuSpr.sprDelete',
     unpublishButton: '[value="Unpublish"]',
     propertiesCreatedAt: '.tabpageContent div:nth-child(9) .umbDateTimePicker input',
-    galleryImageButton: '#body_ctl00 > div > div > div.propertyItem > div > div > div.image.ng-scope > div > button:nth-child(2)',
-    galleryImage: '#body_ctl00 > div > div > div.propertyItem > div > div > accordion > div > div > div > div.panel-collapse.collapse.in > div > div > image-uploader > div > div > div:nth-child(1) > p > input'
+    ampEnablebox: 'input#body_prop_enableAmp',
+    ampHtml: 'link[rel=amphtml]'
+    
 
 };
 

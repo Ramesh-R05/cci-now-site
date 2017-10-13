@@ -8,6 +8,56 @@ export default {
             {
                 "type": "paragraph",
                 "label": "Paragraph",
+                "content": "test paragraph 1"
+            },
+            {
+                "type": "paragraph",
+                "label": "Paragraph",
+                "content": "test paragraph 2"
+            },
+            {
+                "type": "paragraph",
+                "label": "Paragraph",
+                "content": "test paragraph 3"
+            },
+            {
+                "type": "paragraph",
+                "label": "Paragraph",
+                "content": "test paragraph 4"
+            },
+            {
+                "type": "paragraph",
+                "label": "Paragraph",
+                "content": "test paragraph 5"
+            },
+            {
+                "type": "paragraph",
+                "label": "Paragraph",
+                "content": "test paragraph 6"
+            },
+            {
+                "type": "paragraph",
+                "label": "Paragraph",
+                "content": "test paragraph 7"
+            },
+            {
+                "type": "paragraph",
+                "label": "Paragraph",
+                "content": "test paragraph 8"
+            },
+            {
+                "type": "paragraph",
+                "label": "Paragraph",
+                "content": "test paragraph 9"
+            },
+            {
+                "type": "paragraph",
+                "label": "Paragraph",
+                "content": "test paragraph 10"
+            },
+            {
+                "type": "paragraph",
+                "label": "Paragraph",
                 "content": "Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph EOM"
             },
             {
@@ -259,7 +309,8 @@ export default {
                 "fullName": "internet_website_category_Dolly_Doctor",
                 "displayName": "Dolly Doctor"
             }
-        ]
+        ],
+        "enableAmp": 1
     },
     "headerMetaData": {
         "googleTagManagerEnvironment": "dev",

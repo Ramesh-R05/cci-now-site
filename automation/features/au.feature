@@ -55,18 +55,27 @@ Feature: Smoke test for AU NOW
         Then I should see extra 14 teasers after loading more
         And I should see each load more feed item containing its image and clickable to open its page
 
-    Scenario: Verify the article page
+    Scenario Outline: Verify the article page
+        Given I switch to "<device>" view
         Given Emily just published the "article" doc type item
         When I navigate to the "news/latest-news/test-article" page
         Then our readers can enjoy the latest content
-        Given I switch to "mobile" view
         When I navigate to the "amp/news/latest-news/test-article" page
         Then our readers can enjoy the latest content
+            Examples:
+            |device             |
+            |desktop            |
+            |mobile             |
 
-    Scenario: Verify the gallery page
+    Scenario Outline: Verify the gallery page
+        Given I switch to "<device>" view
         Given Emily just published the "gallery" doc type item
         When I navigate to the "celebrity/celeb-news/test-gallery" page
         Then our readers can enjoy the latest content
+            Examples:
+            |device             |
+            |desktop            |
+            |mobile             |
 
     Scenario: Verify the 404 page
         Given I switch to "mobile" view

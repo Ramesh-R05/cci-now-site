@@ -1,4 +1,5 @@
 import { backendLogger as logger } from '@bxm/winston-logger';
+import amp from '@bxm/server/lib/middleware/amp';
 
 export default function stubServer(siteServer, siteConfig) {
 
@@ -138,6 +139,28 @@ export default function stubServer(siteServer, siteConfig) {
         }
         return res.json(data);
     });
+
+    server.get('/amp/:section/:subsection/:page', (req, res, next) => {
+        const pageId = req.url.match(/\d{3,}/)[0];
+        var ampArticle;
+        try {
+            switch (pageId){
+                case '41699':
+                    ampArticle = require('../../automation/test_data/pages/article_hero_image').default;
+                    res.body = ampArticle;
+                    break;
+                case '3663':
+                    ampArticle = require('../../automation/test_data/pages/article_social_embeds').default;
+                    res.body = ampArticle;
+                    break;
+            }
+
+            next();
+        }catch(e){
+            logger.error('AMP: Error', e);
+            next(e);
+        }
+    }, amp);
 
     server.use((err, req, res, next) => {
         return res.status(404).json({response: {...err}});

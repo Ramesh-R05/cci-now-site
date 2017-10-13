@@ -12,7 +12,7 @@ var propertiesTabElement = {}; //Global variable for the element of the properti
 var idElement; //Global variable for the element of a selected item in LHR
 var page; //Global variable for the page name
 var previewUrl; //Global variable for the preview URL
-var liveUrl; //Global variable for the live URL
+var liveUrl = {}; //Global variable for the live URL e.g. liveUrl['Article']
 
 
 module.exports = function() {
@@ -21,7 +21,7 @@ module.exports = function() {
         //To ensure this smoke test won't be run on live url
         expect(world.Urls.home_page).not.toContain('live');
 
-        browser.url(world.Urls.home_page);
+        browser.url(world.Urls.home_page + 'Login.aspx');
         browser.setValue(cms.loginUsername, 'admin');
         browser.setValue(cms.loginPassword, 'ACPd3vPASS!');
         browser.click(cms.loginButton);
@@ -136,15 +136,25 @@ module.exports = function() {
                     var valuePropertiesCreatedAt = '2017-01-02 08:00';
                     browser.setValue(tabElement + cms.propertiesCreatedAt, valuePropertiesCreatedAt);
                     break;
-                case 'Gallery Image':
-                    var galleryImage = 'http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/whichcar/2016/04/28/-1/adjust-seat-height-driving-position.jpg';
-                    for (var x = 0; x < 3; x++) {
-                        browser.click(cms.galleryImageButton);
-                        browser.setValue(cms.galleryImage, galleryImage);
-                    }
+                case 'Enable AMP':
+                    browser.waitForVisible(tabElement + cms.ampEnablebox, 1000);
+                    browser.click(tabElement + cms.ampEnablebox);
                     break;
             }
         }
+
+    });
+
+    this.Then(/^I should be able to visit the live URL$/, function () {
+        console.log(liveUrl[docType]);
+        browser.url(liveUrl[docType]);
+
+    });
+
+    this.Then(/^I should be able to check if the amp page is active$/, function () {
+        var enableamphtml = browser.getAttribute(cms.ampHtml, 'href');
+        console.log(enableamphtml);
+        expect(enableamphtml).toContain('/amp/');
 
     });
 
@@ -170,14 +180,14 @@ module.exports = function() {
                 expect(previewUrl).toContain(nodeId[docType]);
                 break;
             case 'live':
-                browser.waitForVisible('.document-link .propertyItem:nth-child(2) .propertyItemContent a', 5000);
-                liveUrl = browser.getAttribute('.document-link .propertyItem:nth-child(2) .propertyItemContent a', 'href');
-                console.log(liveUrl);
-                expect(liveUrl).not.toContain('/preview/');
-                expect(liveUrl).toContain(nodeId[docType]);
+                liveUrl[docType] = browser.getAttribute('.document-link .propertyItem:nth-child(2) .propertyItemContent a', 'href');
+                console.log(liveUrl[docType]);
+                expect(liveUrl[docType]).not.toContain('/preview/');
+                expect(liveUrl[docType]).toContain(nodeId[docType]);
                 break;
         }
     });
+
 
     //*****The below step definitions cannot be run when using phantomjs because of the alert popup and the right click menu****//
     //They only work when running without phantomjs

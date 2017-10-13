@@ -21,6 +21,7 @@ module.exports = function() {
                 documentPath = '-1,1159,1172,1173,32098,32099,'; //Parent nodes in dev CMS
                 break;
             case 'gallery':
+                randomId = randomId + 1;
                 content_json = 'test-gallery-on-sit.json'; //The data in this json file is from http://dev.umbraco.services.bauer-media.internal/v1/now/documents/32045
                 documentPath = '-1,1159,1168,1169,32037,32038,'; //Parent nodes in dev CMS
                 break;

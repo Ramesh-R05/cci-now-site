@@ -460,4 +460,32 @@ module.exports = function() {
 
 
     });
+
+    this.Then(/^I should see the top leaderboard ad under hero image on AMP page$/, function () {
+        browser.waitForVisible(wn_ads.ampTopLeaderBoard, 2000);
+        expect(browser.isVisible(wn_ads.ampTopLeaderBoard)).toBe(true);
+    });
+
+    this.Then(/^I should see first MREC in the body on AMP page$/, function () {
+        browser.scroll(0,2000);
+        browser.waitForVisible(wn_ads.ampMrecList, 5000);
+        var bodyAmpAdList = browser.isVisible(wn_ads.ampMrecList);
+        expect(bodyAmpAdList[0]).toBe(true);
+    });
+
+    this.Then(/^I should see second MREC in the body on AMP page$/, function () {
+        var bodyAmpAdList = browser.isVisible(wn_ads.ampMrecList);
+        expect(bodyAmpAdList[1]).toBe(true);
+    });
+
+    this.Then(/^I should see the sticky bottom leadrboard on AMP page$/, function () {
+        wait(5000); //wait 2 seconds to let sticky ad load
+        browser.scroll(0,500);
+        expect(browser.isVisible(wn_ads.ampBottomLeaderboard)).toBe(true);
+        browser.scroll(0,1000);
+        expect(browser.isVisible(wn_ads.ampBottomLeaderboard)).toBe(true);
+    });
+
+
+
 };

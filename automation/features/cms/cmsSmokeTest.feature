@@ -50,6 +50,16 @@ Feature: CMS Smoke Test
         * I should be able to see the "live" URL
 
 
+    Scenario: Publish article and check if it Amp enabled
+        Given I am logging in CMS
+        When I am currently viewing "editContent.aspx?id=" of "Article"
+        * I should be able to add content in the item
+            | field         | tab               |
+            | Enable AMP    | Search and Social |
+        * I should be able to publish the item
+        * I should be able to visit the live URL
+        * I should be able to check if the amp page is active
+
     #This scenario won't be run in phantomjs because we haven't found a solution to work with the alert popup
     @manual
     Scenario Outline: Unpublish the <doctype> item

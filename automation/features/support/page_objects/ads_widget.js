@@ -77,10 +77,14 @@ var ads_widget = {
     galleryNativeAd: '.ad--article-native',
     galleryNativeAdDfp: '.ad--article-native [id^=gpt-slot-]',
 
-    //
+    // For sticky ad
     stickyTopBanner: '.sticky-block--at-top',
-    stickyBottomBanner: '.sticky-block--at-bottom'
+    stickyBottomBanner: '.sticky-block--at-bottom',
 
+    // For AMP elements
+    ampTopLeaderBoard: 'amp-ad.ad-top-leaderboard',
+    ampMrecList: '.content-body-container .content-body__ad amp-ad iframe',
+    ampBottomLeaderboard: 'amp-sticky-ad>amp-ad'
 
 };
 module.exports = ads_widget;

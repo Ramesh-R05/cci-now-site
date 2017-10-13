@@ -234,7 +234,7 @@ Feature: Ads Location
         Then I should see each load more ad slot element containing proper class name
             |ad                            |class-name    |
             |Load More MREC In Bottom Feed |brand_body_2  |
-    
+
     Scenario: Ads slot elements should have proper class name on gallery page in mobile view
         Given I switch to "mobile" view
         When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
@@ -278,3 +278,11 @@ Feature: Ads Location
         And I should see each polar ad slot element containing proper class name
             |ad                               |class-name    |
             |Polar in Related Content In Body |article_body_5 |
+
+    Scenario: Ads slot elements should have proper class name on article page in mobile view
+        Given I switch to "mobile" view
+        And I am currently viewing "amp/news/latest-news/tony-abbott-says-climate-change-good-thing-41699"
+        * I should see the top leaderboard ad under hero image on AMP page
+        * I should see first MREC in the body on AMP page
+        * I should see second MREC in the body on AMP page
+        * I should see the sticky bottom leadrboard on AMP page

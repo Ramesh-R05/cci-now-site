@@ -70,7 +70,8 @@ var article_widget = {
     relatedPolarFeed: '.related-content-items > .polar-feed-item',
     imageRevealer: '.content-body .image-revealer',
     imageRevealerLeftImg: '.content-body .image-revealer__left img',
-    imageRevealerRightImg: '.content-body .image-revealer__right img',
+    imageRevealerRightImg: '.content-body .image-revealer__right img'
+
 };
 
 module.exports = article_widget;
