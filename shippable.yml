@@ -25,7 +25,7 @@ build:
     - cat version.js
     - npm run test:ci
     - ./node_modules/.bin/babel-istanbul report cobertura --dir  ./../shippable/codecoverage/
-    - NODE_ENV=production npm run build
+    - if [ $IS_PULL_REQUEST == false ]; then NODE_ENV=production npm run build; fi
     - cd ..
     - if [ $IS_PULL_REQUEST == false ]; then docker build -f Dockerfile.ecs -t $IMAGE:$BRANCH_NAME .; fi
     - if [ $IS_PULL_REQUEST == false ]; then docker tag $IMAGE:$BRANCH_NAME $IMAGE:latest; fi
