@@ -83,7 +83,7 @@ var ads_widget = {
 
     // For AMP elements
     ampTopLeaderBoard: 'amp-ad.ad-top-leaderboard',
-    ampMrecList: '.content-body-container .content-body__ad amp-ad iframe',
+    ampMrecList: '.content-body-container .content-body__ad amp-ad',
     ampBottomLeaderboard: 'amp-sticky-ad>amp-ad'
 
 };

@@ -279,6 +279,7 @@ Feature: Ads Location
             |ad                               |class-name    |
             |Polar in Related Content In Body |article_body_5 |
 
+    @amp
     Scenario: Ads slot elements should have proper class name on article page in mobile view
         Given I switch to "mobile" view
         And I am currently viewing "amp/news/latest-news/tony-abbott-says-climate-change-good-thing-41699"

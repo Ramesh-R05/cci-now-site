@@ -1,4 +1,4 @@
-@high
+@high @amp
 Feature: Verify AMP page
     As a user
     I should be able to see the relevant content on AMP page
