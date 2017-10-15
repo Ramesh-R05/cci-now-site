@@ -52,7 +52,8 @@ module.exports = function() {
 
     this.When(/^I navigate to the "([^"]*)" page$/, function (content_url) {
         console.log(world.Urls.home_page + content_url + '-' + randomId);
-        for(var i = 0; i < 15; i++) {
+        for(var i = 0; i < 20; i++) {
+            wait(1000); //add 1 sec wait for every loop to let the document publish
             browser.refresh();
             browser.url(world.Urls.home_page + content_url + '-' + randomId);
             if(browser.isExisting(".article__title") == true){
