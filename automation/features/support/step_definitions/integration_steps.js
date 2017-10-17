@@ -50,12 +50,13 @@ module.exports = function() {
 
     });
 
+    //only used for smoke test
     this.When(/^I navigate to the "([^"]*)" page$/, function (content_url) {
-        console.log(world.Urls.home_page + content_url + '-' + randomId);
+        console.log( content_url + '-' + randomId);
         for(var i = 0; i < 20; i++) {
             wait(1000); //add 1 sec wait for every loop to let the document publish
             browser.refresh();
-            browser.url(world.Urls.home_page + content_url + '-' + randomId);
+            browser.url(content_url + '-' + randomId);
             if(browser.isExisting(".article__title") == true){
                 console.log("Page Loaded Successfully : ID-" + randomId);
                 break;

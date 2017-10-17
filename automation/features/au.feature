@@ -58,20 +58,20 @@ Feature: Smoke test for AU NOW
     Scenario: Verify the article page
         Given I switch to "desktop" view
         Given Emily just published the "article" doc type item
-        When I navigate to the "news/latest-news/test-article" page
+        When I navigate to the "http://now-site-au.sit.bxm.net.au/news/latest-news/test-article" page
         Then our readers can enjoy the latest content
         And I switch to "mobile" view
-        When I navigate to the "amp/news/latest-news/test-article" page
+        When I navigate to the "http://now-site-au.sit.bxm.net.au/amp/news/latest-news/test-article" page
         Then our readers can enjoy the latest content
 
     Scenario: Verify the gallery page
         Given I switch to "desktop" view
         Given Emily just published the "gallery" doc type item
-        When I navigate to the "celebrity/celeb-news/test-gallery" page
+        When I navigate to the "http://now-site-au.sit.bxm.net.au/celebrity/celeb-news/test-gallery" page
         Then our readers can enjoy the latest content
         Given I switch to "mobile" view
 #---->  The below url will be changed to AMP once this is rolled out
-        When I navigate to the "celebrity/celeb-news/test-gallery" page
+        When I navigate to the "http://now-site-au.sit.bxm.net.au/celebrity/celeb-news/test-gallery" page
         Then our readers can enjoy the latest content
 
     Scenario: Verify the 404 page
