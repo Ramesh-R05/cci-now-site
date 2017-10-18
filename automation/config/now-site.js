@@ -1,5 +1,5 @@
 {
-    "maxWorkers": 2,
+    "maxWorkers": 4,
     "reportPath": "./reports",
     "chimpPath": "./node_modules/.bin/chimp",
     "chimpConfig": "chimp.shippable.js",
