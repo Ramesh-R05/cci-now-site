@@ -277,7 +277,7 @@ jobs:
   # Schedule jobs - not attached to the pipeline
   ##############################################
 
-  # i. Full regression in SIT AU
+  # i. Full regression in TEST
   - name: FULL-now-site-regression-test
     type: runSh
     always:
@@ -295,7 +295,8 @@ jobs:
         - script: npm set registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://now-site.test.bxm.net.au/
-        - script: APP_KEY=now-site npm run all:test || true
+        - script: APP_KEY=now-site npm run test:phantom || true
+        - script: node rerun.combine.js
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
 
