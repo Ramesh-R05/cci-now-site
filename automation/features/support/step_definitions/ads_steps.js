@@ -417,7 +417,7 @@ module.exports = function() {
 
         browser.scroll(0,500);
         //After 2 sec delay for the browser fully load the page, the viewability sticky will apply.
-        expect(browser.waitForVisible(wn_ads.stickyTopBanner, 2000)).toBe(true);
+        expect(browser.waitForVisible(wn_ads.stickyTopBanner, 4000)).toBe(true); //waiting up to 4 sec to cater for env performance
 
         // verify the ad disappears after 5 seconds
         wait(3500);//the top ad will be sticky for 3.5sec
