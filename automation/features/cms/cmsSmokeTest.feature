@@ -3,21 +3,13 @@ Feature: CMS Smoke Test
     As an editor
     I should be able to use CMS to create and update content
 
-    Scenario Outline: Create the <doctype> item
+    Scenario: Create, update and publish the Article item
         Given I am logging in CMS
         When I am currently viewing the create form
-        * I should be able to select "<doctype>" doc type
+        * I should be able to select "Article" doc type
         * I should be able to add the name
         * I should be able to click the create button
         * I should see the item is created
-
-        Examples:
-            | doctype    |
-            | Article    |
-            | Gallery    |
-
-    Scenario: Update and publish the Article item
-        Given I am logging in CMS
         When I am currently viewing "editContent.aspx?id=" of "Article"
         * I should be able to add content in the item
             | field         | tab               |
@@ -28,12 +20,24 @@ Feature: CMS Smoke Test
             | Body Heading  | Editorial         |
             | Page Title    | Search and Social |
             | Created at    | Properties        |
+            | Enable AMP    | Search and Social |
+            | Video         | Editorial         |
+            | Body Video    | Editorial         |
+            | Content Tags  | Page              |
         * I should be able to publish the item
         * I should be able to see the "preview" URL
         * I should be able to see the "live" URL
+        * I should be able to visit the live URL
+        * I should be able to check if the amp page is active
 
-    Scenario: Update and publish the Gallery item
+
+    Scenario: Create, update and publish the Gallery item
         Given I am logging in CMS
+        When I am currently viewing the create form
+        * I should be able to select "Gallery" doc type
+        * I should be able to add the name
+        * I should be able to click the create button
+        * I should see the item is created
         When I am currently viewing "editContent.aspx?id=" of "Gallery"
         * I should be able to add content in the item
             | field         | tab               |
@@ -44,21 +48,10 @@ Feature: CMS Smoke Test
             | Body Heading  | Editorial         |
             | Page Title    | Search and Social |
             | Created at    | Properties        |
-            | Gallery Image | Gallery           |
         * I should be able to publish the item
         * I should be able to see the "preview" URL
         * I should be able to see the "live" URL
 
-
-    Scenario: Publish article and check if it Amp enabled
-        Given I am logging in CMS
-        When I am currently viewing "editContent.aspx?id=" of "Article"
-        * I should be able to add content in the item
-            | field         | tab               |
-            | Enable AMP    | Search and Social |
-        * I should be able to publish the item
-        * I should be able to visit the live URL
-        * I should be able to check if the amp page is active
 
     #This scenario won't be run in phantomjs because we haven't found a solution to work with the alert popup
     @manual

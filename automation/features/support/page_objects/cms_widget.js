@@ -25,8 +25,17 @@ var cms_widget = {
     unpublishButton: '[value="Unpublish"]',
     propertiesCreatedAt: '.tabpageContent div:nth-child(9) .umbDateTimePicker input',
     ampEnablebox: 'input#body_prop_enableAmp',
-    ampHtml: 'link[rel=amphtml]'
-
+    ampHtml: 'link[rel=amphtml]',
+    editorialSearchVideo: 'div > div:nth-child(2) > input.form-control.one-half.ng-pristine.ng-valid',
+    editorialSearchButton: 'div > div:nth-child(2) > input.btn.btn-primary',
+    galleryImageOption: '#the_media_select > option[value="1"]',
+    editorialUseVideo: 'video-uploader div > div:nth-child(n) > div >div.bordered-group > input',
+    editorialVideoAddButton: 'video-uploader > div div:nth-child(n) > div > div.bordered-group div button',
+    editorialVideoId: '.tw-bs.module.video .panel [ng-show="data.videoId"] td.ng-binding',
+    editorialAddVideoButton: 'search-videos > div > div.top-five-latest-videos.bordered-group > div:nth-child(1) > div.video-info > div.button-group > button',
+    editorialVideoThumbnail: 'div.propertyItem > div > div > div > div.preview.ng-scope > div:nth-child(2) > img',
+    editorialSecondVideoThumbnail: 'video-uploader > div > div > div.preview.ng-scope > div:nth-child(2) > img',
+    editorialBodyVideoOption: 'option[value="5"]'
 
 };
 
