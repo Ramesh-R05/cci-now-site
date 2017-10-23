@@ -1,8 +1,8 @@
 var amp_widget = {
 
     ampHeroImage: 'amp-img>img:nth-child(2)',
-    ampBodyImg: 'section > figure > amp-img',
-    ampBodyImgCaption: 'article > section > figure > figcaption',
+    ampBodyImg: '.content-body__inline-image amp-img',
+    ampBodyImgCaption: '.content-body__inline-image figcaption',
     ampBodyVideo: 'amp-brightcove.i-amphtml-element',
     ampArticleFacebook: 'div > amp-social-share:nth-child(1)',
     ampArticlePinterest : 'div > amp-social-share:nth-child(2)',

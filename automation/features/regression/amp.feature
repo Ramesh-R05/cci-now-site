@@ -32,4 +32,3 @@ Feature: Verify AMP page
 
 
 
-
