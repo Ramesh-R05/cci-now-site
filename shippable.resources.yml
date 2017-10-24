@@ -149,8 +149,8 @@ resources:
       sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-test/3640de7200782c72"
       method: application
 
-  # SIT Parameter
-  - name: now-site-params-sit
+  # SIT AU Parameter
+  - name: now-site-au-params-sit
     type: params
     version:
       params:
@@ -158,7 +158,19 @@ resources:
         APP_ENV: "sit"
         APM_KEY: "c777240932e6282ffacc6a42ae6a0709426522bb"
         APP_DEBUG: true
-
+        APP_REGION: "au"
+  
+  # SIT NZ Parameter
+  - name: now-site-nz-params-sit
+    type: params
+    version:
+      params:
+        NODE_ENV: "production"  #change this to dev when we are ready
+        APP_ENV: "sit"
+        APM_KEY: "c777240932e6282ffacc6a42ae6a0709426522bb"
+        APP_DEBUG: true
+        APP_REGION: "nz"
+        
   # TEST Parameter
   - name: now-site-params-test
     type: params
@@ -168,8 +180,7 @@ resources:
         APP_ENV: "automation"
         APP_STUBBED: true
         APP_DEBUG: true
-
-
+        APP_REGION: "au"
 
   ####################################
   # PROD environment configuration

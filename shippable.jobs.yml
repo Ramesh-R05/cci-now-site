@@ -32,7 +32,7 @@ jobs:
       - IN: now-site-man-branch # for non-master, don't auto deploy.
         switch: off
       - IN: env-sit-ecs
-      - IN: now-site-params-sit
+      - IN: now-site-au-params-sit
       - IN: now-site-alb-sit-branch
         applyTo:
           - manifest: now-site-man-branch
@@ -58,7 +58,7 @@ jobs:
       - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
       - IN: env-sit-ecs
-      - IN: now-site-params-sit
+      - IN: now-site-au-params-sit
       - IN: au-now-site-alb-sit
         applyTo:
           - manifest: now-site-man-master
@@ -76,8 +76,7 @@ jobs:
       - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
       - IN: env-sit-ecs
-      - IN: now-site-params-sit
-      - IN: now-site-params-nz-region
+      - IN: now-site-nz-params-sit
       - IN: nz-now-site-alb-sit
         applyTo:
           - manifest: now-site-man-master
