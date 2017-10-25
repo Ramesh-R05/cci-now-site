@@ -35,7 +35,10 @@ var cms_widget = {
     editorialAddVideoButton: 'search-videos > div > div.top-five-latest-videos.bordered-group > div:nth-child(1) > div.video-info > div.button-group > button',
     editorialVideoThumbnail: 'div.propertyItem > div > div > div > div.preview.ng-scope > div:nth-child(2) > img',
     editorialSecondVideoThumbnail: 'video-uploader > div > div > div.preview.ng-scope > div:nth-child(2) > img',
-    editorialBodyVideoOption: 'option[value="5"]'
+    editorialBodyVideoOption: 'option[value="5"]',
+    pageContentTags: 'tag-picker [ng-model="item.tagName"]',
+    pageContentTagsFirstTag: 'a.ng-scope.ng-binding > strong',
+    pageContentTagsDropDown: 'ul#typeahead-01Y-9026.dropdown-menu.ng-scope'
 
 };
 

@@ -188,6 +188,14 @@ module.exports = function() {
                     console.log(videoSecondThumbnail);
                     expect(videoSecondThumbnail).not.toEqual('');
                     break;
+                case 'Content Tags':
+                    browser.scroll(tabElement + cms.pageContentTags);
+                    browser.click(tabElement + cms.pageContentTags);
+                    var tagValue = 'cvg:cvg_platform:iPhone';
+                    browser.setValue(tabElement + cms.pageContentTags, tagValue);
+                    expect(browser.waitForVisible(cms.pageContentTagsFirstTag,5000)).toBe(true);
+                    browser.click(tabElement + cms.pageContentTagsFirstTag);
+                    break;
             }
         }
 
