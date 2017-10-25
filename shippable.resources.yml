@@ -26,7 +26,6 @@ resources:
   # Seed image version MASTER Docker Image for the now-site
   - name: now-site-img-master
     type: image
-    integration: AWS-digital-services-ECR
     pointer:
       sourceName: "317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site"
     seed:
@@ -35,7 +34,6 @@ resources:
   # Seed image version Feature BRANCH Docker Image for the now-site
   - name: now-site-img-branch
     type: image
-    integration: AWS-digital-services-ECR
     pointer:
       sourceName: "317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site"
     seed:
@@ -116,7 +114,7 @@ resources:
   # AWS Non Prod Cluster
   - name: env-sit-ecs
     type: cluster
-    integration: AWS-digital-nonprod
+    integration: digital-nonprod-AWS
     pointer:
       sourceName : "app_ecs"
       region: "ap-southeast-2"
