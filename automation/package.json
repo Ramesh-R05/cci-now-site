@@ -29,10 +29,10 @@
     "share:aulive": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@aulive\"",
     "share:nzlive": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@nzlive\"",
     "general:live": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@live\"",
-    "test:phantom": "URL=http://now-site.test.bxm.net.au/ APP_KEY=now-site npm run features"
+    "test:phantom": "bash -c \"URL=http://now-site.test.bxm.net.au/ APP_KEY=now-site npm run features\""
   },
   "dependencies": {
-    "@bxm/automation": "^4.1.0",
+    "@bxm/automation": "^4.2.0",
     "cucumber-html-report": "^0.2.8"
   }
 }
