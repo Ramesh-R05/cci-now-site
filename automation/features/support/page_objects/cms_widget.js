@@ -24,7 +24,7 @@ var cms_widget = {
     menuDelete: '.menuSpr.sprDelete',
     unpublishButton: '[value="Unpublish"]',
     propertiesCreatedAt: '.tabpageContent div:nth-child(9) .umbDateTimePicker input',
-    ampEnablebox: 'input#body_prop_enableAmp',
+    ampEnablebox: 'div.col-xs-10 > input',
     ampHtml: 'link[rel=amphtml]',
     editorialSearchVideo: 'div > div:nth-child(2) > input.form-control.one-half.ng-pristine.ng-valid',
     editorialSearchButton: 'div > div:nth-child(2) > input.btn.btn-primary',
