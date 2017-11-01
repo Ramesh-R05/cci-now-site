@@ -37,7 +37,7 @@ function lighthouseInit(url, flags = {}, config = null) {
 
 function lighthouseTests(testObject) {
     const lighthouseOptions = {
-        chromeFlags: ["--headless: true", "--disableGPU: true", "--hideScrollbars: true", "--noSandbox: true"]
+        chromeFlags: ["--headless", "--disable-gpu", "--enable-logging", "--no-sandbox"]
     };
     const { title, url, expectedScore } = testObject;
     describe(`Now To Love site performance testing for ${title} : ${url}`, function loopedTests() {
