@@ -1,10 +1,10 @@
-@high @amp
+@amp @now
 Feature: Verify AMP page
     As a user
     I should be able to see the relevant content on AMP page
 
 #-------------AMP on article page-------------#
-
+    @article @high
     Scenario: Verify the AMP article page
         When I switch to "mobile" view
         Given I am currently viewing "amp/news/latest-news/tony-abbott-says-climate-change-good-thing-41699"
@@ -22,6 +22,7 @@ Feature: Verify AMP page
             * I can see the facebook share button on amp article page
             * I can see the pinterest share button on amp article page
 
+    @article @med
     Scenario: Verify the social embeds on AMP article page
         When I switch to "mobile" view
         Given I am currently viewing "amp/fashion/red-carpet/automation-test-article-with-social-embed-3663"

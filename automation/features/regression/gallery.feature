@@ -1,4 +1,4 @@
-@gallery @BXMA-33 @BXMA-132 @BXMA-133 @now
+@gallery @now
 Feature: Gallery
     As a user
     I should be able to see the gallery page
@@ -73,7 +73,6 @@ Feature: Gallery
         Given I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
         * I can see the gallery description of the gallery containing "Test the second paragraph"
 
-    @BXMA-155
     Scenario Outline: Verify the share buttons on a gallery page in "<device>" view
         When I switch to "<device>" view
         Given I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"

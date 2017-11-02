@@ -1,7 +1,7 @@
 @navigation @now
 Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to be used across all devices
 
-    @BXMA-117 @BXMA-172
+    @homepage
     Scenario Outline: I can see the navigation widget on the homepage "<device>"
         Given I switch to "<device>" view
         When I am currently viewing the homepage
@@ -21,7 +21,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
             | tablet portrait   |
             | tablet landscape  |
 
-    @BXMA-117 @med
+    @med @homepage
     Scenario: I can see the navigation widget on the homepage mobile
         Given I switch to "mobile" view
         When I am currently viewing the homepage
@@ -30,7 +30,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         And I should see the theme nav background
         And I should see the site navigation "section" links and "nav-item" class name in "hamburger"
 
-    @med
+    @med @homepage
     Scenario: I can see the sticky navigation on the homepage
         Given I switch to "desktop" view
         When I am currently viewing the homepage
@@ -39,7 +39,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         And I should see the site navigation "section" links and "gtm-navigation-section nav-item" class name in "header"
         And I should see the site navigation "section" links and "nav-item" class name in "hamburger"
 
-    @med
+    @med @section
     Scenario: I can see the navigation widget on the section page
         Given I switch to "desktop" view
         When I am currently viewing "fashion"
@@ -49,7 +49,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         And I can see the link "FASHION" is highlighted on the navigation links
         And I can see the link "Fashion" is highlighted on the hamburger navigation links
 
-    @low
+    @low @article
     Scenario: I can see the navigation widget on the article page
         Given I switch to "tablet portrait" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
@@ -59,7 +59,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         And I can see the link "FASHION" is highlighted on the navigation links
         And I can see the link "Fashion" is highlighted on the hamburger navigation links
 
-    @low
+    @low @gallery
     Scenario: I can see the navigation widget on the gallery page
         Given I switch to "tablet landscape" view
         When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
@@ -69,14 +69,14 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         And I can see the link "FASHION" is highlighted on the navigation links
         And I can see the link "Fashion" is highlighted on the hamburger navigation links
 
-    @med
+    @med @gallery
     Scenario: I can see the navigation widget on the gallery page on mobile view
         Given I switch to "mobile" view
         When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
         Then I should not see the site navigation links
         And I should see the hamburger menu
 
-    @BXMA-65 @med
+    @med @article
     Scenario: I can see the brand logos in the hamburger menu
         Given I switch to "mobile" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
@@ -91,8 +91,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
             |Dolly                      |http://www.dolly.com.au/               |gtm-hamburger-dolly        |
             |Beauty Heaven              |https://www.beautyheaven.com.au/       |gtm-hamburger-beautyheaven |
 
-
-    @BXMA-412 @med
+    @med @article
     Scenario: Mobile users menu will fade out as they scroll down the page
         Given I switch to "mobile portrait" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"

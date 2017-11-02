@@ -3,12 +3,11 @@ Feature: Homepage
     As a user
     I should be able to see homepage
 
-    @BXMA-482
     Scenario Outline: Verify the sign-up URL on homepage
         Given I switch to "<device>" view
         When I am currently viewing the homepage
         Then I should see the sign up button containing "//www.nowtolove.com.au/now-newsletter" url and "gtm-subs-homepage" gtm in "<device>" view
-        @high
+        @med
         #Test desktop as the high priority for now until the mobile issue is fixed. Then desktop one can be @med
         Examples:
             | device            |
@@ -20,8 +19,6 @@ Feature: Homepage
             | tablet landscape  |
             | tablet portrait   |
 
-
-    @mustread @BXMA-81
     Scenario Outline: Verify the must read module is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing the homepage
@@ -49,8 +46,7 @@ Feature: Homepage
             | tablet portrait   | 4      |
             | tablet landscape  | 6      |
 
-
-    @hero @BXMA-40 @low
+    @low
     Scenario Outline: Verify the hero teaser element is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing the homepage
@@ -64,8 +60,7 @@ Feature: Homepage
             |tablet portrait |
             |tablet landscape|
 
-
-    @promoted @BXMA-205 @low
+    @low
     Scenario Outline: Verify the promoted module is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing the homepage
@@ -84,7 +79,6 @@ Feature: Homepage
             | tablet landscape  | 4      |
             | desktop           | 4      |
 
-    @homepagefeed @BXMA-82
     Scenario Outline: Verify the top news feed is functional correctly in "<device>" view
         Given I am currently viewing the homepage
         When I switch to "<device>" view
@@ -103,8 +97,7 @@ Feature: Homepage
             |tablet portrait |
             |tablet landscape|
 
-
-    @homepagefeed-bottom @BXMA-60 @low
+    @low
     Scenario Outline: Verify the bottom news feed is functional correctly in "<device>" view
         Given I am currently viewing the homepage
         When I switch to "<device>" view

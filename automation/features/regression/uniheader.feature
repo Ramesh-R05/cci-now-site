@@ -1,4 +1,4 @@
-@wnheader @BXMA-89 @now
+@uniheader @now
 Feature: Uniheader
     As a user
     I should be able to see the Uniheader

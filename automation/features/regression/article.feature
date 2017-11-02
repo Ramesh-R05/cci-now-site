@@ -26,13 +26,12 @@ Feature: Article
         * I can see the hero image
         * I should not see the hero image caption
         * I can see the image alt text in the hero image element "Image ALT TEXT"
-
-    @med
+        @med
         Examples:
             | device            |
             | mobile            |
             | desktop           |
-    @low
+        @low
         Examples:
             | device            |
             | tablet portrait   |
@@ -66,15 +65,15 @@ Feature: Article
         * I can see the body related content
         * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
         * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
-    @high
+        @high
         Examples:
             | device            |
             | mobile            |
-    @med
+        @med
         Examples:
             | device            |
             | desktop           |
-    @low
+        @low
         Examples:
             | device            |
             | tablet portrait   |
@@ -92,12 +91,12 @@ Feature: Article
         * I can see the body competition
         * I can see the related tags "Gossip Girl," "Dolly Doctor"
         * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
-    @med
+        @med
         Examples:
             | device            |
             | mobile            |
             | desktop           |
-    @low
+        @low
         Examples:
             | device            |
             | tablet portrait   |
@@ -111,7 +110,7 @@ Feature: Article
         * I can see the body gallery
         * I can see the body tips "body tips body tips EOM"
         * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
-    @low
+        @low
         Examples:
             | device            |
             | mobile            |
@@ -121,7 +120,6 @@ Feature: Article
 # -------- optional content end   ---------------#
 
 # -------- LHR are High and Medium as this Helps recirculate users ---------------#
-    @DDO-160 @DDO-48 @BXMA-174
     Scenario Outline: Verify LHR on different screen sizes "<device>"
         Given I switch to "<device>" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
@@ -146,14 +144,13 @@ Feature: Article
         Given I switch to "<device>" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I should not see the LHR
-    Examples:
-        | device            |
-        | tablet portrait   |
-        | mobile            |
+        Examples:
+            | device            |
+            | tablet portrait   |
+            | mobile            |
 #-------- LHR end ---------------#
 
 # -------- Social share is Medium as this Helps recirculate users ---------------#
-    @BXMA-155
     Scenario Outline: Verify the share buttons on an article page in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
@@ -172,7 +169,6 @@ Feature: Article
 #-------- Social share end ---------------#
 
 # -------- Social embed is Medium ---------------#
-    @embeds
     Scenario Outline: Editorial team can add social feeds to the article body
          Given I switch to "<device>" view
          When I am currently viewing "fashion/red-carpet/automation-test-article-with-social-embed-3663"
@@ -186,12 +182,12 @@ Feature: Article
          * I can see the body Whooshka embed "https://www.whooshkaa.com/player/episode/id/90704?visual=true"
          * I can see the body Wirewax embed "https://embed.wirewax.com/8037657/ff0044/"
          * I can see the body Linklay embed "//www.linklay.com/app/linklay/embed/linklay59151f750e2a94.81058944"
-    @med
+        @med
          Examples:
              | device            |
              | mobile            |
              | desktop           |
-    @low
+        @low
          Examples:
              | device            |
              | tablet portrait   |
@@ -203,15 +199,15 @@ Feature: Article
         Given I switch to "<device>" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the outbrain frame with "NowtoLove" template
-    @high
+        @high
         Examples:
             | device            |
             | mobile            |
-    @med
+        @med
         Examples:
             | device            |
             | desktop           |
-    @low
+        @low
         Examples:
             | device            |
             | tablet portrait   |
@@ -222,15 +218,12 @@ Feature: Article
         When I switch to "<device>" view
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the Image Revealer component
-    @high
+        @med
         Examples:
             | device            |
             | mobile            |
-    @med
-        Examples:
-            | device            |
             | desktop           |
-    @low
+        @low
         Examples:
             | device            |
             | tablet portrait   |

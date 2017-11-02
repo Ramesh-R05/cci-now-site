@@ -1,8 +1,9 @@
-@footer @BXMA-145 @now
+@footer @now
 Feature: Footer
     As a user
     I should be able to see the Footer
 
+    @homepage
     Scenario Outline: Verify GTM in the footer in the "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing the homepage
@@ -18,18 +19,18 @@ Feature: Footer
             |Mother and Baby            |/mother-and-baby   |gtm-footer__logos-list-mb     |
             |TV WEEK                    |/tvweek            |gtm-footer__logos-list-tvweek |
 
-    @med
+        @med
         Examples:
             | device            |
             | mobile            |
-    @low
+        @low
         Examples:
             | device            |
             | desktop           |
             | tablet portrait   |
             | tablet landscape  |
 
-    @low
+    @low @homepage
     Scenario Outline: Verify the footer in the "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing the homepage
@@ -59,9 +60,19 @@ Feature: Footer
         Given I switch to "desktop" view
         When I am currently viewing "<url>"
         * 	I can see all main elements in the footer
+        @section
         Examples:
             |page               |url                                                                |
-            |section landing    |fashion                                                            |
+            |section            |fashion                                                            |
+        @article
+        Examples:
+            |page               |url                                                                |
             |article            |fashion/red-carpet/automation-test-article-with-hero-image-3663    |
+        @gallery
+        Examples:
+            |page               |url                                                                |
             |gallery            |fashion/red-carpet/automation-test-gallery-13302                   |
+        @404
+        Examples:
+            |page               |url                                                                |
             |404                |404                                                                |

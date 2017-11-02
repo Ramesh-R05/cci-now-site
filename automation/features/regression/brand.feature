@@ -1,9 +1,9 @@
-@brand @now @BXMA-107 @BXMA-104
+@brand @now
 Feature: Brand Landing page
     As a user
     I should be able to see brand landing page
 
-    @BXMA-482 @high
+    @med
     Scenario Outline: Verify the sign-up URL on <page> brand landing page in mobile view
         Given I switch to "mobile" view
         When I am currently viewing "<page>"
@@ -21,7 +21,6 @@ Feature: Brand Landing page
             | tvweek/               | //www.nowtolove.com.au/tvweek-newsletter          |
             | prizestolove/         | //www.nowtolove.com.au/prizestolove-newsletter    |
 
-    @BXMA-482
     Scenario Outline: Verify the sign-up URL on <page> brand landing page in <device> view
         Given I switch to "<device>" view
         When I am currently viewing "<page>"
@@ -36,7 +35,6 @@ Feature: Brand Landing page
             | tablet landscape  | womansday/   | //www.nowtolove.com.au/womansday-newsletter       |
             | tablet portrait   | good-health/ | //www.nowtolove.com.au/good-health-newsletter     |
 
-    @BXMA-291
     Scenario Outline: Verify the brand title and hero teaser element are functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "aww"
@@ -53,7 +51,6 @@ Feature: Brand Landing page
             |device           |
             |tablet landscape |
 
-    @BXMA-291
     Scenario Outline: Verify the brand title and hero teaser element are functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "aww"
@@ -70,7 +67,6 @@ Feature: Brand Landing page
             |device          |
             |tablet portrait |
 
-    @BXMA-291
     Scenario Outline: Verify the top news feed is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "aww"
@@ -89,7 +85,7 @@ Feature: Brand Landing page
             |tablet portrait |
             |tablet landscape|
 
-    @BXMA-291 @low
+    @low
     Scenario Outline: Verify the bottom news feed is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "aww"
@@ -105,7 +101,7 @@ Feature: Brand Landing page
             |tablet portrait |
             |tablet landscape|
 
-    @BXMA-292 @low
+    @low
     Scenario Outline: Verify the subscribe now link and social links of "<brand>" landing page
         Given I switch to "desktop" view
         When I am currently viewing "<brand>"

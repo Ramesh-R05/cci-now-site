@@ -1,4 +1,4 @@
-@error @BXMA-139 @now @low
+@404 @now @low
 Feature: Error page
     As a user
     I should be able to see the error page
