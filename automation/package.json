@@ -16,7 +16,6 @@
     "all:test": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=~@cms --tags=~@manual\"",
     "test:secure": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=chrome --format=rerun:@rerun.txt --tags=@now --tags=~@cms --tags=~@manual\"",
     "test:cms": "bash -c \"./node_modules/.bin/chimp chimp.cms.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@cms --tags=~@manual\"",
-    "test:nzcms": "bash -c \"./node_modules/.bin/chimp chimp.cms.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@nzcms --tags=~@manual\"",
     "test:cmsprelive": "bash -c \"./node_modules/.bin/chimp chimp.cms.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@cmsprelive --tags=~@manual\"",
     "single": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs\"",
     "once": "npm run single",
