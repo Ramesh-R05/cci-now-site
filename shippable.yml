@@ -11,7 +11,7 @@ env:
     - BRANCH_NAME="$(sed 's/\//-/g' <<< $BRANCH).$BUILD_NUMBER" # need to replace '/' in the branch name with '-'
 
 build:
-  cache: false
+  cache: true
   cache_dir_list:
     - $SHIPPABLE_BUILD_DIR/src/node_modules
   ci:
@@ -29,7 +29,7 @@ build:
     - cd ..
     - if [ "$IS_PULL_REQUEST" == false ]; then docker build -f Dockerfile.ecs -t $IMAGE:$BRANCH_NAME .; fi
     - if [ "$IS_PULL_REQUEST" == false ]; then docker tag $IMAGE:$BRANCH_NAME $IMAGE:latest; fi
-    - if [ "$BRANCH" == "master" ] && [ $IS_PULL_REQUEST == false ]; then echo "versionName=$BRANCH_NAME" >> $JOB_STATE/now-site-img-master.env; fi
+    - if [ "$BRANCH" == "master" ] && [ "$IS_PULL_REQUEST" == false ]; then echo "versionName=$BRANCH_NAME" >> $JOB_STATE/now-site-img-master.env; fi
     - if [ "$BRANCH" != "master" ]; then echo "versionName=$BRANCH_NAME" >> $JOB_STATE/now-site-img-branch.env; fi
   push:
     - if [ "$IS_PULL_REQUEST" == false ]; then docker push $IMAGE:$BRANCH_NAME; fi
