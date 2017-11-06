@@ -363,4 +363,4 @@ jobs:
      - IN: nznow-weekly-trigger
      - TASK:
         - script: >
-            curl -H "Content-Type: application/json" -X POST -d '[{"fromEnv":"live", "fromSite":"nznow", "number":10", "toSite":"nznow"}]' http://dev.migrate.services.bauer-media.internal/migrate
+            curl -H "Content-Type: application/json" -X POST -d '[{"fromEnv":"live", "fromSite":"nznow", "number":"10", "toSite":"nznow"}]' http://dev.migrate.services.bauer-media.internal/migrate
