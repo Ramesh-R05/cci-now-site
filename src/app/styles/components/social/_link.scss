@@ -2,22 +2,6 @@
     margin: 0 auto 20px;
     text-align: center;
 
-    .get-social-title {
-        background: url($social-title-image) no-repeat center;
-        height: 50px;
-        background-size: 240px;
-
-        @media #{$medium-up} {
-            height: 70px;
-            background-size: 300px;
-        }
-
-        @media #{$large-up} {
-            height: 70px;
-            background-size: 350px;
-        }
-    }
-
     a {
         text-decoration: none;
     }
