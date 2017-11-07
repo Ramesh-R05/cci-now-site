@@ -44,7 +44,7 @@
     moment "^2.10.6"
     moment-timezone "^0.5.0"
 
-"@bxm/flux@^4.0.0", "@bxm/flux@^4.2.0", "@bxm/flux@^4.4.1":
+"@bxm/flux@^4.0.0":
   version "4.4.1"
   resolved "http://npm.digital.bauer-media.net.au/@bxm%2fflux/-/flux-4.4.1.tgz#c98947417980180c5ec2f8a0fbb4e4ab2f5fe7b9"
   dependencies:
@@ -53,6 +53,14 @@
     q "^1.0.1"
     react-addons-test-utils "^0.14.2"
     setimmediate "^1.0.2"
+
+"@bxm/flux@^5.0.0":
+  version "5.0.0"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fflux/-/flux-5.0.0.tgz#992b0724f0e4d9165fc0183f2d56241c741e92e3"
+  dependencies:
+    immutable "^3.7.6"
+    lodash "^3.10.0"
+    react-addons-test-utils "^0.14.2"
 
 "@bxm/header@^11.0.1":
   version "11.0.1"
@@ -120,12 +128,12 @@
     moment "^2.17.1"
     xml "^1.0.0"
 
-"@bxm/server@^22.12.0":
-  version "22.12.0"
-  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fserver/-/server-22.12.0.tgz#4af8e07c4393413b9cd99b7196301a1b53513a81"
+"@bxm/server@^23.0.1":
+  version "23.0.1"
+  resolved "http://npm.digital.bauer-media.net.au/@bxm%2fserver/-/server-23.0.1.tgz#ad5456aa2edd4d2ba28bc39a5be967bf5dae5cb1"
   dependencies:
     "@bxm/datetime" "^3.0.0"
-    "@bxm/flux" "^4.4.1"
+    "@bxm/flux" "^5.0.0"
     "@bxm/markdown" "^1.3.0"
     "@bxm/winston-logger" "^1.1.0"
     babel-register "^6.24.0"

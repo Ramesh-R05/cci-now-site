@@ -1,6 +1,11 @@
+import listService from '../services/list';
+
 export default function loadList(context, payload) {
-    return context.getService('list').read(payload).then(
-        content => context.dispatch('LOAD_LIST', content),
+    return listService.read(payload).then(
+        (content) => {
+            if (content instanceof Error) context.dispatch('LOAD_CONTENT_FAILED', content);
+            else context.dispatch('LOAD_CONTENT', { ...content, request: { payload } });
+        },
         error => context.dispatch('LOAD_LIST_FAILED', error)
     );
 }
