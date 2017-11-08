@@ -13,7 +13,7 @@ module.exports = function() {
         expect(headerBackground).toContain('background-image: url');
     });
 
-    this.Then(/^I should see the site header logo clickable to open homepage and contain "([^"]*)" class name$/, function (gtm) {
+    this.Then(/^I should see the site header logo clickable to open homepage$/, function () {
         browser.waitForVisible(site_nav.siteNavHeaderLogo, 3000);
         //Validate the existence of the logo
         var headerLogo = browser.getCssProperty(site_nav.siteNavHeaderLogo, 'background-image').value;
@@ -21,52 +21,16 @@ module.exports = function() {
         //Validate the logo is clickable to open homepage
         var headerLogoLink = browser.getAttribute(site_nav.siteNavHeaderLogo,'href');
         expect(headerLogoLink).not.toEqual('');
-        //Validate GTM
-        var headerLogoClass = browser.getAttribute(site_nav.siteNavHeaderLogo,'class');
-        expect(headerLogoClass).toContain(gtm);
     });
 
-    this.Then(/^I should see the site navigation "([^"]*)" links and "([^"]*)" class name in "([^"]*)"$/, function (section, gtm, position) {
+    this.Then(/^I should see the site navigation in hamburger menu$/, function () {
+        browser.waitForVisible(site_nav.siteHamburger, 1000);
+        browser.click(site_nav.siteHamburger);
+        browser.waitForVisible(site_nav.siteHamburgerDetail, 3000);
 
-        var sectionDetail = null;
+        wait(500); // ensure it waits for transition effect to complete
+        browser.click(site_nav.siteHamburgerClose);
 
-        //Identify the element
-        switch(position) {
-            case 'header':
-                switch (section) {
-                    case 'section':
-                        sectionDetail = site_nav.siteNavSectionDetail;
-                        break;
-                    case 'subsection':
-                        sectionDetail = site_nav.siteNavSubSectionListDetail;
-                        break;
-                }
-                break;
-            case 'hamburger':
-                browser.click(site_nav.siteHamburger);
-                browser.waitForVisible(site_nav.siteHamburgerDetail, 3000);
-                sectionDetail = site_nav.siteHamburgerDetail;
-                break;
-        }
-
-        //Get values of class, href, and name
-        var navClass = browser.getAttribute(sectionDetail,'class');
-        var navLink = browser.getAttribute(sectionDetail,'href');
-        var navName = browser.getAttribute(sectionDetail,'textContent');
-
-        //Validate the values
-        for (var i=0; i<navName.length; i++){
-            console.log( i + ":" + navClass[i] + " => " + navLink[i] + " => " + navName[i]);
-            expect(navClass[i]).toContain(gtm);
-            expect(navLink[i]).not.toEqual('');
-            expect(navName[i]).not.toEqual('');
-        }
-
-        //Close the hamburger menu
-        if (position == 'hamburger') {
-            wait(500); // ensure it waits for transition effect to complete
-            browser.click(site_nav.siteHamburgerClose);
-        }
     });
 
     this.Then(/^I should not see the site navigation links$/, function () {

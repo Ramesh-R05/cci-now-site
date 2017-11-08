@@ -25,4 +25,5 @@ module.exports = function() {
         expect(errorLink).not.toEqual('');
         expect(errorGTM).toMatch(gtm);
     });
+
 };
