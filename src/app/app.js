@@ -10,7 +10,8 @@ import PolarAdStore from '@bxm/ad/lib/polar/stores/PolarAdStore';
 import RouteStore from './stores/route';
 import TeaserStore from './stores/teaser';
 import TrackingStore from './stores/tracking';
-const app = new Flux({
+
+export default new Flux({
     component: AppComponent,
     stores: [
         AdStore,
@@ -25,5 +26,3 @@ const app = new Flux({
         TrackingStore
     ]
 });
-
-export default app;
