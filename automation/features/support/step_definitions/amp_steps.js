@@ -86,5 +86,30 @@ module.exports = function() {
         expect(ampVimeoEmb).toEqual(vimeoUrl);
     });
 
+    // For Ads
+    this.Then(/^I should see the top leaderboard ad under hero image on AMP page$/, function () {
+        browser.waitForVisible(amp.ampTopLeaderBoard, 2000);
+        expect(browser.isVisible(amp.ampTopLeaderBoard)).toBe(true);
+    });
+
+    this.Then(/^I should see first MREC in the body on AMP page$/, function () {
+        browser.scroll(0,2000);
+        browser.waitForVisible(amp.ampMrecList, 5000);
+        var bodyAmpAdList = browser.isVisible(amp.ampMrecList);
+        expect(bodyAmpAdList[0]).toBe(true);
+    });
+
+    this.Then(/^I should see second MREC in the body on AMP page$/, function () {
+        var bodyAmpAdList = browser.isVisible(amp.ampMrecList);
+        expect(bodyAmpAdList[1]).toBe(true);
+    });
+
+    this.Then(/^I should see the sticky bottom leaderboard on AMP page$/, function () {
+        wait(5000); //wait 2 seconds to let sticky ad load
+        browser.scroll(0,500);
+        expect(browser.isVisible(amp.ampBottomLeaderboard)).toBe(true);
+        browser.scroll(0,1000);
+        expect(browser.isVisible(amp.ampBottomLeaderboard)).toBe(true);
+    });
 
 };

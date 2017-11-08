@@ -286,11 +286,4 @@ Feature: Ads Location
             |ad                               |class-name    |
             |Polar in Related Content In Body |article_body_5 |
 
-    @amp @article
-    Scenario: Ads slot elements should have proper class name on article page in mobile view
-        Given I switch to "mobile" view
-        And I am currently viewing "amp/news/latest-news/tony-abbott-says-climate-change-good-thing-41699"
-        * I should see the top leaderboard ad under hero image on AMP page
-        * I should see first MREC in the body on AMP page
-        * I should see second MREC in the body on AMP page
-        * I should see the sticky bottom leadrboard on AMP page
+

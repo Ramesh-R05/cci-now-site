@@ -12,7 +12,12 @@ var amp_widget = {
     ampTwitterEmb: 'amp-twitter',
     ampFacebookEmb: 'amp-facebook',
     ampYoutubeEmb: 'amp-youtube > iframe',
-    ampVimeoEmb: 'amp-vimeo > iframe'
+    ampVimeoEmb: 'amp-vimeo > iframe',
+
+    // For Ads
+    ampTopLeaderBoard: 'amp-ad.ad-top-leaderboard',
+    ampMrecList: '.content-body-container .content-body__ad amp-ad',
+    ampBottomLeaderboard: 'amp-sticky-ad>amp-ad'
 
 };
 

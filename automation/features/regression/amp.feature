@@ -31,5 +31,12 @@ Feature: Verify AMP page
         * I can see the amp body Youtube embed "https://www.youtube.com/embed/4GpnNxjy6m0"
         * I can see the amp body Vimeo embed "https://player.vimeo.com/video/181027959"
 
-
+    @article @ad @high
+    Scenario: Ads slot elements should have proper class name on AMP article page
+        Given I switch to "mobile" view
+        And I am currently viewing "amp/news/latest-news/tony-abbott-says-climate-change-good-thing-41699"
+        * I should see the top leaderboard ad under hero image on AMP page
+        * I should see first MREC in the body on AMP page
+        * I should see second MREC in the body on AMP page
+        * I should see the sticky bottom leaderboard on AMP page
 

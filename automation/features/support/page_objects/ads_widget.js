@@ -79,12 +79,7 @@ var ads_widget = {
 
     // For sticky ad
     stickyTopBanner: '.sticky-block--at-top',
-    stickyBottomBanner: '.sticky-block--at-bottom',
-
-    // For AMP elements
-    ampTopLeaderBoard: 'amp-ad.ad-top-leaderboard',
-    ampMrecList: '.content-body-container .content-body__ad amp-ad',
-    ampBottomLeaderboard: 'amp-sticky-ad>amp-ad'
+    stickyBottomBanner: '.sticky-block--at-bottom'
 
 };
 module.exports = ads_widget;
