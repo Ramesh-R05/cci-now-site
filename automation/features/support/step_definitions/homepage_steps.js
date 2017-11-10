@@ -9,134 +9,112 @@ module.exports = function(){
     this.When(/^I should see the main hero item containing its image and clickable to open its page$/, function () {
         //Verify the hero image
         var heroImgUrl = browser.getAttribute(home.heroImgUrl, 'data-srcset');
-        console.log(heroImgUrl);
         validateImageURL(heroImgUrl);
         //Verify the hero image's link
         var heroImgLink = browser.getAttribute(home.heroImgLink, 'href');
-        console.log(heroImgLink);
-        expect(heroImgLink).not.toBeUndefined();
+        expect(heroImgLink).not.toEqual('');
     });
 
     this.When(/^I should see the main hero item containing its title and clickable to open its page$/, function () {
         //Verify the hero title
         var heroTitle = browser.getText(home.heroTitle);
-        console.log(heroTitle);
-        expect(heroTitle).not.toBeUndefined();
+        expect(heroTitle).not.toEqual('');
         //Verify the hero title's link
         var heroTitleLink = browser.getAttribute(home.heroTitle, 'href');
-        console.log(heroTitleLink);
-        expect(heroTitleLink).not.toBeUndefined();
+        expect(heroTitleLink).not.toEqual('');
     });
 
     this.When(/^I should see the main hero item containing source$/, function () {
         //Verify the hero source
         var heroSource = browser.getText(home.heroSource);
-        console.log(heroSource);
-        expect(heroSource).not.toBeUndefined();
+        expect(heroSource).not.toEqual('');
     });
 
     this.When(/^The homepage hero image should be clickable to open its page$/, function () {
         var heroImgLink = browser.getAttribute(home.heroImgLink, 'href');
-        expect(heroImgLink).not.toBeUndefined();
-        console.log(heroImgLink);
+        expect(heroImgLink).not.toEqual('');
     });
 
-    this.When(/^I should see (\d+) top half feed$/, function (number) {
-        var topFeedItems = browser.elements(home.topFeedNumber).value.length;
-        console.log(topFeedItems);
-        expect(topFeedItems).toEqual(parseInt(number,10));
+    this.When(/^I should see (\d+) "([^"]*)" half feed$/, function (number, part) {
+        var feedItems_element;
+
+        switch(part) {
+            case 'top':
+                feedItems_element = home.topFeedNumber;
+                break;
+            case 'bottom':
+                feedItems_element = home.bottomFeedNumber;
+                break;
+        }
+        var feedItems = browser.elements(feedItems_element).value.length;
+        expect(feedItems).toEqual(parseInt(number,10));
     });
 
-    this.When(/^I should see each top feed item containing its image and clickable to open its page$/, function () {
+    this.When(/^I should see a "([^"]*)" feed item containing its image and clickable to open its page$/, function (part) {
+        var feedTeaserImg_element, feedTeaserImgLink_element, i;
+
+        switch(part) {
+            case 'top':
+                feedTeaserImg_element = home.topFeedTeaserImg;
+                feedTeaserImgLink_element = home.topFeedTeaserImgLink;
+                i = 4; //Test the 5th item which is array no.4
+                break;
+            case 'bottom':
+                feedTeaserImg_element = home.bottomFeedTeaserImg;
+                feedTeaserImgLink_element = home.bottomFeedTeaserImgLink;
+                i = 6; //Test the 7th item which is array no.6
+                break;
+        }
+
         //verify images of all teasers
-        console.log(browser.elements(home.topFeedTeaserImg).value.length);
-        var topFeedTeaserImgUrl = browser.getAttribute(home.topFeedTeaserImg,'data-srcset');
-        var topFeedTeaserImgLink = browser.getAttribute(home.topFeedTeaserImgLink,'href');
-        for (var i=0; i<topFeedTeaserImgUrl.length; i++){
-            console.log( i + ":" + topFeedTeaserImgUrl[i] + " => " + topFeedTeaserImgLink[i]);
-            validateImageURL(topFeedTeaserImgUrl[i]);
-            expect(topFeedTeaserImgLink[i]).not.toEqual('');
-        }
+        var feedTeaserImgUrl = browser.getAttribute(feedTeaserImg_element,'data-srcset');
+        var feedTeaserImgLink = browser.getAttribute(feedTeaserImgLink_element,'href');
+        validateImageURL(feedTeaserImgUrl[i]);
+        expect(feedTeaserImgLink[i]).not.toEqual('');
     });
 
-    this.When(/^I should see each top feed item containing its title and clickable to open its page$/, function () {
+    this.When(/^I should see a "([^"]*)" feed item containing its title and clickable to open its page$/, function (part) {
+        var feedTeaserTitle_element, i;
+
+        switch(part) {
+            case 'top':
+                feedTeaserTitle_element = home.topFeedTeaserTitle;
+                i = 4; //Test the 5th item which is array no.4
+                break;
+            case 'bottom':
+                feedTeaserTitle_element = home.bottomFeedTeaserTitle;
+                i = 6; //Test the 7th item which is array no.6
+                break;
+        }
+
         //verify titles of all teasers
-        console.log(browser.elements(home.topFeedTeaserTitle).value.length);
-        var topFeedTeaserTitle = browser.getText(home.topFeedTeaserTitle);
-        var topFeedTeaserTitleLink = browser.getAttribute(home.topFeedTeaserTitle,'href');
-        for (var i=0; i<topFeedTeaserTitle.length; i++){
-            console.log( i + ":" + topFeedTeaserTitle[i] + " => " + topFeedTeaserTitleLink[i]);
-            expect(topFeedTeaserTitle[i]).not.toEqual('');
-            expect(topFeedTeaserTitleLink[i]).not.toEqual('');
-        }
+        var feedTeaserTitle = browser.getText(feedTeaserTitle_element);
+        var feedTeaserTitleLink = browser.getAttribute(feedTeaserTitle_element,'href');
+        expect(feedTeaserTitle[i]).not.toEqual('');
+        expect(feedTeaserTitleLink[i]).not.toEqual('');
     });
 
-    this.When(/^I should see each top feed item containing source and date$/, function () {
+    this.When(/^I should see a "([^"]*)" feed item containing source and date$/, function (part) {
+        var feedTeaserSource_element, i;
+
+        switch(part) {
+            case 'top':
+                feedTeaserSource_element = home.topFeedTeaserSource;
+                i = 4; //Test the 5th item which is array no.4
+                break;
+            case 'bottom':
+                feedTeaserSource_element = home.bottomFeedTeaserSource;
+                i = 6; //Test the 7th item which is array no.6
+                break;
+        }
+
         //verify sources of all teasers
-        console.log(browser.elements(home.topFeedTeaserSource).value.length);
-        var topFeedTeaserSource = browser.getText(home.topFeedTeaserSource);
-        for (var i=0; i<topFeedTeaserSource.length; i++){
-            var valueSourceDate = topFeedTeaserSource[i].split("|");
-            console.log( i + ":Source:" + valueSourceDate[0]);
-            //validate the source
-            expect(valueSourceDate[0]).not.toEqual('');
-            if (i != 0 && i != 5){ //Skip the polar ad spot as no date is required
-                console.log( i + ":Date:" + valueSourceDate[1]);
-                //validate the date
-                expect(valueSourceDate[1]).not.toEqual('');
-                expect(valueSourceDate[1]).not.toMatch('ago');
-                expect(valueSourceDate[1]).toEqual(valueSourceDate[1].toUpperCase());
-            }
-        }
-    });
-
-    this.When(/^I should see (\d+) bottom half feed$/, function (number) {
-        var bottomFeedItems = browser.elements(home.bottomFeedNumber).value.length;
-        console.log(bottomFeedItems);
-        expect(bottomFeedItems).toEqual(parseInt(number,10));
-    });
-
-    this.When(/^I should see each bottom feed item containing its image and clickable to open its page$/, function () {
-        //verify images of all teasers
-        console.log(browser.elements(home.bottomFeedTeaserImg).value.length);
-        var bottomFeedTeaserImgUrl = browser.getAttribute(home.bottomFeedTeaserImg,'data-srcset');
-        var bottomFeedTeaserImgLink = browser.getAttribute(home.bottomFeedTeaserImgLink,'href');
-        for (var i=0; i<bottomFeedTeaserImgUrl.length; i++){
-            console.log( i + ":" + bottomFeedTeaserImgUrl[i] + " => " + bottomFeedTeaserImgLink[i]);
-            validateImageURL(bottomFeedTeaserImgUrl[i]);
-            expect(bottomFeedTeaserImgLink[i]).not.toEqual('');
-        }
-    });
-
-    this.When(/^I should see each bottom feed item containing its title and clickable to open its page$/, function () {
-        //verify titles of all teasers
-        console.log(browser.elements(home.bottomFeedTeaserTitle).value.length);
-        var bottomFeedTeaserTitle = browser.getText(home.bottomFeedTeaserTitle);
-        var bottomFeedTeaserTitleLink = browser.getAttribute(home.bottomFeedTeaserTitle,'href');
-        for (var i=0; i<bottomFeedTeaserTitle.length; i++){
-            console.log( i + ":" + bottomFeedTeaserTitle[i] + " => " + bottomFeedTeaserTitleLink[i]);
-            expect(bottomFeedTeaserTitle[i]).not.toEqual('');
-            expect(bottomFeedTeaserTitleLink[i]).not.toEqual('');
-        }
-    });
-
-    this.When(/^I should see each bottom feed item containing source and date$/, function () {
-        //verify sources of all teasers
-        console.log(browser.elements(home.bottomFeedTeaserSource).value.length);
-        var bottomFeedTeaserSource = browser.getText(home.bottomFeedTeaserSource);
-        for (var i=0; i<bottomFeedTeaserSource.length; i++){
-            var valueSourceDate = bottomFeedTeaserSource[i].split("|");
-            console.log( i + ":Source:" + valueSourceDate[0]);
-            //validate the source
-            expect(valueSourceDate[0]).not.toEqual('');
-            if (i != 1 && i != 5){ //Skip the polar ad spot as no date is required
-                console.log( i + ":Date:" + valueSourceDate[1]);
-                //validate the date
-                expect(valueSourceDate[1]).not.toEqual('');
-                expect(valueSourceDate[1]).not.toMatch('ago');
-                expect(valueSourceDate[1]).toEqual(valueSourceDate[1].toUpperCase());
-            }
-        }
+        var feedTeaserSource = browser.getText(feedTeaserSource_element);
+        var valueSourceDate = feedTeaserSource[i].split("|");
+        //validate the source
+        expect(valueSourceDate[0]).not.toEqual('');
+        //validate the date
+        expect(valueSourceDate[1]).not.toEqual('');
     });
 
     this.When(/^I should see must read header as "([^"]*)"$/, function (name) {
@@ -155,26 +133,10 @@ module.exports = function(){
 
         //validate image and title and their links
         for (var i=0; i<number; i++){
-            console.log( i + ":" + mustreadImage[i] + " => " + mustreadTitle[i] + " => " + mustreadImageLink[i]);
             validateImageURL(mustreadImage[i]);
             expect(mustreadImageLink[i]).not.toEqual('');
             expect(mustreadTitle[i]).not.toEqual('');
             expect(mustreadTitleLink[i]).toEqual(mustreadImageLink[i]);
-        }
-    });
-
-    this.Then(/^I should see each must read items containing gtm$/, function(dataTable){
-        var rows = dataTable.hashes();
-
-        //find elements
-        var mustreadImageGTM = browser.getAttribute(home.mustreadImageLink,'class');
-        var mustreadTitleGTM = browser.getAttribute(home.mustreadTitle,'class');
-
-        //validate gtm name
-        for (var i = 0; i < mustreadImageGTM.length; ++i) {
-            var row = rows[i];
-            expect(mustreadImageGTM[i]).toMatch(row['gtm']);
-            expect(mustreadTitleGTM[i]).toMatch(row['gtm']);
         }
     });
 
@@ -199,7 +161,6 @@ module.exports = function(){
 
         //validate image and title and their links
         for (var i=0; i<number; i++){
-            console.log( i + ":" + promotedImage[i] + " => " + promotedTitle[i] + " => " + promotedImageLink[i]);
             validateImageURL(promotedImage[i]);
             expect(promotedImageLink[i]).not.toEqual('');
             expect(promotedTitle[i]).not.toEqual('');

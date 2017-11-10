@@ -7,13 +7,13 @@ Feature: Specific value for NZ NTL
         When I switch to "desktop" view
         Given I am currently viewing the homepage
         * I can navigate to all sites in the desktop list on the header
-            |title                              |url                    |gtm                    |
-            |New Zealand Woman's Weekly         |/nz-womans-weekly      |gtm-uniheader-nzww     |
-            |Woman's Day                        |/womans-day            |gtm-uniheader-nzwd     |
-            |The Australian Women's Weekly      |/australianwomensweekly|gtm-uniheader-awwnz    |
-            |NEXT                               |/next                  |gtm-uniheader-next     |
-            |Good Health Choices                |/good-health-choices   |gtm-uniheader-nzgh     |
-            |Simply You                         |/simply-you            |gtm-uniheader-simply   |
+            |title                              |url                    |
+            |New Zealand Woman's Weekly         |/nz-womans-weekly      |
+            |Woman's Day                        |/womans-day            |
+            |The Australian Women's Weekly      |/australianwomensweekly|
+            |NEXT                               |/next                  |
+            |Good Health Choices                |/good-health-choices   |
+            |Simply You                         |/simply-you            |
 
     Scenario: I can see the brand logos in the hamburger menu
         Given I switch to "mobile" view
@@ -83,14 +83,14 @@ Feature: Specific value for NZ NTL
     Scenario: Verify the sign-up URL on homepage
         Given I switch to "mobile" view
         When I am currently viewing the homepage
-        Then I should see the sign up button containing "http://www.nowtolove.co.nz/now-nz-newsletter" url and "gtm-subs-homepage" gtm in "mobile" view
+        Then I should see the sign up button containing "http://www.nowtolove.co.nz/now-nz-newsletter" url in "mobile" view
 
 
     @BXMA-482
     Scenario Outline: Verify the sign-up URL on <page> brand landing page in mobile view
         Given I switch to "mobile" view
         When I am currently viewing "<page>"
-        Then I should see the sign up button containing "<link>" url and "gtm-subs-brand" gtm in "mobile" view
+        Then I should see the sign up button containing "<link>" url in "mobile" view
         Examples:
             | page                    | link                                                         |
             | nz-womans-weekly/       | http://www.nowtolove.co.nz/nz-womans-weekly-newsletter       |

@@ -24,36 +24,28 @@ module.exports = function(){
         expect(valueSourceDate[1]).toBeUndefined();
     });
 
-    this.When(/^I should see each top feed item containing source without date$/, function () {
-        //verify sources of all teasers
-        console.log(browser.elements(home.topFeedTeaserSource).value.length);
-        var topFeedTeaserSource = browser.getText(home.topFeedTeaserSource);
-        for (var i=0; i<topFeedTeaserSource.length; i++){
-            var valueSourceDate = topFeedTeaserSource[i].split("|");
-            console.log( i + ":Source:" + valueSourceDate[0]);
-            console.log( i + ":Date:" + valueSourceDate[1]);
-            //validate the source
-            expect(valueSourceDate[0]).not.toEqual('');
-            //validate the date is not existing
-            expect(valueSourceDate[1]).toBeUndefined();
-        }
-    });
+    this.When(/^I should see a "([^"]*)" feed item containing source without date$/, function (part) {
+        var feedTeaserSource_element, i;
 
-    this.When(/^I should see each bottom feed item containing source without date$/, function () {
-        //verify sources of all teasers
-        console.log(browser.elements(home.bottomFeedTeaserSource).value.length);
-        var bottomFeedTeaserSource = browser.getText(home.bottomFeedTeaserSource);
-        for (var i=0; i<bottomFeedTeaserSource.length; i++){
-            var valueSourceDate = bottomFeedTeaserSource[i].split("|");
-            console.log( i + ":Source:" + valueSourceDate[0]);
-            console.log( i + ":Date:" + valueSourceDate[1]);
-            //validate the source
-            expect(valueSourceDate[0]).not.toEqual('');
-            //validate the date is not existing
-            expect(valueSourceDate[1]).toBeUndefined();
+        switch(part) {
+            case 'top':
+                feedTeaserSource_element = home.topFeedTeaserSource;
+                i = 4; //Test the 5th item which is array no.4
+                break;
+            case 'bottom':
+                feedTeaserSource_element = home.bottomFeedTeaserSource;
+                i = 6; //Test the 7th item which is array no.6
+                break;
         }
-    });
 
+        //verify sources of all teasers
+        var feedTeaserSource = browser.getText(feedTeaserSource_element);
+        var valueSourceDate = feedTeaserSource[i].split("|");
+        //validate the source
+        expect(valueSourceDate[0]).not.toEqual('');
+        //validate the date is not displaying
+        expect(valueSourceDate[1]).toBeUndefined();
+    });
 
     this.When(/^I should see the correct brand "([^"]*)" link as "([^"]*)"$/, function (element,link) {
         //Identify the element
@@ -148,27 +140,24 @@ module.exports = function(){
         }
     });
 
-    this.When(/^I should see the sign up button containing "([^"]*)" url and "([^"]*)" gtm in "([^"]*)" view$/, function (url, gtm, device) {
-        var signUpBtn, signUpBtnLink, signUpBtnClass;
+    this.When(/^I should see the sign up button containing "([^"]*)" url in "([^"]*)" view$/, function (url, device) {
+        var signUpBtn, signUpBtnLink;
 
         switch(device) {
             case 'mobile':
             case 'tablet portrait':
                 signUpBtn = brand.newsletterSignUpBtnMobile;
                 signUpBtnLink = browser.getAttribute(signUpBtn, 'href');
-                signUpBtnClass = browser.getAttribute(signUpBtn, 'class');
                 break;
             case 'desktop':
             case 'tablet landscape':
                 signUpBtn = brand.newsletterSignUpBtnDesktop;
                 signUpBtnLink = browser.getAttribute(signUpBtn, 'href');
-                signUpBtnClass = browser.getAttribute(signUpBtn, 'class');
                 break;
         }
 
         browser.scroll(signUpBtn);
         expect(browser.isVisible(signUpBtn)).toEqual(true);
         expect(signUpBtnLink).toContain(url);
-        expect(signUpBtnClass).toContain(gtm);
     });
 };

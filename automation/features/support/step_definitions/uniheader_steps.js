@@ -8,7 +8,6 @@ module.exports = function() {
 
         var brandTitle = browser.getAttribute(uniheader.uniHeader, 'title');
         var brandHref = browser.getAttribute(uniheader.uniHeader, 'href');
-        var brandGTM = browser.getAttribute(uniheader.uniHeader, 'class');
         //end
 
         for (var i = 0; i < rows.length; ++i) {
@@ -16,7 +15,6 @@ module.exports = function() {
             //validates position of menu base on Index
             expect(brandTitle[i]).toEqual(row['title']);
             expect(brandHref[i]).toMatch(row['url']);
-            expect(brandGTM[i]).toEqual(row['gtm']);
         }
     });
 };

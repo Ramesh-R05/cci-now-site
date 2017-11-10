@@ -8,14 +8,14 @@ Feature: Uniheader
         When I switch to "desktop" view
         Given I am currently viewing the homepage
         * I can navigate to all sites in the desktop list on the header
-            |title                      |url                                |gtm                  |
-            |Australian Women's Weekly  |/aww                               |gtm-uniheader-aww    |
-            |Woman's Day                |/womansday                         |gtm-uniheader-wd     |
-            |Good Health                |/good-health                       |gtm-uniheader-gh     |
-            |OK! Magazine               |/okmagazine                        |gtm-uniheader-ok     |
-            |NW                         |/nw                                |gtm-uniheader-nw     |
-            |Take 5                     |/take5mag                          |gtm-uniheader-take5  |
-            |Yours                      |/yours                             |gtm-uniheader-yours  |
-            |Mother and Baby            |/mother-and-baby                   |gtm-uniheader-mb     |
-            |TV WEEK                    |/tvweek                            |gtm-uniheader-tvweek |
-            |Prizes To Love             |/prizestolove                      |gtm-uniheader-ptl    |
+            |title                      |url                                |
+            |Australian Women's Weekly  |/aww                               |
+            |Woman's Day                |/womansday                         |
+            |Good Health                |/good-health                       |
+            |OK! Magazine               |/okmagazine                        |
+            |NW                         |/nw                                |
+            |Take 5                     |/take5mag                          |
+            |Yours                      |/yours                             |
+            |Mother and Baby            |/mother-and-baby                   |
+            |TV WEEK                    |/tvweek                            |
+            |Prizes To Love             |/prizestolove                      |

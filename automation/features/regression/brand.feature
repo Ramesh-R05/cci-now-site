@@ -7,7 +7,7 @@ Feature: Brand Landing page
     Scenario Outline: Verify the sign-up URL on <page> brand landing page in mobile view
         Given I switch to "mobile" view
         When I am currently viewing "<page>"
-        Then I should see the sign up button containing "<link>" url and "gtm-subs-brand" gtm in "mobile" view
+        Then I should see the sign up button containing "<link>" url in "mobile" view
         Examples:
             | page                  | link                                              |
             | aww/                  | //www.nowtolove.com.au/aww-newsletter             |
@@ -24,7 +24,7 @@ Feature: Brand Landing page
     Scenario Outline: Verify the sign-up URL on <page> brand landing page in <device> view
         Given I switch to "<device>" view
         When I am currently viewing "<page>"
-        Then I should see the sign up button containing "<link>" url and "gtm-subs-brand" gtm in "<device>" view
+        Then I should see the sign up button containing "<link>" url in "<device>" view
         @med
         Examples:
             | device            | page         | link                                              |
@@ -70,10 +70,10 @@ Feature: Brand Landing page
     Scenario Outline: Verify the top news feed is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "aww"
-        * I should see 6 top half feed
-        * I should see each top feed item containing its image and clickable to open its page
-        * I should see each top feed item containing its title and clickable to open its page
-        * I should see each top feed item containing source without date
+        * I should see 6 "top" half feed
+        * I should see a "top" feed item containing its image and clickable to open its page
+        * I should see a "top" feed item containing its title and clickable to open its page
+        * I should see a "top" feed item containing source without date
         @med
         Examples:
             |device|
@@ -89,10 +89,10 @@ Feature: Brand Landing page
     Scenario Outline: Verify the bottom news feed is functional correctly in "<device>" view
         Given I switch to "<device>" view
         When I am currently viewing "aww"
-        * I should see 8 bottom half feed
-        * I should see each bottom feed item containing its image and clickable to open its page
-        * I should see each bottom feed item containing its title and clickable to open its page
-        * I should see each bottom feed item containing source without date
+        * I should see 8 "bottom" half feed
+        * I should see a "bottom" feed item containing its image and clickable to open its page
+        * I should see a "bottom" feed item containing its title and clickable to open its page
+        * I should see a "bottom" feed item containing source without date
 
         Examples:
             |device|
