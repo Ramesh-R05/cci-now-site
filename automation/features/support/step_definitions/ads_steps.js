@@ -98,9 +98,16 @@ module.exports = function() {
 
     this.Then(/^I should see four MREC ads in the RHR feed$/, function () {
         browser.scroll(wn_ads.ad_MrecRhs1);
+        expect(browser.isVisible(wn_ads.ad_MrecRhs1)).toBe(true);
+
         browser.scroll(wn_ads.ad_MrecRhs2);
+        expect(browser.isVisible(wn_ads.ad_MrecRhs2)).toBe(true);
+
         browser.scroll(wn_ads.ad_MrecRhs3);
+        expect(browser.isVisible(wn_ads.ad_MrecRhs3)).toBe(true);
+
         browser.scroll(wn_ads.ad_MrecRhs4);
+        expect(browser.isVisible(wn_ads.ad_MrecRhs4)).toBe(true);
     });
 
     this.Then(/^I should see MREC ad under the hero image$/, function () {
