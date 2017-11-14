@@ -18,49 +18,26 @@ module.exports = function() {
     });
 
     this.When(/^Image in LHR is clickable to open its page$/, function () {
-        var feedImagesUrls = browser.getAttribute(wn_article.lhrFeedImgs, 'href');
-        for (var i = 0; i < feedImagesUrls.length; ++i) {
-            var indFeedImgUrl = feedImagesUrls[i];
-            console.log('image url is :'+indFeedImgUrl);
-            expect(indFeedImgUrl === '').toBe(false);
-        }
+        var indFeedImgUrl = browser.getAttribute(wn_article.lhrOneFeedImgs, 'href');
+        expect(indFeedImgUrl === '').toBe(false);
     });
 
     this.When(/^I can see the long title of each item in LHR$/, function () {
-        var feedTitles = browser.getText(wn_article.lhrFeedTitles);
-        for (var i = 0; i < feedTitles.length; ++i) {
-            var title = feedTitles[i];
-            console.log('teaser title is :'+title);
-            expect(title === '').toBe(false);
-        }
+        var feedTitle = browser.getText(wn_article.lhrFeedTitles);
+        expect(feedTitle === '').toBe(false);
     });
 
     this.When(/^Long title in LHR is clickable to open its page$/, function () {
-        var feedTitlesUrls = browser.getAttribute(wn_article.lhrFeedTitles, 'href');
-        for (var i = 0; i < feedTitlesUrls.length; ++i) {
-            var titleUrl = feedTitlesUrls[i];
-            console.log('teaser title url is :'+titleUrl);
-            expect(titleUrl === '').toBe(false);
-            expect(titleUrl === null).toBe(false);
-        }
+        var feedTitleUrl = browser.getAttribute(wn_article.lhrFeedTitles, 'href');
+        expect(feedTitleUrl === '').toBe(false);
+        expect(feedTitleUrl === null).toBe(false);
     });
 
     this.When(/^I can see each item in LHR containing source and date$/, function () {
-        //verify sources/dates of all LHR items
+        //verify sources of one LHR items
         var feedSource = browser.getText(wn_article.lhrFeedSource);
-        var feedDate = browser.getText(wn_article.lhrFeedDate);
-        for (var i=0; i<feedSource.length; i++){
-            console.log( i + ":Source:" + feedSource[i]);
-            //validate the source
-            expect(feedSource[i]).not.toEqual('');
-            if (i != 1 && i != 4 && i != 8 && i != 13){ //Skip the polar ad spot as no date is required
-                console.log( i + ":Date:" + feedDate[i]);
-                //validate the date
-                expect(feedDate[i]).not.toEqual('');
-                expect(feedDate[i]).not.toMatch('ago');
-                expect(feedDate[i]).toEqual(feedDate[i].toUpperCase());
-            }
-        }
+        //validate the source
+        expect(feedSource).not.toEqual('');
     });
 
     this.When(/^I can see the hero image$/, function () {

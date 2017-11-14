@@ -223,16 +223,13 @@ module.exports = function(){
         validatePolar(listOfItems, rows, count);
     });
 
-    this.When(/^I should see each load more feed item containing its image and clickable to open its page$/, function () {
-        //verify images of all teasers
-        console.log(browser.elements(home.loadMoreFeedTeaserImg).value.length);
+    this.When(/^I should see a load more feed item containing its image and clickable to open its page$/, function () {
+        //verify images of one teaser
         var loadMoreFeedTeaserImgUrl = browser.getAttribute(home.loadMoreFeedTeaserImg,'data-srcset');
         var loadMoreFeedTeaserImgLink = browser.getAttribute(home.loadMoreFeedTeaserImgLink,'href');
-        for (var i=0; i<loadMoreFeedTeaserImgUrl.length; i++){
-            console.log( i + ":" + loadMoreFeedTeaserImgUrl[i] + " => " + loadMoreFeedTeaserImgLink[i]);
-            validateImageURL(loadMoreFeedTeaserImgUrl[i]);
-            expect(loadMoreFeedTeaserImgLink[i]).not.toEqual('');
-        }
+        console.log(loadMoreFeedTeaserImgUrl + " => " + loadMoreFeedTeaserImgLink);
+        validateImageURL(loadMoreFeedTeaserImgUrl);
+        expect(loadMoreFeedTeaserImgLink).not.toEqual('');
     });
 
 };

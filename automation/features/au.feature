@@ -14,7 +14,7 @@ Feature: Smoke test for AU NOW
         And I should see a "bottom" feed item containing its image and clickable to open its page
         When I click on the Load More button
         Then I should see extra 14 teasers after loading more
-        And I should see each load more feed item containing its image and clickable to open its page
+        And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario Outline: Verify the <page> brand landing page
         Given I switch to "mobile" view
@@ -43,7 +43,7 @@ Feature: Smoke test for AU NOW
         And I should see a "bottom" feed item containing its image and clickable to open its page
         When I click on the Load More button
         Then I should see extra 14 teasers after loading more
-        And I should see each load more feed item containing its image and clickable to open its page
+        And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the tag landing page
         Given I switch to "mobile" view
@@ -53,7 +53,7 @@ Feature: Smoke test for AU NOW
         And I should see a "bottom" feed item containing its image and clickable to open its page
         When I click on the Load More button
         Then I should see extra 14 teasers after loading more
-        And I should see each load more feed item containing its image and clickable to open its page
+        And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the article page
         Given I switch to "desktop" view

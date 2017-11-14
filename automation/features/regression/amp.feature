@@ -13,7 +13,7 @@ Feature: Verify AMP page
             * I can see the short teaser "Short Teaser EOM"
             * I can see the created date "FEB 12, 2016"
             * I can see the amp hero image
-            * I can see the body paragraph "test paragraph 1"
+            * I can see the body paragraph "Test body paragraph"
             * I can see the amp body image
             * I can see the amp body image caption "Photography by"
             * I can see the amp body video
@@ -34,7 +34,7 @@ Feature: Verify AMP page
     @article @ad @high
     Scenario: Ads slot elements should have proper class name on AMP article page
         Given I switch to "mobile" view
-        And I am currently viewing "amp/news/latest-news/tony-abbott-says-climate-change-good-thing-41699"
+        And I am currently viewing "amp/news/latest-news/tony-abbott-says-climate-change-good-thing-41200"
         * I should see the top leaderboard ad under hero image on AMP page
         * I should see first MREC in the body on AMP page
         * I should see second MREC in the body on AMP page

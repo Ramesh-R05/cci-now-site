@@ -31,7 +31,7 @@ export default function assetProxy({ originalUrl }, res) {
                 if (cacheControl) {
                     const maxAge = cacheControl.match(/max-age=(\d+)/i);
                     if (maxAge && !!maxAge.length) {
-                        cache.set(origin, {header, status, text, body}, 1000 * parseInt(maxAge[1], 10));
+                        cache.set(origin, { header, status, text, body }, 1000 * parseInt(maxAge[1], 10));
                     }
                 }
                 send(res, header, status, text, body);

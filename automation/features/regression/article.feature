@@ -61,7 +61,7 @@ Feature: Article
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the long title "Automation Test Article With Hero Image Test Title Long Title"
         * I can see the short teaser "Short Teaser EOM"
-        * I can see the body paragraph "test paragraph 1"
+        * I can see the body paragraph "Test body paragraph"
         * I can see the body related content
         * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
         * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"

@@ -149,8 +149,12 @@ export default function stubServer(siteServer, siteConfig) {
                     ampArticle = require('../../automation/test_data/pages/article_hero_image').default;
                     res.body = ampArticle;
                     break;
+                case '41200':
+                    ampArticle = require('../../automation/test_data/pages/amp_article_multiple_paragraphs').default;
+                    res.body = ampArticle;
+                    break;
                 case '3663':
-                    ampArticle = require('../../automation/test_data/pages/article_social_embeds').default;
+                    ampArticle = require('../../automation/test_data/pages/amp_article_social_embeds').default;
                     res.body = ampArticle;
                     break;
             }

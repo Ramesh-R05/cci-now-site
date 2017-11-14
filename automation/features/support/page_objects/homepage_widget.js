@@ -33,7 +33,7 @@ var homepage_widget = {
     topTeasers: '.teaser-view-grid .teaser__list-item article',
     bottomTeasers: '.teaser-view-list .teaser__list-item article',
     loadMoreFeed: '.repeatable-component div:nth-child(2) article',
-    loadMoreFeedTeaserImg: '.repeatable-component div:nth-child(2) article .teaser__image img',
-    loadMoreFeedTeaserImgLink: '.repeatable-component div:nth-child(2) article .teaser__image'
+    loadMoreFeedTeaserImg: '.repeatable-component div:nth-child(2) li.teaser__list-item:nth-child(1) article .teaser__image img',
+    loadMoreFeedTeaserImgLink: '.repeatable-component div:nth-child(2) li.teaser__list-item:nth-child(1) article .teaser__image'
 };
 module.exports = homepage_widget;
