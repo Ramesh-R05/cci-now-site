@@ -209,8 +209,8 @@ jobs:
       - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "6.1.0"
-        - script: nvm use "6.1.0"
+        - script: nvm install "6.2.2"
+        - script: nvm use "6.2.2"
         - script: cd ./IN/now-site-repo/gitRepo/src
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: yarn
