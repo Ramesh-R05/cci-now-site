@@ -34,7 +34,7 @@ Feature: Gallery
         Given I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
         * I can see the gallery title containing "Automation Test Gallery"
         * I can see an image appearing on the gallery
-        * I can see the image number "1" of total "8" on the gallery
+        * I can see the image number "1" on the gallery
         * I can see the image caption on the gallery containing "Fresh-faced beauty"
 
     @low
