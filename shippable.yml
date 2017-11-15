@@ -1,7 +1,7 @@
 # language setting
 build_environment: Ubuntu 12.04
 language: node_js
-node_js: "6.11.1"
+node_js: "8.9.1"
 
 env:
   global:
@@ -18,7 +18,7 @@ build:
     - npm set @bxm:registry http://npm.digital.bauer-media.net.au
     - mkdir -p ./shippable/testresults ./shippable/codecoverage ./shippable/buildoutput
     - cd src
-    - yarn
+    - npm install
     - echo "module.exports={buildNumber:'$BRANCH_NAME'};" > version.js
     - cat version.js
     - npm run test:ci

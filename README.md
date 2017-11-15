@@ -36,8 +36,8 @@ Sets debug mode to output extra logs. Also wraps the start function in a try/cat
 
 Example:
 
-- `APP_DEBUG=true yarn start` Sets winston-logger debug level logs.
-- `APP_DEBUG=silly yarn start` Sets winston-logger silly level logs.
+- `APP_DEBUG=true npm start` Sets winston-logger debug level logs.
+- `APP_DEBUG=silly npm start` Sets winston-logger silly level logs.
 
 ### `APP_STUBBED`
 
@@ -45,7 +45,7 @@ Loads data from local stubs, does not use content services. Use with start or de
 
 Example:
 
-- `APP_STUBBED=true yarn start`
+- `APP_STUBBED=true npm start`
 
 ### `APP_REGION`
 
@@ -53,7 +53,7 @@ Sets the region. Used by config loader to load region specific config.
 
 Example:
 
-- `APP_REGION=nz yarn start` loads the NZ NTL site
+- `APP_REGION=nz npm start` loads the NZ NTL site
 
 ## Run Scripts
 
@@ -175,4 +175,3 @@ The Backend For Frontend is a place to aggregate data for the site. How it works
 ### BFF APIs
 
 - integrates with remote services
- 
