@@ -28,7 +28,7 @@
 .header {
     @include mobile-menu-fixed();
     border-width: 0px;
-    background-color: $color-aqua;
+    background-color: #dedede;
     box-shadow: none;
 
     @media #{$medium-up} {
@@ -72,9 +72,11 @@
     }
 
     .header-logo__link-image {
+        background-image: url(/assets/logos/yes-to-love.svg);
         background-size: 207px 20px;
         height: 20px;
         width: 207px;
+        margin-top: 5px;
 
         @media #{$medium-up} {
             background-size: $header-logo-width-desktop 27px;
@@ -144,7 +146,7 @@
         @media #{$medium-up} {
 
             &:before {
-                border-left: 1px solid $color-white;
+                border-left: 1px solid #000;
                 height: 22px;
                 right: 10px;
                 top: 8px;
@@ -154,7 +156,7 @@
 
         a {
             @include menu-hover;
-            color: $color-white;
+            color: #000;
             display: inline-block;
             font-size: 15px;
             letter-spacing: 1.2px;
@@ -165,7 +167,7 @@
             &:focus,
             &:hover,
             &.nav-item--active {
-                color: $color-white;
+                color: #000;
             }
 
             @media #{$xlarge-up} {
