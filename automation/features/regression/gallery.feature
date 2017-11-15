@@ -57,7 +57,7 @@ Feature: Gallery
         * I can see the source appearing on the gallery with gtm "gtm-brandlogotop-article"
         * I can see the gallery description of the gallery containing "Test the second paragraph"
         * I can see the author "EMILY JABOUR" on the gallery
-        * I can see the image number "1" of total "8" on the gallery
+        * I can see the image number "1" on the gallery
         * I can see the image caption on the gallery containing "Fresh-faced beauty"
         When I see the video ID "5066382704001" on the gallery
         * I can see the play button and click on it

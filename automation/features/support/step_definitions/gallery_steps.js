@@ -79,6 +79,12 @@ module.exports = function() {
         console.log(imageCount[0]);
     });
 
+    this.Given(/^I can see the image number "([^"]*)" on the gallery$/, function(num) {
+        var imageCountIndex = browser.getText('.gallery__feed-item:nth-child(' + num +') .gallery__item-index');
+        console.log(imageCountIndex);
+        expect(imageCountIndex).toEqual(num);
+    });
+
     this.Given(/^I can see the image caption on the gallery containing "([^"]*)"$/, function(caption) {
         browser.waitForVisible(gallery.imgCaption);
         var imgCaption = browser.getText(gallery.imgCaption);
