@@ -95,17 +95,17 @@ resources:
     seed:
       interval: "0 19 * * *"
 
-  #"0 19 * * 1" is 7:00pm Monday which is Tuesday morning in Sydney
+  #"30 22 * * 1" is 10:30pm Monday which is Tuesday morning 9:30am daylight saving or 8:30am standard time in Sydney
   - name: now-weekly-trigger
     type: time
     seed:
-      interval: "0 19 * * 1"
+      interval: "30 22 * * 1"
 
-  #"0 19 * * 3" is 7:00pm Wednesday which is Thursday morning in Sydney
+  #"30 22 * * 3" is 10:30pm Wednesday which is Thursday morning 9:30am daylight saving or 8:30am standard time in Sydney
   - name: nznow-weekly-trigger
     type: time
     seed:
-      interval: "0 19 * * 3"
+      interval: "30 22 * * 3"
 
   ####################################
   # NON PROD environment configuration
