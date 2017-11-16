@@ -41,12 +41,6 @@ Feature: Footer
             |Twitter    |https://twitter.com/NowToLove          |
             |Instagram  |https://www.instagram.com/NowToLove   |
         * I can see the brands title in the footer as "CONTENT SUPPORTED BY"
-        * I can navigate to all standard pages in the footer
-            |page           |url                                                            |
-            |PRIVACY POLICY |http://www.bauer-media.com.au/privacy                          |
-            |ADVERTISE      |http://www.bauer-media.com.au/advertising/advertise-with-us    |
-            |TERMS OF USE   |http://www.bauer-media.com.au/terms/website-terms              |
-            |CONTACT US     |contact-us                                                     |
         * I can see the standard copyright text in the footer as "COPYRIGHT BAUER MEDIA PTY LTD ALL RIGHTS RESERVED"
         Examples:
             |device            |

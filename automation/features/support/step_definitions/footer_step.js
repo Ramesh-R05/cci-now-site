@@ -45,22 +45,6 @@ module.exports = function() {
         }
     });
 
-    this.Given(/^I can navigate to all standard pages in the footer$/, function (dataTable) {
-        var rows = dataTable.hashes();
-
-        //below captures the array of menu items to validate against the table
-        var pageTitle = browser.getText(footer.footerStandardPage);
-        var pageLink = browser.getAttribute(footer.footerStandardPage, 'href');
-        //end
-
-        for (var i = 0; i < rows.length; ++i) {
-            var row = rows[i];
-            //validates position of standard page base on Index including their url
-            expect(pageTitle[i]).toEqual(row['page']);
-            expect(pageLink[i]).toMatch(row['url']);
-        }
-    });
-
     this.Given(/^I can see the standard copyright text in the footer as "([^"]*)"$/, function (text) {
         //Validate the copyright text is correct
         expect(browser.getText(footer.footerElementCopyright)).toContain(text)
