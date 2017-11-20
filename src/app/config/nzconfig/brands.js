@@ -8,7 +8,7 @@ export default {
         socialLinks: {
             facebook: 'https://www.facebook.com/nzwomansweekly',
             twitter: 'https://twitter.com/nzwomansweekly',
-            instagram: 'https://www.instagram.com/nzwomansweekly'
+            instagram: 'https://www.instagram.com/newzealandwomansweekly'
         },
         newsletterUrl: '//www.nowtolove.co.nz/nz-womans-weekly-newsletter'
     }, {
