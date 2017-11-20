@@ -116,7 +116,7 @@ jobs:
         - script: nvm install "6.1.0"
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://now-site.test.bxm.net.au/
         - script: npm run test:high || true
@@ -141,7 +141,7 @@ jobs:
         - script: nvm install "6.1.0"
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: rm -rf node_modules/chimp/dist/lib/cucumberjs/hooks.js
         - script: cp features/support/files/chimp_hooks.backup node_modules/chimp/dist/lib/cucumberjs/hooks.js
@@ -164,7 +164,7 @@ jobs:
         - script: nvm install "6.1.0"
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://now-site-nz.sit.bxm.net.au/
         - script: npm run test:nzlow || true
@@ -188,7 +188,7 @@ jobs:
         - script: nvm install "6.1.0"
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=https://www.sit.nowtolove.com.au/
         - script: npm run sit:au || true
@@ -291,7 +291,7 @@ jobs:
         - script: nvm install "6.1.0"
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://now-site.test.bxm.net.au/
         - script: APP_KEY=now-site npm run test:phantom || true
@@ -314,7 +314,7 @@ jobs:
         - script: nvm install "6.1.0"
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://cms.dev.now.wn.bauer-media.net.au/cms/umbraco/
         - script: APP_KEY=now-site npm run test:cms || true
@@ -336,7 +336,7 @@ jobs:
         - script: nvm install "6.1.0"
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm set registry http://npm.digital.bauer-media.net.au
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://cms.dev.nznow.wn.bauer-media.net.au/cms/umbraco/
         - script: APP_KEY=nznow-site npm run test:cms || true
