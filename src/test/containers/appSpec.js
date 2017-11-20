@@ -1,7 +1,7 @@
-import {betterMockComponentContext, connectToStores} from '@bxm/flux';
+import { betterMockComponentContext, connectToStores } from '@bxm/flux';
 const Context = betterMockComponentContext();
-const {React, ReactDOM, TestUtils} = Context;
-import proxyquire, {noCallThru} from 'proxyquire';
+const { React, ReactDOM, TestUtils } = Context;
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 const ErrorStub = Context.createStubComponent();
 const platformStub = {
@@ -31,6 +31,14 @@ describe('App Component', () => {
         themeAlignment: 'center'
     };
     let error = null;
+
+    const contextConfigStub = {
+        key: 'config',
+        type: '',
+        value: {
+            site: {}
+        }
+    };
 
     Context.addStore('PageStore', {
         getErrorStatus() {
@@ -66,7 +74,7 @@ describe('App Component', () => {
     describe(`when error is not defined`, () => {
         beforeEach(() => {
             platformStub.set = sinon.stub();
-            reactModule = Context.mountComponent(App, {currentRoute});
+            reactModule = Context.mountComponent(App, { currentRoute }, [contextConfigStub]);
             HandlerComponent = TestUtils.findRenderedComponentWithType(reactModule, Handler);
             ErrorComponent = TestUtils.scryRenderedComponentsWithType(reactModule, ErrorStub)
         });
@@ -83,7 +91,7 @@ describe('App Component', () => {
     describe(`when the error is defined`, () => {
         beforeEach(() => {
             error = {status: 404};
-            reactModule = Context.mountComponent(App, {currentRoute});
+            reactModule = Context.mountComponent(App, { currentRoute }, [contextConfigStub]);
             HandlerComponent = TestUtils.scryRenderedComponentsWithType(reactModule, Handler);
             ErrorComponent = TestUtils.findRenderedComponentWithType(reactModule, ErrorStub)
         });
@@ -102,6 +110,28 @@ describe('App Component', () => {
 
         it(`should not render the Handler Component`, () => {
             expect(HandlerComponent.length).to.eq(0);
+        });
+    });
+
+    describe('when region is NZ', () => {
+        beforeEach(() => {
+            const contextConfigStub = {
+                key: 'config',
+                type: '',
+                value: {
+                    site: {
+                        region: 'nz'
+                    }
+                }
+            };
+            reactModule = Context.mountComponent(App, { currentRoute }, [contextConfigStub]);
+            HandlerComponent = TestUtils.findRenderedComponentWithType(reactModule, Handler);
+            ErrorComponent = TestUtils.scryRenderedComponentsWithType(reactModule, ErrorStub)
+        });
+
+        it(`should render with className 'region--nz'`, () => {
+            const comp = TestUtils.scryRenderedDOMComponentsWithClass(reactModule, 'region--nz');
+            expect(ReactDOM.findDOMNode(comp[0])).to.exist;
         });
     });
 });

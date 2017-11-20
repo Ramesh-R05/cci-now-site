@@ -30,8 +30,15 @@ class Application extends Component {
 
     static contextTypes = {
         getStore: PropTypes.func,
-        executeAction: PropTypes.func
+        executeAction: PropTypes.func,
+        config: PropTypes.object
     };
+
+    constructor(props, context) {
+        super(props, context);
+
+        this.region = context.config.site.region;
+    }
 
     componentDidMount() {
         // Temp added here due to unforseen update of versions when updating react.
@@ -65,8 +72,9 @@ class Application extends Component {
         const Handler = this.props.currentRoute.handler;
 
         const className = canUseDOM ? '' : 'no-js';
+        const regionClassName = this.region ? `region--${this.region}` : '';
         return (
-            <div className={className}>
+            <div className={`${className} ${regionClassName}`}>
                 <Handler
                   currentUrl={this.props.currentRoute.url}
                   nodeType={this.props.nodeType}

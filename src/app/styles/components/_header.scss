@@ -24,6 +24,38 @@
     }
 }
 
+.region--nz {
+    .header {
+        background-color: $color-aqua;
+
+        .header-logo__link-image {
+            background-image: url(/assets/logos/header-logo.svg);
+            margin-top: 0;
+        }
+
+        .header-nav {
+
+            @media #{$medium-up} {
+
+                &:before {
+                    border-left: 1px solid $color-white;
+                }
+            }
+
+            a {
+                color: $color-white;
+
+                &:active,
+                &:focus,
+                &:hover,
+                &.nav-item--active {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+}
+
 // Header styles for all header types
 .header {
     @include mobile-menu-fixed();
