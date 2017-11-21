@@ -68,22 +68,22 @@ jobs:
         deployMethod: replace
 
   # 3b. NZ SIT deployment for MASTER
-  - name: nz-now-site-sit-deploy-master
-    type: deploy
-    always:
-      - NOTIFY: now-slack-notifications
-    steps:
-      - IN: now-site-man-master # for master - auto deploy to SIT
-        switch: on
-      - IN: env-sit-ecs
-      - IN: now-site-nz-params-sit
-      - IN: nz-now-site-alb-sit
-        applyTo:
-          - manifest: now-site-man-master
-            image: now-site-img-master
-            port: 3001
-      - TASK: managed
-        deployMethod: replace
+  #- name: nz-now-site-sit-deploy-master
+  #  type: deploy
+  #  always:
+  #    - NOTIFY: now-slack-notifications
+  #  steps:
+  #    - IN: now-site-man-master # for master - auto deploy to SIT
+  #      switch: on
+  #    - IN: env-sit-ecs
+  #    - IN: now-site-nz-params-sit
+  #    - IN: nz-now-site-alb-sit
+  #      applyTo:
+  #        - manifest: now-site-man-master
+  #          image: now-site-img-master
+  #          port: 3001
+  #    - TASK: managed
+  #      deployMethod: replace
 
   # 3c. TEST deployment for MASTER - stubbed
   - name: now-site-test-deploy-master
