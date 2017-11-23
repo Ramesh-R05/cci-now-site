@@ -201,6 +201,9 @@ export default {
     features: {
         outbrain: {
             enabled: true
+        },
+        outbrainAmp: {
+            enabled: true
         }
     },
     outbrain: {

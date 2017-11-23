@@ -13,11 +13,11 @@ var amp_widget = {
     ampFacebookEmb: 'amp-facebook',
     ampYoutubeEmb: 'amp-youtube > iframe',
     ampVimeoEmb: 'amp-vimeo > iframe',
-
+    ampOutBrain: 'amp-embed[type=outbrain] iframe',
     // For Ads
     ampTopLeaderBoard: 'amp-ad.ad-top-leaderboard',
     ampMrecList: '.content-body-container .content-body__ad amp-ad',
-    ampBottomLeaderboard: 'amp-sticky-ad>amp-ad'
+    ampBottomLeaderboard: 'amp-sticky-ad>amp-ad',
 
 };
 

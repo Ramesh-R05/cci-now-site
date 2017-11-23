@@ -105,11 +105,18 @@ module.exports = function() {
     });
 
     this.Then(/^I should see the sticky bottom leaderboard on AMP page$/, function () {
-        wait(5000); //wait 2 seconds to let sticky ad load
+        wait(5000);
         browser.scroll(0,500);
         expect(browser.isVisible(amp.ampBottomLeaderboard)).toBe(true);
         browser.scroll(0,1000);
         expect(browser.isVisible(amp.ampBottomLeaderboard)).toBe(true);
     });
 
+    this.Then(/^I can see the outbrain on amp article page$/, function () {
+        wait(5000);
+        browser.scroll(0,500);
+        expect(browser.isVisible(amp.ampOutBrain)).toBe(true);
+        browser.scroll(0,1000);
+        expect(browser.isVisible(amp.ampOutBrain)).toBe(true);
+    });
 };
