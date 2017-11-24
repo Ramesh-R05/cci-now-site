@@ -176,4 +176,3 @@ The Backend For Frontend is a place to aggregate data for the site. How it works
 
 - integrates with remote services
 
-# Need to trigger pipeline
