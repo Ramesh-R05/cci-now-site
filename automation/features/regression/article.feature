@@ -26,12 +26,12 @@ Feature: Article
         * I can see the hero image
         * I should not see the hero image caption
         * I can see the image alt text in the hero image element "Image ALT TEXT"
-        @med
+    @med
         Examples:
             | device            |
             | mobile            |
             | desktop           |
-        @low
+    @low
         Examples:
             | device            |
             | tablet portrait   |
@@ -62,18 +62,15 @@ Feature: Article
         * I can see the long title "Automation Test Article With Hero Image Test Title Long Title"
         * I can see the short teaser "Short Teaser EOM"
         * I can see the body paragraph "Test body paragraph"
-        * I can see the body related content
-        * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
-        * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
-        @high
+    @high
         Examples:
             | device            |
             | mobile            |
-        @med
+    @med
         Examples:
             | device            |
             | desktop           |
-        @low
+    @low
         Examples:
             | device            |
             | tablet portrait   |
@@ -90,13 +87,12 @@ Feature: Article
         * I can see the body video
         * I can see the body competition
         * I can see the related tags "Gossip Girl," "Dolly Doctor"
-        * I can see the "bottom" source appearing with gtm "gtm-brandlogobottom-article"
-        @med
+    @med
         Examples:
             | device            |
             | mobile            |
             | desktop           |
-        @low
+    @low
         Examples:
             | device            |
             | tablet portrait   |
@@ -109,8 +105,7 @@ Feature: Article
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the body gallery
         * I can see the body tips "body tips body tips EOM"
-        * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
-        @low
+    @low
         Examples:
             | device            |
             | mobile            |
@@ -129,26 +124,15 @@ Feature: Article
         * I can see the long title of each item in LHR
         * Long title in LHR is clickable to open its page
         * I can see each item in LHR containing source and date
-        @high
+    @high
         Examples:
             | device            |
             | desktop           |
-        @low
+    @low
         Examples:
             | device            |
             | tablet landscape  |
 
-    #-- test cases to validate something is not present are low
-    @low
-    Scenario Outline: Verify LHR on different screen sizes "<device>"
-        Given I switch to "<device>" view
-        When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
-        * I should not see the LHR
-        Examples:
-            | device            |
-            | tablet portrait   |
-            | mobile            |
-#-------- LHR end ---------------#
 
 # -------- Social share is Medium as this Helps recirculate users ---------------#
     Scenario Outline: Verify the share buttons on an article page in "<device>" view
@@ -156,12 +140,12 @@ Feature: Article
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the facebook share button on article page
         * I can see the pinterest share button on article page
-        @med
+    @med
         Examples:
             | device            |
             | mobile            |
             | desktop           |
-        @low
+    @low
         Examples:
             | device            |
             | tablet portrait   |
@@ -170,28 +154,28 @@ Feature: Article
 
 # -------- Social embed is Medium ---------------#
     Scenario Outline: Editorial team can add social feeds to the article body
-         Given I switch to "<device>" view
-         When I am currently viewing "fashion/red-carpet/automation-test-article-with-social-embed-3663"
-         Then I can see the body Twitter embed "697199025729048577"
-         * I can see the body Instagram embed with caption "https://www.instagram.com/p/BBda49yyr4J/embed/captioned/"
-         * I can see the body Instagram embed without caption "https://www.instagram.com/p/BA4NkZeSr_r/embed/"
-         * I can see the body Facebook embed "https://www.facebook.com/Foodtoloveau/posts/823515874446034"
-         * I can see the body Playbuzz embed "/cosmopolitanmagazine10/which-harry-styles-is-your-boyfriend"
-         * I can see the body Youtube embed "https://www.youtube.com/embed/4GpnNxjy6m0"
-         * I can see the body Vimeo embed "https://player.vimeo.com/video/181027959"
-         * I can see the body Whooshka embed "https://www.whooshkaa.com/player/episode/id/90704?visual=true"
-         * I can see the body Wirewax embed "https://embed.wirewax.com/8037657/ff0044/"
-         * I can see the body Linklay embed "//www.linklay.com/app/linklay/embed/linklay59151f750e2a94.81058944"
-        @med
-         Examples:
-             | device            |
-             | mobile            |
-             | desktop           |
-        @low
-         Examples:
-             | device            |
-             | tablet portrait   |
-             | tablet landscape  |
+        Given I switch to "<device>" view
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-social-embed-3663"
+        Then I can see the body Twitter embed "697199025729048577"
+        * I can see the body Instagram embed with caption "https://www.instagram.com/p/BBda49yyr4J/embed/captioned/"
+        * I can see the body Instagram embed without caption "https://www.instagram.com/p/BA4NkZeSr_r/embed/"
+        * I can see the body Facebook embed "https://www.facebook.com/Foodtoloveau/posts/823515874446034"
+        * I can see the body Playbuzz embed "/cosmopolitanmagazine10/which-harry-styles-is-your-boyfriend"
+        * I can see the body Youtube embed "https://www.youtube.com/embed/4GpnNxjy6m0"
+        * I can see the body Vimeo embed "https://player.vimeo.com/video/181027959"
+        * I can see the body Whooshka embed "https://www.whooshkaa.com/player/episode/id/90704?visual=true"
+        * I can see the body Wirewax embed "https://embed.wirewax.com/8037657/ff0044/"
+        * I can see the body Linklay embed "//www.linklay.com/app/linklay/embed/linklay59151f750e2a94.81058944"
+    @med
+        Examples:
+            | device            |
+            | mobile            |
+            | desktop           |
+    @low
+        Examples:
+            | device            |
+            | tablet portrait   |
+            | tablet landscape  |
 #-------- Social embed end ---------------#
 
 # -------- Outbrain is High  ---------------#
@@ -199,15 +183,15 @@ Feature: Article
         Given I switch to "<device>" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the outbrain frame with "NowtoLove" template
-        @high
+    @high
         Examples:
             | device            |
             | mobile            |
-        @med
+    @med
         Examples:
             | device            |
             | desktop           |
-        @low
+    @low
         Examples:
             | device            |
             | tablet portrait   |
@@ -218,17 +202,14 @@ Feature: Article
         When I switch to "<device>" view
         Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         * I can see the Image Revealer component
-        @med
+    @med
         Examples:
             | device            |
             | mobile            |
             | desktop           |
-        @low
+    @low
         Examples:
             | device            |
             | tablet portrait   |
             | tablet landscape  |
-
-
-
 

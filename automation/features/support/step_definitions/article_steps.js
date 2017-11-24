@@ -63,10 +63,6 @@ module.exports = function() {
         var heroImgCaption = browser.getText(wn_article.heroImgCaption);
         expect(heroImgCaption).toContain(ImgCaption);
     });
-    this.When(/^I should not see the LHR$/, function () {
-        var lhrFeed = browser.isVisible(wn_article.lhrFeed);
-        expect(lhrFeed).toBe(false);
-    });
     this.Given(/^I can see the long title "([^"]*)"$/, function (articleTitle) {
         browser.waitForVisible(wn_article.longTitle, 10000);
         var longTitle = browser.getText(wn_article.longTitle);
@@ -101,20 +97,20 @@ module.exports = function() {
     });
 
     this.Given(/^I can see the body heading "([^"]*)"$/, function (articleBodyHeading) {
-    var bodyHeading = browser.getText(wn_article.bodyHeading);
-       expect(bodyHeading).toContain(articleBodyHeading);
+        var bodyHeading = browser.getText(wn_article.bodyHeading);
+        expect(bodyHeading).toContain(articleBodyHeading);
     });
 
     this.Given(/^I can see the body related content$/, function () {
         // use the site domain to select different class element for aww,wd,food and dolly,cosmo,homes
-            browser.scroll(wn_article.relatedContentHeading);
-            var rcHeading = browser.getText(wn_article.relatedContentHeading);
-            var rcItemsImage = browser.getAttribute(wn_article.relatedContentItemsImage, 'data-srcset');
-            var rcItemsTitle = browser.getText(wn_article.relatedContentItemsTitle);
+        browser.scroll(wn_article.relatedContentHeading);
+        var rcHeading = browser.getText(wn_article.relatedContentHeading);
+        var rcItemsImage = browser.getAttribute(wn_article.relatedContentItemsImage, 'data-srcset');
+        var rcItemsTitle = browser.getText(wn_article.relatedContentItemsTitle);
 
         //Validate the heading of Related
-            console.log(rcHeading);
-            expect(rcHeading).not.toEqual('');
+        console.log(rcHeading);
+        expect(rcHeading).not.toEqual('');
 
         //Loop through the related items, and Validate the body related items' image and title
         for(var i=0; i<rcItemsTitle.length; i++) {
@@ -151,11 +147,11 @@ module.exports = function() {
         expect(bodyImgCaption).toContain(ImgCaption);
     });
     this.Given(/^I can see the body gallery$/, function () {
-       var bodyGallery = browser.getAttribute(wn_article.bodyGallery, 'href');
-       for(var i=0; i<bodyGallery.length; i++){
-           var galleryItems = bodyGallery[i];
-           expect(galleryItems == '').toBe(false);
-         }
+        var bodyGallery = browser.getAttribute(wn_article.bodyGallery, 'href');
+        for(var i=0; i<bodyGallery.length; i++){
+            var galleryItems = bodyGallery[i];
+            expect(galleryItems == '').toBe(false);
+        }
     });
     this.Given(/^I can see the body video$/, function () {
         var bodyVideo = browser.isVisible(wn_article.bodyVideo);
@@ -175,7 +171,7 @@ module.exports = function() {
         var twitEmbed = browser.getAttribute(wn_article.twitterEmb1, 'data-tweet-id');
         console.log(twitEmbed);
         expect(twitEmbed).toEqual(twitterId);
-       });
+    });
     this.Given(/^I can see the body Instagram embed with caption "([^"]*)"$/, function (instagramSrc) {
         browser.waitForVisible(wn_article.instagramEmb1, 3000);
         var instagramEmbed = browser.getAttribute(wn_article.instagramEmb1, 'src');
@@ -187,7 +183,7 @@ module.exports = function() {
         expect(instagramEmbed[1]).not.toMatch("captioned");
     });
     this.Given(/^I can see the body Facebook embed "([^"]*)"$/, function (facebookUrl) {
-       browser.waitForVisible(wn_article.facebookEmb1, 3000);
+        browser.waitForVisible(wn_article.facebookEmb1, 3000);
         var facebookEmbed = browser.getAttribute(wn_article.facebookEmb1, 'data-href');
         console.log(facebookEmbed);
         expect(facebookEmbed).toEqual(facebookUrl);
@@ -234,40 +230,14 @@ module.exports = function() {
     });
     this.Given(/^I can see the related tags "([^"]*)" "([^"]*)"$/, function (rTag1, rTag2) {
         var relatedTags = browser.getText(wn_article.relatedTags, 'href');
-            expect(relatedTags[0]).toContain(rTag1);
-            expect(relatedTags[1]).toContain(rTag2);
+        expect(relatedTags[0]).toContain(rTag1);
+        expect(relatedTags[1]).toContain(rTag2);
     });
     this.Given(/^I can see the author "([^"]*)"$/, function (authorName) {
         var author = browser.getText(wn_article.authorText);
-            expect(author).toEqual(authorName);
+        expect(author).toEqual(authorName);
     });
 
-    this.Given(/^I can see the "([^"]*)" source appearing with gtm "([^"]*)"$/, function (position,gtm) {
-        //Identify the element
-        switch(position) {
-            case 'header':
-                var source = wn_article.headerSource
-                var sourceImg = wn_article.headerSourceImg
-                break;
-            case 'bottom':
-                var source = wn_article.bottomSource
-                var sourceImg = wn_article.bottomSourceImg
-                break;
-        }
-
-        //Get values
-        var sourceHref = browser.getAttribute(source, 'href');
-        var sourceGTM = browser.getAttribute(source,'class');
-        var sourceLogo = browser.getAttribute(sourceImg,'src');
-
-        //Validate the values
-        console.log(sourceHref);
-        expect(sourceHref).not.toEqual('');
-        console.log(sourceGTM);
-        expect(sourceGTM).toEqual(gtm);
-        console.log(sourceLogo);
-        expect(sourceLogo).not.toEqual('');
-    });
 
     this.Given(/^I can see the ([^"]*) top and bottom ad$/, function (adSize) {
         // adSize = billboard|leaderboard|banner
