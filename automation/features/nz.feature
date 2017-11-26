@@ -61,12 +61,7 @@ Feature: Specific value for NZ NTL
             |NEXT                               |/next                  |gtm-footer__logos-list-next     |
             |Good Health Choices                |/good-health-choices   |gtm-footer__logos-list-nzgh     |
             |Simply You                         |/simply-you            |gtm-footer__logos-list-simply   |
-        * I can navigate to all standard pages in the footer
-            |page           |url                                                    |
-            |PRIVACY POLICY |http://www.bauermedia.co.nz/privacy                    |
-            |ADVERTISE      |http://www.bauermedia.co.nz/advertising/rates-ad-specs |
-            |TERMS OF USE   |http://www.bauermedia.co.nz/terms/website-terms        |
-            |CONTACT US     |contact-us                                             |
+
 
     @BXMA-304
     Scenario: Verify RHS follow us now in the "desktop" view

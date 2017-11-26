@@ -8,7 +8,6 @@ Feature: Verify AMP page
     Scenario: Verify the AMP article page
         When I switch to "mobile" view
         Given I am currently viewing "amp/news/latest-news/tony-abbott-says-climate-change-good-thing-41699"
-            * I can see the "header" source appearing with gtm "gtm-brandlogotop-article"
             * I can see the long title "Automation Test Article With Hero Image Test Title Long Title"
             * I can see the short teaser "Short Teaser EOM"
             * I can see the created date "FEB 12, 2016"
