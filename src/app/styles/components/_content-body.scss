@@ -152,7 +152,7 @@
                     margin-bottom: 0;
                 }
             }
-        } 
+        }
 
         .feed-item {
             @include grid-column(6);
@@ -290,7 +290,7 @@
     &__gallery-link-category,
     &__gallery-link-count,
     &__gallery-link-title {
-        text-transform: uppercase;        
+        text-transform: uppercase;
     }
 
     &__tips {
@@ -328,6 +328,20 @@
                 bottom: 40px;
                 top: 40px;
             };
+        }
+    }
+
+    &__competition {
+        margin: {
+            left: -$column-gutter/2;
+            right: -$column-gutter/2;
+        }
+
+        @media #{$large-up} {
+            margin: {
+                left: 0;
+                right: 0;
+            }
         }
     }
 }
