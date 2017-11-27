@@ -23,7 +23,7 @@ Feature: Smoke test for AU NOW
         And I should see the brand title logo on the brand landing page
         And I should see the main hero item containing its image and clickable to open its page
         Examples:
-            | page                 | link                                                   |
+            | page                 | link                                                    |
             | aww                  | https://www.nowtolove.com.au/aww-newsletter             |
             | womansday            | https://www.nowtolove.com.au/womansday-newsletter       |
             | good-health          | https://www.nowtolove.com.au/good-health-newsletter     |
