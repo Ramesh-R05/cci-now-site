@@ -251,6 +251,13 @@ export default {
                 }
             },
             {
+                "type": "giphy",
+                "label": "Giphy",
+                "content": {
+                    "id": "sLs8Ll8Qx51xm"
+                }
+            },
+            {
                 "type": "linklay",
                 "label": "Linklay",
                 "content": {

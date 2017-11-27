@@ -50,6 +50,7 @@ var article_widget = {
     whooshkaEmb: '.content-body__embed-whooshka iframe',
     wirewaxEmb: '.content-body__embed-wirewax iframe',
     linklayEmb: '.content-body__embed-linklay iframe',
+    giphyEmb: '.content-body__embed.content-body__embed--giphy img',
     stickyAdSection: 'div.sticky-block.sticky-block--at-bottom.sticky-block--out-of-view',
     reactionText: ".reactions-leader",
     smileBtn: ".reaction-button--smile",

@@ -224,6 +224,12 @@ module.exports = function() {
         console.log(linklayEmb);
         expect(linklayEmb).toContain(linklayUrl);
     });
+    this.Given(/^I can see the body Giphy embed "([^"]*)"$/, function (giphyId) {
+        browser.waitForVisible(wn_article.giphyEmb, 3000);
+        var giphyEmb = browser.getAttribute(wn_article.giphyEmb, 'src');
+        console.log(giphyEmb);
+        expect(giphyEmb).toContain(giphyId);
+    });
     this.Given(/^I can see the related tags "([^"]*)"$/, function (rTag1) {
         var relatedTags = browser.getText(wn_article.relatedTags, 'href');
         expect(relatedTags).toEqual(rTag1);
