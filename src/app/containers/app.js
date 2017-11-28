@@ -17,7 +17,16 @@ function mapStateToProps(context) {
 class Application extends Component {
 
     static propTypes = {
-        currentRoute: PropTypes.object.isRequired,
+        currentRoute: PropTypes.shape({
+            url: PropTypes.string.isRequired,
+            handler: PropTypes.func.isRequired
+        }),
+        currentNavigate: PropTypes.shape({
+            url: PropTypes.string.isRequired
+        }).isRequired,
+        currentNavigateError: PropTypes.shape({
+            statusCode: PropTypes.number.isRequired
+        }),
         nodeType: PropTypes.string.isRequired,
         error: PropTypes.object,
         theme: PropTypes.object
@@ -25,7 +34,9 @@ class Application extends Component {
 
     static defaultProps = {
         error: null,
-        theme: {}
+        theme: {},
+        currentRoute: null,
+        currentNavigateError: null
     };
 
     static contextTypes = {
@@ -60,6 +71,15 @@ class Application extends Component {
     }
 
     render() {
+        if (!this.props.currentRoute) {
+            return (
+                <ErrorPage
+                  currentUrl={this.props.currentNavigate.url}
+                  status={this.props.currentNavigateError.statusCode}
+                />
+            );
+        }
+
         if (this.props.error) {
             return (
                 <ErrorPage
