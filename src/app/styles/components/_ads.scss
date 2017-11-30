@@ -1,11 +1,5 @@
 // This applies the width and z-index styles to make the wallpaper ad sit correctly behind the content
 
-.site-wrapper {
-    max-width: 1024px;
-    margin: 0 auto;
-    z-index: 0;
-}
-
 .gallery__body {
     z-index: 1;
     background-color: #fff;
@@ -30,21 +24,40 @@
     }
 }
 
-.ad--wallpaper-wrapper {
-    position: fixed;
-    top: 58px;
-    left: calc((100% - 1920px) / 2);
-    width: 100%;
+.site-wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
     z-index: 0;
-    @media (min-width: 1940px) {
-        left: 0;
+
+    .ad--wallpaper-wrapper {
+        left: calc((100% - 1920px) / 2);
+        width: 100%;
+        z-index: 0;
+        position: fixed;
+        top: $ad-wallpaper-top-mobile;
+
+        @media (min-width: 1940px) {
+            left: 0;
+        }
+    }
+
+    @media #{$medium-up} {
+        &-top-leaderboard {
+            &-90 .ad--wallpaper-wrapper {
+                position: absolute;
+                top: $ad-wallpaper-top-unpinned-90;
+            }
+            &-250 .ad--wallpaper-wrapper {
+                position: absolute;
+                top: $ad-wallpaper-top-unpinned-250;
+            }
+        }
+        &-pinned .ad--wallpaper-wrapper {
+            position: fixed;
+            top: $ad-wallpaper-top-pinned;
+        }
     }
 }
-
-.ad--wallpaper-wrapper home-page {
-    top: 107px;
-}
-
 
 .content-wrapper {
     z-index: 2;
