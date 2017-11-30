@@ -9,6 +9,6 @@ export default {
         enabled: true
     },
     oriel: {
-        enabled: false
+        enabled: true
     }
 };

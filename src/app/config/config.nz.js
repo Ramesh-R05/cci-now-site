@@ -32,6 +32,10 @@ export default {
         templateId: 'NowtoLoveNZ',
         widgetId: 'AR_1',
         scriptUrl: '//widgets.outbrain.com/outbrain.js'
+    },
+
+    oriel: {
+        scriptUrl: '//i22lo.com/idipt95l0gt97lp3aklcnxfzf0ycie0t.js'
     }
 };
 
