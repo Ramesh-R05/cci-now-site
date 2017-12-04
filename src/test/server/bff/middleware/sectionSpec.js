@@ -94,7 +94,7 @@ describe('Section middleware', () => {
 
             it('should have valid section value in `req.data.list`', (done) => {
                 sectionMiddleware(req, res, next).then(() => {
-                    expect(req.data.list.params.section).to.equal('/sec/');
+                    expect(req.data.list.params.section).to.equal('/sec');
                     done();
                 }).catch(done);
             });
