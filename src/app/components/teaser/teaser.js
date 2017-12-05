@@ -110,12 +110,17 @@ export default class Teaser extends Component {
         article = teaserContentOverride(article);
 
         const articleTitle = article.shortTitle || article.summaryTitle || article.title;
-
         const siteRegionSuffix = get(config, 'site.region', '');
         const siteRegionClass = siteRegionSuffix && `teaser--${siteRegionSuffix.toLowerCase()}`;
+        const hasVideoIcon = get(article, 'video.properties.videoConfiguration.statusCode') === 200;
+        const hasGalleryIcon = get(article, 'nodeType', '').toLowerCase() === 'gallery';
+        const isVideoIconDisabled = config.features.teaserVideoIcon && config.features.teaserVideoIcon.enabled === false;
+        const isGalleryIconDisabled = config.features.teaserGalleryIcon && config.features.teaserGalleryIcon.enabled === false;
         const containerClassNames = classNames(className, 'teaser', siteRegionClass, {
-            'teaser--has-video': get(article, 'video.properties.videoConfiguration.statusCode') === 200,
-            'teaser--gallery': get(article, 'nodeType', '').toLowerCase() === 'gallery'
+            'teaser--has-video': hasVideoIcon,
+            'teaser--gallery': hasGalleryIcon,
+            'teaser--has-video-icon-hidden': hasVideoIcon && isVideoIconDisabled,
+            'teaser--gallery-icon-hidden': hasGalleryIcon && isGalleryIconDisabled
         });
 
         let articleSourceClassName = sourceClassName;

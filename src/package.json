@@ -36,7 +36,7 @@
   "homepage": "https://github.com/bauerxcelmedia/now-site#readme",
   "dependencies": {
     "@bxm/ad": "^12.3.0",
-    "@bxm/article": "^25.16.1",
+    "@bxm/article": "^25.18.0",
     "@bxm/behaviour": "1.4.0",
     "@bxm/datetime": "^3.0.0",
     "@bxm/flux": "^5.0.0",
@@ -52,7 +52,7 @@
     "@bxm/site-header": "^7.0.1",
     "@bxm/social": "^2.0.0",
     "@bxm/tags": "^3.0.0",
-    "@bxm/teaser": "^6.1.0",
+    "@bxm/teaser": "^6.2.0",
     "@bxm/ui": "^17.1.0",
     "@bxm/video": "^4.1.2",
     "@bxm/winston-logger": "^1.1.0",

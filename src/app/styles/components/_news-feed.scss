@@ -15,18 +15,28 @@
             border: 1px solid $color-white;
             left: 0;
             top: 0;
-        }            
-    }       
+        }
+    }
 
     &.teaser--has-video {
         &:after {
             background-image: url($play-icon);
+        }
+        &-icon-hidden {
+            &:after {
+                display: none;
             }
+        }
     }
 
     &.teaser--gallery {
         &:after {
             background-image: url($gallery-icon);
+        }
+        &-icon-hidden {
+            &:after {
+                display: none;
+            }
         }
     }
 }
@@ -41,9 +51,9 @@
             &:after {
                 top: 0px;
                 left: 0px;
-            }            
-        }      
-    } 
+            }
+        }
+    }
 }
 
 .bottom-news-feed {
@@ -64,13 +74,13 @@
         .teaser__list-item {
 
             &:not(.teaser__list-item--ad) {
-                
+
                 &:first-child {
 
                     &:not(.teaser__list-item--ad) {
                         margin-top: 0;
                         padding-top: 0;
-                        
+
                         &:after {
                             background-color:  transparent;
                         }
@@ -127,8 +137,8 @@
                     top: 0px;
                     left: 15px;
                 }
-            }            
-        }      
-    } 
+            }
+        }
+    }
 }
 

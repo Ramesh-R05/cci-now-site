@@ -89,11 +89,21 @@
             &:after {
                 background-image: url($play-icon);
             }
+            &-icon-hidden {
+                &:after {
+                    display: none;
+                }
+            }
         }
 
         &.feed-item--gallery {
             &:after {
                 background-image: url($gallery-icon);
+            }
+            &-icon-hidden {
+                &:after {
+                    display: none;
+                }
             }
         }
     }

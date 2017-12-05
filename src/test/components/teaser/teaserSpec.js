@@ -14,7 +14,8 @@ const context = {
         defaultImageUrl: '',
         global:  {
             breakpoints: ''
-        }
+        },
+        features: {}
     }
 };
 const contextNZ = {
@@ -26,7 +27,8 @@ const contextNZ = {
             },
             site: {
                 region: 'nz'
-            }
+            },
+            features: {}
         }
     }
 };

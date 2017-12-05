@@ -198,12 +198,19 @@ export default {
             "Australian Women's Weekly": 'AWW'
         }
     },
+    // Any features added here will NOT be loaded by NZ config
     features: {
         outbrain: {
             enabled: true
         },
         outbrainAmp: {
             enabled: true
+        },
+        teaserVideoIcon: {
+            enabled: false
+        },
+        feedItemVideoIcon: {
+            enabled: false
         }
     },
     outbrain: {
