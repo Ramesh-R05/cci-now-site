@@ -10,7 +10,13 @@ export default {
 
     ga: { id: 'UA-57795117-7' },
 
-    gtm: { masthead: 'NZNOW', id: 'GTM-W8G546R' },
+    gtm: {
+        masthead: 'NZNOW',
+        id: 'GTM-W8G546R',
+        dateFormat: 'DD MMM YYYY',
+        timeFormat: 'HH:mm:ss',
+        locale: 'en-NZ'
+    },
 
     features,
 
