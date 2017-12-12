@@ -8,5 +8,7 @@ export default {
     prefix: 'NOW',
     network: 'wn',
     adTaggingId: 'NowToLove',
-    alternateHrefLangUrl: 'http://www.nowtolove.co.nz'
+    alternateHrefLangUrl: 'http://www.nowtolove.co.nz',
+    feedTitle: 'Read More',
+    useFeedTitlePrefix: false
 };
