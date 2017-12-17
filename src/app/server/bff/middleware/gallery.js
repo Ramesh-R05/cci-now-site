@@ -20,7 +20,7 @@ export default async function gallery(req, res, next) {
         req.data.entity.pageDateCreated = momentTimezone.tz(req.data.entity.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
         req.data.moreGalleries = await getMoreGalleries();
 
-        const listingQuery = `nodeTypeAlias eq 'Article' or nodeTypeAlias eq 'Gallery'`;
+        const listingQuery = 'nodeTypeAlias eq \'Article\' or nodeTypeAlias eq \'Gallery\'';
         req.data.leftHandSide = await getLatestTeasers(TOP, undefined, listingQuery);
 
         next();

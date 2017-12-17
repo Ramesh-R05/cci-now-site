@@ -19,7 +19,7 @@ export default async function article(req, res, next) {
         // TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
         req.data.entity.pageDateCreated = momentTimezone.tz(req.data.entity.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
 
-        const listingQuery = `nodeTypeAlias eq 'Article' or nodeTypeAlias eq 'Gallery'`;
+        const listingQuery = 'nodeTypeAlias eq \'Article\' or nodeTypeAlias eq \'Gallery\'';
         req.data.leftHandSide = await getLatestTeasers(TOP, undefined, listingQuery);
 
         next();

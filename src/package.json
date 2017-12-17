@@ -35,7 +35,7 @@
   "license": "UNLICENSED",
   "homepage": "https://github.com/bauerxcelmedia/now-site#readme",
   "dependencies": {
-    "@bxm/ad": "^12.3.2",
+    "@bxm/ad": "^13.0.0",
     "@bxm/article": "^25.19.0",
     "@bxm/behaviour": "1.4.0",
     "@bxm/datetime": "^3.0.0",

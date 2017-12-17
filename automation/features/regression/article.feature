@@ -1,4 +1,4 @@
-@article @now
+@article @now 
 Feature: Article
     As a user
     I should be able to see the article page
@@ -132,7 +132,6 @@ Feature: Article
         Examples:
             | device            |
             | tablet landscape  |
-
 
 # -------- Social share is Medium as this Helps recirculate users ---------------#
     Scenario Outline: Verify the share buttons on an article page in "<device>" view
