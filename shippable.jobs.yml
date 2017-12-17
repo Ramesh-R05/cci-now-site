@@ -316,6 +316,7 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: rm -rf node_modules
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
+        - script: npm cache clean --force
         - script: npm install
         - script: export URL=http://cms.dev.now.wn.bauer-media.net.au/cms/umbraco/
         - script: APP_KEY=now-site npm run test:cms || true
@@ -338,6 +339,7 @@ jobs:
         - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
+        - script: npm cache clean
         - script: npm install
         - script: export URL=http://cms.dev.nznow.wn.bauer-media.net.au/cms/umbraco/
         - script: APP_KEY=nznow-site npm run test:cms || true
