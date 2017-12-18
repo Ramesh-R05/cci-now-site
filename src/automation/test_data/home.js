@@ -44,7 +44,7 @@ export default {
         }
     },
     headerNavigation: navigation.getData(),
-    hamNavigation: hamburgerNavigation.getData(),
+    hamburgerNavigation: hamburgerNavigation.getData(),
     "footer": {},
     "mustRead": [
         {

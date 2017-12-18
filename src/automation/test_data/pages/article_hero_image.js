@@ -311,7 +311,7 @@ export default {
         "title": "Search and Social Page Title"
     },
     headerNavigation: navigation.getData(),
-    hamNavigation: hamburgerNavigation.getData(),
+    hamburgerNavigation: hamburgerNavigation.getData(),
     "footer": {},
     "leftHandSide": {
         "items": [

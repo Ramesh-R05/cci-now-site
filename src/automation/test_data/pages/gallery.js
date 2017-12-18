@@ -265,7 +265,7 @@ export default {
         title: "Automation Test Gallery"
     },
     headerNavigation: navigation.getData(),
-    hamNavigation: hamburgerNavigation.getData(),
+    hamburgerNavigation: hamburgerNavigation.getData(),
     footer: { },
     moreGalleries: [
         {
