@@ -3,7 +3,7 @@ export default {
         enabled: true
     },
     outbrainAmp: {
-        enabled: false
+        enabled: true
     },
     navigationSubSectionDropdown: {
         enabled: true

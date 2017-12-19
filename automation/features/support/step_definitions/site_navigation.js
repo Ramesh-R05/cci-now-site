@@ -17,7 +17,7 @@ module.exports = function() {
         browser.waitForVisible(site_nav.siteNavHeaderLogo, 3000);
         //Validate the existence of the logo
         var headerLogo = browser.getCssProperty(site_nav.siteNavHeaderLogo, 'background-image').value;
-        expect(headerLogo).toMatch("/assets/logos/yes-to-love.svg");
+        expect(headerLogo).toMatch("/assets/logos/header-logo.svg");
         //Validate the logo is clickable to open homepage
         var headerLogoLink = browser.getAttribute(site_nav.siteNavHeaderLogo,'href');
         expect(headerLogoLink).not.toEqual('');
