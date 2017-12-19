@@ -16,7 +16,7 @@
 .brand--magazine-image {
     margin-top: 10px;
 
-    img { 
+    img {
         max-height: 232px;
     }
 }
@@ -53,7 +53,7 @@ hr {
 
 .brand-title {
     text-align: center;
-    
+
     @media #{$small-only} {
         width: 224px;
         margin: 0 auto;
@@ -138,8 +138,8 @@ hr {
 .brand-title-ok,
 .brand-title-tvweek {
     .brand-title--right-line, .brand-title--left-line { width: 32%; }
-    .brand-title--logo { 
-        width: 200px; 
+    .brand-title--logo {
+        width: 200px;
         @media #{$small-only} { width: 190px; }
     }
 }
@@ -154,7 +154,7 @@ hr {
     .brand-title--right-line,.brand-title--left-line {
         width: calc(50% - 160px);
     }
-    .brand-title--logo { 
+    .brand-title--logo {
         width: 200px;
 
         @media #{$small-only} { width: 110px; }
@@ -165,11 +165,11 @@ hr {
     .brand-title--right-line,.brand-title--left-line {
         width: calc(50% - 239px);
     }
-    .brand-title--logo { 
+    .brand-title--logo {
         width: 358px;
 
-        @media #{$small-only} { 
-            width: 180px; 
+        @media #{$small-only} {
+            width: 180px;
         }
     }
 }
@@ -178,12 +178,23 @@ hr {
     .brand-title--right-line,.brand-title--left-line {
         width: calc(50% - 145px);
     }
-    .brand-title--logo { 
+    .brand-title--logo {
         width: 150px;
 
-        @media #{$small-only} { 
-            width: 90px; 
+        @media #{$small-only} {
+            width: 90px;
         }
+    }
+}
+
+.brand-title-nadia, .brand-title-btl {
+    .brand-title--right-line,.brand-title--left-line {
+        width: calc(50% - 160px);
+    }
+    .brand-title--logo {
+        width: 220px;
+
+        @media #{$small-only} { width: 110px; }
     }
 }
 
@@ -225,6 +236,9 @@ hr {
 
     &-simply { color: $nz-simply-you-color; }
 
+    &-nadia { color: $nz-nadia-color; }
+
+    &-btl { color: $nz-btl-color; }
 
     @media #{$small-only} {
         display: none;
@@ -277,6 +291,10 @@ hr {
     &-nzwd { background-color: $nz-womans-day-color; }
 
     &-simply { background-color: $nz-simply-you-color; }
+
+    &-nadia { background-color: $nz-nadia-color; }
+
+    &-btl { background-color: $nz-btl-color; }
 }
 
 .header {
@@ -299,7 +317,7 @@ hr {
     &-ptl { background-color: $ptl-color; }
 
     &-tvweek { background-color: $tv-color }
-    
+
     &-nzww { background-color: $nz-womans-weekly-color; }
 
     &-awwnz { background-color: $nz-aww-color; }
@@ -311,6 +329,10 @@ hr {
     &-nzwd { background-color: $nz-womans-day-color; }
 
     &-simply { background-color: $nz-simply-you-color; }
+
+    &-nadia { background-color: $nz-nadia-color; }
+
+    &-btl { background-color: $nz-btl-color; }
 }
 
 .header-gh, .header-aww, .header-wd, .header-ok, .header-nw, .header-take5, .header-yours, .header-mb {

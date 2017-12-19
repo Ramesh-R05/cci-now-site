@@ -14,6 +14,8 @@ Feature: Specific value for NZ NTL
             |NEXT                               |/next                  |
             |Good Health Choices                |/good-health-choices   |
             |Simply You                         |/simply-you            |
+            |Nadia                              |/nadia                 |
+            |Beauty To Love                     |/beauty-to-love        |
 
     Scenario: I can see the brand logos in the hamburger menu
         Given I switch to "mobile" view
@@ -61,6 +63,8 @@ Feature: Specific value for NZ NTL
             |NEXT                               |/next                  |gtm-footer__logos-list-next     |
             |Good Health Choices                |/good-health-choices   |gtm-footer__logos-list-nzgh     |
             |Simply You                         |/simply-you            |gtm-footer__logos-list-simply   |
+            |Nadia                              |/nadia                 |gtm-footer__logos-list-nadia    |
+            |Beauty To Love                     |/beauty-to-love        |gtm-footer__logos-list-btl      |
 
 
     @BXMA-304

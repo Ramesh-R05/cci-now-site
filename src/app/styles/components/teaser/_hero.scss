@@ -148,6 +148,14 @@ $hero-teaser-line-height: 25px;
         .hero-teaser__source--prizes-to-love span:first-child:not(.hero-teaser__source__breaker) {
             color: $ptl-color;
         }
+
+        .hero-teaser__source--nadia span:first-child:not(.hero-teaser__source__breaker) {
+            color: $nz-nadia-color;
+        }
+
+        .hero-teaser__source--beauty-to-love span:first-child:not(.hero-teaser__source__breaker) {
+            color: $nz-btl-color;
+        }
     }
 
     &__social-logo {

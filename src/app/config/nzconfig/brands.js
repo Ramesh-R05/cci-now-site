@@ -74,6 +74,18 @@ export default {
             instagram: 'https://www.instagram.com/simplyyoumag'
         },
         newsletterUrl: '//www.nowtolove.co.nz/simply-you-newsletter'
+    }, {
+        id: 'nadia',
+        title: 'Nadia',
+        magazineTitle: 'Nadia',
+        imageUrl: '/assets/images/nzheaderlogos/NADIA-logo.svg',
+        url: '/nadia'
+    }, {
+        id: 'btl',
+        title: 'Beauty To Love',
+        magazineTitle: 'Beauty To Love',
+        imageUrl: '/assets/images/nzheaderlogos/BTL-logo.svg',
+        url: '/beauty-to-love'
     }],
     hamburgers: [{
         id: 'nzhomes',

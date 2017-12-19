@@ -120,7 +120,7 @@
             text-transform: uppercase;
             margin-top: 7px;
             letter-spacing: .7px;
-            
+
             @media #{$medium-up} {
                 padding: 0;
                 line-height: 12px;
@@ -220,13 +220,21 @@
             .teaser__source--new-zealand-woman-s-weekly span:first-child:not(.teaser__source__breaker) {
                 color: $nz-womans-weekly-color;
             }
-            
+
             .teaser__source--simply-you span:first-child:not(.teaser__source__breaker) {
                 color: $nz-simply-you-color;
             }
 
             .teaser__source--good-health-choices span:first-child:not(.teaser__source__breaker) {
                 color: $nz-good-health-choices-color;
+            }
+
+            .teaser__source--nadia span:first-child:not(.teaser__source__breaker) {
+                color: $nz-nadia-color;
+            }
+
+            .teaser__source--beauty-to-love span:first-child:not(.teaser__source__breaker) {
+                color: $nz-btl-color;
             }
         }
     }
