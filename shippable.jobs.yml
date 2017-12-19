@@ -311,12 +311,13 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "8.9.1"
-        - script: nvm use "8.9.1"
+        - script: nvm install "6.1.0"
+        - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: rm -rf node_modules
-        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
+        - script: npm cache verify
         - script: npm cache clean --force
+        - script: npm cache verify
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://cms.dev.now.wn.bauer-media.net.au/cms/umbraco/
         - script: APP_KEY=now-site npm run test:cms || true
@@ -338,8 +339,10 @@ jobs:
         - script: nvm install "8.9.1"
         - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: npm cache verify
+        - script: npm cache clean --force
+        - script: npm cache verify
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
-        - script: npm cache clean
         - script: npm install
         - script: export URL=http://cms.dev.nznow.wn.bauer-media.net.au/cms/umbraco/
         - script: APP_KEY=nznow-site npm run test:cms || true
