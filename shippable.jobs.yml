@@ -314,9 +314,6 @@ jobs:
         - script: nvm install "6.1.0"
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm cache verify
-        - script: npm cache clean --force
-        - script: npm cache verify
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://cms.dev.now.wn.bauer-media.net.au/cms/umbraco/
@@ -336,13 +333,13 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "8.9.1"
-        - script: nvm use "8.9.1"
+        - script: nvm install "6.1.0"
+        - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm cache verify
         - script: npm cache clean --force
         - script: npm cache verify
-        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: export URL=http://cms.dev.nznow.wn.bauer-media.net.au/cms/umbraco/
         - script: APP_KEY=nznow-site npm run test:cms || true
@@ -370,3 +367,25 @@ jobs:
      - TASK:
         - script: >
             curl -H "Content-Type: application/json" -X POST -d '[{"fromEnv":"live", "fromSite":"nznow", "number":"10", "toSite":"nznow"}]' http://dev.migrate.services.bauer-media.internal/migrate
+
+  # ii. Smoke Test in AU NOW Dev CMS (SPIKE ONLY)
+  - name: Spike-CMS-au-now-smoke-test
+    type: runSh
+    always:
+      - NOTIFY: now-qa-team-notifications
+    steps:
+     - IN: now-site-repo
+       switch: off
+     - IN: now-weekly-trigger
+     - TASK:
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+        - script: source ~/.nvm/nvm.sh
+        - script: nvm install "8.9.1"
+        - script: nvm use "8.9.1"
+        - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
+        - script: npm install
+        - script: export URL=http://cms.dev.now.wn.bauer-media.net.au/cms/umbraco/
+        - script: APP_KEY=now-site npm run test:cms || true
+        - script: actualsize=$(wc -c <"@rerun.txt")
+        - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
