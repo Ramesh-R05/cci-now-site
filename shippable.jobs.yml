@@ -382,6 +382,10 @@ jobs:
         - script: source ~/.nvm/nvm.sh
         - script: nvm install "8.9.1"
         - script: nvm use "8.9.1"
-        - script: cd ./IN/now-site-repo/gitRepo/src
+        - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
+        - script: export URL=http://cms.dev.now.wn.bauer-media.net.au/cms/umbraco/
+        - script: APP_KEY=now-site npm run test:cms || true
+        - script: actualsize=$(wc -c <"@rerun.txt")
+        - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
