@@ -337,9 +337,6 @@ jobs:
         - script: nvm use "6.1.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
-        - script: npm cache verify
-        - script: npm cache clean --force
-        - script: npm cache verify
         - script: npm install
         - script: export URL=http://cms.dev.nznow.wn.bauer-media.net.au/cms/umbraco/
         - script: APP_KEY=nznow-site npm run test:cms || true
@@ -368,7 +365,7 @@ jobs:
         - script: >
             curl -H "Content-Type: application/json" -X POST -d '[{"fromEnv":"live", "fromSite":"nznow", "number":"10", "toSite":"nznow"}]' http://dev.migrate.services.bauer-media.internal/migrate
 
-  # ii. Smoke Test in AU NOW Dev CMS (SPIKE ONLY)
+  # vi. SPIKE ONLY for NODE 8 (Originally copied from Smoke Test in AU NOW Dev CMS)
   - name: Spike-CMS-au-now-smoke-test
     type: runSh
     always:
