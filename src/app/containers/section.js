@@ -111,7 +111,6 @@ export default class Section extends Component {
 
         const isBrandPage = nodeType === 'Brand';
         const brand = isBrandPage ? find(this.context.config.brands.uniheader, b => b.url === currentUrl.match(/\/[^/|?]*/)[0]) : null;
-        const themeColour = theme.themeColour || false;
 
         if (isBrandPage) {
             headerClassName = `header-${brand.id}`;
@@ -148,7 +147,6 @@ export default class Section extends Component {
 
                                         {subsections.totalCount > 1 && <SubsectionList
                                           subsections={subsections.data}
-                                          themeColour={themeColour}
                                           currentUrl={currentUrl}
                                         />
                                         }

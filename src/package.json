@@ -78,6 +78,7 @@
     "lodash.mergewith": "^4.6.0",
     "lodash.set": "^4.3.2",
     "lru-cache": "^4.0.1",
+    "material-ui": "^0.20.0",
     "mime": "^2.0.2",
     "moment": "^2.10.2",
     "moment-timezone": "^0.5.13",
