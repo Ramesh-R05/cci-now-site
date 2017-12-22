@@ -14,22 +14,9 @@ module.exports = function(){
         expect(sectionTitle).not.toContain("now");
     });
 
-    this.When(/^I should see (\d+) subsection buttons clickable to its subsection page/, function (subsectionAmount) {
-        var subsectionHrefs = browser.getAttribute(section.subsectionButton, 'href');
-        var subsectionTexts = browser.getText(section.subsectionButton);
-        expect(subsectionHrefs.length).toEqual(parseFloat(subsectionAmount));
-
-        subsectionHrefs.forEach((s) => {
-            expect(s).not.toEqual('')
-        })
-        subsectionTexts.forEach((t) => {
-            expect(t).not.toEqual('')
-        })
-    });
-
-    this.Then(/^I should see the "([^"]*)" button highlighted$/, function (subsectionHref) {
-        var subsectionButtonStyle = browser.getAttribute('.subsections-list a[href="' + subsectionHref + '"] > span', 'style');
-        expect(subsectionButtonStyle).toContain('background');
+    this.When(/^I should see the drop down list of subsections with the text as "([^"]*)"$/, function (text) {
+        expect(browser.isVisible(section.subsectionList)).toEqual(true);
+        expect(browser.getText(section.subsectionList)).toEqual(text);
     });
 
     this.Then(/^I should see the title changes to "([^"]*)"$/, function (subsectionName) {

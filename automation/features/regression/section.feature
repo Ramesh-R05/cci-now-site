@@ -17,8 +17,8 @@ Feature: Section Landing page
 
     @low
     Scenario Outline: Verify the hero teaser element is functional correctly in "<device>" view
-        Given I am currently viewing "fashion"
-        When I switch to "<device>" view
+        Given I switch to "<device>" view
+        When I am currently viewing "fashion"
         * I should not see the section title containing the default word as now
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
@@ -32,8 +32,8 @@ Feature: Section Landing page
             |tablet landscape|
 
     Scenario Outline: Verify the top news feed is functional correctly in "<device>" view
-        Given I am currently viewing "fashion"
-        When I switch to "<device>" view
+        Given I switch to "<device>" view
+        When I am currently viewing "fashion"
         * I should see 6 "top" half feed
         * I should see a "top" feed item containing its image and clickable to open its page
         * I should see a "top" feed item containing its title and clickable to open its page
@@ -51,8 +51,8 @@ Feature: Section Landing page
 
     @low
     Scenario Outline: Verify the bottom news feed is functional correctly in "<device>" view
-        Given I am currently viewing "fashion"
-        When I switch to "<device>" view
+        Given I switch to "<device>" view
+        When I am currently viewing "fashion"
         * I should see 7 "bottom" half feed
         * I should see a "bottom" feed item containing its image and clickable to open its page
         * I should see a "bottom" feed item containing its title and clickable to open its page
@@ -64,26 +64,12 @@ Feature: Section Landing page
             |tablet portrait |
             |tablet landscape|
 
-    Scenario Outline: Verify the subsection button on section page in "<device>" view
-        Given I am currently viewing "fashion"
-        When I switch to "<device>" view
-        * I should see 3 subsection buttons clickable to its subsection page
-        @med
-        Examples:
-            |device |
-            |mobile |
-            |desktop|
-        @low
-        Examples:
-            |device|
-            |tablet portrait |
-            |tablet landscape|
-
-    Scenario Outline: Verify the subsection button on subsection page in "<device>" view
-        Given I am currently viewing "fashion/fashion-news"
-        When I switch to "<device>" view
-        * I should see 3 subsection buttons clickable to its subsection page
-        * I should see the "/fashion/fashion-news" button highlighted
+    Scenario Outline: Verify the subsection button on section and subsection pages in "<device>" view
+        Given I switch to "<device>" view
+        When I am currently viewing "fashion"
+        * I should see the drop down list of subsections with the text as "SELECT A SUB-SECTION..."
+        When I am currently viewing "fashion/fashion-news"
+        * I should see the drop down list of subsections with the text as "FASHION NEWS"
         * I should see the title changes to "FASHION NEWS"
         @med
         Examples:
@@ -95,3 +81,4 @@ Feature: Section Landing page
             |device|
             |tablet portrait |
             |tablet landscape|
+
