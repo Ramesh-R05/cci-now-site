@@ -371,9 +371,8 @@ jobs:
     always:
       - NOTIFY: now-qa-team-notifications
     steps:
-     - IN: now-site-repo
+     - IN: now-site-repo-spike
        switch: off
-     - IN: now-weekly-trigger
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh

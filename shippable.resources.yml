@@ -47,6 +47,14 @@ resources:
       sourceName: bauerxcelmedia/now-site
       branch: master
 
+  # NOW Github repo - SPIKE with a feature branch
+  - name: now-site-repo-spike
+    type: gitRepo
+    integration: production-github
+    pointer:
+      sourceName: bauerxcelmedia/now-site
+      branch: fix/spike-automation-node-8
+
   # Slack connection
   - name: now-slack-notifications
     type: notification                          #required
