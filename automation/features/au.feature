@@ -55,26 +55,28 @@ Feature: Smoke test for AU NOW
         Then I should see extra 14 teasers after loading more
         And I should see a load more feed item containing its image and clickable to open its page
 
-    Scenario: Verify the article page
-        Given I switch to "desktop" view
-        Given Emily just published the "article" doc type item
-        When I navigate to the "http://now-site-au.sit.bxm.net.au/news/latest-news/test-article" page
-        Then our readers can enjoy the latest content
-        And I switch to "mobile" view
-        When I navigate to the "http://now-site-au.sit.bxm.net.au/amp/news/latest-news/test-article" page
-        Then our readers can enjoy the latest content
-
-    Scenario: Verify the gallery page
-        Given I switch to "desktop" view
-        Given Emily just published the "gallery" doc type item
-        When I navigate to the "http://now-site-au.sit.bxm.net.au/celebrity/celeb-news/test-gallery" page
-        Then our readers can enjoy the latest content
-        Given I switch to "mobile" view
-#---->  The below url will be changed to AMP once this is rolled out
-        When I navigate to the "http://now-site-au.sit.bxm.net.au/celebrity/celeb-news/test-gallery" page
-        Then our readers can enjoy the latest content
-
     Scenario: Verify the 404 page
         Given I switch to "mobile" view
         When I am currently viewing "404"
         Then I should see the error title as "Sorry, this page is broken."
+
+    Scenario: Verify all the doc type items
+        Given I switch to "mobile" view
+        Given Emily just published the "section" doc type item
+        When I navigate to the "section" page
+        Then our readers can enjoy the created "section" page
+        Given Emily just published the "subsection" doc type item
+        When I navigate to the "subsection" page
+        Then our readers can enjoy the created "subsection" page
+        Given Emily just published the "article" doc type item
+        When I navigate to the "article" page
+        Then our readers can enjoy the created "article" page
+        Given Emily just published the "gallery" doc type item
+        When I navigate to the "gallery" page
+        Then our readers can enjoy the created "gallery" page
+        When I navigate to the "amp article" page
+        Then our readers can enjoy the created "amp article" page
+
+
+
+
