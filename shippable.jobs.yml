@@ -113,8 +113,8 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "6.1.0"
-        - script: nvm use "6.1.0"
+        - script: nvm install "8.9.1"
+        - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
@@ -138,8 +138,8 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "6.1.0"
-        - script: nvm use "6.1.0"
+        - script: nvm install "8.9.1"
+        - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
@@ -161,8 +161,8 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "6.1.0"
-        - script: nvm use "6.1.0"
+        - script: nvm install "8.9.1"
+        - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
@@ -185,8 +185,8 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "6.1.0"
-        - script: nvm use "6.1.0"
+        - script: nvm install "8.9.1"
+        - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
@@ -209,8 +209,8 @@ jobs:
       - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "6.2.2"
-        - script: nvm use "6.2.2"
+        - script: nvm install "8.9.1"
+        - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/src
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
@@ -364,24 +364,3 @@ jobs:
      - TASK:
         - script: >
             curl -H "Content-Type: application/json" -X POST -d '[{"fromEnv":"live", "fromSite":"nznow", "number":"10", "toSite":"nznow"}]' http://dev.migrate.services.bauer-media.internal/migrate
-
-  # vi. SPIKE ONLY for NODE 8 (Originally copied from Smoke Test in AU NOW Dev CMS)
-  - name: Spike-CMS-au-now-smoke-test
-    type: runSh
-    always:
-      - NOTIFY: now-qa-team-notifications
-    steps:
-     - IN: now-site-repo-spike
-       switch: off
-     - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-        - script: source ~/.nvm/nvm.sh
-        - script: nvm install "8.9.1"
-        - script: nvm use "8.9.1"
-        - script: cd ./IN/now-site-repo-spike/gitRepo/automation
-        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
-        - script: npm install
-        - script: export URL=http://cms.dev.now.wn.bauer-media.net.au/cms/umbraco/
-        - script: APP_KEY=now-site npm run test:cms || true
-        - script: actualsize=$(wc -c <"@rerun.txt")
-        - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
