@@ -30,6 +30,24 @@ Feature: CMS Smoke Test
         * I should be able to visit the live URL
         * I should be able to check if the amp page is active
 
+    Scenario: Validate the link in the body paragraph
+        Given I am logging in CMS
+        When I am currently viewing the create form
+        * I should be able to select "Article" doc type
+        * I should be able to add the name
+        * I should be able to click the create button
+        * I should see the item is created
+        When I am currently viewing "editContent.aspx?id=" of "Article"
+        * I should be able to add content in the item
+            | field         | tab               |
+            | Long Title    | Editorial         |
+        * I should be able to add link in body paragraph to validate
+            | link                                                                       |
+            | [URL Only](https://www.google.com.au/)                                     |
+            | [URL with target only](http://www.google.com\|target="_blank")             |
+            | [URL with target and rel](http://test.com\|target="_blank"\|rel="nofollow")|
+#           | [URL with rel only](http://test.com\|rel="nofollow")                       | Will include this step scenario after the fix have been done as it is not allowing to publish in cms
+        * I should be able to publish the item
 
     Scenario: Create, update and publish the Gallery item
         Given I am logging in CMS
