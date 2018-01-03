@@ -41,6 +41,7 @@ Feature: CMS Smoke Test
         * I should be able to add content in the item
             | field         | tab               |
             | Long Title    | Editorial         |
+            | Created at    | Properties        |
         * I should be able to add link in body paragraph to validate
             | link                                                                       |
             | [URL Only](https://www.google.com.au/)                                     |
