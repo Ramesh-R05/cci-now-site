@@ -6,7 +6,6 @@ Feature: Users can navigate the site using different device
         Then I can see the long title "Kendall Jenner's skin doctor tells us what mistake you're making when washing your face"
         * I should see the top leaderboard ad under navigation
         * I should see MREC ad above recommendation
-        * I should see the bottom leaderboard ad above the footer on article
         * I can see the sticky ad when the top banner disappears from view
 
     @browser
@@ -23,7 +22,6 @@ Feature: Users can navigate the site using different device
         * I should see the top leaderboard ad under navigation
         * I should not see MREC ad under the hero image
         * I should see MREC ad above recommendation
-        * I should see the bottom leaderboard ad above the footer on article
         * I should see MREC ad between images
 
     @browser
@@ -33,7 +31,6 @@ Feature: Users can navigate the site using different device
         * I should not see MREC ad under the hero image
         * I should not see MREC ad above recommendation
         * I should see the bottom leaderboard ad above the footer on article
-        * I should see MREC ad between images
 
     @mobile
     Scenario: Verify the ads on AMP enabled page
