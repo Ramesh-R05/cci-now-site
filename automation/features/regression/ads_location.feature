@@ -254,14 +254,15 @@ Feature: Ads Location
             |ad                         |class-name     |
             |MREC After Slide 3         |gallery_body_2 |
             |MREC After Slide 7         |gallery_body_3 |
-            |MREC Before Recommendation |gallery_body_5 |
+            |MREC Before Recommendation |gallery_body_6 |
         And I should see each additional ad slot element containing proper class name
             |ad                 |class-name          |
             |Out Of Page        |gallery_outofpage_1 |
         And I should see each polar ad slot element containing proper class name
-            |ad                                     |class-name    |
+            |ad                                     |class-name     |
             |Polar in Related Content In Body       |gallery_body_1 |
             |Polar in Related Content After Slide 7 |gallery_body_4 |
+            |Polar in Carousel Feed                 |gallery_body_5 |
 
     @article
     Scenario: Ads slot elements should have proper class name on article page in mobile view
@@ -278,12 +279,12 @@ Feature: Ads Location
             |MREC After Paragraph 12        |article_body_2 |
             |MREC After Paragraph 18        |article_body_3 |
             |MREC After Paragraph 24        |article_body_4 |
-            |MREC Before Recommendation     |article_body_6 |
+            |MREC Before Recommendation     |article_body_7 |
         And I should see each additional ad slot element containing proper class name
             |ad                 |class-name          |
             |Out Of Page        |article_outofpage_1 |
         And I should see each polar ad slot element containing proper class name
-            |ad                               |class-name    |
+            |ad                               |class-name     |
             |Polar in Related Content In Body |article_body_5 |
-
+            |Polar in Carousel Feed           |article_body_6 |
 
