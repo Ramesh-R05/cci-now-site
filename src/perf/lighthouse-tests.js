@@ -42,7 +42,7 @@ function lighthouseTests(testObject) {
     const { title, url, expectedScore } = testObject;
     describe(`Now To Love site performance testing for ${title} : ${url}`, function loopedTests() {
         this.retries(3);
-        this.timeout(40000);
+        this.timeout(60000);
         let result;
 
         beforeEach('Run Lighthouse base test', (done) => {
