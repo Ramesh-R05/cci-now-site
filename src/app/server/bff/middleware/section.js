@@ -27,7 +27,7 @@ export default async function sectionMiddleware(req, res, next) {
 
         if (nodeTypeAlias === 'Section' || nodeTypeAlias === 'Subsection') {
             latestTeaserCount = latestTeaserCountDefault;
-            teaserQuery = `/${section}/${subsection || ''}`;
+            teaserQuery = `/${section}${subsection ? `/${subsection}` : ''}`;
             sectionQuery = `/${section}${subsection ? `/${subsection}` : ''}`;
             teaserFilter = 'parentUrl';
             listingQuery = `${teaserFilter} eq %27${teaserQuery}%27`;
@@ -81,8 +81,9 @@ export default async function sectionMiddleware(req, res, next) {
             listName: section,
             params: {
                 pageNo,
-                section: sectionQuery,
-                filter: teaserFilter
+                section: teaserQuery,
+                filter: teaserFilter,
+                sectionFormatted: section
             },
             items: [
                 parseEntities(latestTeasers.data.slice(latestTeaserCount))

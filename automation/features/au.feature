@@ -16,24 +16,33 @@ Feature: Smoke test for AU NOW
         Then I should see extra 14 teasers after loading more
         And I should see a load more feed item containing its image and clickable to open its page
 
-    Scenario Outline: Verify the <page> brand landing page
+    Scenario Outline: Verify the static <page> brand data on its brand landing page
         Given I switch to "mobile" view
         When I am currently viewing "<page>"
         Then I should see the sign up button containing "<link>" url in "mobile" view
         And I should see the brand title logo on the brand landing page
-        And I should see the main hero item containing its image and clickable to open its page
         Examples:
-            | page                 | link                                                    |
-            | aww                  | https://www.nowtolove.com.au/aww-newsletter             |
-            | womansday            | https://www.nowtolove.com.au/womansday-newsletter       |
-            | good-health          | https://www.nowtolove.com.au/good-health-newsletter     |
-            | okmagazine           | https://www.nowtolove.com.au/okmagazine-newsletter      |
-            | nw                   | https://www.nowtolove.com.au/nw-newsletter              |
-            | take5mag             | https://www.nowtolove.com.au/take5mag-newsletter        |
-            | yours                | https://www.nowtolove.com.au/yours-newsletter           |
-            | mother-and-baby      | https://www.nowtolove.com.au/mother-and-baby-newsletter |
-            | tvweek               | https://www.nowtolove.com.au/tvweek-newsletter          |
-            | prizestolove         | https://www.nowtolove.com.au/prizestolove-newsletter    |
+            | page                  | link                                                    |
+            | aww                   | https://www.nowtolove.com.au/aww-newsletter             |
+            | womansday             | https://www.nowtolove.com.au/womansday-newsletter       |
+            | good-health           | https://www.nowtolove.com.au/good-health-newsletter     |
+            | okmagazine            | https://www.nowtolove.com.au/okmagazine-newsletter      |
+            | nw                    | https://www.nowtolove.com.au/nw-newsletter              |
+            | take5mag              | https://www.nowtolove.com.au/take5mag-newsletter        |
+            | yours                 | https://www.nowtolove.com.au/yours-newsletter           |
+            | mother-and-baby       | https://www.nowtolove.com.au/mother-and-baby-newsletter |
+            | tvweek                | https://www.nowtolove.com.au/tvweek-newsletter          |
+            | prizestolove          | https://www.nowtolove.com.au/prizestolove-newsletter    |
+
+    Scenario: Verify the brand landing page
+        Given I switch to "mobile" view
+        When I am currently viewing "aww"
+        Then I should see the main hero item containing its image and clickable to open its page
+        And I should see a "top" feed item containing its image and clickable to open its page
+        And I should see a "bottom" feed item containing its image and clickable to open its page
+        When I click on the Load More button
+        Then I should see extra 14 teasers after loading more
+        And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the section landing page
         Given I switch to "mobile" view

@@ -5,13 +5,16 @@ const listCount = 14;
 export default async function list(req, res, next) {
     try {
         const pageNo = parseInt(req.query.pageNo, 10);
-        const { section, filter } = req.query;
+        const { section, filter, sectionFormatted } = req.query;
         const listingQuery = (section && filter) ? `${filter} eq %27${section}%27` : undefined;
         const top = listCount;
         const skip = (pageNo - 1) * listCount;
         const listResp = await getLatestTeasers(top, skip, listingQuery);
 
-        const basePath = section ? `/${section}` : '/';
+        let basePath = section ? `/${section}` : '/';
+        if (sectionFormatted) {
+            basePath = sectionFormatted ? `/${sectionFormatted}` : '/';
+        }
         let previousPage = null;
         if (pageNo > 1) {
             const path = `${basePath}?pageNo=${pageNo - 1}`;
@@ -38,7 +41,7 @@ export default async function list(req, res, next) {
 
         res.body = {
             list: {
-                listName: section || 'home',
+                listName: sectionFormatted || 'home',
                 params: {
                     ...req.query,
                     pageNo
