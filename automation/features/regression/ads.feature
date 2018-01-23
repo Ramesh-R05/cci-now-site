@@ -84,19 +84,19 @@ Feature: Ad
         * I should see MREC ad above recommendation
         * I should see the bottom leaderboard ad above the footer on article
 
-    @gallery
-    Scenario Outline: Special ads in content body copy on gallery page in the <device> view
-        Given I switch to "<device>" view
-        When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
-        Then I should see MREC ad between images
-        @high
-        Examples:
-            |device     |
-            |mobile     |
-        @med
-        Examples:
-            |device     |
-            |desktop    |
+#    @gallery
+#    Scenario Outline: Special ads in content body copy on gallery page in the <device> view
+#        Given I switch to "<device>" view
+#        When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
+#        Then I should see MREC ad between images
+#        @high
+#        Examples:
+#            |device     |
+#            |mobile     |
+#        @med
+#        Examples:
+#            |device     |
+#            |desktop    |
 #--------Article/Gallery page ads end--------#
 
 #--------Wallpaper and side panel ads--------#
