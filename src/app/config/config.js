@@ -22,7 +22,11 @@ export default {
 
     global,
 
-    ads: { targets: { env: 'test' } },
+    ads: {
+        targets: { env: 'test' },
+        disabledPageLocation: ['gallery_body'],
+        disabledGalleryChangeRefresh: true
+    },
 
     site,
 
