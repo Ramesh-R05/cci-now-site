@@ -105,10 +105,6 @@ Feature: Ads Location
             |Teads              |gallery_outside_2 |
             |Native             |gallery_outside_3 |
             |Bottom Leaderboard |gallery_outside_5 |
-        And I should see each body ad slot element containing proper class name
-            |ad                 |class-name     |
-            |MREC After Slide 3 |gallery_body_2 |
-            |MREC After Slide 7 |gallery_body_3 |
         And I should see each RHS ad slot element containing proper class name
             |ad              |class-name     |
             |MREC RHS 1      |gallery_rhs_2  |

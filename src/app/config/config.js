@@ -24,7 +24,6 @@ export default {
 
     ads: {
         targets: { env: 'test' },
-        disabledPageLocation: ['gallery_body'],
         disabledGalleryChangeRefresh: true
     },
 

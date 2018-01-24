@@ -84,19 +84,19 @@ Feature: Ad
         * I should see MREC ad above recommendation
         * I should see the bottom leaderboard ad above the footer on article
 
-#    @gallery
-#    Scenario Outline: Special ads in content body copy on gallery page in the <device> view
-#        Given I switch to "<device>" view
-#        When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
-#        Then I should see MREC ad between images
-#        @high
-#        Examples:
-#            |device     |
-#            |mobile     |
-#        @med
-#        Examples:
-#            |device     |
-#            |desktop    |
+    @gallery
+    Scenario Outline: Special ads in content body copy on gallery page in the <device> view
+        Given I switch to "<device>" view
+        When I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
+        Then I should see MREC ad between images
+        @high
+        Examples:
+            |device             |
+            |mobile             |
+        @low
+        Examples:
+            |device             |
+            |tablet portrait    |
 #--------Article/Gallery page ads end--------#
 
 #--------Wallpaper and side panel ads--------#
@@ -223,14 +223,14 @@ Feature: Ad
             |page              |pageUrl      |
             |section           |fashion      |
 
-    @med
-    Scenario Outline: Verify the autorefreshing bottom leaderboard in desktop view (Test on <page>)
-        Given I switch to "desktop" view
-        When I am currently viewing "<pageUrl>"
-        * the "bottom leaderboard ad" will "not auto" refresh every 30 seconds on "<page>" when is in View
-        @gallery
-        Examples:
-            |page              |pageUrl                                              |
-            |gallery           |fashion/red-carpet/automation-test-gallery-13302     |
+    #@med
+    #Scenario Outline: Verify the autorefreshing bottom leaderboard in desktop view (Test on <page>)
+    #    Given I switch to "desktop" view
+    #    When I am currently viewing "<pageUrl>"
+    #    * the "bottom leaderboard ad" will "not auto" refresh every 30 seconds on "<page>" when is in View
+    #    @gallery
+    #    Examples:
+    #        |page              |pageUrl                                              |
+    #       |gallery           |fashion/red-carpet/automation-test-gallery-13302     |
 #--------Auto-refreshing mobile banner and bottom leaderboard ad end--------#
 
