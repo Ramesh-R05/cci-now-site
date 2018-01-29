@@ -223,14 +223,14 @@ Feature: Ad
             |page              |pageUrl      |
             |section           |fashion      |
 
-    #@med
-    #Scenario Outline: Verify the autorefreshing bottom leaderboard in desktop view (Test on <page>)
-    #    Given I switch to "desktop" view
-    #    When I am currently viewing "<pageUrl>"
-    #    * the "bottom leaderboard ad" will "not auto" refresh every 30 seconds on "<page>" when is in View
-    #    @gallery
-    #    Examples:
-    #        |page              |pageUrl                                              |
-    #       |gallery           |fashion/red-carpet/automation-test-gallery-13302     |
+    @med
+    Scenario Outline: Verify the autorefreshing bottom leaderboard in desktop view (Test on <page>)
+        Given I switch to "desktop" view
+        When I am currently viewing "<pageUrl>"
+        * the "bottom leaderboard ad" will "not auto" refresh every 30 seconds on "<page>" when is in View
+        @gallery
+        Examples:
+            |page              |pageUrl                                             |
+            |gallery           |fashion/red-carpet/automation-test-gallery-13302    |
 #--------Auto-refreshing mobile banner and bottom leaderboard ad end--------#
 
