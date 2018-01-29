@@ -97,6 +97,11 @@
             margin-right: 5px;
         }
     }
+
+    .article__image-count:before {
+        content: ' ';
+        margin-right: 5px;
+    }
 }
 
 .article-section {
@@ -209,7 +214,8 @@
 }
 
 .article__date-created,
-.article-header-author {
+.article-header-author,
+.article__image-count {
     font-size: 11px;
     text-transform: uppercase;
     font-weight: 400;

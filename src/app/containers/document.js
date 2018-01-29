@@ -61,7 +61,7 @@ export default class Document extends Component {
                   theme={theme}
                 >
                     <Gallery
-                      articleHeaderOrder={['Hero', 'Source', 'Title', 'Summary', 'Date', 'Author', 'NativeAd']}
+                      articleHeaderOrder={['Source', 'Title', 'Summary', 'Date', 'Author', 'ImageCount', 'NativeAd', 'Hero']}
                       contentBodyConfig={galleryContentBodyConfig}
                       enableTeads
                       CustomisedTeaser={Teaser}
