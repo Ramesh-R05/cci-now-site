@@ -65,7 +65,7 @@ jobs:
             image: now-site-img-master
             port: 3001
       - TASK: managed
-        deployMethod: replace
+        deployMethod: upgrade
 
   # 3b. NZ SIT deployment for MASTER
   - name: nz-now-site-sit-deploy-master
