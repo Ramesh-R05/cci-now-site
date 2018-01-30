@@ -217,6 +217,11 @@ describe('Page Container', () => {
             expect(stickyAdStub[0].props.adProps.targets).to.deep.eq({ keyword: ['homes_Topic_Garden_planner', 'homes_Homes_navigation_Outdoor']});
         });
 
+        it(`should render 1 out-of-page inskin ad component`, () => {
+		 	const outOfPageAd = adStub.filter( (ad) => { return ad.props.sizes === 'out-of-page' ? ad : null });
+		    expect(outOfPageAd.length).to.eq(1);
+		});
+
         describe(`when the close button is clicked`, () => {
             before(() => {
                 TestUtils.Simulate.click(closeButton);
@@ -227,7 +232,6 @@ describe('Page Container', () => {
             });
         });
     });
-
 
     describe(`the current page is not home page`, () => {
         const props = {

@@ -117,6 +117,14 @@ export default class Page extends Component {
                       theme={this.props.theme}
                       permanentlyFixedIfShorterThan={10}
                     />
+
+                    <Ad
+                      className="ad--out-of-page"
+                      sizes="out-of-page"
+                      label={{ active: false }}
+                      pageLocation={Ad.pos.outOfPage}
+                    />
+
                     {!hideLeaderboard && <StickyAd
                       adProps={stickyAdProps}
                       minHeight={450}
