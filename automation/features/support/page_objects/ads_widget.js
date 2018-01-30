@@ -11,7 +11,7 @@ var ads_widget = {
 
 // =======For Ads Location
     //Outside
-    ad_TopLeaderboard: '.side-menu-wrapper .header-wrapper + div .sticky-block .ad--section-top-leaderboard [id^=ad-gpt-slot-]', //homepage, index, brand, gallery, article
+    ad_TopLeaderboard: '.side-menu-wrapper .sticky-block .ad--section-top-leaderboard [id^=ad-gpt-slot-]', //homepage, index, brand, gallery, article
     ad_MiddleLeaderboard: '.content-wrapper .ad--section-leaderboard [id^=ad-gpt-slot-]', //homepage, index, brand
     ad_BottomLeaderboard: '.content-wrapper .ad--section-bottom-leaderboard [id^=ad-gpt-slot-]', //homepage, index, brand, gallery, article
     ad_Teads: '.ad--slot-teads [id^=ad-gpt-slot-]', //gallery, article
