@@ -1,7 +1,7 @@
 export default {
     site: {
         host: 'http://www.nowtolove.co.nz',
-        protocol: 'http'
+        protocol: 'https'
     },
     services: {
         remote: {
