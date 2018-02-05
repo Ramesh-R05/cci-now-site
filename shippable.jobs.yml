@@ -395,6 +395,8 @@ jobs:
     always:
       - NOTIFY: now-qa-team-notifications
     steps:
+     - IN: now-site-repo
+       switch: off
      - TASK:
         - script: cd ./IN/now-site-repo/gitRepo/automation/features/support/files
         - script: >
