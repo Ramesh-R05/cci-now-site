@@ -388,3 +388,16 @@ jobs:
         - script: sudo apt-get install google-chrome-stable
         - script: google-chrome --product-version
         - script: npm run test:perflive
+
+  # vii. SPIKE - Import items from json file to dev via migrate service
+  - name: spike-au-now-import-live-data-to-dev
+    type: runSh
+    always:
+      - NOTIFY: now-qa-team-notifications
+    steps:
+     - TASK:
+        - script: cd ./IN/now-site-repo/gitRepo/automation/features/support/files/
+        - script: >
+            curl -H "Content-Type: application/json" -X POST -d '[{"fromEnv":"dev", "fromSite":"nznow", "number":"2", "toSite":"now"}]' http://services.sit.bxm.internal:8080/migrate/migrate/
+        - script: >
+            curl -H "Content-Type: application/json" -X POST -d '[{"fromEnv":"dev", "fromSite":"now", "number":"2", "toSite":"now"}]' http://services.sit.bxm.internal:8080/migrate/migrateToDev/
