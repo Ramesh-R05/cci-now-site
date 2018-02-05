@@ -396,7 +396,7 @@ jobs:
       - NOTIFY: now-qa-team-notifications
     steps:
      - TASK:
-        - script: cd ./IN/now-site-repo/gitRepo/automation/features/support/files/
+        - script: cd ./IN/now-site-repo/gitRepo/automation/features/support/files
         - script: >
             curl -H "Content-Type: application/json" -X POST -d '[{"fromEnv":"dev", "fromSite":"nznow", "number":"2", "toSite":"now"}]' http://services.sit.bxm.internal:8080/migrate/migrate/
         - script: >
