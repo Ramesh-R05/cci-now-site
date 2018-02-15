@@ -85,6 +85,8 @@ Feature: Smoke test for AU NOW
         Then our readers can enjoy the created "gallery" page
         When I navigate to the "amp article" page
         Then our readers can enjoy the created "amp article" page
+        When I navigate to the "amp gallery" page
+        Then our readers can enjoy the created "amp gallery" page
 
 
 

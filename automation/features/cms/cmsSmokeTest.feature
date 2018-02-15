@@ -67,13 +67,15 @@ Feature: CMS Smoke Test
             | Body Heading  | Editorial         |
             | Page Title    | Search and Social |
             | Created at    | Properties        |
+            | Enable AMP    | Search and Social |
             | Video         | Editorial         |
             | Body Video    | Editorial         |
             | Content Tags  | Gallery           |
         * I should be able to publish the item
         * I should be able to see the "preview" URL
         * I should be able to see the "live" URL
-
+        * I should be able to visit the live URL
+        * I should be able to check if the amp page is active
 
     #This scenario won't be run in phantomjs because we haven't found a solution to work with the alert popup
     @manual

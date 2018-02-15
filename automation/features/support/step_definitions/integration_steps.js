@@ -123,6 +123,11 @@ module.exports = function() {
                 pageURL = sitUrl + 'amp/' + sectionName + '/' + subsectionName + '/' + contentName['article'];
                 docTypeID[docType] = docTypeID["article"];
                 break;
+            case 'amp gallery':
+                elementOnPage = ".article__title";
+                pageURL = sitUrl + 'amp/' + sectionName + '/' + subsectionName + '/' + contentName['gallery'];
+                docTypeID[docType] = docTypeID["gallery"];
+                break;
         }
 
         for(var i = 0; i < 20; i++) {
@@ -150,6 +155,7 @@ module.exports = function() {
                 expect(browser.getText(".article__title")).toEqual("article Test " + ID);
                 break;
             case 'gallery':
+            case 'amp gallery':
                 browser.waitForExist(".article__title", 30000);
                 expect(browser.getText(".article__title")).toEqual("gallery Test " + ID);
                 break;
