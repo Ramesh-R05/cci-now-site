@@ -59,7 +59,8 @@ describe(`loadPage Reducer`, () => {
                 nodeType: '',
                 title: '',
                 imageUrl: '',
-                request: {}
+                request: {},
+                comScoreSegmentIds: []
             });
         });
 
@@ -71,7 +72,8 @@ describe(`loadPage Reducer`, () => {
                 nodeType: '',
                 title: '',
                 imageUrl: '',
-                request: {}
+                request: {},
+                comScoreSegmentIds: []
             });
         });
     });

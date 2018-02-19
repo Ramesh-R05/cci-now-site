@@ -6,7 +6,8 @@ export const initialState = {
     nodeType: '',
     title: '',
     imageUrl: '',
-    request: {}
+    request: {},
+    comScoreSegmentIds: []
 };
 
 export function reducer(state = initialState, payload = {}, eventName = '') {
@@ -17,6 +18,7 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
         const footer = payload.body.footer || {};
         const request = payload.request.payload || {};
         const subsections = payload.body.subsectionList;
+        const comScoreSegmentIds = payload.body.comScoreSegmentIds;
         if (!entity) return state;
         return {
             ...state,
@@ -29,7 +31,8 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 imageUrl: entity.imageUrl,
                 theme: payload.body.theme,
                 request,
-                subsections
+                subsections,
+                comScoreSegmentIds
             }
         };
     }
@@ -38,7 +41,11 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
         response.status = response.status || 400;
         return {
             ...state,
-            ...{ error: response, footer: get(payload, 'response.body.footer', {}) }
+            ...{
+                error: response,
+                footer: get(payload, 'response.body.footer', {}),
+                comScoreSegmentIds: []
+            }
         };
     }
     case 'PAGE_NOT_FOUND': {
