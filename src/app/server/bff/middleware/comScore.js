@@ -1,6 +1,17 @@
+/* eslint-disable consistent-return */
+
 import request from 'request';
 
+const map = new Map();
+
 export default function comScore(req, res, next) {
+    req.data = req.data || {};
+
+    let segmentIds = map.get(req.query.url) || [];
+    if (segmentIds.length > 0) {
+        req.data.comScoreSegmentIds = segmentIds;
+        return next();
+    }
 
     const pageUrl = encodeURIComponent(`https://${req.app.locals.config.site.prodDomain}${req.query.url}`);
     const options = {
@@ -9,9 +20,7 @@ export default function comScore(req, res, next) {
     };
 
     request.get(options, (err, response, body) => {
-
         if (!err && response.statusCode === 200) {
-
             /*
             * Example responses:
             * var pxSegmentIDs = "300003,210000,110000,110006";
@@ -23,7 +32,6 @@ export default function comScore(req, res, next) {
             * */
 
             const isJson = body.startsWith('{');
-            let segmentIds = [];
 
             if (isJson) {
                 try {
@@ -40,14 +48,10 @@ export default function comScore(req, res, next) {
             }
 
             if (segmentIds.length > 0) {
-                req.data = req.data || {};
-                req.data.comScoreSegmentIds = segmentIds.join(',');
+                req.data.comScoreSegmentIds = map.set(req.query.url, segmentIds.join(','));
             }
-
         }
 
         next();
-
     });
-
 }
