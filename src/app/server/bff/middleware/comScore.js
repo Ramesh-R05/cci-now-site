@@ -7,11 +7,15 @@ const map = new Map();
 export default function comScore(req, res, next) {
     req.data = req.data || {};
 
+    const start = Date.now();
+
     let segmentIds = map.get(req.query.url) || [];
     if (segmentIds.length > 0) {
+        console.log(`comscore: using segments from cache for ${req.query.url} in ${Date.now() - start}ms`);
         req.data.comScoreSegmentIds = segmentIds;
         return next();
     }
+    console.log(`comscore: requesting segments from remote ${req.query.url}`);
 
     const pageUrl = encodeURIComponent(`https://${req.app.locals.config.site.prodDomain}${req.query.url}`);
     const options = {
@@ -52,6 +56,7 @@ export default function comScore(req, res, next) {
             }
         }
 
+        console.log(`comscore: received segments from remote for ${req.query.url} in ${Date.now() - start}ms`);
         next();
     });
 }
