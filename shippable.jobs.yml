@@ -342,30 +342,8 @@ jobs:
         - script: APP_KEY=nznow-site npm run test:cms || true
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
-
-  # iv. Import AU Now live data to dev via migrate service
-  - name: au-now-import-live-data-to-dev
-    type: runSh
-    always:
-      - NOTIFY: now-qa-team-notifications
-    steps:
-     - IN: now-weekly-trigger
-     - TASK:
-        - script: >
-            curl -H "Content-Type: application/json" -X POST -d '[{"fromEnv":"live", "fromSite":"now", "number":"10", "toSite":"now"}]' http://dev.migrate.services.bauer-media.internal/migrate
-
-  # v. Import NZ Now live data to dev via migrate service
-  - name: nz-now-import-live-data-to-dev
-    type: runSh
-    always:
-      - NOTIFY: now-qa-team-notifications
-    steps:
-     - IN: nznow-weekly-trigger
-     - TASK:
-        - script: >
-            curl -H "Content-Type: application/json" -X POST -d '[{"fromEnv":"live", "fromSite":"nznow", "number":"10", "toSite":"nznow"}]' http://dev.migrate.services.bauer-media.internal/migrate
    
-  # vi. Run Performance Test on live environment 
+  # iv. Run Performance Test on live environment
   - name: performance-test-live
     type: runSh
     always:
@@ -388,18 +366,3 @@ jobs:
         - script: sudo apt-get install google-chrome-stable
         - script: google-chrome --product-version
         - script: npm run test:perflive
-
-  # vii. SPIKE - Import items from json file to dev via migrate service
-  - name: spike-au-now-import-live-data-to-dev
-    type: runSh
-    always:
-      - NOTIFY: now-qa-team-notifications
-    steps:
-     - IN: now-site-repo
-       switch: off
-     - TASK:
-        - script: cd ./IN/now-site-repo/gitRepo/automation/features/support/files
-        - script: >
-            curl -H "Content-Type: application/json" -X POST -d '[{"fromEnv":"dev", "fromSite":"nznow", "number":"2", "toSite":"now"}]' http://services.sit.bxm.internal:8080/migrate/migrate/
-        - script: >
-            curl -H "Content-Type: application/json" -X POST -d '[{"fromEnv":"dev", "fromSite":"now", "number":"2", "toSite":"now"}]' http://services.sit.bxm.internal:8080/migrate/migrateToDev/
