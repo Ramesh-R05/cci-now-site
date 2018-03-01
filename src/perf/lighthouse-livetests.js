@@ -4,24 +4,24 @@ const auditConfig = require('lighthouse/lighthouse-core/config/perf.json');
 
 const testLinks = [
     {
-        title: 'article',
-        url: 'https://www.nowtolove.com.au/health/body/how-to-harness-your-hormones-44097/',
-        expectedScore: 45
-    },
-    {
         title: 'homepage',
         url: 'https://www.nowtolove.com.au/',
-        expectedScore: 43
+        expectedScore: 33
     },
     {
         title: 'section',
         url: 'https://www.nowtolove.com.au/news/',
-        expectedScore: 48
+        expectedScore: 35
+    },
+    {
+        title: 'article',
+        url: 'https://www.nowtolove.com.au/health/body/how-to-harness-your-hormones-44097/',
+        expectedScore: 21
     },
     {
         title: 'gallery',
         url: 'https://www.nowtolove.com.au/fashion/fashion-news/meghan-markles-style-file-41284/',
-        expectedScore: 46
+        expectedScore: 22
     }
 ];
 
