@@ -88,6 +88,8 @@ jobs:
   # 3c. TEST deployment for MASTER - stubbed
   - name: now-site-test-deploy-master
     type: deploy
+    always:
+      - NOTIFY: now-slack-notifications
     steps:
       - IN: now-site-man-master # for master - auto deploy to SIT
         switch: on
@@ -106,6 +108,7 @@ jobs:
     type: runSh
     always:
       - NOTIFY: now-slack-notifications
+      - NOTIFY: now-qa-team-notifications
     steps:
      - IN: now-site-test-deploy-master
      - IN: now-site-repo
@@ -131,6 +134,7 @@ jobs:
     type: runSh
     always:
       - NOTIFY: now-slack-notifications
+      - NOTIFY: now-qa-team-notifications
     steps:
      - IN: now-site-test-deploy-master
      - IN: now-site-repo
@@ -156,6 +160,7 @@ jobs:
     type: runSh
     always:
       - NOTIFY: now-slack-notifications
+      - NOTIFY: now-qa-team-notifications
     steps:
      - IN: nz-now-site-sit-deploy-master
      - IN: now-site-repo
@@ -180,6 +185,7 @@ jobs:
     type: runSh
     always:
       - NOTIFY: now-slack-notifications
+      - NOTIFY: now-qa-team-notifications
     steps:
      - IN: au-now-site-sit-deploy-master
      - IN: now-site-repo
@@ -226,6 +232,8 @@ jobs:
   # 5. Package release for production release
   - name: now-site-release-master
     type: release
+    always:
+      - NOTIFY: now-slack-notifications
     steps:
       - IN: now-site-automation-test
       - IN: nz-now-site-smoke-test
@@ -235,6 +243,8 @@ jobs:
         switch: off
       - IN: now-site-version
       - TASK: managed
+    on_success:
+      - NOTIFY: now-deployment-notifications
 
   # 6a. PROD deployment for MASTER with Region AU
   - name: au-now-site-prod-deploy-master
