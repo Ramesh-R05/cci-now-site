@@ -232,6 +232,7 @@ jobs:
   # 5. Package release for production release
   - name: now-site-release-master
     type: release
+    dependencyMode: strict
     always:
       - NOTIFY: now-slack-notifications
     steps:
