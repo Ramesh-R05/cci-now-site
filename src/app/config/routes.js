@@ -5,12 +5,19 @@ import HomePage from '../containers/home';
 import SectionPage from '../containers/section';
 import SinglePage from '../containers/document';
 import ErrorPage from '../components/page/error';
+import IframePage from '../containers/iframeWidget';
 
 export default {
     home: {
         path: '/',
         method: 'get',
         handler: HomePage,
+        action: loadPageContent
+    },
+    iframeWidget: {
+        path: '/test-tectonic',
+        method: 'get',
+        handler: IframePage,
         action: loadPageContent
     },
     section: {
