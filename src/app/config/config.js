@@ -67,6 +67,8 @@ export default {
         scriptUrl: '//f92j5.com/gks7m1ojipkc3pg6y79ct5xpm73slf5p5a.js'
     },
 
+    nielsen: '6148F238-179C-4F36-9AD2-5B6EC6981EFC',
+
     subscribeText: 'The latest news delivered to your inbox'
 };
 
