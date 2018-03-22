@@ -45,6 +45,7 @@ Feature: Specific value for NZ NTL
             |next                |subscribe-next    |https://www.facebook.com/nextmagazine          |https://twitter.com/nextmagazinenz |https://www.instagram.com/nextmagazinenz           |none                                   |gtm-subscribe-next   |
             |good-health-choices |subscribe-nzgh    |https://www.facebook.com/goodhealthchoicesnz   |https://twitter.com/good_health_nz |https://www.instagram.com/goodhealthnz             |https://nz.pinterest.com/goodhealthmag |gtm-subscribe-nzgh   |
             |simply-you          |subscribe-simply  |https://www.facebook.com/SimplyYouMagazine     |https://twitter.com/SimplyYouMag   |https://www.instagram.com/simplyyoumag             |none                                   |gtm-subscribe-simply |
+            |nadia               |subscribe-nadia   |none                                           |none                               |https://www.instagram.com/nadiamagazine            |none                                   |gtm-subscribe-nadia  |
 
     Scenario: Verify the footer in the "mobile" view
         Given I switch to "mobile" view
@@ -78,6 +79,8 @@ Feature: Specific value for NZ NTL
             |Instagram  |https://www.instagram.com/NowToLovenz  |
             |Pinterest  |https://nz.pinterest.com/NowToLoveNZ   |
 
+
+
     @BXMA-482
     Scenario: Verify the sign-up URL on homepage
         Given I switch to "mobile" view
@@ -98,3 +101,4 @@ Feature: Specific value for NZ NTL
             | next/                   | http://www.nowtolove.co.nz/next-newsletter                   |
             | good-health-choices     | http://www.nowtolove.co.nz/good-health-choices-newsletter    |
             | simply-you/             | http://www.nowtolove.co.nz/simply-you-newsletter             |
+            | nadia/                  | http://www.nowtolove.co.nz/nadia-newsletter                  |

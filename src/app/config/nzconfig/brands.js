@@ -79,7 +79,11 @@ export default {
         title: 'Nadia',
         magazineTitle: 'Nadia',
         imageUrl: '/assets/images/nzheaderlogos/NADIA-logo.svg',
-        url: '/nadia'
+        url: '/nadia',
+        socialLinks: {
+            instagram: 'https://www.instagram.com/nadiamagazine'
+        },
+        newsletterUrl: 'http://www.nowtolove.co.nz/nadia-newsletter'
     }, {
         id: 'btl',
         title: 'Beauty To Love',

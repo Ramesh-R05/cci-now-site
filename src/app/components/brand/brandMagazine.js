@@ -44,7 +44,7 @@ class BrandMagazine extends Component {
                 <div className="brand--magazine-container">
                     {renderSubscribeElements && <span className="brand--magazine-title">Subscribe to {magazineTitle || title}</span>}
                     <div className="brand--magazine-image">
-                        <ResponsiveImage
+                        {imageUrl && <ResponsiveImage
                           url={imageUrl}
                           sizes={imageSizes}
                           breakpoints={breakpoints}
@@ -52,7 +52,7 @@ class BrandMagazine extends Component {
                           mode={responsiveConfig.mode}
                           anchor={responsiveConfig.anchor}
                           quality={80}
-                        />
+                        />}
                     </div>
                     {renderSubscribeElements &&
                         <a target="_blank" className={`gtm-subscribe-${id}`} href={subscribeUrl}>

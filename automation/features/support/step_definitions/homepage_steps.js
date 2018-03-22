@@ -192,8 +192,13 @@ module.exports = function(){
         for (var i = 0; i < rows.length; ++i) {
             var row = rows[i];
             //validates position of social icons on Index and their link
-            console.log(row['social'] + ' : ' + socialLink[i]);
-            expect(socialLink[i]).toContain(row['url']);
+            if (typeof socialLink === 'string') {
+                console.log(row['social'] + ' : ' + socialLink);
+                expect(socialLink).toContain(row['url']);
+            } else {
+                console.log(row['social'] + ' : ' + socialLink[i]);
+                expect(socialLink[i]).toContain(row['url']);
+            }
         }
     });
 

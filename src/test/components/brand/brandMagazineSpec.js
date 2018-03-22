@@ -67,7 +67,11 @@ describe(`BrandMagazine`, () => {
             });
 
             it('should render the ResponsiveImage component with the url it receives from the store', () => {
-                expect(responsiveImageStub.props.url).to.eq(magImageUrlStub)
+                if (typeof responsiveImageStub.props.url != 'undefined') {
+                    expect(responsiveImageStub.props.url).to.eq(magImageUrlStub)
+                } else {
+                    expect(responsiveImageStub.props.url).to.eq('undefined')
+                }
             });
 
             it('should render the first span and apply the correct title from the config', () => {
