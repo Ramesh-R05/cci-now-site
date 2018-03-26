@@ -115,7 +115,7 @@ export default {
                 "title": "",
                 "valid": true,
                 "source": "",
-                "caption": "Ariana Grande shies away from usual cat-eye look and wears a light coat of foundation, a dab of baby pink gloss and shimmery nude eyeshadow. ~*fLaWlEsS*~",
+                "caption": "Ariana Grande shies away from usual cat-eye look and wears a light coat of foundation, a dab of baby pink gloss and shimmery nude eyeshadow. ~*fLaWlEsS*~",
                 "credits": [],
                 "mediaType": "image"
             },

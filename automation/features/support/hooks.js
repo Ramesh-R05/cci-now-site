@@ -1,17 +1,18 @@
 'use strict';
 
-module.exports = function hooks() {
+module.exports = function() {
 
-    this.setDefaultTimeout(120 * 1000);
-    console.log("Update timeout to 120000");
+    const timeout = 120 * 1000;
+    this.setDefaultTimeout(timeout);
+    console.log(`Updated timeout to ${timeout}`);
 
-
-    var nconf = require('nconf');
+    const nconf = require('nconf');
     nconf.argv().env();
-    var domainName = nconf.get('APP_KEY');
+    const domainName = nconf.get('APP_KEY');
 
-    this.After(function (scenario) {
-            console.log('run on domain : ' + domainName);
-            browser.deleteCookie();
-        });
+    this.After((scenario) => {
+        console.log(`Running on domain: ${domainName}`);
+        browser.deleteCookie();
+    });
+
 };
