@@ -27,5 +27,8 @@ export default {
             20002302: '0j16fz4d', // To Love pixel
             20002304: '30tp4z58'  // Women's sites pixel
         }
+    },
+    polar: {
+        enabled: true
     }
 };
