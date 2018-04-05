@@ -15,7 +15,6 @@ Feature: Footer
             |OK! Magazine               |/okmagazine        |gtm-footer__logos-list-ok     |
             |NW                         |/nw                |gtm-footer__logos-list-nw     |
             |Take 5                     |/take5mag          |gtm-footer__logos-list-take5  |
-            |Yours                      |/yours             |gtm-footer__logos-list-yours  |
             |Mother and Baby            |/mother-and-baby   |gtm-footer__logos-list-mb     |
             |TV WEEK                    |/tvweek            |gtm-footer__logos-list-tvweek |
 

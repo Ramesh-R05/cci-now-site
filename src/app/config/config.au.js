@@ -94,18 +94,6 @@ export default {
                 newsletterUrl: '//www.nowtolove.com.au/take5mag-newsletter'
             },
             {
-                id: 'yours',
-                title: 'Yours',
-                imageUrl: '/assets/images/headerlogos/YOURS-logo.svg',
-                url: '/yours',
-                socialLinks: {
-                    facebook: 'https://www.facebook.com/Yoursmagazineau/',
-                    twitter: 'https://twitter.com/yoursmagazineau',
-                    instagram: 'https://www.instagram.com/yoursmagazineau/'
-                },
-                newsletterUrl: '//www.nowtolove.com.au/yours-newsletter'
-            },
-            {
                 id: 'mb',
                 title: 'Mother and Baby',
                 imageUrl: '/assets/images/headerlogos/MB-logo.svg',

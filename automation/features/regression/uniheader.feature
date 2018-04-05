@@ -15,7 +15,6 @@ Feature: Uniheader
             |OK! Magazine               |/okmagazine                        |
             |NW                         |/nw                                |
             |Take 5                     |/take5mag                          |
-            |Yours                      |/yours                             |
             |Mother and Baby            |/mother-and-baby                   |
             |TV WEEK                    |/tvweek                            |
             |Prizes To Love             |/prizestolove                      |

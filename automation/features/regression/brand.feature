@@ -16,7 +16,6 @@ Feature: Brand Landing page
             | okmagazine/           | //www.nowtolove.com.au/okmagazine-newsletter      |
             | nw/                   | //www.nowtolove.com.au/nw-newsletter              |
             | take5mag/             | //www.nowtolove.com.au/take5mag-newsletter        |
-            | yours/                | //www.nowtolove.com.au/yours-newsletter           |
             | mother-and-baby/      | //www.nowtolove.com.au/mother-and-baby-newsletter |
             | tvweek/               | //www.nowtolove.com.au/tvweek-newsletter          |
             | prizestolove/         | //www.nowtolove.com.au/prizestolove-newsletter    |
@@ -119,7 +118,6 @@ Feature: Brand Landing page
             |okmagazine         |subscribe-ok       |https://www.facebook.com/OKmagAustralia    |https://twitter.com/okmagaustralia     |https://www.instagram.com/okmagaustralia       |gtm-subscribe-ok     |
             |nw                 |subscribe-nw       |https://www.facebook.com/NWmagazine        |https://twitter.com/nwmag              |https://www.instagram.com/nwmag/               |gtm-subscribe-nw     |
             |take5mag           |subscribe-take5    |https://www.facebook.com/take5magazine     |https://twitter.com/take5magazine      |https://www.instagram.com/take5magazine/       |gtm-subscribe-take5  |
-            |yours              |subscribe-yours    |https://www.facebook.com/Yoursmagazineau/  |https://twitter.com/yoursmagazineau    |https://www.instagram.com/yoursmagazineau/     |gtm-subscribe-yours  |
             |mother-and-baby    |none               |https://www.facebook.com/mbmag/            |https://twitter.com/motherbaby_au      |https://www.instagram.com/motherbaby_au        |none                 |
             |tvweek             |subscribe-tvweek   |https://www.facebook.com/tvweekmag         |https://twitter.com/TVWEEKmag          |https://www.instagram.com/TVWEEKmag            |gtm-subscribe-tvweek |
 
