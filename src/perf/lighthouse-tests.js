@@ -1,6 +1,6 @@
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('lighthouse/chrome-launcher');
-const auditConfig = require('lighthouse/lighthouse-core/config/perf.json');
+const auditConfig = require('lighthouse/lighthouse-core/config/full-config.js');
 
 const testLinks = [
     {
@@ -42,7 +42,7 @@ function lighthouseTests(testObject) {
     const { title, url, expectedScore } = testObject;
     describe(`Now To Love site performance testing for ${title} : ${url}`, function loopedTests() {
         this.retries(3);
-        this.timeout(60000);
+        this.timeout(120000);
         let result;
 
         beforeEach('Run Lighthouse base test', (done) => {
@@ -61,6 +61,7 @@ function lighthouseTests(testObject) {
             console.log(`current score is => ${Math.round(actualScore)}`);
             assert.isAtLeast(Math.round(actualScore), expectedScore);
         });
+
     });
 
 }

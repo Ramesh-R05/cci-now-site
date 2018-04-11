@@ -6,33 +6,33 @@ const testLinks = [
     {
         title: 'homepage',
         url: 'https://www.nowtolove.com.au/',
-        expectedScore: 33
+        expectedScore: 90
     },
     {
         title: 'section',
         url: 'https://www.nowtolove.com.au/news/',
-        expectedScore: 35
+        expectedScore: 90
     },
     {
         title: 'article',
         url: 'https://www.nowtolove.com.au/health/body/how-to-harness-your-hormones-44097/',
-        expectedScore: 21
+        expectedScore: 90
     },
     {
         title: 'gallery',
         url: 'https://www.nowtolove.com.au/fashion/fashion-news/meghan-markles-style-file-41284/',
-        expectedScore: 22
+        expectedScore: 90
     }
 ];
 
 function lighthouseInit(url, flags = {}, config = null) {
     return chromeLauncher.launch(flags).then((chrome) => {
-            const generatedFlags = {
-                port: chrome.port
-            };
-    return lighthouse(url, generatedFlags, config).then(results =>
-        chrome.kill().then(() => results));
-});
+        const generatedFlags = {
+            port: chrome.port
+        };
+        return lighthouse(url, generatedFlags, config).then(results =>
+            chrome.kill().then(() => results));
+    });
 }
 
 function lighthouseTests(testObject) {
@@ -40,7 +40,7 @@ function lighthouseTests(testObject) {
         chromeFlags: ["--headless", "--disable-gpu", "--enable-logging", "--no-sandbox"]
     };
     const { title, url, expectedScore } = testObject;
-    describe(`Now To Love site performance testing for ${title} : ${url}`, function loopedTests() {
+    describe(`Now To Love site SEO testing for ${title} : ${url}`, function loopedTests() {
         this.retries(3);
         this.timeout(120000);
         let result;
@@ -56,12 +56,12 @@ function lighthouseTests(testObject) {
                     console.log(err);
                 });
         });
-
-        it(`should have a performance score >= ${expectedScore}`, () => {
-            const actualScore = result.find(data => data.id === 'performance').score;
+        it(`should have a SEO score >= ${expectedScore}`, () => {
+            const actualScore = result.find(data => data.id === 'seo').score;
             console.log(`current score is => ${Math.round(actualScore)}`);
             assert.isAtLeast(Math.round(actualScore), expectedScore);
         });
+
     });
 
 }
