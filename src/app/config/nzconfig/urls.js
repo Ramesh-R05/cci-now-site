@@ -13,6 +13,6 @@ export default {
     },
 
     newsletterUrl: '//www.nowtolove.co.nz/now-nz-newsletter',
-    newsletterSignupInBodyCopy: 'http://cb.sailthru.com/join/5ko/signup-nowtolovenz-articlepage'
+    newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5ko/signup-nowtolovenz-articlepage'
 };
 

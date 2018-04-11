@@ -13,7 +13,7 @@ export default {
         },
 
         newsletterUrl: '//www.nowtolove.com.au/now-newsletter',
-        newsletterSignupInBodyCopy: 'http://cb.sailthru.com/join/5k8/signup-nowtolove-article-iframe-bottom'
+        newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5k8/signup-nowtolove-article-iframe-bottom'
     },
 
     brands: {
@@ -31,7 +31,7 @@ export default {
                 },
                 newsletterUrl: '//www.nowtolove.com.au/aww-newsletter',
                 alternateHrefLangUrl: '/australianwomensweekly',
-                newsletterSignupInBodyCopy: 'http://cb.sailthru.com/join/5k7/signup-aww-article-iframe-bottom'
+                newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5k7/signup-aww-article-iframe-bottom'
             },
             {
                 id: 'wd',
@@ -45,7 +45,7 @@ export default {
                 },
                 newsletterUrl: '//www.nowtolove.com.au/womansday-newsletter',
                 alternateHrefLangUrl: '/womans-day',
-                newsletterSignupInBodyCopy: 'http://cb.sailthru.com/join/5k5/signup-womansday-article-iframe-bottom'
+                newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5k5/signup-womansday-article-iframe-bottom'
             },
             {
                 id: 'gh',
@@ -71,7 +71,7 @@ export default {
                     instagram: 'https://www.instagram.com/okmagaustralia'
                 },
                 newsletterUrl: '//www.nowtolove.com.au/okmagazine-newsletter',
-                newsletterSignupInBodyCopy: 'http://cb.sailthru.com/join/5ka/signup-okmagazine-article-iframe-bottom'
+                newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5ka/signup-okmagazine-article-iframe-bottom'
             },
             {
                 id: 'nw',
@@ -84,7 +84,7 @@ export default {
                     instagram: 'https://www.instagram.com/nwmag/'
                 },
                 newsletterUrl: '//www.nowtolove.com.au/nw-newsletter',
-                newsletterSignupInBodyCopy: 'http://cb.sailthru.com/join/5k9/signup-nwonline-article-iframe-bottom'
+                newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5k9/signup-nwonline-article-iframe-bottom'
             },
             {
                 id: 'take5',
@@ -97,7 +97,7 @@ export default {
                     instagram: 'https://www.instagram.com/take5magazine/'
                 },
                 newsletterUrl: '//www.nowtolove.com.au/take5mag-newsletter',
-                newsletterSignupInBodyCopy: 'http://cb.sailthru.com/join/5kb/signup-take5-article-iframe-bottom'
+                newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5kb/signup-take5-article-iframe-bottom'
             },
             {
                 id: 'mb',
@@ -123,7 +123,7 @@ export default {
                     instagram: 'https://www.instagram.com/TVWEEKmag'
                 },
                 newsletterUrl: '//www.nowtolove.com.au/tvweek-newsletter',
-                newsletterSignupInBodyCopy: 'http://cb.sailthru.com/join/5kc/signup-tvweek-article-iframe-bottom'
+                newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5kc/signup-tvweek-article-iframe-bottom'
             },
             {
                 id: 'ptl',
@@ -137,7 +137,7 @@ export default {
                 newsletterUrl: '//www.nowtolove.com.au/prizestolove-newsletter',
                 subscribeText: 'The latest competitions delivered to your inbox',
                 renderSubscribeElements: false,
-                newsletterSignupInBodyCopy: 'http://cb.sailthru.com/join/5kw/signup-foodtolove-article-iframe-bottom'
+                newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5kw/signup-foodtolove-article-iframe-bottom'
             }
         ],
         hamburgers: [
