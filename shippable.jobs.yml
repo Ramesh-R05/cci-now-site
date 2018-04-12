@@ -32,7 +32,7 @@ jobs:
       - IN: now-site-man-branch # for non-master, don't auto deploy.
         switch: off
       - IN: env-sit-ecs
-      - IN: now-site-au-params-sit
+      - IN: now-site-nz-params-sit
       - IN: now-site-alb-sit-branch
         applyTo:
           - manifest: now-site-man-branch
@@ -67,7 +67,7 @@ jobs:
       - TASK: managed
         deployMethod: upgrade
 
-  # 3b. NZ SIT deployment for MASTER
+  # 3b. SIT deployment for MASTER
   - name: nz-now-site-sit-deploy-master
     type: deploy
     always:
