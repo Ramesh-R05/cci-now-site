@@ -2,6 +2,7 @@
 
 import request from 'request';
 
+const debug = process.env.APP_DEBUG || false;
 const map = new Map();
 
 export default function comScore(req, res, next) {
@@ -11,15 +12,15 @@ export default function comScore(req, res, next) {
 
     let segmentIds = map.get(req.query.url) || [];
     if (segmentIds.length > 0) {
-        console.log(`comscore: using segments from cache for ${req.query.url} in ${Date.now() - start}ms`);
+        if (debug) console.log(`comscore: using segments from cache for ${req.query.url} in ${Date.now() - start}ms`);
         req.data.comScoreSegmentIds = segmentIds;
         return next();
     }
-    console.log(`comscore: requesting segments from remote ${req.query.url}`);
+    if (debug) console.log(`comscore: requesting segments from remote ${req.query.url}`);
 
     const pageUrl = encodeURIComponent(`https://${req.app.locals.config.site.prodDomain}${req.query.url}`);
     const options = {
-        url: `http://api-us-east.zqtk.net/bauermedia-1h5kv7?url=${pageUrl}`,
+        url: `http://api-ap-southeast.proximic.com:9100/sources.json?dkey=_cfXczyV1aBZSjb4Lu1AVHeDZRDCWdUAlc_BOvD2IvI&url=${pageUrl}`,
         timeout: 1000
     };
 
@@ -54,9 +55,10 @@ export default function comScore(req, res, next) {
             if (segmentIds.length > 0) {
                 req.data.comScoreSegmentIds = map.set(req.query.url, segmentIds.join(','));
             }
+            if (debug) console.log(`comscore: received segments from remote for ${req.query.url} in ${Date.now() - start}ms`);
+            next();
+        } else {
+            next(err);
         }
-
-        console.log(`comscore: received segments from remote for ${req.query.url} in ${Date.now() - start}ms`);
-        next();
     });
 }
