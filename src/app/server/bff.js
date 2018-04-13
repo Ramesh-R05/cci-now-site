@@ -21,7 +21,7 @@ import comScore from './bff/middleware/comScore';
 
 // only use comscore for NZ
 // only use comscore in deployed infra environment because local network blocks the port used for the comscore api
-const USE = process.env.APP_REGION === 'nz' && (process.env.APP_ENV === 'sit' || process.env.APP_ENV === 'prod');
+const USE = process.env.APP_REGION === 'nz' && (process.env.APP_ENV === 'sit' || process.env.APP_ENV === 'production');
 
 export default function bff(server) {
     server.get('/api/asset', assetProxy);
