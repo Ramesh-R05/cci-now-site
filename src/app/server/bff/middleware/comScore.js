@@ -20,7 +20,8 @@ export default function comScore(req, res, next) {
 
     const pageUrl = encodeURIComponent(`https://${req.app.locals.config.site.prodDomain}${req.query.url}`);
     const options = {
-        url: `http://api-ap-southeast.proximic.com:9100/sources.json?dkey=_cfXczyV1aBZSjb4Lu1AVHeDZRDCWdUAlc_BOvD2IvI&url=${pageUrl}`,
+        // eslint-disable-next-line max-len
+        url: `http://api-ap-southeast.proximic.com:9100/sources.json?dkey=oh07IxT_3bk0gtkudfAWP8ikhrshRI6A9mtpGTplKWY9l_VxhfUVmf9J_5Uqkasy&url=${pageUrl}`,
         timeout: 1000
     };
 
@@ -53,9 +54,13 @@ export default function comScore(req, res, next) {
             }
 
             if (segmentIds.length > 0) {
-                req.data.comScoreSegmentIds = map.set(req.query.url, segmentIds.join(','));
+                map.set(req.query.url, segmentIds.join(','));
+                req.data.comScoreSegmentIds = map.get(req.query.url);
             }
-            if (debug) console.log(`comscore: received segments from remote for ${req.query.url} in ${Date.now() - start}ms`);
+            if (debug) {
+                console.log(`comscore: received segments from remote for ${req.query.url} in ${Date.now() - start}ms`);
+                console.log(`comscore: segments: ${req.data.comScoreSegmentIds}`);
+            }
             next();
         } else {
             next(err);
