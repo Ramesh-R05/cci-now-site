@@ -39,7 +39,7 @@ export default {
 
     error: {
         404: {
-            title: 'Sorry, this page is broken.',
+            title: 'Sorry, this page is not found.',
             symbol: null,
             content: [''],
             emojiSrc: '/assets/images/error.gif',

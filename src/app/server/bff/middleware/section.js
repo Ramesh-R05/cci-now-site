@@ -47,6 +47,13 @@ export default async function sectionMiddleware(req, res, next) {
 
         const skip = ((pageNo - 1) * listCount);
         const latestTeasersResp = await getLatestTeasers(listCount, skip, listingQuery);
+        const totalPageFloor = Math.floor(latestTeasersResp.totalCount / listCount);
+        const totalPage = latestTeasersResp.totalCount % listCount ? totalPageFloor : totalPageFloor + 1;
+        const err = new Error('Page not found');
+        err.status = 404;
+        if (totalPage < pageNo) throw err;
+
+
         // TODO: need to handle `data` in resp better
         const latestTeasers = latestTeasersResp || {
             data: []
