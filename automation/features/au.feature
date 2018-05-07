@@ -66,7 +66,7 @@ Feature: Smoke test for AU NOW
     Scenario: Verify the 404 page
         Given I switch to "mobile" view
         When I am currently viewing "404"
-        Then I should see the error title as "Sorry, this page is broken."
+        Then I should see the error title as "Sorry, this page is not found."
 
     Scenario: Verify all the doc type items
         Given I switch to "mobile" view
