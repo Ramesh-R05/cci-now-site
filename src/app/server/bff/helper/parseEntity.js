@@ -30,8 +30,9 @@ const entityPropertyMap = {
     siteUrl: 'siteUrl',
     tagsDetails: 'tagsDetails',
     subsections: 'subsections',
-    enableAmp: 'enableAmp',
-    isBrandHero: 'isBrandHero'
+    isBrandHero: 'isBrandHero',
+    disableAmp: 'disableAmp',
+    enableAmp: 'enableGalleryAmp'
 };
 
 export function parseEntity(data, propertyMapOverride = {}) {
