@@ -145,7 +145,7 @@ describe('HeaderMeta middleware', () => {
         });
     });
 
-    describe(`when APP_ENV equals to 'production' and is on prod domain` , () => {
+    describe(`when APP_ENV equals to 'prod' and is on prod domain` , () => {
         let req;
 
         describe(`and is not the preview site` , () => {
