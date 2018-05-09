@@ -187,7 +187,7 @@ resources:
     version:
       params:
         NODE_ENV: "production"
-        APP_ENV: "automation"
+        APP_ENV: "test"
         APP_STUBBED: true
         APP_DEBUG: true
         APP_REGION: "au"
@@ -227,5 +227,5 @@ resources:
     version:
       params:
         NODE_ENV: "production"
-        APP_ENV: "production"
+        APP_ENV: "prod"
         APM_KEY: "c777240932e6282ffacc6a42ae6a0709426522bb"
