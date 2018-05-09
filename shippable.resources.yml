@@ -88,24 +88,36 @@ resources:
 
   #Schedule Run of automation
   # This is using Shippable timezone
-  # CRON is (0 19 * * *") this is 7:00pm every day refer to https://en.wikipedia.org/wiki/Cron
-  # will run at 6:00am daylight saving or 5:00am standard time in Sydney
+  # CRON is (30 21 * * *") this is 9:30pm every day refer to https://en.wikipedia.org/wiki/Cron
+  # will run at 8:30am daylight saving or 7:30am standard time in Sydney
   - name: now-morning-trigger
     type: time
     seed:
-      interval: "0 19 * * *"
+      interval: "30 21 * * *"
 
-  #"30 22 * * 1" is 10:30pm Monday which is Tuesday morning 9:30am daylight saving or 8:30am standard time in Sydney
+  #"0 22 * * 1" is 10:00pm Monday which is Tuesday morning 9:00am daylight saving or 8:00am standard time in Sydney
   - name: now-weekly-trigger
     type: time
     seed:
-      interval: "30 22 * * 1"
+      interval: "0 22 * * 1"
 
-  #"30 22 * * 3" is 10:30pm Wednesday which is Thursday morning 9:30am daylight saving or 8:30am standard time in Sydney
+  #"0 22 * * 3" is 10:00pm Wednesday which is Thursday morning 9:00am daylight saving or 8:00am standard time in Sydney
   - name: nznow-weekly-trigger
     type: time
     seed:
-      interval: "30 22 * * 3"
+      interval: "0 22 * * 3"
+
+  #"30 22 * * 1,4" is 10:30pm Monday & Thursday which are Tuesday morning and Friday morning 9:30am daylight saving or 8:30am standard time in Sydney
+  - name: now-perf-live-trigger
+    type: time
+    seed:
+      interval: "30 22 * * 1,4"
+
+  #"30 22 * * 1" is 10:30pm Monday which is Tuesday morning 9:30am daylight saving or 8:30am standard time in Sydney
+  - name: now-seo-live-trigger
+    type: time
+    seed:
+      interval: "30 22 * * 1"
 
   ####################################
   # NON PROD environment configuration

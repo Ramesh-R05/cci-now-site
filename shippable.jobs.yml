@@ -365,7 +365,7 @@ jobs:
     steps:
      - IN: now-site-repo
        switch: off
-     - IN: now-weekly-trigger
+     - IN: now-perf-live-trigger
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
@@ -389,7 +389,7 @@ jobs:
     steps:
      - IN: now-site-repo
        switch: off
-     - IN: now-weekly-trigger
+     - IN: now-seo-live-trigger
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
