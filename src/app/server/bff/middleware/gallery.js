@@ -20,7 +20,12 @@ export default async function gallery(req, res, next) {
         req.data.entity.pageDateCreated = momentTimezone.tz(req.data.entity.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
         req.data.moreGalleries = await getMoreGalleries();
 
-        const listingQuery = 'nodeTypeAlias eq \'Article\' or nodeTypeAlias eq \'Gallery\'';
+        let listingQuery = '';
+        if (get(req, 'data.entity.parentUrl', '').includes('barbie')) {
+            listingQuery = 'parentUrl eq \'barbie\'';
+        } else {
+            listingQuery = 'nodeTypeAlias eq \'Article\' or nodeTypeAlias eq \'Gallery\'';
+        }
         req.data.leftHandSide = await getLatestTeasers(TOP, undefined, listingQuery);
 
         next();
