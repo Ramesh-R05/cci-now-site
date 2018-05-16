@@ -73,7 +73,10 @@ module.exports = function() {
     });
 
     this.Given(/^I can see the amp body Youtube embed "([^"]*)"$/, function (youtubeUrl) {
-        browser.waitForVisible(amp.ampYoutubeEmb, 3000);
+        // Iframe inside element lazy loads once in viewport
+        browser.waitForVisible(amp.ampYoutube,  3000);
+        browser.scroll(amp.ampYoutube);
+        browser.waitForVisible(amp.ampYoutubeEmb,  3000);
         var ampYoutubeEmb = browser.getAttribute(amp.ampYoutubeEmb, 'src');
         console.log(ampYoutubeEmb);
         expect(ampYoutubeEmb).toContain(youtubeUrl);
