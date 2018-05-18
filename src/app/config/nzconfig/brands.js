@@ -63,18 +63,6 @@ export default {
         newsletterUrl: '//www.nowtolove.co.nz/good-health-choices-newsletter',
         alternateHrefLangUrl: '/good-health'
     }, {
-        id: 'simply',
-        title: 'Simply You',
-        magazineTitle: 'Simply You',
-        imageUrl: '/assets/images/nzheaderlogos/SIMPLY-logo.svg',
-        url: '/simply-you',
-        socialLinks: {
-            facebook: 'https://www.facebook.com/SimplyYouMagazine/',
-            twitter: 'https://twitter.com/SimplyYouMag',
-            instagram: 'https://www.instagram.com/simplyyoumag'
-        },
-        newsletterUrl: '//www.nowtolove.co.nz/simply-you-newsletter'
-    }, {
         id: 'nadia',
         title: 'Nadia',
         magazineTitle: 'Nadia',

@@ -174,19 +174,6 @@ hr {
     }
 }
 
-.brand-title-simply {
-    .brand-title--right-line,.brand-title--left-line {
-        width: calc(50% - 145px);
-    }
-    .brand-title--logo {
-        width: 150px;
-
-        @media #{$small-only} {
-            width: 90px;
-        }
-    }
-}
-
 .brand-title-nadia, .brand-title-btl {
     .brand-title--right-line,.brand-title--left-line {
         width: calc(50% - 160px);
@@ -233,8 +220,6 @@ hr {
     &-nzgh { color: $nz-good-health-choices-color; }
 
     &-nzwd { color: $nz-womans-day-color; }
-
-    &-simply { color: $nz-simply-you-color; }
 
     &-nadia { color: $nz-nadia-color; }
 
@@ -290,8 +275,6 @@ hr {
 
     &-nzwd { background-color: $nz-womans-day-color; }
 
-    &-simply { background-color: $nz-simply-you-color; }
-
     &-nadia { background-color: $nz-nadia-color; }
 
     &-btl { background-color: $nz-btl-color; }
@@ -327,8 +310,6 @@ hr {
     &-nzgh { background-color: $nz-good-health-choices-color; }
 
     &-nzwd { background-color: $nz-womans-day-color; }
-
-    &-simply { background-color: $nz-simply-you-color; }
 
     &-nadia { background-color: $nz-nadia-color; }
 

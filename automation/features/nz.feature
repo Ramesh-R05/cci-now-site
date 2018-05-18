@@ -13,7 +13,6 @@ Feature: Specific value for NZ NTL
             |The Australian Women's Weekly      |/australianwomensweekly|
             |NEXT                               |/next                  |
             |Good Health Choices                |/good-health-choices   |
-            |Simply You                         |/simply-you            |
             |Nadia                              |/nadia                 |
             |Beauty To Love                     |/beauty-to-love        |
 
@@ -44,7 +43,6 @@ Feature: Specific value for NZ NTL
             |australianwomensweekly |subscribe-awwnz  |https://www.facebook.com/awwmagazine         |none                               |https://www.instagram.com/awwmagazine              |none                                   |gtm-subscribe-awwnz  |
             |next                |subscribe-next    |https://www.facebook.com/nextmagazine          |https://twitter.com/nextmagazinenz |https://www.instagram.com/nextmagazinenz           |none                                   |gtm-subscribe-next   |
             |good-health-choices |subscribe-nzgh    |https://www.facebook.com/goodhealthchoicesnz   |https://twitter.com/good_health_nz |https://www.instagram.com/goodhealthnz             |https://nz.pinterest.com/goodhealthmag |gtm-subscribe-nzgh   |
-            |simply-you          |subscribe-simply  |https://www.facebook.com/SimplyYouMagazine     |https://twitter.com/SimplyYouMag   |https://www.instagram.com/simplyyoumag             |none                                   |gtm-subscribe-simply |
             |nadia               |subscribe-nadia   |none                                           |none                               |https://www.instagram.com/nadiamagazine            |none                                   |gtm-subscribe-nadia  |
 
     Scenario: Verify the footer in the "mobile" view
@@ -63,7 +61,6 @@ Feature: Specific value for NZ NTL
             |The Australian Women's Weekly      |/australianwomensweekly|gtm-footer__logos-list-awwnz    |
             |NEXT                               |/next                  |gtm-footer__logos-list-next     |
             |Good Health Choices                |/good-health-choices   |gtm-footer__logos-list-nzgh     |
-            |Simply You                         |/simply-you            |gtm-footer__logos-list-simply   |
             |Nadia                              |/nadia                 |gtm-footer__logos-list-nadia    |
             |Beauty To Love                     |/beauty-to-love        |gtm-footer__logos-list-btl      |
 
@@ -94,14 +91,13 @@ Feature: Specific value for NZ NTL
         When I am currently viewing "<page>"
         Then I should see the sign up button containing "<link>" url in "mobile" view
         Examples:
-            | page                    | link                                                         |
-            | nz-womans-weekly/       | http://www.nowtolove.co.nz/nz-womans-weekly-newsletter       |
-            | womans-day/             | http://www.nowtolove.co.nz/womans-day-newsletter             |
-            | australianwomensweekly/ | http://www.nowtolove.co.nz/australianwomensweekly-newsletter |
-            | next/                   | http://www.nowtolove.co.nz/next-newsletter                   |
-            | good-health-choices     | http://www.nowtolove.co.nz/good-health-choices-newsletter    |
-            | simply-you/             | http://www.nowtolove.co.nz/simply-you-newsletter             |
-            | nadia/                  | http://www.nowtolove.co.nz/nadia-newsletter                  |
+            | page                    | link                                                    |
+            | nz-womans-weekly/       | //www.nowtolove.co.nz/nz-womans-weekly-newsletter       |
+            | womans-day/             | //www.nowtolove.co.nz/womans-day-newsletter             |
+            | australianwomensweekly/ | //www.nowtolove.co.nz/australianwomensweekly-newsletter |
+            | next/                   | //www.nowtolove.co.nz/next-newsletter                   |
+            | good-health-choices     | //www.nowtolove.co.nz/good-health-choices-newsletter    |
+            | nadia/                  | //www.nowtolove.co.nz/nadia-newsletter                  |
 
     Scenario: Verify the RSS feed
         Given I am currently viewing "rss"
