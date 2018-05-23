@@ -33,5 +33,8 @@ export default {
     },
     polar: {
         enabled: true
+    },
+    search: {
+        enabled: true
     }
 };

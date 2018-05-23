@@ -1,0 +1,46 @@
+.search-bar {
+    display: none;
+
+    @media #{$medium-up} {
+        margin-top: 0;
+        display: block;
+    }
+
+    &--input {
+        height: 61px;
+        width: 100%;
+        border: 1px solid black;
+
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: $color-black-origin;
+        }
+        ::-moz-placeholder { /* Firefox 19+ */
+            color: $color-black-origin;
+        }
+        :-ms-input-placeholder { /* IE 10+ */
+            color: $color-black-origin;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+            color: $color-black-origin;
+        }
+
+        input {
+
+            &[type='text'] {
+                height: 58px;
+                width: 100%;
+                padding: 0 25px;
+                font-size: 14px;
+                font-weight: bold;
+                border: none;
+            }
+        }
+    }
+
+    &--submit {
+        position: absolute;
+        right: 16px;
+        width: 60px;
+        height: 60px;
+    }
+}

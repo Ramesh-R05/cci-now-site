@@ -1,0 +1,40 @@
+.header-search {
+    left: auto;
+    right: 0;
+    
+    @media #{$medium-up} {
+        position: absolute;
+        bottom: 0;
+        transform: translateY(100%);
+        left: auto;
+        right: 0;
+    }
+
+    @media #{$large-up} {
+        left: auto;
+        right: calc( 512px - 50vw );
+    }
+
+    &--icon-container {
+        background-color: transparent;
+        @media #{$medium-up} {
+            height: 61px;
+            width: 61px;
+            position: absolute;
+            left: 0;
+            transform: translateX(-100%);
+            background-color: #31c7ce;
+        }
+    }
+
+    &--input {
+        font-family: 'Amsi Pro Narrow', sans-serif;
+        @media #{$medium-up} {
+            position: static;
+        }
+    }
+
+    &--icon path {
+        fill: #fff;
+    }
+}

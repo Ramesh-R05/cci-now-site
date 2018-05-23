@@ -101,3 +101,43 @@ Feature: Smoke test for AU NOW
         * I should see "title" tag containing a value
         When I am currently viewing "rss/info"
         * I should see "rss/summary/aww" in json
+
+    Scenario Outline: Verify the search feature on <page> in <device> (Mobile style)
+        Given I switch to "<device>" view
+        When I am currently viewing "<pageUrl>"
+        * I should see the search icon in the navigation bar
+        * I should see the search box after clicking the icon
+        * I should still see the search box after scrolling the page down
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+        * I should not see the search bar on the search result page in mobile version
+        Examples:
+            |device             |page       |pageUrl                                            |
+            |mobile             |homepage   |                                                   |
+           
+    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
+        Given I switch to "<device>" view
+        When I am currently viewing "<pageUrl>"
+        * I should see the search icon in the navigation bar
+        * I should see the search box after clicking the icon
+        * I should still see the search box after scrolling the page down
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+        * I should be able to search a keyword "cake" on "search result page" and see the result page
+        Examples:
+            |device             |page       |pageUrl                                            |
+            |desktop            |homepage   |                                                   |
+   
+    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
+        Given I switch to "<device>" view
+        When I am currently viewing "<pageUrl>"
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+        Examples:
+            |device             |page       |pageUrl                                            |
+            |tablet landscape   |section    |news                                            |
+   
+    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
+        Given I switch to "<device>" view
+        When I am currently viewing "<pageUrl>"
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+        Examples:
+            |device             |page       |pageUrl                                                |
+            |tablet portrait    |article     |celebrity/tv/noni-hazlehurst-opens-up-about-her-childhood-34854 |

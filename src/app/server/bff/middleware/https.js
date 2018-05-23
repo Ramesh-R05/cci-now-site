@@ -83,6 +83,10 @@ export default function https(req, res, next) {
             });
         });
 
+        get(res, 'body.latestTeasers', []).forEach((item) => {
+            httpsSet(item, 'imageUrl');
+        });
+
         next();
     } catch (error) {
         next(error);

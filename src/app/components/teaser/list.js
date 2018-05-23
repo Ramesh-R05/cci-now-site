@@ -17,6 +17,7 @@ export default class TeaserListView extends Component {
                 kw: PropTypes.string
             })
         }),
+        showAd: PropTypes.bool,
         showDate: PropTypes.bool,
         loadAgain: PropTypes.bool
     };
@@ -27,11 +28,12 @@ export default class TeaserListView extends Component {
         className: '',
         adTargets: {},
         nativeAdConfig: {},
-        loadAgain: true
+        loadAgain: true,
+        showAd: true
     };
 
     render() {
-        const { className, items, adTargets, index, nativeAdConfig, showDate, loadAgain } = this.props;
+        const { className, items, adTargets, index, nativeAdConfig, showDate, loadAgain, showAd } = this.props;
         const adProps = {
             className: 'ad--section-mrec',
             displayFor: ['medium', 'large', 'xlarge'],
@@ -41,6 +43,15 @@ export default class TeaserListView extends Component {
             },
             pageLocation: Ad.pos.aside
         };
+
+        let ad = null;
+        if (showAd) {
+            ad = items.length > 1 ?
+                (<StickyBlock carriageYPosition={95} breakpoints={['medium', 'large', 'xlarge']}>
+                    <Ad {...adProps} />
+                </StickyBlock>) : <Ad {...adProps} />;
+        }
+
 
         if (index) adProps.targets.position += index;
 
@@ -74,10 +85,7 @@ export default class TeaserListView extends Component {
                           loadAgain={loadAgain}
                         />
                     </div>
-                    { items.length > 1 ?
-                        <StickyBlock carriageYPosition={95} breakpoints={['medium', 'large', 'xlarge']}>
-                            <Ad {...adProps} />
-                        </StickyBlock> : <Ad {...adProps} /> }
+                    { ad }
                 </div>
             </div>
         );

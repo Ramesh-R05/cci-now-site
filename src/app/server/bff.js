@@ -18,6 +18,7 @@ import stubServer from '../../automation/test_data/contentApi';
 import logger from '../../logger';
 import assetProxy from './bff/middleware/assetProxy';
 import comScore from './bff/middleware/comScore';
+import search from './bff/middleware/search';
 
 // only use comscore in deployed infra environment because local network blocks the port used for the comscore api
 const USE = (process.env.APP_ENV === 'sit' || process.env.APP_ENV === 'prod');
@@ -46,6 +47,15 @@ export default function bff(server) {
             headerMeta,
             https,
             responseBody,
+            render,
+            error
+        );
+        server.get(
+            server.locals.config.services.endpoints.search,
+            pageModules,
+            headerMeta,
+            search,
+            https,
             render,
             error
         );

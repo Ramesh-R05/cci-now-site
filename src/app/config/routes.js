@@ -1,4 +1,5 @@
 import loadPageContent from '../actions/loadPageContent';
+import loadSearch from '../../app/actions/loadSearch';
 import pageNotFound from '../actions/pageNotFound';
 
 import HomePage from '../containers/home';
@@ -6,6 +7,7 @@ import SectionPage from '../containers/section';
 import SinglePage from '../containers/document';
 import ErrorPage from '../components/page/error';
 import IframePage from '../containers/iframeWidget';
+import SearchPage from '../../app/containers/search';
 
 export default {
     home: {
@@ -13,6 +15,12 @@ export default {
         method: 'get',
         handler: HomePage,
         action: loadPageContent
+    },
+    search: {
+        path: '/search/:query',
+        method: 'get',
+        handler: SearchPage,
+        action: loadSearch
     },
     iframeWidget: {
         path: '/test-tectonic',
