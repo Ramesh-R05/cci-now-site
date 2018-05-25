@@ -1,5 +1,4 @@
-/* eslint-disable consistent-return */
-
+/* eslint-disable consistent-return, no-console */
 import request from 'request';
 
 const debug = process.env.APP_DEBUG || false;
@@ -9,14 +8,19 @@ export default function comScore(req, res, next) {
     req.data = req.data || {};
 
     const start = Date.now();
-
     let segmentIds = map.get(req.query.url) || [];
+
     if (segmentIds.length > 0) {
-        if (debug) console.log(`comscore: using segments from cache for ${req.query.url} in ${Date.now() - start}ms`);
-        req.data.comScoreSegmentIds = segmentIds;
+        if (debug) {
+            console.log(`comscore: using segments from cache for ${req.query.url} in ${Date.now() - start}ms`);
+        }
+        req.data.comScoreSegmentIds = segmentIds.join(',');
         return next();
     }
-    if (debug) console.log(`comscore: requesting segments from remote ${req.query.url}`);
+
+    if (debug) {
+        console.log(`comscore: requesting segments from remote ${req.query.url}`);
+    }
 
     const pageUrl = encodeURIComponent(`https://${req.app.locals.config.site.prodDomain}${req.query.url}`);
     const options = {
@@ -54,8 +58,8 @@ export default function comScore(req, res, next) {
             }
 
             if (segmentIds.length > 0) {
-                map.set(req.query.url, segmentIds.join(','));
-                req.data.comScoreSegmentIds = map.get(req.query.url);
+                map.set(req.query.url, segmentIds);
+                req.data.comScoreSegmentIds = segmentIds.join(',');
             }
             if (debug) {
                 console.log(`comscore: received segments from remote for ${req.query.url} in ${Date.now() - start}ms`);

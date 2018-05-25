@@ -7,7 +7,7 @@ export const initialState = {
     title: '',
     imageUrl: '',
     request: {},
-    comScoreSegmentIds: []
+    comScoreSegmentIds: ''
 };
 
 export function reducer(state = initialState, payload = {}, eventName = '') {
@@ -44,7 +44,7 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
             ...{
                 error: response,
                 footer: get(payload, 'response.body.footer', {}),
-                comScoreSegmentIds: []
+                comScoreSegmentIds: initialState.comScoreSegmentIds
             }
         };
     }

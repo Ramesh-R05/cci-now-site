@@ -60,7 +60,7 @@ describe(`loadPage Reducer`, () => {
                 title: '',
                 imageUrl: '',
                 request: {},
-                comScoreSegmentIds: []
+                comScoreSegmentIds: ''
             });
         });
 
@@ -73,7 +73,7 @@ describe(`loadPage Reducer`, () => {
                 title: '',
                 imageUrl: '',
                 request: {},
-                comScoreSegmentIds: []
+                comScoreSegmentIds: ''
             });
         });
     });

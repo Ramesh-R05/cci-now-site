@@ -21,7 +21,7 @@ import comScore from './bff/middleware/comScore';
 import search from './bff/middleware/search';
 
 // only use comscore in deployed infra environment because local network blocks the port used for the comscore api
-const USE = (process.env.APP_ENV === 'sit' || process.env.APP_ENV === 'prod');
+const useComScore = ['sit', 'prod'].includes(process.env.APP_ENV);
 
 export default function bff(server) {
     server.get('/api/asset', assetProxy);
@@ -29,14 +29,16 @@ export default function bff(server) {
         stubServer(server, server.locals.config);
         logger.warn('stubbing does not exercise BFF code');
     } else {
-        server.get('(/:preview(preview))?/amp/:section/:subsection/:page',
-            pageModules, section, page, article, gallery, headerMeta, responseBody, amp);
+        server.get(
+            '(/:preview(preview))?/amp/:section/:subsection/:page',
+            pageModules, section, page, article, gallery, headerMeta, responseBody, amp
+        );
         server.get('/sitemap/:section?', sitemap, error);
         server.get(server.locals.config.services.endpoints.list, list, https, render, error);
         server.get(
             server.locals.config.services.endpoints.page,
             pageModules,
-            USE ? comScore : (req, res, next) => next(),
+            useComScore ? comScore : (req, res, next) => next(),
             home,
             listing,
             tag,
