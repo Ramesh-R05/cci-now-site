@@ -152,8 +152,8 @@ jobs:
         - script: export URL=http://now-site.test.bxm.net.au/
         - script: npm run test:mobile
         - script: npm run test:browser
-    on_failure:
-      - NOTIFY: now-deployment-notifications
+#    on_failure:
+#      - NOTIFY: now-deployment-notifications
 
   # 4c. Run smoke test on SIT NZ environment
   - name: nz-now-site-smoke-test
@@ -239,7 +239,7 @@ jobs:
       - IN: now-site-automation-test
       - IN: nz-now-site-smoke-test
       - IN: au-now-site-smoke-test
-      - IN: compatibility-now-site-automation-test
+      #- IN: compatibility-now-site-automation-test
       - IN: now-site-man-master
         switch: off
       - IN: now-site-version
