@@ -159,7 +159,7 @@ module.exports = function() {
                     var valuePropertiesCreatedAt = '2017-01-02 08:00';
                     browser.setValue(tabElement + cms.propertiesCreatedAt, valuePropertiesCreatedAt);
                     break;
-                case 'Enable AMP':
+                case 'Disable AMP':
                     browser.waitForVisible(tabElement + cms.ampEnablebox, 1000);
                     browser.click(tabElement + cms.ampEnablebox);
                     break;
@@ -227,11 +227,14 @@ module.exports = function() {
 
     });
 
-    this.Then(/^I should be able to check if the amp page is active$/, function () {
+    this.Then(/^I should see the amp page is active$/, function () {
         var enableamphtml = browser.getAttribute(cms.ampHtml, 'href');
         console.log(enableamphtml);
         expect(enableamphtml).toContain('/amp/');
+    });
 
+    this.Then(/^I should see the amp page is inactive$/, function () {
+        expect(browser.isExisting(cms.ampHtml)).toBe(false);
     });
 
     this.Then(/^I should be able to publish the item$/, function () {
