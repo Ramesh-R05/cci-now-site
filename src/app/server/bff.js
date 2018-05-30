@@ -20,9 +20,6 @@ import assetProxy from './bff/middleware/assetProxy';
 import comScore from './bff/middleware/comScore';
 import search from './bff/middleware/search';
 
-// only use comscore in deployed infra environment because local network blocks the port used for the comscore api
-const useComScore = ['sit', 'prod'].includes(process.env.APP_ENV);
-
 export default function bff(server) {
     server.get('/api/asset', assetProxy);
     if (process.env.APP_STUBBED === 'true') {
@@ -38,7 +35,7 @@ export default function bff(server) {
         server.get(
             server.locals.config.services.endpoints.page,
             pageModules,
-            useComScore ? comScore : (req, res, next) => next(),
+            comScore,
             home,
             listing,
             tag,
@@ -55,6 +52,7 @@ export default function bff(server) {
         server.get(
             server.locals.config.services.endpoints.search,
             pageModules,
+            comScore,
             headerMeta,
             search,
             https,

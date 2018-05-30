@@ -55,6 +55,14 @@ Example:
 
 - `APP_REGION=nz npm start` loads the NZ NTL site
 
+### `APP_SSS`
+
+Tells the server to also start in secure HTTPS mode on port 3443.
+
+Example:
+
+- `APP_SSS=true npm start`
+
 ## Run Scripts
 
 Node module [npm-run-all](https://github.com/mysticatea/npm-run-all) cli is used to provide cross platform script parallelisation control.
