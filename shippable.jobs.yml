@@ -32,7 +32,7 @@ jobs:
       - IN: now-site-man-branch # for non-master, don't auto deploy.
         switch: off
       - IN: env-sit-ecs
-      - IN: now-site-au-params-sit
+      - IN: now-site-nz-params-sit
       - IN: now-site-alb-sit-branch
         applyTo:
           - manifest: now-site-man-branch
