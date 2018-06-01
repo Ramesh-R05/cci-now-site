@@ -137,7 +137,7 @@ export default class IframeWidget extends Component {
             >
                 <div style={{ maxWidth: '593px', margin: '0 auto' }}>
                     <iframe
-                      src="https://webapp-staging.tectonicinteractive.com/logies2018/polling_v1.html"
+                      src="https://webapp.tectonicinteractive.com/logies2018/polling_v1.html"
                       ref={(c) => { this.iframe = c; }}
                       style={{ width: '1px', minWidth: '100%' }}
                     />
