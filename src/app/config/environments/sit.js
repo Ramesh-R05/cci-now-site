@@ -1,5 +1,5 @@
 import brightcove from '../brightcove';
-const playerId = 'VkuyApojl';
+const playerId = 'ByDaSOUCG';
 
 export default {
     site: {
