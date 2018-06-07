@@ -16,7 +16,7 @@ const testLinks = [
     {
         title: 'article',
         url: 'https://www.nowtolove.com.au/health/body/how-to-harness-your-hormones-44097/',
-        expectedScore: 20
+        expectedScore: 21
     },
     {
         title: 'gallery',
