@@ -96,18 +96,30 @@ module.exports = function() {
         expect(browser.waitForVisible(wn_ads.ad_MrecAfterSlide7,5000)).toBe(true);
     });
 
-    this.Then(/^I should see four MREC ads in the RHR feed$/, function () {
-        browser.scroll(wn_ads.ad_MrecRhs1);
-        expect(browser.isVisible(wn_ads.ad_MrecRhs1)).toBe(true);
+    this.Then(/^I should see (\d+) MREC ads in the RHR feed$/, function (number) {
+        var ad_MrecRhsElement;
+        var i;
 
-        browser.scroll(wn_ads.ad_MrecRhs2);
-        expect(browser.isVisible(wn_ads.ad_MrecRhs2)).toBe(true);
-
-        browser.scroll(wn_ads.ad_MrecRhs3);
-        expect(browser.isVisible(wn_ads.ad_MrecRhs3)).toBe(true);
-
-        browser.scroll(wn_ads.ad_MrecRhs4);
-        expect(browser.isVisible(wn_ads.ad_MrecRhs4)).toBe(true);
+        for(i=1; i <= number; i++){
+            switch(i) {
+                case 1:
+                    ad_MrecRhsElement = wn_ads.ad_MrecRhs1;
+                    break;
+                case 2:
+                    ad_MrecRhsElement = wn_ads.ad_MrecRhs2;
+                    break;
+                case 3:
+                    ad_MrecRhsElement = wn_ads.ad_MrecRhs3;
+                    break;
+                case 4:
+                    ad_MrecRhsElement = wn_ads.ad_MrecRhs4;
+                    break;
+            }
+            browser.scroll(ad_MrecRhsElement);
+            wait(1000);
+            browser.scroll(ad_MrecRhsElement); //Double scroll to ensure the ad element is still on the page after the ad loading.
+            expect(browser.isVisible(ad_MrecRhsElement)).toBe(true);
+        }
     });
 
     this.Then(/^I should see MREC ad under the hero image$/, function () {
@@ -120,6 +132,8 @@ module.exports = function() {
 
     this.Then(/^I should see MREC ad above recommendation$/, function () {
         browser.scroll(wn_ads.ad_MrecBeforeRecommendation);
+        wait(1000);
+        browser.scroll(wn_ads.ad_MrecBeforeRecommendation); //Double scroll to ensure the ad element is still on the page after the ad loading.
         expect(browser.isVisible(wn_ads.ad_MrecBeforeRecommendation)).toBe(true);
     });
 

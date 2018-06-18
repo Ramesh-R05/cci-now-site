@@ -52,7 +52,7 @@ Feature: Ad
         * I should see the top leaderboard ad under navigation
         * I should see native ad below author
         * I should see the bottom leaderboard ad above the footer on article
-        #* I should see four MREC ads in the RHR feed #Commented out on 18/06/2018 and continue to investigate in another branch
+        * I should see 4 MREC ads in the RHR feed
         * I should not see MREC ad under the hero image
         * I should not see MREC ad above recommendation
         @gallery @high
@@ -81,7 +81,7 @@ Feature: Ad
         * I should see the top leaderboard ad under navigation
         * I should see native ad below author
         * I should not see MREC ad under the hero image
-        #* I should see MREC ad above recommendation #Commented out on 18/06/2018 and continue to investigate in another branch
+        * I should see MREC ad above recommendation
         * I should see the bottom leaderboard ad above the footer on article
 
     @gallery
