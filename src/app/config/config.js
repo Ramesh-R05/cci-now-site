@@ -5,6 +5,7 @@ import global from './global';
 import services from './services';
 import site from './site';
 import polar from './polar';
+import routes from './routes';
 
 export default {
 
@@ -68,7 +69,15 @@ export default {
     },
 
     nielsen: '6148F238-179C-4F36-9AD2-5B6EC6981EFC',
-
-    subscribeText: 'The latest news delivered to your inbox'
+    subscribeText: 'The latest news delivered to your inbox',
+    logiesVoting: {
+        url: routes.logies.path,
+        metadata: {
+            siteName: 'TV Week Logie Awards',
+            title: 'The 60th TV WEEK Logie Awards',
+            description: 'Place your vote for the 60th TV WEEK Logie Awards in 2018.',
+            url: 'http://www.tvweeklogieawards.com.au/'
+        }
+    }
 };
 

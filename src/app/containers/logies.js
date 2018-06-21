@@ -1,0 +1,64 @@
+import React, { Component, PropTypes } from 'react';
+import { iframeResizer } from 'iframe-resizer';
+import Page from './page';
+
+export default class Logies extends Component {
+    static displayName = 'Logies';
+
+    static propTypes = {
+        currentUrl: PropTypes.string.isRequired,
+        theme: PropTypes.object
+    };
+
+    static defaultProps = {
+        theme: {}
+    };
+
+    static DEFAULT_PATH = '/logies-vote';
+
+    state = {
+        bottomElm: null,
+        topElm: null
+    };
+
+    componentDidMount() {
+        this.setState({ // eslint-disable-line react/no-did-mount-set-state
+            bottomElm: this.bottom,
+            topElm: this.top
+        });
+
+        const options = {
+            log: this.context.config.APP_DEBUG === 'true'
+        };
+        iframeResizer(options, this.iframe);
+    }
+
+    render() {
+        const { currentUrl, theme } = this.props;
+        const logiesTitle = ''; // leave empty as it looks better without
+        const pageTitle = (
+            <h1 className="page-title">
+                <span className="page-title__symbol" />
+                {logiesTitle}
+            </h1>
+        );
+
+        return (
+            <Page
+              currentUrl={currentUrl}
+              headerExpanded={false}
+              pageTitle={pageTitle}
+              headerClassName=""
+              theme={theme}
+            >
+                <div style={{ maxWidth: '593px', margin: '0 auto' }}>
+                    <iframe
+                      src="https://webapp.tectonicinteractive.com/logies2018/polling_v1.html"
+                      ref={(c) => { this.iframe = c; }}
+                      style={{ width: '1px', minWidth: '100%' }}
+                    />
+                </div>
+            </Page>
+        );
+    }
+}

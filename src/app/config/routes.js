@@ -6,8 +6,8 @@ import HomePage from '../containers/home';
 import SectionPage from '../containers/section';
 import SinglePage from '../containers/document';
 import ErrorPage from '../components/page/error';
-import IframePage from '../containers/iframeWidget';
-import SearchPage from '../../app/containers/search';
+import LogiesPage from '../containers/logies';
+import SearchPage from '../containers/search';
 
 export default {
     home: {
@@ -22,10 +22,10 @@ export default {
         handler: SearchPage,
         action: loadSearch
     },
-    iframeWidget: {
-        path: '/test-tectonic',
+    logies: {
+        path: LogiesPage.DEFAULT_PATH,
         method: 'get',
-        handler: IframePage,
+        handler: LogiesPage,
         action: loadPageContent
     },
     section: {

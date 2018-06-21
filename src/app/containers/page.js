@@ -40,7 +40,9 @@ export default class Page extends Component {
         currentUrl: PropTypes.string.isRequired,
         showUniheader: PropTypes.bool,
         hideLeaderboard: PropTypes.bool,
-        pageTitle: PropTypes.string,
+        pageTitle: PropTypes.oneOfType([
+            PropTypes.element, PropTypes.string
+        ]),
         headerClassName: PropTypes.string,
         theme: PropTypes.object
     };
