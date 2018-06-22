@@ -118,7 +118,7 @@ module.exports = function() {
             browser.scroll(ad_MrecRhsElement);
             wait(1000);
             browser.scroll(ad_MrecRhsElement); //Double scroll to ensure the ad element is still on the page after the ad loading.
-            expect(browser.isVisible(ad_MrecRhsElement)).toBe(true);
+            expect(browser.waitForVisible(ad_MrecRhsElement,5000)).toBe(true);
         }
     });
 
@@ -134,7 +134,7 @@ module.exports = function() {
         browser.scroll(wn_ads.ad_MrecBeforeRecommendation);
         wait(1000);
         browser.scroll(wn_ads.ad_MrecBeforeRecommendation); //Double scroll to ensure the ad element is still on the page after the ad loading.
-        expect(browser.isVisible(wn_ads.ad_MrecBeforeRecommendation)).toBe(true);
+        expect(browser.waitForVisible(wn_ads.ad_MrecBeforeRecommendation,5000)).toBe(true);
     });
 
     this.Then(/^I should not see MREC ad above recommendation$/, function () {
