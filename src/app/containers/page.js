@@ -44,7 +44,8 @@ export default class Page extends Component {
             PropTypes.element, PropTypes.string
         ]),
         headerClassName: PropTypes.string,
-        theme: PropTypes.object
+        theme: PropTypes.object,
+        showWallpaper: PropTypes.bool
     };
 
     static contextTypes = {
@@ -58,7 +59,8 @@ export default class Page extends Component {
         className: '',
         pageTitle: '',
         theme: {},
-        showUniheader: false
+        showUniheader: false,
+        showWallpaper: true
     };
 
     toggleMenu = () => {
@@ -76,7 +78,8 @@ export default class Page extends Component {
             hideLeaderboard,
             pageTitle,
             headerClassName,
-            content
+            content,
+            showWallpaper
         } = this.props;
         const pageLocation = Ad.pos.outside;
         const mobileNav = hamburgerNavItems ? hamburgerNavItems.slice() : headerNavItems.slice();
@@ -102,12 +105,13 @@ export default class Page extends Component {
             },
             pageLocation
         };
+        const brands = this.context.config.brands;
 
         return (
             <div className={pageClassName}>
                 <div className={this.props.menuClasses}>
 
-                    {showUniheader && <UniHeader className="uniheader" logoList={this.context.config.brands.uniheader} />}
+                    {showUniheader && <UniHeader className="uniheader" logoList={brands.uniheader} />}
 
                     <Header
                       currentUrl={currentUrl}
@@ -131,10 +135,10 @@ export default class Page extends Component {
 
                     {pageTitle && <div className="page-title-container"> { pageTitle } </div>}
 
-                    <StandardPageAdsWrapper>
+                    <StandardPageAdsWrapper showWallpaper={showWallpaper}>
                         <div className="content-wrapper">
                             { this.props.children }
-                            { !hideFooter && <Footer logoList={this.context.config.brands.uniheader} />}
+                            { !hideFooter && <Footer logoList={brands.uniheader} />}
                         </div>
                     </StandardPageAdsWrapper>
 
@@ -151,7 +155,7 @@ export default class Page extends Component {
                     ` }}
                             />
                             <HamburgerNav className="mobile-menu" items={mobileNav} currentUrl={currentUrl} />
-                            <Logos className="mobile-menu-list" gtmPrefix="hamburger" openInNewTab logoList={this.context.config.brands.hamburgers} />
+                            <Logos className="mobile-menu-list" gtmPrefix="hamburger" openInNewTab logoList={brands.hamburgers} />
                         </div>
                     </MobileOffCanvas>
                 </div>

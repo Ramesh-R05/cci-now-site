@@ -55,6 +55,8 @@ export default class Logies extends Component {
               pageTitle={pageTitle}
               headerClassName=""
               theme={theme}
+              showWallpaper={false}
+              hideLeaderboard
             >
                 <div style={{ maxWidth: '593px', margin: '0 auto' }}>
                     <iframe
