@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import get from 'lodash.get';
 import { iframeResizer } from 'iframe-resizer';
 import Page from './page';
 
@@ -12,6 +13,10 @@ export default class Logies extends Component {
 
     static defaultProps = {
         theme: {}
+    };
+
+    static contextTypes = {
+        config: PropTypes.object.isRequired
     };
 
     static DEFAULT_PATH = '/logies-vote';
@@ -28,7 +33,7 @@ export default class Logies extends Component {
         });
 
         const options = {
-            log: this.context.config.APP_DEBUG === 'true'
+            log: get(this.context, 'config.APP_DEBUG', 0) === 'true'
         };
         iframeResizer(options, this.iframe);
     }
