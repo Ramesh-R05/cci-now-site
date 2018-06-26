@@ -47,6 +47,14 @@ resources:
       sourceName: bauerxcelmedia/now-site
       branch: master
 
+  # NOW Github repo - branch for troubleshooting purpose
+  - name: now-site-repo-branch
+    type: gitRepo
+    integration: production-github
+    pointer:
+      sourceName: bauerxcelmedia/now-site
+      branch: fix/automation-revise-compatibility-test
+
   # Slack connection
   - name: now-slack-notifications
     type: notification                          #required
