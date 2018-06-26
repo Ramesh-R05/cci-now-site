@@ -144,7 +144,7 @@ jobs:
         - script: source ~/.nvm/nvm.sh
         - script: nvm install "8.9.1"
         - script: nvm use "8.9.1"
-        - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: cd ./IN/now-site-repo-branch/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: rm -rf node_modules/chimp/dist/lib/cucumberjs/hooks.js
