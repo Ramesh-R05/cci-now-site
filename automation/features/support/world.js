@@ -5,6 +5,7 @@ const runEnv = nconf.get('APP_ENV');
 const siteDomain = nconf.get('APP_KEY');
 const domainSuffix = '.bauer-media.net.au/';
 let baseUrl = nconf.get('URL');
+let isBrowserStack;
 
 if (typeof baseUrl === 'string' && baseUrl !== ''){
     // Ensure valid URL path has been specified
@@ -22,9 +23,17 @@ if (typeof baseUrl === 'string' && baseUrl !== ''){
 baseUrl === '' && (baseUrl = `http://${runEnv}.${siteDomain}${domainSuffix}`);
 console.log(`Running on url: ${baseUrl}`);
 
+//To identify if this test is on Browser Stack to decide to user browser.getLocationInView instead of browser.scroll
+if (siteDomain.includes('-mobile') || siteDomain.includes('-browser')) {
+    isBrowserStack = true;
+} else {
+    isBrowserStack = false;
+}
+
 module.exports = {
     Urls: {
         'home_page': baseUrl,
-        'site': siteDomain
+        'site': siteDomain,
+        'isBrowserStack': isBrowserStack
     }
 };

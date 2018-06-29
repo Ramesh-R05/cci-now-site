@@ -33,7 +33,7 @@
     "test:phantom": "bash -c \"URL=http://now-site.test.bxm.net.au/ APP_KEY=now-site npm run features\""
   },
   "dependencies": {
-    "@bxm/automation": "^6.1.0"
+    "@bxm/automation": "^6.3.0"
   },
   "devDependencies": {
     "he": "^1.1.1"

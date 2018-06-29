@@ -4,6 +4,9 @@ var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
 var validatePolar = require('../../../node_modules/@bxm/automation/lib/utils/validatePolar');
 var nconf = require('nconf');
 var site_domain = nconf.get('APP_KEY');
+var world = require('../world');
+var isBrowserStack = world.Urls.isBrowserStack;
+var scrolling = require('../../../node_modules/@bxm/automation/lib/utils/scrolling');
 
 module.exports = function() {
 
@@ -277,7 +280,7 @@ module.exports = function() {
     });
 
     this.Then(/^I can see the sticky ad when the top banner disappears from view$/, function () {
-        browser.scroll(0,1000);
+        scrolling(browser,wn_article.articleFooter,isBrowserStack);
         wait(3500);//the top ad will be sticky for 3.5sec
         expect(browser.waitForVisible(wn_article.stickyAdSection,2000)).toBe(true);
     });

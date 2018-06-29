@@ -2,6 +2,9 @@ var wn_ads = require('../page_objects/ads_widget');
 var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
 var visibilityFunctions = require('../../../node_modules/@bxm/automation/lib/utils/visibilityFunctions');
 var loadAllElements = require('../../../node_modules/@bxm/automation/lib/utils/loadAllElements');
+var world = require('../world');
+var isBrowserStack = world.Urls.isBrowserStack;
+var scrolling = require('../../../node_modules/@bxm/automation/lib/utils/scrolling');
 
 module.exports = function() {
 
@@ -41,8 +44,10 @@ module.exports = function() {
     });
 
     this.Then(/^I should see the top leaderboard ad under navigation$/, function () {
-        browser.waitForVisible(wn_ads.ad_TopLeaderboard, 15000); // long wait due to browser stack load times over the cloud
-        expect(browser.isVisible(wn_ads.ad_TopLeaderboard)).toBe(true);
+        if (isBrowserStack == false) {
+            browser.scroll(0,0);
+        }
+        expect(browser.waitForVisible(wn_ads.ad_TopLeaderboard,5000)).toBe(true);
     });
 
     this.Then(/^I should see native ad below author$/, function () {
@@ -77,10 +82,10 @@ module.exports = function() {
     });
 
     this.Then(/^I should see the bottom leaderboard ad above the footer on article$/, function () {
-        browser.scroll(wn_ads.ad_BottomLeaderboard);
+        scrolling(browser,wn_ads.ad_BottomLeaderboard,isBrowserStack);
         wait(1500);
-        browser.scroll(wn_ads.ad_BottomLeaderboard); //move to the object again after the images on gallery are loaded from the first move.
-        expect(browser.isVisible(wn_ads.ad_BottomLeaderboard)).toBe(true);
+        scrolling(browser,wn_ads.ad_BottomLeaderboard,isBrowserStack); //move to the object again after the images on gallery are loaded from the first move.
+        expect(browser.waitForVisible(wn_ads.ad_BottomLeaderboard,5000)).toBe(true);
     });
 
     this.Then(/^I should see MREC ad between images$/, function () {
@@ -131,9 +136,9 @@ module.exports = function() {
     });
 
     this.Then(/^I should see MREC ad above recommendation$/, function () {
-        browser.scroll(wn_ads.ad_MrecBeforeRecommendation);
+        scrolling(browser,wn_ads.ad_MrecBeforeRecommendation,isBrowserStack);
         wait(1000);
-        browser.scroll(wn_ads.ad_MrecBeforeRecommendation); //Double scroll to ensure the ad element is still on the page after the ad loading.
+        scrolling(browser,wn_ads.ad_MrecBeforeRecommendation,isBrowserStack); //Double scroll to ensure the ad element is still on the page after the ad loading.
         expect(browser.waitForVisible(wn_ads.ad_MrecBeforeRecommendation,5000)).toBe(true);
     });
 
@@ -484,12 +489,6 @@ module.exports = function() {
                 expect(browser.getAttribute(adWrapperType, 'class')).not.toContain('sticky-block--at-bottom');
                 break;
         }
-
-
     });
-
-
-
-
 
 };
