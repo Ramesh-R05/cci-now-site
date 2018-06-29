@@ -47,7 +47,7 @@ module.exports = function() {
         if (isBrowserStack == false) {
             browser.scroll(0,0);
         }
-        expect(browser.waitForVisible(wn_ads.ad_TopLeaderboard,5000)).toBe(true);
+        expect(browser.isExisting(wn_ads.ad_TopLeaderboard)).toBe(true);
     });
 
     this.Then(/^I should see native ad below author$/, function () {
