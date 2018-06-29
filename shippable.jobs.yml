@@ -137,14 +137,14 @@ jobs:
       - NOTIFY: now-qa-team-notifications
     steps:
      - IN: now-site-test-deploy-master
-     - IN: now-site-repo-branch
+     - IN: now-site-repo
        switch: off
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
         - script: nvm install "8.9.1"
         - script: nvm use "8.9.1"
-        - script: cd ./IN/now-site-repo-branch/gitRepo/automation
+        - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: rm -rf node_modules/chimp/dist/lib/cucumberjs/hooks.js

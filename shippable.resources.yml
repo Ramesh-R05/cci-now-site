@@ -47,13 +47,14 @@ resources:
       sourceName: bauerxcelmedia/now-site
       branch: master
 
-  # NOW Github repo - branch for troubleshooting purpose
-  - name: now-site-repo-branch
-    type: gitRepo
-    integration: production-github
-    pointer:
-      sourceName: bauerxcelmedia/now-site
-      branch: fix/automation-revise-compatibility-test
+#  # NOW Github repo - branch for troubleshooting purpose
+#  # Enable the resource below and update a branch name. Please see the instruction in https://bauer-media.atlassian.net/wiki/x/GgBFIQ
+#  - name: now-site-repo-branch
+#    type: gitRepo
+#    integration: production-github
+#    pointer:
+#      sourceName: bauerxcelmedia/now-site
+#      branch: <branch-name>
 
   # Slack connection
   - name: now-slack-notifications
