@@ -411,6 +411,8 @@ jobs:
     always:
       - NOTIFY: now-qa-team-notifications
     steps:
+     - IN: env-sit-ecs
+     - IN: test-result-s3-param
      - IN: now-site-repo-branch
        switch: off
      - TASK:
@@ -429,5 +431,10 @@ jobs:
         - script: npm run test:seolive > result.txt
         - script: echo "Finish running"
         - script: cat result.txt
+        - script: shipctl copy_file_to_state result.txt
+        - script: cat $JOB_STATE/result.txt
+    on_success:
+      - script: echo "SUCCESS"
+      - script: aws s3 cp $JOB_STATE/result.txt 's3://test-result-s3/'
 
 
