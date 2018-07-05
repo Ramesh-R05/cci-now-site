@@ -431,10 +431,13 @@ jobs:
         - script: npm run test:seolive > result.txt
         - script: echo "Finish running"
         - script: cat result.txt
-        - script: shipctl copy_file_to_state result.txt
-        - script: cat $JOB_STATE/result.txt
+        - script: grep "testing for" result.txt > pageLine.txt
+        - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt > pageName.txt"
+        - script: paste -d, -s pageName.txt > report-poc-now-seo-test-live.csv
+        - script: shipctl copy_file_to_state report-poc-now-seo-test-live.csv
+        - script: cat $JOB_STATE/report-poc-now-seo-test-live.csv
     on_success:
       - script: echo "SUCCESS"
-      - script: aws s3 cp $JOB_STATE/result.txt 's3://test-result-s3/'
+      - script: aws s3 cp $JOB_STATE/report-poc-now-seo-test-live.csv 's3://test-result-s3/'
 
 
