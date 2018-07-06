@@ -380,6 +380,7 @@ jobs:
         - script: sudo apt-get install google-chrome-stable
         - script: google-chrome --product-version
         - script: npm run test:perflive
+        - script: echo "Finish running"
 
   # v. Run SEO Test on live environment
   - name: now-seo-test-live
@@ -404,6 +405,7 @@ jobs:
         - script: sudo apt-get install google-chrome-stable
         - script: google-chrome --product-version
         - script: npm run test:seolive
+        - script: echo "Finish running"
 
   # vi. Run SEO Test on live environment - POC to store performance result in a file
   - name: poc-now-seo-test-live
