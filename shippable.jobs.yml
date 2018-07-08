@@ -439,11 +439,25 @@ jobs:
         - script: paste -d, -s pageName.txt > report-poc-now-seo-test-live.csv
         - script: grep "maximum score" result.txt > temp.txt
         - script: "sed -e 's/^.*is //' temp.txt > maxScore.txt"
-        - script: paste -d, -s maxScore.txt > report-poc-now-seo-test-live.csv
+        - script: paste -d, -s maxScore.txt >> report-poc-now-seo-test-live.csv
         - script: shipctl copy_file_to_state report-poc-now-seo-test-live.csv
         - script: cat $JOB_STATE/report-poc-now-seo-test-live.csv
     on_success:
       - script: echo "SUCCESS"
+      - script: aws s3 cp $JOB_STATE/report-poc-now-seo-test-live.csv 's3://test-result-s3/'
+    on_failure:
+      - script: echo "Finish running"
+      - script: echo "Failure"
+      - script: cat result.txt
+      - script: grep "testing for" result.txt > temp.txt
+      - script: grep -v "should have" temp.txt > pageLine.txt
+      - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt > pageName.txt"
+      - script: paste -d, -s pageName.txt > report-poc-now-seo-test-live.csv
+      - script: grep "maximum score" result.txt > temp.txt
+      - script: "sed -e 's/^.*is //' temp.txt > maxScore.txt"
+      - script: paste -d, -s maxScore.txt >> report-poc-now-seo-test-live.csv
+      - script: shipctl copy_file_to_state report-poc-now-seo-test-live.csv
+      - script: cat $JOB_STATE/report-poc-now-seo-test-live.csv
       - script: aws s3 cp $JOB_STATE/report-poc-now-seo-test-live.csv 's3://test-result-s3/'
 
 
