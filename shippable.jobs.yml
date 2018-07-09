@@ -441,9 +441,9 @@ jobs:
       - script: grep -v "should have" temp.txt > pageLine.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt > pageName.txt"
       - script: echo "==========POC Test to copy a file"
-      - script: aws s3 cp 's3://test-result-s3/report-poc-now-seo-test-live.csv' test.csv
+      - script: aws s3 cp 's3://test-result-s3/report-poc-now-seo-test-live.csv' report-poc-now-seo-test-live.csv
       - script: ls -ll
-      - script: cat test.csv
+      - script: cat report-poc-now-seo-test-live.csv
 #      - script: echo "==========POC Test to copy a folder"
 #      - script: aws s3 cp 's3://test-result-s3/' ./ --recursive
 #      - script: ls -ll
