@@ -441,7 +441,7 @@ jobs:
       - script: grep -v "should have" temp.txt > pageLine.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt > pageName.txt"
       - script: echo "==========POC Test to read a file from AWS S3"
-      - script: aws s3 cp 's3://test-result-s3/report-poc-now-seo-test-live.csv' report-poc-now-seo-test-live.csv --recursive
+      - script: aws s3 cp 's3://test-result-s3/report-poc-now-seo-test-live.csv' ./ --recursive
       - script: cat report-poc-now-seo-test-live.csv
       - script: echo "==========Done"
       - script: paste -d, -s pageName.txt >> report-poc-now-seo-test-live.csv
