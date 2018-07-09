@@ -439,8 +439,9 @@ jobs:
       - script: cat result.txt
       - script: echo "==========start condition statement"
       - script: aws s3 ls 's3://test-result-s3/'
-      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/report-poc-now-seo-test-live.csv')"]; then echo "1 it does not exist" else echo "1 it exists" fi
-      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/report-poc-now-seo-test-live2.csv')"]; then echo "2 it does not exist" else echo "2 it exists" fi
+      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/report-poc-now-seo-test-live.csv')"]; then echo "1 it does not exist" else echo "1 it exists"; fi
+      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/report-poc-now-seo-test-live2.csv')"]; then echo "2 it does not exist" else echo "2 it exists"; fi
+      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/report-poc-now-seo-test-live2.csv')"]; then echo "2 it does not exist"; fi
       - script: echo "==========end"
       - script: grep "testing for" result.txt > temp.txt
       - script: grep -v "should have" temp.txt > pageLine.txt
