@@ -437,6 +437,11 @@ jobs:
 #      - script: echo "FAILURE"
 #    always:
       - script: cat result.txt
+      - script: echo "==========start condition statement"
+      - script: aws s3 ls 's3://test-result-s3/'
+      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/report-poc-now-seo-test-live.csv')"]; then echo "1 it does not exist" else echo "1 it exists" fi
+      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/report-poc-now-seo-test-live2.csv')"]; then echo "2 it does not exist" else echo "2 it exists" fi
+      - script: echo "==========end"
       - script: grep "testing for" result.txt > temp.txt
       - script: grep -v "should have" temp.txt > pageLine.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt > pageName.txt"
@@ -444,10 +449,6 @@ jobs:
       - script: aws s3 cp 's3://test-result-s3/report-poc-now-seo-test-live.csv' report-poc-now-seo-test-live.csv
       - script: ls -ll
       - script: cat report-poc-now-seo-test-live.csv
-#      - script: echo "==========POC Test to copy a folder"
-#      - script: aws s3 cp 's3://test-result-s3/' ./ --recursive
-#      - script: ls -ll
-#      - script: cat report-poc-now-seo-test-live.csv
       - script: echo "==========Done"
       - script: paste -d, -s pageName.txt >> report-poc-now-seo-test-live.csv
       - script: grep "maximum score" result.txt > temp.txt
