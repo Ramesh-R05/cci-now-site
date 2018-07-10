@@ -265,7 +265,7 @@ jobs:
       - script: grep -v "should have" temp.txt > pageLine.txt
       - script: echo "Job ID" > pageName.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-      - script: if [ -z "$(aws s3 ls s3://test-result-s3/$JOB_NAME.csv)"]; then
+      - script: if [ -z "$(aws s3 ls s3://test-result-s3/now-performance-test.csv)"]; then
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
                 else
@@ -441,7 +441,7 @@ jobs:
       - script: grep -v "should have" temp.txt > pageLine.txt
       - script: echo "Job ID" > pageName.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-      - script: if [ -z "$(aws s3 ls s3://test-result-s3/$JOB_NAME.csv)"]; then
+      - script: if [ -z "$(aws s3 ls s3://test-result-s3/now-performance-test-live.csv)"]; then
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
                 else
@@ -489,7 +489,7 @@ jobs:
       - script: grep -v "should have" temp.txt > pageLine.txt
       - script: echo "Job ID" > pageName.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-      - script: if [ -z "$(aws s3 ls s3://test-result-s3/$JOB_NAME.csv)"]; then
+      - script: if [ -z "$(aws s3 ls s3://test-result-s3/now-seo-test-live.csv)"]; then
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
                 else
