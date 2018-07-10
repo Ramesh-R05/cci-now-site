@@ -6,6 +6,28 @@
 # Jobs are numbered to visualize sequence                          #
 ####################################################################
 
+templates: &template-lighthouse-csv-report
+  - echo "Using template-lighthouse-csv-report"
+  - cat result.txt
+  - aws s3 ls 's3://test-result-s3/'
+  - grep "testing for" result.txt > temp.txt
+  - grep -v "should have" temp.txt > pageLine.txt
+  - echo "Job ID" > pageName.txt
+  - "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
+  - if [ -z "$(aws s3 ls 's3://test-result-s3/$JOB_NAME.csv')"]; then
+        echo "In progress to add header";
+        paste -d, -s pageName.txt > $JOB_NAME.csv;
+    else
+        aws s3 cp 's3://test-result-s3/$JOB_NAME.csv' $JOB_NAME.csv;
+    fi
+  - grep "maximum score" result.txt > temp.txt
+  - echo $BUILD_NUMBER > maxScore.txt
+  - "sed -e 's/^.*is //' temp.txt >> maxScore.txt"
+  - paste -d, -s maxScore.txt >> $JOB_NAME.csv
+  - shipctl copy_file_to_state $JOB_NAME.csv
+  - cat $JOB_STATE/$JOB_NAME.csv
+  - aws s3 cp $JOB_STATE/$JOB_NAME.csv 's3://test-result-s3/'
+
 jobs:
 
   # 1. Sync pipeline to CI
@@ -208,8 +230,6 @@ jobs:
   # 4e. Run performance test on test environment
   - name: performance-test
     type: runSh
-    always:
-      - NOTIFY: now-slack-notifications
     steps:
       - IN: now-site-test-deploy-master
       - IN: now-site-repo
@@ -227,7 +247,14 @@ jobs:
         - script: sudo apt-get update
         - script: sudo apt-get install google-chrome-stable
         - script: google-chrome --product-version
-        - script: npm run test:perf
+        - script: npm run test:perf > result.txt
+    on_success:
+      - script: echo "SUCCESS"
+    on_failure:
+      - script: echo "FAILURE"
+    always:
+      - script: *template-lighthouse-csv-report
+      - NOTIFY: now-slack-notifications
 
   # 5. Package release for production release
   - name: now-site-release-master
@@ -360,8 +387,6 @@ jobs:
   # iv. Run Performance Test on live environment
   - name: now-performance-test-live
     type: runSh
-    always:
-      - NOTIFY: now-qa-team-notifications
     steps:
      - IN: now-site-repo
        switch: off
@@ -379,14 +404,18 @@ jobs:
         - script: sudo apt-get update
         - script: sudo apt-get install google-chrome-stable
         - script: google-chrome --product-version
-        - script: npm run test:perflive
-        - script: echo "Finish running"
+        - script: npm run test:perflive > result.txt
+    on_success:
+      - script: echo "SUCCESS"
+    on_failure:
+      - script: echo "FAILURE"
+    always:
+      - script: *template-lighthouse-csv-report
+      - NOTIFY: now-qa-team-notifications
 
   # v. Run SEO Test on live environment
   - name: now-seo-test-live
     type: runSh
-    always:
-      - NOTIFY: now-qa-team-notifications
     steps:
      - IN: now-site-repo
        switch: off
@@ -404,8 +433,14 @@ jobs:
         - script: sudo apt-get update
         - script: sudo apt-get install google-chrome-stable
         - script: google-chrome --product-version
-        - script: npm run test:seolive
-        - script: echo "Finish running"
+        - script: npm run test:seolive > result.txt
+    on_success:
+      - script: echo "SUCCESS"
+    on_failure:
+      - script: echo "FAILURE"
+    always:
+      - script: *template-lighthouse-csv-report
+      - NOTIFY: now-qa-team-notifications
 
   # vi. Run SEO Test on live environment - POC to store performance result in a file
   - name: poc-now-seo-test-live
@@ -434,23 +469,27 @@ jobs:
     on_failure:
       - script: echo "FAILURE"
     always:
-      - script: cat result.txt
-      - script: aws s3 ls 's3://test-result-s3/'
-      - script: grep "testing for" result.txt > temp.txt
-      - script: grep -v "should have" temp.txt > pageLine.txt
-      - script: echo "Job ID" > pageName.txt
-      - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/$JOB_NAME.csv')"]; then
-                  echo "In progress to add header";
-                  paste -d, -s pageName.txt > $JOB_NAME.csv;
-                else
-                  aws s3 cp 's3://test-result-s3/$JOB_NAME.csv' $JOB_NAME.csv;
-                fi
-      - script: grep "maximum score" result.txt > temp.txt
-      - script: echo $BUILD_NUMBER > maxScore.txt
-      - script: "sed -e 's/^.*is //' temp.txt >> maxScore.txt"
-      - script: paste -d, -s maxScore.txt >> $JOB_NAME.csv
-      - script: shipctl copy_file_to_state $JOB_NAME.csv
-      - script: cat $JOB_STATE/$JOB_NAME.csv
-      - script: aws s3 cp $JOB_STATE/$JOB_NAME.csv 's3://test-result-s3/'
+#      - script: *template-script-1
+      - script: *template-lighthouse-csv-report
       - NOTIFY: now-qa-team-notifications
+#      - script: cat result.txt
+#      - script: aws s3 ls 's3://test-result-s3/'
+#      - script: grep "testing for" result.txt > temp.txt
+#      - script: grep -v "should have" temp.txt > pageLine.txt
+#      - script: echo "Job ID" > pageName.txt
+#      - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
+#      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/$JOB_NAME.csv')"]; then
+#                  echo "In progress to add header";
+#                  paste -d, -s pageName.txt > $JOB_NAME.csv;
+#                else
+#                  aws s3 cp 's3://test-result-s3/$JOB_NAME.csv' $JOB_NAME.csv;
+#                fi
+#      - script: grep "maximum score" result.txt > temp.txt
+#      - script: echo $BUILD_NUMBER > maxScore.txt
+#      - script: "sed -e 's/^.*is //' temp.txt >> maxScore.txt"
+#      - script: paste -d, -s maxScore.txt >> $JOB_NAME.csv
+#      - script: shipctl copy_file_to_state $JOB_NAME.csv
+#      - script: cat $JOB_STATE/$JOB_NAME.csv
+#      - script: aws s3 cp $JOB_STATE/$JOB_NAME.csv 's3://test-result-s3/'
+#      - script: *template-lighthouse-csv-report
+
