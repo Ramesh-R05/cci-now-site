@@ -520,7 +520,7 @@ jobs:
     steps:
      - IN: env-sit-ecs
      - IN: test-result-s3-param
-     - IN: now-site-repo-branch
+     - IN: now-site-repo
        switch: off
      - TASK:
           script:
