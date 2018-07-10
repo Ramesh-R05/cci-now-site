@@ -6,27 +6,32 @@
 # Jobs are numbered to visualize sequence                          #
 ####################################################################
 
-templates: &template-lighthouse-csv-report
+templates: &template-script
+  - echo "common-script 1"
+  - echo "common-script 2"
+  - echo "common-script 3"
+
+templates4: &template-lighthouse-csv-report
   - echo "Using template-lighthouse-csv-report"
-  - cat result.txt
-  - aws s3 ls 's3://test-result-s3/'
-  - grep "testing for" result.txt > temp.txt
-  - grep -v "should have" temp.txt > pageLine.txt
-  - echo "Job ID" > pageName.txt
-  - "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-  - if [ -z "$(aws s3 ls 's3://test-result-s3/$JOB_NAME.csv')"]; then
-        echo "In progress to add header";
-        paste -d, -s pageName.txt > $JOB_NAME.csv;
-    else
-        aws s3 cp 's3://test-result-s3/$JOB_NAME.csv' $JOB_NAME.csv;
-    fi
-  - grep "maximum score" result.txt > temp.txt
-  - echo $BUILD_NUMBER > maxScore.txt
-  - "sed -e 's/^.*is //' temp.txt >> maxScore.txt"
-  - paste -d, -s maxScore.txt >> $JOB_NAME.csv
-  - shipctl copy_file_to_state $JOB_NAME.csv
-  - cat $JOB_STATE/$JOB_NAME.csv
-  - aws s3 cp $JOB_STATE/$JOB_NAME.csv 's3://test-result-s3/'
+#  - cat result.txt
+#  - aws s3 ls 's3://test-result-s3/'
+#  - grep "testing for" result.txt > temp.txt
+#  - grep -v "should have" temp.txt > pageLine.txt
+#  - echo "Job ID" > pageName.txt
+#  - "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
+#  - if [ -z "$(aws s3 ls 's3://test-result-s3/$JOB_NAME.csv')"]; then
+#        echo "In progress to add header";
+#        paste -d, -s pageName.txt > $JOB_NAME.csv;
+#    else
+#        aws s3 cp 's3://test-result-s3/$JOB_NAME.csv' $JOB_NAME.csv;
+#    fi
+#  - grep "maximum score" result.txt > temp.txt
+#  - echo $BUILD_NUMBER > maxScore.txt
+#  - "sed -e 's/^.*is //' temp.txt >> maxScore.txt"
+#  - paste -d, -s maxScore.txt >> $JOB_NAME.csv
+#  - shipctl copy_file_to_state $JOB_NAME.csv
+#  - cat $JOB_STATE/$JOB_NAME.csv
+#  - aws s3 cp $JOB_STATE/$JOB_NAME.csv 's3://test-result-s3/'
 
 jobs:
 
@@ -470,7 +475,8 @@ jobs:
       - script: echo "FAILURE"
     always:
 #      - script: *template-script-1
-      - script: *template-lighthouse-csv-report
+      - script: *template-script
+#      - script: *template-lighthouse-csv-report
       - NOTIFY: now-qa-team-notifications
 #      - script: cat result.txt
 #      - script: aws s3 ls 's3://test-result-s3/'
