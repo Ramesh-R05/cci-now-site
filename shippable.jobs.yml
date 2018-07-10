@@ -265,7 +265,7 @@ jobs:
       - script: grep -v "should have" temp.txt > pageLine.txt
       - script: echo "Job ID" > pageName.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/$JOB_NAME.csv')"]; then
+      - script: if [ -z "$(aws s3 ls s3://test-result-s3/$JOB_NAME.csv)"]; then
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
                 else
@@ -441,7 +441,7 @@ jobs:
       - script: grep -v "should have" temp.txt > pageLine.txt
       - script: echo "Job ID" > pageName.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/$JOB_NAME.csv')"]; then
+      - script: if [ -z "$(aws s3 ls s3://test-result-s3/$JOB_NAME.csv)"]; then
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
                 else
@@ -489,21 +489,11 @@ jobs:
       - script: grep -v "should have" temp.txt > pageLine.txt
       - script: echo "Job ID" > pageName.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/$JOB_NAME.csv')"]; then
+      - script: if [ -z "$(aws s3 ls s3://test-result-s3/$JOB_NAME.csv)"]; then
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
                 else
                   aws s3 cp 's3://test-result-s3/$JOB_NAME.csv' $JOB_NAME.csv;
-                fi
-      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/${JOB_NAME}.csv')"]; then
-                  echo "In progress to add header 2";
-                else
-                  echo "In progress to add header 2 Correct";
-                fi
-      - script: if [ -z "$(aws s3 ls 's3://test-result-s3/\$JOB_NAME.csv')"]; then
-                  echo "In progress to add header 3";
-                else
-                  echo "In progress to add header 3 Correct";
                 fi
       - script: grep "maximum score" result.txt > temp.txt
       - script: echo $BUILD_NUMBER > maxScore.txt
