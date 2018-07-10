@@ -11,8 +11,8 @@ templates: &template-script
   - echo "common-script 2"
   - echo "common-script 3"
 
-templates4: &template-lighthouse-csv-report
-  - echo "Using template-lighthouse-csv-report"
+#templates4: &template-lighthouse-csv-report
+#  - echo "Using template-lighthouse-csv-report"
 #  - cat result.txt
 #  - aws s3 ls 's3://test-result-s3/'
 #  - grep "testing for" result.txt > temp.txt
@@ -258,7 +258,7 @@ jobs:
     on_failure:
       - script: echo "FAILURE"
     always:
-      - script: *template-lighthouse-csv-report
+#      - script: *template-lighthouse-csv-report
       - NOTIFY: now-slack-notifications
 
   # 5. Package release for production release
@@ -415,7 +415,7 @@ jobs:
     on_failure:
       - script: echo "FAILURE"
     always:
-      - script: *template-lighthouse-csv-report
+#      - script: *template-lighthouse-csv-report
       - NOTIFY: now-qa-team-notifications
 
   # v. Run SEO Test on live environment
@@ -444,7 +444,7 @@ jobs:
     on_failure:
       - script: echo "FAILURE"
     always:
-      - script: *template-lighthouse-csv-report
+#      - script: *template-lighthouse-csv-report
       - NOTIFY: now-qa-team-notifications
 
   # vi. Run SEO Test on live environment - POC to store performance result in a file
@@ -456,6 +456,7 @@ jobs:
      - IN: now-site-repo-branch
        switch: off
      - TASK:
+        - script: *template-script
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
         - script: nvm install "8.9.1"
@@ -475,7 +476,7 @@ jobs:
       - script: echo "FAILURE"
     always:
 #      - script: *template-script-1
-      - script: *template-script
+#      - script: *template-script
 #      - script: *template-lighthouse-csv-report
       - NOTIFY: now-qa-team-notifications
 #      - script: cat result.txt
