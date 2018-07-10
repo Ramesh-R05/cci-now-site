@@ -526,16 +526,17 @@ jobs:
         - script: sudo apt-get update
         - script: sudo apt-get install google-chrome-stable
         - script: google-chrome --product-version
-        - script: npm run test:perflive > result.txt
+#        - script: npm run test:perflive > result.txt
     on_success:
       - script: echo "SUCCESS"
     on_failure:
       - script: echo "FAILURE"
     always:
 #      - script: *template-script-1
-#      - script: *template-script
+        script:
+        - *template-script
 #      - script: *template-lighthouse-csv-report
-      - NOTIFY: now-qa-team-notifications
+        - NOTIFY: now-qa-team-notifications
 #      - script: cat result.txt
 #      - script: aws s3 ls 's3://test-result-s3/'
 #      - script: grep "testing for" result.txt > temp.txt
