@@ -438,20 +438,8 @@ jobs:
       - script: aws s3 ls 's3://test-result-s3/'
       - script: grep "testing for" result.txt > temp.txt
       - script: grep -v "should have" temp.txt > pageLine.txt
-      - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt > pageName.txt"
-      - script: echo "$JOB_NAME = " $JOB_NAME
-                echo "$JOB_TYPE = " $JOB_TYPE
-                echo "$BUILD_ID = " $BUILD_ID
-                echo "$BUILD_NUMBER = " $BUILD_NUMBER
-                echo "$BUILD_JOB_ID = " $BUILD_JOB_ID
-                echo "$BUILD_JOB_NUMBER = " $BUILD_JOB_NUMBER
-                echo "$SUBSCRIPTION_ID = " $SUBSCRIPTION_ID
-                echo "$JOB_PATH = " $JOB_PATH
-                echo "$JOB_STATE = " $JOB_STATE
-                echo "$JOB_PREVIOUS_STATE = " $JOB_PREVIOUS_STATE
-                echo "$JOB_TRIGGERED_BY_NAME = " $JOB_TRIGGERED_BY_NAME
-                echo "$SHARED_DIR = " $SHARED_DIR
-                echo "$SHIPPABLE_AMI_VERSION = " $SHIPPABLE_AMI_VERSION
+      - script: echo "Job ID" > pageName.txt
+      - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
       - script: if [ -z "$(aws s3 ls 's3://test-result-s3/$JOB_NAME.csv')"]; then
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
@@ -459,7 +447,8 @@ jobs:
                   aws s3 cp 's3://test-result-s3/$JOB_NAME.csv' $JOB_NAME.csv;
                 fi
       - script: grep "maximum score" result.txt > temp.txt
-      - script: "sed -e 's/^.*is //' temp.txt > maxScore.txt"
+      - script: echo $BUILD_NUMBER > maxScore.txt
+      - script: "sed -e 's/^.*is //' temp.txt >> maxScore.txt"
       - script: paste -d, -s maxScore.txt >> $JOB_NAME.csv
       - script: shipctl copy_file_to_state $JOB_NAME.csv
       - script: cat $JOB_STATE/$JOB_NAME.csv
