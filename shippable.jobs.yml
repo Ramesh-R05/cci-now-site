@@ -233,10 +233,11 @@ jobs:
       - NOTIFY: now-deployment-notifications
 
   # 4e. Run performance test on test environment
-  - name: performance-test
+  - name: now-performance-test
     type: runSh
     steps:
       - IN: now-site-test-deploy-master
+      - IN: test-result-s3-param
       - IN: now-site-repo
         switch: off
       - TASK:
@@ -411,6 +412,7 @@ jobs:
   - name: now-performance-test-live
     type: runSh
     steps:
+     - IN: test-result-s3-param
      - IN: now-site-repo
        switch: off
      - IN: now-perf-live-trigger
@@ -458,6 +460,7 @@ jobs:
   - name: now-seo-test-live
     type: runSh
     steps:
+     - IN: test-result-s3-param
      - IN: now-site-repo
        switch: off
      - IN: now-seo-live-trigger
