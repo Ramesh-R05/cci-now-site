@@ -258,8 +258,7 @@ jobs:
     always:
       script:
         - *template-lighthouse-csv-report
-      NOTIFY:
-        - now-slack-notifications
+      NOTIFY: now-slack-notifications
 
   # 5. Package release for production release
   - name: now-site-release-master
@@ -418,8 +417,7 @@ jobs:
     always:
       script:
         - *template-lighthouse-csv-report
-      NOTIFY:
-        - now-qa-team-notifications
+      NOTIFY: now-qa-team-notifications
 
   # v. Run SEO Test on live environment
   - name: now-seo-test-live
@@ -450,8 +448,7 @@ jobs:
     always:
       script:
         - *template-lighthouse-csv-report
-      NOTIFY:
-        - now-qa-team-notifications
+      NOTIFY: now-qa-team-notifications
 
   # vi. Run SEO Test on live environment - POC to store performance result in a file
   - name: poc-now-seo-test-live
