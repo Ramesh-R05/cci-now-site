@@ -6,32 +6,33 @@
 # Jobs are numbered to visualize sequence                          #
 ####################################################################
 
-templates: &template-script
-  - echo "common-script 1"
-  - echo "common-script 2"
-  - echo "common-script 3"
+#templates: &template-script
+#  - echo "common-script 1"
+#  - echo "common-script 2"
+#  - echo "common-script 3"
 
-#templates4: &template-lighthouse-csv-report
-#  - echo "Using template-lighthouse-csv-report"
-#  - cat result.txt
-#  - aws s3 ls 's3://test-result-s3/'
-#  - grep "testing for" result.txt > temp.txt
-#  - grep -v "should have" temp.txt > pageLine.txt
-#  - echo "Job ID" > pageName.txt
-#  - "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-#  - if [ -z "$(aws s3 ls 's3://test-result-s3/$JOB_NAME.csv')"]; then
-#        echo "In progress to add header";
-#        paste -d, -s pageName.txt > $JOB_NAME.csv;
-#    else
-#        aws s3 cp 's3://test-result-s3/$JOB_NAME.csv' $JOB_NAME.csv;
-#    fi
-#  - grep "maximum score" result.txt > temp.txt
-#  - echo $BUILD_NUMBER > maxScore.txt
-#  - "sed -e 's/^.*is //' temp.txt >> maxScore.txt"
-#  - paste -d, -s maxScore.txt >> $JOB_NAME.csv
-#  - shipctl copy_file_to_state $JOB_NAME.csv
-#  - cat $JOB_STATE/$JOB_NAME.csv
-#  - aws s3 cp $JOB_STATE/$JOB_NAME.csv 's3://test-result-s3/'
+templates: &template-lighthouse-csv-report
+  - echo "Using template-lighthouse-csv-report"
+  - cat result.txt
+  - aws s3 ls 's3://test-result-s3/'
+  - grep "testing for" result.txt > temp.txt
+  - grep -v "should have" temp.txt > pageLine.txt
+  - echo "Job ID" > pageName.txt
+  - "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
+  - export S3_path=s3://test-result-s3/$JOB_NAME.csv
+  - if [ -z "$(aws s3 ls $S3_path)"]; then
+        echo "In progress to add header";
+        paste -d, -s pageName.txt > $JOB_NAME.csv;
+    else
+        aws s3 cp $S3_path $JOB_NAME.csv;
+    fi
+  - grep "maximum score" result.txt > temp.txt
+  - echo $BUILD_NUMBER > maxScore.txt
+  - "sed -e 's/^.*is //' temp.txt >> maxScore.txt"
+  - paste -d, -s maxScore.txt >> $JOB_NAME.csv
+  - shipctl copy_file_to_state $JOB_NAME.csv
+  - cat $JOB_STATE/$JOB_NAME.csv
+  - aws s3 cp $JOB_STATE/$JOB_NAME.csv 's3://test-result-s3/'
 
 jobs:
 
@@ -265,11 +266,12 @@ jobs:
       - script: grep -v "should have" temp.txt > pageLine.txt
       - script: echo "Job ID" > pageName.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-      - script: if [ -z "$(aws s3 ls s3://test-result-s3/now-performance-test.csv)"]; then
+      - script: export S3_path=s3://test-result-s3/$JOB_NAME.csv
+      - script: if [ -z "$(aws s3 ls $S3_path)"]; then
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
                 else
-                  aws s3 cp s3://test-result-s3/$JOB_NAME.csv $JOB_NAME.csv;
+                  aws s3 cp $S3_path $JOB_NAME.csv;
                 fi
       - script: grep "maximum score" result.txt > temp.txt
       - script: echo $BUILD_NUMBER > maxScore.txt
@@ -441,11 +443,12 @@ jobs:
       - script: grep -v "should have" temp.txt > pageLine.txt
       - script: echo "Job ID" > pageName.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-      - script: if [ -z "$(aws s3 ls s3://test-result-s3/now-performance-test-live.csv)"]; then
+      - script: export S3_path=s3://test-result-s3/$JOB_NAME.csv
+      - script: if [ -z "$(aws s3 ls $S3_path)"]; then
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
                 else
-                  aws s3 cp s3://test-result-s3/$JOB_NAME.csv $JOB_NAME.csv;
+                  aws s3 cp $S3_path $JOB_NAME.csv;
                 fi
       - script: grep "maximum score" result.txt > temp.txt
       - script: echo $BUILD_NUMBER > maxScore.txt
@@ -490,8 +493,6 @@ jobs:
       - script: echo "Job ID" > pageName.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
       - script: export S3_path=s3://test-result-s3/$JOB_NAME.csv
-      - script: echo $S3_path
-#      - script: if [ -z "$(aws s3 ls s3://test-result-s3/now-seo-test-live.csv)"]; then
       - script: if [ -z "$(aws s3 ls $S3_path)"]; then
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
@@ -517,9 +518,21 @@ jobs:
        switch: off
      - TASK:
           script:
-            - echo "This is job A"
-            - *template-script
-            - echo "some more scripts"
+            - curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+            - source ~/.nvm/nvm.sh
+            - nvm install "8.9.1"
+            - nvm use "8.9.1"
+            - cd ./IN/now-site-repo/gitRepo/src
+            - npm set @bxm:registry http://npm.digital.bauer-media.net.au
+            - npm install
+            - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+            - sudo apt-get update
+            - sudo apt-get install google-chrome-stable
+            - google-chrome --product-version
+            - npm run test:seolive > result.txt
+            - *template-lighthouse-csv-report
+            - echo "finish using template"
     on_success:
       - script: echo "SUCCESS"
     on_failure:
