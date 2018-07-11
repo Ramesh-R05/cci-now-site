@@ -531,11 +531,14 @@ jobs:
             - sudo apt-get install google-chrome-stable
             - google-chrome --product-version
             - npm run test:seolive > result.txt
-            - *template-lighthouse-csv-report
-            - echo "finish using template"
     on_success:
       - script: echo "SUCCESS"
     on_failure:
       - script: echo "FAILURE"
+    always:
+      script:
+        - *template-lighthouse-csv-report
+        - echo "finish using template"
+
 
 
