@@ -269,7 +269,7 @@ jobs:
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
                 else
-                  aws s3 cp 's3://test-result-s3/$JOB_NAME.csv' $JOB_NAME.csv;
+                  aws s3 cp s3://test-result-s3/$JOB_NAME.csv $JOB_NAME.csv;
                 fi
       - script: grep "maximum score" result.txt > temp.txt
       - script: echo $BUILD_NUMBER > maxScore.txt
@@ -445,7 +445,7 @@ jobs:
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
                 else
-                  aws s3 cp 's3://test-result-s3/$JOB_NAME.csv' $JOB_NAME.csv;
+                  aws s3 cp s3://test-result-s3/$JOB_NAME.csv $JOB_NAME.csv;
                 fi
       - script: grep "maximum score" result.txt > temp.txt
       - script: echo $BUILD_NUMBER > maxScore.txt
@@ -493,7 +493,7 @@ jobs:
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
                 else
-                  aws s3 cp 's3://test-result-s3/$JOB_NAME.csv' $JOB_NAME.csv;
+                  aws s3 cp s3://test-result-s3/$JOB_NAME.csv $JOB_NAME.csv;
                 fi
       - script: grep "maximum score" result.txt > temp.txt
       - script: echo $BUILD_NUMBER > maxScore.txt
