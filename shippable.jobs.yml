@@ -490,38 +490,13 @@ jobs:
       - script: echo "Job ID" > pageName.txt
       - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
       - script: export S3_path=s3://test-result-s3/$JOB_NAME.csv
-      - script: echo S3_path
       - script: echo $S3_path
-      - script: if ["$(aws s3 ls S3_path)"]; then
-                  echo "correct!!!!";
-                else
-                  echo "incorrect!!!!";
-                fi
-      - script: if ["$(aws s3 ls $S3_path)"]; then
-                  echo "correct!!!!1";
-                else
-                  echo "incorrect!!!!1";
-                fi
-      - script: if [$(aws s3 ls s3://test-result-s3/$JOB_NAME.csv)]; then
-                  echo "correct!!!!2";
-                else
-                  echo "incorrect!!!!2";
-                fi
-      - script: if [$(aws s3 ls S3_path)]; then
-                  echo "correct!!!!3";
-                else
-                  echo "incorrect!!!!3";
-                fi
-      - script: if [$(aws s3 ls $S3_path)]; then
-                  echo "correct!!!!4";
-                else
-                  echo "incorrect!!!!4";
-                fi
-      - script: if [ -z "$(aws s3 ls s3://test-result-s3/now-seo-test-live.csv)"]; then
+#      - script: if [ -z "$(aws s3 ls s3://test-result-s3/now-seo-test-live.csv)"]; then
+      - script: if [ -z "$(aws s3 ls $S3_path)"]; then
                   echo "In progress to add header";
                   paste -d, -s pageName.txt > $JOB_NAME.csv;
                 else
-                  aws s3 cp s3://test-result-s3/$JOB_NAME.csv $JOB_NAME.csv;
+                  aws s3 cp $S3_path $JOB_NAME.csv;
                 fi
       - script: grep "maximum score" result.txt > temp.txt
       - script: echo $BUILD_NUMBER > maxScore.txt
