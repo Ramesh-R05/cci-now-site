@@ -6,11 +6,7 @@
 # Jobs are numbered to visualize sequence                          #
 ####################################################################
 
-#templates: &template-script
-#  - echo "common-script 1"
-#  - echo "common-script 2"
-#  - echo "common-script 3"
-
+#template for the performance test jobs
 templates: &template-lighthouse-csv-report
   - echo "Using template-lighthouse-csv-report"
   - cat result.txt
@@ -260,27 +256,10 @@ jobs:
     on_failure:
       - script: echo "FAILURE"
     always:
-      - script: cat result.txt
-      - script: aws s3 ls 's3://test-result-s3/'
-      - script: grep "testing for" result.txt > temp.txt
-      - script: grep -v "should have" temp.txt > pageLine.txt
-      - script: echo "Job ID" > pageName.txt
-      - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-      - script: export S3_path=s3://test-result-s3/$JOB_NAME.csv
-      - script: if [ -z "$(aws s3 ls $S3_path)"]; then
-                  echo "In progress to add header";
-                  paste -d, -s pageName.txt > $JOB_NAME.csv;
-                else
-                  aws s3 cp $S3_path $JOB_NAME.csv;
-                fi
-      - script: grep "maximum score" result.txt > temp.txt
-      - script: echo $BUILD_NUMBER > maxScore.txt
-      - script: "sed -e 's/^.*is //' temp.txt >> maxScore.txt"
-      - script: paste -d, -s maxScore.txt >> $JOB_NAME.csv
-      - script: shipctl copy_file_to_state $JOB_NAME.csv
-      - script: cat $JOB_STATE/$JOB_NAME.csv
-      - script: aws s3 cp $JOB_STATE/$JOB_NAME.csv 's3://test-result-s3/'
-      - NOTIFY: now-slack-notifications
+      script:
+        - *template-lighthouse-csv-report
+      NOTIFY:
+        - now-slack-notifications
 
   # 5. Package release for production release
   - name: now-site-release-master
@@ -437,27 +416,10 @@ jobs:
     on_failure:
       - script: echo "FAILURE"
     always:
-      - script: cat result.txt
-      - script: aws s3 ls 's3://test-result-s3/'
-      - script: grep "testing for" result.txt > temp.txt
-      - script: grep -v "should have" temp.txt > pageLine.txt
-      - script: echo "Job ID" > pageName.txt
-      - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-      - script: export S3_path=s3://test-result-s3/$JOB_NAME.csv
-      - script: if [ -z "$(aws s3 ls $S3_path)"]; then
-                  echo "In progress to add header";
-                  paste -d, -s pageName.txt > $JOB_NAME.csv;
-                else
-                  aws s3 cp $S3_path $JOB_NAME.csv;
-                fi
-      - script: grep "maximum score" result.txt > temp.txt
-      - script: echo $BUILD_NUMBER > maxScore.txt
-      - script: "sed -e 's/^.*is //' temp.txt >> maxScore.txt"
-      - script: paste -d, -s maxScore.txt >> $JOB_NAME.csv
-      - script: shipctl copy_file_to_state $JOB_NAME.csv
-      - script: cat $JOB_STATE/$JOB_NAME.csv
-      - script: aws s3 cp $JOB_STATE/$JOB_NAME.csv 's3://test-result-s3/'
-      - NOTIFY: now-qa-team-notifications
+      script:
+        - *template-lighthouse-csv-report
+      NOTIFY:
+        - now-qa-team-notifications
 
   # v. Run SEO Test on live environment
   - name: now-seo-test-live
@@ -486,27 +448,10 @@ jobs:
     on_failure:
       - script: echo "FAILURE"
     always:
-      - script: cat result.txt
-      - script: aws s3 ls 's3://test-result-s3/'
-      - script: grep "testing for" result.txt > temp.txt
-      - script: grep -v "should have" temp.txt > pageLine.txt
-      - script: echo "Job ID" > pageName.txt
-      - script: "sed -e 's/^.*for //' -e 's/ : .*//' pageLine.txt >> pageName.txt"
-      - script: export S3_path=s3://test-result-s3/$JOB_NAME.csv
-      - script: if [ -z "$(aws s3 ls $S3_path)"]; then
-                  echo "In progress to add header";
-                  paste -d, -s pageName.txt > $JOB_NAME.csv;
-                else
-                  aws s3 cp $S3_path $JOB_NAME.csv;
-                fi
-      - script: grep "maximum score" result.txt > temp.txt
-      - script: echo $BUILD_NUMBER > maxScore.txt
-      - script: "sed -e 's/^.*is //' temp.txt >> maxScore.txt"
-      - script: paste -d, -s maxScore.txt >> $JOB_NAME.csv
-      - script: shipctl copy_file_to_state $JOB_NAME.csv
-      - script: cat $JOB_STATE/$JOB_NAME.csv
-      - script: aws s3 cp $JOB_STATE/$JOB_NAME.csv 's3://test-result-s3/'
-      - NOTIFY: now-qa-team-notifications
+      script:
+        - *template-lighthouse-csv-report
+      NOTIFY:
+        - now-qa-team-notifications
 
   # vi. Run SEO Test on live environment - POC to store performance result in a file
   - name: poc-now-seo-test-live
