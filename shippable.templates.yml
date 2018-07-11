@@ -1,5 +1,5 @@
 
-templates: &template-script-1
+templates1: &template-script-1
   - echo "common-script 1"
   - echo "common-script 2"
 
