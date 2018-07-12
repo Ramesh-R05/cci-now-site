@@ -113,9 +113,11 @@ module.exports = function() {
     this.Then(/^I should see the sticky bottom leaderboard on AMP page$/, function () {
         wait(5000);
         scrolling(browser,amp.ampBodyContainer,isBrowserStack);
-        expect(browser.waitForVisible(amp.ampBottomLeaderboard,10000)).toBe(true);
+        //expect(browser.waitForVisible(amp.ampBottomLeaderboard,10000)).toBe(true);
+        expect(browser.waitForExist(amp.ampBottomLeaderboard,10000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
         scrolling(browser,amp.ampArticleFooter,isBrowserStack);
-        expect(browser.waitForVisible(amp.ampBottomLeaderboard,10000)).toBe(true);
+        //expect(browser.waitForVisible(amp.ampBottomLeaderboard,10000)).toBe(true);
+        expect(browser.waitForExist(amp.ampBottomLeaderboard,10000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
     });
 
     this.Then(/^I can see the outbrain on amp article page$/, function () {

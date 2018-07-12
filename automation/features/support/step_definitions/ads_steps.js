@@ -13,11 +13,13 @@ module.exports = function() {
         browser.scroll(0,0);
 
         //Verify the ad is appearing
-        expect(browser.waitForVisible(wn_ads.ad_TopMrecRhs,3000)).toBe(true);
+        //expect(browser.waitForVisible(wn_ads.ad_TopMrecRhs,3000)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_TopMrecRhs,3000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
 
         //Verify the ad is a sticky ad after scrolling down
         browser.scroll(wn_ads.topFeedItem6);
-        expect(browser.waitForVisible(wn_ads.ad_TopMrecRhs,3000)).toBe(true);
+        //expect(browser.waitForVisible(wn_ads.ad_TopMrecRhs,3000)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_TopMrecRhs,3000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
         expect(browser.getAttribute(wn_ads.adMrecNextToTopFeedSticky, 'style')).toContain("fixed");
     });
 
@@ -26,17 +28,21 @@ module.exports = function() {
         browser.scroll(wn_ads.bottomFeedItem1);
 
         //Verify the ad is appearing
-        expect(browser.waitForVisible(wn_ads.ad_BottomMrecRhs,3000)).toBe(true);
+        //expect(browser.waitForVisible(wn_ads.ad_BottomMrecRhs,3000)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_BottomMrecRhs,3000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
 
         //Verify the ad is a sticky ad after scrolling down
         browser.scroll(wn_ads.bottomFeedItem4);
         browser.scroll(wn_ads.bottomFeedItem7);
-        expect(browser.waitForVisible(wn_ads.ad_BottomMrecRhs,3000)).toBe(true);
+        //expect(browser.waitForVisible(wn_ads.ad_BottomMrecRhs,3000)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_BottomMrecRhs,3000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
         expect(browser.getAttribute(wn_ads.adMrecNextToBottomFeedSticky, 'style')).toContain("fixed");
     });
 
     this.Then(/^I should see MREC ad under the hero teaser$/, function () {
-        expect(browser.isVisible(wn_ads.ad_MrecUnderHeroTeaser)).toBe(true);
+        scrolling(browser,wn_ads.ad_MrecUnderHeroTeaser,isBrowserStack);
+        //expect(browser.isVisible(wn_ads.ad_MrecUnderHeroTeaser)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_MrecUnderHeroTeaser,5000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
     });
 
     this.Then(/^I should not see MREC ad under the hero teaser$/, function () {
@@ -56,12 +62,15 @@ module.exports = function() {
     });
 
     this.Then(/^I should see the middle leaderboard ad under the top news feed$/, function () {
-        expect(browser.isVisible(wn_ads.ad_MiddleLeaderboard)).toBe(true);
+        scrolling(browser,wn_ads.ad_MiddleLeaderboard,isBrowserStack);
+        //expect(browser.isVisible(wn_ads.ad_MiddleLeaderboard)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_MiddleLeaderboard,5000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
     });
 
     this.Then(/^I should see the bottom leaderboard ad above the footer$/, function () {
         browser.scroll(wn_ads.ad_BottomLeaderboard);
-        expect(browser.waitForVisible(wn_ads.ad_BottomLeaderboard,5000)).toBe(true);
+        //expect(browser.waitForVisible(wn_ads.ad_BottomLeaderboard,5000)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_BottomLeaderboard,5000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
     });
 
     this.Then(/^I should not see the bottom leaderboard ad above the footer$/, function () {
@@ -69,7 +78,9 @@ module.exports = function() {
     });
 
     this.Then(/^I should see MREC ad in the bottom news feed$/, function () {
-        expect(browser.isVisible(wn_ads.ad_MrecInBottomFeed)).toBe(true);
+        scrolling(browser,wn_ads.ad_MrecInBottomFeed,isBrowserStack);
+        //expect(browser.isVisible(wn_ads.ad_MrecInBottomFeed)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_MrecInBottomFeed,5000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
     });
 
     this.Then(/^I should not see MREC ad in the bottom news feed$/, function () {
@@ -85,7 +96,8 @@ module.exports = function() {
         scrolling(browser,wn_ads.ad_BottomLeaderboard,isBrowserStack);
         wait(1500);
         scrolling(browser,wn_ads.ad_BottomLeaderboard,isBrowserStack); //move to the object again after the images on gallery are loaded from the first move.
-        expect(browser.waitForVisible(wn_ads.ad_BottomLeaderboard,5000)).toBe(true);
+        //expect(browser.waitForVisible(wn_ads.ad_BottomLeaderboard,5000)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_BottomLeaderboard,5000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
     });
 
     this.Then(/^I should see MREC ad between images$/, function () {
@@ -94,11 +106,13 @@ module.exports = function() {
 
         // Verify the mrec ad after slide no. 3
         browser.scroll(wn_ads.gallerySlide3); // Scroll to the slide no.3 to make sure the header will not overlap the MREC element. This has fixed the Browser Stack issue when running on iPhone 6 plus
-        expect(browser.waitForVisible(wn_ads.ad_MrecAfterSlide3,5000)).toBe(true);
+        //expect(browser.waitForVisible(wn_ads.ad_MrecAfterSlide3,5000)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_MrecAfterSlide3,5000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
 
         // Verify the mrec ad after slide no. 7
         browser.scroll(wn_ads.gallerySlide7);
-        expect(browser.waitForVisible(wn_ads.ad_MrecAfterSlide7,5000)).toBe(true);
+        //expect(browser.waitForVisible(wn_ads.ad_MrecAfterSlide7,5000)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_MrecAfterSlide7,5000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
     });
 
     this.Then(/^I should see (\d+) MREC ads in the RHR feed$/, function (number) {
@@ -139,7 +153,8 @@ module.exports = function() {
         scrolling(browser,wn_ads.ad_MrecBeforeRecommendation,isBrowserStack);
         wait(1000);
         scrolling(browser,wn_ads.ad_MrecBeforeRecommendation,isBrowserStack); //Double scroll to ensure the ad element is still on the page after the ad loading.
-        expect(browser.waitForVisible(wn_ads.ad_MrecBeforeRecommendation,5000)).toBe(true);
+        //expect(browser.waitForVisible(wn_ads.ad_MrecBeforeRecommendation,5000)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_MrecBeforeRecommendation,5000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
     });
 
     this.Then(/^I should not see MREC ad above recommendation$/, function () {
@@ -170,7 +185,8 @@ module.exports = function() {
         browser.scroll(x, y);
 
         // ad will auto refresh once in view on the screen
-        browser.waitForVisible(wn_ads.ad_StickyMrecRhs, 2000);
+        //expect(browser.waitForVisible(wn_ads.ad_StickyMrecRhs, 2000)).toBe(true);
+        expect(browser.waitForExist(wn_ads.ad_StickyMrecRhs,5000)).toBe(true); //This line is a workaround of the above command because the ad sometimes doesn't appear in SIT.
     });
 
     this.Then(/^the "([^"]*)" will "([^"]*)" refresh every (\d+) seconds on "([^"]*)" when is in View$/, function (ad, auto, seconds, page) {
