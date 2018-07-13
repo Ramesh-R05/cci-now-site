@@ -17,5 +17,8 @@ export default {
     },
     polar: {
         propertyId: 'NA-NOWTOLOVE-11238611'
-    }
+    },
+    ads: {
+        iasAds: false
+    },
 };
