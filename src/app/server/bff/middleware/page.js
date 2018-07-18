@@ -10,9 +10,15 @@ export default async function pageMiddleware(req, res, next) {
         }
 
         const query = 'page' in req.query ? req.query : req.params;
-        const { page, preview, section, subsection } = query;
+        const {
+            page, preview, section, subsection
+        } = query;
         const pageID = getPageID(page);
-        if (!pageID) throw { status: 404, message: 'Invalid page ID', section, page };
+        if (!pageID) {
+            throw {
+                status: 404, message: 'Invalid page ID', section, page
+            };
+        }
 
         const saved = `?saved=${!!preview}`;
         const pageData = await makeRequest(`${req.app.locals.config.services.remote.entity}/${pageID}${saved}`);
@@ -24,7 +30,8 @@ export default async function pageMiddleware(req, res, next) {
 
         req.data = req.data || {};
         req.data.entity = { ...pageData };
-        req.data.section = { id: pageData.sectionId,
+        req.data.section = {
+            id: pageData.sectionId,
             name: section,
             urlName: section
         }; // Initially used to set the ad slot within @bxm/ads + gtm in @bxm/server

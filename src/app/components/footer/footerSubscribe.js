@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import Subscribe from './subscribe/subscribe';
 import Newsletter from '@bxm/newsletter/lib/components/newsletter';
+import Subscribe from './subscribe/subscribe';
 
 export default class FooterSubscribe extends Component {
-
     static propTypes = {
         url: PropTypes.string.isRequired,
         isDisplayed: PropTypes.bool

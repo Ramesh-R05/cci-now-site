@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
 export default class FooterNavigation extends Component {
-
     static propTypes = {
         footerUrls: PropTypes.object.isRequired
     };
@@ -13,16 +12,24 @@ export default class FooterNavigation extends Component {
             <nav className="footer__navigation" role="contentinfo">
                 <ul>
                     <li>
-                        <a href={privacy} target="_blank">Privacy Policy</a>
+                        <a href={privacy} target="_blank">
+Privacy Policy
+                        </a>
                     </li>
                     <li>
-                        <a href={advertise} target="_blank">Advertise</a>
+                        <a href={advertise} target="_blank">
+Advertise
+                        </a>
                     </li>
                     <li>
-                        <a href={terms} target="_blank">Terms of Use</a>
+                        <a href={terms} target="_blank">
+Terms of Use
+                        </a>
                     </li>
                     <li>
-                        <a href="/contact-us">Contact Us</a>
+                        <a href="/contact-us">
+Contact Us
+                        </a>
                     </li>
                 </ul>
             </nav>

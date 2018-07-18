@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import BackToTop from '@bxm/ui/lib/back-to-top/backToTop';
 import SocialContainer from '../social/block';
 import FooterNavigation from './footerNavigation';
-import BackToTop from '@bxm/ui/lib/back-to-top/backToTop';
 import Logos from '../page/logos';
 import FooterSubscribe from './footerSubscribe';
 
@@ -32,7 +32,9 @@ export default class Footer extends Component {
             <div>
                 <footer className={classNames}>
                     <div className="home-page__get-social-container">
-                        <span className="home-page__social-logo">Now To Love</span>
+                        <span className="home-page__social-logo">
+Now To Love
+                        </span>
                         <SocialContainer socialUrls={config.urls.socialUrls} />
                     </div>
                     <FooterSubscribe
@@ -40,14 +42,19 @@ export default class Footer extends Component {
                       isDisplayed={false}
                     />
                     <div className="footer__logos">
-                        <span className="footer__logos-title">CONTENT SUPPORTED BY</span><br />
+                        <span className="footer__logos-title">
+CONTENT SUPPORTED BY
+                        </span>
+                        <br />
                         <nav className="footer__logos-nav">
                             <Logos className="footer__logos-list" openInNewTab logoList={logoList} />
                         </nav>
                     </div>
                     <FooterNavigation footerUrls={config.urls.footerUrls} />
                     <div className="footer__copyright">
-                        <span>&copy; Copyright Bauer Media Pty Ltd All Rights Reserved</span>
+                        <span>
+&copy; Copyright Bauer Media Pty Ltd All Rights Reserved
+                        </span>
                     </div>
                 </footer>
                 <BackToTop className="button" />

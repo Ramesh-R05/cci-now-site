@@ -5,8 +5,6 @@ import Teaser from '../teaser/teaser';
 
 
 class Promoted extends Component {
-
-
     static propTypes = {
         promoted: PropTypes.object.isRequired
     };
@@ -52,7 +50,9 @@ class Promoted extends Component {
         return (
             <div className="promoted-teaser-view-grid">
                 <div className="home-page__teasers-title">
-                    <span>{ promotedTitle }</span>
+                    <span>
+                        { promotedTitle }
+                    </span>
                 </div>
 
                 <TeaserList
@@ -65,9 +65,8 @@ class Promoted extends Component {
             </div>
         );
     }
-  }
+}
 
 export default connectToStores(Promoted, ['TeaserStore'], context => ({
     promoted: context.getStore('TeaserStore').getPromoted()
 }));
-

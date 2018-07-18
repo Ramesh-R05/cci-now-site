@@ -77,7 +77,7 @@ describe(`BrandMagazine`, () => {
             it('should render the first span and apply the correct title from the config', () => {
                 const spans = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'span');
                 const firstSpan = spans[0];
-                expect(firstSpan.textContent).to.eq("Subscribe to " + brandPropStub.magazineTitle);
+                expect(firstSpan.textContent).to.eq(`Subscribe to ${brandPropStub.magazineTitle}`);
             });
 
             it('should render the second span and apply the correct class from the config', () => {

@@ -21,17 +21,7 @@ export default class Logies extends Component {
 
     static DEFAULT_PATH = '/logies-vote';
 
-    state = {
-        bottomElm: null,
-        topElm: null
-    };
-
     componentDidMount() {
-        this.setState({ // eslint-disable-line react/no-did-mount-set-state
-            bottomElm: this.bottom,
-            topElm: this.top
-        });
-
         const options = {
             log: get(this.context, 'config.APP_DEBUG', 0) === 'true'
         };
@@ -63,6 +53,7 @@ export default class Logies extends Component {
                       src="https://webapp.tectonicinteractive.com/logies2018/polling_v1.html"
                       ref={(c) => { this.iframe = c; }}
                       style={{ width: '1px', minWidth: '100%' }}
+                      title="Logies Vote"
                     />
                 </div>
             </Page>

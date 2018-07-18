@@ -1,7 +1,7 @@
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
-import { getLatestTeasers } from '../api/listing';
 import momentTimezone from 'moment-timezone';
+import { getLatestTeasers } from '../api/listing';
 
 const TOP = 20;
 

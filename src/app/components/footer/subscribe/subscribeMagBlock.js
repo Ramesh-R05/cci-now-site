@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connectToStores } from '@bxm/flux';
 
 class SubscribeMagBlock extends Component {
-
     static propTypes = {
         inSideNav: PropTypes.bool.isRequired,
         footer: PropTypes.object.isRequired,
@@ -11,7 +10,9 @@ class SubscribeMagBlock extends Component {
     };
 
     render() {
-        const { inSideNav, footer, subscribeMagUrl, subscribeIpadUrl } = this.props;
+        const {
+            inSideNav, footer, subscribeMagUrl, subscribeIpadUrl
+        } = this.props;
         if (inSideNav) return null;
 
 

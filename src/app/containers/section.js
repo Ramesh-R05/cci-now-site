@@ -1,9 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connectToStores } from '@bxm/flux';
-import Page from './page';
 import Ad from '@bxm/ad/lib/google/components/ad';
-import HeroTeaser from '../components/teaser/hero';
 import imageResize from '@bxm/ui/lib/common/ImageResize';
+import get from 'lodash/object/get';
+import { find } from 'lodash';
+import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
+import Page from './page';
+import HeroTeaser from '../components/teaser/hero';
 import TeaserGridView from '../components/teaser/grid';
 import TeaserListView from '../components/teaser/list';
 import Repeatable from '../components/repeatable';
@@ -12,9 +15,6 @@ import SocialContainer from '../components/social/block';
 import StickyAndDockAd from '../components/page/stickyAndDockAd';
 import BrandMagazine from '../components/brand/brandMagazine';
 import BrandTitle from '../components/brand/brandTitle';
-import get from 'lodash/object/get';
-import { find } from 'lodash';
-import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
 import SubsectionList from '../components/subsectionList';
 
 function mapStateToProps(context) {
@@ -41,7 +41,7 @@ export default class Section extends Component {
         nodeType: PropTypes.array.isRequired,
         list: PropTypes.array.isRequired,
         listNextParams: PropTypes.object.isRequired,
-        teasers: PropTypes.array.isRequired,
+        teasers: PropTypes.array,
         heroTeaser: PropTypes.object.isRequired,
         title: PropTypes.array.isRequired,
         currentUrl: PropTypes.string.isRequired,
@@ -76,7 +76,9 @@ export default class Section extends Component {
     }
 
     render() {
-        const { nodeType, teasers, title, currentUrl, shortTitle, summary, theme, imageUrl, subsections, heroTeaser } = this.props;
+        const {
+            nodeType, teasers, title, currentUrl, shortTitle, summary, theme, imageUrl, subsections, heroTeaser
+        } = this.props;
         let sectionHeroTeaser = teasers[0];
         let firstTeaserList = teasers.slice(1);
         const keyword = (nodeType === 'TagSection' && title) ? [title] : [];
@@ -96,7 +98,8 @@ export default class Section extends Component {
             sizes: {
                 banner: 'banner',
                 leaderboard: 'leaderboard',
-                billboard: ['billboard', 'leaderboard'] },
+                billboard: ['billboard', 'leaderboard']
+            },
             pageLocation
         };
 
@@ -139,16 +142,20 @@ export default class Section extends Component {
                                       ref={(c) => { this.top = c; }}
                                     >
 
-                                        {imageUrl && !isBrandPage &&
-                                            <div className="banner-wrapper">
-                                                <img src={imageSrc} alt={title} />
-                                            </div>
+                                        {imageUrl && !isBrandPage
+                                            && (
+                                                <div className="banner-wrapper">
+                                                    <img src={imageSrc} alt={title} />
+                                                </div>
+                                            )
                                         }
 
-                                        {subsections.totalCount > 1 && <SubsectionList
-                                          subsections={subsections.data}
-                                          currentUrl={currentUrl}
-                                        />
+                                        {subsections.totalCount > 1 && (
+                                            <SubsectionList
+                                              subsections={subsections.data}
+                                              currentUrl={currentUrl}
+                                            />
+                                        )
                                         }
 
                                         <HeroTeaser showDate={!isBrandPage} article={sectionHeroTeaser} brand={brand} />
@@ -160,8 +167,8 @@ export default class Section extends Component {
                                           adPosition={8}
                                           adTargets={{ keyword }}
                                           nativeAdConfig={isBrandPage || {
-                                              slotPositionIndex: polarLabels.sectionTopFeed
-                                          }}
+                                                slotPositionIndex: polarLabels.sectionTopFeed
+                                            }}
                                         />
                                     </div>
                                     <div className="page__social-wrapper columns large-4 xlarge-3">
@@ -179,11 +186,15 @@ export default class Section extends Component {
                                                   displayFor="large"
                                                   pageLocation={Ad.pos.aside}
                                                 />
-                                                { isBrandPage ? <BrandMagazine brand={brand} /> :
-                                                <div className="page__get-social-container">
-                                                    <span className="page__social-logo">Now To Love</span>
-                                                    <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
-                                                </div> }
+                                                { isBrandPage ? <BrandMagazine brand={brand} />
+                                                    : (
+                                                        <div className="page__get-social-container">
+                                                            <span className="page__social-logo">
+Now To Love
+                                                            </span>
+                                                            <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
+                                                        </div>
+                                                    ) }
                                             </StickyAndDockAd>
                                         </div>
                                     </div>
@@ -195,15 +206,18 @@ export default class Section extends Component {
                     <div ref={(c) => { this.bottom = c; }} />
 
                     {/* 2nd Leaderboard or banner below Gallery of Videos */}
-                    { teasers.length ? <Ad
-                      className="ad--section-leaderboard"
-                      sizes={{
-                          banner: 'banner',
-                          leaderboard: 'leaderboard',
-                          billboard: ['billboard', 'leaderboard'] }}
-                      targets={{ keyword }}
-                      pageLocation={pageLocation}
-                    /> : null }
+                    { teasers.length ? (
+                        <Ad
+                          className="ad--section-leaderboard"
+                          sizes={{
+                                banner: 'banner',
+                                leaderboard: 'leaderboard',
+                                billboard: ['billboard', 'leaderboard']
+                            }}
+                          targets={{ keyword }}
+                          pageLocation={pageLocation}
+                        />
+                    ) : null }
 
                     <Repeatable
                       component={TeaserListView}
@@ -214,17 +228,19 @@ export default class Section extends Component {
                       className="news-feed bottom-news-feed"
                       adTargets={{ keyword }}
                       nativeAdConfig={isBrandPage || {
-                          slotPositionIndex: polarLabels.sectionBottomFeed
-                      }}
+                            slotPositionIndex: polarLabels.sectionBottomFeed
+                        }}
                     />
 
                     {/* 3rd Leaderboard to show on tablet and up */}
-                    { get(this.props.list, 'items[0].length') ? <StickyAd
-                      adProps={adProps}
-                      minHeight={450}
-                      stickyAtViewPort="mediumRangeMax"
-                      stickyDelay={5500}
-                    /> : null }
+                    { get(this.props.list, 'items[0].length') ? (
+                        <StickyAd
+                          adProps={adProps}
+                          minHeight={450}
+                          stickyAtViewPort="mediumRangeMax"
+                          stickyDelay={5500}
+                        />
+                    ) : null }
                 </div>
 
 

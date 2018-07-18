@@ -1,8 +1,8 @@
 import get from 'lodash/object/get';
+import momentTimezone from 'moment-timezone';
 import makeRequest from '../../makeRequest';
 import { getLatestTeasers } from '../api/listing';
 import { parseEntities } from '../helper/parseEntity';
-import momentTimezone from 'moment-timezone';
 const latestTeaserCount = 6;
 const listCount = 14;
 const videoGalleryTeaserCount = 6;
@@ -90,4 +90,3 @@ export default async function home(req, res, next) {
         next(error);
     }
 }
-

@@ -12,13 +12,13 @@ export function reducer(state = initialState, payload = { body: {} }, eventName 
     switch (actionType) {
     case 'LOAD_CONTENT': {
         const {
-                heroTeaser = null,
-                latestTeasers = [],
-                videoGalleryTeasers = [],
-                list = {},
-                mustRead = [],
-                promoted = { title: '', items: [] }
-            } = payload.body;
+            heroTeaser = null,
+            latestTeasers = [],
+            videoGalleryTeasers = [],
+            list = {},
+            mustRead = [],
+            promoted = { title: '', items: [] }
+        } = payload.body;
 
         return {
             heroTeaser,

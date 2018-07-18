@@ -1,6 +1,6 @@
+import get from 'lodash/object/get';
 import logger from '../../../../logger';
 import parseModule from '../helper/parseModule';
-import get from 'lodash/object/get';
 
 // disable lint rule for unused next param as expressjs uses function parameters length to detect error middleware
 // eslint-disable-next-line no-unused-vars

@@ -38,4 +38,3 @@ export default {
         scriptUrl: '//i22lo.com/idipt95l0gt97lp3aklcnxfzf0ycie0t.js'
     }
 };
-

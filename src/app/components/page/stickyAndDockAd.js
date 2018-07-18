@@ -17,6 +17,7 @@ const styles = {
 
 class StickyAndDockAd extends Component {
     static displayName = 'StickyAndDockAd';
+
     static propTypes = {
         offsetTop: PropTypes.number,
         offsetBottom: PropTypes.number,
@@ -87,7 +88,9 @@ class StickyAndDockAd extends Component {
     }
 
     onScroll = () => {
-        const { bottomElm, topElm, offsetTop, offsetBottom } = this.props;
+        const {
+            bottomElm, topElm, offsetTop, offsetBottom
+        } = this.props;
         let style = null;
 
         if (!topElm && !bottomElm) return;

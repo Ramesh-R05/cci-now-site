@@ -27,8 +27,11 @@ export default class Logos extends Component {
             return (
                 <li key={item.id}>
                     <a
-                      key={item.id} href={item.url} target={this.props.openInNewTab ? '_blank' : '_self'}
-                      title={item.title} className={gtmClassName}
+                      key={item.id}
+                      href={item.url}
+                      target={this.props.openInNewTab ? '_blank' : '_self'}
+                      title={item.title}
+                      className={gtmClassName}
                     >
                         <img key={item.id} src={item.imageUrl} alt={item.title} className={imgClassName} />
                     </a>
@@ -36,6 +39,10 @@ export default class Logos extends Component {
             );
         });
 
-        return (<ul className={this.props.className}>{html}</ul>);
+        return (
+            <ul className={this.props.className}>
+                {html}
+            </ul>
+        );
     }
 }

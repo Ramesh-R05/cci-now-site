@@ -2,7 +2,6 @@ import React, { PropTypes, Component } from 'react';
 import classNames from 'classnames';
 
 export default class Repeatable extends Component {
-
     static propTypes = {
         component: PropTypes.func.isRequired,
         action: PropTypes.func.isRequired,
@@ -46,11 +45,12 @@ export default class Repeatable extends Component {
         const repeatableComponents = items.map((item, i) => (
             <ChildComponent
               key={item.id || i}
-              index={i} items={item}
+              index={i}
+              items={item}
               {...otherProps}
               loadAgain={i === items.length - 1}
             />
-            ));
+        ));
 
         const prevUrl = dataSource.previous && dataSource.previous.path;
         const prevProps = {
@@ -85,8 +85,12 @@ export default class Repeatable extends Component {
                     <div className="row">
                         {loadMore}
                         <div className="pagination">
-                            <a {...prevProps}>Previous</a>
-                            <a {...nextProps}>Next</a>
+                            <a {...prevProps}>
+Previous
+                            </a>
+                            <a {...nextProps}>
+Next
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,4 @@
+import amp from '@bxm/server/lib/middleware/amp';
 import page from './bff/middleware/page';
 import home from './bff/middleware/home';
 import article from './bff/middleware/article';
@@ -13,7 +14,6 @@ import tag from './bff/middleware/tag';
 import headerMeta from './bff/middleware/headerMeta';
 import sitemap from './bff/middleware/sitemap';
 import list from './bff/middleware/list';
-import amp from '@bxm/server/lib/middleware/amp';
 import stubServer from '../../automation/test_data/contentApi';
 import logger from '../../logger';
 import assetProxy from './bff/middleware/assetProxy';

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Gallery from '@bxm/article/lib/gallery';
-import Page from './page';
 import Article from '@bxm/article/lib/article';
+import Page from './page';
 import Teaser from '../components/teaser/teaser';
 
 

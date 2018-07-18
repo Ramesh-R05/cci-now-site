@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connectToStores, provideContext } from '@bxm/flux';
 import { handleHistory } from 'fluxible-router';
-import ErrorPage from '../components/page/error';
 import { canUseDOM } from 'exenv';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import ErrorPage from '../components/page/error';
 
 function mapStateToProps(context) {
     return {
@@ -17,7 +17,6 @@ function mapStateToProps(context) {
 
 @connectToStores(['PageStore', 'RouteStore'], mapStateToProps)
 class Application extends Component {
-
     static propTypes = {
         currentRoute: PropTypes.shape({
             url: PropTypes.string.isRequired,
@@ -31,7 +30,8 @@ class Application extends Component {
         }),
         nodeType: PropTypes.string.isRequired,
         error: PropTypes.object,
-        theme: PropTypes.object
+        theme: PropTypes.object,
+        isNavigateComplete: PropTypes.bool.isRequired
     };
 
     static defaultProps = {

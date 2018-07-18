@@ -20,5 +20,5 @@ export default {
     },
     ads: {
         iasAds: false
-    },
+    }
 };

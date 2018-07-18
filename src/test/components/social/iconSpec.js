@@ -38,7 +38,7 @@ describe(`SocialIcon`, () => {
     });
 
     beforeEach(() => {
-        dataLayerStub.push.reset();
+        dataLayerStub.push.resetHistory();
     });
 
     after(() => {

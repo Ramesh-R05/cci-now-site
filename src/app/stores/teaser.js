@@ -1,6 +1,6 @@
 import { createReducerStore } from 'fluxible-reducer-store';
-import { initialState, reducer } from '../reducers/loadTeasers';
 import get from 'lodash/object/get';
+import { initialState, reducer } from '../reducers/loadTeasers';
 
 export default createReducerStore({
     storeName: 'TeaserStore',

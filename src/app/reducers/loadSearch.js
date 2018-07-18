@@ -28,7 +28,6 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
     const actionType = eventName || payload.type || '';
 
     switch (actionType) {
-
     case 'LOAD_SEARCH': {
         const search = payload.body.search;
         const footer = payload.body.footer || {};

@@ -6,4 +6,3 @@ export default {
     adTaggingId: 'NowToLoveNZ',
     alternateHrefLangUrl: 'http://www.nowtolove.com.au'
 };
-

@@ -48,19 +48,15 @@ describe('Component', () => {
                 sandbox.restore();
             });
 
-            it('shoud make the component stick to the top of the screen', () => {
-                sandbox.stub(StickyAndDockAd.prototype, 'getTopOffset', () => {
-                    return 0;
-                });
+            it('should make the component stick to the top of the screen', () => {
+                sandbox.stub(StickyAndDockAd.prototype, 'getTopOffset').callsFake(() => 0);
                 const component = TestUtils.renderIntoDocument(<StickyAndDockAd {...props} />);
                 const renderedDOM = ReactDOM.findDOMNode(component);
                 expect(renderedDOM.querySelector('span').style._values).to.deep.equal({position: 'fixed', top: '0px'});
             });
 
             it('shoud make the component stick to the top of the bottom element', () => {
-                sandbox.stub(StickyAndDockAd.prototype, 'getTopOffset', () => {
-                    return -500;
-                });
+                sandbox.stub(StickyAndDockAd.prototype, 'getTopOffset').callsFake(() => -500);
                 const component = TestUtils.renderIntoDocument(<StickyAndDockAd {...props} />);
                 const renderedDOM = ReactDOM.findDOMNode(component);
                 expect(renderedDOM.querySelector('span').style._values).to.deep.equal({position: 'fixed', top: '-500px'});

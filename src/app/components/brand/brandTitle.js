@@ -4,7 +4,7 @@ export default class BrandTitle extends Component {
     static propTypes = {
         brand: PropTypes.object.isRequired,
         shortTitle: PropTypes.string,
-        summary: PropTypes.summary
+        summary: PropTypes.string
     };
 
     static defaultProps = {
@@ -23,8 +23,16 @@ export default class BrandTitle extends Component {
                     <img className="brand-title--logo" src={imageUrl} alt={title} />
                     <hr className="brand-title--right-line" />
                 </h1>
-                {this.props.shortTitle && <div className="brand-short-title">{this.props.shortTitle}</div>}
-                {this.props.summary && <div className="brand-summary">{this.props.summary}</div>}
+                {this.props.shortTitle && (
+                    <div className="brand-short-title">
+                        {this.props.shortTitle}
+                    </div>
+                )}
+                {this.props.summary && (
+                    <div className="brand-summary">
+                        {this.props.summary}
+                    </div>
+                )}
             </div>
         );
     }

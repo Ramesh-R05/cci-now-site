@@ -1,5 +1,5 @@
 import loadPageContent from '../actions/loadPageContent';
-import loadSearch from '../../app/actions/loadSearch';
+import loadSearch from '../actions/loadSearch';
 import pageNotFound from '../actions/pageNotFound';
 
 import HomePage from '../containers/home';

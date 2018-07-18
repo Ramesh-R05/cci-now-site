@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
 export default class Newsletter extends Component {
-
     static displayName = 'Newsletter';
 
     static propTypes = {
@@ -33,8 +32,12 @@ export default class Newsletter extends Component {
 
         return (
             <div className="newsletter-subscribe">
-                <div className="newsletter-subscribe__title">Get The Newsletter</div>
-                <p className="newsletter-subscribe__text">{subscribeText}</p>
+                <div className="newsletter-subscribe__title">
+Get The Newsletter
+                </div>
+                <p className="newsletter-subscribe__text">
+                    {subscribeText}
+                </p>
                 <div className={`newsletter-subscribe__button ${idClass}`}>
                     <a href={`${newsletterUrl}`} className={`${gtmClass}`} target="_blank">
                         SIGN UP

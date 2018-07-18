@@ -37,7 +37,7 @@ export default function comScore(req, res, next) {
 
     request.get(options, (err, response, body) => {
         if (!err && response.statusCode === 200) {
-           /*
+            /*
             * Example responses:
             * var pxSegmentIDs = "300003,210000,110000,110006";
             *

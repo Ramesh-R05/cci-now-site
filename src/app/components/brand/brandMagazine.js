@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import BrandNewsletter from './brandNewsletter';
 import imageResize from '@bxm/ui/lib/common/ImageResize';
 import ResponsiveImage from '@bxm/ui/lib/common/ResponsiveImage';
-import SocialContainer from '../social/block';
 import get from 'lodash/object/get';
 import { connectToStores } from '@bxm/flux';
+import SocialContainer from '../social/block';
+import BrandNewsletter from './brandNewsletter';
 
 class BrandMagazine extends Component {
     static propTypes = {
@@ -33,31 +33,46 @@ class BrandMagazine extends Component {
     };
 
     render() {
-        const { imageSizes, responsiveConfig, imageUrl, brand } = this.props;
+        const {
+            imageSizes, responsiveConfig, imageUrl, brand
+        } = this.props;
         const breakpoints = this.context.config.global.breakpoints;
-        const { socialLinks, id, title, magazineTitle } = brand;
+        const {
+            socialLinks, id, title, magazineTitle
+        } = brand;
         const renderSubscribeElements = get(brand, 'renderSubscribeElements', true);
         const subscribeUrl = `subscribe-${id}`;
 
+        /* eslint-disable react/jsx-one-expression-per-line */
         return (
             <div>
                 <div className="brand--magazine-container">
-                    {renderSubscribeElements && <span className="brand--magazine-title">Subscribe to {magazineTitle || title}</span>}
+                    {renderSubscribeElements && (
+                        <span className="brand--magazine-title">
+                            Subscribe to {magazineTitle || title}
+                        </span>
+                    )}
                     <div className="brand--magazine-image">
-                        {imageUrl && <ResponsiveImage
-                          url={imageUrl}
-                          sizes={imageSizes}
-                          breakpoints={breakpoints}
-                          scale={responsiveConfig.scale}
-                          mode={responsiveConfig.mode}
-                          anchor={responsiveConfig.anchor}
-                          quality={80}
-                        />}
+                        {imageUrl && (
+                            <ResponsiveImage
+                              url={imageUrl}
+                              sizes={imageSizes}
+                              breakpoints={breakpoints}
+                              scale={responsiveConfig.scale}
+                              mode={responsiveConfig.mode}
+                              anchor={responsiveConfig.anchor}
+                              quality={80}
+                            />
+                        )}
                     </div>
-                    {renderSubscribeElements &&
-                        <a target="_blank" className={`gtm-subscribe-${id}`} href={subscribeUrl}>
-                            <span className={`sub-now sub-now-${id}`}>SUBSCRIBE NOW</span>
-                        </a>
+                    {renderSubscribeElements
+                        && (
+                            <a target="_blank" className={`gtm-subscribe-${id}`} href={subscribeUrl}>
+                                <span className={`sub-now sub-now-${id}`}>
+                                    SUBSCRIBE NOW
+                                </span>
+                            </a>
+                        )
                     }
                 </div>
                 <BrandNewsletter brand={brand} />
@@ -74,4 +89,3 @@ class BrandMagazine extends Component {
 export default connectToStores(BrandMagazine, ['PageStore'], context => ({
     imageUrl: context.getStore('PageStore').getImageUrl()
 }));
-

@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connectToStores } from '@bxm/flux';
-import Page from './page';
 import Ad from '@bxm/ad/lib/google/components/ad';
+import get from 'lodash/object/get';
+import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
+import Page from './page';
 import TeaserListView from '../components/teaser/list';
 import Repeatable from '../components/repeatable';
 import loadSearch from '../actions/loadSearch';
 import StickyAndDockAd from '../components/page/stickyAndDockAd';
-import get from 'lodash/object/get';
-import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
 import SearchBar from '../components/search/searchBar';
 import BrandNewsletter from '../components/brand/brandNewsletter';
 import SocialContainer from '../components/social/block';
@@ -36,14 +36,13 @@ export default class Search extends Component {
         currentUrl: PropTypes.string.isRequired,
         theme: PropTypes.object,
         searchTotal: PropTypes.number.isRequired,
-        teasers: PropTypes.array.isRequired,
+        teasers: PropTypes.array,
         list: PropTypes.object.isRequired
     };
 
     static defaultProps = {
         teasers: [],
-        theme: {},
-        magazineImageUrl: ''
+        theme: {}
     };
 
     static contextTypes = {
@@ -64,7 +63,9 @@ export default class Search extends Component {
 
     render() {
         const { config } = this.context;
-        const { nodeType, teasers, title, currentUrl, theme, searchTotal, list, listNextParams } = this.props;
+        const {
+            nodeType, teasers, title, currentUrl, theme, searchTotal, list, listNextParams
+        } = this.props;
         const keyword = (nodeType === 'TagSection' && title) ? [title] : [];
         const pageLocation = Ad.pos.outside;
         const headerClassName = '';
@@ -84,7 +85,8 @@ export default class Search extends Component {
             sizes: {
                 banner: 'banner',
                 leaderboard: 'leaderboard',
-                billboard: ['billboard', 'leaderboard'] },
+                billboard: ['billboard', 'leaderboard']
+            },
             pageLocation,
             targets: keyword
         };
@@ -112,7 +114,7 @@ export default class Search extends Component {
                                         <TeaserListView
                                           index={null}
                                           items={teasers.slice(0, 6)}
-                                          className={'news-feed top-news-feed'}
+                                          className="news-feed top-news-feed"
                                           showAd={false}
                                           adPosition={8}
                                           adTargets={{ keyword }}
@@ -136,7 +138,9 @@ export default class Search extends Component {
 
                                                 <div className="page__get-social-container">
                                                     <BrandNewsletter />
-                                                    <span className="page__social-logo">Now To Love</span>
+                                                    <span className="page__social-logo">
+                                                        Now To Love
+                                                    </span>
                                                     <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
                                                 </div>
 
@@ -151,15 +155,18 @@ export default class Search extends Component {
                     <div ref={(c) => { this.bottom = c; }} />
 
                     {/* 2nd Leaderboard or banner below Gallery of Videos */}
-                    { teasers.length ? <Ad
-                      className="ad--section-leaderboard"
-                      sizes={{
-                          banner: 'banner',
-                          leaderboard: 'leaderboard',
-                          billboard: ['billboard', 'leaderboard'] }}
-                      targets={{ keyword }}
-                      pageLocation={pageLocation}
-                    /> : null }
+                    { teasers.length ? (
+                        <Ad
+                          className="ad--section-leaderboard"
+                          sizes={{
+                                banner: 'banner',
+                                leaderboard: 'leaderboard',
+                                billboard: ['billboard', 'leaderboard']
+                            }}
+                          targets={{ keyword }}
+                          pageLocation={pageLocation}
+                        />
+                    ) : null }
 
                     <Repeatable
                       component={TeaserListView}
@@ -172,12 +179,14 @@ export default class Search extends Component {
                     />
 
                     {/* 3rd Leaderboard to show on tablet and up */}
-                    { get(list, 'items[0].length') ? <StickyAd
-                      adProps={adProps}
-                      minHeight={450}
-                      stickyAtViewPort="mediumRangeMax"
-                      stickyDelay={5500}
-                    /> : null }
+                    { get(list, 'items[0].length') ? (
+                        <StickyAd
+                          adProps={adProps}
+                          minHeight={450}
+                          stickyAtViewPort="mediumRangeMax"
+                          stickyDelay={5500}
+                        />
+                    ) : null }
                 </div>
             </Page>
         );

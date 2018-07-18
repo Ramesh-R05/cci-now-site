@@ -5,7 +5,7 @@ import Teaser from './teaser';
 
 export default class TeaserGridView extends Component {
     static propTypes = {
-        teasers: PropTypes.array.isRequired,
+        teasers: PropTypes.array,
         className: PropTypes.string,
         nativeAdConfig: PropTypes.shape({
             slotPositionIndex: PropTypes.array,
@@ -26,7 +26,9 @@ export default class TeaserGridView extends Component {
     };
 
     render() {
-        const { className, teasers, nativeAdConfig, showDate, adTargets } = this.props;
+        const {
+            className, teasers, nativeAdConfig, showDate, adTargets
+        } = this.props;
 
         if (!teasers || !Array.isArray(teasers) || !teasers.length) return null;
 
@@ -41,16 +43,16 @@ export default class TeaserGridView extends Component {
                           articles={teasers}
                           showSubSection
                           imageSizes={{
-                              s: { w: 690, h: 388 },
-                              m: { w: 486, h: 404 },
-                              l: { w: 624, h: 518 },
-                              xl: { w: 368, h: 306 }
-                          }}
+                                s: { w: 690, h: 388 },
+                                m: { w: 486, h: 404 },
+                                l: { w: 624, h: 518 },
+                                xl: { w: 368, h: 306 }
+                            }}
                           nativeAdConfig={nativeAdConfig}
                           adConfig={{
-                              targets: adTargets,
-                              pageLocation: 'body'
-                          }}
+                                targets: adTargets,
+                                pageLocation: 'body'
+                            }}
                         />
                     </div>
                 </div>

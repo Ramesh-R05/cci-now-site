@@ -1,8 +1,8 @@
+import get from 'lodash/object/get';
+import momentTimezone from 'moment-timezone';
 import { parseEntity, parseEntities } from '../helper/parseEntity';
 import parseHeaderMetaData from '../helper/parseHeaderMetaData';
 import parseModule from '../helper/parseModule';
-import get from 'lodash/object/get';
-import momentTimezone from 'moment-timezone';
 
 export default function responseBody(req, res, next) {
     try {

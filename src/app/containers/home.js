@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connectToStores } from '@bxm/flux';
 import Ad from '@bxm/ad/lib/google/components/ad';
+import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
 import SocialContainer from '../components/social/block';
 import HeroTeaser from '../components/teaser/hero';
 import TeaserGridView from '../components/teaser/grid';
@@ -11,7 +12,6 @@ import loadList from '../actions/loadList';
 import StickyAndDockAd from '../components/page/stickyAndDockAd';
 import MustRead from '../components/mustRead/mustRead';
 import BrandNewsletter from '../components/brand/brandNewsletter';
-import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
 
 function mapStateToProps(context) {
     const teaserStore = context.getStore('TeaserStore');
@@ -31,7 +31,7 @@ export default class Home extends Component {
         heroTeaser: PropTypes.object.isRequired,
         list: PropTypes.object.isRequired,
         listNextParams: PropTypes.object.isRequired,
-        teasers: PropTypes.array.isRequired,
+        teasers: PropTypes.array,
         currentUrl: PropTypes.string.isRequired,
         theme: PropTypes.object
     };
@@ -66,7 +66,8 @@ export default class Home extends Component {
             sizes: {
                 banner: 'banner',
                 leaderboard: 'leaderboard',
-                billboard: ['billboard', 'leaderboard'] },
+                billboard: ['billboard', 'leaderboard']
+            },
             pageLocation
         };
 
@@ -91,7 +92,9 @@ export default class Home extends Component {
                                             <HeroTeaser article={this.props.heroTeaser} showPromoted />
 
                                             <div className="home-page__teasers-title">
-                                                <span>what&apos;s happening now</span>
+                                                <span>
+what&apos;s happening now
+                                                </span>
                                             </div>
 
                                             <TeaserGridView
@@ -100,8 +103,8 @@ export default class Home extends Component {
                                               adPosition={8}
                                               adSizes={{ small: 'mrec', medium: ['mrec', 'double-mrec'] }}
                                               nativeAdConfig={{
-                                                  slotPositionIndex: polarLabels.homeTopFeed
-                                              }}
+                                                    slotPositionIndex: polarLabels.homeTopFeed
+                                                }}
                                             />
                                         </div>
                                         <div className="page__social-wrapper columns large-4 xlarge-3">
@@ -121,7 +124,9 @@ export default class Home extends Component {
                                                     />
                                                     <div className="page__get-social-container">
                                                         <BrandNewsletter />
-                                                        <span className="page__social-logo">Now To Love</span>
+                                                        <span className="page__social-logo">
+Now To Love
+                                                        </span>
                                                         <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
                                                     </div>
                                                 </StickyAndDockAd>
@@ -138,9 +143,10 @@ export default class Home extends Component {
                     <Ad
                       className="ad--section-leaderboard"
                       sizes={{
-                          banner: 'banner',
-                          leaderboard: 'leaderboard',
-                          billboard: ['billboard', 'leaderboard'] }}
+                            banner: 'banner',
+                            leaderboard: 'leaderboard',
+                            billboard: ['billboard', 'leaderboard']
+                        }}
                       pageLocation={pageLocation}
                     />
 
@@ -151,8 +157,8 @@ export default class Home extends Component {
                       nextParams={this.props.listNextParams}
                       className="news-feed bottom-news-feed"
                       nativeAdConfig={{
-                          slotPositionIndex: polarLabels.homeBottomFeed
-                      }}
+                            slotPositionIndex: polarLabels.homeBottomFeed
+                        }}
                     />
 
                     {/* 3rd Leaderboard to show on tablet and up */}

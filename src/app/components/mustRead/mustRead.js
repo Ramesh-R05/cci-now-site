@@ -4,7 +4,6 @@ import TeaserList from '@bxm/teaser/lib/components/teaserList';
 import Teaser from '../teaser/teaser';
 
 class MustRead extends Component {
-
     static propTypes = {
         mustRead: PropTypes.array.isRequired
     };
@@ -48,7 +47,9 @@ class MustRead extends Component {
         return (
             <div className="mustread-teaser-view-grid">
                 <div className="home-page__teasers-title">
-                    <span>Must Read</span>
+                    <span>
+Must Read
+                    </span>
                 </div>
                 <div className="columns xlarge-10">
                     <TeaserList
@@ -58,15 +59,15 @@ class MustRead extends Component {
                       CustomisedTeaser={Teaser}
                       showDate={false}
                       nativeAdConfig={{
-                          slotPositionIndex: polarLabels.homeMustRead
-                      }}
-                      sourceDefault={'SPONSORED'}
+                            slotPositionIndex: polarLabels.homeMustRead
+                        }}
+                      sourceDefault="SPONSORED"
                     />
                 </div>
             </div>
         );
     }
- }
+}
 
 export default connectToStores(MustRead, ['TeaserStore'], context => ({
     mustRead: context.getStore('TeaserStore').getMustReadItems()

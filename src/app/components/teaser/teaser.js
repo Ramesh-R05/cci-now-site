@@ -10,9 +10,8 @@ import has from 'lodash/object/has';
 import get from 'lodash/object/get';
 
 export default class Teaser extends Component {
-
     static propTypes = {
-        article: PropTypes.object.isRequired,
+        article: PropTypes.object,
         imageSizes: PropTypes.object,
         showResponsiveImage: PropTypes.bool,
         showTeaserSummary: PropTypes.bool,
@@ -102,7 +101,9 @@ export default class Teaser extends Component {
 
     render() {
         const { config } = this.context;
-        const { className, sourceClassName, showDate, sourceDefault, polar } = this.props;
+        const {
+            className, sourceClassName, showDate, sourceDefault, polar
+        } = this.props;
         let { article } = this.props;
 
         if (!article) return null;
@@ -145,16 +146,21 @@ export default class Teaser extends Component {
 
                             {sourceDefault || `${sourceName}`}
 
-                            {showDate ? (<span><span className={`${sourceClassName}__breaker`}>|</span>
-                                <Date dateCreated={article.dateCreated} showElapsed />
-                            </span>) : null}
+                            {showDate ? (
+                                <span>
+                                    <span className={`${sourceClassName}__breaker`}>
+|
+                                    </span>
+                                    <Date dateCreated={article.dateCreated} showElapsed />
+                                </span>
+                            ) : null}
                         </p>
                     </div>
                 </div>
 
                 {polar && (
                     <Ad
-                      sizes={'nativeAdTeaser'}
+                      sizes="nativeAdTeaser"
                       label={polar.label}
                       targets={polar.targets}
                       nativeAd

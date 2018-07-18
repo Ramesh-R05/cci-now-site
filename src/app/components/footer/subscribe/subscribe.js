@@ -22,7 +22,9 @@ export default class Subscribe extends Component {
         const content = this.context.config.get('subscribe');
         if (!content) return null;
         const { inSideNav } = this.props;
-        const { subscribeHeading, subscribeText, subscribeMagUrl, subscribeIpadUrl, subscribeButtonUrl } = content;
+        const {
+            subscribeHeading, subscribeText, subscribeMagUrl, subscribeIpadUrl, subscribeButtonUrl
+        } = content;
         const xLargeGridClass = (!inSideNav) ? 'xlarge-6' : '';
         return (
             <div className="subscribe">
@@ -32,14 +34,18 @@ export default class Subscribe extends Component {
 
                     <div className={`small-12 ${xLargeGridClass} medium-6 columns`}>
                         <div className="subscribe__subscribe">
-                            <h4 className="subscribe__heading">{subscribeHeading}</h4>
+                            <h4 className="subscribe__heading">
+                                {subscribeHeading}
+                            </h4>
                             <p className="subscribe__content">
                                 {subscribeText}
                             </p>
                             <p className="subscribe__action">
                                 <a
-                                  className="button button--link button--subscribe" href={subscribeButtonUrl}
-                                  target="_blank" onClick={this.fireEvent}
+                                  className="button button--link button--subscribe"
+                                  href={subscribeButtonUrl}
+                                  target="_blank"
+                                  onClick={this.fireEvent}
                                 >
                                     Subscribe
                                 </a>
