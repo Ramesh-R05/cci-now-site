@@ -79,5 +79,6 @@ export default {
             description: 'Place your vote for the 60th TV WEEK Logie Awards in 2018.',
             url: 'http://www.tvweeklogieawards.com.au/'
         }
-    }
+    },
+    useBrandTitleSuffix: true
 };
