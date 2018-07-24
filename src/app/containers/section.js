@@ -166,9 +166,11 @@ export default class Section extends Component {
                                           className="news-feed top-news-feed"
                                           adPosition={8}
                                           adTargets={{ keyword }}
-                                          nativeAdConfig={isBrandPage || {
-                                                slotPositionIndex: polarLabels.sectionTopFeed
-                                            }}
+                                          nativeAdConfig={brand && brand.id === 'take5' ? {
+                                              slotPositionIndex: polarLabels.take5SectionTopFeed
+                                          } : isBrandPage || {
+                                              slotPositionIndex: polarLabels.sectionTopFeed
+                                          }}
                                         />
                                     </div>
                                     <div className="page__social-wrapper columns large-4 xlarge-3">

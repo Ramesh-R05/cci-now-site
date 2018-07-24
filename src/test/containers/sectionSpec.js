@@ -10,7 +10,6 @@ const AdStub = Context.createStubComponent();
 const HeroTeaserStub = Context.createStubComponent();
 const TeaserGridViewStub = Context.createStubComponent();
 const TeaserListViewStub = Context.createStubComponent();
-const TitleStub = Context.createStubComponent();
 const RepeatableStub = Context.createStubComponent();
 const SocialLinks = Context.createStubComponent();
 const StickyAndDockStub = Context.createStubComponent();
@@ -51,6 +50,16 @@ const contextConfigStub = {
                     "facebookUrl": "https://www.facebook.com/WomensWeeklyMag",
                     "twitterUrl": "https://twitter.com/womensweeklymag",
                     "instagramUrl": "https://www.instagram.com/womensweeklymag"
+                }
+            }, {
+                id: 'take5',
+                title: 'Take 5',
+                imageUrl: '/assets/images/headerlogos/T5-logo.svg',
+                url: '/take5mag',
+                socialLinks: {
+                    facebook: 'https://www.facebook.com/take5magazine',
+                    twitter: 'https://twitter.com/take5magazine',
+                    instagram: 'https://www.instagram.com/take5magazine/'
                 }
             }]
         },
@@ -127,16 +136,22 @@ describe('Section Container', () => {
         expect(AdComponents.length).to.eq(1);
     });
 
-    it('should render a teaser grid', () => {
+    it('should render a hero teaser', () => {
         const reactModule = Context.mountComponent(SectionContainer,{},[contextConfigStub]);
         const HeroTeaserComponent = TestUtils.scryRenderedComponentsWithType(reactModule, HeroTeaserStub);
         expect(HeroTeaserComponent.length).to.eq(1);
     });
 
-    it('should render a hero teaser', () => {
+    it('should render a teaser grid', () => {
         const reactModule = Context.mountComponent(SectionContainer,{},[contextConfigStub]);
         const TeaserGridViewComponent = TestUtils.scryRenderedComponentsWithType(reactModule, TeaserGridViewStub);
         expect(TeaserGridViewComponent.length).to.eq(1);
+    });
+
+    it('should render a teaser grid view with the correct nativeAdConfig prop', () => {
+        const reactModule = Context.mountComponent(SectionContainer, {}, [contextConfigStub]);
+        const TeaserGridViewComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserGridViewStub);
+        expect(TeaserGridViewComponent.props.nativeAdConfig.slotPositionIndex[0].label).to.eq('section_top_feed_1');
     });
 
     it('should give the headerClassName a value of empty string', () => {
@@ -158,7 +173,21 @@ describe('Section Container', () => {
     });
 });
 
+describe('Take5 Brand Container', () => {
+    it('should render a teaser grid view with the correct nativeAdConfig prop', () => {
+        const reactModule = Context.mountComponent(SectionContainer, { currentUrl: '/take5mag', nodeType: 'Brand' }, [contextConfigStub]);
+        const TeaserGridViewComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserGridViewStub);
+        expect(TeaserGridViewComponent.props.nativeAdConfig.slotPositionIndex[0].label).to.eq('take5_section_top_feed_1');
+    });
+});
+
 describe('Brand Container', () => {
+    it('should render a teaser grid view with the correct nativeAdConfig prop', () => {
+        const reactModule = Context.mountComponent(SectionContainer, { currentUrl: '/aww', nodeType: 'Brand' }, [contextConfigStub]);
+        const TeaserGridViewComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserGridViewStub);
+        expect(TeaserGridViewComponent.props.nativeAdConfig).to.eq(true);
+    });
+
     it('should render page with correct brand props', () => {
         const reactModule = Context.mountComponent(SectionContainer, {currentUrl: '/aww', nodeType: 'Brand'}, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
