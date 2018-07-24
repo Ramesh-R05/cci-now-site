@@ -1,10 +1,10 @@
-import {betterMockComponentContext} from '@bxm/flux';
+import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
-const {React, ReactDOM, TestUtils} = Context;
+const { React, ReactDOM, TestUtils } = Context;
 import listingMock from '../../mocks/listing';
 import polarConfig from '../../mocks/polar';
 const items = listingMock.data;
-import proxyquire, {noCallThru} from 'proxyquire';
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 const TeaserListStub = Context.createStubComponent();
@@ -58,7 +58,7 @@ describe('TeaserListView', () => {
     describe('when receiving teasers', () => {
         describe('and there are more than 1', () => {
             beforeEach(() => {
-                reactModule = Context.mountComponent(TeaserListView, {items, showDate: false}, contextConfigStub);
+                reactModule = Context.mountComponent(TeaserListView, { items, showDate: false }, contextConfigStub);
                 TeaserListViewComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserListStub);
                 AdComponent = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
                 StickyComponent = TestUtils.findRenderedComponentWithType(reactModule, StickyStub);
@@ -67,18 +67,18 @@ describe('TeaserListView', () => {
             it(`should render the TeaserList component with relevant props`, () => {
                 expect(TeaserListViewComponent.props).to.deep.eq({
                     CustomisedTeaser: TeaserStub,
-                    listClassName: "teaser-view-list",
+                    listClassName: 'teaser-view-list',
                     articles: items,
                     showDate: false,
                     imageSizes,
                     showSubSection: true,
                     loadAgain: true,
                     adConfig: {
-                        className: "ad--teaser-list",
-                        displayFor: "small",
-                        sizes: "mrec",
+                        className: 'ad--teaser-list',
+                        displayFor: 'small',
+                        sizes: 'mrec',
                         targets: {},
-                        pageLocation: "body"
+                        pageLocation: 'body'
                     },
                     nativeAdConfig: {},
                     adPosition: 4
@@ -101,7 +101,7 @@ describe('TeaserListView', () => {
 
         describe('and there is only 1', () => {
             beforeEach(() => {
-                reactModule = Context.mountComponent(TeaserListView, { items: items.slice(0,1) });
+                reactModule = Context.mountComponent(TeaserListView, { items: items.slice(0, 1) });
                 AdComponent = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
                 StickyComponent = TestUtils.scryRenderedComponentsWithType(reactModule, StickyStub);
             });
@@ -131,7 +131,7 @@ describe('TeaserListView', () => {
 
     describe('when setting the adTargets', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(TeaserListView, {items, adTargets: { keywords: "keywords" }});
+            reactModule = Context.mountComponent(TeaserListView, { items, adTargets: { keywords: 'keywords' } });
             AdComponent = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
         });
 
@@ -143,6 +143,6 @@ describe('TeaserListView', () => {
                 targets: reactModule.props.adTargets,
                 pageLocation: 'rhs'
             });
-        })
+        });
     });
 });

@@ -73,7 +73,7 @@ describe('#assetProxy()', () => {
 
     it('should not return pass through content length header', () => {
         const res = {
-            sendStatus(){
+            sendStatus() {
                 return this;
             },
             set() {

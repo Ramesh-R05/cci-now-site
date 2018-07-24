@@ -69,19 +69,18 @@ export default class Section extends Component {
     };
 
     componentDidMount() {
-        this.setState({ // eslint-disable-line react/no-did-mount-set-state
+        this.setState({
+            // eslint-disable-line react/no-did-mount-set-state
             bottomElm: this.bottom,
             topElm: this.top
         });
     }
 
     render() {
-        const {
-            nodeType, teasers, title, currentUrl, shortTitle, summary, theme, imageUrl, subsections, heroTeaser
-        } = this.props;
+        const { nodeType, teasers, title, currentUrl, shortTitle, summary, theme, imageUrl, subsections, heroTeaser } = this.props;
         let sectionHeroTeaser = teasers[0];
         let firstTeaserList = teasers.slice(1);
-        const keyword = (nodeType === 'TagSection' && title) ? [title] : [];
+        const keyword = nodeType === 'TagSection' && title ? [title] : [];
         const pageLocation = Ad.pos.outside;
         const subsection = find(subsections.data, s => s.url === currentUrl);
         const polarLabels = this.context.config.polar.details;
@@ -117,7 +116,7 @@ export default class Section extends Component {
 
         if (isBrandPage) {
             headerClassName = `header-${brand.id}`;
-            pageTitle = (<BrandTitle brand={brand} shortTitle={shortTitle} summary={summary} />);
+            pageTitle = <BrandTitle brand={brand} shortTitle={shortTitle} summary={summary} />;
             sectionClassNames += ' brand-section-page';
 
             sectionHeroTeaser = heroTeaser.isBrandHero && heroTeaser;
@@ -125,78 +124,64 @@ export default class Section extends Component {
         }
 
         return (
-            <Page
-              currentUrl={currentUrl}
-              headerExpanded={false}
-              pageTitle={pageTitle}
-              headerClassName={headerClassName}
-              theme={theme}
-            >
+            <Page currentUrl={currentUrl} headerExpanded={false} pageTitle={pageTitle} headerClassName={headerClassName} theme={theme}>
                 <div className={sectionClassNames}>
                     <div className="container">
                         <div className="row">
                             <div className="page__top-container columns">
                                 <div className="row">
                                     <div
-                                      className="columns large-8 xlarge-9 section-page__teasers-container"
-                                      ref={(c) => { this.top = c; }}
+                                        className="columns large-8 xlarge-9 section-page__teasers-container"
+                                        ref={c => {
+                                            this.top = c;
+                                        }}
                                     >
-
-                                        {imageUrl && !isBrandPage
-                                            && (
+                                        {imageUrl &&
+                                            !isBrandPage && (
                                                 <div className="banner-wrapper">
                                                     <img src={imageSrc} alt={title} />
                                                 </div>
-                                            )
-                                        }
+                                            )}
 
-                                        {subsections.totalCount > 1 && (
-                                            <SubsectionList
-                                              subsections={subsections.data}
-                                              currentUrl={currentUrl}
-                                            />
-                                        )
-                                        }
+                                        {subsections.totalCount > 1 && <SubsectionList subsections={subsections.data} currentUrl={currentUrl} />}
 
                                         <HeroTeaser showDate={!isBrandPage} article={sectionHeroTeaser} brand={brand} />
 
                                         <TeaserGridView
-                                          teasers={firstTeaserList}
-                                          showDate={!isBrandPage}
-                                          className="news-feed top-news-feed"
-                                          adPosition={8}
-                                          adTargets={{ keyword }}
-                                          nativeAdConfig={brand && brand.id === 'take5' ? {
-                                              slotPositionIndex: polarLabels.take5SectionTopFeed
-                                          } : isBrandPage || {
-                                              slotPositionIndex: polarLabels.sectionTopFeed
-                                          }}
+                                            teasers={firstTeaserList}
+                                            showDate={!isBrandPage}
+                                            className="news-feed top-news-feed"
+                                            adPosition={8}
+                                            adTargets={{ keyword }}
+                                            nativeAdConfig={
+                                                brand && brand.id === 'take5'
+                                                    ? {
+                                                          slotPositionIndex: polarLabels.take5SectionTopFeed
+                                                      }
+                                                    : isBrandPage || {
+                                                          slotPositionIndex: polarLabels.sectionTopFeed
+                                                      }
+                                            }
                                         />
                                     </div>
                                     <div className="page__social-wrapper columns large-4 xlarge-3">
                                         <div className="columns medium-6 large-12">
                                             <StickyAndDockAd
-                                              offsetTop={95}
-                                              offsetBottom={16}
-                                              customiseBreakpoint={1024}
-                                              bottomElm={this.state.bottomElm}
-                                              topElm={this.state.topElm}
+                                                offsetTop={95}
+                                                offsetBottom={16}
+                                                customiseBreakpoint={1024}
+                                                bottomElm={this.state.bottomElm}
+                                                topElm={this.state.topElm}
                                             >
-                                                <Ad
-                                                  className="ad--section-mrec"
-                                                  sizes="mrec"
-                                                  displayFor="large"
-                                                  pageLocation={Ad.pos.aside}
-                                                />
-                                                { isBrandPage ? <BrandMagazine brand={brand} />
-                                                    : (
-                                                        <div className="page__get-social-container">
-                                                            <span className="page__social-logo">
-Now To Love
-                                                            </span>
-                                                            <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
-                                                        </div>
-                                                    ) }
+                                                <Ad className="ad--section-mrec" sizes="mrec" displayFor="large" pageLocation={Ad.pos.aside} />
+                                                {isBrandPage ? (
+                                                    <BrandMagazine brand={brand} />
+                                                ) : (
+                                                    <div className="page__get-social-container">
+                                                        <span className="page__social-logo">Now To Love</span>
+                                                        <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
+                                                    </div>
+                                                )}
                                             </StickyAndDockAd>
                                         </div>
                                     </div>
@@ -205,47 +190,46 @@ Now To Love
                         </div>
                     </div>
 
-                    <div ref={(c) => { this.bottom = c; }} />
+                    <div
+                        ref={c => {
+                            this.bottom = c;
+                        }}
+                    />
 
                     {/* 2nd Leaderboard or banner below Gallery of Videos */}
-                    { teasers.length ? (
+                    {teasers.length ? (
                         <Ad
-                          className="ad--section-leaderboard"
-                          sizes={{
+                            className="ad--section-leaderboard"
+                            sizes={{
                                 banner: 'banner',
                                 leaderboard: 'leaderboard',
                                 billboard: ['billboard', 'leaderboard']
                             }}
-                          targets={{ keyword }}
-                          pageLocation={pageLocation}
+                            targets={{ keyword }}
+                            pageLocation={pageLocation}
                         />
-                    ) : null }
+                    ) : null}
 
                     <Repeatable
-                      component={TeaserListView}
-                      action={loadList}
-                      showDate={!isBrandPage}
-                      dataSource={this.props.list}
-                      nextParams={this.props.listNextParams}
-                      className="news-feed bottom-news-feed"
-                      adTargets={{ keyword }}
-                      nativeAdConfig={isBrandPage || {
-                            slotPositionIndex: polarLabels.sectionBottomFeed
-                        }}
+                        component={TeaserListView}
+                        action={loadList}
+                        showDate={!isBrandPage}
+                        dataSource={this.props.list}
+                        nextParams={this.props.listNextParams}
+                        className="news-feed bottom-news-feed"
+                        adTargets={{ keyword }}
+                        nativeAdConfig={
+                            isBrandPage || {
+                                slotPositionIndex: polarLabels.sectionBottomFeed
+                            }
+                        }
                     />
 
                     {/* 3rd Leaderboard to show on tablet and up */}
-                    { get(this.props.list, 'items[0].length') ? (
-                        <StickyAd
-                          adProps={adProps}
-                          minHeight={450}
-                          stickyAtViewPort="mediumRangeMax"
-                          stickyDelay={5500}
-                        />
-                    ) : null }
+                    {get(this.props.list, 'items[0].length') ? (
+                        <StickyAd adProps={adProps} minHeight={450} stickyAtViewPort="mediumRangeMax" stickyDelay={5500} />
+                    ) : null}
                 </div>
-
-
             </Page>
         );
     }

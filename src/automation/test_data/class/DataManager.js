@@ -8,7 +8,7 @@ function customizer(objValue, srcValue) {
 
 export default class DataManager {
     constructor(data) {
-        this.data = data
+        this.data = data;
     }
 
     getData() {
@@ -20,6 +20,6 @@ export default class DataManager {
     }
 
     mergeData(newData) {
-        merge(this.data, newData, customizer)
+        merge(this.data, newData, customizer);
     }
-};
+}

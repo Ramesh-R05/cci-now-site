@@ -2,8 +2,12 @@ import { initialState, reducer } from '../../app/reducers/loadPage';
 
 describe(`loadPage Reducer`, () => {
     let payload;
-    let body = {entity: { nodeType: 'Article', title: 'Title',  imageUrl: '', shortTitle: 'Short Title', summary: 'Summary' },
-        footer: {}, mustRead: [], theme: {}};
+    let body = {
+        entity: { nodeType: 'Article', title: 'Title', imageUrl: '', shortTitle: 'Short Title', summary: 'Summary' },
+        footer: {},
+        mustRead: [],
+        theme: {}
+    };
     describe(`on LOAD_CONTENT`, () => {
         beforeEach(() => {
             payload = {
@@ -45,7 +49,7 @@ describe(`loadPage Reducer`, () => {
         let response;
 
         beforeEach(() => {
-            response = {msg: 'Error Message', status: 404};
+            response = { msg: 'Error Message', status: 404 };
             payload = {
                 type: 'LOAD_CONTENT_FAILED',
                 response
@@ -67,7 +71,7 @@ describe(`loadPage Reducer`, () => {
         it(`should set the error status to 400 if it is not set in response`, () => {
             delete response.status;
             expect(reducer(initialState, payload)).to.deep.eq({
-                error: {msg: 'Error Message', status: 400},
+                error: { msg: 'Error Message', status: 400 },
                 footer: {},
                 nodeType: '',
                 title: '',
@@ -80,7 +84,7 @@ describe(`loadPage Reducer`, () => {
 
     describe(`on RANDOM_ACTION`, () => {
         beforeEach(() => {
-            body = {entity: { nodeType: 'Article', title: 'Title' }};
+            body = { entity: { nodeType: 'Article', title: 'Title' } };
             payload = {
                 type: 'RANDOM_ACTION',
                 body
@@ -89,5 +93,5 @@ describe(`loadPage Reducer`, () => {
         it(`should return the initalState`, () => {
             expect(reducer(initialState, payload)).to.deep.eq(initialState);
         });
-    })
+    });
 });

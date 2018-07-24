@@ -28,7 +28,14 @@ export default function bff(server) {
     } else {
         server.get(
             '(/:preview(preview))?/amp/:section/:subsection/:page',
-            pageModules, section, page, article, gallery, headerMeta, responseBody, amp
+            pageModules,
+            section,
+            page,
+            article,
+            gallery,
+            headerMeta,
+            responseBody,
+            amp
         );
         server.get('/sitemap/:section?', sitemap, error);
         server.get(server.locals.config.services.endpoints.list, list, https, render, error);
@@ -49,15 +56,6 @@ export default function bff(server) {
             render,
             error
         );
-        server.get(
-            server.locals.config.services.endpoints.search,
-            pageModules,
-            comScore,
-            headerMeta,
-            search,
-            https,
-            render,
-            error
-        );
+        server.get(server.locals.config.services.endpoints.search, pageModules, comScore, headerMeta, search, https, render, error);
     }
 }

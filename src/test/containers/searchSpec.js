@@ -52,23 +52,23 @@ const context = {
         brands: {
             uniheader: [
                 {
-                    "id": "aww",
-                    "title": "Australian Women's Weekly",
-                    "magazineTitle": "The Weekly",
-                    "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
-                    "url": "/aww",
-                    "socialLinks": {
-                        "facebookUrl": "https://www.facebook.com/WomensWeeklyMag",
-                        "twitterUrl": "https://twitter.com/womensweeklymag",
-                        "instagramUrl": "https://www.instagram.com/womensweeklymag"
+                    id: 'aww',
+                    title: "Australian Women's Weekly",
+                    magazineTitle: 'The Weekly',
+                    imageUrl: '/assets/images/headerlogos/AWW-logo.svg',
+                    url: '/aww',
+                    socialLinks: {
+                        facebookUrl: 'https://www.facebook.com/WomensWeeklyMag',
+                        twitterUrl: 'https://twitter.com/womensweeklymag',
+                        instagramUrl: 'https://www.instagram.com/womensweeklymag'
                     }
-                }]
+                }
+            ]
         }
     }
 };
 
 describe('Search Container', () => {
-
     Context.addStore('SearchStore', {
         getTitle() {
             return 'Title';
@@ -88,10 +88,8 @@ describe('Search Container', () => {
 
         getSearchResultsList() {
             return {
-                items: [
-                    [8, 9, 10, 11, 12, 13, 14]
-                ]
-            }
+                items: [[8, 9, 10, 11, 12, 13, 14]]
+            };
         },
 
         getSearchListNextParams() {

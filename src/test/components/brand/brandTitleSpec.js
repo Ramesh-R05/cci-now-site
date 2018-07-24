@@ -7,21 +7,21 @@ describe(`BrandTitle`, () => {
     let reactModule;
 
     const brandPropStub = {
-        "id": "aww",
-        "title": "Australian Women's Weekly",
-        "magazineTitle": "The Weekly",
-        "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
-        "url": "/aww",
-        "socialLinks": {
-            "facebookUrl": "https://www.facebook.com/WomensWeeklyMag",
-            "twitterUrl": "https://twitter.com/womensweeklymag",
-            "instagramUrl": "http://instagram.com/womensweeklymag"
+        id: 'aww',
+        title: "Australian Women's Weekly",
+        magazineTitle: 'The Weekly',
+        imageUrl: '/assets/images/headerlogos/AWW-logo.svg',
+        url: '/aww',
+        socialLinks: {
+            facebookUrl: 'https://www.facebook.com/WomensWeeklyMag',
+            twitterUrl: 'https://twitter.com/womensweeklymag',
+            instagramUrl: 'http://instagram.com/womensweeklymag'
         }
     };
 
     describe('when passing in /aww as the currentUrl prop', () => {
         before(() => {
-            reactModule = Context.mountComponent(BrandTitle, {brand: brandPropStub});
+            reactModule = Context.mountComponent(BrandTitle, { brand: brandPropStub });
         });
 
         it('should render a component with a class of brand-title-aww', () => {
@@ -36,13 +36,12 @@ describe(`BrandTitle`, () => {
 
         it('should render an img with a src of aww-logo.svg', () => {
             const image = TestUtils.findRenderedDOMComponentWithTag(reactModule, 'img');
-            expect(image.src).to.eq("/assets/images/headerlogos/AWW-logo.svg");
+            expect(image.src).to.eq('/assets/images/headerlogos/AWW-logo.svg');
         });
 
-        it('should render an img with a alt text of Australian Women\'s Weekly', () => {
+        it("should render an img with a alt text of Australian Women's Weekly", () => {
             const image = TestUtils.findRenderedDOMComponentWithTag(reactModule, 'img');
             expect(image.alt).to.eq("Australian Women's Weekly");
         });
     });
 });
-

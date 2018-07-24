@@ -33,17 +33,18 @@ export default function responseBody(req, res, next) {
 
         if (get(req, 'data.mustread')) {
             res.body.mustRead = parseEntities(req.data.mustread, {
-                title: 'title', imageUrl: 'imageUrl', location: 'url'
+                title: 'title',
+                imageUrl: 'imageUrl',
+                location: 'url'
             });
         }
 
         if (get(req, 'data.leftHandSide')) {
-            const lhsData = req.data.leftHandSide.data.map((lhsTeaser) => {
+            const lhsData = req.data.leftHandSide.data.map(lhsTeaser => {
                 const withDefaultImg = { ...lhsTeaser };
                 withDefaultImg.contentImageUrl = withDefaultImg.contentImageUrl || req.app.locals.config.defaultImageUrl;
                 //  TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
-                withDefaultImg.pageDateCreated = momentTimezone.tz(withDefaultImg.pageDateCreated, 'Australia/Sydney')
-                    .format('YYYY-MM-DDTHH:mm:ss');
+                withDefaultImg.pageDateCreated = momentTimezone.tz(withDefaultImg.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
                 return withDefaultImg;
             });
             res.body.leftHandSide = { items: parseEntities(lhsData) };
@@ -55,8 +56,7 @@ export default function responseBody(req, res, next) {
 
         if (get(req, 'data.hero')) {
             //  TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
-            req.data.hero.pageDateCreated = momentTimezone.tz(req.data.hero.pageDateCreated, 'Australia/Sydney')
-                .format('YYYY-MM-DDTHH:mm:ss');
+            req.data.hero.pageDateCreated = momentTimezone.tz(req.data.hero.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
             res.body.heroTeaser = parseEntity(req.data.hero);
         }
 
@@ -91,7 +91,9 @@ export default function responseBody(req, res, next) {
             };
 
             res.body.promoted.items = parseEntities(req.data.promoted.items, {
-                title: 'title', imageUrl: 'imageUrl', location: 'url'
+                title: 'title',
+                imageUrl: 'imageUrl',
+                location: 'url'
             });
 
             res.body.promoted.title = req.data.promoted.title;

@@ -20,13 +20,13 @@ export default async function home(req, res, next) {
             pageNo = parseInt(req.query.pageNo || pageNo, 10);
         }
 
-        const skip = ((pageNo - 1) * listCount);
+        const skip = (pageNo - 1) * listCount;
         const [pageData, latestTeasersResp, videoGalleryTeasers] = await Promise.all([
             makeRequest(`${req.app.locals.config.services.remote.entity}/homepage`),
             getLatestTeasers(listCount, skip),
             getLatestTeasers(videoGalleryTeaserCount, undefined, 'video eq %27$contentTags%27').catch(() => ({ data: [] }))
         ]);
-        videoGalleryTeasers.data = videoGalleryTeasers.data.map((gallery) => {
+        videoGalleryTeasers.data = videoGalleryTeasers.data.map(gallery => {
             gallery.contentImageUrl = get(gallery, 'contentVideo.properties.videoConfiguration.videoStillUrl', gallery.contentImageUrl);
             return gallery;
         });
@@ -36,7 +36,7 @@ export default async function home(req, res, next) {
             data: []
         };
 
-        latestTeasers.data.map((teaser) => {
+        latestTeasers.data.map(teaser => {
             // TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
             teaser.pageDateCreated = momentTimezone.tz(teaser.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
             return teaser;
@@ -75,9 +75,7 @@ export default async function home(req, res, next) {
             params: {
                 pageNo
             },
-            items: [
-                parseEntities(latestTeasers.data.slice(latestTeaserCount))
-            ],
+            items: [parseEntities(latestTeasers.data.slice(latestTeaserCount))],
             previous: previousPage,
             current: currentPage,
             next: nextPage

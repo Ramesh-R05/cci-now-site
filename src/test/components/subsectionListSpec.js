@@ -1,8 +1,8 @@
-import {betterMockComponentContext} from '@bxm/flux';
+import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
-const {React, ReactDOM, TestUtils} = Context;
+const { React, ReactDOM, TestUtils } = Context;
 import { shallow } from 'enzyme';
-import SubsectionList from '../../app/components/subsectionList'
+import SubsectionList from '../../app/components/subsectionList';
 
 const subsectionListStub = [
     {
@@ -22,14 +22,14 @@ const subsectionListStub = [
     }
 ];
 
-const currentUrlStub = '/fashion/fashion-news'
+const currentUrlStub = '/fashion/fashion-news';
 const colourStub = '#40fa39';
 
 describe('Subsection List', () => {
     let reactModule;
 
-    before(()=> {
-        reactModule = shallow(<SubsectionList currentUrl={currentUrlStub} subsections={subsectionListStub} />)
+    before(() => {
+        reactModule = shallow(<SubsectionList currentUrl={currentUrlStub} subsections={subsectionListStub} />);
     });
 
     it('should return a list item for each item in subsections', () => {

@@ -1,9 +1,7 @@
 import pageService from '../services/page';
 
 export default function loadPageContent(context, payload) {
-    const {
-        url, navigate, query, params
-    } = payload;
+    const { url, navigate, query, params } = payload;
     const pos = url.lastIndexOf('?');
     let path = pos > -1 ? url.substr(0, pos) : url;
     if (path.endsWith('/')) {
@@ -17,7 +15,7 @@ export default function loadPageContent(context, payload) {
         pageNo: query.pageNo
     };
     return pageService.read(args).then(
-        (content) => {
+        content => {
             if (content instanceof Error) context.dispatch('LOAD_CONTENT_FAILED', content);
             else context.dispatch('LOAD_CONTENT', { ...content, request: { payload } });
         },

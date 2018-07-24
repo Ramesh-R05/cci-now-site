@@ -25,34 +25,42 @@ export default async function tagMiddleware(req, res, next) {
             return;
         }
 
-        let title = tag.split('-').map(capitalize).join(' ');
+        let title = tag
+            .split('-')
+            .map(capitalize)
+            .join(' ');
         const { entity: entityService, tag: tagService } = req.app.locals.config.services.remote;
 
         // TODO(thatzi): I don't like this. Need a better way to handle tag pages, tag data and tag canonicals
         // Check the current entity url if it is a /:section page. If this is a /tags/:tag page, then this won't exist.
         // If the latter, we need to query the entity service, passing the tag to check if a tag route has been defined
         // as a TagSection node type to have a tag url without '/tags' so to correctly define the canonical url
-        const url = get(req, 'data.entity.url') || await makeRequest(`${entityService}/section/${tag}`)
-            .then((listingData) => {
-                const defaultTagUrl = `/tags/${tag}`;
-                return listingData.nodeTypeAlias !== 'TagSection' ? defaultTagUrl : listingData.url || defaultTagUrl;
-            }).catch(() => `/tags/${tag}`);
-
+        const url =
+            get(req, 'data.entity.url') ||
+            (await makeRequest(`${entityService}/section/${tag}`)
+                .then(listingData => {
+                    const defaultTagUrl = `/tags/${tag}`;
+                    return listingData.nodeTypeAlias !== 'TagSection' ? defaultTagUrl : listingData.url || defaultTagUrl;
+                })
+                .catch(() => `/tags/${tag}`));
 
         const tagData = await makeRequest(`${tagService}/tags/${title}`)
             .then(({ data }) => {
                 if (!data.length) return {};
-                return find(data, (tagObj) => {
-                    const tagName = getTagName(tagObj.tag.name);
-                    if (tagName.toLowerCase() === title.toLowerCase()) {
-                        title = tagName; // Override tagName with one received from service
-                        return true;
-                    }
-                    return false;
-                }) || {};
-            }).catch(() => ({}));
+                return (
+                    find(data, tagObj => {
+                        const tagName = getTagName(tagObj.tag.name);
+                        if (tagName.toLowerCase() === title.toLowerCase()) {
+                            title = tagName; // Override tagName with one received from service
+                            return true;
+                        }
+                        return false;
+                    }) || {}
+                );
+            })
+            .catch(() => ({}));
 
-        const skip = ((pageNo - 1) * listCount);
+        const skip = (pageNo - 1) * listCount;
         const loweredCaseTag = tag.toLowerCase().replace('%20', '-');
         const listingQuery = `tagsDetails/urlName eq %27${loweredCaseTag}%27`;
         const latestTeasersResp = await getLatestTeasers(listCount, skip, listingQuery);
@@ -88,12 +96,16 @@ export default async function tagMiddleware(req, res, next) {
         };
 
         req.data = req.data || {};
-        req.data.entity = Object.assign({}, { nodeTypeAlias: 'TagSection' }, {
-            contentTitle: title,
-            url,
-            pageTitle: tagData.title || title,
-            pageMetaDescription: tagData.description || ''
-        });
+        req.data.entity = Object.assign(
+            {},
+            { nodeTypeAlias: 'TagSection' },
+            {
+                contentTitle: title,
+                url,
+                pageTitle: tagData.title || title,
+                pageMetaDescription: tagData.description || ''
+            }
+        );
         req.data.latestTeasers = latestTeasers.data.slice(0, latestTeaserCount);
         req.data.list = {
             listName: title,
@@ -102,9 +114,7 @@ export default async function tagMiddleware(req, res, next) {
                 section: title,
                 filter: 'contentTags'
             },
-            items: [
-                parseEntities(latestTeasers.data.slice(latestTeaserCount))
-            ],
+            items: [parseEntities(latestTeasers.data.slice(latestTeaserCount))],
             previous: previousPage,
             current: currentPage,
             next: nextPage

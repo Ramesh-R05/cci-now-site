@@ -1,5 +1,5 @@
 export default {
-	polarSetting: {
+    polarSetting: {
         url: '//plugin.mediavoice.com/plugin.js',
         propertyId: 'NA-HOMETOLOVEDEVSTAG-11237319',
         targets: { env: 'test' },
@@ -10,36 +10,36 @@ export default {
                 {
                     index: 1,
                     label: 'home_mustread_1',
-                    targets: {kw:'home_mustread_1'}
+                    targets: { kw: 'home_mustread_1' }
                 },
                 {
                     index: 4,
                     label: 'home_mustread_2',
-                    targets: {kw:'home_mustread_2'}
-                },
+                    targets: { kw: 'home_mustread_2' }
+                }
             ],
             homeTopFeed: [
                 {
                     index: 0,
                     label: 'home_top_feed_1',
-                    targets: {kw:'home_top_feed_1'}
+                    targets: { kw: 'home_top_feed_1' }
                 },
                 {
                     index: 5,
                     label: 'home_top_feed_2',
-                    targets: {kw:'home_top_feed_2'}
+                    targets: { kw: 'home_top_feed_2' }
                 }
             ],
             homeBottomFeed: [
                 {
                     index: 1,
                     label: 'home_bottom_feed_1',
-                    targets: {kw:'home_bottom_feed_1'}
+                    targets: { kw: 'home_bottom_feed_1' }
                 },
                 {
                     index: 5,
                     label: 'home_bottom_feed_2',
-                    targets: {kw:'home_bottom_feed_2'}
+                    targets: { kw: 'home_bottom_feed_2' }
                 }
             ],
             take5SectionTopFeed: [
@@ -53,24 +53,24 @@ export default {
                 {
                     index: 0,
                     label: 'section_top_feed_1',
-                    targets: {kw:'section_top_feed_1'}
+                    targets: { kw: 'section_top_feed_1' }
                 },
                 {
                     index: 5,
                     label: 'section_top_feed_2',
-                    targets: {kw:'section_top_feed_2'}
+                    targets: { kw: 'section_top_feed_2' }
                 }
             ],
             sectionBottomFeed: [
                 {
                     index: 1,
                     label: 'section_bottom_feed_1',
-                    targets: {kw:'section_bottom_feed_1'}
+                    targets: { kw: 'section_bottom_feed_1' }
                 },
                 {
                     index: 5,
                     label: 'section_bottom_feed_2',
-                    targets: {kw:'section_bottom_feed_2'}
+                    targets: { kw: 'section_bottom_feed_2' }
                 }
             ],
             articleRightFeed: [
@@ -99,7 +99,7 @@ export default {
                     index: 13,
                     label: 'article_right_feed_4',
                     targets: {
-                        kw: 'article_right_feed_4',
+                        kw: 'article_right_feed_4'
                     }
                 }
             ],
@@ -112,5 +112,4 @@ export default {
             }
         }
     }
-}
-
+};

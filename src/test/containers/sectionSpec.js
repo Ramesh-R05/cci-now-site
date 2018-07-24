@@ -1,8 +1,8 @@
-import {betterMockComponentContext} from '@bxm/flux';
+import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
-const {React, ReactDOM, TestUtils} = Context;
+const { React, ReactDOM, TestUtils } = Context;
 import polarConfig from '../mocks/polar';
-import proxyquire, {noCallThru} from 'proxyquire';
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 const PageStub = Context.createStubComponentWithChildren();
@@ -40,28 +40,30 @@ const contextConfigStub = {
         },
         brands: {
             uniheader: [
-            {
-                "id": "aww",
-                "title": "Australian Women's Weekly",
-                "magazineTitle": "The Weekly",
-                "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
-                "url": "/aww",
-                "socialLinks": {
-                    "facebookUrl": "https://www.facebook.com/WomensWeeklyMag",
-                    "twitterUrl": "https://twitter.com/womensweeklymag",
-                    "instagramUrl": "https://www.instagram.com/womensweeklymag"
+                {
+                    id: 'aww',
+                    title: "Australian Women's Weekly",
+                    magazineTitle: 'The Weekly',
+                    imageUrl: '/assets/images/headerlogos/AWW-logo.svg',
+                    url: '/aww',
+                    socialLinks: {
+                        facebookUrl: 'https://www.facebook.com/WomensWeeklyMag',
+                        twitterUrl: 'https://twitter.com/womensweeklymag',
+                        instagramUrl: 'https://www.instagram.com/womensweeklymag'
+                    }
+                },
+                {
+                    id: 'take5',
+                    title: 'Take 5',
+                    imageUrl: '/assets/images/headerlogos/T5-logo.svg',
+                    url: '/take5mag',
+                    socialLinks: {
+                        facebook: 'https://www.facebook.com/take5magazine',
+                        twitter: 'https://twitter.com/take5magazine',
+                        instagram: 'https://www.instagram.com/take5magazine/'
+                    }
                 }
-            }, {
-                id: 'take5',
-                title: 'Take 5',
-                imageUrl: '/assets/images/headerlogos/T5-logo.svg',
-                url: '/take5mag',
-                socialLinks: {
-                    facebook: 'https://www.facebook.com/take5magazine',
-                    twitter: 'https://twitter.com/take5magazine',
-                    instagram: 'https://www.instagram.com/take5magazine/'
-                }
-            }]
+            ]
         },
         polar: polarConfig.polarSetting
     }
@@ -77,22 +79,21 @@ AdStub.pos = {
 };
 
 describe('Section Container', () => {
-
     Context.addStore('PageStore', {
         getTitle() {
             return 'Title';
         },
         getShortTitle() {
-            return 'Short Title'
+            return 'Short Title';
         },
         getSummary() {
-            return 'Summary'
+            return 'Summary';
         },
         getImageUrl() {
-            return 'Image Url'
+            return 'Image Url';
         },
         getSubsections() {
-            return {}
+            return {};
         }
     });
 
@@ -103,9 +104,7 @@ describe('Section Container', () => {
 
         getList() {
             return {
-                items: [
-                    [8, 9, 10, 11, 12, 13, 14]
-                ]
+                items: [[8, 9, 10, 11, 12, 13, 14]]
             };
         },
 
@@ -118,32 +117,32 @@ describe('Section Container', () => {
         },
 
         getHeroTeaser() {
-            return {}
+            return {};
         }
     });
 
     after(Context.cleanup);
 
     it(`should render 1 normal ad in total`, () => {
-        const reactModule = Context.mountComponent(SectionContainer,{},[contextConfigStub]);
+        const reactModule = Context.mountComponent(SectionContainer, {}, [contextConfigStub]);
         const AdComponents = TestUtils.scryRenderedComponentsWithType(reactModule, AdStub);
         expect(AdComponents.length).to.eq(1);
     });
 
     it(`should render 1 sticky ad in total`, () => {
-        const reactModule = Context.mountComponent(SectionContainer,{},[contextConfigStub]);
+        const reactModule = Context.mountComponent(SectionContainer, {}, [contextConfigStub]);
         const AdComponents = TestUtils.scryRenderedComponentsWithType(reactModule, StickyAdStub);
         expect(AdComponents.length).to.eq(1);
     });
 
     it('should render a hero teaser', () => {
-        const reactModule = Context.mountComponent(SectionContainer,{},[contextConfigStub]);
+        const reactModule = Context.mountComponent(SectionContainer, {}, [contextConfigStub]);
         const HeroTeaserComponent = TestUtils.scryRenderedComponentsWithType(reactModule, HeroTeaserStub);
         expect(HeroTeaserComponent.length).to.eq(1);
     });
 
     it('should render a teaser grid', () => {
-        const reactModule = Context.mountComponent(SectionContainer,{},[contextConfigStub]);
+        const reactModule = Context.mountComponent(SectionContainer, {}, [contextConfigStub]);
         const TeaserGridViewComponent = TestUtils.scryRenderedComponentsWithType(reactModule, TeaserGridViewStub);
         expect(TeaserGridViewComponent.length).to.eq(1);
     });
@@ -155,19 +154,19 @@ describe('Section Container', () => {
     });
 
     it('should give the headerClassName a value of empty string', () => {
-        const reactModule = Context.mountComponent(SectionContainer,{},[contextConfigStub]);
+        const reactModule = Context.mountComponent(SectionContainer, {}, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
         expect(PageStubComponent.props.headerClassName).to.eq('');
     });
 
     it('should give the pageTitle a value of empty string', () => {
-        const reactModule = Context.mountComponent(SectionContainer,{},[contextConfigStub]);
+        const reactModule = Context.mountComponent(SectionContainer, {}, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
         expect(PageStubComponent.props.pageTitle.type).to.eq('h1');
     });
 
     it('should render the section banner', () => {
-        const reactModule = Context.mountComponent(SectionContainer,{},[contextConfigStub]);
+        const reactModule = Context.mountComponent(SectionContainer, {}, [contextConfigStub]);
         const div = TestUtils.findRenderedDOMComponentWithClass(reactModule, 'banner-wrapper');
         expect(div).to.exist;
     });
@@ -189,31 +188,31 @@ describe('Brand Container', () => {
     });
 
     it('should render page with correct brand props', () => {
-        const reactModule = Context.mountComponent(SectionContainer, {currentUrl: '/aww', nodeType: 'Brand'}, [contextConfigStub]);
+        const reactModule = Context.mountComponent(SectionContainer, { currentUrl: '/aww', nodeType: 'Brand' }, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
         expect(PageStubComponent.props.headerClassName).to.eq('header-aww');
     });
 
     it('should render page with correct pagetitle prop', () => {
-        const reactModule = Context.mountComponent(SectionContainer, {currentUrl: '/aww', nodeType: 'Brand'}, [contextConfigStub]);
+        const reactModule = Context.mountComponent(SectionContainer, { currentUrl: '/aww', nodeType: 'Brand' }, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
         expect(PageStubComponent.props.pageTitle.props.brand).to.deep.eq(contextConfigStub.value.brands.uniheader[0]);
     });
 
     it('should render page with correct brand props when params are passed through url', () => {
-        const reactModule = Context.mountComponent(SectionContainer, {currentUrl: '/aww?pageNo=2', nodeType: 'Brand'}, [contextConfigStub]);
+        const reactModule = Context.mountComponent(SectionContainer, { currentUrl: '/aww?pageNo=2', nodeType: 'Brand' }, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
         expect(PageStubComponent.props.headerClassName).to.eq('header-aww');
     });
 
     it('should render page with correct pagetitle prop when params are passed through url', () => {
-        const reactModule = Context.mountComponent(SectionContainer, {currentUrl: '/aww?pageNo=2', nodeType: 'Brand'}, [contextConfigStub]);
+        const reactModule = Context.mountComponent(SectionContainer, { currentUrl: '/aww?pageNo=2', nodeType: 'Brand' }, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
         expect(PageStubComponent.props.pageTitle.props.brand).to.deep.eq(contextConfigStub.value.brands.uniheader[0]);
     });
 
     it('should render the section banner', () => {
-        const reactModule = Context.mountComponent(SectionContainer,{currentUrl: '/aww?pageNo=2', nodeType: 'Brand'},[contextConfigStub]);
+        const reactModule = Context.mountComponent(SectionContainer, { currentUrl: '/aww?pageNo=2', nodeType: 'Brand' }, [contextConfigStub]);
         const div = ReactDOM.findDOMNode(reactModule).querySelector('.banner-wrapper');
         expect(div).to.not.exist;
     });

@@ -1,4 +1,4 @@
-import {initialState, reducer} from '../../app/reducers/loadTeasers';
+import { initialState, reducer } from '../../app/reducers/loadTeasers';
 
 describe(`loadTeasers Reducer`, () => {
     let body;
@@ -53,7 +53,7 @@ describe(`loadTeasers Reducer`, () => {
                             pageNo: payload.body.list.params.pageNo
                         },
                         items: payload.body.list.items
-                    }                 
+                    }
                 });
             });
         });
@@ -81,9 +81,9 @@ describe(`loadTeasers Reducer`, () => {
                         items: payload.body.list.items
                     },
                     mustRead: [],
-                    promoted: { 
-                        title : '',
-                        items: [] 
+                    promoted: {
+                        title: '',
+                        items: []
                     }
                 });
             });
@@ -106,9 +106,9 @@ describe(`loadTeasers Reducer`, () => {
                         items: payload.body.list.items
                     },
                     mustRead: [],
-                    promoted: { 
-                        title : '',
-                        items: [] 
+                    promoted: {
+                        title: '',
+                        items: []
                     }
                 });
             });
@@ -131,9 +131,9 @@ describe(`loadTeasers Reducer`, () => {
                         items: payload.body.list.items
                     },
                     mustRead: [],
-                    promoted: { 
-                        title : '',
-                        items: [] 
+                    promoted: {
+                        title: '',
+                        items: []
                     }
                 });
             });
@@ -153,9 +153,9 @@ describe(`loadTeasers Reducer`, () => {
                     items: []
                 },
                 mustRead: [],
-                promoted: { 
-                    title : '',
-                    items: [] 
+                promoted: {
+                    title: '',
+                    items: []
                 }
             };
             payload = {
@@ -182,9 +182,9 @@ describe(`loadTeasers Reducer`, () => {
                     items: []
                 },
                 mustRead: [],
-                promoted: { 
-                    title : '',
-                    items: [] 
+                promoted: {
+                    title: '',
+                    items: []
                 }
             };
             payload = {
@@ -195,5 +195,5 @@ describe(`loadTeasers Reducer`, () => {
         it(`should return the initalState`, () => {
             expect(reducer(initialState, payload)).to.deep.eq(initialState);
         });
-    })
+    });
 });

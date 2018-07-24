@@ -55,7 +55,8 @@ export default class Search extends Component {
     };
 
     componentDidMount() {
-        this.setState({ // eslint-disable-line react/no-did-mount-set-state
+        this.setState({
+            // eslint-disable-line react/no-did-mount-set-state
             bottomElm: this.bottom,
             topElm: this.top
         });
@@ -63,10 +64,8 @@ export default class Search extends Component {
 
     render() {
         const { config } = this.context;
-        const {
-            nodeType, teasers, title, currentUrl, theme, searchTotal, list, listNextParams
-        } = this.props;
-        const keyword = (nodeType === 'TagSection' && title) ? [title] : [];
+        const { nodeType, teasers, title, currentUrl, theme, searchTotal, list, listNextParams } = this.props;
+        const keyword = nodeType === 'TagSection' && title ? [title] : [];
         const pageLocation = Ad.pos.outside;
         const headerClassName = '';
 
@@ -93,12 +92,12 @@ export default class Search extends Component {
 
         return (
             <Page
-              currentUrl={currentUrl}
-              headerExpanded={config.features.headerExpanded && themeEnabled}
-              pageTitle={pageTitle}
-              className="page--section"
-              headerClassName={headerClassName}
-              theme={themeEnabled ? theme : {}}
+                currentUrl={currentUrl}
+                headerExpanded={config.features.headerExpanded && themeEnabled}
+                pageTitle={pageTitle}
+                className="page--section"
+                headerClassName={headerClassName}
+                theme={themeEnabled ? theme : {}}
             >
                 <div className="section-page search-page">
                     <div className="container">
@@ -106,44 +105,38 @@ export default class Search extends Component {
                             <div className="page__top-container columns">
                                 <div className="row">
                                     <div
-                                      className="columns large-8 xlarge-9 section-page__teasers-container"
-                                      ref={(c) => { this.top = c; }}
+                                        className="columns large-8 xlarge-9 section-page__teasers-container"
+                                        ref={c => {
+                                            this.top = c;
+                                        }}
                                     >
                                         <SearchBar />
 
                                         <TeaserListView
-                                          index={null}
-                                          items={teasers.slice(0, 6)}
-                                          className="news-feed top-news-feed"
-                                          showAd={false}
-                                          adPosition={8}
-                                          adTargets={{ keyword }}
+                                            index={null}
+                                            items={teasers.slice(0, 6)}
+                                            className="news-feed top-news-feed"
+                                            showAd={false}
+                                            adPosition={8}
+                                            adTargets={{ keyword }}
                                         />
                                     </div>
                                     <div className="page__social-wrapper columns large-4 xlarge-3">
                                         <div className="columns medium-6 large-12">
                                             <StickyAndDockAd
-                                              offsetTop={95}
-                                              offsetBottom={16}
-                                              customiseBreakpoint={1024}
-                                              bottomElm={this.state.bottomElm}
-                                              topElm={this.state.topElm}
+                                                offsetTop={95}
+                                                offsetBottom={16}
+                                                customiseBreakpoint={1024}
+                                                bottomElm={this.state.bottomElm}
+                                                topElm={this.state.topElm}
                                             >
-                                                <Ad
-                                                  className="ad--section-mrec"
-                                                  sizes="mrec"
-                                                  displayFor="large"
-                                                  pageLocation={Ad.pos.aside}
-                                                />
+                                                <Ad className="ad--section-mrec" sizes="mrec" displayFor="large" pageLocation={Ad.pos.aside} />
 
                                                 <div className="page__get-social-container">
                                                     <BrandNewsletter />
-                                                    <span className="page__social-logo">
-                                                        Now To Love
-                                                    </span>
+                                                    <span className="page__social-logo">Now To Love</span>
                                                     <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
                                                 </div>
-
                                             </StickyAndDockAd>
                                         </div>
                                     </div>
@@ -152,41 +145,40 @@ export default class Search extends Component {
                         </div>
                     </div>
 
-                    <div ref={(c) => { this.bottom = c; }} />
+                    <div
+                        ref={c => {
+                            this.bottom = c;
+                        }}
+                    />
 
                     {/* 2nd Leaderboard or banner below Gallery of Videos */}
-                    { teasers.length ? (
+                    {teasers.length ? (
                         <Ad
-                          className="ad--section-leaderboard"
-                          sizes={{
+                            className="ad--section-leaderboard"
+                            sizes={{
                                 banner: 'banner',
                                 leaderboard: 'leaderboard',
                                 billboard: ['billboard', 'leaderboard']
                             }}
-                          targets={{ keyword }}
-                          pageLocation={pageLocation}
+                            targets={{ keyword }}
+                            pageLocation={pageLocation}
                         />
-                    ) : null }
+                    ) : null}
 
                     <Repeatable
-                      component={TeaserListView}
-                      action={loadSearch}
-                      dataSource={list}
-                      nextParams={listNextParams}
-                      className="news-feed bottom-news-feed"
-                      pageLocation={pageLocation}
-                      adTargets={{ keyword }}
+                        component={TeaserListView}
+                        action={loadSearch}
+                        dataSource={list}
+                        nextParams={listNextParams}
+                        className="news-feed bottom-news-feed"
+                        pageLocation={pageLocation}
+                        adTargets={{ keyword }}
                     />
 
                     {/* 3rd Leaderboard to show on tablet and up */}
-                    { get(list, 'items[0].length') ? (
-                        <StickyAd
-                          adProps={adProps}
-                          minHeight={450}
-                          stickyAtViewPort="mediumRangeMax"
-                          stickyDelay={5500}
-                        />
-                    ) : null }
+                    {get(list, 'items[0].length') ? (
+                        <StickyAd adProps={adProps} minHeight={450} stickyAtViewPort="mediumRangeMax" stickyDelay={5500} />
+                    ) : null}
                 </div>
             </Page>
         );

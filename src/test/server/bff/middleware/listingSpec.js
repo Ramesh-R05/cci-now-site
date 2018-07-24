@@ -1,15 +1,17 @@
-import proxyquire, {noCallThru} from 'proxyquire';
+import proxyquire, { noCallThru } from 'proxyquire';
 
 noCallThru();
 
 let makeRequestStub = () => {};
 
 const listingMiddleware = proxyquire('../../../../app/server/bff/middleware/listing', {
-    '../../makeRequest': (...args) => { return makeRequestStub(...args) }
+    '../../makeRequest': (...args) => {
+        return makeRequestStub(...args);
+    }
 }).default;
 
 describe('Listing middleware', () => {
-    const config = {services: {remote: {entity: 'http://entitiesUrl.com/'}}};
+    const config = { services: { remote: { entity: 'http://entitiesUrl.com/' } } };
     const entity = { id: 'SECTION_ID_123', contentTitle: 'Title' };
     const res = {};
     let next;
@@ -29,11 +31,13 @@ describe('Listing middleware', () => {
                 makeRequestStub = sinon.stub().rejects(rejectedResponse);
             });
 
-            it('should pass error to next middleware', (done) => {
-                listingMiddleware(req, res, next).then(() => {
-                    expect(next).to.be.calledWith(rejectedResponse);
-                    done();
-                }).catch(done);
+            it('should pass error to next middleware', done => {
+                listingMiddleware(req, res, next)
+                    .then(() => {
+                        expect(next).to.be.calledWith(rejectedResponse);
+                        done();
+                    })
+                    .catch(done);
             });
         });
 
@@ -46,11 +50,16 @@ describe('Listing middleware', () => {
                     makeRequestStub = sinon.stub().resolves(entity);
                 });
 
-                it('should store the entity in `req.data`', (done) => {
-                    listingMiddleware(req, res, next).then(() => {
-                        expect(req.data).to.deep.equal({ entity, section: { id: entity.id, name: entity.contentTitle, urlName: entity.urlName } });
-                        done();
-                    }).catch(done);
+                it('should store the entity in `req.data`', done => {
+                    listingMiddleware(req, res, next)
+                        .then(() => {
+                            expect(req.data).to.deep.equal({
+                                entity,
+                                section: { id: entity.id, name: entity.contentTitle, urlName: entity.urlName }
+                            });
+                            done();
+                        })
+                        .catch(done);
                 });
             });
 
@@ -62,14 +71,16 @@ describe('Listing middleware', () => {
                     makeRequestStub = sinon.stub().resolves(entity);
                 });
 
-                it('should store the entity in `req.data`', (done) => {
-                    listingMiddleware(req, res, next).then(() => {
-                        expect(req.data).to.deep.equal({
-                            ...req.data,
-                            entity
-                        });
-                        done();
-                    }).catch(done);
+                it('should store the entity in `req.data`', done => {
+                    listingMiddleware(req, res, next)
+                        .then(() => {
+                            expect(req.data).to.deep.equal({
+                                ...req.data,
+                                entity
+                            });
+                            done();
+                        })
+                        .catch(done);
                 });
             });
         });
@@ -83,12 +94,14 @@ describe('Listing middleware', () => {
             makeRequestStub = sinon.stub();
         });
 
-        it(`should call next without making a request`, (done) => {
-            listingMiddleware(req, res, next).then(() => {
-                expect(next).to.have.been.called;
-                expect(makeRequestStub).to.not.have.been.called;
-                done();
-            }).catch(done);
+        it(`should call next without making a request`, done => {
+            listingMiddleware(req, res, next)
+                .then(() => {
+                    expect(next).to.have.been.called;
+                    expect(makeRequestStub).to.not.have.been.called;
+                    done();
+                })
+                .catch(done);
         });
     });
 
@@ -100,12 +113,14 @@ describe('Listing middleware', () => {
             makeRequestStub = sinon.stub();
         });
 
-        it(`should call next without making a request`, (done) => {
-            listingMiddleware(req, res, next).then(() => {
-                expect(next).to.have.been.called;
-                expect(makeRequestStub).to.not.have.been.called;
-                done();
-            }).catch(done);
+        it(`should call next without making a request`, done => {
+            listingMiddleware(req, res, next)
+                .then(() => {
+                    expect(next).to.have.been.called;
+                    expect(makeRequestStub).to.not.have.been.called;
+                    done();
+                })
+                .catch(done);
         });
     });
 
@@ -118,19 +133,23 @@ describe('Listing middleware', () => {
             makeRequestStub = sinon.stub();
         });
 
-        it(`should call next without making a request`, (done) => {
-            listingMiddleware(req, res, next).then(() => {
-                expect(next).to.have.been.called;
-                expect(makeRequestStub).to.not.have.been.called;
-                done();
-            }).catch(done);
+        it(`should call next without making a request`, done => {
+            listingMiddleware(req, res, next)
+                .then(() => {
+                    expect(next).to.have.been.called;
+                    expect(makeRequestStub).to.not.have.been.called;
+                    done();
+                })
+                .catch(done);
         });
 
-        it(`should not override the entity`, (done) => {
-            listingMiddleware(req, res, next).then(() => {
-                expect(req.data).to.deep.equal({ ...overridenEntity });
-                done();
-            }).catch(done);
+        it(`should not override the entity`, done => {
+            listingMiddleware(req, res, next)
+                .then(() => {
+                    expect(req.data).to.deep.equal({ ...overridenEntity });
+                    done();
+                })
+                .catch(done);
         });
     });
 });

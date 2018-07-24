@@ -1,14 +1,14 @@
-import {betterMockComponentContext} from '@bxm/flux';
+import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
-const {React, ReactDOM, TestUtils} = Context;
+const { React, ReactDOM, TestUtils } = Context;
 import each from 'lodash/collection/each';
-import proxyquire, {noCallThru} from 'proxyquire';
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 const SocialIconStub = Context.createStubComponent();
 
 const SocialLinks = proxyquire('../../../app/components/social/links', {
-    'react': React,
+    react: React,
     './icon': SocialIconStub
 }).default;
 
@@ -41,7 +41,7 @@ describe(`SocialLinks`, () => {
     });
 
     each(links, (icon, i) => {
-        const {name, url, label} = icon;
+        const { name, url, label } = icon;
 
         describe(`${name} social icon`, () => {
             it(`sets the name to "${name}"`, () => {

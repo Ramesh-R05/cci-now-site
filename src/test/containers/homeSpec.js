@@ -1,7 +1,7 @@
-import {betterMockComponentContext} from '@bxm/flux';
+import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
-const {React, ReactDOM, TestUtils} = Context;
-import proxyquire, {noCallThru} from 'proxyquire';
+const { React, ReactDOM, TestUtils } = Context;
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 const PageStub = Context.createStubComponentWithChildren();
@@ -28,8 +28,8 @@ const HomeContainer = proxyquire('../../app/containers/home', {
     '../components/repeatable': RepeatableStub,
     '../components/social/block': SocialLinks,
     '../components/page/stickyAndDockAd': StickyAndDockStub,
-    '../components/promoted/promoted':  PromotedStub,
-    '../components/mustRead/mustRead':  MustReadStub
+    '../components/promoted/promoted': PromotedStub,
+    '../components/mustRead/mustRead': MustReadStub
 }).default;
 
 AdStub.pos = {
@@ -42,7 +42,6 @@ AdStub.pos = {
 };
 
 describe('Home Container', () => {
-
     let reactModule;
 
     const contextConfigStub = {
@@ -66,13 +65,13 @@ describe('Home Container', () => {
         },
 
         getMustReadItems() {
-          return [];
+            return [];
         }
     });
 
     Context.addStore('TeaserStore', {
         getHeroTeaser() {
-            return {id: 'HERO-TEASER'};
+            return { id: 'HERO-TEASER' };
         },
 
         getLatestTeasers() {
@@ -111,5 +110,4 @@ describe('Home Container', () => {
         const MustReadComponents = TestUtils.scryRenderedComponentsWithType(reactModule, MustReadStub);
         expect(MustReadComponents.length).to.eq(1);
     });
-
 });

@@ -67,7 +67,6 @@ function trackImageRevealerInteraction(payload) {
 // ---------------------------------------------------------------------------- store
 
 module.exports = createStore({
-
     storeName: 'TrackingStore',
 
     // ------------------------------------------------------------------------ handlers
@@ -80,23 +79,23 @@ module.exports = createStore({
         IMAGE_REVEALER_INTERACTION: 'onImageRevealerInteraction'
     },
 
-    onGalleryNextItemTrack: (payload) => {
+    onGalleryNextItemTrack: payload => {
         trackGalleryItemChanged(payload);
     },
 
-    onGalleryPreviousItemTrack: (payload) => {
+    onGalleryPreviousItemTrack: payload => {
         trackGalleryItemChanged(payload);
     },
 
-    onGalleryCompleted: (payload) => {
+    onGalleryCompleted: payload => {
         trackGalleryComplete(payload);
     },
 
-    onLoadList: (payload) => {
+    onLoadList: payload => {
         trackLoadList(payload);
     },
 
-    onImageRevealerInteraction: (payload) => {
+    onImageRevealerInteraction: payload => {
         trackImageRevealerInteraction(payload);
     }
 });

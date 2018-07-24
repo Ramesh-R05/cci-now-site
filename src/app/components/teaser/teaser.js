@@ -76,15 +76,15 @@ export default class Teaser extends Component {
 
         return (
             <TeaserImage
-              gtmClass={this.getGTMClass()}
-              link={article.url}
-              imageUrl={article.imageUrl}
-              defaultImageUrl={defaultImageUrl}
-              alt={imageAltText}
-              imageSizes={imageSizes}
-              breakpoints={breakpoints}
-              showResponsiveImage={this.props.showResponsiveImage}
-              className={this.getGTMClass()}
+                gtmClass={this.getGTMClass()}
+                link={article.url}
+                imageUrl={article.imageUrl}
+                defaultImageUrl={defaultImageUrl}
+                alt={imageAltText}
+                imageSizes={imageSizes}
+                breakpoints={breakpoints}
+                showResponsiveImage={this.props.showResponsiveImage}
+                className={this.getGTMClass()}
             />
         );
     };
@@ -94,16 +94,12 @@ export default class Teaser extends Component {
 
         if (!showTeaserSummary) return null;
 
-        return (
-            <TeaserSummary summary={article.summary} className="teaser__summary" />
-        );
+        return <TeaserSummary summary={article.summary} className="teaser__summary" />;
     };
 
     render() {
         const { config } = this.context;
-        const {
-            className, sourceClassName, showDate, sourceDefault, polar
-        } = this.props;
+        const { className, sourceClassName, showDate, sourceDefault, polar } = this.props;
         let { article } = this.props;
 
         if (!article) return null;
@@ -126,7 +122,7 @@ export default class Teaser extends Component {
 
         let articleSourceClassName = sourceClassName;
         if (article.source) {
-            articleSourceClassName = `${sourceClassName} ${sourceClassName}--${article.source.toLowerCase().replace(/[^A-Z0-9]/ig, '-')}`;
+            articleSourceClassName = `${sourceClassName} ${sourceClassName}--${article.source.toLowerCase().replace(/[^A-Z0-9]/gi, '-')}`;
         }
 
         const sourceName = article.source || 'Now to love';
@@ -137,20 +133,16 @@ export default class Teaser extends Component {
                     {this.renderImage()}
 
                     <div className="teaser__body">
-
                         <TeaserTitle title={articleTitle} url={article.url} gtmClass={this.getGTMClass()} />
 
                         {this.renderSummary()}
 
                         <p className={articleSourceClassName}>
-
                             {sourceDefault || `${sourceName}`}
 
                             {showDate ? (
                                 <span>
-                                    <span className={`${sourceClassName}__breaker`}>
-|
-                                    </span>
+                                    <span className={`${sourceClassName}__breaker`}>|</span>
                                     <Date dateCreated={article.dateCreated} showElapsed />
                                 </span>
                             ) : null}
@@ -158,16 +150,7 @@ export default class Teaser extends Component {
                     </div>
                 </div>
 
-                {polar && (
-                    <Ad
-                      sizes="nativeAdTeaser"
-                      label={polar.label}
-                      targets={polar.targets}
-                      nativeAd
-                      pageLocation={Ad.pos.body}
-                    />
-                )}
-
+                {polar && <Ad sizes="nativeAdTeaser" label={polar.label} targets={polar.targets} nativeAd pageLocation={Ad.pos.body} />}
             </article>
         );
     }

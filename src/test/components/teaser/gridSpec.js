@@ -1,10 +1,10 @@
-import {betterMockComponentContext} from '@bxm/flux';
+import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
-const {React, ReactDOM, TestUtils} = Context;
+const { React, ReactDOM, TestUtils } = Context;
 import listingMock from '../../mocks/listing';
 import polarConfig from '../../mocks/polar';
 const teasers = listingMock.data;
-import proxyquire, {noCallThru} from 'proxyquire';
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 const TeaserListStub = Context.createStubComponent();
@@ -14,7 +14,6 @@ const TeaserGrid = proxyquire('../../../app/components/teaser/grid', {
     '@bxm/teaser/lib/components/teaserList': TeaserListStub,
     './teaser': TeaserStub
 }).default;
-
 
 const contextConfigStub = {
     key: 'config',
@@ -38,13 +37,13 @@ describe('TeaserGridView', () => {
 
     describe('when receiving teasers', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(TeaserGrid, {teasers}, [contextConfigStub]);
+            reactModule = Context.mountComponent(TeaserGrid, { teasers }, [contextConfigStub]);
             TeaserListComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserListStub);
         });
 
         it(`should render the TeaserList component with relevant props`, () => {
             expect(TeaserListComponent.props).to.deep.eq({
-                listClassName: "teaser-view-grid",
+                listClassName: 'teaser-view-grid',
                 articles: teasers,
                 imageSizes,
                 showDate: true,
@@ -53,28 +52,26 @@ describe('TeaserGridView', () => {
                 nativeAdConfig: {},
                 adConfig: {
                     targets: {},
-                    pageLocation: "body"
+                    pageLocation: 'body'
                 }
-
-            })
+            });
         });
     });
 
     describe('when passing through showDate prop as false', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(TeaserGrid, {teasers, showDate: false}, [contextConfigStub]);
+            reactModule = Context.mountComponent(TeaserGrid, { teasers, showDate: false }, [contextConfigStub]);
             TeaserListComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserListStub);
         });
 
         it(`should pass the value as false to showDate`, () => {
-            expect(TeaserListComponent.props.showDate).to.eq(false)
+            expect(TeaserListComponent.props.showDate).to.eq(false);
         });
-
-    })
+    });
 
     describe('when setting the adTargets', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(TeaserGrid, {teasers, adTargets: { position: 2 } },[contextConfigStub]);
+            reactModule = Context.mountComponent(TeaserGrid, { teasers, adTargets: { position: 2 } }, [contextConfigStub]);
             TeaserListComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserListStub);
         });
     });

@@ -11,7 +11,9 @@ function send(res, header, status, text, body) {
     const h = { ...header };
     // eslint-disable-next-line semi
     delete h['content-length'];
-    res.set(h).status(status).send(text || body);
+    res.set(h)
+        .status(status)
+        .send(text || body);
 }
 
 export default function assetProxy({ originalUrl }, res) {
@@ -26,16 +28,21 @@ export default function assetProxy({ originalUrl }, res) {
             const req = request.get(origin);
             if (process.env.HTTP_PROXY) req.proxy(process.env.HTTP_PROXY);
             req.end((e, r) => {
-                const {
-                    header, status, text, body
-                } = e ? e.response : r;
+                const { header, status, text, body } = e ? e.response : r;
                 const cacheControl = header['cache-control'];
                 if (cacheControl) {
                     const maxAge = cacheControl.match(/max-age=(\d+)/i);
                     if (maxAge && !!maxAge.length) {
-                        cache.set(origin, {
-                            header, status, text, body
-                        }, 1000 * parseInt(maxAge[1], 10));
+                        cache.set(
+                            origin,
+                            {
+                                header,
+                                status,
+                                text,
+                                body
+                            },
+                            1000 * parseInt(maxAge[1], 10)
+                        );
                     }
                 }
                 send(res, header, status, text, body);

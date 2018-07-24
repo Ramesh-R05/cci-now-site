@@ -22,7 +22,7 @@ const Document = proxyquire('../../app/containers/document', {
 }).default;
 
 describe('Document Component', () => {
-    const headerPinPoints = {expanded: {}};
+    const headerPinPoints = { expanded: {} };
     const navItems = [];
     const siteName = 'Dolly';
     const articleContent = { title: 'Title Test' };
@@ -38,12 +38,12 @@ describe('Document Component', () => {
         let reactModule;
 
         beforeEach(() => {
-            reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType, currentUrl: '/url'});
+            reactModule = Context.mountComponent(Document, { headerPinPoints, navItems, siteName, nodeType, currentUrl: '/url' });
         });
 
         it(`should render the Article Component passing down relevant props`, () => {
             const ArticleComponent = TestUtils.findRenderedComponentWithType(reactModule, ArticleStub);
-            
+
             const socialShare = {
                 facebook: true,
                 pinterest: true
@@ -61,7 +61,7 @@ describe('Document Component', () => {
             });
         });
 
-        it ('should pass the appropriate props', () => {
+        it('should pass the appropriate props', () => {
             const PageComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
             expect(PageComponent.props).to.deep.contain({
                 headerExpanded: false,
@@ -76,13 +76,11 @@ describe('Document Component', () => {
         let reactModule;
 
         before(() => {
-            reactModule = Context.mountComponent(Document, {headerPinPoints, navItems, siteName, nodeType});
+            reactModule = Context.mountComponent(Document, { headerPinPoints, navItems, siteName, nodeType });
         });
 
-            it(`should render the Gallery Component`, () => {
-                TestUtils.findRenderedComponentWithType(reactModule, VerticalGalleryStub);
-            });
-
+        it(`should render the Gallery Component`, () => {
+            TestUtils.findRenderedComponentWithType(reactModule, VerticalGalleryStub);
+        });
     });
 });
-

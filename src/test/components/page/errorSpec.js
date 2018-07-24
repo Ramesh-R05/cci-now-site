@@ -1,7 +1,7 @@
-import {betterMockComponentContext} from '@bxm/flux';
+import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
-const {React, ReactDOM, TestUtils} = Context;
-import proxyquire, {noCallThru} from 'proxyquire';
+const { React, ReactDOM, TestUtils } = Context;
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 const NavLinkStub = Context.createStubComponent();
@@ -16,22 +16,17 @@ const errorConfigStub = {
     404: {
         title: '404 error title',
         symbol: '#',
-        content: [
-            '404 error content'
-        ],
+        content: ['404 error content'],
         emojiSrc: '/error/emoji.png',
         returnHomeText: 'Return to homepage'
     },
     503: {
         title: '503 error title',
-        content: [
-            '503 error content line 1',
-            '503 error content line 2'
-        ],
+        content: ['503 error content line 1', '503 error content line 2'],
         emojiSrc: '/error/emoji.png',
         returnHomeText: 'Return to homepage'
     }
-}
+};
 
 const contextConfigStub = {
     key: 'config',
@@ -69,10 +64,10 @@ describe('ErrorPage Component', () => {
 
     describe('when status is 404', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(Error, {status: 404}, [contextConfigStub]);
+            reactModule = Context.mountComponent(Error, { status: 404 }, [contextConfigStub]);
         });
 
-        it ('should render ', () => {
+        it('should render ', () => {
             expect(ReactDOM.findDOMNode(reactModule)).to.exist;
         });
 
@@ -96,10 +91,10 @@ describe('ErrorPage Component', () => {
 
     describe('when status is 500', () => {
         beforeEach(() => {
-            reactModule = Context.mountComponent(Error, {status: 500}, [contextConfigStub]);
+            reactModule = Context.mountComponent(Error, { status: 500 }, [contextConfigStub]);
         });
 
-        it ('should render ', () => {
+        it('should render ', () => {
             expect(ReactDOM.findDOMNode(reactModule)).to.exist;
         });
 
@@ -110,15 +105,17 @@ describe('ErrorPage Component', () => {
     });
 
     describe(`Page Component`, () => {
-        const headerPinPoints = {expanded: {}};
+        const headerPinPoints = { expanded: {} };
         const navItems = [];
         const siteName = 'Dolly';
 
         beforeEach(() => {
-            reactModule = Context.mountComponent(Error, {status: 500, headerPinPoints, navItems, siteName, currentUrl: '/url'}, [contextConfigStub]);
+            reactModule = Context.mountComponent(Error, { status: 500, headerPinPoints, navItems, siteName, currentUrl: '/url' }, [
+                contextConfigStub
+            ]);
         });
 
-        it ('should pass the appropriate props', () => {
+        it('should pass the appropriate props', () => {
             const PageComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
             expect(PageComponent.props).to.deep.contain({
                 headerExpanded: true,
@@ -127,7 +124,7 @@ describe('ErrorPage Component', () => {
             });
         });
 
-        it ('should wrap the Error Component ', () => {
+        it('should wrap the Error Component ', () => {
             const ErrorContainer = TestUtils.findRenderedDOMComponentWithClass(reactModule, 'error-page-container');
             const PageComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
             expect(ReactDOM.findDOMNode(PageComponent).innerHTML).to.eq(ReactDOM.findDOMNode(ErrorContainer).outerHTML);

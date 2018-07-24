@@ -7,7 +7,6 @@ import features from './nzconfig/features';
 import polar from './nzconfig/polar';
 
 export default {
-
     ga: { id: 'UA-57795117-7' },
 
     gtm: { masthead: 'NZNOW', id: 'GTM-W8G546R' },

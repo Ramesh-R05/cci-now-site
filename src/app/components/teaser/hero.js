@@ -32,52 +32,38 @@ export default class HeroTeaser extends Component {
     };
 
     render() {
-        const {
-            article, imageSizes, showPromoted, brand, showDate
-        } = this.props;
+        const { article, imageSizes, showPromoted, brand, showDate } = this.props;
         const pageLocation = Ad.pos.outside;
         const shouldDisplayHeroTeaser = !!this.props.article;
         const heroClassName = shouldDisplayHeroTeaser ? 'hero-wrapper' : 'hero-wrapper hero-wrapper--no-teaser';
 
         return (
             <div className={heroClassName}>
+                {shouldDisplayHeroTeaser && (
+                    <Teaser
+                        sourceClassName="hero-teaser__source"
+                        className="hero-teaser"
+                        showDate={showDate}
+                        article={article}
+                        imageSizes={imageSizes}
+                    />
+                )}
 
-                {
-                    shouldDisplayHeroTeaser && (
-                        <Teaser
-                          sourceClassName="hero-teaser__source"
-                          className="hero-teaser"
-                          showDate={showDate}
-                          article={article}
-                          imageSizes={imageSizes}
-                        />
-                    )
-                }
+                <Ad displayFor={['small', 'medium']} className="ad--section-top-mrec" sizes="mrec" pageLocation={pageLocation} />
 
-                <Ad
-                  displayFor={['small', 'medium']}
-                  className="ad--section-top-mrec"
-                  sizes="mrec"
-                  pageLocation={pageLocation}
-                />
+                {showPromoted && <Promoted />}
 
-                { showPromoted && <Promoted /> }
-
-                { brand ? (
+                {brand ? (
                     <div className="hide-for-large-up">
-                        <BrandMagazine brand={brand} />
-                        {' '}
+                        <BrandMagazine brand={brand} />{' '}
                     </div>
-                )
-                    : (
-                        <div className="hero-wrapper__get-social-container">
-                            <BrandNewsletter />
-                            <span className="hero-wrapper__social-logo">
-Now To Love
-                            </span>
-                            <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
-                        </div>
-                    ) }
+                ) : (
+                    <div className="hero-wrapper__get-social-container">
+                        <BrandNewsletter />
+                        <span className="hero-wrapper__social-logo">Now To Love</span>
+                        <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
+                    </div>
+                )}
             </div>
         );
     }

@@ -51,7 +51,8 @@ export default class Home extends Component {
     };
 
     componentDidMount() {
-        this.setState({ // eslint-disable-line react/no-did-mount-set-state
+        this.setState({
+            // eslint-disable-line react/no-did-mount-set-state
             bottomElm: this.bottom,
             topElm: this.top
         });
@@ -72,12 +73,7 @@ export default class Home extends Component {
         };
 
         return (
-            <Page
-              currentUrl={this.props.currentUrl}
-              headerExpanded={false}
-              showUniheader
-              theme={this.props.theme}
-            >
+            <Page currentUrl={this.props.currentUrl} headerExpanded={false} showUniheader theme={this.props.theme}>
                 <div className="home-page">
                     {/* 1st Leaderboard or billboard to show on tablet and up */}
                     <div className="stripe-bg">
@@ -88,21 +84,24 @@ export default class Home extends Component {
                             <div className="row">
                                 <div className="page__top-container columns">
                                     <div className="row">
-                                        <div className="columns large-8 xlarge-9 home-page__teasers-container" ref={(c) => { this.top = c; }}>
+                                        <div
+                                            className="columns large-8 xlarge-9 home-page__teasers-container"
+                                            ref={c => {
+                                                this.top = c;
+                                            }}
+                                        >
                                             <HeroTeaser article={this.props.heroTeaser} showPromoted />
 
                                             <div className="home-page__teasers-title">
-                                                <span>
-what&apos;s happening now
-                                                </span>
+                                                <span>what&apos;s happening now</span>
                                             </div>
 
                                             <TeaserGridView
-                                              teasers={this.props.teasers.slice(0, 6)}
-                                              className="news-feed top-news-feed"
-                                              adPosition={8}
-                                              adSizes={{ small: 'mrec', medium: ['mrec', 'double-mrec'] }}
-                                              nativeAdConfig={{
+                                                teasers={this.props.teasers.slice(0, 6)}
+                                                className="news-feed top-news-feed"
+                                                adPosition={8}
+                                                adSizes={{ small: 'mrec', medium: ['mrec', 'double-mrec'] }}
+                                                nativeAdConfig={{
                                                     slotPositionIndex: polarLabels.homeTopFeed
                                                 }}
                                             />
@@ -110,23 +109,16 @@ what&apos;s happening now
                                         <div className="page__social-wrapper columns large-4 xlarge-3">
                                             <div className="columns medium-6 large-12">
                                                 <StickyAndDockAd
-                                                  offsetTop={95}
-                                                  offsetBottom={16}
-                                                  customiseBreakpoint={1024}
-                                                  bottomElm={this.state.bottomElm}
-                                                  topElm={this.state.topElm}
+                                                    offsetTop={95}
+                                                    offsetBottom={16}
+                                                    customiseBreakpoint={1024}
+                                                    bottomElm={this.state.bottomElm}
+                                                    topElm={this.state.topElm}
                                                 >
-                                                    <Ad
-                                                      className="ad--section-mrec"
-                                                      sizes="mrec"
-                                                      displayFor="large"
-                                                      pageLocation={Ad.pos.aside}
-                                                    />
+                                                    <Ad className="ad--section-mrec" sizes="mrec" displayFor="large" pageLocation={Ad.pos.aside} />
                                                     <div className="page__get-social-container">
                                                         <BrandNewsletter />
-                                                        <span className="page__social-logo">
-Now To Love
-                                                        </span>
+                                                        <span className="page__social-logo">Now To Love</span>
                                                         <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
                                                     </div>
                                                 </StickyAndDockAd>
@@ -138,37 +130,35 @@ Now To Love
                         </div>
                     </div>
 
-                    <div ref={(c) => { this.bottom = c; }} />
+                    <div
+                        ref={c => {
+                            this.bottom = c;
+                        }}
+                    />
 
                     <Ad
-                      className="ad--section-leaderboard"
-                      sizes={{
+                        className="ad--section-leaderboard"
+                        sizes={{
                             banner: 'banner',
                             leaderboard: 'leaderboard',
                             billboard: ['billboard', 'leaderboard']
                         }}
-                      pageLocation={pageLocation}
+                        pageLocation={pageLocation}
                     />
 
                     <Repeatable
-                      component={TeaserListView}
-                      action={loadList}
-                      dataSource={this.props.list}
-                      nextParams={this.props.listNextParams}
-                      className="news-feed bottom-news-feed"
-                      nativeAdConfig={{
+                        component={TeaserListView}
+                        action={loadList}
+                        dataSource={this.props.list}
+                        nextParams={this.props.listNextParams}
+                        className="news-feed bottom-news-feed"
+                        nativeAdConfig={{
                             slotPositionIndex: polarLabels.homeBottomFeed
                         }}
                     />
 
                     {/* 3rd Leaderboard to show on tablet and up */}
-                    <StickyAd
-                      adProps={adProps}
-                      minHeight={450}
-                      stickyAtViewPort="mediumRangeMax"
-                      stickyDelay={5500}
-                    />
-
+                    <StickyAd adProps={adProps} minHeight={450} stickyAtViewPort="mediumRangeMax" stickyDelay={5500} />
                 </div>
             </Page>
         );

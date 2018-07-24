@@ -7,7 +7,7 @@ const environment = (process.env.APP_ENV || 'local').toLowerCase();
 const region = (process.env.APP_REGION || 'au').toLowerCase();
 const configApi = {
     get(path, defaultValue = '') {
-        return path.split('.').reduce((prev, curr) => prev ? prev[curr] : undefined, this) || defaultValue;
+        return path.split('.').reduce((prev, curr) => (prev ? prev[curr] : undefined), this) || defaultValue;
     },
     isFeatureEnabled(feature) {
         return this.get(`features.${feature}.enabled`, false);
@@ -47,5 +47,5 @@ export default mergeWith(
     environmentConfig,
     regionConfig,
     regionEnvironmentConfig,
-    (objValue, srcValue) => Array.isArray(objValue) ? srcValue : undefined
+    (objValue, srcValue) => (Array.isArray(objValue) ? srcValue : undefined)
 );

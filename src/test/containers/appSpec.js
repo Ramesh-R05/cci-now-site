@@ -57,7 +57,7 @@ describe('App Component', () => {
 
     Context.addStore('RouteStore', {
         isNavigateComplete() {
-            return true
+            return true;
         }
     });
 
@@ -76,11 +76,11 @@ describe('App Component', () => {
             platformStub.set = sinon.stub();
             reactModule = Context.mountComponent(App, { currentRoute }, [contextConfigStub]);
             HandlerComponent = TestUtils.findRenderedComponentWithType(reactModule, Handler);
-            ErrorComponent = TestUtils.scryRenderedComponentsWithType(reactModule, ErrorStub)
+            ErrorComponent = TestUtils.scryRenderedComponentsWithType(reactModule, ErrorStub);
         });
 
         it(`should pass appropriate props to the Handler Component`, () => {
-            expect(HandlerComponent.props).to.deep.eq({ currentUrl: currentRoute.url, nodeType, theme: themeMock })
+            expect(HandlerComponent.props).to.deep.eq({ currentUrl: currentRoute.url, nodeType, theme: themeMock });
         });
 
         it(`should not render the Error Component`, () => {
@@ -90,10 +90,10 @@ describe('App Component', () => {
 
     describe(`when the error is defined`, () => {
         beforeEach(() => {
-            error = {status: 404};
+            error = { status: 404 };
             reactModule = Context.mountComponent(App, { currentRoute }, [contextConfigStub]);
             HandlerComponent = TestUtils.scryRenderedComponentsWithType(reactModule, Handler);
-            ErrorComponent = TestUtils.findRenderedComponentWithType(reactModule, ErrorStub)
+            ErrorComponent = TestUtils.findRenderedComponentWithType(reactModule, ErrorStub);
         });
 
         afterEach(() => {
@@ -101,7 +101,7 @@ describe('App Component', () => {
         });
 
         it(`should pass appropriate props to the Error Component`, () => {
-            expect(ErrorComponent.props).to.deep.eq({ currentUrl: currentRoute.url, status: error.status })
+            expect(ErrorComponent.props).to.deep.eq({ currentUrl: currentRoute.url, status: error.status });
         });
 
         it(`should pass the error status code to the Error Component`, () => {
@@ -126,7 +126,7 @@ describe('App Component', () => {
             };
             reactModule = Context.mountComponent(App, { currentRoute }, [contextConfigStub]);
             HandlerComponent = TestUtils.findRenderedComponentWithType(reactModule, Handler);
-            ErrorComponent = TestUtils.scryRenderedComponentsWithType(reactModule, ErrorStub)
+            ErrorComponent = TestUtils.scryRenderedComponentsWithType(reactModule, ErrorStub);
         });
 
         it(`should render with className 'region--nz'`, () => {

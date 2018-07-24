@@ -1,8 +1,8 @@
-import proxyquire, {noCallThru} from 'proxyquire';
+import proxyquire, { noCallThru } from 'proxyquire';
 
 noCallThru();
 
-let makeRequestStub = (args) => {};
+let makeRequestStub = args => {};
 
 const remoteModuleUrl = 'http://remoteModuleUrl.com/api';
 const configStub = {
@@ -12,7 +12,7 @@ const configStub = {
 const getModules = proxyquire('../../../../app/server/bff/api/module', {
     '../../makeRequest': args => makeRequestStub(args),
     '../../../config': configStub,
-    '../../../../logger': { error(){} }
+    '../../../../logger': { error() {} }
 }).default;
 
 describe(`Module API`, () => {
@@ -25,11 +25,13 @@ describe(`Module API`, () => {
         let awwHeroModuleData;
 
         describe(`when passing no arguments`, () => {
-            it(`should return an empty object`, (done) => {
-                getModules().then((modules) => {
-                    expect(modules).to.deep.eq({});
-                    done()
-                }).catch(done);
+            it(`should return an empty object`, done => {
+                getModules()
+                    .then(modules => {
+                        expect(modules).to.deep.eq({});
+                        done();
+                    })
+                    .catch(done);
             });
         });
 
@@ -46,12 +48,14 @@ describe(`Module API`, () => {
                     makeRequestStub = sinon.stub().resolves([]);
                 });
 
-                it(`should return an object which contains a footer and header property with an empty array`, (done) => {
-                    getModules('footer', 'header').then((modules) => {
-                        expect(makeRequestStub).to.have.been.calledWith(`${remoteModuleUrl}/footer,header`);
-                        expect(modules).to.deep.eq({footer: footerModuleData, header: headerModuleData});
-                        done();
-                    }).catch(done);
+                it(`should return an object which contains a footer and header property with an empty array`, done => {
+                    getModules('footer', 'header')
+                        .then(modules => {
+                            expect(makeRequestStub).to.have.been.calledWith(`${remoteModuleUrl}/footer,header`);
+                            expect(modules).to.deep.eq({ footer: footerModuleData, header: headerModuleData });
+                            done();
+                        })
+                        .catch(done);
                 });
             });
 
@@ -61,37 +65,38 @@ describe(`Module API`, () => {
                         footerModuleData = {};
                         headerModuleData = ['header-1', 'header-2'];
                         makeRequestStub = sinon.stub().resolves({
-                            data: [ { moduleName: 'header', moduleManualContent: { data: headerModuleData } } ]
+                            data: [{ moduleName: 'header', moduleManualContent: { data: headerModuleData } }]
                         });
                     });
 
-                    it(`should return an object which contains a footer property with an empty array and the header with data`, (done) => {
-                        getModules('footer', 'header').then((modules) => {
-                            expect(modules).to.deep.eq({footer: footerModuleData, header: headerModuleData});
-                            done();
-                        }).catch(done);
+                    it(`should return an object which contains a footer property with an empty array and the header with data`, done => {
+                        getModules('footer', 'header')
+                            .then(modules => {
+                                expect(modules).to.deep.eq({ footer: footerModuleData, header: headerModuleData });
+                                done();
+                            })
+                            .catch(done);
                     });
                 });
 
                 describe(`and there is a moduleName that matches both args being passed`, () => {
                     describe(`and there is a moduleManualContent with a data property`, () => {
                         beforeEach(() => {
-                            footerModuleData = {moduleName: 'footer', moduleManualContent: { data: ['footer 1', 'footer 2'] } };
+                            footerModuleData = { moduleName: 'footer', moduleManualContent: { data: ['footer 1', 'footer 2'] } };
                             headerModuleData = ['header 1', 'header 2'];
                             makeRequestStub = sinon.stub().resolves({
-                                data: [
-                                    footerModuleData,
-                                    { moduleName: 'header', moduleManualContent: { data: headerModuleData } }
-                                ]
+                                data: [footerModuleData, { moduleName: 'header', moduleManualContent: { data: headerModuleData } }]
                             });
                         });
 
-                        it(`should return an object which contains the data for both footer and header`, (done) => {
-                            getModules('footer', 'header').then((modules) => {
-                                expect(modules).to.deep.eq({footer: footerModuleData, header: headerModuleData});
-                                expect(modules).to.not.have.property('traveltheme');
-                                done();
-                            }).catch(done);
+                        it(`should return an object which contains the data for both footer and header`, done => {
+                            getModules('footer', 'header')
+                                .then(modules => {
+                                    expect(modules).to.deep.eq({ footer: footerModuleData, header: headerModuleData });
+                                    expect(modules).to.not.have.property('traveltheme');
+                                    done();
+                                })
+                                .catch(done);
                         });
                     });
                 });
@@ -101,17 +106,17 @@ describe(`Module API`, () => {
                         footerModuleData = {};
                         themeModuleData = { moduleName: 'traveltheme' };
                         makeRequestStub = sinon.stub().resolves({
-                            data: [
-                                themeModuleData
-                            ]
+                            data: [themeModuleData]
                         });
                     });
 
-                    it(`should return an object which contains the data for traveltheme`, (done) => {
-                        getModules('traveltheme', 'footer').then((modules) => {
-                            expect(modules).to.deep.eq({theme: themeModuleData, footer: footerModuleData});
-                            done();
-                        }).catch(done);
+                    it(`should return an object which contains the data for traveltheme`, done => {
+                        getModules('traveltheme', 'footer')
+                            .then(modules => {
+                                expect(modules).to.deep.eq({ theme: themeModuleData, footer: footerModuleData });
+                                done();
+                            })
+                            .catch(done);
                     });
                 });
 
@@ -119,20 +124,20 @@ describe(`Module API`, () => {
                     describe(`and there is heroModule data `, () => {
                         before(() => {
                             footerModuleData = {};
-                            heroModuleData = { moduleName: 'hero', moduleManualContent: { data: [ { id: "NOW-19532" } ] } };
+                            heroModuleData = { moduleName: 'hero', moduleManualContent: { data: [{ id: 'NOW-19532' }] } };
                             expectedHeroData = { id: 'NOW-19532' };
                             makeRequestStub = sinon.stub().resolves({
-                                data: [
-                                    heroModuleData
-                                ]
+                                data: [heroModuleData]
                             });
                         });
 
-                        it(`should return an object which contains the data for hero`, (done) => {
-                            getModules('hero', 'footer').then((modules) => {
-                                expect(modules).to.deep.eq({ hero: expectedHeroData, footer: {} });
-                                done();
-                            }).catch(done);
+                        it(`should return an object which contains the data for hero`, done => {
+                            getModules('hero', 'footer')
+                                .then(modules => {
+                                    expect(modules).to.deep.eq({ hero: expectedHeroData, footer: {} });
+                                    done();
+                                })
+                                .catch(done);
                         });
                     });
 
@@ -140,41 +145,40 @@ describe(`Module API`, () => {
                         before(() => {
                             heroModuleData = { moduleName: 'hero', moduleManualContent: { data: [] } };
                             makeRequestStub = sinon.stub().resolves({
-                                data: [
-                                    heroModuleData
-                                ]
+                                data: [heroModuleData]
                             });
                         });
 
-                        it(`should return null`, (done) => {
-                            getModules('hero', 'footer').then((modules) => {
-                                expect(modules).to.deep.eq({ hero: null, footer: {} });
-                                done();
-                            }).catch(done);
+                        it(`should return null`, done => {
+                            getModules('hero', 'footer')
+                                .then(modules => {
+                                    expect(modules).to.deep.eq({ hero: null, footer: {} });
+                                    done();
+                                })
+                                .catch(done);
                         });
                     });
                 });
 
                 describe(`and there is a moduleName equal to 'awwhero'`, () => {
                     before(() => {
-                        heroModuleData = { moduleName: 'hero', moduleManualContent: { data: [ { id: "NOW-19532" } ] } };
-                        awwHeroModuleData = { moduleName: 'awwhero', moduleManualContent: { data: [ { id: "NOW-19533" } ] } };
+                        heroModuleData = { moduleName: 'hero', moduleManualContent: { data: [{ id: 'NOW-19532' }] } };
+                        awwHeroModuleData = { moduleName: 'awwhero', moduleManualContent: { data: [{ id: 'NOW-19533' }] } };
                         expectedHeroData = awwHeroModuleData.moduleManualContent.data[0];
                         makeRequestStub = sinon.stub().resolves({
-                            data: [
-                                heroModuleData,
-                                awwHeroModuleData
-                            ]
+                            data: [heroModuleData, awwHeroModuleData]
                         });
-                    })
+                    });
 
-                    it(`should return awwHreoModuleData in hero section`, (done) => {
-                        getModules('hero', 'awwhero').then((modules) => {
-                            expect(modules.hero).to.deep.eq( {...expectedHeroData, isBrandHero: true });
-                            done();
-                        }).catch(done);
-                    })
-                })
+                    it(`should return awwHreoModuleData in hero section`, done => {
+                        getModules('hero', 'awwhero')
+                            .then(modules => {
+                                expect(modules.hero).to.deep.eq({ ...expectedHeroData, isBrandHero: true });
+                                done();
+                            })
+                            .catch(done);
+                    });
+                });
             });
         });
     });

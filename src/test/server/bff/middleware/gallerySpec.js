@@ -1,7 +1,7 @@
 import proxyquire, { noCallThru } from 'proxyquire';
-import gallery from '../../../mocks/gallery'
-import moreGalleries from '../../../mocks/moreGalleries'
-import listing from '../../../mocks/listing'
+import gallery from '../../../mocks/gallery';
+import moreGalleries from '../../../mocks/moreGalleries';
+import listing from '../../../mocks/listing';
 noCallThru();
 
 let getLatestTeasersStub = () => {};
@@ -9,8 +9,12 @@ let getMoreGalleriesStub = () => {};
 
 const galleryMiddleware = proxyquire('../../../../app/server/bff/middleware/gallery', {
     '../api/listing': {
-        getLatestTeasers: () => { return getLatestTeasersStub() },
-        getMoreGalleries: () => { return getMoreGalleriesStub() }
+        getLatestTeasers: () => {
+            return getLatestTeasersStub();
+        },
+        getMoreGalleries: () => {
+            return getMoreGalleriesStub();
+        }
     }
 }).default;
 
@@ -19,22 +23,22 @@ describe('Gallery middleware', () => {
         brands: {
             uniheader: [
                 {
-                    "id": "aww",
-                    "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
-                    "url": "/aww",
-                    "title": "Australian Women's Weekly"
+                    id: 'aww',
+                    imageUrl: '/assets/images/headerlogos/AWW-logo.svg',
+                    url: '/aww',
+                    title: "Australian Women's Weekly"
                 },
                 {
-                    "id": "wd",
-                    "imageUrl": "/assets/images/headerlogos/WD-logo.svg",
-                    "url": "/womansday",
-                    "title": "Woman's Day"
+                    id: 'wd',
+                    imageUrl: '/assets/images/headerlogos/WD-logo.svg',
+                    url: '/womansday',
+                    title: "Woman's Day"
                 },
                 {
-                    "id": "gh",
-                    "imageUrl": "/assets/images/headerlogos/GH-logo.svg",
-                    "url": "/good-health",
-                    "title": "Good Health"
+                    id: 'gh',
+                    imageUrl: '/assets/images/headerlogos/GH-logo.svg',
+                    url: '/good-health',
+                    title: 'Good Health'
                 }
             ]
         }
@@ -51,7 +55,6 @@ describe('Gallery middleware', () => {
     let req;
 
     describe('when nodeTypeAlias is NOT `Gallery`', () => {
-
         before(() => {
             req = {
                 app: { locals: {} },
@@ -67,24 +70,27 @@ describe('Gallery middleware', () => {
             req.data.entity.nodeTypeAlias = validNodeType;
         });
 
-        it('should not set moreGalleries on `req.data` object', (done) => {
-            galleryMiddleware(req, res, next).then(() => {
-                expect(req.data).to.not.include.keys('moreGalleries');
-                expect(next).to.be.called;
-                done();
-            }).catch(done);
+        it('should not set moreGalleries on `req.data` object', done => {
+            galleryMiddleware(req, res, next)
+                .then(() => {
+                    expect(req.data).to.not.include.keys('moreGalleries');
+                    expect(next).to.be.called;
+                    done();
+                })
+                .catch(done);
         });
-        it('should not set leftHandSide on `req.data` object', (done) => {
-            galleryMiddleware(req, res, next).then(() => {
-                expect(req.data).to.not.include.keys('leftHandSide');
-                expect(next).to.be.called;
-                done();
-            }).catch(done);
+        it('should not set leftHandSide on `req.data` object', done => {
+            galleryMiddleware(req, res, next)
+                .then(() => {
+                    expect(req.data).to.not.include.keys('leftHandSide');
+                    expect(next).to.be.called;
+                    done();
+                })
+                .catch(done);
         });
     });
 
     describe('when there is no sectionId', () => {
-
         before(() => {
             delete req.data.entity.sectionId;
         });
@@ -93,12 +99,14 @@ describe('Gallery middleware', () => {
             req.data.entity.sectionId = validSectionId;
         });
 
-        it('should not set leftHandSide on `req.data` object', (done) => {
-            galleryMiddleware(req, res, next).then(() => {
-                expect(req.data).to.not.include.keys('leftHandSide');
-                expect(next).to.be.called;
-                done();
-            }).catch(done);
+        it('should not set leftHandSide on `req.data` object', done => {
+            galleryMiddleware(req, res, next)
+                .then(() => {
+                    expect(req.data).to.not.include.keys('leftHandSide');
+                    expect(next).to.be.called;
+                    done();
+                })
+                .catch(done);
         });
     });
 
@@ -131,11 +139,13 @@ describe('Gallery middleware', () => {
                 getMoreGalleriesStub = sinon.stub().resolves(moreGalleries);
             });
 
-            it('should set adBrand as gh', (done) => {
-                galleryMiddleware(req, res, next).then(() => {
-                    expect(req.data.entity.adBrand).to.equal('gh');
-                    done();
-                }).catch(done);
+            it('should set adBrand as gh', done => {
+                galleryMiddleware(req, res, next)
+                    .then(() => {
+                        expect(req.data.entity.adBrand).to.equal('gh');
+                        done();
+                    })
+                    .catch(done);
             });
         });
 
@@ -161,17 +171,17 @@ describe('Gallery middleware', () => {
                 getMoreGalleriesStub = sinon.stub().resolves(moreGalleries);
             });
 
-            it('should set adBrand as ntl', (done) => {
-                galleryMiddleware(req, res, next).then(() => {
-                    expect(req.data.entity.adBrand).to.equal('ntl');
-                    done();
-                }).catch(done);
-
+            it('should set adBrand as ntl', done => {
+                galleryMiddleware(req, res, next)
+                    .then(() => {
+                        expect(req.data.entity.adBrand).to.equal('ntl');
+                        done();
+                    })
+                    .catch(done);
             });
         });
 
         describe('when moreGalleries is called', () => {
-
             before(() => {
                 reqBase = {
                     app: { locals: { config } },
@@ -194,18 +204,19 @@ describe('Gallery middleware', () => {
                 getMoreGalleriesStub = sinon.stub().resolves(moreGalleries);
             });
 
-            it('should set moreGalleries in req.data with `getMoreGalleries` response', (done) => {
-                galleryMiddleware(req, res, next).then(() => {
-                    expect(req.data).to.include.keys('moreGalleries');
-                    expect(req.data.moreGalleries).to.equal(moreGalleries);
-                    expect(next).to.be.called;
-                    done();
-                }).catch(done);
+            it('should set moreGalleries in req.data with `getMoreGalleries` response', done => {
+                galleryMiddleware(req, res, next)
+                    .then(() => {
+                        expect(req.data).to.include.keys('moreGalleries');
+                        expect(req.data.moreGalleries).to.equal(moreGalleries);
+                        expect(next).to.be.called;
+                        done();
+                    })
+                    .catch(done);
             });
         });
 
         describe('when sectionId has a value', () => {
-
             before(() => {
                 reqBase = {
                     app: { locals: { config } },
@@ -229,13 +240,15 @@ describe('Gallery middleware', () => {
                 getMoreGalleriesStub = sinon.stub().resolves(moreGalleries);
             });
 
-            it('should set leftHandSide in req.data with `getLatestTeasers` response', (done) => {
-                galleryMiddleware(req, res, next).then(() => {
-                    expect(req.data).to.include.keys('leftHandSide');
-                    expect(req.data.leftHandSide).to.equal(listing);
-                    expect(next).to.be.called;
-                    done();
-                }).catch(done);
+            it('should set leftHandSide in req.data with `getLatestTeasers` response', done => {
+                galleryMiddleware(req, res, next)
+                    .then(() => {
+                        expect(req.data).to.include.keys('leftHandSide');
+                        expect(req.data.leftHandSide).to.equal(listing);
+                        expect(next).to.be.called;
+                        done();
+                    })
+                    .catch(done);
             });
         });
     });

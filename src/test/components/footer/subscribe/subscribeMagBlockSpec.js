@@ -1,7 +1,7 @@
-import {betterMockComponentContext} from '@bxm/flux';
+import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
-const {React, ReactDOM, TestUtils} = Context;
-import proxyquire, {noCallThru} from 'proxyquire';
+const { React, ReactDOM, TestUtils } = Context;
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 var SubscribeMagBlock = proxyquire('../../../../app/components/footer/subscribe/subscribeMagBlock', {}).default;
@@ -27,13 +27,16 @@ describe('SubscribeMagBlock', function() {
         reactModule = Context.mountComponent(SubscribeMagBlock, { imageUrl });
     });
 
-    it('should exist', function () {
+    it('should exist', function() {
         should.exist(ReactDOM.findDOMNode(reactModule));
     });
 
     const expectedTarget = '_blank';
-    it('should set the target to be _blank', function () {
-        ReactDOM.findDOMNode(reactModule).querySelector('.subscription__image--mag').getAttribute('target').should.equal(expectedTarget);
+    it('should set the target to be _blank', function() {
+        ReactDOM.findDOMNode(reactModule)
+            .querySelector('.subscription__image--mag')
+            .getAttribute('target')
+            .should.equal(expectedTarget);
     });
 
     it('should have the images', function() {
@@ -47,7 +50,7 @@ describe('SubscribeMagBlock', function() {
     });
 
     describe('Given the Subscribe component appears in the side navigation', () => {
-        before( () => {
+        before(() => {
             reactModule = Context.mountComponent(SubscribeMagBlock, {
                 inSideNav: true
             });
@@ -58,5 +61,4 @@ describe('SubscribeMagBlock', function() {
             expect(subscribeImage).to.not.exist;
         });
     });
-
 });

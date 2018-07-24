@@ -8,7 +8,6 @@ import polar from './polar';
 import routes from './routes';
 
 export default {
-
     ga: { id: 'UA-57795117-6' },
 
     gtm: { masthead: 'NOW', id: 'GTM-MSL9XB' },

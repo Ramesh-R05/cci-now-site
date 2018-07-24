@@ -21,7 +21,7 @@ export default function headerMeta(req, res, next) {
         entity.pageTitle = (entity.pageTitle || entity.contentTitle) + (currentPageNo > 1 ? ` - Page ${currentPageNo}` : '');
 
         if (entity.pageMetaDescription) {
-            entity.pageMetaDescription += (currentPageNo > 1 ? ` - Page ${currentPageNo}` : '');
+            entity.pageMetaDescription += currentPageNo > 1 ? ` - Page ${currentPageNo}` : '';
         } else {
             entity.pageMetaDescription = entity.contentSummary ? entity.contentSummary : entity.pageTitle;
         }

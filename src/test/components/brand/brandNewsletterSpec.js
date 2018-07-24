@@ -7,35 +7,35 @@ describe(`brandNewsletter`, () => {
     let reactModule;
 
     const brandPropStub = {
-        "id": "testid",
-        "title": "Australian Women's Weekly",
-        "magazineTitle": "The Weekly",
-        "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
-        "url": "/aww",
-        "socialLinks": {
-            "facebookUrl": "https://www.facebook.com/WomensWeeklyMag",
-            "twitterUrl": "https://twitter.com/womensweeklymag",
-            "instagramUrl": "http://instagram.com/womensweeklymag"
+        id: 'testid',
+        title: "Australian Women's Weekly",
+        magazineTitle: 'The Weekly',
+        imageUrl: '/assets/images/headerlogos/AWW-logo.svg',
+        url: '/aww',
+        socialLinks: {
+            facebookUrl: 'https://www.facebook.com/WomensWeeklyMag',
+            twitterUrl: 'https://twitter.com/womensweeklymag',
+            instagramUrl: 'http://instagram.com/womensweeklymag'
         },
-        "newsletterUrl": "http://newslettertest.com/"
+        newsletterUrl: 'http://newslettertest.com/'
     };
 
     const contextConfigStub = {
         key: 'config',
         type: '',
         value: {
-            global:  {
+            global: {
                 breakpoints: ''
             },
             urls: {
-                newsletterUrl: "http://defaulturl.com"
+                newsletterUrl: 'http://defaulturl.com'
             }
         }
     };
 
     describe('when passing in brandPropStub', () => {
         before(() => {
-            reactModule = Context.mountComponent(brandNewsletter, {brand: brandPropStub}, [contextConfigStub]);
+            reactModule = Context.mountComponent(brandNewsletter, { brand: brandPropStub }, [contextConfigStub]);
         });
 
         it('should render a component with a class of newsletter-subscribe__button-testid', () => {
@@ -50,7 +50,7 @@ describe(`brandNewsletter`, () => {
 
         it('should render an anchor with a src of brandPropStub newsletterUrl', () => {
             const a = TestUtils.findRenderedDOMComponentWithTag(reactModule, 'a');
-            expect(a.href).to.eq("http://newslettertest.com/");
+            expect(a.href).to.eq('http://newslettertest.com/');
         });
     });
 
@@ -71,8 +71,7 @@ describe(`brandNewsletter`, () => {
 
         it('should render an anchor with a src of brandPropStub newsletterUrl', () => {
             const a = TestUtils.findRenderedDOMComponentWithTag(reactModule, 'a');
-            expect(a.href).to.eq("http://defaulturl.com/");
+            expect(a.href).to.eq('http://defaulturl.com/');
         });
     });
 });
-

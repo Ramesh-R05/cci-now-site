@@ -32,9 +32,7 @@ export default class TeaserListView extends Component {
     };
 
     render() {
-        const {
-            className, items, adTargets, index, nativeAdConfig, showDate, loadAgain, showAd
-        } = this.props;
+        const { className, items, adTargets, index, nativeAdConfig, showDate, loadAgain, showAd } = this.props;
         const adProps = {
             className: 'ad--section-mrec',
             displayFor: ['medium', 'large', 'xlarge'],
@@ -47,14 +45,15 @@ export default class TeaserListView extends Component {
 
         let ad = null;
         if (showAd) {
-            ad = items.length > 1
-                ? (
+            ad =
+                items.length > 1 ? (
                     <StickyBlock carriageYPosition={95} breakpoints={['medium', 'large', 'xlarge']}>
                         <Ad {...adProps} />
                     </StickyBlock>
-                ) : <Ad {...adProps} />;
+                ) : (
+                    <Ad {...adProps} />
+                );
         }
-
 
         if (index) adProps.targets.position += index;
 
@@ -65,30 +64,30 @@ export default class TeaserListView extends Component {
                 <div className="row">
                     <div className="teaser-view-container teaser-view-list-container">
                         <TeaserList
-                          listClassName="teaser-view-list"
-                          CustomisedTeaser={Teaser}
-                          showDate={showDate}
-                          articles={items}
-                          showSubSection
-                          imageSizes={{
+                            listClassName="teaser-view-list"
+                            CustomisedTeaser={Teaser}
+                            showDate={showDate}
+                            articles={items}
+                            showSubSection
+                            imageSizes={{
                                 s: { w: 323, h: 269 },
                                 m: { w: 452, h: 254 },
                                 l: { w: 409, h: 230 },
                                 xl: { w: 1010, h: 478 }
                             }}
-                          adPosition={4}
-                          adConfig={{
+                            adPosition={4}
+                            adConfig={{
                                 className: 'ad--teaser-list',
                                 displayFor: 'small',
                                 sizes: 'mrec',
                                 targets: adProps.targets,
                                 pageLocation: Ad.pos.body
                             }}
-                          nativeAdConfig={nativeAdConfig}
-                          loadAgain={loadAgain}
+                            nativeAdConfig={nativeAdConfig}
+                            loadAgain={loadAgain}
                         />
                     </div>
-                    { ad }
+                    {ad}
                 </div>
             </div>
         );

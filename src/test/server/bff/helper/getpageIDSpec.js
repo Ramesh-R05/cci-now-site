@@ -1,4 +1,4 @@
-import proxyquire, {noCallThru} from 'proxyquire';
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 const sitePrefix = 'DOLLY';
@@ -15,12 +15,12 @@ describe('#getPageID', () => {
     const validPageID = `${sitePrefix}-1234`;
     const invalidPageParam = 'this-is-a-invalid';
 
-    it(`should return valid page ID ${validPageID}`, ()=> {
+    it(`should return valid page ID ${validPageID}`, () => {
         const pageID = getPageID(validPageParam);
         expect(pageID).to.equal(validPageID);
     });
 
-    it(`should return undefined for invalid page ID`, ()=> {
+    it(`should return undefined for invalid page ID`, () => {
         const pageID = getPageID(invalidPageParam);
         expect(pageID).to.be.empty;
     });

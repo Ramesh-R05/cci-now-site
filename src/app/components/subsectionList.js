@@ -19,40 +19,34 @@ const styles = {
 };
 
 export default class SubsectionList extends Component {
-    static displayName = 'SubsectionList'
+    static displayName = 'SubsectionList';
 
     static propTypes = {
-        subsections: PropTypes.arrayOf(PropTypes.shape({
-            url: PropTypes.string,
-            contentTitle: PropTypes.string
-        })).isRequired,
+        subsections: PropTypes.arrayOf(
+            PropTypes.shape({
+                url: PropTypes.string,
+                contentTitle: PropTypes.string
+            })
+        ).isRequired,
         currentUrl: PropTypes.string.isRequired
     };
 
     handleChange = (event, index, value) => {
         if (value && window) window.location = value;
-    }
+    };
 
     render() {
         const { currentUrl, subsections } = this.props;
         let selectedItem;
-        const items = subsections.map((item) => {
+        const items = subsections.map(item => {
             if (currentUrl === item.url) selectedItem = currentUrl;
             const gtmClass = `gtm-subsection-${item.url.replace(/\/.+\//, '')}`;
 
-            return (
-                <MenuItem value={item.url} primaryText={item.contentTitle} className={`subsections-list-item ${gtmClass}`} />
-            );
+            return <MenuItem value={item.url} primaryText={item.contentTitle} className={`subsections-list-item ${gtmClass}`} />;
         });
 
         return (
-            <DropDownMenu
-              value={selectedItem}
-              onChange={this.handleChange}
-              className="subsections-list"
-              autoWidth={false}
-              {...styles}
-            >
+            <DropDownMenu value={selectedItem} onChange={this.handleChange} className="subsections-list" autoWidth={false} {...styles}>
                 <MenuItem primaryText="Select a sub-section..." className="subsections-list" />
                 {items}
             </DropDownMenu>

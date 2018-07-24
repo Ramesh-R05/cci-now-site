@@ -4,7 +4,6 @@ import Article from '@bxm/article/lib/article';
 import Page from './page';
 import Teaser from '../components/teaser/teaser';
 
-
 export default class Document extends Component {
     static displayName = 'Document';
 
@@ -41,7 +40,6 @@ export default class Document extends Component {
         }
     };
 
-
     render() {
         const { currentUrl, nodeType, theme } = this.props;
 
@@ -54,42 +52,32 @@ export default class Document extends Component {
 
         if (nodeType === 'Gallery') {
             return (
-                <Page
-                  currentUrl={currentUrl}
-                  headerExpanded={false}
-                  hideFooter={false}
-                  theme={theme}
-                >
+                <Page currentUrl={currentUrl} headerExpanded={false} hideFooter={false} theme={theme}>
                     <Gallery
-                      articleHeaderOrder={['Source', 'Title', 'Summary', 'Date', 'Author', 'ImageCount', 'NativeAd', 'Hero']}
-                      contentBodyConfig={galleryContentBodyConfig}
-                      enableTeads
-                      CustomisedTeaser={Teaser}
-                      showAdBeforeRecommendations
-                      showSocialShare
-                      socialShare={socialShare}
-                      theme={theme}
+                        articleHeaderOrder={['Source', 'Title', 'Summary', 'Date', 'Author', 'ImageCount', 'NativeAd', 'Hero']}
+                        contentBodyConfig={galleryContentBodyConfig}
+                        enableTeads
+                        CustomisedTeaser={Teaser}
+                        showAdBeforeRecommendations
+                        showSocialShare
+                        socialShare={socialShare}
+                        theme={theme}
                     />
                 </Page>
             );
         }
 
         return (
-            <Page
-              currentUrl={currentUrl}
-              headerExpanded={false}
-              hideFooter={false}
-              theme={theme}
-            >
+            <Page currentUrl={currentUrl} headerExpanded={false} hideFooter={false} theme={theme}>
                 <Article
-                  articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero']}
-                  contentBodyConfig={Document.articleContentBodyConfig}
-                  enableTeads
-                  CustomisedTeaser={Teaser}
-                  showAdBeforeRecommendations
-                  showSocialShare
-                  socialShare={socialShare}
-                  theme={theme}
+                    articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero']}
+                    contentBodyConfig={Document.articleContentBodyConfig}
+                    enableTeads
+                    CustomisedTeaser={Teaser}
+                    showAdBeforeRecommendations
+                    showSocialShare
+                    socialShare={socialShare}
+                    theme={theme}
                 />
             </Page>
         );

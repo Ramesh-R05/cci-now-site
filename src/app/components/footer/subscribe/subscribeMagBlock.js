@@ -10,11 +10,8 @@ class SubscribeMagBlock extends Component {
     };
 
     render() {
-        const {
-            inSideNav, footer, subscribeMagUrl, subscribeIpadUrl
-        } = this.props;
+        const { inSideNav, footer, subscribeMagUrl, subscribeIpadUrl } = this.props;
         if (inSideNav) return null;
-
 
         return (
             <div className="subscription__image small-12 medium-6 columns">

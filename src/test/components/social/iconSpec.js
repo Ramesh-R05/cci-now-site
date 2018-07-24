@@ -1,12 +1,12 @@
-import {betterMockComponentContext} from '@bxm/flux';
+import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
-const {React, ReactDOM, TestUtils} = Context;
-import proxyquire, {noCallThru} from 'proxyquire';
+const { React, ReactDOM, TestUtils } = Context;
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 const InlineSVGStub = Context.createStubComponent();
 
 const SocialIcon = proxyquire('../../../app/components/social/icon', {
-    'react': React,
+    react: React,
     'react-inlinesvg': InlineSVGStub
 }).default;
 
@@ -69,7 +69,6 @@ describe(`SocialIcon`, () => {
         });
     });
 });
-
 
 describe(`SocialIcon without URL`, () => {
     const svgFile = 'facebook.svg';

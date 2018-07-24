@@ -6,9 +6,13 @@ let makeRequestStub = () => {};
 let getLatestTeasersStub = () => {};
 
 const sectionMiddleware = proxyquire('../../../../app/server/bff/middleware/section', {
-    '../../makeRequest': (...args) => { return makeRequestStub(...args) },
+    '../../makeRequest': (...args) => {
+        return makeRequestStub(...args);
+    },
     '../api/listing': {
-        getLatestTeasers: (...args) => { return getLatestTeasersStub(...args) }
+        getLatestTeasers: (...args) => {
+            return getLatestTeasersStub(...args);
+        }
     }
 }).default;
 
@@ -17,22 +21,22 @@ describe('Section middleware', () => {
         brands: {
             uniheader: [
                 {
-                    "id": "aww",
-                    "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
-                    "url": "/aww",
-                    "title": "Australian Women's Weekly"
+                    id: 'aww',
+                    imageUrl: '/assets/images/headerlogos/AWW-logo.svg',
+                    url: '/aww',
+                    title: "Australian Women's Weekly"
                 },
                 {
-                    "id": "wd",
-                    "imageUrl": "/assets/images/headerlogos/WD-logo.svg",
-                    "url": "/womansday",
-                    "title": "Woman's Day"
+                    id: 'wd',
+                    imageUrl: '/assets/images/headerlogos/WD-logo.svg',
+                    url: '/womansday',
+                    title: "Woman's Day"
                 },
                 {
-                    "id": "gh",
-                    "imageUrl": "/assets/images/headerlogos/GH-logo.svg",
-                    "url": "/good-health",
-                    "title": "Good Health"
+                    id: 'gh',
+                    imageUrl: '/assets/images/headerlogos/GH-logo.svg',
+                    url: '/good-health',
+                    title: 'Good Health'
                 }
             ]
         },
@@ -42,7 +46,7 @@ describe('Section middleware', () => {
             }
         }
     };
-    const validRes = {data: [1, 2]};
+    const validRes = { data: [1, 2] };
     const validSection = 'fashion';
     const res = {};
     let next;
@@ -52,7 +56,11 @@ describe('Section middleware', () => {
 
     describe('when there is a section in the query param and nodeTypeAlias equal to Section', () => {
         before(() => {
-            reqBase = { app: { locals: { config: { services: { remote: { module: ''}}}}}, data: { entity: { nodeTypeAlias: 'Section', nodeName: 'travel' } }, query: { section: 'sec' } };
+            reqBase = {
+                app: { locals: { config: { services: { remote: { module: '' } } } } },
+                data: { entity: { nodeTypeAlias: 'Section', nodeName: 'travel' } },
+                query: { section: 'sec' }
+            };
         });
 
         describe('when the remote returns an error response', () => {
@@ -68,52 +76,78 @@ describe('Section middleware', () => {
                 getLatestTeasersStub = sinon.stub().rejects(rejectedResponse);
             });
 
-            it('should pass error to next middleware', (done) => {
-                sectionMiddleware(req, res, next).then(() => {
-                    expect(next).to.be.calledWith(rejectedResponse);
-                    done();
-                }).catch(done);
+            it('should pass error to next middleware', done => {
+                sectionMiddleware(req, res, next)
+                    .then(() => {
+                        expect(next).to.be.calledWith(rejectedResponse);
+                        done();
+                    })
+                    .catch(done);
             });
         });
 
         describe('when the remote returns the list of teasers', () => {
             before(() => {
-                req = { ...reqBase, app: { locals: { config: { site: { host: 'http://site-host.com'},
-                    services: { remote: { module: 'http://module.url' } } } } } };
+                req = {
+                    ...reqBase,
+                    app: {
+                        locals: {
+                            config: {
+                                site: { host: 'http://site-host.com' },
+                                services: { remote: { module: 'http://module.url' } }
+                            }
+                        }
+                    }
+                };
                 req.data.headerNav = [1, 2, 3];
                 next = sinon.spy();
                 getLatestTeasersStub = sinon.stub().resolves(validRes);
             });
 
-            it('should store the latest teasers in `req.data`', (done) => {
-                sectionMiddleware(req, res, next).then(() => {
-                    expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, `parentUrl eq %27/${req.query.section}%27`);
-                    done();
-                }).catch(done);
+            it('should store the latest teasers in `req.data`', done => {
+                sectionMiddleware(req, res, next)
+                    .then(() => {
+                        expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, `parentUrl eq %27/${req.query.section}%27`);
+                        done();
+                    })
+                    .catch(done);
             });
 
-            it('should have valid section value in `req.data.list`', (done) => {
-                sectionMiddleware(req, res, next).then(() => {
-                    expect(req.data.list.params.section).to.equal('/sec');
-                    done();
-                }).catch(done);
+            it('should have valid section value in `req.data.list`', done => {
+                sectionMiddleware(req, res, next)
+                    .then(() => {
+                        expect(req.data.list.params.section).to.equal('/sec');
+                        done();
+                    })
+                    .catch(done);
             });
         });
 
         describe('when a query param of pageNo 2 is passed in', () => {
             before(() => {
-                req = { ...reqBase, app: { locals: { config: { site: { host: 'http://site-host.com'},
-                    services: { remote: { module: 'http://module.url' } } } } } };
+                req = {
+                    ...reqBase,
+                    app: {
+                        locals: {
+                            config: {
+                                site: { host: 'http://site-host.com' },
+                                services: { remote: { module: 'http://module.url' } }
+                            }
+                        }
+                    }
+                };
                 req.query.pageNo = 2;
                 next = sinon.spy();
                 getLatestTeasersStub = sinon.stub().resolves(validRes);
             });
 
-            it('should not have a query param in the previous page url', (done) => {
-                sectionMiddleware(req, res, next).then(() => {
-                    expect(req.data.list.previous.url).to.equal('http://site-host.com/sec');
-                    done();
-                }).catch(done);
+            it('should not have a query param in the previous page url', done => {
+                sectionMiddleware(req, res, next)
+                    .then(() => {
+                        expect(req.data.list.previous.url).to.equal('http://site-host.com/sec');
+                        done();
+                    })
+                    .catch(done);
             });
         });
     });
@@ -125,12 +159,14 @@ describe('Section middleware', () => {
             getLatestTeasersStub = sinon.stub();
         });
 
-        it(`should call next without making a request`, (done) => {
-            sectionMiddleware(req, res, next).then(() => {
-                expect(next).to.have.been.called;
-                expect(getLatestTeasersStub).to.not.have.been.called;
-                done();
-            }).catch(done);
+        it(`should call next without making a request`, done => {
+            sectionMiddleware(req, res, next)
+                .then(() => {
+                    expect(next).to.have.been.called;
+                    expect(getLatestTeasersStub).to.not.have.been.called;
+                    done();
+                })
+                .catch(done);
         });
     });
 
@@ -141,12 +177,14 @@ describe('Section middleware', () => {
             getLatestTeasersStub = sinon.stub();
         });
 
-        it(`should call next without making a request`, (done) => {
-            sectionMiddleware(req, res, next).then(() => {
-                expect(next).to.have.been.called;
-                expect(getLatestTeasersStub).to.not.have.been.called;
-                done();
-            }).catch(done);
+        it(`should call next without making a request`, done => {
+            sectionMiddleware(req, res, next)
+                .then(() => {
+                    expect(next).to.have.been.called;
+                    expect(getLatestTeasersStub).to.not.have.been.called;
+                    done();
+                })
+                .catch(done);
         });
     });
 
@@ -162,12 +200,14 @@ describe('Section middleware', () => {
                 getLatestTeasersStub = sinon.stub();
             });
 
-            it(`should call next without making a request`, (done) => {
-                sectionMiddleware(req, res, next).then(() => {
-                    expect(next).to.have.been.called;
-                    expect(getLatestTeasersStub).to.not.have.been.called;
-                    done();
-                }).catch(done);
+            it(`should call next without making a request`, done => {
+                sectionMiddleware(req, res, next)
+                    .then(() => {
+                        expect(next).to.have.been.called;
+                        expect(getLatestTeasersStub).to.not.have.been.called;
+                        done();
+                    })
+                    .catch(done);
             });
         });
     });
@@ -178,7 +218,7 @@ describe('Section middleware', () => {
         let req;
         let reqBase;
 
-        describe('when source is Australian Women\'s Weekly', () => {
+        describe("when source is Australian Women's Weekly", () => {
             before(() => {
                 reqBase = {
                     app: { locals: { config } },
@@ -188,7 +228,7 @@ describe('Section middleware', () => {
                     data: {
                         entity: {
                             nodeTypeAlias: 'Brand',
-                            source: "Australian Women\'s Weekly"
+                            source: "Australian Women's Weekly"
                         }
                     }
                 };
@@ -196,11 +236,13 @@ describe('Section middleware', () => {
                 next = sinon.spy();
             });
 
-            it('should set adBrand as aww', (done) => {
-                sectionMiddleware(req, res, next).then(() => {
-                    expect(req.data.entity.adBrand).to.equal('aww');
-                    done();
-                }).catch(done);
+            it('should set adBrand as aww', done => {
+                sectionMiddleware(req, res, next)
+                    .then(() => {
+                        expect(req.data.entity.adBrand).to.equal('aww');
+                        done();
+                    })
+                    .catch(done);
             });
         });
 
@@ -221,12 +263,13 @@ describe('Section middleware', () => {
                 next = sinon.spy();
             });
 
-            it('should set adBrand as ntl', (done) => {
-                sectionMiddleware(req, res, next).then(() => {
-                    expect(req.data.entity.adBrand).to.equal('ntl');
-                    done();
-                }).catch(done);
-
+            it('should set adBrand as ntl', done => {
+                sectionMiddleware(req, res, next)
+                    .then(() => {
+                        expect(req.data.entity.adBrand).to.equal('ntl');
+                        done();
+                    })
+                    .catch(done);
             });
         });
 
@@ -240,7 +283,7 @@ describe('Section middleware', () => {
                     data: {
                         entity: {
                             nodeTypeAlias: 'Brand',
-                            source: "Australian Women\'s Weekly"
+                            source: "Australian Women's Weekly"
                         }
                     }
                 };
@@ -248,11 +291,17 @@ describe('Section middleware', () => {
                 next = sinon.spy();
             });
 
-            it('should request for teasers', (done) => {
-                sectionMiddleware(req, res, next).then(() => {
-                    expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, `source eq %27Australian Women''s Weekly%27 and nodeTypeAlias ne %27Brand%27`);
-                    done();
-                }).catch(done);
+            it('should request for teasers', done => {
+                sectionMiddleware(req, res, next)
+                    .then(() => {
+                        expect(getLatestTeasersStub).to.have.been.calledWith(
+                            14,
+                            0,
+                            `source eq %27Australian Women''s Weekly%27 and nodeTypeAlias ne %27Brand%27`
+                        );
+                        done();
+                    })
+                    .catch(done);
             });
         });
     });

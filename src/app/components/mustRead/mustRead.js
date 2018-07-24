@@ -47,21 +47,19 @@ class MustRead extends Component {
         return (
             <div className="mustread-teaser-view-grid">
                 <div className="home-page__teasers-title">
-                    <span>
-Must Read
-                    </span>
+                    <span>Must Read</span>
                 </div>
                 <div className="columns xlarge-10">
                     <TeaserList
-                      listClassName={MustRead.listClassName}
-                      imageSizes={MustRead.imageSizes}
-                      articles={newMustRead}
-                      CustomisedTeaser={Teaser}
-                      showDate={false}
-                      nativeAdConfig={{
+                        listClassName={MustRead.listClassName}
+                        imageSizes={MustRead.imageSizes}
+                        articles={newMustRead}
+                        CustomisedTeaser={Teaser}
+                        showDate={false}
+                        nativeAdConfig={{
                             slotPositionIndex: polarLabels.homeMustRead
                         }}
-                      sourceDefault="SPONSORED"
+                        sourceDefault="SPONSORED"
                     />
                 </div>
             </div>

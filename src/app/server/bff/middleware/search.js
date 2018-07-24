@@ -75,9 +75,7 @@ export default async function searchMiddleware(req, res, next) {
                     size: searchCount,
                     pageNo
                 },
-                items: [
-                    pageNo > 1 ? parseEntities(searchDataResp.results) : parseEntities(searchDataResp.results.slice(searchResultTeaserCount))
-                ],
+                items: [pageNo > 1 ? parseEntities(searchDataResp.results) : parseEntities(searchDataResp.results.slice(searchResultTeaserCount))],
                 previous: previousPage,
                 current: currentPage,
                 next: nextPage
@@ -111,7 +109,9 @@ export default async function searchMiddleware(req, res, next) {
 
         if (get(req, 'data.mustread')) {
             res.body.mustRead = parseEntities(req.data.mustread, {
-                title: 'title', imageUrl: 'imageUrl', location: 'url'
+                title: 'title',
+                imageUrl: 'imageUrl',
+                location: 'url'
             });
         }
 
@@ -122,7 +122,9 @@ export default async function searchMiddleware(req, res, next) {
             };
 
             res.body.promoted.items = parseEntities(req.data.promoted.items, {
-                title: 'title', imageUrl: 'imageUrl', location: 'url'
+                title: 'title',
+                imageUrl: 'imageUrl',
+                location: 'url'
             });
 
             res.body.promoted.title = req.data.promoted.title;

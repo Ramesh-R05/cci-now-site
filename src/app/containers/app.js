@@ -74,21 +74,11 @@ class Application extends Component {
 
     render() {
         if (!this.props.currentRoute) {
-            return (
-                <ErrorPage
-                  currentUrl={this.props.currentNavigate.url}
-                  status={this.props.currentNavigateError.statusCode}
-                />
-            );
+            return <ErrorPage currentUrl={this.props.currentNavigate.url} status={this.props.currentNavigateError.statusCode} />;
         }
 
         if (this.props.error) {
-            return (
-                <ErrorPage
-                  currentUrl={this.props.currentRoute.url}
-                  status={this.props.error.status}
-                />
-            );
+            return <ErrorPage currentUrl={this.props.currentRoute.url} status={this.props.error.status} />;
         }
 
         const Handler = this.props.currentRoute.handler;
@@ -102,11 +92,7 @@ class Application extends Component {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div className={`${className} ${regionClassName}`}>
-                    <Handler
-                      currentUrl={this.props.currentRoute.url}
-                      nodeType={this.props.nodeType}
-                      theme={this.props.theme}
-                    />
+                    <Handler currentUrl={this.props.currentRoute.url} nodeType={this.props.nodeType} theme={this.props.theme} />
                 </div>
             </MuiThemeProvider>
         );

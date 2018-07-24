@@ -32,19 +32,12 @@ export default class Footer extends Component {
             <div>
                 <footer className={classNames}>
                     <div className="home-page__get-social-container">
-                        <span className="home-page__social-logo">
-Now To Love
-                        </span>
+                        <span className="home-page__social-logo">Now To Love</span>
                         <SocialContainer socialUrls={config.urls.socialUrls} />
                     </div>
-                    <FooterSubscribe
-                      url={`${config.get('newsletterIframeUrl')}!${iframeKey}`}
-                      isDisplayed={false}
-                    />
+                    <FooterSubscribe url={`${config.get('newsletterIframeUrl')}!${iframeKey}`} isDisplayed={false} />
                     <div className="footer__logos">
-                        <span className="footer__logos-title">
-CONTENT SUPPORTED BY
-                        </span>
+                        <span className="footer__logos-title">CONTENT SUPPORTED BY</span>
                         <br />
                         <nav className="footer__logos-nav">
                             <Logos className="footer__logos-list" openInNewTab logoList={logoList} />
@@ -52,9 +45,7 @@ CONTENT SUPPORTED BY
                     </div>
                     <FooterNavigation footerUrls={config.urls.footerUrls} />
                     <div className="footer__copyright">
-                        <span>
-&copy; Copyright Bauer Media Pty Ltd All Rights Reserved
-                        </span>
+                        <span>&copy; Copyright Bauer Media Pty Ltd All Rights Reserved</span>
                     </div>
                 </footer>
                 <BackToTop className="button" />

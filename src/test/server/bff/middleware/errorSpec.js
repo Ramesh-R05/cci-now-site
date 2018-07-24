@@ -1,9 +1,9 @@
-import proxyquire,  {noCallThru } from 'proxyquire';
+import proxyquire, { noCallThru } from 'proxyquire';
 
 noCallThru();
 
 const errorMiddleware = proxyquire('../../../../app/server/bff/middleware/error', {
-    '../../../../logger': { error(){} }
+    '../../../../logger': { error() {} }
 }).default;
 
 describe('Error middleware', () => {
@@ -20,7 +20,9 @@ describe('Error middleware', () => {
         let req = { data: reqDataStub };
         let statusStub;
         let jsonStub;
-        res.status = () => { return {json: () => {}}};
+        res.status = () => {
+            return { json: () => {} };
+        };
 
         before(() => {
             err = {
@@ -40,7 +42,7 @@ describe('Error middleware', () => {
         });
 
         it('should set response status to 404', () => {
-            const err404 = {...err};
+            const err404 = { ...err };
             err404.status = 404;
 
             errorMiddleware(err404, req, res, next);
@@ -49,7 +51,7 @@ describe('Error middleware', () => {
 
         it('should set response json to the error object', () => {
             errorMiddleware(err, req, res, next);
-            expect(jsonStub).to.be.calledWith( {
+            expect(jsonStub).to.be.calledWith({
                 error: err,
                 ...reqDataStub
             });

@@ -23,10 +23,10 @@ describe('#parseHeaderMetaData', () => {
 
     describe(`when not passing additional headerMetaData items`, () => {
         before(() => {
-            headerMetaData = parseHeaderMetaData(headerMetaDataInput)
+            headerMetaData = parseHeaderMetaData(headerMetaDataInput);
         });
 
-        it('should return required headerMetaData properties', ()=> {
+        it('should return required headerMetaData properties', () => {
             expect(headerMetaData).to.deep.equal(headerMetaDataOutput);
         });
     });
@@ -35,17 +35,16 @@ describe('#parseHeaderMetaData', () => {
         const additionalHeaderItems = {
             author: '',
             breadcrumbs: [],
-            googleTagManagerEnvironment: "Development",
-            googleTagManagerMasthead: "DOLLY",
-            robots: "NOINDEX,NOFOLLOW"
+            googleTagManagerEnvironment: 'Development',
+            googleTagManagerMasthead: 'DOLLY',
+            robots: 'NOINDEX,NOFOLLOW'
         };
         before(() => {
-            headerMetaData = parseHeaderMetaData(headerMetaDataInput, additionalHeaderItems)
+            headerMetaData = parseHeaderMetaData(headerMetaDataInput, additionalHeaderItems);
         });
 
-        it('should return required headerMetaData properties', ()=> {
+        it('should return required headerMetaData properties', () => {
             expect(headerMetaData).to.deep.equal(Object.assign({}, headerMetaDataOutput, additionalHeaderItems));
         });
     });
 });
-

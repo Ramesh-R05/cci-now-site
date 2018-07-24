@@ -40,20 +40,22 @@ export default class Logies extends Component {
 
         return (
             <Page
-              currentUrl={currentUrl}
-              headerExpanded={false}
-              pageTitle={pageTitle}
-              headerClassName=""
-              theme={theme}
-              showWallpaper={false}
-              hideLeaderboard
+                currentUrl={currentUrl}
+                headerExpanded={false}
+                pageTitle={pageTitle}
+                headerClassName=""
+                theme={theme}
+                showWallpaper={false}
+                hideLeaderboard
             >
                 <div style={{ maxWidth: '593px', margin: '0 auto' }}>
                     <iframe
-                      src="https://webapp.tectonicinteractive.com/logies2018/polling_v1.html"
-                      ref={(c) => { this.iframe = c; }}
-                      style={{ width: '1px', minWidth: '100%' }}
-                      title="Logies Vote"
+                        src="https://webapp.tectonicinteractive.com/logies2018/polling_v1.html"
+                        ref={c => {
+                            this.iframe = c;
+                        }}
+                        style={{ width: '1px', minWidth: '100%' }}
+                        title="Logies Vote"
                     />
                 </div>
             </Page>

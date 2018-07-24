@@ -1,10 +1,9 @@
 import get from 'lodash/object/get';
-import proxyquire, {noCallThru} from 'proxyquire';
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 const configStub = { site: { prodDomain: 'www.dolly.com.au' } };
 const headerMetaMiddleware = proxyquire('../../../../app/server/bff/middleware/headerMeta', {}).default;
-
 
 describe('HeaderMeta middleware', () => {
     let currentEnv;
@@ -22,13 +21,14 @@ describe('HeaderMeta middleware', () => {
         next = sinon.spy();
     });
 
-    describe(`when there is no APP_ENV set and is not on prod domain` , () => {
+    describe(`when there is no APP_ENV set and is not on prod domain`, () => {
         let req;
 
         beforeEach(() => {
             process.env.APP_ENV = '';
             req = {
-                ...baseReq, query: { hostname: 'dev.url.com' }
+                ...baseReq,
+                query: { hostname: 'dev.url.com' }
             };
         });
 
@@ -59,7 +59,7 @@ describe('HeaderMeta middleware', () => {
 
                 beforeEach(() => {
                     req.data = {};
-                    req.data.entity = { contentSummary, contentTitle};
+                    req.data.entity = { contentSummary, contentTitle };
                     headerMetaMiddleware(req, res, next);
                 });
 
@@ -93,7 +93,7 @@ describe('HeaderMeta middleware', () => {
 
             beforeEach(() => {
                 req.data = {};
-                req.data.entity = { contentSummary, contentTitle, pageTitle, pageMetaDescription};
+                req.data.entity = { contentSummary, contentTitle, pageTitle, pageMetaDescription };
                 headerMetaMiddleware(req, res, next);
             });
 
@@ -119,13 +119,14 @@ describe('HeaderMeta middleware', () => {
         });
     });
 
-    describe(`when APP_ENV equals to 'prod' and is not on prod domain` , () => {
+    describe(`when APP_ENV equals to 'prod' and is not on prod domain`, () => {
         let req;
 
         beforeEach(() => {
             process.env.APP_ENV = 'prod';
             req = {
-                ...baseReq, query: { hostname: 'prelive.url.com' }
+                ...baseReq,
+                query: { hostname: 'prelive.url.com' }
             };
             headerMetaMiddleware(req, res, next);
         });
@@ -145,14 +146,15 @@ describe('HeaderMeta middleware', () => {
         });
     });
 
-    describe(`when APP_ENV equals to 'prod' and is on prod domain` , () => {
+    describe(`when APP_ENV equals to 'prod' and is on prod domain`, () => {
         let req;
 
-        describe(`and is not the preview site` , () => {
+        describe(`and is not the preview site`, () => {
             beforeEach(() => {
                 process.env.APP_ENV = 'prod';
                 req = {
-                    ...baseReq, query: { hostname: configStub.site.prodDomain }
+                    ...baseReq,
+                    query: { hostname: configStub.site.prodDomain }
                 };
                 headerMetaMiddleware(req, res, next);
             });
@@ -172,11 +174,12 @@ describe('HeaderMeta middleware', () => {
             });
         });
 
-        describe(`and is the preview site` , () => {
+        describe(`and is the preview site`, () => {
             beforeEach(() => {
                 process.env.APP_ENV = 'prod';
                 req = {
-                    ...baseReq, query: { hostname: configStub.site.prodDomain, preview: 'preview' }
+                    ...baseReq,
+                    query: { hostname: configStub.site.prodDomain, preview: 'preview' }
                 };
                 headerMetaMiddleware(req, res, next);
             });

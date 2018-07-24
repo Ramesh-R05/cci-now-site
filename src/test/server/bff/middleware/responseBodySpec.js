@@ -1,4 +1,4 @@
-import proxyquire, {noCallThru} from 'proxyquire';
+import proxyquire, { noCallThru } from 'proxyquire';
 import article from '../../../mocks/article';
 import listing from '../../../mocks/listing';
 import moreGalleries from '../../../mocks/moreGalleries';
@@ -11,14 +11,14 @@ let parseHeaderMetaDataStub = () => {};
 const responseBodyMiddleware = proxyquire('../../../../app/server/bff/middleware/responseBody', {
     '../helper/parseEntity': {
         parseEntity: (...args) => {
-            return parseEntityStub(...args)
+            return parseEntityStub(...args);
         },
         parseEntities: (...args) => {
-            return parseEntitiesStub(...args)
+            return parseEntitiesStub(...args);
         }
     },
     '../helper/parseHeaderMetaData': (...args) => {
-        return parseHeaderMetaDataStub(...args)
+        return parseHeaderMetaDataStub(...args);
     }
 }).default;
 
@@ -42,22 +42,22 @@ describe('ResponseBody middleware', () => {
         brands: {
             uniheader: [
                 {
-                    "id": "aww",
-                    "imageUrl": "/assets/images/headerlogos/AWW-logo.svg",
-                    "url": "/aww",
-                    "title": "Australian Women's Weekly"
+                    id: 'aww',
+                    imageUrl: '/assets/images/headerlogos/AWW-logo.svg',
+                    url: '/aww',
+                    title: "Australian Women's Weekly"
                 },
                 {
-                    "id": "wd",
-                    "imageUrl": "/assets/images/headerlogos/WD-logo.svg",
-                    "url": "/womansday",
-                    "title": "Woman's Day"
+                    id: 'wd',
+                    imageUrl: '/assets/images/headerlogos/WD-logo.svg',
+                    url: '/womansday',
+                    title: "Woman's Day"
                 },
                 {
-                    "id": "gh",
-                    "imageUrl": "/assets/images/headerlogos/GH-logo.svg",
-                    "url": "/good-health",
-                    "title": "Good Health"
+                    id: 'gh',
+                    imageUrl: '/assets/images/headerlogos/GH-logo.svg',
+                    url: '/good-health',
+                    title: 'Good Health'
                 }
             ]
         }
@@ -81,7 +81,7 @@ describe('ResponseBody middleware', () => {
             responseBodyMiddleware(req, res, next);
             expect(res.body.entity).to.equal(article);
             expect(res.body.headerMetaData).to.equal(headerMetaData);
-            expect(parseHeaderMetaDataStub).to.have.been.calledWith(article, additionalHeader)
+            expect(parseHeaderMetaDataStub).to.have.been.calledWith(article, additionalHeader);
         });
     });
 
@@ -99,7 +99,7 @@ describe('ResponseBody middleware', () => {
 
         it('should set `res.body.leftHandSide`', () => {
             responseBodyMiddleware(req, res, next);
-            expect(res.body.leftHandSide).to.deep.equal({items: listing.data});
+            expect(res.body.leftHandSide).to.deep.equal({ items: listing.data });
         });
 
         before(() => {
@@ -107,18 +107,17 @@ describe('ResponseBody middleware', () => {
             parseEntitiesStub = sinon.stub().returns(listing.data);
         });
 
-		describe('and it has no image', () => {
+        describe('and it has no image', () => {
+            before(() => {
+                next = sinon.spy();
+                parseEntitiesStub = sinon.stub().returns(listing.data);
+            });
 
-			before(() => {
-				next = sinon.spy();
-				parseEntitiesStub = sinon.stub().returns(listing.data);
-			});
-
-			it('should return the placeholder image', () => {
-				responseBodyMiddleware(req, res, next);
-				expect(res.body.leftHandSide).to.deep.equal({items: listing.data});
-			});
-		});
+            it('should return the placeholder image', () => {
+                responseBodyMiddleware(req, res, next);
+                expect(res.body.leftHandSide).to.deep.equal({ items: listing.data });
+            });
+        });
     });
 
     describe('when data contains `moreGalleries`', () => {

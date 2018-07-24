@@ -1,7 +1,7 @@
-import {betterMockComponentContext} from '@bxm/flux';
+import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
-const {React, ReactDOM, TestUtils} = Context;
-import proxyquire, {noCallThru} from 'proxyquire';
+const { React, ReactDOM, TestUtils } = Context;
+import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 const SocialLinksStub = Context.createStubComponentWithChildren();
@@ -11,7 +11,7 @@ const NewsletterStub = Context.createStubComponent();
 const BackToTopStub = Context.createStubComponent();
 const LogosStub = Context.createStubComponent();
 const Footer = proxyquire('../../../app/components/footer', {
-    'react': React,
+    react: React,
     './subscribe/subscribe': SubscribeStub,
     './footerNavigation': FooterNavigationStub,
     '@bxm/newsletter/lib/components/newsletter': NewsletterStub,
@@ -24,17 +24,18 @@ describe(`Footer`, () => {
     const configData = {
         subscribe: {
             subscribeCoverImage: 'magazines.png',
-            subscribeCoverAltText: 'Women\'s Weekly Cookbooks',
+            subscribeCoverAltText: "Women's Weekly Cookbooks",
             subscribeHeading: 'More ways to read',
-            subscribeText: 'Subscribe to our homes mags to gain access to more inspiring homes and gardens, plus renovating, decorating, food and travel stories.',
+            subscribeText:
+                'Subscribe to our homes mags to gain access to more inspiring homes and gardens, plus renovating, decorating, food and travel stories.',
             subscribeUrl: 'https://www.magshop.com.au/store/homestolove'
         },
         newsletterIframeUrl: 'https://iframe.url.com',
-        urls: { 
+        urls: {
             footerUrls: {
-                privacy: "http://www.bauer-media.com.au/privacy",
-                advertise: "http://www.bauer-media.com.au/advertising/advertise-with-us",
-                terms: "http://www.bauer-media.com.au/terms/website-terms"
+                privacy: 'http://www.bauer-media.com.au/privacy',
+                advertise: 'http://www.bauer-media.com.au/advertising/advertise-with-us',
+                terms: 'http://www.bauer-media.com.au/terms/website-terms'
             }
         }
     };
@@ -44,8 +45,8 @@ describe(`Footer`, () => {
         value: {
             urls: configData.urls,
             get(arg) {
-                if ( arg === 'subscribe') return configData.subscribe;
-                if ( arg === 'newsletterIframeUrl') return configData.newsletterIframeUrl
+                if (arg === 'subscribe') return configData.subscribe;
+                if (arg === 'newsletterIframeUrl') return configData.newsletterIframeUrl;
             }
         }
     };
@@ -108,9 +109,13 @@ describe(`Footer`, () => {
         let footer;
 
         before(() => {
-            reactModule = Context.mountComponent(Footer, {
-                modifier: modifier
-            }, [contextConfigStub]);
+            reactModule = Context.mountComponent(
+                Footer,
+                {
+                    modifier: modifier
+                },
+                [contextConfigStub]
+            );
 
             footer = TestUtils.findRenderedDOMComponentWithTag(reactModule, 'footer');
         });

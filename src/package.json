@@ -28,8 +28,9 @@
     "serve": "nodemon --watch app --ext js ./start.js",
     "serve:debug": "nodemon $NODE_DEBUG_OPTION --watch app --ext js ./start.js",
     "lint:scss": "sass-lint --config .sass-lint.yml --ignore './**/vendor/**' --no-exit --verbose './app*/styles/**/*.scss'",
+    "fmt:js": "prettier --write './*.js' 'app/**/*.js' 'test/**/*.js' 'automation/**/*.js'",
     "lint:js": "eslint --fix --ext .js app/",
-    "lint": "run-p lint:scss lint:js"
+    "lint": "run-s lint:scss fmt:js lint:js"
   },
   "repository": {
     "type": "git",
@@ -87,6 +88,7 @@
     "moment-timezone": "^0.5.13",
     "newrelic": "^1.38.2",
     "picturefill": "^3.0.1",
+    "prettier": "^1.13.7",
     "promise": "^7.1.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
@@ -108,9 +110,11 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.10.0",
     "husky": "^0.13.3",
     "jsdom": "^9.12.0",

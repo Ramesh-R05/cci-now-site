@@ -22,9 +22,9 @@ export default async function gallery(req, res, next) {
 
         let listingQuery = '';
         if (get(req, 'data.entity.parentUrl', '').includes('barbie')) {
-            listingQuery = 'parentUrl eq \'barbie\'';
+            listingQuery = "parentUrl eq 'barbie'";
         } else {
-            listingQuery = 'nodeTypeAlias eq \'Article\' or nodeTypeAlias eq \'Gallery\'';
+            listingQuery = "nodeTypeAlias eq 'Article' or nodeTypeAlias eq 'Gallery'";
         }
         req.data.leftHandSide = await getLatestTeasers(TOP, undefined, listingQuery);
 

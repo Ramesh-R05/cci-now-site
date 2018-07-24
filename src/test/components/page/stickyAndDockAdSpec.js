@@ -6,8 +6,8 @@ import TestUtils from 'react-addons-test-utils';
 proxyquire.noCallThru();
 
 describe('Component', () => {
-    const StickyAndDockAd = proxyquire('../../../app/components/page/stickyAndDockAd',{
-        '@bxm/behaviour/lib/components/resizeViewport': (component) => {
+    const StickyAndDockAd = proxyquire('../../../app/components/page/stickyAndDockAd', {
+        '@bxm/behaviour/lib/components/resizeViewport': component => {
             return component;
         }
     }).default;
@@ -25,7 +25,11 @@ describe('Component', () => {
         });
 
         it('should render out the children', () => {
-            const wrapperWithChildren = shallow(<StickyAndDockAd><section /></StickyAndDockAd>);
+            const wrapperWithChildren = shallow(
+                <StickyAndDockAd>
+                    <section />
+                </StickyAndDockAd>
+            );
             expect(wrapperWithChildren.find('section')).to.exist;
         });
 
@@ -52,14 +56,14 @@ describe('Component', () => {
                 sandbox.stub(StickyAndDockAd.prototype, 'getTopOffset').callsFake(() => 0);
                 const component = TestUtils.renderIntoDocument(<StickyAndDockAd {...props} />);
                 const renderedDOM = ReactDOM.findDOMNode(component);
-                expect(renderedDOM.querySelector('span').style._values).to.deep.equal({position: 'fixed', top: '0px'});
+                expect(renderedDOM.querySelector('span').style._values).to.deep.equal({ position: 'fixed', top: '0px' });
             });
 
             it('shoud make the component stick to the top of the bottom element', () => {
                 sandbox.stub(StickyAndDockAd.prototype, 'getTopOffset').callsFake(() => -500);
                 const component = TestUtils.renderIntoDocument(<StickyAndDockAd {...props} />);
                 const renderedDOM = ReactDOM.findDOMNode(component);
-                expect(renderedDOM.querySelector('span').style._values).to.deep.equal({position: 'fixed', top: '-500px'});
+                expect(renderedDOM.querySelector('span').style._values).to.deep.equal({ position: 'fixed', top: '-500px' });
             });
         });
 

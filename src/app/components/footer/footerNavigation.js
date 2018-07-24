@@ -13,23 +13,21 @@ export default class FooterNavigation extends Component {
                 <ul>
                     <li>
                         <a href={privacy} target="_blank">
-Privacy Policy
+                            Privacy Policy
                         </a>
                     </li>
                     <li>
                         <a href={advertise} target="_blank">
-Advertise
+                            Advertise
                         </a>
                     </li>
                     <li>
                         <a href={terms} target="_blank">
-Terms of Use
+                            Terms of Use
                         </a>
                     </li>
                     <li>
-                        <a href="/contact-us">
-Contact Us
-                        </a>
+                        <a href="/contact-us">Contact Us</a>
                     </li>
                 </ul>
             </nav>

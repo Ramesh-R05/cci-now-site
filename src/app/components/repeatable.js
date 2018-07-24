@@ -32,24 +32,14 @@ export default class Repeatable extends Component {
     }
 
     render() {
-        const {
-            component: ChildComponent,
-            dataSource,
-            ...otherProps
-        } = this.props;
+        const { component: ChildComponent, dataSource, ...otherProps } = this.props;
 
         const items = dataSource.items;
 
         if (!items || items.length === 0) return null;
 
         const repeatableComponents = items.map((item, i) => (
-            <ChildComponent
-              key={item.id || i}
-              index={i}
-              items={item}
-              {...otherProps}
-              loadAgain={i === items.length - 1}
-            />
+            <ChildComponent key={item.id || i} index={i} items={item} {...otherProps} loadAgain={i === items.length - 1} />
         ));
 
         const prevUrl = dataSource.previous && dataSource.previous.path;
@@ -85,12 +75,8 @@ export default class Repeatable extends Component {
                     <div className="row">
                         {loadMore}
                         <div className="pagination">
-                            <a {...prevProps}>
-Previous
-                            </a>
-                            <a {...nextProps}>
-Next
-                            </a>
+                            <a {...prevProps}>Previous</a>
+                            <a {...nextProps}>Next</a>
                         </div>
                     </div>
                 </div>

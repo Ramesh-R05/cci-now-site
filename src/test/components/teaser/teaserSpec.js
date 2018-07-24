@@ -12,17 +12,17 @@ const AdStub = Context.createStubComponent();
 const context = {
     config: {
         defaultImageUrl: '',
-        global:  {
+        global: {
             breakpoints: ''
         },
         features: {}
     }
 };
 const contextNZ = {
-    context:{
+    context: {
         config: {
             defaultImageUrl: '',
-            global:  {
+            global: {
                 breakpoints: ''
             },
             site: {
@@ -34,7 +34,7 @@ const contextNZ = {
 };
 const proxyquire = require('proxyquire').noCallThru();
 const Teaser = proxyquire('../../../app/components/teaser/teaser', {
-    "react": React,
+    react: React,
     '@bxm/teaser/lib/components/image': ImageStub,
     '@bxm/teaser/lib/components/title': TeaserTitleStub,
     '@bxm/datetime/lib/components/Date': DateStub,
@@ -43,10 +43,10 @@ const Teaser = proxyquire('../../../app/components/teaser/teaser', {
 
 describe('Component', () => {
     describe('Teaser', () => {
-        const wrapper = shallow(<Teaser
-            article={teaserMock.stores.homepageHeroItems.items[0]}
-            sourceClassName="hero-teaser__source"
-            className="hero-teaser" />, { context });
+        const wrapper = shallow(
+            <Teaser article={teaserMock.stores.homepageHeroItems.items[0]} sourceClassName="hero-teaser__source" className="hero-teaser" />,
+            { context }
+        );
 
         it('it should contain source detail', () => {
             expect(wrapper.find('p.hero-teaser__source').length).to.be.equal(1);
@@ -73,25 +73,28 @@ describe('Component', () => {
         });
 
         describe('when there is source field in the article', () => {
-            const wrapper = shallow(<Teaser
-                article={{...teaserMock, source: 'Australian women\'s weekly' }}
-                sourceClassName="hero-teaser__source"
-                className="hero-teaser" />, { context });
+            const wrapper = shallow(
+                <Teaser
+                    article={{ ...teaserMock, source: "Australian women's weekly" }}
+                    sourceClassName="hero-teaser__source"
+                    className="hero-teaser"
+                />,
+                { context }
+            );
 
             it('it should find source with correct className to style', () => {
                 const elm = wrapper.find('.hero-teaser__source--australian-women-s-weekly');
                 expect(elm.length).to.be.equal(1);
-                expect(elm.text()).to.contain('Australian women\'s weekly');
+                expect(elm.text()).to.contain("Australian women's weekly");
             });
         });
 
         describe('when it is nz site', () => {
-            const wrapper = shallow(<Teaser
-            article={teaserMock.stores.homepageHeroItems.items[0]}/>,contextNZ);
+            const wrapper = shallow(<Teaser article={teaserMock.stores.homepageHeroItems.items[0]} />, contextNZ);
 
             it('it should has proper teaser classname for nz site', () => {
-                expect(wrapper.prop('className')).to.equal("teaser teaser--nz");
-            })
-        })
+                expect(wrapper.prop('className')).to.equal('teaser teaser--nz');
+            });
+        });
     });
 });
