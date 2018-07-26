@@ -51,17 +51,6 @@ const contextConfigStub = {
                         twitterUrl: 'https://twitter.com/womensweeklymag',
                         instagramUrl: 'https://www.instagram.com/womensweeklymag'
                     }
-                },
-                {
-                    id: 'take5',
-                    title: 'Take 5',
-                    imageUrl: '/assets/images/headerlogos/T5-logo.svg',
-                    url: '/take5mag',
-                    socialLinks: {
-                        facebook: 'https://www.facebook.com/take5magazine',
-                        twitter: 'https://twitter.com/take5magazine',
-                        instagram: 'https://www.instagram.com/take5magazine/'
-                    }
                 }
             ]
         },
@@ -169,14 +158,6 @@ describe('Section Container', () => {
         const reactModule = Context.mountComponent(SectionContainer, {}, [contextConfigStub]);
         const div = TestUtils.findRenderedDOMComponentWithClass(reactModule, 'banner-wrapper');
         expect(div).to.exist;
-    });
-});
-
-describe('Take5 Brand Container', () => {
-    it('should render a teaser grid view with the correct nativeAdConfig prop', () => {
-        const reactModule = Context.mountComponent(SectionContainer, { currentUrl: '/take5mag', nodeType: 'Brand' }, [contextConfigStub]);
-        const TeaserGridViewComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserGridViewStub);
-        expect(TeaserGridViewComponent.props.nativeAdConfig.slotPositionIndex[0].label).to.eq('take5_section_top_feed_1');
     });
 });
 

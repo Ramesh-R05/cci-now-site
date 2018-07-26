@@ -154,13 +154,9 @@ export default class Section extends Component {
                                             adPosition={8}
                                             adTargets={{ keyword }}
                                             nativeAdConfig={
-                                                brand && brand.id === 'take5'
-                                                    ? {
-                                                          slotPositionIndex: polarLabels.take5SectionTopFeed
-                                                      }
-                                                    : isBrandPage || {
-                                                          slotPositionIndex: polarLabels.sectionTopFeed
-                                                      }
+                                                isBrandPage || {
+                                                    slotPositionIndex: polarLabels.sectionTopFeed
+                                                }
                                             }
                                         />
                                     </div>

@@ -42,13 +42,6 @@ export default {
                     targets: { kw: 'home_bottom_feed_2' }
                 }
             ],
-            take5SectionTopFeed: [
-                {
-                    index: 0,
-                    label: 'take5_section_top_feed_1',
-                    targets: { kw: 'take5_section_top_feed_1' }
-                }
-            ],
             sectionTopFeed: [
                 {
                     index: 0,
