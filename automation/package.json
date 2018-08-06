@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "sit:au": "bash -c \"./node_modules/.bin/chimp chimp.shippable.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@sitAU\"",
-    "test:mobile": "bash -c \"APP_KEY=now-mobile npm run mobile\"",
-    "test:browser": "bash -c \"APP_KEY=now-browser npm run browser\"",
+    "test:mobile": "bash -c \"APP_KEY=now-mobile node runner.js --tags=@mobile --pMode=mobile\"",
+    "test:desktop": "bash -c \"APP_KEY=now-desktop node runner.js --tags=@desktop\"",
     "test:tags": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=$0\"",
     "test:high": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@high\"",
     "test:med": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@med\"",
@@ -22,9 +22,7 @@
     "debug": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --debug\"",
     "watch": "bash -c \"./node_modules/.bin/chimp chimp.js --watch\"",
     "watch:phantom": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --watch\"",
-    "mobile": "bash -c \"node runner.js --tags=@mobile --pMode=mobile\"",
     "features": "bash -c \"node runner.js --pMode=features\"",
-    "browser": "bash -c \"node runner.js --tags=@browser\"",
     "now:automation": "bash -c \"URL=http://now-site.test.bxm.net.au/ APP_KEY=now-site npm run all:test\"",
     "now:automation:high": "bash -c \"URL=http://now-site.test.bxm.net.au/ APP_KEY=now-site npm run test:high\"",
     "share:aulive": "bash -c \"./node_modules/.bin/chimp chimp.js --browser=phantomjs --tags=@aulive\"",
@@ -33,7 +31,7 @@
     "test:phantom": "bash -c \"URL=http://now-site.test.bxm.net.au/ APP_KEY=now-site npm run features\""
   },
   "dependencies": {
-    "@bxm/automation": "^6.4.0"
+    "@bxm/automation": "^6.6.0"
   },
   "devDependencies": {
     "he": "^1.1.1"
