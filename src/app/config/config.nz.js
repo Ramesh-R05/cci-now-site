@@ -35,5 +35,9 @@ export default {
 
     oriel: {
         scriptUrl: '//i22lo.com/idipt95l0gt97lp3aklcnxfzf0ycie0t.js'
+    },
+
+    parsely: {
+        apiKey: 'nowtolove.co.nz'
     }
 };
