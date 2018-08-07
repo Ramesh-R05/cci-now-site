@@ -6,22 +6,22 @@ const testLinks = [
     {
         title: 'homepage',
         url: 'https://www.nowtolove.com.au/',
-        expectedScore: 30
+        expectedScore: 27
     },
     {
         title: 'section',
         url: 'https://www.nowtolove.com.au/news/',
-        expectedScore: 31
+        expectedScore: 29
     },
     {
         title: 'article',
         url: 'https://www.nowtolove.com.au/health/body/how-to-harness-your-hormones-44097/',
-        expectedScore: 21
+        expectedScore: 17
     },
     {
         title: 'gallery',
         url: 'https://www.nowtolove.com.au/fashion/fashion-news/meghan-markles-style-file-41284/',
-        expectedScore: 21
+        expectedScore: 17
     }
 ];
 
