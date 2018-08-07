@@ -4,7 +4,7 @@ var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
 module.exports = function() {
     this.Then(/^I should see the search icon in the navigation bar$/, function () {
         browser.scroll(0,0);
-        var searchIcon = browser.isVisible(search.searchNavIcon);
+        var searchIcon = browser.waitForVisible(search.searchNavIcon,5000);
         expect(searchIcon).toBe(true);
     });
 
