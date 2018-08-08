@@ -12,6 +12,6 @@ export default {
         pinterest: 'https://nz.pinterest.com/NowToLoveNZ/'
     },
 
-    newsletterUrl: '//www.nowtolove.co.nz/now-nz-newsletter',
+    newsletterUrl: 'https://www.nowtolove.co.nz/now-nz-newsletter',
     newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5ko/signup-nowtolovenz-articlepage'
 };

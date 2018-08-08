@@ -11,7 +11,7 @@ export default {
                 twitter: 'https://twitter.com/nzwomansweekly',
                 instagram: 'https://www.instagram.com/newzealandwomansweekly'
             },
-            newsletterUrl: '//www.nowtolove.co.nz/nz-womans-weekly-newsletter'
+            newsletterUrl: 'https://www.nowtolove.co.nz/nz-womans-weekly-newsletter'
         },
         {
             id: 'nzwd',
@@ -24,7 +24,7 @@ export default {
                 twitter: 'https://twitter.com/WomansDayNZ',
                 instagram: 'https://www.instagram.com/womansdaynz'
             },
-            newsletterUrl: '//www.nowtolove.co.nz/womans-day-newsletter',
+            newsletterUrl: 'https://www.nowtolove.co.nz/womans-day-newsletter',
             alternateHrefLangUrl: '/womansday'
         },
         {
@@ -37,7 +37,7 @@ export default {
                 facebook: 'https://www.facebook.com/awwmagazine',
                 instagram: 'https://www.instagram.com/awwmagazine'
             },
-            newsletterUrl: '//www.nowtolove.co.nz/australianwomensweekly-newsletter',
+            newsletterUrl: 'https://www.nowtolove.co.nz/australianwomensweekly-newsletter',
             alternateHrefLangUrl: '/aww'
         },
         {
@@ -51,7 +51,7 @@ export default {
                 twitter: 'https://twitter.com/nextmagazinenz',
                 instagram: 'https://www.instagram.com/nextmagazinenz/'
             },
-            newsletterUrl: '//www.nowtolove.co.nz/next-newsletter'
+            newsletterUrl: 'https://www.nowtolove.co.nz/next-newsletter'
         },
         {
             id: 'nzgh',
@@ -65,7 +65,7 @@ export default {
                 instagram: 'https://www.instagram.com/goodhealthnz/',
                 pinterest: 'https://nz.pinterest.com/goodhealthmag/'
             },
-            newsletterUrl: '//www.nowtolove.co.nz/good-health-choices-newsletter',
+            newsletterUrl: 'https://www.nowtolove.co.nz/good-health-choices-newsletter',
             alternateHrefLangUrl: '/good-health'
         },
         {
@@ -77,7 +77,7 @@ export default {
             socialLinks: {
                 instagram: 'https://www.instagram.com/nadiamagazine'
             },
-            newsletterUrl: 'http://www.nowtolove.co.nz/nadia-newsletter'
+            newsletterUrl: 'https://www.nowtolove.co.nz/nadia-newsletter'
         },
         {
             id: 'btl',

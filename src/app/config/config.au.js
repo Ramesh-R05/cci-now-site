@@ -12,7 +12,7 @@ export default {
             instagram: 'https://www.instagram.com/NowToLove'
         },
 
-        newsletterUrl: '//www.nowtolove.com.au/now-newsletter',
+        newsletterUrl: 'https://www.nowtolove.com.au/now-newsletter',
         newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5k8/signup-nowtolove-article-iframe-bottom'
     },
 
@@ -29,7 +29,7 @@ export default {
                     twitter: 'https://twitter.com/womensweeklymag',
                     instagram: 'https://www.instagram.com/womensweeklymag'
                 },
-                newsletterUrl: '//www.nowtolove.com.au/aww-newsletter',
+                newsletterUrl: 'https://www.nowtolove.com.au/aww-newsletter',
                 alternateHrefLangUrl: '/australianwomensweekly',
                 newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5k7/signup-aww-article-iframe-bottom'
             },
@@ -43,7 +43,7 @@ export default {
                     twitter: 'https://twitter.com/womansdayaus',
                     instagram: 'https://www.instagram.com/Womansdayaus'
                 },
-                newsletterUrl: '//www.nowtolove.com.au/womansday-newsletter',
+                newsletterUrl: 'https://www.nowtolove.com.au/womansday-newsletter',
                 alternateHrefLangUrl: '/womans-day',
                 newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5k5/signup-womansday-article-iframe-bottom'
             },
@@ -57,7 +57,7 @@ export default {
                     twitter: 'https://twitter.com/goodhealthmag',
                     instagram: 'https://www.instagram.com/goodhealthmag'
                 },
-                newsletterUrl: '//www.nowtolove.com.au/good-health-newsletter',
+                newsletterUrl: 'https://www.nowtolove.com.au/good-health-newsletter',
                 alternateHrefLangUrl: '/good-health-choices'
             },
             {
@@ -70,7 +70,7 @@ export default {
                     twitter: 'https://twitter.com/okmagaustralia',
                     instagram: 'https://www.instagram.com/okmagaustralia'
                 },
-                newsletterUrl: '//www.nowtolove.com.au/okmagazine-newsletter',
+                newsletterUrl: 'https://www.nowtolove.com.au/okmagazine-newsletter',
                 newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5ka/signup-okmagazine-article-iframe-bottom'
             },
             {
@@ -83,7 +83,7 @@ export default {
                     twitter: 'https://twitter.com/nwmag',
                     instagram: 'https://www.instagram.com/nwmag/'
                 },
-                newsletterUrl: '//www.nowtolove.com.au/nw-newsletter',
+                newsletterUrl: 'https://www.nowtolove.com.au/nw-newsletter',
                 newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5k9/signup-nwonline-article-iframe-bottom'
             },
             {
@@ -96,7 +96,7 @@ export default {
                     twitter: 'https://twitter.com/take5magazine',
                     instagram: 'https://www.instagram.com/take5magazine/'
                 },
-                newsletterUrl: '//www.nowtolove.com.au/take5mag-newsletter',
+                newsletterUrl: 'https://www.nowtolove.com.au/take5mag-newsletter',
                 newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5kb/signup-take5-article-iframe-bottom'
             },
             {
@@ -109,7 +109,7 @@ export default {
                     twitter: 'https://twitter.com/motherbaby_au',
                     instagram: 'https://www.instagram.com/motherbaby_au'
                 },
-                newsletterUrl: '//www.nowtolove.com.au/mother-and-baby-newsletter',
+                newsletterUrl: 'https://www.nowtolove.com.au/mother-and-baby-newsletter',
                 renderSubscribeElements: false
             },
             {
@@ -122,7 +122,7 @@ export default {
                     twitter: 'https://twitter.com/TVWEEKmag',
                     instagram: 'https://www.instagram.com/TVWEEKmag'
                 },
-                newsletterUrl: '//www.nowtolove.com.au/tvweek-newsletter',
+                newsletterUrl: 'https://www.nowtolove.com.au/tvweek-newsletter',
                 newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5kc/signup-tvweek-article-iframe-bottom'
             },
             {
@@ -134,7 +134,7 @@ export default {
                     facebook: 'https://www.facebook.com/prizestolove/',
                     instagram: 'https://www.instagram.com/prizestolove'
                 },
-                newsletterUrl: '//www.nowtolove.com.au/prizestolove-newsletter',
+                newsletterUrl: 'https://www.nowtolove.com.au/prizestolove-newsletter',
                 subscribeText: 'The latest competitions delivered to your inbox',
                 renderSubscribeElements: false,
                 newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5kw/signup-foodtolove-article-iframe-bottom'
