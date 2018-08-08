@@ -82,7 +82,7 @@ Feature: Specific value for NZ NTL
     Scenario: Verify the sign-up URL on homepage
         Given I switch to "mobile" view
         When I am currently viewing the homepage
-        Then I should see the sign up button containing "http://www.nowtolove.co.nz/now-nz-newsletter" url in "mobile" view
+        Then I should see the sign up button containing "https://www.nowtolove.co.nz/now-nz-newsletter" url in "mobile" view
 
 
     @BXMA-482
@@ -91,13 +91,13 @@ Feature: Specific value for NZ NTL
         When I am currently viewing "<page>"
         Then I should see the sign up button containing "<link>" url in "mobile" view
         Examples:
-            | page                    | link                                                    |
-            | nz-womans-weekly/       | //www.nowtolove.co.nz/nz-womans-weekly-newsletter       |
-            | womans-day/             | //www.nowtolove.co.nz/womans-day-newsletter             |
-            | australianwomensweekly/ | //www.nowtolove.co.nz/australianwomensweekly-newsletter |
-            | next/                   | //www.nowtolove.co.nz/next-newsletter                   |
-            | good-health-choices     | //www.nowtolove.co.nz/good-health-choices-newsletter    |
-            | nadia/                  | //www.nowtolove.co.nz/nadia-newsletter                  |
+            | page                    | link                                                            |
+            | nz-womans-weekly/       | https://www.nowtolove.co.nz/nz-womans-weekly-newsletter         |
+            | womans-day/             | https://www.nowtolove.co.nz/womans-day-newsletter               |
+            | australianwomensweekly/ | https://www.nowtolove.co.nz/australianwomensweekly-newsletter   |
+            | next/                   | https://www.nowtolove.co.nz/next-newsletter                     |
+            | good-health-choices     | https://www.nowtolove.co.nz/good-health-choices-newsletter      |
+            | nadia/                  | https://www.nowtolove.co.nz/nadia-newsletter                    |
 
     Scenario: Verify the RSS feed
         Given I am currently viewing "rss"
