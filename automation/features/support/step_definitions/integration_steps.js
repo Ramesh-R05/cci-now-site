@@ -135,11 +135,10 @@ module.exports = function() {
             browser.refresh();
             browser.url(pageURL);
             if(browser.isExisting(elementOnPage) == true){
-                console.log("Page Loaded Successfully : ID-" + docTypeID[docType]);
+                console.log("Page Loaded Successfully : ID-" + docTypeID[docType] + ": " + pageURL);
                 break;
             } else {
-                var page_url = browser.getUrl();
-                console.log("Page not created yet, current page url is : " + page_url);
+                console.log("Page not created yet, current page url is : " + browser.getUrl());
                 wait(2000);
             }
         }
@@ -151,21 +150,21 @@ module.exports = function() {
         switch(docType) {
             case 'article':
             case 'amp article':
-                browser.waitForExist(".article__title", 30000);
+                browser.waitForVisible(".article__title", 30000);
                 expect(browser.getText(".article__title")).toEqual("article Test " + ID);
                 break;
             case 'gallery':
             case 'amp gallery':
-                browser.waitForExist(".article__title", 30000);
+                browser.waitForVisible(".article__title", 30000);
                 expect(browser.getText(".article__title")).toEqual("gallery Test " + ID);
                 break;
             case 'section':
-                browser.waitForExist("h1.page-title", 30000);
+                browser.waitForVisible("h1.page-title", 30000);
                 console.log("section " + ID);
                 expect(browser.getText("h1.page-title")).toEqual("SECTIONTEST-" + ID);
                 break;
             case 'subsection':
-                browser.waitForExist("h1.page-title", 30000);
+                browser.waitForVisible("h1.page-title", 30000);
                 expect(browser.getText("h1.page-title")).toEqual("SUBSECTIONTEST-" + ID);
                 break;
         }

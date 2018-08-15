@@ -7,17 +7,13 @@ module.exports = function(){
     this.When(/^I should see the brand title logo on the brand landing page$/, function () {
         //Verify the brand title logo
         var brandTitleLogo = browser.getAttribute(brand.brandTitleLogo, 'src');
-        console.log(brandTitleLogo);
         expect(brandTitleLogo).not.toBeUndefined();
     });
 
     this.When(/^I should see the main hero item containing "([^"]*)" source without date$/, function (name) {
         //verify source and date of the main hero item
         var heroSource = browser.getText(brand.heroSource);
-        console.log(heroSource);
         var valueSourceDate = heroSource.split("|");
-        console.log("Source: " + valueSourceDate[0]);
-        console.log("Date: " + valueSourceDate[1]);
         //validate the source
         expect(valueSourceDate[0]).toEqual(name);
         //validate the date is not appearing
@@ -71,10 +67,8 @@ module.exports = function(){
         if (link != 'none'){
             //Get value of href
             var brandElementLink = browser.getAttribute(brandElement,'href');
-            console.log(brandElementLink);
             //Validate the values [This is to check the link on both two positions as we show/hide on different breakpoints]
             for (var i=0; i<brandElementLink.length; i++){
-                console.log(i + ":" +brandElementLink[i]);
                 expect(brandElementLink[i]).toContain(link);
             }
         } else {
@@ -102,9 +96,7 @@ module.exports = function(){
         var subscribeImage = browser.getAttribute(brandSubscribeImage,'srcset');
 
         //Validate title and image
-        console.log(subscribeTitle);
         expect(subscribeTitle).toEqual(title);
-        console.log(subscribeImage);
         expect(subscribeImage).not.toEqual('');
     });
 
@@ -131,7 +123,6 @@ module.exports = function(){
 
             //Validate the element is existing
             for (var i=0; i<brandSubscribeGTM.length; i++){
-                console.log(i + ":" + brandSubscribeGTM[i]);
                 expect(brandSubscribeGTM[i]).toContain(gtm);
             }
         } else {

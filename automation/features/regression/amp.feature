@@ -4,7 +4,8 @@ Feature: Verify AMP page
     I should be able to see the relevant content on AMP page
 
 #-------------AMP on article page-------------#
-    @article @high
+    @article @med
+    #@high - Change to high once the amp scenario can be executed via phantomjs
     Scenario: Verify the AMP article page
         When I switch to "mobile" view
         Given I am currently viewing "amp/news/latest-news/tony-abbott-says-climate-change-good-thing-41699"
@@ -31,7 +32,8 @@ Feature: Verify AMP page
         * I can see the amp body Youtube embed "https://www.youtube.com/embed/4GpnNxjy6m0"
         * I can see the amp body Vimeo embed "https://player.vimeo.com/video/181027959"
 
-    @article @ad @high
+    @article @ad @med
+    #@high - Change to high once the amp scenario can be executed via phantomjs
     Scenario: Ads slot elements should have proper class name on AMP article page
         Given I switch to "mobile" view
         And I am currently viewing "amp/news/latest-news/tony-abbott-says-climate-change-good-thing-41200"

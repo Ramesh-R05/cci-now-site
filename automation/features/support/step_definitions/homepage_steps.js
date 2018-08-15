@@ -232,7 +232,6 @@ module.exports = function(){
         //verify images of one teaser
         var loadMoreFeedTeaserImgUrl = browser.getAttribute(home.loadMoreFeedTeaserImg,'data-srcset');
         var loadMoreFeedTeaserImgLink = browser.getAttribute(home.loadMoreFeedTeaserImgLink,'href');
-        console.log(loadMoreFeedTeaserImgUrl + " => " + loadMoreFeedTeaserImgLink);
         validateImageURL(loadMoreFeedTeaserImgUrl);
         expect(loadMoreFeedTeaserImgLink).not.toEqual('');
     });
