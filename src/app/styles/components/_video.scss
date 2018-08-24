@@ -1,4 +1,7 @@
 // Unfortunately stupid brightcove uses important in its default styling :(
+$play-icon-size-small: 20px;
+$play-icon-size-large: 40px;
+
 .video-wrapper {
     .video-js {
         .vjs-big-play-button {
@@ -50,6 +53,34 @@
         
         .vjs-big-play-button {
             background-color: #000;
+        }
+    }
+
+    .vjs-icon-placeholder {
+        display: inline-block;
+        width: $play-icon-size-small;
+        height: $play-icon-size-small;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -47%);
+
+        &:before {
+            line-height: $play-icon-size-small;
+            height: $play-icon-size-small;
+            width: $play-icon-size-small;
+            font-size: $play-icon-size-small;
+            @media #{$medium-up} {
+                line-height: $play-icon-size-large;
+                height: $play-icon-size-large;
+                width: $play-icon-size-large;
+                font-size: $play-icon-size-large;
+            }
+        }
+
+        @media #{$medium-up} {
+            height: $play-icon-size-large;
+            width: $play-icon-size-large;
         }
     }
 }
