@@ -6,12 +6,12 @@ const testLinks = [
     {
         title: 'homepage',
         url: 'http://now-site.test.bxm.net.au/',
-        expectedScore: 26
+        expectedScore: 24
     },
     {
         title: 'section',
         url: 'http://now-site.test.bxm.net.au/fashion/',
-        expectedScore: 33
+        expectedScore: 32
     },
     {
         title: 'article',
