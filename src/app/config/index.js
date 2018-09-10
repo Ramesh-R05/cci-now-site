@@ -37,7 +37,8 @@ if (region) {
 }
 
 const env = {
-    APP_DEBUG: process.env.APP_DEBUG
+    APP_DEBUG: process.env.APP_DEBUG,
+    ADS_DEBUG: process.env.ADS_DEBUG
 };
 
 export default mergeWith(
