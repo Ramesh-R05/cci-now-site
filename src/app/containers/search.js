@@ -67,7 +67,6 @@ export default class Search extends Component {
         const { nodeType, teasers, title, currentUrl, theme, searchTotal, list, listNextParams } = this.props;
         const keyword = nodeType === 'TagSection' && title ? [title] : [];
         const pageLocation = Ad.pos.outside;
-        const headerClassName = '';
 
         const pageTitle = (
             <h1 className="page-title">
@@ -96,7 +95,6 @@ export default class Search extends Component {
                 headerExpanded={config.features.headerExpanded && themeEnabled}
                 pageTitle={pageTitle}
                 className="page--section"
-                headerClassName={headerClassName}
                 theme={themeEnabled ? theme : {}}
             >
                 <div className="section-page search-page">

@@ -39,7 +39,7 @@ export default class Page extends Component {
         showUniheader: PropTypes.bool,
         hideLeaderboard: PropTypes.bool,
         pageTitle: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-        headerClassName: PropTypes.string,
+        headerThemeClassName: PropTypes.string,
         theme: PropTypes.object,
         showWallpaper: PropTypes.bool
     };
@@ -51,7 +51,7 @@ export default class Page extends Component {
     static defaultProps = {
         hideLeaderboard: false,
         hideFooter: false,
-        headerClassName: '',
+        headerThemeClassName: '',
         className: '',
         pageTitle: '',
         theme: {},
@@ -73,7 +73,7 @@ export default class Page extends Component {
             hideFooter,
             hideLeaderboard,
             pageTitle,
-            headerClassName,
+            headerThemeClassName,
             content,
             showWallpaper
         } = this.props;
@@ -114,7 +114,7 @@ export default class Page extends Component {
                         navItems={headerNavItems}
                         siteName={this.context.config.get('site.name')}
                         toggleMenu={this.toggleMenu}
-                        headerClassName={headerClassName}
+                        headerThemeClassName={headerThemeClassName}
                         theme={this.props.theme}
                         permanentlyFixedIfShorterThan={10}
                     />

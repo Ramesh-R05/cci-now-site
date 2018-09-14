@@ -159,7 +159,7 @@ describe('Page Container', () => {
             expect(siteHeaderStub.props).to.deep.eq({
                 currentUrl: props.currentUrl,
                 isExpanded: props.headerExpanded,
-                headerClassName: '',
+                headerThemeClassName: '',
                 navItems: headerItems,
                 siteName: siteName,
                 toggleMenu: currentInstance.toggleMenu,

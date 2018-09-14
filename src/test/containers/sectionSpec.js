@@ -142,10 +142,10 @@ describe('Section Container', () => {
         expect(TeaserGridViewComponent.props.nativeAdConfig.slotPositionIndex[0].label).to.eq('section_top_feed_1');
     });
 
-    it('should give the headerClassName a value of empty string', () => {
+    it('should give the headerThemeClassName a value of empty string', () => {
         const reactModule = Context.mountComponent(SectionContainer, {}, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
-        expect(PageStubComponent.props.headerClassName).to.eq('');
+        expect(PageStubComponent.props.headerThemeClassName).to.eq('');
     });
 
     it('should give the pageTitle a value of empty string', () => {
@@ -171,7 +171,7 @@ describe('Brand Container', () => {
     it('should render page with correct brand props', () => {
         const reactModule = Context.mountComponent(SectionContainer, { currentUrl: '/aww', nodeType: 'Brand' }, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
-        expect(PageStubComponent.props.headerClassName).to.eq('header-aww');
+        expect(PageStubComponent.props.headerThemeClassName).to.eq('header-aww');
     });
 
     it('should render page with correct pagetitle prop', () => {
@@ -183,7 +183,7 @@ describe('Brand Container', () => {
     it('should render page with correct brand props when params are passed through url', () => {
         const reactModule = Context.mountComponent(SectionContainer, { currentUrl: '/aww?pageNo=2', nodeType: 'Brand' }, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
-        expect(PageStubComponent.props.headerClassName).to.eq('header-aww');
+        expect(PageStubComponent.props.headerThemeClassName).to.eq('header-aww');
     });
 
     it('should render page with correct pagetitle prop when params are passed through url', () => {

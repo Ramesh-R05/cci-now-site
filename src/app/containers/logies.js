@@ -43,7 +43,7 @@ export default class Logies extends Component {
                 currentUrl={currentUrl}
                 headerExpanded={false}
                 pageTitle={pageTitle}
-                headerClassName=""
+                headerThemeClassName=""
                 theme={theme}
                 showWallpaper={false}
                 hideLeaderboard

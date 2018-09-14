@@ -102,7 +102,7 @@ export default class Section extends Component {
             pageLocation
         };
 
-        let headerClassName = '';
+        let headerThemeClassName = '';
         let sectionClassNames = 'section-page';
         let pageTitle = (
             <h1 className="page-title">
@@ -115,7 +115,7 @@ export default class Section extends Component {
         const brand = isBrandPage ? find(this.context.config.brands.uniheader, b => b.url === currentUrl.match(/\/[^/|?]*/)[0]) : null;
 
         if (isBrandPage) {
-            headerClassName = `header-${brand.id}`;
+            headerThemeClassName = `header-${brand.id}`;
             pageTitle = <BrandTitle brand={brand} shortTitle={shortTitle} summary={summary} />;
             sectionClassNames += ' brand-section-page';
 
@@ -124,7 +124,7 @@ export default class Section extends Component {
         }
 
         return (
-            <Page currentUrl={currentUrl} headerExpanded={false} pageTitle={pageTitle} headerClassName={headerClassName} theme={theme}>
+            <Page currentUrl={currentUrl} headerExpanded={false} pageTitle={pageTitle} headerThemeClassName={headerThemeClassName} theme={theme}>
                 <div className={sectionClassNames}>
                     <div className="container">
                         <div className="row">
