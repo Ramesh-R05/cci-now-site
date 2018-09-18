@@ -148,10 +148,10 @@ export default {
                 title: 'Homes To Love'
             },
             {
-                id: 'food',
-                imageUrl: '/assets/images/menulogos/FTL-logo.svg',
-                url: 'http://www.foodtolove.com.au/',
-                title: 'Food To Love'
+                id: 'wwfood',
+                imageUrl: '/assets/images/menulogos/WWF-logo.svg',
+                url: 'http://www.womensweeklyfood.com.au/',
+                title: 'Womens Weekly Food'
             },
             {
                 id: 'elle',

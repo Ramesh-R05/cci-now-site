@@ -73,7 +73,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
          * I can navigate to all sites in the hamburger navigation menu
             |title                      |url                                    |gtm                        |
             |Homes To Love              |http://www.homestolove.com.au/         |gtm-hamburger-homes        |
-            |Food To Love               |http://www.foodtolove.com.au/          |gtm-hamburger-food         |
+            |Womens Weekly Food         |http://www.womensweeklyfood.com.au/    |gtm-hamburger-wwfood       |
             |Elle                       |http://www.elle.com.au/                |gtm-hamburger-elle         |
             |Harper's Bazaar            |http://www.harpersbazaar.com.au/       |gtm-hamburger-harpers      |
             |Gourmet Traveller          |http://www.gourmettraveller.com.au/    |gtm-hamburger-gt           |
