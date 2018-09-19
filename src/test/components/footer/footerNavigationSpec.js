@@ -46,8 +46,7 @@ describe(`FooterNavigation`, () => {
             expect(anchorHrefs).to.deep.eq([
                 'http://www.testurl.com/privacy',
                 'http://www.testurl.com/advertise',
-                'http://www.testurl.com/terms',
-                '/contact-us'
+                'http://www.testurl.com/terms'
             ]);
         });
     });

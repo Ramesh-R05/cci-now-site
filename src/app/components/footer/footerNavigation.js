@@ -26,9 +26,6 @@ export default class FooterNavigation extends Component {
                             Terms of Use
                         </a>
                     </li>
-                    <li>
-                        <a href="/contact-us">Contact Us</a>
-                    </li>
                 </ul>
             </nav>
         );
