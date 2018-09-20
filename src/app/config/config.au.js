@@ -144,37 +144,37 @@ export default {
             {
                 id: 'homes',
                 imageUrl: '/assets/images/menulogos/HTL-logo-greytext.svg',
-                url: 'http://www.homestolove.com.au/',
+                url: 'https://www.homestolove.com.au/',
                 title: 'Homes To Love'
             },
             {
                 id: 'wwfood',
                 imageUrl: '/assets/images/menulogos/WWF-logo.svg',
-                url: 'http://www.womensweeklyfood.com.au/',
-                title: 'Womens Weekly Food'
+                url: 'https://www.womensweeklyfood.com.au/',
+                title: "Women's Weekly Food"
             },
             {
                 id: 'elle',
                 imageUrl: '/assets/images/menulogos/ELLE-logo-redtext.svg',
-                url: 'http://www.elle.com.au/',
+                url: 'https://www.elle.com.au/',
                 title: 'Elle'
             },
             {
                 id: 'harpers',
                 imageUrl: '/assets/images/menulogos/HB-logo.svg',
-                url: 'http://www.harpersbazaar.com.au/',
+                url: 'https://www.harpersbazaar.com.au/',
                 title: "Harper's Bazaar"
             },
             {
                 id: 'gt',
                 imageUrl: '/assets/images/menulogos/GT-logo.svg',
-                url: 'http://www.gourmettraveller.com.au/',
+                url: 'https://www.gourmettraveller.com.au/',
                 title: 'Gourmet Traveller'
             },
             {
                 id: 'cosmo',
                 imageUrl: '/assets/images/menulogos/COSMO-logo.svg',
-                url: 'http://www.cosmopolitan.com.au/',
+                url: 'https://www.cosmopolitan.com.au/',
                 title: 'Cosmopolitan'
             },
             {

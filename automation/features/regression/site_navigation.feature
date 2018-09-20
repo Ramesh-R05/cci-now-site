@@ -72,12 +72,12 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
          * I can navigate to all sites in the hamburger navigation menu
             |title                      |url                                    |gtm                        |
-            |Homes To Love              |http://www.homestolove.com.au/         |gtm-hamburger-homes        |
-            |Womens Weekly Food         |http://www.womensweeklyfood.com.au/    |gtm-hamburger-wwfood       |
-            |Elle                       |http://www.elle.com.au/                |gtm-hamburger-elle         |
-            |Harper's Bazaar            |http://www.harpersbazaar.com.au/       |gtm-hamburger-harpers      |
-            |Gourmet Traveller          |http://www.gourmettraveller.com.au/    |gtm-hamburger-gt           |
-            |Cosmopolitan               |http://www.cosmopolitan.com.au/        |gtm-hamburger-cosmo        |
+            |Homes To Love              |https://www.homestolove.com.au/         |gtm-hamburger-homes        |
+            |Women's Weekly Food         |https://www.womensweeklyfood.com.au/    |gtm-hamburger-wwfood       |
+            |Elle                       |https://www.elle.com.au/                |gtm-hamburger-elle         |
+            |Harper's Bazaar            |https://www.harpersbazaar.com.au/       |gtm-hamburger-harpers      |
+            |Gourmet Traveller          |https://www.gourmettraveller.com.au/    |gtm-hamburger-gt           |
+            |Cosmopolitan               |https://www.cosmopolitan.com.au/        |gtm-hamburger-cosmo        |
             |Dolly                      |http://www.dolly.com.au/               |gtm-hamburger-dolly        |
             |Beauty Heaven              |https://www.beautyheaven.com.au/       |gtm-hamburger-beautyheaven |
 
