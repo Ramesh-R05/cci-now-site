@@ -43,11 +43,7 @@ describe(`FooterNavigation`, () => {
                 anchorHrefs.push(a.props.href);
             });
 
-            expect(anchorHrefs).to.deep.eq([
-                'http://www.testurl.com/privacy',
-                'http://www.testurl.com/advertise',
-                'http://www.testurl.com/terms'
-            ]);
+            expect(anchorHrefs).to.deep.eq(['http://www.testurl.com/privacy', 'http://www.testurl.com/advertise', 'http://www.testurl.com/terms']);
         });
     });
 });

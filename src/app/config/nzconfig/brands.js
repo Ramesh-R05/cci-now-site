@@ -109,7 +109,7 @@ export default {
         {
             id: 'missfq',
             imageUrl: '/assets/images/nzmenulogos/MISSFQ-logo.svg',
-            url: 'https://www.fq.co.nz/missfqhome',
+            url: 'https://www.fq.co.nz/missfqhome/',
             title: 'Miss FQ'
         },
         {
