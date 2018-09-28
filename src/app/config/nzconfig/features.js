@@ -10,5 +10,9 @@ export default {
     },
     oriel: {
         enabled: true
+    },
+    ias: {
+        enabled: true,
+        id: 926929
     }
 };

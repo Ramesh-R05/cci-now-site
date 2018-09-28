@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connectToStores, provideContext } from '@bxm/flux';
+import AdManager from '@bxm/ad/lib/google/components/adManager';
 import { handleHistory } from 'fluxible-router';
 import { canUseDOM } from 'exenv';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -101,4 +102,4 @@ class Application extends Component {
 
 // Unit tests break when provideContext is used as a decorator. handleHistory works fine as a decorator, but to keep
 // the pattern consistent with other containers, only the connectToStore is used as a decorator.
-export default provideContext(handleHistory(Application), { config: PropTypes.object });
+export default provideContext(handleHistory(AdManager(Application)), { config: PropTypes.object });
