@@ -1,4 +1,4 @@
-
+#template for the performance test jobs
 templates: &template-lighthouse-csv-report
   - echo "Using template-lighthouse-csv-report"
   - cat result.txt
@@ -18,10 +18,10 @@ templates: &template-lighthouse-csv-report
     else
         aws s3 cp $S3_path $JOB_NAME.csv;
     fi
-  - grep "maximum score" result.txt > temp.txt
+  - grep "maximum score\|) \"before each" result.txt > temp.txt
   - date > maxScore.txt
   - echo $BUILD_NUMBER >> maxScore.txt
-  - "sed -e 's/^.*is //' temp.txt >> maxScore.txt"
+  - "sed -e 's/^.*is //' -e 's/^.*[^0-9]//' temp.txt >> maxScore.txt"
   - paste -d, -s maxScore.txt >> $JOB_NAME.csv
   - shipctl copy_file_to_state $JOB_NAME.csv
   - cat $JOB_STATE/$JOB_NAME.csv
