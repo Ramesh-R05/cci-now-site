@@ -3,7 +3,7 @@ import { navigateAction } from 'fluxible-router';
 import server from '@bxm/server';
 import fluxibleConfigPlugin from 'fluxible-plugin-context-config';
 import config from '../config';
-import app from '../app';
+import app, { stores } from '../app';
 import bff from './bff';
 import fluxibleLoggerPlugin from '../../fluxibleLoggerPlugin';
 import logger from '../../logger';
@@ -11,4 +11,4 @@ import logger from '../../logger';
 app.plug(fluxibleConfigPlugin(config));
 app.plug(fluxibleLoggerPlugin());
 
-server(bff, config, app, React, navigateAction, logger);
+server(bff, config, app, React, navigateAction, logger, stores);

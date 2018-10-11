@@ -21,6 +21,15 @@ const config = {
         publicPath: 'dist/',
         filename: `[name]${production ? '-[chunkhash]' : ''}.js`
     },
+    resolve: {
+        alias: {
+            /* 
+                ensure there is only one instance of react when resolving modules 
+                this helps with symlinks
+            */
+            react: path.join(__dirname, 'node_modules/react')
+        }
+    },
     module: {
         rules: [
             {
