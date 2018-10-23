@@ -14,7 +14,8 @@ export default {
             module: 'http://services.prod.bxm.internal/module/v1/now',
             sitemap: 'http://sitemap-service.prod.bxm.net.au/v1/now',
             tag: 'http://services.prod.bxm.internal/tag/v1/now',
-            search: 'http://services.prod.bxm.internal/es-search/v1/now'
+            search: 'http://services.prod.bxm.internal/es-search/v1/now',
+            identity: 'https://live.dmp.bauer-media.net.au/api/identity/'
         },
         redirect: {
             url: 'http://services.prod.bxm.internal/redirect/v1/now/301'
