@@ -21,7 +21,7 @@ templates: &template-lighthouse-csv-report
   - grep "maximum score\|) \"before each" result.txt > temp.txt
   - date > maxScore.txt
   - echo $BUILD_NUMBER >> maxScore.txt
-  - "sed -e 's/^.*is //' -e 's/^.*[^0-9]//' temp.txt >> maxScore.txt"
+  - "sed -e 's/^.*is //' -e 's/^.*\"//' temp.txt >> maxScore.txt"
   - paste -d, -s maxScore.txt >> $JOB_NAME.csv
   - shipctl copy_file_to_state $JOB_NAME.csv
   - cat $JOB_STATE/$JOB_NAME.csv
