@@ -4,6 +4,7 @@ describe(`loadPage Reducer`, () => {
     let payload;
     let body = {
         entity: { nodeType: 'Article', title: 'Title', imageUrl: '', shortTitle: 'Short Title', summary: 'Summary' },
+        emailLinkTrackingData: {},
         footer: {},
         mustRead: [],
         theme: {}
@@ -26,7 +27,8 @@ describe(`loadPage Reducer`, () => {
                     title: payload.body.entity.title,
                     shortTitle: payload.body.entity.shortTitle,
                     summary: payload.body.entity.summary,
-                    imageUrl: payload.body.entity.imageUrl
+                    imageUrl: payload.body.entity.imageUrl,
+                    emailLinkTrackingData: payload.body.emailLinkTrackingData
                 });
             });
         });
@@ -64,7 +66,8 @@ describe(`loadPage Reducer`, () => {
                 title: '',
                 imageUrl: '',
                 request: {},
-                comScoreSegmentIds: ''
+                comScoreSegmentIds: '',
+                emailLinkTrackingData: null
             });
         });
 
@@ -77,7 +80,8 @@ describe(`loadPage Reducer`, () => {
                 title: '',
                 imageUrl: '',
                 request: {},
-                comScoreSegmentIds: ''
+                comScoreSegmentIds: '',
+                emailLinkTrackingData: null
             });
         });
     });

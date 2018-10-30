@@ -7,7 +7,7 @@ export default {
         sitemap: 'http://sitemap-service.sit.bxm.net.au/v1/now',
         tag: 'http://services.sit.bxm.internal/tag/v1/now',
         search: 'http://services.sit.bxm.internal/es-search/v1/now',
-        identity: 'https://dev.dmp.bauer-media.net.au/api/identity/'
+        identity: 'https://dev.dmp.bauer-media.net.au/api/identity'
     },
     endpoints: {
         page: '/api/getPageContent',

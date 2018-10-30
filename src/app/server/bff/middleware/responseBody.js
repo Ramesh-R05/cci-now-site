@@ -7,6 +7,7 @@ import parseModule from '../helper/parseModule';
 export default function responseBody(req, res, next) {
     try {
         res.body = {
+            ...res.body,
             entity: parseEntity(req.data.entity),
             headerMetaData: parseHeaderMetaData(req.data.entity, get(req, 'data.headerMetaData', {}))
         };

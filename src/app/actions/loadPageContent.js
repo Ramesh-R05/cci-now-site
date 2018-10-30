@@ -12,7 +12,8 @@ export default function loadPageContent(context, payload) {
         hostname: navigate.hostname,
         url,
         path,
-        pageNo: query.pageNo
+        pageNo: query.pageNo,
+        ...query
     };
     return pageService.read(args).then(
         content => {

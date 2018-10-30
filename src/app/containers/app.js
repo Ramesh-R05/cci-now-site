@@ -54,13 +54,6 @@ class Application extends Component {
         this.region = context.config.site.region;
     }
 
-    componentDidMount() {
-        // Temp added here due to unforseen update of versions when updating react.
-        // This loads <picture> element in older browsers and IE
-        // eslint-disable-next-line global-require
-        require('picturefill');
-    }
-
     shouldComponentUpdate(nextProps) {
         return !!nextProps.isNavigateComplete;
     }

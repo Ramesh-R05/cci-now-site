@@ -16,11 +16,12 @@ function mapStateToProps(context) {
     return {
         headerNavItems: context.getStore('NavigationStore').getHeaderItems(),
         hamburgerNavItems: context.getStore('NavigationStore').getHamburgerItems(),
-        content: context.getStore('articleStore').getContent()
+        content: context.getStore('articleStore').getContent(),
+        emailLinkTrackingData: context.getStore('PageStore').getEmailLinkTrackingData()
     };
 }
 
-@connectToStores(['NavigationStore', 'articleStore'], mapStateToProps)
+@connectToStores(['NavigationStore', 'articleStore', 'PageStore'], mapStateToProps)
 @hamburgerWrapper
 export default class Page extends Component {
     static displayName = 'Page';
@@ -41,7 +42,13 @@ export default class Page extends Component {
         pageTitle: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
         headerThemeClassName: PropTypes.string,
         theme: PropTypes.object,
-        showWallpaper: PropTypes.bool
+        showWallpaper: PropTypes.bool,
+        emailLinkTrackingData: PropTypes.shape({
+            bauer_global_unique_id: PropTypes.string,
+            source: PropTypes.string,
+            campaign: PropTypes.string,
+            medium: PropTypes.string
+        })
     };
 
     static contextTypes = {
@@ -56,8 +63,20 @@ export default class Page extends Component {
         pageTitle: '',
         theme: {},
         showUniheader: false,
-        showWallpaper: true
+        showWallpaper: true,
+        emailLinkTrackingData: null
     };
+
+    componentDidMount() {
+        const { emailLinkTrackingData } = this.props;
+
+        emailLinkTrackingData &&
+            window &&
+            window.dataLayer &&
+            window.dataLayer.push({
+                ...emailLinkTrackingData
+            });
+    }
 
     toggleMenu = () => {
         this.props.toggleSideMenu('left');

@@ -7,7 +7,8 @@ export const initialState = {
     title: '',
     imageUrl: '',
     request: {},
-    comScoreSegmentIds: ''
+    comScoreSegmentIds: '',
+    emailLinkTrackingData: null
 };
 
 export function reducer(state = initialState, payload = {}, eventName = '') {
@@ -19,21 +20,25 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
             const request = payload.request.payload || {};
             const subsections = payload.body.subsectionList;
             const comScoreSegmentIds = payload.body.comScoreSegmentIds;
-            if (!entity) return state;
+            const emailLinkTrackingData = payload.body.emailLinkTrackingData;
+
+            if (!entity) {
+                return state;
+            }
+
             return {
                 ...state,
-                ...{
-                    nodeType: entity.nodeType,
-                    title: entity.title,
-                    shortTitle: entity.shortTitle,
-                    summary: entity.summary,
-                    footer,
-                    imageUrl: entity.imageUrl,
-                    theme: payload.body.theme,
-                    request,
-                    subsections,
-                    comScoreSegmentIds
-                }
+                nodeType: entity.nodeType,
+                title: entity.title,
+                shortTitle: entity.shortTitle,
+                summary: entity.summary,
+                footer,
+                imageUrl: entity.imageUrl,
+                theme: payload.body.theme,
+                request,
+                subsections,
+                comScoreSegmentIds,
+                emailLinkTrackingData
             };
         }
         case 'LOAD_CONTENT_FAILED': {
