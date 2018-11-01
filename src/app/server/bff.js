@@ -27,7 +27,6 @@ export default function bff(server) {
         stubServer(server, server.locals.config);
         logger.warn('stubbing does not exercise BFF code');
     } else {
-        server.use(emailLinkTracking);
         server.get(
             '(/:preview(preview))?/amp/:section/:subsection/:page',
             pageModules,
@@ -43,6 +42,7 @@ export default function bff(server) {
         server.get(server.locals.config.services.endpoints.list, list, https, render, error);
         server.get(
             server.locals.config.services.endpoints.page,
+            emailLinkTracking,
             pageModules,
             comScore,
             home,
