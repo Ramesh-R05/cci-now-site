@@ -55,7 +55,6 @@ module.exports = function() {
     });
     this.Given(/^I can see the image alt text in the hero image element "([^"]*)"$/, function (altText) {
         var imgaltText = browser.getAttribute(wn_article.heroImg, 'alt');
-        console.log(imgaltText);
         expect(imgaltText).toMatch(altText);
     });
     this.When(/^I should not see the hero image caption$/, function () {
@@ -113,16 +112,13 @@ module.exports = function() {
         var rcItemsTitle = browser.getText(wn_article.relatedContentItemsTitle);
 
         //Validate the heading of Related
-        console.log(rcHeading);
         expect(rcHeading).not.toEqual('');
 
         //Loop through the related items, and Validate the body related items' image and title
         for(var i=0; i<rcItemsTitle.length; i++) {
             var image = rcItemsImage[i];
             var title = rcItemsTitle[i];
-            console.log( i + ':' + image);
             expect(image === '').toBe(false);
-            console.log( i + ':' + title);
             expect(title === '').toBe(false);
         }
     });
@@ -135,9 +131,7 @@ module.exports = function() {
         for(var i=0; i<rcItemsTitle.length; i++) {
             var image = rcItemsImage[i];
             var title = rcItemsTitle[i];
-            console.log( i + ':' + image);
             expect(image === '').toBe(false);
-            console.log( i + ':' + title);
             expect(title === '').toBe(false);
         }
     });
@@ -167,13 +161,11 @@ module.exports = function() {
     });
     this.Given(/^I can see the body competition$/, function () {
         var competiton = browser.getAttribute(wn_article.Bodycomp,'src');
-        console.log(competiton);
         expect(competiton).toMatch("engagesciences");
     });
     this.Given(/^I can see the body Twitter embed "([^"]*)"$/, function (twitterId) {
         browser.waitForVisible(wn_article.twitterEmb1, 3000);
         var twitEmbed = browser.getAttribute(wn_article.twitterEmb1, 'data-tweet-id');
-        console.log(twitEmbed);
         expect(twitEmbed).toEqual(twitterId);
     });
     this.Given(/^I can see the body Instagram embed with caption "([^"]*)"$/, function (instagramSrc) {
@@ -189,49 +181,41 @@ module.exports = function() {
     this.Given(/^I can see the body Facebook embed "([^"]*)"$/, function (facebookUrl) {
         browser.waitForVisible(wn_article.facebookEmb1, 3000);
         var facebookEmbed = browser.getAttribute(wn_article.facebookEmb1, 'data-href');
-        console.log(facebookEmbed);
         expect(facebookEmbed).toEqual(facebookUrl);
     });
     this.Given(/^I can see the body Playbuzz embed "([^"]*)"$/, function (playbuzzUrl) {
         browser.waitForVisible(wn_article.playbuzzEmb1, 3000);
         var playbuzzEmbed = browser.getAttribute(wn_article.playbuzzEmb1, 'data-game');
-        console.log(playbuzzEmbed);
         expect(playbuzzEmbed).toEqual(playbuzzUrl);
     });
     this.Given(/^I can see the body Youtube embed "([^"]*)"$/, function (youtubeUrl) {
         browser.waitForVisible(wn_article.videoEmbArry, 3000);
         var videoEmbArry = browser.getAttribute(wn_article.videoEmbArry, 'src');
-        console.log(videoEmbArry[0]); //The stubbed data of Youtube is in the first iframe of video container.
-        expect(videoEmbArry[0]).toEqual(youtubeUrl);
+        expect(videoEmbArry[0]).toEqual(youtubeUrl); //The stubbed data of Youtube is in the first iframe of video container.
     });
     this.Given(/^I can see the body Vimeo embed "([^"]*)"$/, function (vimeoUrl) {
         browser.waitForVisible(wn_article.videoEmbArry, 3000);
         var videoEmbArry = browser.getAttribute(wn_article.videoEmbArry, 'src');
-        console.log(videoEmbArry[1]); //The stubbed data of Vimeo is in the second iframe of video container.
-        expect(videoEmbArry[1]).toEqual(vimeoUrl);
+        expect(videoEmbArry[1]).toEqual(vimeoUrl); //The stubbed data of Vimeo is in the second iframe of video container.
     });
     this.Given(/^I can see the body Whooshka embed "([^"]*)"$/, function (whooshkaUrl) {
         browser.waitForVisible(wn_article.whooshkaEmb, 3000);
         var whooshkaEmb = browser.getAttribute(wn_article.whooshkaEmb, 'src');
-        console.log(whooshkaEmb);
         expect(whooshkaEmb).toEqual(whooshkaUrl);
     });
     this.Given(/^I can see the body Wirewax embed "([^"]*)"$/, function (wirewaxUrl) {
         browser.waitForVisible(wn_article.wirewaxEmb, 3000);
         var wirewaxEmb = browser.getAttribute(wn_article.wirewaxEmb, 'src');
-        console.log(wirewaxEmb);
         expect(wirewaxEmb).toEqual(wirewaxUrl);
     });
     this.Given(/^I can see the body Linklay embed "([^"]*)"$/, function (linklayUrl) {
         browser.waitForVisible(wn_article.linklayEmb, 3000);
         var linklayEmb = browser.getAttribute(wn_article.linklayEmb, 'src');
-        console.log(linklayEmb);
         expect(linklayEmb).toContain(linklayUrl);
     });
     this.Given(/^I can see the body Giphy embed "([^"]*)"$/, function (giphyId) {
         browser.waitForVisible(wn_article.giphyEmb, 3000);
         var giphyEmb = browser.getAttribute(wn_article.giphyEmb, 'src');
-        console.log(giphyEmb);
         expect(giphyEmb).toContain(giphyId);
     });
     this.Given(/^I can see the related tags "([^"]*)"$/, function (rTag1) {
@@ -258,7 +242,6 @@ module.exports = function() {
                 break;
             case 'leaderboard':
                 adPlacements = browser.getText(wn_article.adSection);
-                console.log(adPlacements);
                 break;
             case 'banner':
                 adPlacements = browser.getText(wn_article.adSection);
@@ -303,7 +286,6 @@ module.exports = function() {
         var heroVideoPlaylistThumbnail = browser.getAttribute(wn_article.heroVideoPlaylistThumbnail, 'src');
         for (var i = 0; i < heroVideoPlaylistThumbnail.length; ++i) {
             var thumbnail = heroVideoPlaylistThumbnail[i];
-            console.log( i + ':' + thumbnail);
             expect(thumbnail === '').toBe(false);
         }
         // Verify the thumbnail images in the playlist
@@ -313,7 +295,6 @@ module.exports = function() {
         var heroVideoPlaylistTitle = browser.getText(wn_article.heroVideoPlaylistTitle);
         for (var i = 0; i < heroVideoPlaylistTitle.length; ++i) {
             var title = heroVideoPlaylistTitle[i];
-            console.log( i + ':' + title);
             expect(title === '').toBe(false);
         }
         // Verify the titles in the playlist
@@ -321,7 +302,6 @@ module.exports = function() {
 
     this.Given(/^I can click the play button of the main video$/, function () {
         var heroVideoProgress = browser.getAttribute(wn_article.heroVideoProgress,'aria-valuenow');
-        console.log('Before playing : ' + heroVideoProgress[0])
         expect(heroVideoProgress[0]).toEqual('NaN');
         // Verify the progress bar is not loaded before playing.
 
@@ -332,12 +312,9 @@ module.exports = function() {
     });
 
     this.Given(/^I can see the video playing$/, function () {
-
-        console.log('Waiting a few seconds before validating')
-        wait(6000);
+        wait(6000); //Waiting a few seconds before validating
 
         var heroVideoProgress = browser.getAttribute(wn_article.heroVideoProgress,'aria-valuenow');
-        console.log('During playing : ' + heroVideoProgress[0])
         expect(heroVideoProgress[0]).not.toEqual('NaN');
         // Verify the control bar of the hero video shows the loading progress. (When it isn't started, it will show NaN.)
     });
@@ -346,9 +323,6 @@ module.exports = function() {
         var heroVideoPlaylistItem = browser.getAttribute(wn_article.heroVideoPlaylistItem, 'class');
         expect(heroVideoPlaylistItem[0]).toContain('vjs-selected');
         expect(heroVideoPlaylistItem[1]).not.toContain('vjs-selected');
-        for (var i=0; i<heroVideoPlaylistItem.length; i++){
-            console.log(heroVideoPlaylistItem[i]);
-        }
 
         console.log('Waiting 9 seconds to ensure the first video is ended before validating the next video')
         wait(9000);
@@ -356,13 +330,9 @@ module.exports = function() {
 
         var heroVideoPlaylistItem = browser.getAttribute(wn_article.heroVideoPlaylistItem, 'class');
         expect(heroVideoPlaylistItem[0]).not.toContain('vjs-selected');
-        for (var i=0; i<heroVideoPlaylistItem.length; i++){
-            console.log(heroVideoPlaylistItem[i]);
-        }
         // Verify that the first video is not the selected one
 
         var heroVideoProgress = browser.getAttribute(wn_article.heroVideoProgress,'aria-valuetext');
-        console.log(heroVideoProgress[0])
         expect(heroVideoProgress[0]).not.toEqual('NaN');
         // Verify that the player is still playing.
     });
@@ -377,7 +347,6 @@ module.exports = function() {
         var lhrFeedImage = browser.getAttribute(wn_article.wd_lhrFeedImage, 'src');
         for (var i=0; i<2; i++){
             var FeedImage = lhrFeedImage[i];
-            console.log('image url is :'+ FeedImage);
             expect(FeedImage === '').toBe(false);
         }
     });
@@ -387,7 +356,6 @@ module.exports = function() {
         var lhrFeedImageLink = browser.getAttribute(wn_article.wd_lhrFeedImageLink, 'href');
         for (var i=0; i<2; i++){
             var FeedImageLink = lhrFeedImageLink[i];
-            console.log('image link is :'+ FeedImageLink);
             expect(FeedImageLink === '').toBe(false);
         }
     });
@@ -397,7 +365,6 @@ module.exports = function() {
         var lhrFeedLongTitle = browser.getText(wn_article.wd_lhrFeedLongTitle);
         for (var i=0; i<2; i++){
             var FeedLongTitle = lhrFeedLongTitle[i];
-            console.log('Long title is :'+ FeedLongTitle);
             expect(FeedLongTitle === '').toBe(false);
         }
     });
@@ -407,7 +374,6 @@ module.exports = function() {
         var lhrFeedLongTitleLink = browser.getAttribute(wn_article.wd_lhrFeedLongTitleLink, 'href');
         for (var i=0; i<2; i++){
             var FeedLongTitleLink = lhrFeedLongTitleLink[i];
-            console.log('Long title link is :'+ FeedLongTitleLink);
             expect(FeedLongTitleLink === '').toBe(false);
         }
     });
@@ -417,7 +383,6 @@ module.exports = function() {
         var lhrFeedSubsection = browser.getText(wn_article.wd_lhrFeedSubsection);
         for (var i=0; i<2; i++){
             var FeedSubsection = lhrFeedSubsection[i];
-            console.log('Subsection is :'+ FeedSubsection);
             expect(FeedSubsection === '').toBe(false);
         }
     });
@@ -427,7 +392,6 @@ module.exports = function() {
         var lhrFeedSubsectionLink = browser.getAttribute(wn_article.wd_lhrFeedSubsectionLink, 'href');
         for (var i=0; i<2; i++){
             var FeedSubsectionLink = lhrFeedSubsectionLink[i];
-            console.log('Subsection link is :'+ FeedSubsectionLink);
             expect(FeedSubsectionLink === '').toBe(false);
         }
     });
@@ -437,7 +401,6 @@ module.exports = function() {
         var lhrFeedDate = browser.getText(wn_article.wd_lhrFeedDate);
         for (var i=0; i<2; i++){
             var FeedDate = lhrFeedDate[i];
-            console.log('Date is :'+ FeedDate);
             expect(FeedDate === '').toBe(false);
         }
     });

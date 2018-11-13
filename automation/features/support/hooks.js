@@ -11,7 +11,6 @@ module.exports = function() {
     const domainName = nconf.get('APP_KEY');
 
     this.After((scenario) => {
-        console.log(`Running on domain: ${domainName}`);
         browser.deleteCookie();
     });
 

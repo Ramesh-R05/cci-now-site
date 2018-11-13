@@ -135,16 +135,9 @@ export default {
                 mediaType: 'image'
             },
             {
-                url: 'https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Elle/2015/02/05/51410/resized.jpg',
-                link: 'http://www.testimagelink2.com.au',
-                open: false,
-                tags: [],
-                title: 'Test Image Title 2',
-                valid: true,
-                source: '',
-                caption: 'Stunner Anna Kendrick keeps her make-up light and natural with some barely there foundation and a glossy lip!',
-                credits: [],
-                mediaType: 'image'
+                url: "https://www.youtube.com/embed/6jB0Hi9pZRc",
+                open: true,
+                mediaType: "youtube"
             },
             {
                 open: false,

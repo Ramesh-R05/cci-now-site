@@ -193,10 +193,8 @@ module.exports = function(){
             var row = rows[i];
             //validates position of social icons on Index and their link
             if (typeof socialLink === 'string') {
-                console.log(row['social'] + ' : ' + socialLink);
                 expect(socialLink).toContain(row['url']);
             } else {
-                console.log(row['social'] + ' : ' + socialLink[i]);
                 expect(socialLink[i]).toContain(row['url']);
             }
         }
@@ -213,7 +211,6 @@ module.exports = function(){
     this.Given(/^the below position bottom teasers are replaced with polar ads$/, function (table) {
         browser.waitForExist('.teaser--polar', 10000);
         var listOfItems = browser.getAttribute(home.bottomTeasers, 'class');
-        console.log(listOfItems.length);
         var rows = table.hashes();
         var count = rows.length;
         validatePolar(listOfItems, rows, count);
@@ -222,7 +219,6 @@ module.exports = function(){
     this.Given(/^the below position added more teasers are replaced with polar ads$/, function (table) {
         browser.waitForExist('.teaser--polar', 10000);
         var listOfItems = browser.getAttribute(home.loadMoreFeed, 'class');
-        console.log(listOfItems.length);
         var rows = table.hashes();
         var count = rows.length;
         validatePolar(listOfItems, rows, count);
