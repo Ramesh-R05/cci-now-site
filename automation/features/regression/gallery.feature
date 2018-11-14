@@ -41,6 +41,7 @@ Feature: Gallery
         Given I am currently viewing "fashion/red-carpet/automation-test-gallery-13302"
         * I can see the author "EMILY JABOUR" on the gallery
         * I can see the play button and click on it
+        * I can see the youtube item in the gallery
 
     @med
     Scenario: Verify a gallery page in desktop style on desktop view
