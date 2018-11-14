@@ -171,6 +171,10 @@
                 color: $ptl-color;
             }
 
+            &--empire span:first-child:not(.teaser__source__breaker) {
+                color: $empire-color;
+            }
+
             &__breaker span:first-child {
                 margin: 0 5px;
                 color: $color-grey-light;

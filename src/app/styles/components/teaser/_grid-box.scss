@@ -81,6 +81,10 @@
             color: $ptl-color;
         }
 
+        &--empire span:first-child:not(.teaser__source__breaker) {
+            color: $empire-color;
+        }
+
         &__breaker span:first-child {
             color: $color-grey-light;
             margin: 0 5px;

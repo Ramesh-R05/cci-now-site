@@ -37,6 +37,7 @@
                     filter: invert(0.5) opacity(0.8);
                 }
 
+                img.uniheader__logo--empire:not(:hover),
                 img.uniheader__logo--nw:not(:hover),
                 img.uniheader__logo--yours:not(:hover),
                 img.uniheader__logo--take5:not(:hover),
@@ -79,6 +80,10 @@
 
                     &btl {
                         height: 25px;
+                    }
+
+                    &empire {
+                        height: 18px;
                     }
                 }
 

@@ -9,16 +9,17 @@ Feature: Brand Landing page
         When I am currently viewing "<page>"
         Then I should see the sign up button containing "<link>" url in "mobile" view
         Examples:
-            | page                  | link                                              |
-            | aww/                  | //www.nowtolove.com.au/aww-newsletter             |
-            | womansday/            | //www.nowtolove.com.au/womansday-newsletter       |
-            | good-health/          | //www.nowtolove.com.au/good-health-newsletter     |
-            | okmagazine/           | //www.nowtolove.com.au/okmagazine-newsletter      |
-            | nw/                   | //www.nowtolove.com.au/nw-newsletter              |
-            | take5mag/             | //www.nowtolove.com.au/take5mag-newsletter        |
-            | mother-and-baby/      | //www.nowtolove.com.au/mother-and-baby-newsletter |
-            | tvweek/               | //www.nowtolove.com.au/tvweek-newsletter          |
-            | prizestolove/         | //www.nowtolove.com.au/prizestolove-newsletter    |
+            | page                  | link                                                |
+            | aww/                  | //www.nowtolove.com.au/aww-newsletter               |
+            | womansday/            | //www.nowtolove.com.au/womansday-newsletter         |
+            | good-health/          | //www.nowtolove.com.au/good-health-newsletter       | 
+            | okmagazine/           | //www.nowtolove.com.au/okmagazine-newsletter        |
+            | nw/                   | //www.nowtolove.com.au/nw-newsletter                |
+            | take5mag/             | //www.nowtolove.com.au/take5mag-newsletter          |
+            | mother-and-baby/      | //www.nowtolove.com.au/mother-and-baby-newsletter   |
+            | tvweek/               | //www.nowtolove.com.au/tvweek-newsletter            |
+            | prizestolove/         | //www.nowtolove.com.au/prizestolove-newsletter      |
+            #| empire/               | //empire.e.bauer-media.com.au/join/5la/signup-empire|
 
     Scenario Outline: Verify the sign-up URL on <page> brand landing page in <device> view
         Given I switch to "<device>" view

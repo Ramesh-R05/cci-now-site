@@ -133,6 +133,7 @@ hr {
     display: none;
 }
 
+.brand-title-empire,
 .brand-title-yours,
 .brand-title-take5,
 .brand-title-ok,
@@ -225,6 +226,8 @@ hr {
 
     &-btl { color: $nz-btl-color; }
 
+    &-empire { color: $empire-color; }
+
     @media #{$small-only} {
         display: none;
     }
@@ -278,6 +281,8 @@ hr {
     &-nadia { background-color: $nz-nadia-color; }
 
     &-btl { background-color: $nz-btl-color; }
+
+    &-empire { background-color: $empire-color; }
 }
 
 .header {
@@ -314,9 +319,11 @@ hr {
     &-nadia { background-color: $nz-nadia-color; }
 
     &-btl { background-color: $nz-btl-color; }
+
+    &-empire { background-color: $empire-color; }
 }
 
-.header-gh, .header-aww, .header-wd, .header-ok, .header-nw, .header-take5, .header-yours, .header-mb {
+.header-gh, .header-aww, .header-wd, .header-ok, .header-nw, .header-take5, .header-yours, .header-mb, .header-empire {
     .header-nav:before {
         border-left: 1px solid #FFF;
     }

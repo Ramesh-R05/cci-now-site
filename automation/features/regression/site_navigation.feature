@@ -71,15 +71,15 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         Given I switch to "mobile" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
          * I can navigate to all sites in the hamburger navigation menu
-            |title                      |url                                    |gtm                        |
-            |Homes To Love              |https://www.homestolove.com.au/         |gtm-hamburger-homes        |
-            |Women's Weekly Food         |https://www.womensweeklyfood.com.au/    |gtm-hamburger-wwfood       |
-            |Elle                       |https://www.elle.com.au/                |gtm-hamburger-elle         |
-            |Harper's Bazaar            |https://www.harpersbazaar.com.au/       |gtm-hamburger-harpers      |
-            |Gourmet Traveller          |https://www.gourmettraveller.com.au/    |gtm-hamburger-gt           |
-            |Cosmopolitan               |https://www.cosmopolitan.com.au/        |gtm-hamburger-cosmo        |
-            |Dolly                      |http://www.dolly.com.au/               |gtm-hamburger-dolly        |
-            |Beauty Heaven              |https://www.beautyheaven.com.au/       |gtm-hamburger-beautyheaven |
+            |title                      |url                                    |gtm                       |
+            |Homes To Love              |https://www.homestolove.com.au/        |gtm-hamburger-homes       |
+            |Women's Weekly Food        |https://www.womensweeklyfood.com.au/  |gtm-hamburger-wwfood       |
+            |Elle                       |https://www.elle.com.au/               |gtm-hamburger-elle        |
+            |Harper's Bazaar            |https://www.harpersbazaar.com.au/      |gtm-hamburger-harpers     |
+            |Gourmet Traveller          |https://www.gourmettraveller.com.au/   |gtm-hamburger-gt          |
+            |Cosmopolitan               |https://www.cosmopolitan.com.au/       |gtm-hamburger-cosmo       |
+            |Dolly                      |http://www.dolly.com.au/               |gtm-hamburger-dolly       |
+            |Beauty Heaven              |https://www.beautyheaven.com.au/       |gtm-hamburger-beautyheaven|
 
     @med @article
     Scenario: Mobile users menu will fade out as they scroll down the page
