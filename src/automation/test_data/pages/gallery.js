@@ -135,9 +135,9 @@ export default {
                 mediaType: 'image'
             },
             {
-                url: "https://www.youtube.com/embed/6jB0Hi9pZRc",
+                url: 'https://www.youtube.com/embed/6jB0Hi9pZRc',
                 open: true,
-                mediaType: "youtube"
+                mediaType: 'youtube'
             },
             {
                 open: false,
