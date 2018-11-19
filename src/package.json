@@ -37,7 +37,7 @@
   "license": "UNLICENSED",
   "homepage": "https://github.com/bauerxcelmedia/now-site#readme",
   "dependencies": {
-    "@bxm/ad": "^14.3.0",
+    "@bxm/ad": "^14.4.0",
     "@bxm/article": "^26.19.0",
     "@bxm/behaviour": "1.4.0",
     "@bxm/datetime": "^3.1.0",
@@ -49,7 +49,7 @@
     "@bxm/newsletter": "^3.0.0",
     "@bxm/react-script-loader": "^2.1.0",
     "@bxm/recommendations": "^4.1.0",
-    "@bxm/server": "^26.8.0",
+    "@bxm/server": "^26.9.0",
     "@bxm/site-header": "^7.8.0",
     "@bxm/social": "^2.0.0",
     "@bxm/tags": "^3.0.0",
