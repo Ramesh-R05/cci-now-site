@@ -10,7 +10,7 @@ var site_navigation_widget = {
     siteNavHeader: ".header__sections",
     siteNavHeaderLogo: ".header__sections .header-logo a",
     siteHamburgerDetail: "nav.mobile-menu__nav a",
-    siteHamburgerActiveLink: "nav.mobile-menu__nav > span a.nav-item.nav-item--active",
+    siteHamburgerActiveLink: "nav.mobile-menu__nav > .nav-link--active",
     siteHamburgerClose: "button.close-btn",
     siteHeaderBanner: ".header-banner a"
 };

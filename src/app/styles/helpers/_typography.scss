@@ -191,9 +191,24 @@ a {
 
 @mixin type-side-menu-link {
     color: $color-white;
-    font: 500 20px / 1.5 $font-family-sans-serif-primary;
+    font: 500 23px / 1.2 $font-family-sans-serif-primary;    
     letter-spacing: .04em;
-    text-transform: uppercase;
+    text-transform: capitalize;
+    text-decoration: none;
+
+    @media #{$medium-up} {
+        font-size: 28px;
+    }
+}
+
+@mixin type-side-menu-subsection {
+    @include type-side-menu-link;
+    font-size: 21px;
+    font-weight: 100;
+
+    @media #{$medium-up} {
+        font-size: 24px;
+    }
 }
 
 .type-side-menu-link {

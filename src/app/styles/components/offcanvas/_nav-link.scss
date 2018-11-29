@@ -1,0 +1,30 @@
+.nav-link {
+    @include type-side-menu-link;
+    display: block;
+    margin-bottom: 14px;
+
+    &:hover {
+        color: $color-primary;
+        text-decoration: none;
+    }
+
+    &--active {
+        color: $color-primary;
+    }
+
+    &:focus {
+        color: $color-primary;
+    }
+
+    &--subsection {
+        @include type-side-menu-subsection;
+        margin-bottom: 5px;
+    }
+
+    &--dropdown-root {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: auto;
+        margin-bottom: 0;
+    }
+}

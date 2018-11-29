@@ -57,25 +57,7 @@
 
 .mobile-menu__nav {
     font-size: 24px;
-    font-weight: bold;
-    margin-right: -84px;
-
-    a {
-        text-decoration: none;
-    }
-
-    a:hover {
-        color: $color-primary;
-    }
-
-    a:focus {
-        text-decoration: none;
-    }
-
-    @media #{$medium-up} {
-        font-size: 24px;
-        margin-right: -98px;
-    }
+    font-weight: bold;    
 
     &::after {
         content: ' ';
@@ -85,227 +67,14 @@
         position: relative;
         display: block;
     }
-
-    > span {
-        cursor: pointer;
-    }
-
-    span {
-
-        ul {
-            list-style-type: none;
-            margin: -5px;
-            li {
-                margin: 15px 0;
-                font-weight: 300;
-                a {
-                    color: #FFF;
-                }
-            }
-        }
-    }
-
-    @media #{$small-only} {
-        padding-left: 8px;
-        span ul {
-            li {
-                margin: 10px 0;
-                font-size: 21px;
-            }
-            margin: -5px 0 16px 0;
-        }
-    }
 }
 
-.mobile-menu__nav .nav-item {
-    color: $color-white;
-    display: inline-block;
-    padding: 5px 0;
-    font-size: 28px;
-    font-weight: 400;
 
-    @media #{$small-only} {
-        font-size: 23px;
-        padding: 11px 0;
-        width: 66%;
-
-        &:first-child {
-            padding: 5px 0px 10px;
-        };
-    }
-
-    @media #{$medium-up} {
-        padding: {
-            top: 14px;
-            bottom: 14px;
-        };
-
-        width: 74%;
-    }
-
-    @media #{$large-up} {
-        width: 77%;
-    }
-}
-
-.mobile-menu__nav .nav-item--active {
-    color: $color-primary;
-    text-decoration: none;
-}
-
-.mobile-menu-list {
-    padding: 0;
-    li {
-        display: inline-block;
-        padding: 5px 21px 23px 0px;
-        min-width: 70%;
-
-        &:nth-child(2) {
-            width: 100%;
-        }
-
-        @media #{$medium-up} {
-            &:nth-child(3),
-            &:nth-child(4),
-            &:nth-child(5) {
-                padding-right: 15px;
-            }
-
-            &:nth-child(4) {
-                padding-right: 10px;
-            }
-        }
-
-        @media #{$small-only} {
-            padding: 5px 15px 18px 0px;
-        }
-
-        img {
-            &.mobile-menu-list__logo {
-                &--homes {
-                    width: 220px;
-                    height: auto;
-                    margin-right: 11px;
-
-                    @media #{$small-only} {
-                        width: 210px;
-                    }
-                }
-
-                &--wwfood {
-                    width: 90px;
-                    height: 36px;
-
-                    @media #{$small-only} {
-                        width: 80px;
-                        height: 32px;
-                        margin-left: 4px;
-                    }
-                }
-
-                &--elle {
-                    width: 72px;
-                    height: 29px;
-
-                    @media #{$small-only} {
-                        margin-right: 12px;
-                        width: 63px;
-                        height: 26px;
-                    }
-                }
-
-                &--harpers {
-                    width: 100px;
-                    height: 30px;
-
-                    @media #{$small-only} {
-                        margin-top: 2px;
-                        width: 88px;
-                        height: 30px;
-                    }
-                }
-
-                &--gt {
-                    width: 99px;
-                    height: 31px;
-                    padding-top: 2px;
-
-                    @media #{$small-only} {
-                        width: 88px;
-                        height: 28px;
-                        margin-left: -3px;
-                    }
-                }
-
-                &--cosmo {
-                    width: 130px;
-                    height: 24px;
-
-                    @media #{$small-only} {
-                        width: 115px;
-                        height: 22px;
-                    }
-                }
-
-                &--dolly {
-                    width: 113px;
-                    height: 25px;
-
-                    @media #{$small-only} {
-                        width: 94px;
-                        height: 22px;
-                        margin-left: 3px;
-                        margin-top: 7px;
-                    }
-                }
-
-                &--beautyheaven {
-                    width: 113px;
-                    height: auto;
-
-                    @media #{$small-only} {
-                        width: 100px;
-                        margin-left: 3px;
-                        margin-top: 7px;
-                    }
-                }
-
-                &--nzhomes {
-                    height: 57px;
-                }
-
-                &--nzfood {
-                    height: 36px;
-                }
-
-                &--missfq {
-                    height: 41px;
-                    margin-right: 100px;
-                }
-
-                &--fq {
-                    height: 37px;
-                    margin-right: 100px;
-                }
-
-                &--noted {
-                    height: 32px;
-                }
-            }
-        }
-    }
-
-    img:not(:hover) {
-        filter: brightness(0) invert(1);
-        -moz-filter: brightness(0) invert(1);
-        -ms-filter: brightness(0) invert(1);
-    }
-}
 
 .off-canvas-content-wrapper {
     padding: $column-gutter / 2;
 
-    svg {
+    .close-btn {
         fill: $color-primary;
     }
 
@@ -313,32 +82,7 @@
         height: 100%;
         overflow: auto;
         width: $offcanvas-tablet-width;
-        padding: 52px 58px;
-    }
-}
-
-.mobile-menu-dropdown-button {
-    svg {
-        fill: #FFF;
-    }
-}
-
-.mobile-menu-list:before {
-    content: 'MORE FROM THE TO LOVE NETWORK';
-    width: 100%;
-    display: block;
-    font-family: proxima-nova, sans-serif;
-    position: relative;
-    background-color: transparent;
-    color: #bbbbbb;
-    font-size: 13px;
-    margin: 28px 0px 40px;
-    left: 0;
-    height: 0px;
-
-    @media #{$small-only} {
-        font-size: 11px;
-        margin: 25px 0px 34px;
+        padding: 52px 40px;
     }
 }
 
