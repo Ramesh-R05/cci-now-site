@@ -77,7 +77,6 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
             |Elle                       |https://www.elle.com.au/               |gtm-hamburger-elle        |
             |Harper's Bazaar            |https://www.harpersbazaar.com.au/      |gtm-hamburger-harpers     |
             |Gourmet Traveller          |https://www.gourmettraveller.com.au/   |gtm-hamburger-gt          |
-            |Cosmopolitan               |https://www.cosmopolitan.com.au/       |gtm-hamburger-cosmo       |
             |Dolly                      |http://www.dolly.com.au/               |gtm-hamburger-dolly       |
             |Beauty Heaven              |https://www.beautyheaven.com.au/       |gtm-hamburger-beautyheaven|
 

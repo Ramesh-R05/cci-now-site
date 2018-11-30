@@ -136,10 +136,10 @@ Feature: Smoke test for AU NOW
 #            |device             |page       |pageUrl                                            |
 #            |tablet landscape   |section    |news                                            |
 
-    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
-        Given I switch to "<device>" view
-        When I am currently viewing "<pageUrl>"
-        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
-        Examples:
-            |device             |page       |pageUrl                                                         |
-            |tablet portrait    |article    |celebrity/tv/noni-hazlehurst-opens-up-about-her-childhood-34854 |
+#    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
+#        Given I switch to "<device>" view
+#        When I am currently viewing "<pageUrl>"
+#        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+#        Examples:
+#            |device             |page       |pageUrl                                                         |
+#            |tablet portrait    |article    |celebrity/tv/noni-hazlehurst-opens-up-about-her-childhood-34854 |
