@@ -12,9 +12,9 @@ Feature: Smoke test for AU NOW
         And I should see 2 promoted images and titles which are clickable to open their page
         And I should see a "top" feed item containing its image and clickable to open its page
         And I should see a "bottom" feed item containing its image and clickable to open its page
-#        When I click on the Load More button
-#        Then I should see extra 14 teasers after loading more
-#        And I should see a load more feed item containing its image and clickable to open its page
+        When I click on the Load More button
+        Then I should see extra 14 teasers after loading more
+        And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario Outline: Verify the static <page> brand data on its brand landing page
         Given I switch to "mobile" view
@@ -39,9 +39,9 @@ Feature: Smoke test for AU NOW
         Then I should see the main hero item containing its image and clickable to open its page
         And I should see a "top" feed item containing its image and clickable to open its page
         And I should see a "bottom" feed item containing its image and clickable to open its page
-#        When I click on the Load More button
-#        Then I should see extra 14 teasers after loading more
-#        And I should see a load more feed item containing its image and clickable to open its page
+        When I click on the Load More button
+        Then I should see extra 14 teasers after loading more
+        And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the section landing page
         Given I switch to "mobile" view
@@ -49,9 +49,9 @@ Feature: Smoke test for AU NOW
         Then I should see the main hero item containing its image and clickable to open its page
         And I should see a "top" feed item containing its image and clickable to open its page
         And I should see a "bottom" feed item containing its image and clickable to open its page
-#        When I click on the Load More button
-#        Then I should see extra 14 teasers after loading more
-#        And I should see a load more feed item containing its image and clickable to open its page
+        When I click on the Load More button
+        Then I should see extra 14 teasers after loading more
+        And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the tag landing page
         Given I switch to "mobile" view
@@ -59,9 +59,9 @@ Feature: Smoke test for AU NOW
         Then I should see the main hero item containing its image and clickable to open its page
         And I should see a "top" feed item containing its image and clickable to open its page
         And I should see a "bottom" feed item containing its image and clickable to open its page
-#        When I click on the Load More button
-#        Then I should see extra 14 teasers after loading more
-#        And I should see a load more feed item containing its image and clickable to open its page
+        When I click on the Load More button
+        Then I should see extra 14 teasers after loading more
+        And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the 404 page
         Given I switch to "mobile" view
@@ -106,40 +106,40 @@ Feature: Smoke test for AU NOW
         Given I switch to "<device>" view
         When I am currently viewing "<pageUrl>"
         * I should see the search icon in the navigation bar
-#        * I should see the search box after clicking the icon
-#        * I should still see the search box after scrolling the page down
-#        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
-#        * I should not see the search bar on the search result page in mobile version
+        * I should see the search box after clicking the icon
+        * I should still see the search box after scrolling the page down
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+        * I should not see the search bar on the search result page in mobile version
         Examples:
             |device             |page       |pageUrl                                            |
             |mobile             |homepage   |                                                   |
 
-## Will enable once the wallpaper ad issue in the secured URL is clarified
-#    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
-#        Given I switch to "<device>" view
-#        When I am currently viewing "<pageUrl>"
-#        * I should see the search icon in the navigation bar
-#        * I should see the search box after clicking the icon
-#        * I should still see the search box after scrolling the page down
-#        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
-#        * I should be able to search a keyword "cake" on "search result page" and see the result page
-#        Examples:
-#            |device             |page       |pageUrl                                            |
-#            |desktop            |homepage   |                                                   |
+# Will enable once the wallpaper ad issue in the secured URL is clarified
+    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
+        Given I switch to "<device>" view
+        When I am currently viewing "<pageUrl>"
+        * I should see the search icon in the navigation bar
+        * I should see the search box after clicking the icon
+        * I should still see the search box after scrolling the page down
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+        * I should be able to search a keyword "cake" on "search result page" and see the result page
+        Examples:
+            |device             |page       |pageUrl                                            |
+            |desktop            |homepage   |                                                   |
 
-## Will enable once the wallpaper ad issue in the secured URL is clarified
-#    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
-#        Given I switch to "<device>" view
-#        When I am currently viewing "<pageUrl>"
-#        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
-#        Examples:
-#            |device             |page       |pageUrl                                            |
-#            |tablet landscape   |section    |news                                            |
+# Will enable once the wallpaper ad issue in the secured URL is clarified
+    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
+        Given I switch to "<device>" view
+        When I am currently viewing "<pageUrl>"
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+        Examples:
+            |device             |page       |pageUrl                                            |
+            |tablet landscape   |section    |news                                               |
 
-#    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
-#        Given I switch to "<device>" view
-#        When I am currently viewing "<pageUrl>"
-#        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
-#        Examples:
-#            |device             |page       |pageUrl                                                         |
-#            |tablet portrait    |article    |celebrity/tv/noni-hazlehurst-opens-up-about-her-childhood-34854 |
+    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
+        Given I switch to "<device>" view
+        When I am currently viewing "<pageUrl>"
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+        Examples:
+            |device             |page       |pageUrl                                                         |
+            |tablet portrait    |article    |celebrity/tv/noni-hazlehurst-opens-up-about-her-childhood-34854 |

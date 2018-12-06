@@ -19,13 +19,13 @@ Feature: Specific value for NZ NTL
     Scenario: I can see the brand logos in the hamburger menu
         Given I switch to "mobile" view
         When I am currently viewing the homepage
-#        * I can navigate to all sites in the hamburger navigation menu
-#            |title              |url                                 |gtm                    |
-#            |Homes To Love      |https://www.homestolove.co.nz/      |gtm-hamburger-nzhomes  |
-#            |Food To Love       |http://www.foodtolove.co.nz/        |gtm-hamburger-nzfood   |
-#            |Fashion Quarterly  |https://www.fq.co.nz/               |gtm-hamburger-fq       |
-#            |Miss FQ            |https://www.fq.co.nz/missfqhome/    |gtm-hamburger-missfq   |
-#            |Noted              |https://www.noted.co.nz/            |gtm-hamburger-noted    |
+        * I can navigate to all sites in the hamburger navigation menu
+            |title              |url                                 |gtm                    |
+            |Homes To Love      |https://www.homestolove.co.nz/      |gtm-hamburger-nzhomes  |
+            |Food To Love       |http://www.foodtolove.co.nz/        |gtm-hamburger-nzfood   |
+            |Fashion Quarterly  |https://www.fq.co.nz/               |gtm-hamburger-fq       |
+            |Miss FQ            |https://www.fq.co.nz/missfqhome/    |gtm-hamburger-missfq   |
+            |Noted              |https://www.noted.co.nz/            |gtm-hamburger-noted    |
 
     Scenario Outline: Verify the subscribe now link and social links of "<brand>" landing page
         Given I switch to "desktop" view
@@ -118,10 +118,10 @@ Feature: Specific value for NZ NTL
         Given I switch to "<device>" view
         When I am currently viewing "<pageUrl>"
         * I should see the search icon in the navigation bar
-#        * I should see the search box after clicking the icon
-#        * I should still see the search box after scrolling the page down
-#        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
-#        * I should not see the search bar on the search result page in mobile version
+        * I should see the search box after clicking the icon
+        * I should still see the search box after scrolling the page down
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+        * I should not see the search bar on the search result page in mobile version
         Examples:
             |device             |page       |pageUrl                                            |
             |mobile             |homepage   |                                                   |
@@ -130,26 +130,26 @@ Feature: Specific value for NZ NTL
         Given I switch to "<device>" view
         When I am currently viewing "<pageUrl>"
         * I should see the search icon in the navigation bar
-#        * I should see the search box after clicking the icon
-#        * I should still see the search box after scrolling the page down
-#        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
-#        * I should be able to search a keyword "cake" on "search result page" and see the result page
+        * I should see the search box after clicking the icon
+        * I should still see the search box after scrolling the page down
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+        * I should be able to search a keyword "cake" on "search result page" and see the result page
         Examples:
             |device             |page       |pageUrl                                            |
             |desktop            |homepage   |                                                   |
 
-#    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
-#        Given I switch to "<device>" view
-#        When I am currently viewing "<pageUrl>"
-#        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
-#        Examples:
-#            |device             |page       |pageUrl                                            |
-#            |tablet landscape   |section    |celebrity                                          |
+    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
+        Given I switch to "<device>" view
+        When I am currently viewing "<pageUrl>"
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+        Examples:
+            |device             |page       |pageUrl                                            |
+            |tablet landscape   |section    |celebrity                                          |
 
-#    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
-#        Given I switch to "<device>" view
-#        When I am currently viewing "<pageUrl>"
-#        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
-#        Examples:
-#            |device             |page       |pageUrl                                            |
-#            |tablet portrait    |section    |celebrity |
+    Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
+        Given I switch to "<device>" view
+        When I am currently viewing "<pageUrl>"
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
+        Examples:
+            |device             |page       |pageUrl                                            |
+            |tablet portrait    |section    |celebrity                                          |
