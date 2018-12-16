@@ -23,6 +23,7 @@ import search from './bff/middleware/search';
 
 export default function bff(server) {
     server.get('/api/asset', assetProxy);
+
     if (process.env.APP_STUBBED === 'true') {
         stubServer(server, server.locals.config);
         logger.warn('stubbing does not exercise BFF code');

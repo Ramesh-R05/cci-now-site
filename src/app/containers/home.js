@@ -15,6 +15,7 @@ import BrandNewsletter from '../components/brand/brandNewsletter';
 
 function mapStateToProps(context) {
     const teaserStore = context.getStore('TeaserStore');
+
     return {
         heroTeaser: teaserStore.getHeroTeaser(),
         teasers: teaserStore.getLatestTeasers(),

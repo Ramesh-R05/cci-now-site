@@ -26,7 +26,9 @@ export default class Footer extends Component {
         const { iframeKey, modifier, logoList } = this.props;
         let classNames = 'footer';
 
-        if (modifier) classNames += ` footer--${modifier}`;
+        if (modifier) {
+            classNames += ` footer--${modifier}`;
+        }
 
         return (
             <div>

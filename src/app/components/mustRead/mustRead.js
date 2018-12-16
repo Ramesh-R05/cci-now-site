@@ -25,6 +25,7 @@ class MustRead extends Component {
 
     render() {
         let { mustRead } = this.props;
+
         if (!mustRead || mustRead.length < 6) {
             return null;
         }
@@ -39,6 +40,7 @@ class MustRead extends Component {
             const mustReadItem = { ...item };
             mustReadItem.id = `mustread${index + 1}-homepage`;
             mustReadItem.source = shortenedNameList[mustReadItem.source] || mustReadItem.source;
+
             return mustReadItem;
         });
 

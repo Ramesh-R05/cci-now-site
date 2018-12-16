@@ -4,8 +4,10 @@ import makeRequest from '../../makeRequest';
 export default async function listing(req, res, next) {
     try {
         const { page, section, subsection, path } = req.query;
+
         if (has(req, 'data.entity') || !section || page) {
             next();
+
             return;
         }
 

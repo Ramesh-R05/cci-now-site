@@ -28,7 +28,9 @@ export default class TeaserGridView extends Component {
     render() {
         const { className, teasers, nativeAdConfig, showDate, adTargets } = this.props;
 
-        if (!teasers || !Array.isArray(teasers) || !teasers.length) return null;
+        if (!teasers || !Array.isArray(teasers) || !teasers.length) {
+            return null;
+        }
 
         return (
             <div className={classNames('container', className)}>

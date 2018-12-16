@@ -15,8 +15,10 @@ export default async function sectionMiddleware(req, res, next) {
         pageNo = parseInt(req.query.pageNo || pageNo, 10);
 
         const nodeTypeAlias = get(req, 'data.entity.nodeTypeAlias', '');
+
         if ((nodeTypeAlias !== 'Section' && nodeTypeAlias !== 'Subsection' && nodeTypeAlias !== 'Brand') || !section || page) {
             next();
+
             return;
         }
 
@@ -51,7 +53,10 @@ export default async function sectionMiddleware(req, res, next) {
         const totalPage = latestTeasersResp.totalCount % listCount ? totalPageFloor : totalPageFloor + 1;
         const err = new Error('Page not found');
         err.status = 404;
-        if (totalPage < pageNo - 1) throw err;
+
+        if (totalPage < pageNo - 1) {
+            throw err;
+        }
 
         // TODO: need to handle `data` in resp better
         const latestTeasers = latestTeasersResp || {
@@ -59,6 +64,7 @@ export default async function sectionMiddleware(req, res, next) {
         };
 
         let previousPage = null;
+
         if (pageNo > 1) {
             const path = pageNo === 2 ? `${sectionQuery}` : `${sectionQuery}?pageNo=${pageNo - 1}`;
             previousPage = {
@@ -68,6 +74,7 @@ export default async function sectionMiddleware(req, res, next) {
         }
 
         let nextPage = null;
+
         if (skip + latestTeasers.data.length < latestTeasers.totalCount) {
             const path = `${sectionQuery}?pageNo=${pageNo + 1}`;
             nextPage = {

@@ -14,9 +14,11 @@ function capitalizeFirstLetter(string) {
 export default async function searchMiddleware(req, res, next) {
     try {
         let pageNo = 1;
+
         if (req.query) {
             pageNo = parseInt(req.query.pageNo || pageNo, 10);
         }
+
         const query = req.query.params ? get(req, 'query.params.query', '') : get(req, 'query.q', '');
         const from = (pageNo - 1) * searchCount;
         const searchDataResp = await getSearchResults(searchCount, from, query);
@@ -24,6 +26,7 @@ export default async function searchMiddleware(req, res, next) {
         const basePath = `/search/${query}`;
 
         let previousPage = null;
+
         if (pageNo > 1) {
             const prevPageNo = pageNo - 1;
             const prevFrom = (prevPageNo - 1) * searchCount;
@@ -35,6 +38,7 @@ export default async function searchMiddleware(req, res, next) {
         }
 
         let nextPage = null;
+
         if (from + searchDataResp.results.length < searchDataResp.total) {
             const nextPageNo = pageNo + 1;
             const nextFrom = (nextPageNo - 1) * searchCount;

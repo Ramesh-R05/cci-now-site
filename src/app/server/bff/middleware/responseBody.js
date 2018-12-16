@@ -46,6 +46,7 @@ export default function responseBody(req, res, next) {
                 withDefaultImg.contentImageUrl = withDefaultImg.contentImageUrl || req.app.locals.config.defaultImageUrl;
                 //  TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
                 withDefaultImg.pageDateCreated = momentTimezone.tz(withDefaultImg.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
+
                 return withDefaultImg;
             });
             res.body.leftHandSide = { items: parseEntities(lhsData) };

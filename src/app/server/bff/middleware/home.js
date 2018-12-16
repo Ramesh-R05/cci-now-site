@@ -10,10 +10,13 @@ const videoGalleryTeaserCount = 6;
 export default async function home(req, res, next) {
     try {
         let pageNo = 1;
+
         if (req.query) {
             const { page, section, tag } = req.query;
+
             if (page || section || tag) {
                 next();
+
                 return;
             }
 
@@ -28,6 +31,7 @@ export default async function home(req, res, next) {
         ]);
         videoGalleryTeasers.data = videoGalleryTeasers.data.map(gallery => {
             gallery.contentImageUrl = get(gallery, 'contentVideo.properties.videoConfiguration.videoStillUrl', gallery.contentImageUrl);
+
             return gallery;
         });
 
@@ -39,10 +43,12 @@ export default async function home(req, res, next) {
         latestTeasers.data.map(teaser => {
             // TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
             teaser.pageDateCreated = momentTimezone.tz(teaser.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
+
             return teaser;
         });
 
         let previousPage = null;
+
         if (pageNo > 1) {
             const path = pageNo === 2 ? '/' : `/?pageNo=${pageNo - 1}`;
             previousPage = {
@@ -52,6 +58,7 @@ export default async function home(req, res, next) {
         }
 
         let nextPage = null;
+
         if (skip + latestTeasers.data.length < latestTeasers.totalCount) {
             const path = `/?pageNo=${pageNo + 1}`;
             nextPage = {

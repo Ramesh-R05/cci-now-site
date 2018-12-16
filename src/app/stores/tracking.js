@@ -15,6 +15,7 @@ function dataLayerPush(data) {
 function trackGalleryItemChanged(action) {
     const activeItem = action.activeItem;
     const totalGalleryItems = action.totalGalleryItems;
+
     // don't trigger galleryImageChange if the item index is 0
     if (activeItem === 0 || (!action.isAd && activeItem === null)) {
         return;

@@ -9,6 +9,7 @@ export default function getSearchResults(size = 10, from = 0, query = '') {
         .then(res => res)
         .catch(err => {
             logger.error(err);
+
             return {
                 total: 0,
                 results: []

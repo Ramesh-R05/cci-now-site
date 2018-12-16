@@ -20,10 +20,15 @@ export default class Subscribe extends Component {
 
     render() {
         const content = this.context.config.get('subscribe');
-        if (!content) return null;
+
+        if (!content) {
+            return null;
+        }
+
         const { inSideNav } = this.props;
         const { subscribeHeading, subscribeText, subscribeMagUrl, subscribeIpadUrl, subscribeButtonUrl } = content;
         const xLargeGridClass = !inSideNav ? 'xlarge-6' : '';
+
         return (
             <div className="subscribe">
                 <div className="row">

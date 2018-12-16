@@ -20,6 +20,7 @@ import SubsectionList from '../components/subsectionList';
 function mapStateToProps(context) {
     const pageStore = context.getStore('PageStore');
     const teaserStore = context.getStore('TeaserStore');
+
     return {
         title: pageStore.getTitle(),
         shortTitle: pageStore.getShortTitle(),

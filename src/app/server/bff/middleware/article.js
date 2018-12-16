@@ -8,8 +8,10 @@ const TOP = 20;
 export default async function article(req, res, next) {
     try {
         const nodeTypeAlias = get(req, 'data.entity.nodeTypeAlias', '');
+
         if (nodeTypeAlias !== 'Article') {
             next();
+
             return;
         }
 
@@ -20,11 +22,13 @@ export default async function article(req, res, next) {
         req.data.entity.pageDateCreated = momentTimezone.tz(req.data.entity.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
 
         let listingQuery = '';
+
         if (get(req, 'data.entity.parentUrl', '').includes('barbie')) {
             listingQuery = "parentUrl eq 'barbie'";
         } else {
             listingQuery = "nodeTypeAlias eq 'Article' or nodeTypeAlias eq 'Gallery'";
         }
+
         req.data.leftHandSide = await getLatestTeasers(TOP, undefined, listingQuery);
 
         next();

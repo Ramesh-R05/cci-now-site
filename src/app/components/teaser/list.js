@@ -44,6 +44,7 @@ export default class TeaserListView extends Component {
         };
 
         let ad = null;
+
         if (showAd) {
             ad =
                 items.length > 1 ? (
@@ -55,9 +56,13 @@ export default class TeaserListView extends Component {
                 );
         }
 
-        if (index) adProps.targets.position += index;
+        if (index) {
+            adProps.targets.position += index;
+        }
 
-        if (!items || !Array.isArray(items) || !items.length) return null;
+        if (!items || !Array.isArray(items) || !items.length) {
+            return null;
+        }
 
         return (
             <div className={classNames('container', className)}>

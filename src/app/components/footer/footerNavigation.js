@@ -6,8 +6,12 @@ export default class FooterNavigation extends Component {
     };
 
     render() {
-        if (!this.props.footerUrls) return null;
+        if (!this.props.footerUrls) {
+            return null;
+        }
+
         const { privacy, advertise, terms } = this.props.footerUrls;
+
         return (
             <nav className="footer__navigation" role="contentinfo">
                 <ul>

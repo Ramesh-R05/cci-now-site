@@ -19,19 +19,28 @@ function send(res, header, status, text, body) {
 export default function assetProxy({ originalUrl }, res) {
     const origin = decodeURIComponent(originalUrl.replace('/api/asset?url=', ''));
     const originAsUrl = url.parse(origin);
-    if (!originAsUrl.protocol || !originAsUrl.slashes || !originAsUrl.hostname) res.sendStatus(400);
-    else {
+
+    if (!originAsUrl.protocol || !originAsUrl.slashes || !originAsUrl.hostname) {
+        res.sendStatus(400);
+    } else {
         const cachedOrigin = cache.get(origin);
+
         if (cachedOrigin) {
             send(res, cachedOrigin.header, cachedOrigin.status, cachedOrigin.text, cachedOrigin.body);
         } else {
             const req = request.get(origin);
-            if (process.env.HTTP_PROXY) req.proxy(process.env.HTTP_PROXY);
+
+            if (process.env.HTTP_PROXY) {
+                req.proxy(process.env.HTTP_PROXY);
+            }
+
             req.end((e, r) => {
                 const { header, status, text, body } = e ? e.response : r;
                 const cacheControl = header['cache-control'];
+
                 if (cacheControl) {
                     const maxAge = cacheControl.match(/max-age=(\d+)/i);
+
                     if (maxAge && !!maxAge.length) {
                         cache.set(
                             origin,
@@ -45,6 +54,7 @@ export default function assetProxy({ originalUrl }, res) {
                         );
                     }
                 }
+
                 send(res, header, status, text, body);
             });
         }

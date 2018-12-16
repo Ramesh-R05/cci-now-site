@@ -32,14 +32,19 @@ export default class SubsectionList extends Component {
     };
 
     handleChange = (event, index, value) => {
-        if (value && window) window.location = value;
+        if (value && window) {
+            window.location = value;
+        }
     };
 
     render() {
         const { currentUrl, subsections } = this.props;
         let selectedItem;
         const items = subsections.map(item => {
-            if (currentUrl === item.url) selectedItem = currentUrl;
+            if (currentUrl === item.url) {
+                selectedItem = currentUrl;
+            }
+
             const gtmClass = `gtm-subsection-${item.url.replace(/\/.+\//, '')}`;
 
             return <MenuItem value={item.url} primaryText={item.contentTitle} className={`subsections-list-item ${gtmClass}`} />;

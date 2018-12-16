@@ -8,8 +8,10 @@ const TOP = 20;
 export default async function gallery(req, res, next) {
     try {
         const nodeTypeAlias = get(req, 'data.entity.nodeTypeAlias', '');
+
         if (nodeTypeAlias !== 'Gallery') {
             next();
+
             return;
         }
 
@@ -21,11 +23,13 @@ export default async function gallery(req, res, next) {
         req.data.moreGalleries = await getMoreGalleries();
 
         let listingQuery = '';
+
         if (get(req, 'data.entity.parentUrl', '').includes('barbie')) {
             listingQuery = "parentUrl eq 'barbie'";
         } else {
             listingQuery = "nodeTypeAlias eq 'Article' or nodeTypeAlias eq 'Gallery'";
         }
+
         req.data.leftHandSide = await getLatestTeasers(TOP, undefined, listingQuery);
 
         next();

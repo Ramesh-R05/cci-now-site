@@ -3,11 +3,19 @@ import set from 'lodash.set';
 
 const httpsSet = (obj, path) => {
     let url = get(obj, path);
-    if (typeof url !== 'string' || url.startsWith('https') || url.startsWith('/api/asset?url=')) return;
+
+    if (typeof url !== 'string' || url.startsWith('https') || url.startsWith('/api/asset?url=')) {
+        return;
+    }
+
     url = url.replace('http://d3lp4xedbqa8a5.cloudfront.net', 'https://d3lp4xedbqa8a5.cloudfront.net');
     url = url.replace('http://cdn.assets.cougar.bauer-media.net.au', 'https://d3lp4xedbqa8a5.cloudfront.net');
-    if (url.startsWith('https')) set(obj, path, url);
-    else set(obj, path, `/api/asset?url=${encodeURIComponent(url)}`);
+
+    if (url.startsWith('https')) {
+        set(obj, path, url);
+    } else {
+        set(obj, path, `/api/asset?url=${encodeURIComponent(url)}`);
+    }
 };
 
 const itemLists = [

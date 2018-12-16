@@ -64,6 +64,7 @@ export default class Teaser extends Component {
 
     getGTMClass = () => {
         const article = this.props.article;
+
         return has(article, 'id') ? `gtm-${article.id}` : '';
     };
 
@@ -92,7 +93,9 @@ export default class Teaser extends Component {
     renderSummary = () => {
         const { article, showTeaserSummary } = this.props;
 
-        if (!showTeaserSummary) return null;
+        if (!showTeaserSummary) {
+            return null;
+        }
 
         return <TeaserSummary summary={article.summary} className="teaser__summary" />;
     };
@@ -102,7 +105,9 @@ export default class Teaser extends Component {
         const { className, sourceClassName, showDate, sourceDefault, polar } = this.props;
         let { article } = this.props;
 
-        if (!article) return null;
+        if (!article) {
+            return null;
+        }
 
         article = teaserContentOverride(article);
 
@@ -121,6 +126,7 @@ export default class Teaser extends Component {
         });
 
         let articleSourceClassName = sourceClassName;
+
         if (article.source) {
             articleSourceClassName = `${sourceClassName} ${sourceClassName}--${article.source.toLowerCase().replace(/[^A-Z0-9]/gi, '-')}`;
         }

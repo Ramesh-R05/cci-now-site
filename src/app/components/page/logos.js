@@ -14,7 +14,9 @@ export default class Logos extends Component {
     };
 
     render() {
-        if (!this.props.logoList || this.props.logoList.length <= 0) return null;
+        if (!this.props.logoList || this.props.logoList.length <= 0) {
+            return null;
+        }
 
         const html = this.props.logoList.map(item => {
             const gtmClassName = `gtm-${this.props.gtmPrefix || this.props.className}-${item.id}`;

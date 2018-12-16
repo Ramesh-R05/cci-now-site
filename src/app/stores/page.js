@@ -43,7 +43,10 @@ export default createReducerStore({
         },
 
         getModule: (state, module) => {
-            if (!module) return [];
+            if (!module) {
+                return [];
+            }
+
             return state[module] || [];
         },
 

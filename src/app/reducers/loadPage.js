@@ -13,6 +13,7 @@ export const initialState = {
 
 export function reducer(state = initialState, payload = {}, eventName = '') {
     const actionType = eventName || payload.type || '';
+
     switch (actionType) {
         case 'LOAD_CONTENT': {
             const entity = payload.body.entity;
@@ -41,9 +42,11 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 emailLinkTrackingData
             };
         }
+
         case 'LOAD_CONTENT_FAILED': {
             const { response } = { ...payload };
             response.status = response.status || 400;
+
             return {
                 ...state,
                 ...{
@@ -53,12 +56,14 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 }
             };
         }
+
         case 'PAGE_NOT_FOUND': {
             return {
                 ...state,
                 ...{ error: { ...payload } }
             };
         }
+
         default:
             return state;
     }

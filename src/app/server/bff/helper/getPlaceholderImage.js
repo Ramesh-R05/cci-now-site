@@ -6,5 +6,6 @@ export default function getPlaceholderImage(data) {
     Object.keys(dataWithPlaceholdImg).forEach(key => {
         dataWithPlaceholdImg[key].contentImageUrl = dataWithPlaceholdImg[key].contentImageUrl || imagePlaceholderUrl;
     });
+
     return dataWithPlaceholdImg;
 }

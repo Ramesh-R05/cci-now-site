@@ -25,7 +25,10 @@ export default class SocialIcon extends Component {
 
     render() {
         const { label, name, svgFile, url } = this.props;
-        if (!name) return null;
+
+        if (!name) {
+            return null;
+        }
 
         const src = `/assets/icons/social/${svgFile || `${name}.svg`}`;
         const image = <img src={src} alt={`${name} icon`} />;

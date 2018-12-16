@@ -12,7 +12,11 @@ export default class Links extends Component {
 
     render() {
         const { links } = this.props;
-        if (!links) return null;
+
+        if (!links) {
+            return null;
+        }
+
         return (
             <section className="get-social">
                 <div className="get-social-title" />

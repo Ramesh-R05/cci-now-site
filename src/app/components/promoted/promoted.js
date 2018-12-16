@@ -26,11 +26,15 @@ class Promoted extends Component {
     render() {
         const { promoted } = this.props;
 
-        if (!promoted) return null;
+        if (!promoted) {
+            return null;
+        }
 
         let promotedItems = promoted.items;
 
-        if (!promotedItems || promotedItems.length === 0 || promotedItems.length < 4) return null;
+        if (!promotedItems || promotedItems.length === 0 || promotedItems.length < 4) {
+            return null;
+        }
 
         promotedItems = promotedItems.slice(0, 4);
 
@@ -43,6 +47,7 @@ class Promoted extends Component {
             const item = { ...promotedItem };
             item.id = `promo${index + 1}-homepage`;
             item.source = shortenedNameList[item.source] || item.source;
+
             return item;
         });
 

@@ -46,7 +46,6 @@
         "no-param-reassign": 0,
         "no-plusplus": 0,
         "no-return-assign": 0,
-        "padded-blocks": 0,
         "quote-props": 0,
         "quotes": 0,
         "comma-dangle": ["error", "never"],
@@ -54,6 +53,15 @@
         "max-len": ["error", {
             "code": 150,
             "ignoreComments": true
-        }]
+        }],
+        "space-before-blocks": 2,
+        "curly": [1, "all"],
+        "padding-line-between-statements": [1,             
+            { "blankLine": "always", "prev": "block", "next": "*" },
+            { "blankLine": "always", "prev": "block-like", "next": "*" },
+            { "blankLine": "always", "prev": "*", "next": "block-like" },
+            { "blankLine": "always", "prev": "*", "next": "block" },
+            { "blankLine": "always", "prev": "*", "next": "return" }
+        ]
     }
 }

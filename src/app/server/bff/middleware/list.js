@@ -12,10 +12,13 @@ export default async function list(req, res, next) {
         const listResp = await getLatestTeasers(top, skip, listingQuery);
 
         let basePath = section ? `/${section}` : '/';
+
         if (sectionFormatted) {
             basePath = sectionFormatted ? `/${sectionFormatted}` : '/';
         }
+
         let previousPage = null;
+
         if (pageNo > 1) {
             const path = `${basePath}?pageNo=${pageNo - 1}`;
             previousPage = {
@@ -25,6 +28,7 @@ export default async function list(req, res, next) {
         }
 
         let nextPage = null;
+
         if (skip + listResp.data.length < listResp.totalCount) {
             const path = `${basePath}?pageNo=${pageNo + 1}`;
             nextPage = {

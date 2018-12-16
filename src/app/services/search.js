@@ -10,6 +10,7 @@ export default {
         // is to create a new params object with only properties that we need.
         // There's a difference between client side and server side query property name.
         const q = canUseDOM ? params : { params: params.params };
+
         return request
             .get(`${host}/api/search`)
             .query(q)

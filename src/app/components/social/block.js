@@ -14,7 +14,10 @@ export default class Social extends Component {
 
     render() {
         const { socialUrls } = this.props;
-        if (!socialUrls) return null;
+
+        if (!socialUrls) {
+            return null;
+        }
 
         const links = Object.keys(socialUrls).map((socialItemName, i) => ({
             id: i,

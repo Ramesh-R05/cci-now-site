@@ -9,6 +9,7 @@ export default function parseModule(data, propertyMapOverride = {}) {
     const propertyMap = Object.assign({}, modulePropertyMap, propertyMapOverride);
     Object.keys(propertyMap).forEach(key => {
         const propertyName = propertyMap[key];
+
         if (propertyName && data[key]) {
             module[propertyName] = data[key];
         }

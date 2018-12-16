@@ -16,6 +16,7 @@ export default class BrandTitle extends Component {
         const { brand } = this.props;
         const { imageUrl, id, title } = brand;
         const brandClass = `brand-title brand-title-${id}`;
+
         return (
             <div className={`brand brand-${id}`}>
                 <h1 className={brandClass}>
