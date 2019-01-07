@@ -18,8 +18,8 @@ Feature: Brand Landing page
             | take5mag/             | //www.nowtolove.com.au/take5mag-newsletter          |
             | mother-and-baby/      | //www.nowtolove.com.au/mother-and-baby-newsletter   |
             | tvweek/               | //www.nowtolove.com.au/tvweek-newsletter            |
+            | empire/               | //www.nowtolove.com.au/empire-newsletter            |
             | prizestolove/         | //www.nowtolove.com.au/prizestolove-newsletter      |
-            #| empire/               | //empire.e.bauer-media.com.au/join/5la/signup-empire|
 
     Scenario Outline: Verify the sign-up URL on <page> brand landing page in <device> view
         Given I switch to "<device>" view

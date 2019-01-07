@@ -17,5 +17,5 @@ Feature: Uniheader
             |Take 5                     |/take5mag                          |
             |Mother and Baby            |/mother-and-baby                   |
             |TV WEEK                    |/tvweek                            |
-            #|Empire                     |/empire                            |
+            |Empire                     |/empire                            |
             |Prizes To Love             |/prizestolove                      |

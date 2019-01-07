@@ -125,20 +125,19 @@ export default {
                 newsletterUrl: 'https://www.nowtolove.com.au/tvweek-newsletter',
                 newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5kc/signup-tvweek-article-iframe-bottom'
             },
-            // {
-            //     id: 'empire',
-            //     title: 'Empire',
-            //     imageUrl: '/assets/images/headerlogos/Empire.svg',
-            //     url: '/empire',
-            //     socialLinks: {
-            //         facebook: 'https://www.facebook.com/EmpireAust/',
-            //         instagram: 'https://www.instagram.com/empiremagazine/'
-            //     },
-            //     newsletterUrl: 'http://empire.e.bauer-media.com.au/join/5la/signup-empire',
-            //     subscribeText: 'The latest competitions delivered to your inbox',
-            //     renderSubscribeElements: true,
-            //     newsletterSignupInBodyCopy: 'http://empire.e.bauer-media.com.au/join/5la/signup-empire-iframe'
-            // },
+            {
+                id: 'empire',
+                title: 'Empire',
+                imageUrl: '/assets/images/headerlogos/Empire.svg',
+                url: '/empire',
+                socialLinks: {
+                    facebook: 'https://www.facebook.com/EmpireAust/',
+                    twitter: 'https://twitter.com/EmpireAust',
+                    instagram: 'https://www.instagram.com/EmpireAust/'
+                },
+                newsletterUrl: 'https://www.nowtolove.com.au/empire-newsletter',
+                newsletterSignupInBodyCopy: 'https://empire.e.bauer-media.com.au/join/5la/signup-empire-iframe'
+            },
             {
                 id: 'ptl',
                 title: 'Prizes To Love',

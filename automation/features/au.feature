@@ -31,6 +31,7 @@ Feature: Smoke test for AU NOW
             | take5mag              | https://www.nowtolove.com.au/take5mag-newsletter        |
             | mother-and-baby       | https://www.nowtolove.com.au/mother-and-baby-newsletter |
             | tvweek                | https://www.nowtolove.com.au/tvweek-newsletter          |
+            | empire                | https://www.nowtolove.com.au/empire-newsletter          |
             | prizestolove          | https://www.nowtolove.com.au/prizestolove-newsletter    |
 
     Scenario: Verify the brand landing page
