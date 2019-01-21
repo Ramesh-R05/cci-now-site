@@ -128,33 +128,34 @@ jobs:
     on_failure:
       - NOTIFY: now-deployment-notifications
 
-
-  # 4b. Run compatibility regression test on TEST environment - Browser Stack
-  - name: compatibility-now-site-automation-test
-    type: runSh
-    always:
-      - NOTIFY: now-slack-notifications
-      - NOTIFY: now-qa-team-notifications
-    steps:
-     - IN: now-site-test-deploy-master
-     - IN: now-site-repo
-       switch: off
-     - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-        - script: source ~/.nvm/nvm.sh
-        - script: nvm install "8.9.1"
-        - script: nvm use "8.9.1"
-        - script: cd ./IN/now-site-repo/gitRepo/automation
-        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
-        - script: npm install
-        - script: rm -rf node_modules/chimp/dist/lib/cucumberjs/hooks.js
-        - script: cp features/support/files/chimp_hooks.backup node_modules/chimp/dist/lib/cucumberjs/hooks.js
-        - script: export URL=http://now-site.test.bxm.net.au/
-        - script: npm run test:mobile || mobileResult=failed
-        - script: npm run test:desktop  || desktopResult=failed
-        - script: if [ -n "$mobileResult" ] || [ -n "$desktopResult" ]; then fail; fi
-#    on_failure:
-#      - NOTIFY: now-deployment-notifications
+#This job is disabled because we have downgraded the BrowserStack account and it won't support automated testing.
+#We will enable once we decide to upgrade the account in the future
+#  # 4b. Run compatibility regression test on TEST environment - Browser Stack
+#  - name: compatibility-now-site-automation-test
+#    type: runSh
+#    always:
+#      - NOTIFY: now-slack-notifications
+#      - NOTIFY: now-qa-team-notifications
+#    steps:
+#     - IN: now-site-test-deploy-master
+#     - IN: now-site-repo
+#       switch: off
+#     - TASK:
+#        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+#        - script: source ~/.nvm/nvm.sh
+#        - script: nvm install "8.9.1"
+#        - script: nvm use "8.9.1"
+#        - script: cd ./IN/now-site-repo/gitRepo/automation
+#        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
+#        - script: npm install
+#        - script: rm -rf node_modules/chimp/dist/lib/cucumberjs/hooks.js
+#        - script: cp features/support/files/chimp_hooks.backup node_modules/chimp/dist/lib/cucumberjs/hooks.js
+#        - script: export URL=http://now-site.test.bxm.net.au/
+#        - script: npm run test:mobile || mobileResult=failed
+#        - script: npm run test:desktop  || desktopResult=failed
+#        - script: if [ -n "$mobileResult" ] || [ -n "$desktopResult" ]; then fail; fi
+##    on_failure:
+##      - NOTIFY: now-deployment-notifications
 
   # 4c. Run smoke test on SIT NZ environment
   - name: nz-now-site-smoke-test
