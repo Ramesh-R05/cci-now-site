@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connectToStores, provideContext } from '@bxm/flux';
 import AdManager from '@bxm/ad/lib/google/components/adManager';
 import { handleHistory } from 'fluxible-router';
-import { canUseDOM } from 'exenv';
+import canUseDOM from 'exenv';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import ErrorPage from '../components/page/error';
@@ -31,7 +32,7 @@ class Application extends Component {
         }),
         nodeType: PropTypes.string.isRequired,
         error: PropTypes.object,
-        theme: PropTypes.object,
+        theme: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
         isNavigateComplete: PropTypes.bool.isRequired
     };
 
@@ -50,8 +51,12 @@ class Application extends Component {
 
     constructor(props, context) {
         super(props, context);
-
         this.region = context.config.site.region;
+    }
+
+    componentDidCatch(error, info) {
+        console.log(`error------`, error);
+        console.log(`info----`, info);
     }
 
     shouldComponentUpdate(nextProps) {
@@ -80,9 +85,9 @@ class Application extends Component {
         const Handler = this.props.currentRoute.handler;
 
         const muiTheme = getMuiTheme({
-            fontFamily: '"Amsi Pro Narrow",sans-serif'
+            fontFamily: '"Amsi Pro Narrow",sans-serif',
+            userAgent: '' // TODO: get userAgent from request header or window.navigator
         });
-
         const className = canUseDOM ? '' : 'no-js';
         const regionClassName = this.region ? `region--${this.region}` : '';
 

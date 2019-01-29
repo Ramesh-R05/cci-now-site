@@ -10,11 +10,7 @@ noCallThru();
 const TeaserListStub = Context.createStubComponent();
 const TeaserStub = Context.createStubComponent();
 const AdStub = Context.createStubComponent();
-const StickyStub = React.createClass({
-    render: function() {
-        return <div>{this.props.children}</div>;
-    }
-});
+const StickyStub = Context.createStubComponentWithChildren();
 
 const TeaserListView = proxyquire('../../../app/components/teaser/list', {
     '@bxm/teaser/lib/components/teaserList': TeaserListStub,
@@ -58,7 +54,7 @@ describe('TeaserListView', () => {
     describe('when receiving teasers', () => {
         describe('and there are more than 1', () => {
             beforeEach(() => {
-                reactModule = Context.mountComponent(TeaserListView, { items, showDate: false }, contextConfigStub);
+                reactModule = Context.mountComponent(TeaserListView, { items, showDate: false }, [contextConfigStub]);
                 TeaserListViewComponent = TestUtils.findRenderedComponentWithType(reactModule, TeaserListStub);
                 AdComponent = TestUtils.findRenderedComponentWithType(reactModule, AdStub);
                 StickyComponent = TestUtils.findRenderedComponentWithType(reactModule, StickyStub);
@@ -86,8 +82,8 @@ describe('TeaserListView', () => {
             });
 
             it(`should render the Ad component with relevant props, inside a sticky Ad`, () => {
-                const adDOM = React.findDOMNode(AdComponent);
-                const stickyDOM = React.findDOMNode(StickyComponent);
+                const adDOM = ReactDOM.findDOMNode(AdComponent);
+                const stickyDOM = ReactDOM.findDOMNode(StickyComponent);
                 expect(stickyDOM.innerHTML).to.eq(adDOM.outerHTML);
                 expect(AdComponent.props).to.deep.eq({
                     className: 'ad--section-mrec',

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import imageResize from '@bxm/ui/lib/common/ImageResize';
 import ResponsiveImage from '@bxm/ui/lib/common/ResponsiveImage';
 import get from 'lodash/object/get';

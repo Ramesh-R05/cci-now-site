@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import watchResize from '@bxm/behaviour/lib/components/resizeViewport';
 
 const styles = {
@@ -15,7 +16,7 @@ const styles = {
     }
 };
 
-class StickyAndDockAd extends Component {
+export class UnwrappedStickyAndDockAd extends Component {
     static displayName = 'StickyAndDockAd';
 
     static propTypes = {
@@ -26,8 +27,8 @@ class StickyAndDockAd extends Component {
         adStyle: PropTypes.object,
         adContainerStyle: PropTypes.object,
         customiseBreakpoint: PropTypes.number,
-        topElm: PropTypes.element,
-        bottomElm: PropTypes.element
+        topElm: PropTypes.object,
+        bottomElm: PropTypes.object
     };
 
     static defaultProps = {
@@ -142,4 +143,4 @@ class StickyAndDockAd extends Component {
     }
 }
 
-export default watchResize(StickyAndDockAd);
+export default watchResize(UnwrappedStickyAndDockAd);

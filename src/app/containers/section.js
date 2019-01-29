@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connectToStores } from '@bxm/flux';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import imageResize from '@bxm/ui/lib/common/ImageResize';
@@ -39,16 +40,16 @@ export default class Section extends Component {
     static displayName = 'Section';
 
     static propTypes = {
-        nodeType: PropTypes.array.isRequired,
-        list: PropTypes.array.isRequired,
+        nodeType: PropTypes.string.isRequired,
+        list: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
         listNextParams: PropTypes.object.isRequired,
         teasers: PropTypes.array,
         heroTeaser: PropTypes.object.isRequired,
-        title: PropTypes.array.isRequired,
+        title: PropTypes.string.isRequired,
         currentUrl: PropTypes.string.isRequired,
-        shortTitle: PropTypes.string.isRequired,
-        summary: PropTypes.string.isRequired,
-        theme: PropTypes.object,
+        shortTitle: PropTypes.string,
+        summary: PropTypes.string,
+        theme: PropTypes.array,
         imageUrl: PropTypes.string,
         subsections: PropTypes.object
     };
@@ -57,6 +58,8 @@ export default class Section extends Component {
         teasers: [],
         theme: {},
         imageUrl: '',
+        summary: '',
+        shortTitle: '',
         subsections: { data: {}, totalCount: 0 }
     };
 
@@ -108,7 +111,7 @@ export default class Section extends Component {
         let pageTitle = (
             <h1 className="page-title">
                 <span className="page-title__symbol" />
-                {subsection ? subsection.contentTitle : title}
+                <span>{subsection ? subsection.contentTitle : title}</span>
             </h1>
         );
 

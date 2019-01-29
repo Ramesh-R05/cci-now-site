@@ -51,49 +51,21 @@ describe(`Footer`, () => {
         }
     };
     let reactModule;
-    let subscribe;
     let footerNavigation;
-    let newsletter;
     let socialLinks;
     let backToTop;
-    let logos;
 
     describe('with default props', () => {
         before(() => {
             reactModule = Context.mountComponent(Footer, {}, [contextConfigStub]);
-            //-------------the subscribe iframe will be used in future so the tests aren't being removed.----------
-            //subscribe = TestUtils.findRenderedComponentWithType(reactModule, SubscribeStub);
             footerNavigation = TestUtils.findRenderedComponentWithType(reactModule, FooterNavigationStub);
-            //-------------the subscribe iframe will be used in future so the tests aren't being removed.----------
-            //newsletter = TestUtils.findRenderedComponentWithType(reactModule, NewsletterStub);
             socialLinks = TestUtils.findRenderedComponentWithType(reactModule, SocialLinksStub);
             backToTop = TestUtils.findRenderedComponentWithType(reactModule, BackToTopStub);
-            logos = TestUtils.findRenderedComponentWithType(reactModule, LogosStub);
         });
-
-        //-------------the subscribe iframe will be used in future so the tests aren't being removed.----------
-        // it(`should render the Subscribe Component`, () => {
-        //     expect(subscribe).to.exist;
-        // });
-
-        // it(`should set the subscribe 'content' props to correct config`, () => {
-        //     expect(subscribe.props.content).to.deep.equal(configData.subscribe);
-        // });
 
         it(`should render the FooterNavigation Component`, () => {
             expect(footerNavigation).to.exist;
         });
-
-        //-------------the subscribe iframe will be used in future so the tests aren't being removed.----------
-        // it(`should render the Newsletter Component`, () => {
-        //     expect(newsletter).to.exist;
-        // });
-
-        // const expectedIframeUrl = `${configData.newsletterIframeUrl}!wnfooter`;
-        // it(`should set newsletter 'url' prop to ${expectedIframeUrl}`, () => {
-        //     expect(newsletter.props.url).to.equal(expectedIframeUrl);
-        // });
-
         it(`should render the socialLinks Component`, () => {
             expect(socialLinks).to.exist;
         });
@@ -112,7 +84,7 @@ describe(`Footer`, () => {
             reactModule = Context.mountComponent(
                 Footer,
                 {
-                    modifier: modifier
+                    modifier
                 },
                 [contextConfigStub]
             );
@@ -122,24 +94,7 @@ describe(`Footer`, () => {
 
         const expectedModifierClassName = `footer footer--${modifier}`;
         it(`should render footer with the ${expectedModifierClassName} class`, () => {
-            expect(footer.props.className).to.equal(expectedModifierClassName);
+            expect(footer.className).to.equal(expectedModifierClassName);
         });
     });
-    //-------------the subscribe iframe will be used in future so the tests aren't being removed.----------
-    // describe('with an iframeKey prop', () => {
-    //     const iframeKey = 'article';
-    //     const expectedIframeUrl = `${configData.newsletterIframeUrl}!${iframeKey}`;
-
-    //     before(() => {
-    //         reactModule = Context.mountComponent(Footer, {
-    //             iframeKey: iframeKey,
-    //         }, [contextConfigStub]);
-
-    //         newsletter = TestUtils.findRenderedComponentWithType(reactModule, NewsletterStub);
-    //     });
-
-    //     it(`should set newsletter 'url' prop to ${expectedIframeUrl}`, () => {
-    //         expect(newsletter.props.url).to.equal(expectedIframeUrl);
-    //     });
-    // });
 });

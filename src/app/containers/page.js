@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connectToStores } from '@bxm/flux';
 import hamburgerWrapper from '@bxm/nav/lib/components/hamburgerWrapper';
 import MobileOffCanvas from '@bxm/nav/lib/components/offcanvas/content';
@@ -41,7 +42,7 @@ export default class Page extends Component {
         hideLeaderboard: PropTypes.bool,
         pageTitle: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
         headerThemeClassName: PropTypes.string,
-        theme: PropTypes.object,
+        theme: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
         showWallpaper: PropTypes.bool,
         emailLinkTrackingData: PropTypes.shape({
             bauer_global_unique_id: PropTypes.string,

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import Page from '../../containers/page';
 
 export default class Error extends Component {
@@ -21,7 +22,7 @@ export default class Error extends Component {
         const { content, emojiSrc, title, symbol, returnHomeText } = message;
 
         return (
-            <Page currentUrl={this.props.currentUrl} className="error-page" hideLeaderboard headerExpanded>
+            <Page currentUrl={this.props.currentUrl} className="error-page" hideLeaderboard headerExpanded showWallpaper={false}>
                 <section className="error-page-container container">
                     <h1 className="page-title error-page-container__title">
                         {symbol ? <span className="page-title__symbol">{symbol}</span> : null}

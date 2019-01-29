@@ -82,7 +82,7 @@ describe(`BrandMagazine`, () => {
 
         it('should render the second span and apply the correct class from the config', () => {
             const spans = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'span');
-            const secondSpanClass = spans[1].props.className;
+            const secondSpanClass = spans[1].className;
             const correctClass = `sub-now sub-now-${brandPropStub.id}`;
             expect(secondSpanClass).to.equal(correctClass);
         });

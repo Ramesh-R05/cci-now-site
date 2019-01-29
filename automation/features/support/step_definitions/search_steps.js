@@ -1,5 +1,6 @@
 var search = require('../page_objects/search_widget');
 var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
+var world = require('../world');
 
 module.exports = function() {
     this.Then(/^I should see the search icon in the navigation bar$/, function () {
@@ -41,6 +42,7 @@ module.exports = function() {
                 }
                 break;
             case 'search result page' :
+                browser.url(world.Urls.home_page + 'search/wedding');
                 searchBox = search.searchResultPageBox;
                 searchSubmit = search.searchResultPageSubmit;
                 break;

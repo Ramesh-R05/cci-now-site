@@ -40,7 +40,7 @@ describe(`FooterNavigation`, () => {
         it(`should render default anchor urls if nothing is passed`, () => {
             anchorHrefs = [];
             anchors.forEach(a => {
-                anchorHrefs.push(a.props.href);
+                anchorHrefs.push(a.href);
             });
 
             expect(anchorHrefs).to.deep.eq(['http://www.testurl.com/privacy', 'http://www.testurl.com/advertise', 'http://www.testurl.com/terms']);

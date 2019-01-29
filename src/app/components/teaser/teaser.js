@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import TeaserTitle from '@bxm/teaser/lib/components/title';
 import TeaserImage from '@bxm/teaser/lib/components/image';
@@ -149,7 +150,7 @@ export default class Teaser extends Component {
                             {showDate ? (
                                 <span>
                                     <span className={`${sourceClassName}__breaker`}>|</span>
-                                    <Date dateCreated={article.dateCreated} showElapsed />
+                                    <Date className="teaser__source-date" dateCreated={article.dateCreated} showElapsed />
                                 </span>
                             ) : null}
                         </p>

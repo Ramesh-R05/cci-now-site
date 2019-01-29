@@ -30,11 +30,16 @@
     z-index: 0;
 
     .ad--wallpaper-wrapper {
-        left: calc((100% - 1920px) / 2);
-        width: 100%;
-        z-index: 0;
-        position: fixed;
-        top: $ad-wallpaper-top-mobile;
+        display: none;
+
+        @media #{$large-up} {
+            display: block;
+            left: calc((100% - 1920px) / 2);
+            width: 100%;
+            z-index: 0;
+            position: fixed;
+            top: $ad-wallpaper-top-mobile;
+        }
     }
 
     @media #{$medium-up} {

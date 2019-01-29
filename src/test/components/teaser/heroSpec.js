@@ -75,7 +75,7 @@ describe('Hero Teaser Component', () => {
 
         it(`should render a div around the teaser component with class 'hero-wrapper'`, () => {
             const wrapper = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'div')[0];
-            expect(wrapper.props.className).to.eq('hero-wrapper');
+            expect(wrapper.className).to.eq('hero-wrapper');
         });
 
         it(`should render the teaser component with relevant props`, () => {

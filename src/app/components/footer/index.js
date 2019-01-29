@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import BackToTop from '@bxm/ui/lib/back-to-top/backToTop';
 import SocialContainer from '../social/block';
 import FooterNavigation from './footerNavigation';

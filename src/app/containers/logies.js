@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import get from 'lodash.get';
 import { iframeResizer } from 'iframe-resizer';
 import Page from './page';
@@ -34,7 +35,7 @@ export default class Logies extends Component {
         const pageTitle = (
             <h1 className="page-title">
                 <span className="page-title__symbol" />
-                {logiesTitle}
+                <span>{logiesTitle}</span>
             </h1>
         );
 

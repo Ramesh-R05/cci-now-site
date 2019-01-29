@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 
@@ -47,7 +48,7 @@ export default class SubsectionList extends Component {
 
             const gtmClass = `gtm-subsection-${item.url.replace(/\/.+\//, '')}`;
 
-            return <MenuItem value={item.url} primaryText={item.contentTitle} className={`subsections-list-item ${gtmClass}`} />;
+            return <MenuItem key={item.id} value={item.url} primaryText={item.contentTitle} className={`subsections-list-item ${gtmClass}`} />;
         });
 
         return (

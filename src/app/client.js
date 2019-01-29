@@ -7,6 +7,7 @@ import fluxibleConfigPlugin from 'fluxible-plugin-context-config';
 import batchedUpdatePlugin from 'fluxible-addons-react/batchedUpdatePlugin';
 import app from './app';
 import adConfig from './config/ads';
+import 'raf/polyfill';
 
 window.React = React; // For chrome dev tool support
 
@@ -21,5 +22,5 @@ app.rehydrate(window.App, (err, context) => {
     const mountNode = document.getElementById('app');
     const userAgent = window.navigator.userAgent;
     adConfig.init(context.getComponentContext().config.site.adTaggingId);
-    ReactDOM.render(createElementWithContext(context, { userAgent }), mountNode, () => {});
+    ReactDOM.hydrate(createElementWithContext(context, { userAgent }), mountNode, () => {});
 });

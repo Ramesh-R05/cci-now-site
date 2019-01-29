@@ -269,6 +269,7 @@ Feature: Ads Location
             |Top Leaderboard    |article_outside_1 |
             |Teads              |article_outside_2 |
             |Bottom Leaderboard |article_outside_3 |
+        #The below step is failing as reported in BXMA-1678
         And I should see each body ad slot element containing proper class name
             |ad                             |class-name     |
             |MREC After Paragraph 6         |article_body_1 |

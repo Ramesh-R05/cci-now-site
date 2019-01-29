@@ -116,7 +116,7 @@
             font-size: 11px;
             line-height: 15px;
             font-weight: 400;
-            color: $color-grey-light;
+            color: $nl-color;
             text-transform: uppercase;
             margin-top: 7px;
             letter-spacing: .7px;
@@ -126,64 +126,68 @@
                 line-height: 12px;
             }
 
-            span:first-child:not(.teaser__source__breaker),
-            &--now-to-love span:first-child:not(.teaser__source__breaker) {
+            &--now-to-love {
                 color: $nl-color;
             }
-
-            &--woman-s-day span:first-child:not(.teaser__source__breaker) {
+    
+            &--woman-s-day {
                 color: $wd-color;
             }
-
-            &--australian-women-s-weekly span:first-child:not(.teaser__source__breaker) {
+    
+            &--aww,
+            &--australian-women-s-weekly {
                 color: $aww-color;
             }
-
-            &--good-health span:first-child:not(.teaser__source__breaker) {
+    
+            &--good-health {
                 color: $good-health-color;
             }
-
-            &--yours span:first-child:not(.teaser__source__breaker) {
+    
+            &--yours {
                 color: $yours-color;
             }
-
-            &--ok--magazine span:first-child:not(.teaser__source__breaker) {
+    
+            &--ok--magazine {
                 color: $ok-color;
             }
-
-            &--mother-and-baby span:first-child:not(.teaser__source__breaker) {
+    
+            &--mother-and-baby {
                 color: $mother-baby-color;
             }
-
-            &--take-5 span:first-child:not(.teaser__source__breaker) {
+    
+            &--take-5 {
                 color: $take-5-color;
             }
-
-            &--nw span:first-child:not(.teaser__source__breaker) {
+    
+            &--nw {
                 color: $nw-color;
             }
-
-            &--tv-week span:first-child:not(.teaser__source__breaker) {
+    
+            &--tv-week {
                 color: $tv-color;
             }
-
-            &--prizes-to-love span:first-child:not(.teaser__source__breaker) {
+    
+            &--prizes-to-love {
                 color: $ptl-color;
             }
-
-            &--empire span:first-child:not(.teaser__source__breaker) {
+    
+            &--empire {
                 color: $empire-color;
             }
-
+    
             &__breaker span:first-child {
-                margin: 0 5px;
                 color: $color-grey-light;
+                margin: 0 5px;
             }
-
+    
             &__breaker {
-                margin: 0 5px;
                 color: $color-grey-light;
+                margin: 0 5px;
             }
+        }
+
+        .teaser__source-date {
+            color: $color-grey-light;
         }
 
         &__badge-container {

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connectToStores } from '@bxm/flux';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import StickyAd from '@bxm/ad/lib/google/components/stickyAd';

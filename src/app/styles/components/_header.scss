@@ -168,6 +168,12 @@
                 transition-timing-function: ease-in-out;
             }
         }
+
+        &__button-icon {
+            width: 20px;
+            height: 20px;
+            fill: $color-white;
+        }
     }
 
     .header-nav {

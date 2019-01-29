@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import Gallery from '@bxm/article/lib/gallery';
 import Article from '@bxm/article/lib/article';
 import Page from './page';
@@ -10,7 +11,7 @@ export default class Document extends Component {
     static propTypes = {
         currentUrl: PropTypes.string.isRequired,
         nodeType: PropTypes.string.isRequired,
-        theme: PropTypes.object
+        theme: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
     };
 
     static defaultProps = {

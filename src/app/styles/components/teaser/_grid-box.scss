@@ -26,7 +26,7 @@
         line-height: 15px;
         font-weight: 400;
         padding: 0 15px;
-        color: $color-grey-light;
+        color: $nl-color;
         text-transform: uppercase;
         letter-spacing: .7px;
 
@@ -34,54 +34,53 @@
             padding: 0;
             line-height: 12px;
         }
-
-        span:first-child:not(.teaser__source__breaker),
-        &--now-to-love span:first-child:not(.teaser__source__breaker) {
+        
+        &--now-to-love {
             color: $nl-color;
         }
 
-        &--woman-s-day span:first-child:not(.teaser__source__breaker) {
+        &--woman-s-day {
             color: $wd-color;
         }
 
-        &--aww span:first-child:not(.teaser__source__breaker),
-        &--australian-women-s-weekly span:first-child:not(.teaser__source__breaker) {
+        &--aww,
+        &--australian-women-s-weekly {
             color: $aww-color;
         }
 
-        &--good-health span:first-child:not(.teaser__source__breaker) {
+        &--good-health {
             color: $good-health-color;
         }
 
-        &--yours span:first-child:not(.teaser__source__breaker) {
+        &--yours {
             color: $yours-color;
         }
 
-        &--ok--magazine span:first-child:not(.teaser__source__breaker) {
+        &--ok--magazine {
             color: $ok-color;
         }
 
-        &--mother-and-baby span:first-child:not(.teaser__source__breaker) {
+        &--mother-and-baby {
             color: $mother-baby-color;
         }
 
-        &--take-5 span:first-child:not(.teaser__source__breaker) {
+        &--take-5 {
             color: $take-5-color;
         }
 
-        &--nw span:first-child:not(.teaser__source__breaker) {
+        &--nw {
             color: $nw-color;
         }
 
-        &--tv-week span:first-child:not(.teaser__source__breaker) {
+        &--tv-week {
             color: $tv-color;
         }
 
-        &--prizes-to-love span:first-child:not(.teaser__source__breaker) {
+        &--prizes-to-love {
             color: $ptl-color;
         }
 
-        &--empire span:first-child:not(.teaser__source__breaker) {
+        &--empire {
             color: $empire-color;
         }
 
@@ -94,6 +93,10 @@
             color: $color-grey-light;
             margin: 0 5px;
         }
+    }
+
+    .teaser__source-date {
+        color: $color-grey-light;
     }
 
     @media #{$small-only} {
