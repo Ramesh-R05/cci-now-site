@@ -16,7 +16,7 @@ export default {
                 type: 'paragraph',
                 label: 'Paragraph',
                 content:
-                    'Second paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph EOM'
+                    "Second paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph Test body paragraph EOM \n\n* a list item\n* another list item\n* here's another one"
             },
             {
                 type: 'heading',

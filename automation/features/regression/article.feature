@@ -62,6 +62,7 @@ Feature: Article
         * I can see the long title "Automation Test Article With Hero Image Test Title Long Title"
         * I can see the short teaser "Short Teaser EOM"
         * I can see the body paragraph "Test body paragraph"
+        * I can see the body list "a list item"
     @high
         Examples:
             | device            |
