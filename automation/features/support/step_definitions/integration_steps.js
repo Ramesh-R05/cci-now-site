@@ -161,11 +161,11 @@ module.exports = function() {
             case 'section':
                 browser.waitForVisible("h1.page-title", 30000);
                 console.log("section " + ID);
-                expect(browser.getText("h1.page-title")).toEqual("SECTIONTEST-" + ID);
+                expect(browser.getText("h1.page-title")).toEqual("SectionTest-" + ID);
                 break;
             case 'subsection':
                 browser.waitForVisible("h1.page-title", 30000);
-                expect(browser.getText("h1.page-title")).toEqual("SUBSECTIONTEST-" + ID);
+                expect(browser.getText("h1.page-title")).toEqual("SubsectionTest-" + ID);
                 break;
         }
     });
