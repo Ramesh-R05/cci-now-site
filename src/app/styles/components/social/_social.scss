@@ -27,19 +27,34 @@
 
 .home-page__social-logo,
 .page__social-logo {
-    background: url('/assets/logos/logo.svg') no-repeat;
-    background-size: 202px;
-    width: 202px;
-    display: inline-block;
-    text-indent: -99999rem;
-    margin-bottom: 20px;
+    display: none;
+}
+
+.page__social__title {
+    font-family: $font-family-muli;
+    font-size: 18px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: $color-primary;
+    font-weight: 600;
+    margin-bottom: 0;
 }
 
 .home-page__get-social-container,
 .page__get-social-container {
     text-align: center;
-
     margin-bottom: 35px;
+
+    .social-links__text {
+        font-family: $font-family-muli;
+        font-size: 18px;
+        line-height: 16px;
+        text-transform: uppercase;
+        color: $color-black-origin;
+        font-weight: 600;
+        margin-top: 5px;
+        margin-bottom: 18px;
+    }
 
     .get-social {
         margin: {

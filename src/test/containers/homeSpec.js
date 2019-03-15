@@ -49,11 +49,11 @@ describe('Home Container', () => {
         type: '',
         value: {
             polar: polarConfig.polarSetting,
-            urls: {
-                socialUrls: {
-                    facebookUrl: 'https://www.facebook.com/nowtolovenz',
-                    twitterUrl: 'https://twitter.com/NowToLovenz',
-                    instagramUrl: 'https://www.instagram.com/NowToLovenz'
+            site: {
+                defaultSocialLinks: {
+                    facebook: 'https://www.facebook.com/nowtoloveau',
+                    twitter: 'https://twitter.com/nowtoloveau',
+                    instagram: 'https://www.instagram.com/nowtoloveau'
                 }
             }
         }

@@ -64,7 +64,6 @@ describe('Document Component', () => {
         it('should pass the appropriate props', () => {
             const PageComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
             expect(PageComponent.props).to.deep.contain({
-                headerExpanded: false,
                 currentUrl: '/url',
                 hideFooter: false
             });

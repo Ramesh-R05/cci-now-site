@@ -5,13 +5,13 @@ var ads_widget = {
     adMrecNextToBottomFeedSticky: '.bottom-news-feed div.carriage', //homepage, section
 
     // For ad wrapper
-    adWrapper_TopLeaderboard_For_Viewability : '.side-menu-wrapper .header-wrapper + div  .sticky-block', //homepage, index, brand, gallery, article
+    adWrapper_TopLeaderboard_For_Viewability : '.side-menu-wrapper .header + div  .sticky-block', //homepage, index, brand, gallery, article
     adWrapper_BottomLeaderboard_Landing: '.side-menu-wrapper .repeatable-component + div .sticky-block', //homepage, index, brand, gallery, article
     adWrapper_BottomLeaderboard_Content: '.side-menu-wrapper .article-section + div .sticky-block', //homepage, index, brand, gallery, article
 
 // =======For Ads Location
     //Outside
-    ad_TopLeaderboard: '.side-menu-wrapper .header-wrapper + div .sticky-block .ad--section-top-leaderboard [id^=ad-gpt-slot-]', //homepage, index, brand, gallery, article
+    ad_TopLeaderboard: '.side-menu-wrapper .header + div .sticky-block .ad--section-top-leaderboard [id^=ad-gpt-slot-]', //homepage, index, brand, gallery, article
     ad_MiddleLeaderboard: '.content-wrapper .ad--section-leaderboard [id^=ad-gpt-slot-]', //homepage, index, brand
     ad_BottomLeaderboard: '.content-wrapper .ad--section-bottom-leaderboard [id^=ad-gpt-slot-]', //homepage, index, brand, gallery, article
     ad_Teads: '.ad--slot-teads [id^=ad-gpt-slot-]', //gallery, article

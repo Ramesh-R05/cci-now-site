@@ -1,8 +1,11 @@
 .brand--magazine-title  {
-    font-size: 20px;
-    color: black;
-    font-family: $font-family-sans-serif-primary;
-    margin-bottom: 20px;
+    font-family: $font-family-muli;
+    font-size: 18px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: $color-black-origin;
+    font-weight: 600;
+    margin-bottom: 14px;
 }
 
 .brand--magazine-container {
@@ -26,7 +29,6 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #ccc;
     margin: 1em 0;
     padding: 0;
 }
@@ -83,6 +85,7 @@ hr {
 }
 
 .brand-short-title {
+    display: none;
     font-family: $font-family-sans-serif-primary;
     color: #222;
     text-align: center;
@@ -101,6 +104,7 @@ hr {
 }
 
 .brand-summary {
+    display: none;
     font-family: $font-family-sans-serif-primary;
     text-align: center;
     font-size: 14px;

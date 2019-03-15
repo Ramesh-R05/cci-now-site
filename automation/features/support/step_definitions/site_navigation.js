@@ -14,12 +14,20 @@ module.exports = function() {
     });
 
     this.Then(/^I should see the site header logo clickable to open homepage$/, function () {
-        browser.waitForVisible(site_nav.siteNavHeaderLogo, 3000);
-        //Validate the existence of the logo
-        var headerLogo = browser.getCssProperty(site_nav.siteNavHeaderLogo, 'background-image').value;
-        expect(headerLogo).toMatch("/assets/logos/header-logo.svg");
-        //Validate the logo is clickable to open homepage
-        var headerLogoLink = browser.getAttribute(site_nav.siteNavHeaderLogo,'href');
+        const { siteNavHeaderLogo } = site_nav;
+
+        browser.waitForVisible(siteNavHeaderLogo, 3000);
+        const headerLogo = browser.$(siteNavHeaderLogo);
+        const headerLogoLink = headerLogo.getAttribute('href');
+        expect(headerLogoLink).not.toEqual('');
+    });
+
+    this.Then(/^I should see the site header logo in sticky nav clickable to open homepage$/, function () {
+        const { siteNavStickyLogo } = site_nav;
+
+        browser.waitForVisible(siteNavStickyLogo, 3000);
+        const headerLogo = browser.$(siteNavStickyLogo);
+        const headerLogoLink = headerLogo.getAttribute('href');
         expect(headerLogoLink).not.toEqual('');
     });
 
@@ -38,8 +46,8 @@ module.exports = function() {
     });
 
     this.Then(/^I can see the link "([^"]*)" is highlighted on the navigation links$/, function (section) {
-        var activeLink = (browser.getText(site_nav.siteNavActiveLink));
-        expect(activeLink).toEqual(section);
+        const { siteNavActiveLink } = site_nav;
+        expect(browser.$(siteNavActiveLink).getText()).toEqual(section);
     });
 
     this.Then(/^I can see the link "([^"]*)" is highlighted on the hamburger navigation links$/, function (section) {
@@ -107,4 +115,30 @@ module.exports = function() {
         wait(500);
         expect(browser.getAttribute(site_nav.menuHeader,'class')).toContain('header--hide');
     });
+
+    this.When(/^I click on the brands modal button$/, () => {
+        browser.waitForExist(site_nav.brandsModalButton, 3000);
+        expect(browser.isVisible(site_nav.brandsModalButton)).toBe(true);        
+        browser.click(site_nav.brandsModalButton);
+    });
+
+    this.Then(/^I can navigate to the brands in the modal$/, (dataTable) => {
+        const rows = dataTable.hashes();
+        expect(browser.isVisible(site_nav.brandsModal)).toBe(true);
+
+        browser.$$(site_nav.brandsModalLink).forEach((el, index) => {
+            const { title, url } = rows[index];
+            
+            expect(el.getAttribute('href')).toContain(url);
+            expect(el.$('img').getAttribute('alt')).toEqual(title);
+        });
+    });    
+
+    this.When(/^I close the brands modal$/, function () {
+        browser.$(site_nav.brandsModalCloseButton).click();
+      });
+
+    this.Then(/^I can no longer see the brands modal$/, () => {
+        expect(browser.isVisible(site_nav.brandsModal)).toBe(false);
+      })
 };

@@ -4,7 +4,7 @@ import imageResize from '@bxm/ui/lib/common/ImageResize';
 import ResponsiveImage from '@bxm/ui/lib/common/ResponsiveImage';
 import get from 'lodash/object/get';
 import { connectToStores } from '@bxm/flux';
-import SocialContainer from '../social/block';
+import SocialContainer from '@bxm/social/lib/components/socialIcons/socialContainer';
 import BrandNewsletter from './brandNewsletter';
 
 class BrandMagazine extends Component {
@@ -66,7 +66,12 @@ class BrandMagazine extends Component {
                 </div>
                 <BrandNewsletter brand={brand} />
                 <div className="page__get-social-container">
-                    <SocialContainer socialUrls={socialLinks} />
+                    <SocialContainer
+                        title="Follow Us"
+                        socialUrls={socialLinks}
+                        classModifier="in-brand-magazine"
+                        gtmClass="gtm-follow-social-in-brand-magazine"
+                    />
                 </div>
                 <hr />
             </div>

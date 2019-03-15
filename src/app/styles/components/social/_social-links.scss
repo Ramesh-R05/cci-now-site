@@ -1,0 +1,116 @@
+.social-links {
+
+    &--in-header-banner {
+        position: absolute;
+        right: 20px;
+        top: 0;
+
+        .social-icon {
+            width: 30px;
+
+            @media #{$medium-up} {
+                padding-top: 20px;
+            }
+
+            &__icon {
+                svg {
+                    height: 15px;
+                    width: 15px;
+                    margin: 0;
+
+                    path {
+                        fill: $color-primary;
+                    }
+                }
+
+                :hover svg path,
+                :hover &__icon svg path {
+                    fill: $color-primary-light;
+                }
+            }
+        }
+    }
+
+    &--in-home {
+
+        .social-icon {
+            width: 42px;
+            padding-top: 18px;
+
+            @media #{$medium-up} {
+                padding-top: 20px;
+            }
+
+            &__icon {
+
+                svg {
+                    height: 20px;
+                    width: 20px;
+                    margin: 0;
+
+                    path {
+                        fill: $color-primary;
+                    }
+                }
+
+                :hover svg path,
+                :hover &__icon svg path {
+                    fill: $color-primary-light;
+                }
+            }
+        }
+    }
+
+    &--in-hero {
+
+        .social-icon {
+
+            &__icon {
+                svg {
+                    path {
+                        fill: $color-primary;
+                    }
+                }
+
+            }
+        }
+    }
+
+    &--in-subscribe-sidebar {
+
+        .social-icon {
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            width: 55px;
+            padding: 25px 0 0;
+
+            @media #{$medium-up} {
+                padding-top: 30px;
+            }
+
+            &__icon {
+                img, svg {
+                    height: 25px;
+                    width: 25px;
+                    margin-bottom: 3px;
+                    vertical-align: middle;
+                }
+
+                svg {
+                    vertical-align: baseline;
+                    margin-left: 4px;
+
+                    path {
+                        fill: $color-primary;
+                    }
+                }
+
+                :hover svg path,
+                :hover &__icon svg path {
+                    fill: $color-primary-light;
+                }
+            }
+        }
+    }
+}

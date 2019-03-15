@@ -4,6 +4,7 @@ import { connectToStores } from '@bxm/flux';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import get from 'lodash/object/get';
 import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
+import SocialContainer from '@bxm/social/lib/components/socialIcons/socialContainer';
 import Page from './page';
 import TeaserListView from '../components/teaser/list';
 import Repeatable from '../components/repeatable';
@@ -11,7 +12,6 @@ import loadSearch from '../actions/loadSearch';
 import StickyAndDockAd from '../components/page/stickyAndDockAd';
 import SearchBar from '../components/search/searchBar';
 import BrandNewsletter from '../components/brand/brandNewsletter';
-import SocialContainer from '../components/social/block';
 
 function mapStateToProps(context) {
     const SearchStore = context.getStore('SearchStore');
@@ -91,13 +91,7 @@ export default class Search extends Component {
         };
 
         return (
-            <Page
-                currentUrl={currentUrl}
-                headerExpanded={config.features.headerExpanded && themeEnabled}
-                pageTitle={pageTitle}
-                className="page--section"
-                theme={themeEnabled ? theme : {}}
-            >
+            <Page currentUrl={currentUrl} pageTitle={pageTitle} className="page--section" theme={themeEnabled ? theme : {}}>
                 <div className="section-page search-page">
                     <div className="container">
                         <div className="row">
@@ -133,8 +127,12 @@ export default class Search extends Component {
 
                                                 <div className="page__get-social-container">
                                                     <BrandNewsletter />
-                                                    <span className="page__social-logo">Now To Love</span>
-                                                    <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
+                                                    <h2 className="page__social__title">Follow us</h2>
+                                                    <SocialContainer
+                                                        socialUrls={config.site.defaultSocialLinks}
+                                                        classModifier="in-search"
+                                                        gtmClass="gtm-follow-social-in-search"
+                                                    />
                                                 </div>
                                             </StickyAndDockAd>
                                         </div>

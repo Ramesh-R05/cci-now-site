@@ -21,7 +21,7 @@ const galleryMiddleware = proxyquire('../../../../app/server/bff/middleware/gall
 describe('Gallery middleware', () => {
     const config = {
         brands: {
-            uniheader: [
+            site: [
                 {
                     id: 'aww',
                     imageUrl: '/assets/images/headerlogos/AWW-logo.svg',

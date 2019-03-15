@@ -103,10 +103,6 @@
         }
     }
 
-    &.back-to-top {
-        background-color: $color-black-origin;
-    }
-
     &--link {
         padding-top: 14px;
     }
@@ -122,5 +118,16 @@
         &.active {
             text-decoration: none;
         }
+    }
+}
+
+@mixin flat-button {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+
+    &:active,
+    &:focus {
+        outline: none;
     }
 }

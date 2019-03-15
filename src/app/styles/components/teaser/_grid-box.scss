@@ -4,11 +4,6 @@
     .teaser__title {
         text-transform: none;
         margin-bottom: 6px;
-        font: 400 24px/28px $font-family-sans-serif-primary;
-
-        @media #{$medium-up} {
-            font: 400 22px/30px $font-family-sans-serif-primary;
-        }
 
         a {
             text-decoration: none;
@@ -18,7 +13,7 @@
     .teaser__body {
         margin-top: 7px;
         position: relative;
-        font-family: $font-family-sans-serif-primary;
+        font-family: $font-family-questrial;
     }
 
     .teaser__source {
@@ -85,18 +80,28 @@
         }
 
         &__breaker span:first-child {
-            color: $color-grey-light;
-            margin: 0 5px;
+            color: $color-grey-lighter-level-one;
+            margin: 0 3px 0 2px;
         }
 
         &__breaker {
-            color: $color-grey-light;
-            margin: 0 5px;
+            color: $color-grey-lighter-level-one;
+            margin: 0 3px 0 2px;
         }
     }
 
     .teaser__source-date {
         color: $color-grey-light;
+    }
+
+    .teaser__source-info {
+        margin-right: 2px;
+    }
+
+    .teaser__brand-image {
+        max-height: 17px;
+        max-width: 85px;
+        margin: 5px 2px 5px 0;
     }
 
     @media #{$small-only} {
@@ -134,7 +139,7 @@
 
     @media #{$medium-up} {
         .teaser__title {
-            margin-bottom: 8px;
+            margin-bottom: 15px;
         }
 
         .teaser__body {
@@ -173,17 +178,30 @@
     }
 }
 
+.teaser-view-grid {
+    
+    .teaser__title {
+
+        a {
+            @include type-bottom-teaser-title;
+        }
+    }
+}
+
 .mustread-teaser-view-grid {
 
     .home-page__teasers-title {
         margin-top: 20px;
-        margin-bottom: 14px;
+        margin-bottom: 18px;
         display: block;
+        font: 600 16px/28px $font-family-muli;
 
         @media #{$medium-up} {
+            font: 600 18px/28px $font-family-muli;
             margin-top: 0;
 
             &:before {
+                border: 0; // TODO - clean this up from bxm package
                 width: calc(100% - #{$must-teaser-gutter});
             }
         }
@@ -201,20 +219,22 @@
         padding-bottom: 0;
 
         .teaser__title {
-            font-size: $must-teaser-title-size;
-            line-height: $must-teaser-title-lineheight;
+            font: 400 12px/20px $font-family-questrial;
             padding-left: 0;
             padding-right: 0;
             display: block;
+
+            @media #{$medium-up} {
+                font: 400 13px/20px $font-family-questrial;
+            }
+
             a {
-                color: #000;
+                color: $color-black-origin;
             }
         }
 
         .teaser__source {
-            padding-left: 0;
-            padding-right: 0;
-            letter-spacing: .7px;
+            display: none;
         }
 
         .teaser__body {
@@ -230,7 +250,7 @@
         &:hover {
             .teaser__title {
                 a {
-                    color: #333;
+                    color: $color-black-origin;
                 }
             }
         }
@@ -283,49 +303,42 @@
 .promoted-teaser-view-grid {
     padding-left: $promoted-teaser-gutter;
     padding-right: $promoted-teaser-gutter;
+    margin-top: 40px;
+    margin-bottom: 38px;
 
     @media #{$medium-up} {
+        margin-top: 70px;
         padding-left: 0;
         padding-right: 0;
     }
 
     .home-page__teasers-title {
+        font: 600 18px/28px $font-family-muli, sans-serif;
         margin-top: 20px;
-        margin-bottom: 14px;
+        margin-bottom: 18px;
         display: block;
-
-        &:before {
-            border-top-color: transparent;
-        }
-
-        @media #{$small-up} {
-
-            &:before {
-                border-top-color: #e9e9e9;
-            }
-        }
-
     }
 
     .teaser__list-item {
         padding-bottom: 0;
 
         .teaser__title {
-            font-size: $promoted-teaser-title-size;
-            line-height: $promoted-teaser-title-lineheight;
+            font: 400 12px/20px $font-family-questrial;
             padding-left: 0;
             padding-right: 0;
             display: block;
 
+            @media #{$medium-up} {
+                font: 400 13px/20px $font-family-questrial;
+            }
+
             a {
-                color: #000;
+                color: $color-black-origin;
             }
         }
 
         .teaser__source {
-            padding-left: 0;
-            padding-right: 0;
-            letter-spacing: .7px;
+            display: none;
          }
 
         .teaser__body {

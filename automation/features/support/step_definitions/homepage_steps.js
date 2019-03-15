@@ -7,12 +7,13 @@ var validateImageURL = require('../../../node_modules/@bxm/automation/lib/utils/
 module.exports = function(){
 
     this.When(/^I should see the main hero item containing its image and clickable to open its page$/, function () {
-        //Verify the hero image
-        var heroImgUrl = browser.getAttribute(home.heroImgUrl, 'data-srcset');
-        validateImageURL(heroImgUrl);
-        //Verify the hero image's link
-        var heroImgLink = browser.getAttribute(home.heroImgLink, 'href');
-        expect(heroImgLink).not.toEqual('');
+        const { heroImgUrl, heroImgLink } = home;
+        
+        const imgUrl = browser.$(heroImgUrl).getAttribute('data-srcset');
+        const imgLink = browser.$(heroImgLink).getAttribute('href');
+
+        validateImageURL(imgUrl);
+        expect(imgLink).not.toEqual('');
     });
 
     this.When(/^I should see the main hero item containing its title and clickable to open its page$/, function () {
@@ -124,20 +125,24 @@ module.exports = function(){
     });
 
     this.Given(/^I should see (\d+) must read images and titles which are clickable to open their page$/, function(number) {
-        //find elements of image and title of all must read items
+        const { mustReadItem } = home;
         wait(5000); //wait due to polar ads
-        var mustreadImage = browser.getAttribute(home.mustreadImage,'data-srcset');
-        var mustreadImageLink = browser.getAttribute(home.mustreadImageLink,'href');
-        var mustreadTitle = browser.getText(home.mustreadTitle);
-        var mustreadTitleLink = browser.getAttribute(home.mustreadTitle,'href');
 
-        //validate image and title and their links
-        for (var i=0; i<number; i++){
-            validateImageURL(mustreadImage[i]);
-            expect(mustreadImageLink[i]).not.toEqual('');
-            expect(mustreadTitle[i]).not.toEqual('');
-            expect(mustreadTitleLink[i]).toEqual(mustreadImageLink[i]);
-        }
+        const displayedElements = browser.$$(mustReadItem).filter(element => element.isVisible());
+
+        expect(displayedElements.length).toEqual(parseInt(number, 10));
+
+        displayedElements.forEach(mustReadItem => {
+            const mustreadTitle = mustReadItem.$('.teaser__title').getText();
+            const mustreadImage = mustReadItem.$('img').getAttribute('data-srcset');
+            const mustreadImageLink = mustReadItem.$('.teaser__image').getAttribute('href');
+            const mustreadTitleLink = mustReadItem.$('.teaser__title a').getAttribute('href');
+
+            validateImageURL(mustreadImage);
+            expect(mustreadTitle).not.toEqual('');
+            expect(mustreadImageLink).not.toEqual('');
+            expect(mustreadTitleLink).toEqual(mustreadImageLink);            
+        });
     });
 
     this.When(/^I should see promoted header as "([^"]*)"$/, function (name) {
@@ -153,19 +158,23 @@ module.exports = function(){
     });
 
     this.Given(/^I should see (\d+) promoted images and titles which are clickable to open their page$/, function(number) {
-        //find elements of image and title of all promoted items
-        var promotedImage = browser.getAttribute(home.promotedImage,'data-srcset');
-        var promotedImageLink = browser.getAttribute(home.promotedImageLink,'href');
-        var promotedTitle = browser.getText(home.promotedTitle);
-        var promotedTitleLink = browser.getAttribute(home.promotedTitle,'href');
+        const { promotedItems } = home;
 
-        //validate image and title and their links
-        for (var i=0; i<number; i++){
-            validateImageURL(promotedImage[i]);
-            expect(promotedImageLink[i]).not.toEqual('');
-            expect(promotedTitle[i]).not.toEqual('');
-            expect(promotedTitleLink[i]).toEqual(promotedImageLink[i]);
-        }
+        const displayedElements = browser.$$(promotedItems).filter(element => element.isVisible());
+
+        expect(displayedElements.length).toEqual(parseInt(number, 10));        
+
+        displayedElements.forEach(promotedItem => {
+            const promotedTitle = promotedItem.$('.teaser__title').getText();
+            const promotedImage = promotedItem.$('img').getAttribute('data-srcset');
+            const promotedImageLink = promotedItem.$('.teaser__image').getAttribute('href');
+            const promotedTitleLink = promotedItem.$('.teaser__title a').getAttribute('href');
+
+            validateImageURL(promotedImage);
+            expect(promotedTitle).not.toEqual('');
+            expect(promotedImageLink).not.toEqual('');
+            expect(promotedTitleLink).toEqual(promotedImageLink);            
+        });
     });
 
     this.Then(/^I should see each promoted items containing gtm$/, function(dataTable){

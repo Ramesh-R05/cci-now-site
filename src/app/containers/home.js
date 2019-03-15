@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connectToStores } from '@bxm/flux';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
-import SocialContainer from '../components/social/block';
+import SocialContainer from '@bxm/social/lib/components/socialIcons/socialContainer';
 import HeroTeaser from '../components/teaser/hero';
 import TeaserGridView from '../components/teaser/grid';
 import TeaserListView from '../components/teaser/list';
@@ -61,6 +61,9 @@ export default class Home extends Component {
     }
 
     render() {
+        const { currentUrl, heroTeaser, teasers, theme } = this.props;
+        const { bottomElm, topElm } = this.state;
+        const { config } = this.context;
         const polarLabels = this.context.config.polar.details;
         const pageLocation = Ad.pos.outside;
         const adProps = {
@@ -75,7 +78,7 @@ export default class Home extends Component {
         };
 
         return (
-            <Page currentUrl={this.props.currentUrl} headerExpanded={false} showUniheader theme={this.props.theme}>
+            <Page currentUrl={currentUrl} theme={theme}>
                 <div className="home-page">
                     {/* 1st Leaderboard or billboard to show on tablet and up */}
                     <div className="stripe-bg">
@@ -92,14 +95,14 @@ export default class Home extends Component {
                                                 this.top = c;
                                             }}
                                         >
-                                            <HeroTeaser article={this.props.heroTeaser} showPromoted />
+                                            <HeroTeaser article={heroTeaser} showPromoted />
 
-                                            <div className="home-page__teasers-title">
-                                                <span>what&apos;s happening now</span>
+                                            <div className="home-page__teasers-title home-page__teasers-title-top-news-feed">
+                                                <span>the latest</span>
                                             </div>
 
                                             <TeaserGridView
-                                                teasers={this.props.teasers.slice(0, 6)}
+                                                teasers={teasers.slice(0, 6)}
                                                 className="news-feed top-news-feed"
                                                 adPosition={8}
                                                 adSizes={{ small: 'mrec', medium: ['mrec', 'double-mrec'] }}
@@ -109,21 +112,32 @@ export default class Home extends Component {
                                             />
                                         </div>
                                         <div className="page__social-wrapper columns large-4 xlarge-3">
-                                            <div className="columns medium-6 large-12">
-                                                <StickyAndDockAd
-                                                    offsetTop={95}
-                                                    offsetBottom={16}
-                                                    customiseBreakpoint={1024}
-                                                    bottomElm={this.state.bottomElm}
-                                                    topElm={this.state.topElm}
-                                                >
-                                                    <Ad className="ad--section-mrec" sizes="mrec" displayFor="large" pageLocation={Ad.pos.aside} />
-                                                    <div className="page__get-social-container">
-                                                        <BrandNewsletter />
-                                                        <span className="page__social-logo">Now To Love</span>
-                                                        <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
-                                                    </div>
-                                                </StickyAndDockAd>
+                                            <div className="row">
+                                                <div className="columns medium-6 large-12">
+                                                    <StickyAndDockAd
+                                                        offsetTop={95}
+                                                        offsetBottom={16}
+                                                        customiseBreakpoint={1024}
+                                                        bottomElm={bottomElm}
+                                                        topElm={topElm}
+                                                    >
+                                                        <Ad
+                                                            className="ad--section-mrec"
+                                                            sizes="mrec"
+                                                            displayFor="large"
+                                                            pageLocation={Ad.pos.aside}
+                                                        />
+                                                        <div className="page__get-social-container">
+                                                            <BrandNewsletter />
+                                                            <h2 className="page__social__title">Follow us</h2>
+                                                            <SocialContainer
+                                                                socialUrls={config.site.defaultSocialLinks}
+                                                                classModifier="in-home"
+                                                                gtmClass="gtm-follow-social-in-home"
+                                                            />
+                                                        </div>
+                                                    </StickyAndDockAd>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

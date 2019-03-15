@@ -53,7 +53,7 @@ export default class Document extends Component {
 
         if (nodeType === 'Gallery') {
             return (
-                <Page currentUrl={currentUrl} headerExpanded={false} hideFooter={false} theme={theme}>
+                <Page currentUrl={currentUrl} hideFooter={false} theme={theme}>
                     <Gallery
                         articleHeaderOrder={['Source', 'Title', 'Summary', 'Date', 'Author', 'ImageCount', 'NativeAd', 'Hero']}
                         contentBodyConfig={galleryContentBodyConfig}
@@ -69,7 +69,7 @@ export default class Document extends Component {
         }
 
         return (
-            <Page currentUrl={currentUrl} headerExpanded={false} hideFooter={false} theme={theme}>
+            <Page currentUrl={currentUrl} hideFooter={false} theme={theme}>
                 <Article
                     articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero']}
                     contentBodyConfig={Document.articleContentBodyConfig}

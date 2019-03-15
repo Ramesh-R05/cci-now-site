@@ -4,5 +4,12 @@ export default {
     prefix: 'NZNOW',
     region: 'nz',
     adTaggingId: 'NowToLoveNZ',
-    alternateHrefLangUrl: 'http://www.nowtolove.com.au'
+    alternateHrefLangUrl: 'http://www.nowtolove.com.au',
+    buyMagazinesLink: 'https://www.magshop.com.au/',
+    defaultSocialLinks: {
+        facebook: 'https://www.facebook.com/nowtolovenz',
+        twitter: 'https://twitter.com/NowToLovenz',
+        instagram: 'https://www.instagram.com/NowToLovenz',
+        pinterest: 'https://nz.pinterest.com/NowToLoveNZ/'
+    }
 };

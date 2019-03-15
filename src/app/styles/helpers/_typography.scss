@@ -1,105 +1,50 @@
-@font-face {
-    font-family: 'Baskerville';
-    src: url('/assets/fonts/Baskerville-Regular-webfont.eot');
-    src: url('/assets/fonts/Baskerville-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/Baskerville-Regular-webfont.woff2') format('woff2'),
-    url('/assets/fonts/Baskerville-Regular-webfont.woff') format('woff'),
-    url('/assets/fonts/Baskerville-Regular-webfont.ttf') format('truetype'),
-    url('/assets/fonts/Baskerville-Regular-webfont.svg#baskerville_fsregular') format('svg');
-    font-weight: 400;
-    font-style: normal;
-}
+$questrial: unquote('Questrial');
+$muli: unquote('Muli');
+$playfairDisplay: unquote('Playfair+Display');
+
+@import url('http://fonts.googleapis.com/css?family=#{$questrial}'); // sass-lint:disable-line no-url-protocols
+@import url('https://fonts.googleapis.com/css?family=#{$muli}:400,600,800'); // sass-lint:disable-line no-url-protocols
+@import url('https://fonts.googleapis.com/css?family=#{$playfairDisplay}:400,700'); // sass-lint:disable-line no-url-protocols
 
 @font-face {
-    font-family: 'Baskerville';
-    src: url('/assets/fonts/Baskerville-Bold-webfont.eot');
-    src: url('/assets/fonts/Baskerville-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/Baskerville-Bold-webfont.woff2') format('woff2'),
-    url('/assets/fonts/Baskerville-Bold-webfont.woff') format('woff'),
-    url('/assets/fonts/Baskerville-Bold-webfont.ttf') format('truetype'),
-    url('/assets/fonts/Baskerville-Bold-webfont.svg#baskerville_fsbold') format('svg');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Baskerville';
-    src: url('/assets/fonts/Baskerville-Italic-webfont.eot');
-    src: url('/assets/fonts/Baskerville-Italic-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/Baskerville-Italic-webfont.woff2') format('woff2'),
-    url('/assets/fonts/Baskerville-Italic-webfont.woff') format('woff'),
-    url('/assets/fonts/Baskerville-Italic-webfont.ttf') format('truetype'),
-    url('/assets/fonts/Baskerville-Italic-webfont.svg#baskerville_fsitalic') format('svg');
-    font-weight: normal;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Amsi Pro Narrow';
-    src: url('/assets/fonts/amsipronarw-bold-webfont.eot');
-    src: url('/assets/fonts/amsipronarw-bold-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/amsipronarw-bold-webfont.woff2') format('woff2'),
-    url('/assets/fonts/amsipronarw-bold-webfont.woff') format('woff'),
-    url('/assets/fonts/amsipronarw-bold-webfont.ttf') format('truetype'),
-    url('/assets/fonts/amsipronarw-bold-webfont.svg#amsi_pro_narwbold') format('svg');
+    font-family: 'icomoon';
+    src: url('/assets/fonts/icomoon.eot?vej2zt');
+    src: url('/assets/fonts/icomoon.eot?vej2zt#iefix') format('embedded-opentype'),
+    url('/assets/fonts/icomoon.ttf?vej2zt') format('truetype'),
+    url('/assets/fonts/icomoon.woff?vej2zt') format('woff'),
+    url('/assets/fonts/icomoon.svg?vej2zt#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'Amsi Pro Narrow';
-    src: url('/assets/fonts/amsipronarw-black-webfont.eot');
-    src: url('/assets/fonts/amsipronarw-black-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/amsipronarw-black-webfont.woff2') format('woff2'),
-    url('/assets/fonts/amsipronarw-black-webfont.woff') format('woff'),
-    url('/assets/fonts/amsipronarw-black-webfont.ttf') format('truetype'),
-    url('/assets/fonts/amsipronarw-black-webfont.svg#amsi_pro_narwblack') format('svg');
-    font-weight: bold;
+[class^='icon-'], [class*=' icon-'] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
     font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-@font-face {
-    font-family: 'Amsi Pro Narrow';
-    src: url('/assets/fonts/amsipronarw-thin-webfont.eot');
-    src: url('/assets/fonts/amsipronarw-thin-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/amsipronarw-thin-webfont.woff2') format('woff2'),
-    url('/assets/fonts/amsipronarw-thin-webfont.woff') format('woff'),
-    url('/assets/fonts/amsipronarw-thin-webfont.ttf') format('truetype'),
-    url('/assets/fonts/amsipronarw-thin-webfont.svg#amsipronarw-thinuploaded_file') format('svg');
-    font-weight: 100;
-    font-style: normal;
+.icon-logo:before {
+    content: '\e900';
 }
 
-@font-face {
-    font-family: 'Proxima Nova';
-    src: url('/assets/fonts/ProximaNova-Regular.eot');
-    src: url('/assets/fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/ProximaNova-Regular.woff') format('woff'),
-    url('/assets/fonts/ProximaNova-Regular.ttf') format('truetype'),
-    url('/assets/fonts/ProximaNova-Regular.svg#amsipronarw-thinuploaded_file') format('svg');
-    font-style: normal;
-}
+$font-family-playfair-display: 'Playfair Display', serif;
+$font-family-questrial: 'Questrial', sans-serif;
+$font-family-muli: 'Muli', sans-serif;
 
-@font-face {
-    font-family: 'Proxima Nova light';
-    src: url('/assets/fonts/ProximaNova-Regular.eot');
-    src: url('/assets/fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/ProximaNova-Regular.woff') format('woff'),
-    url('/assets/fonts/ProximaNova-Regular.ttf') format('truetype'),
-    url('/assets/fonts/ProximaNova-Regular.svg#amsipronarw-thinuploaded_file') format('svg');
-    font-style: normal;
-}
+$font-family-sans-serif-primary: $font-family-muli;
+$to-love-font-family-sans-serif: $font-family-muli;
+$small-text-font: $font-family-questrial;
+$font-family-serif-primary: $font-family-playfair-display;
 
-
-$font-family-sans-serif-primary: 'Amsi Pro Narrow', sans-serif;
-
-$to-love-font-family-sans-serif: $font-family-sans-serif-primary;
-
-$small-text-font: 'Proxima Nova', sans-serif;
-
-$small-text-light-font: 'Proxima Nova light', sans-serif;
-
-$font-family-serif-primary: 'Baskerville', serif;
 
 // ---------------------------------------------------- base elements
 
@@ -130,7 +75,7 @@ h4,
 h5,
 h6 {
     color: $color-black;
-    font-family: $font-family-sans-serif-primary;
+    font-family: $font-family-serif-primary;
     font-weight: bold;
     margin-bottom: 30px;
 }
@@ -167,20 +112,20 @@ h6 {
 }
 
 a {
-    color: $color-black;
-    text-decoration: underline;
+    color: $color-secondary;
+    text-decoration: none;
 
     &:hover,
     &:focus {
-        text-decoration: underline;
+        color: $color-primary-light;
     }
 }
 
 // ---------------------------------------------------- typography mixins & classes
 
 @mixin type-header {
-    color: $color-grey;
-    font: 500 15px / 1.4 $font-family-sans-serif-primary;
+    color: $color-dark-blue;
+    font: 600 14px/1.4 $font-family-muli;
     letter-spacing: .04em;
     text-transform: uppercase;
 }
@@ -191,13 +136,13 @@ a {
 
 @mixin type-side-menu-link {
     color: $color-white;
-    font: 500 23px / 1.2 $font-family-sans-serif-primary;    
+    font: 400 22px/1.2 $font-family-muli;
     letter-spacing: .04em;
-    text-transform: capitalize;
+    text-transform: uppercase;
     text-decoration: none;
 
     @media #{$medium-up} {
-        font-size: 28px;
+        font-size: 22px;
     }
 }
 
@@ -218,7 +163,7 @@ a {
 // Must Read headline
 @mixin type-teaser-headline-title {
     color: $color-white;
-    font: 500 15px / 1.4 $font-family-sans-serif-primary;
+    font: 500 15px / 1.4 $font-family-serif-primary;
     letter-spacing: .04em;
     line-height: 1.55;
     text-transform: uppercase;
@@ -250,15 +195,18 @@ a {
 
 // Hero (e.g. on homepage)
 @mixin type-hero-title {
-    color: $color-black;
-    font: 24px / 26px $font-family-sans-serif-primary;
-    font-weight: bold;
+    color: $color-black-origin;
+    font: 700 14px/20px $font-family-playfair-display;
     letter-spacing: .01rem;
     text-transform: none;
+    text-align: left;
 
     @media #{$medium-up} {
-        font-size: 32px;
-        line-height: 38px;
+        font: 700 24px/30px $font-family-playfair-display;
+    }
+
+    @media #{$large-up} {
+        font: 700 25px/30px $font-family-playfair-display;
     }
 }
 
@@ -268,7 +216,7 @@ a {
 
 @mixin type-teaser-summary {
     color: $color-grey;
-    font: 400 16px / 20px $font-family-serif-primary;
+    font: 400 16px/20px $font-family-serif-primary;
     letter-spacing: 0.01em;
 
     @media #{$xlarge-up} {
@@ -284,13 +232,11 @@ a {
 
 // Article
 @mixin type-article-title {
-    color: $color-black;
-    font: 24px / 26px $font-family-sans-serif-primary;
-    font-weight: 400;
+    color: $color-black-origin;
+    font: 600 24px/26px $font-family-serif-primary;
 
     @media #{$medium-up} {
-        font-size: 38px;
-        line-height: 46px;
+        font: 600 32px/46px $font-family-serif-primary;
     }
 }
 
@@ -325,7 +271,7 @@ a {
 
 @mixin type-article-heading {
     color: $color-black;
-    font: 400 24px / 26px $font-family-sans-serif-primary;
+    font: 400 24px / 26px $font-family-serif-primary;
 
     @media #{$medium-up} {
         font-size: 24px;
@@ -339,7 +285,7 @@ a {
 
 @mixin type-related-teaser-title {
     color: $color-black;
-    font: 14px/20px $font-family-sans-serif-primary;
+    font: 14px/20px $font-family-serif-primary;
     margin-bottom: 5px;
     text-align: center;
 }
@@ -350,7 +296,7 @@ a {
 
 @mixin type-article-recommendation-title {
     color: $color-black;
-    font: 16px/18px $font-family-sans-serif-primary;
+    font: 16px/18px $font-family-serif-primary;
 
     @media #{$medium-up} {
         font-weight: bold;
@@ -365,8 +311,8 @@ a {
 
 // XSmall teaser (e.g. article page left hand side rail)
 @mixin type-xsmall-teaser-title {
-    color: $color-black;
-    font: 400 14px / 20px $font-family-sans-serif-primary;
+    color: $color-black-light;
+    font: 400 14px / 20px $font-family-serif-primary;
     margin-bottom: 10px;
 }
 
@@ -390,7 +336,7 @@ a {
 }
 
 @mixin type-inline-gallery-heading {
-    font: 400 20px / 22px $font-family-sans-serif-primary;
+    font: 400 20px / 22px $font-family-serif-primary;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 0.1rem;
@@ -403,16 +349,14 @@ a {
 // Section
 @mixin type-section-title {
     color: $color-black;
-    font: 100 30px / 1em $font-family-sans-serif-primary;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font: 100 30px / 1em $font-family-serif-primary;
+    text-transform: capitalize;
     text-decoration: none;
 
     span {
         position: relative;
 
         &:after {
-            border-bottom: solid 2px $color-aqua;
             content: '';
             display: block;
             position: absolute;
@@ -444,7 +388,7 @@ a {
 // Inline gallery
 @mixin type-inline-gallery-header {
     color: $color-white;
-    font: 500 15px / 1.467 $font-family-sans-serif-primary;
+    font: 500 15px / 1.467 $font-family-serif-primary;
     letter-spacing: .04em;
     text-transform: uppercase;
 
@@ -499,9 +443,8 @@ a {
 // Tags
 @mixin type-tags($color: $color-grey) {
     color: $color;
-    font: 500 11px / 1.5 $font-family-sans-serif-primary;
-    letter-spacing: .04em;
-    text-transform: uppercase;
+    font: 500 11px / 1.5 $font-family-serif-primary;
+    text-transform: capitalize;
 }
 
 .type-tags {
@@ -513,7 +456,7 @@ a {
 // Top half teasers
 @mixin type-top-teaser-title {
     color: $color-black;
-    font: 24px / 26px $font-family-sans-serif-primary;
+    font: 24px / 26px $font-family-serif-primary;
     font-weight: bold;
     text-transform: uppercase;
 
@@ -536,13 +479,13 @@ a {
 // Second half teasers
 @mixin type-bottom-teaser-title {
     color: $color-black;
-    font: 15px / 20px $font-family-sans-serif-primary;
+    font: 15px/20px $font-family-serif-primary;
     margin-bottom: 0;
     text-transform: none;
 
     @media #{$medium-up} {
-        font-size: 22px;
-        line-height: 30px;
+        font-size: 20px;
+        line-height: 24px;
     }
 }
 
@@ -553,7 +496,7 @@ a {
 // Colourful block over teaser image
 @mixin type-teaser-color-block {
     color: $color-white;
-    font: 400 11px / 22px $font-family-sans-serif-primary;
+    font: 400 11px/22px $font-family-serif-primary;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 
@@ -580,7 +523,7 @@ a {
 
     a, span {
         color: $color-black;
-        font: 11px / 12px $font-family-sans-serif-primary;
+        font: 11px / 12px $font-family-serif-primary;
         letter-spacing: .1em;
         text-transform: uppercase;
 
@@ -610,7 +553,7 @@ a {
 // Navigation
 @mixin type-navigation {
     color: $color-grey;
-    font: 500 15px / 1.467 $font-family-sans-serif-primary;
+    font: 500 15px / 1.467 $font-family-serif-primary;
     letter-spacing: .04em;
     text-transform: uppercase;
 }
@@ -622,7 +565,7 @@ a {
 // Composite text
 @mixin type-composite($color: $color-grey, $boldcolor: $color-grey) {
     color: $color;
-    font: 300 36px / .889 $font-family-sans-serif-primary;
+    font: 300 36px / .889 $font-family-serif-primary;
     letter-spacing: .1em;
     text-transform: uppercase;
 
@@ -765,6 +708,38 @@ a {
 .type-error-page {
     @include type-error-page;
 }
+
+@mixin type-footer-column-heading {
+    color: $color-mid-blue2;
+    font: 600 17px/25px $font-family-sans-serif-primary;
+    text-transform: uppercase;
+
+    @media #{$large-up} {
+        font-size: 18px;
+        line-height: 25px;
+    }
+}
+
+@mixin type-footer-link {
+    color: $color-mid-blue2;
+    font: 400 12px/16px $font-family-questrial;
+    display: block;
+
+    @media #{$large-up} {
+        font-size: 13px;
+    }
+}
+
+@mixin type-footer-text {
+    color: $color-mid-blue2;
+    font: 400 14px/16px $font-family-questrial;
+    display: block;
+
+    @media #{$large-up} {
+        font-size: 14px;
+    }
+}
+
 
 // ---------------------------------------------------- reset mixins
 

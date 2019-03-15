@@ -6,7 +6,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         Given I switch to "<device>" view
         When I am currently viewing the homepage
         Then I should see the site header banner
-        And I should see the theme nav background
+        # And I should see the theme nav background
         And I should see the site header logo clickable to open homepage
         And I should see the site navigation in hamburger menu
         @med
@@ -24,7 +24,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         Given I switch to "mobile" view
         When I am currently viewing the homepage
         And I should not see the site navigation links
-        And I should see the theme nav background
+        # And I should see the theme nav background
         And I should see the site navigation in hamburger menu
 
     @med @homepage
@@ -32,7 +32,7 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         Given I switch to "desktop" view
         When I am currently viewing the homepage
         And when I scroll down in the page
-        And I should see the site header logo clickable to open homepage
+        And I should see the site header logo in sticky nav clickable to open homepage
         And I should see the site navigation in hamburger menu
 
     @med @section
@@ -48,7 +48,6 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         Given I switch to "tablet portrait" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         Then I should see the site header logo clickable to open homepage
-        And I can see the link "FASHION" is highlighted on the navigation links
         And I can see the link "Fashion" is highlighted on the hamburger navigation links
 
     @low @gallery
@@ -85,3 +84,23 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
         Given I switch to "mobile portrait" view
         When I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-image-3663"
         Then the menu fades out as I scroll down the page
+
+    @med
+    Scenario: I can see the brands modal in the header
+        Given I switch to "desktop" view
+        When I am currently viewing the homepage
+        And I click on the brands modal button
+        Then I can navigate to the brands in the modal
+            |title                      |url                |
+            |Australian Women's Weekly  |/aww               |
+            |Woman's Day                |/womansday         |
+            |Good Health                |/good-health       |
+            |OK! Magazine               |/okmagazine        |
+            |NW                         |/nw                |
+            |Take 5                     |/take5mag          |
+            |Mother and Baby            |/mother-and-baby   |
+            |TV WEEK                    |/tvweek            |
+            |Empire                     |/empire            |
+            |Prizes To Love             |/prizestolove      |
+        When I close the brands modal
+        Then I can no longer see the brands modal

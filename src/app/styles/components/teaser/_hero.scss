@@ -8,16 +8,19 @@ $hero-teaser-line-height: 25px;
     }
 
     @media #{$medium-only} {
-        margin: 0;
+        margin: {
+            left: -$column-gutter;
+            right: -$column-gutter;
+        }
         padding-bottom: 20px;
 
         .home-page & {
-            padding-bottom: 0px;
+            padding-bottom: 0;
             position: relative;
 
             .promoted-teaser-view-grid + .hero-wrapper__get-social-container {
                 position: absolute;
-                bottom: 29%;
+                bottom: 30%;
             }
         }
     }
@@ -27,12 +30,12 @@ $hero-teaser-line-height: 25px;
         padding-bottom: 20px;
 
         &--no-teaser {
-            padding-bottom: 0px;
+            padding-bottom: 0;
             margin-top: -14px;
         }
 
         .home-page & {
-            padding-bottom: 0px;
+            padding-bottom: 0;
             position: static;
 
             .promoted-teaser-view-grid + .hero-wrapper__get-social-container {
@@ -47,111 +50,63 @@ $hero-teaser-line-height: 25px;
         margin-bottom: 0;
     }
 
-    .hero-teaser__source {
-        color: $color-grey-light;
-        text-transform: uppercase;
-        font-family: $font-family-sans-serif-primary;
-        display: inline-block;
-        font-size: 11px;
-        margin-left: 15px;
-        margin-bottom: 0px;
-        letter-spacing: 0.7px;
+    .teaser {
 
-        &__breaker {
-            padding: 0 8px;
-            color: $color-grey-light;
+        &__brand-image {
+            display: none;
+
+            @media #{$medium-up} {
+                display: block;
+                max-height: 25px;
+                max-width: 85px;
+                margin: 10px;
+                filter: brightness(0) invert(1);
+            }
         }
 
-        @media #{$large-up} {
-            display: block;
-            margin: 3px 0 0 0;
+        &__hero-background {
+            background-color: $color-secondary;
+            width: 90%;
+            position: absolute;
+            right: 0;
+            max-height: 66px;
+            bottom: -6px;
+            height: 100%;
+            z-index: $z-index--hero-background;
+
+            @media #{$medium-up} {
+                height: 100%;
+                width: 86%;
+                max-height: 45px;
+                right: 0;
+                bottom: -6px;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            @media #{$large-up} {
+                height: 100%;
+                max-height: 45px;
+                bottom: -10px;
+                right: -10px;
+            }
         }
 
-        span:first-child:not(.hero-teaser__source__breaker),
-        &--now-to-love span:first-child:not(.hero-teaser__source__breaker) {
-            color: $nl-color;
-        }
+        &__title-background {
+            display: table-cell;
+            vertical-align: middle;
+            height: 100%;
 
-        &--woman-s-day span:first-child:not(.hero-teaser__source__breaker) {
-            color: $wd-color;
-        }
-
-        &--australian-women-s-weekly span:first-child:not(.hero-teaser__source__breaker) {
-            color: $aww-color;
-        }
-
-        &--good-health span:first-child:not(.hero-teaser__source__breaker) {
-            color: $good-health-color;
-        }
-
-        &--yours span:first-child:not(.hero-teaser__source__breaker) {
-            color: $yours-color;
-        }
-
-        &--ok--magazine span:first-child:not(.hero-teaser__source__breaker) {
-            color: $ok-color;
-        }
-
-        &--mother-and-baby span:first-child:not(.hero-teaser__source__breaker) {
-            color: $mother-baby-color;
-        }
-
-        &--take-5 span:first-child:not(.hero-teaser__source__breaker) {
-            color: $take-5-color;
-        }
-
-        &--nw span:first-child:not(.hero-teaser__source__breaker) {
-            color: $nw-color;
-        }
-
-        &--tv-week span:first-child:not(.hero-teaser__source__breaker) {
-            color: $tv-color;
-        }
-
-
-        &--prizes-to-love span:first-child:not(.hero-teaser__source__breaker) {
-            color: $ptl-color;
-        }
-
-        .home-page & {
-            .hero-teaser__source__breaker,
-            .hero-teaser__source__breaker + span {
-                display: none;
+            .teaser__title {
+                text-align: left;
+                margin: 0;
             }
         }
     }
 
-    .hero-teaser.teaser--nz {
-        .hero-teaser__source--the-australian-women-s-weekly span:first-child:not(.hero-teaser__source__breaker) {
-            color: $nz-aww-color;
-        }
-        .hero-teaser__source--next span:first-child:not(.teaser__source__breaker) {
-            color: $nz-next-color;
-        }
-
-        .hero-teaser__source--woman-s-day span:first-child:not(.teaser__source__breaker) {
-            color: $nz-womans-day-color;
-        }
-
-        .hero-teaser__source--new-zealand-woman-s-weekly span:first-child:not(.teaser__source__breaker) {
-            color: $nz-womans-weekly-color;
-        }
-
-        .hero-teaser__source--good-health-choices span:first-child:not(.teaser__source__breaker) {
-            color: $nz-good-health-choices-color;
-        }
-
-        .hero-teaser__source--prizes-to-love span:first-child:not(.hero-teaser__source__breaker) {
-            color: $ptl-color;
-        }
-
-        .hero-teaser__source--nadia span:first-child:not(.hero-teaser__source__breaker) {
-            color: $nz-nadia-color;
-        }
-
-        .hero-teaser__source--beauty-to-love span:first-child:not(.hero-teaser__source__breaker) {
-            color: $nz-btl-color;
-        }
+    .hero-teaser__source {
+        // TODO - refactor the teaser component so that this element doesn't get rendered
+        display: none;
     }
 
     &__social-logo {
@@ -164,12 +119,21 @@ $hero-teaser-line-height: 25px;
         height: 25px;
     }
 
+    &__follow-us {
+        font-family: $font-family-muli;
+        font-size: 18px;
+        line-height: 16px;
+        text-transform: uppercase;
+        color: $color-primary;
+        font-weight: 600;
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+
     .ad {
         @media #{$medium-only} {
             text-align: center;
-            width: 50%;
-            float: right;
-            margin-bottom: 20px;
+            margin-bottom: 70px;
         }
     }
 
@@ -180,34 +144,7 @@ $hero-teaser-line-height: 25px;
         }
 
         @media #{$medium-only} {
-            width: 50%;
             text-align: center;
-            float: left;
-
-            &:before {
-                display: none;
-            }
-        }
-
-        @media #{$large-up} {
-            display: none;
-        }
-
-        .get-social {
-            @media #{$small-only} {
-                margin-bottom: 27px;
-            }
-
-            margin: {
-                bottom: 0;
-            }
-
-            .columns {
-                padding: {
-                    left: 0;
-                    right: 0;
-                }
-            }
         }
     }
 }
@@ -215,28 +152,50 @@ $hero-teaser-line-height: 25px;
 .hero-teaser {
     background-color: $color-white;
 
-    .teaser__inner {
-        @include clearfix();
+    @media #{$medium-only} {
+        margin-bottom: 40px;
+    }
 
-        position: relative;
+    .teaser__inner {
+        img {
+            width: 100%;
+            height: auto;
+        }
     }
 
     .teaser__image {
         @media #{$medium-only} {
-            float: left;
-            width: 58.33%;
+            width: 100%;
         }
     }
 
-    .teaser__body {
-        @include grid-column(11, false, true);
-        position: relative;
-        margin-top: -3px;
-        padding-left: 0;
-        margin-left: 0;
+    .teaser__source {
+        display: block;
+    }
 
-        @media #{$medium-only} {
-            @include grid-column(4, false, false);
+    .teaser__body {
+        display: table;
+        background: $color-white;
+        position: absolute;
+        bottom: 6px;
+        width: 88%;
+        right: 6%;
+        min-height: 66px;
+        padding: 15px;
+        z-index: $z-index--teaser-background;
+
+        @media #{$medium-up} {
+            width: 76%;
+            left: 8%;
+            bottom: 6px;
+            min-height: 110px;
+        }
+
+        @media #{$large-up} {
+            width: 75%;
+            left: 4%;
+            bottom: 10px;
+            min-height: 110px;
         }
     }
 
@@ -257,25 +216,15 @@ $hero-teaser-line-height: 25px;
     }
 
     .teaser__title {
-        @include type-hero-title();
-        margin: {
-            bottom: 0;
-            top: 3px;
-        }
-        padding: 15px;
+        padding: 0;
 
         @media #{$large-up} {
-            padding: 0;
-            display: block;
-            margin-top: 18px;
-            margin-bottom: 4px;
             display: block;
         }
 
         a {
+            @include type-hero-title();
             text-decoration: none;
-            font-weight: 400;
-            line-height: $hero-teaser-line-height;
         }
     }
 

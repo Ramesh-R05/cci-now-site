@@ -14,24 +14,25 @@
 .feed-header {
     position: relative;
     z-index: 1;
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
-    font-size: 13px;
     letter-spacing: 1px;
     margin: 13px 0 0 0;
     padding: 0;
-    color: $color-black;
+    color: $color-black-origin;
+    font: 800 16px/42px $font-family-muli;
+    width: 298px;
 
     > span {
-        padding: 0 10px;
+        padding: 0 25px 0 0;
     }
 
     span {
-        background: #FFF;
+        background: $color-white;
     }
 
     &::before {
-        border-top: 1px solid $feed-item-header-colour;
+        border-top: 1px solid $color-darker-grey;
         content: '';
         margin: 0 auto;
         position: absolute;
@@ -49,52 +50,85 @@
     .feed-item__source {
         font-size: 11px;
         letter-spacing: 0.5px;
-        font-family: $font-family-sans-serif-primary;
+        font-family: $font-family-serif-primary;
         display: block;
         text-transform: uppercase;
 
         &--australian-women-s-weekly {
-            color: $aww-color;
+            color: $color-source-grey;
+            @media #{$medium-up} {
+                color: $aww-color;
+            }
         }
 
         &--woman-s-day {
-            color: $wd-color;
+            color: $color-source-grey;
+            @media #{$medium-up} {
+                color: $wd-color;
+            }
         }
 
         &--now-to-love {
-            color: $nl-color;
+            color: $color-source-grey;
+            @media #{$medium-up} {
+                color: $nl-color;
+            }
         }
 
         &--good-health {
-            color: $good-health-color;
+            color: $color-source-grey;
+            @media #{$medium-up} {
+                color: $good-health-color;
+            }
         }
 
         &--yours {
-            color: $yours-color;
+            color: $color-source-grey;
+            @media #{$medium-up} {
+                color: $yours-color;
+            }
         }
 
         &--ok--magazine {
-            color: $ok-color;
+            color: $color-source-grey;
+            @media #{$medium-up} {
+                color: $ok-color;
+            }
         }
 
         &--mother-and-baby {
-            color: $mother-baby-color;
+            color: $color-source-grey;
+            @media #{$medium-up} {
+                color: $mother-baby-color;
+            }
         }
 
         &--take-5 {
-            color: $take-5-color;
+            color: $color-source-grey;
+            @media #{$medium-up} {
+                color: $take-5-color;
+            }
         }
 
         &--nw {
-            color: $nw-color;
+            color: $color-source-grey;
+            @media #{$medium-up} {
+                color: $nw-color;
+            }
         }
 
         &--tv-week {
-            color: $tv-color;
+            color: $color-source-grey;
+            @media #{$medium-up} {
+                color: $tv-color;
+            }
         }
 
         &--prizes-to-love {
-            color: $ptl-color;
+            color: $color-source-grey;
+            @media #{$medium-up} {
+                color: $ptl-color;
+            }
         }
     }
 }

@@ -1,0 +1,20 @@
+.header-menu {
+    flex: 0;
+    align-self: center;
+    z-index: $z-index--header-menu;
+
+    &__button-menu {
+        @include flat-button;
+
+        &:hover path,
+        &:active path,
+        &:focus path {
+            fill: $color-light-blue;
+        }
+    }
+
+    &__button-icon {
+        fill: $color-dark-blue;
+        width: 20px;
+    }
+}

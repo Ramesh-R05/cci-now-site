@@ -5,11 +5,6 @@
     background-color: #fff;
 }
 
-.uniheader {
-    position: relative;
-    z-index: 1;
-}
-
 .page-title-container {
     position: relative;
     z-index: 1;
@@ -90,12 +85,6 @@
     }
 }
 
-.footer {
-    margin-top: 0px;
-    max-width: 1024px;
-    background-color: #fff;
-}
-
 .sticky-block {
     &.sticky-block--in-view {
         .ad--section-bottom-leaderboard {
@@ -108,7 +97,7 @@
         .ad {
             padding-bottom: 0;
             @media #{$small-only} {
-                margin-bottom: 0px;
+                margin-bottom: 0;
             }
             @media #{$medium-only} {
                 margin-bottom: 20px;

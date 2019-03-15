@@ -28,6 +28,17 @@
             float: left;
             width: 50%;
         }
+
+        &__title {
+            font-family: $font-family-muli;
+            font-size: 18px;
+            line-height: 16px;
+            text-transform: uppercase;
+            color: $color-black-origin;
+            font-weight: 600;
+            margin-bottom: 14px;
+            margin-top: 15px;
+        }
     }
 
     .page__top-container {
@@ -49,4 +60,457 @@
             padding-bottom: 0;
         }
     }
+}
+
+.brand-section {
+
+    &--gh {
+
+        .social-icon {
+            &__icon {
+                svg {
+                    path {
+                        fill: $good-health-color;
+                    }
+                }
+            }
+
+            &--facebook {
+                &:hover {
+                    path {
+                        fill: $facebook-blue;
+                    }
+                }
+            }
+
+            &--twitter {
+                &:hover {
+                    path {
+                        fill: $twitter-blue;
+                    }
+                }
+            }
+
+            &--instagram {
+                &:hover {
+                    path {
+                        fill: $instagram-brown;
+                    }
+                }
+            }
+
+            &--pinterest {
+                &:hover {
+                    path {
+                        fill: $pinterest-red;
+                    }
+                }
+            }
+        }
+    }
+
+    &--wd {
+
+        .social-icon {
+            &__icon {
+                svg {
+                    path {
+                        fill: $wd-color;
+                    }
+                }
+            }
+
+            &--facebook {
+                &:hover {
+                    path {
+                        fill: $facebook-blue;
+                    }
+                }
+            }
+
+            &--twitter {
+                &:hover {
+                    path {
+                        fill: $twitter-blue;
+                    }
+                }
+            }
+
+            &--instagram {
+                &:hover {
+                    path {
+                        fill: $instagram-brown;
+                    }
+                }
+            }
+
+            &--pinterest {
+                &:hover {
+                    path {
+                        fill: $pinterest-red;
+                    }
+                }
+            }
+        }
+    }
+
+    &--ok {
+
+        .social-icon {
+            &__icon {
+                svg {
+                    path {
+                        fill: $ok-color;
+                    }
+                }
+            }
+
+            &--facebook {
+                &:hover {
+                    path {
+                        fill: $facebook-blue;
+                    }
+                }
+            }
+
+            &--twitter {
+                &:hover {
+                    path {
+                        fill: $twitter-blue;
+                    }
+                }
+            }
+
+            &--instagram {
+                &:hover {
+                    path {
+                        fill: $instagram-brown;
+                    }
+                }
+            }
+
+            &--pinterest {
+                &:hover {
+                    path {
+                        fill: $pinterest-red;
+                    }
+                }
+            }
+        }
+    }
+
+    &--mb {
+
+        .social-icon {
+            &__icon {
+                svg {
+                    path {
+                        fill: $mother-baby-color;
+                    }
+                }
+            }
+
+            &--facebook {
+                &:hover {
+                    path {
+                        fill: $facebook-blue;
+                    }
+                }
+            }
+
+            &--twitter {
+                &:hover {
+                    path {
+                        fill: $twitter-blue;
+                    }
+                }
+            }
+
+            &--instagram {
+                &:hover {
+                    path {
+                        fill: $instagram-brown;
+                    }
+                }
+            }
+
+            &--pinterest {
+                &:hover {
+                    path {
+                        fill: $pinterest-red;
+                    }
+                }
+            }
+        }
+    }
+
+    &--take5 {
+
+        .social-icon {
+            &__icon {
+                svg {
+                    path {
+                        fill: $take-5-color;
+                    }
+                }
+            }
+
+            &--facebook {
+                &:hover {
+                    path {
+                        fill: $facebook-blue;
+                    }
+                }
+            }
+
+            &--twitter {
+                &:hover {
+                    path {
+                        fill: $twitter-blue;
+                    }
+                }
+            }
+
+            &--instagram {
+                &:hover {
+                    path {
+                        fill: $instagram-brown;
+                    }
+                }
+            }
+
+            &--pinterest {
+                &:hover {
+                    path {
+                        fill: $pinterest-red;
+                    }
+                }
+            }
+        }
+    }
+
+    &--nw {
+
+        .social-icon {
+            &__icon {
+                svg {
+                    path {
+                        fill: $nw-color;
+                    }
+                }
+            }
+
+            &--facebook {
+                &:hover {
+                    path {
+                        fill: $facebook-blue;
+                    }
+                }
+            }
+
+            &--twitter {
+                &:hover {
+                    path {
+                        fill: $twitter-blue;
+                    }
+                }
+            }
+
+            &--instagram {
+                &:hover {
+                    path {
+                        fill: $instagram-brown;
+                    }
+                }
+            }
+
+            &--pinterest {
+                &:hover {
+                    path {
+                        fill: $pinterest-red;
+                    }
+                }
+            }
+        }
+    }
+
+    &--tvweek {
+
+        .social-icon {
+            &__icon {
+                svg {
+                    path {
+                        fill: $tv-color;
+                    }
+                }
+            }
+
+            &--facebook {
+                &:hover {
+                    path {
+                        fill: $facebook-blue;
+                    }
+                }
+            }
+
+            &--twitter {
+                &:hover {
+                    path {
+                        fill: $twitter-blue;
+                    }
+                }
+            }
+
+            &--instagram {
+                &:hover {
+                    path {
+                        fill: $instagram-brown;
+                    }
+                }
+            }
+
+            &--pinterest {
+                &:hover {
+                    path {
+                        fill: $pinterest-red;
+                    }
+                }
+            }
+        }
+    }
+
+    &--ptl {
+
+        .social-icon {
+            &__icon {
+                svg {
+                    path {
+                        fill: $ptl-color;
+                    }
+                }
+            }
+
+            &--facebook {
+                &:hover {
+                    path {
+                        fill: $facebook-blue;
+                    }
+                }
+            }
+
+            &--twitter {
+                &:hover {
+                    path {
+                        fill: $twitter-blue;
+                    }
+                }
+            }
+
+            &--instagram {
+                &:hover {
+                    path {
+                        fill: $instagram-brown;
+                    }
+                }
+            }
+
+            &--pinterest {
+                &:hover {
+                    path {
+                        fill: $pinterest-red;
+                    }
+                }
+            }
+        }
+    }
+
+    &--empire {
+
+        .social-icon {
+            &__icon {
+                svg {
+                    path {
+                        fill: $empire-color;
+                    }
+                }
+            }
+
+            &--facebook {
+                &:hover {
+                    path {
+                        fill: $facebook-blue;
+                    }
+                }
+            }
+
+            &--twitter {
+                &:hover {
+                    path {
+                        fill: $twitter-blue;
+                    }
+                }
+            }
+
+            &--instagram {
+                &:hover {
+                    path {
+                        fill: $instagram-brown;
+                    }
+                }
+            }
+
+            &--pinterest {
+                &:hover {
+                    path {
+                        fill: $pinterest-red;
+                    }
+                }
+            }
+        }
+    }
+
+    &--aww, &--australian-women-s-weekly {
+        .social-icon {
+            &__icon {
+                svg {
+                    path {
+                        fill: $aww-color;
+                    }
+                }
+            }
+
+            &--facebook {
+                &:hover {
+                    path {
+                        fill: $facebook-blue;
+                    }
+                }
+            }
+
+            &--twitter {
+                &:hover {
+                    path {
+                        fill: $twitter-blue;
+                    }
+                }
+            }
+
+            &--instagram {
+                &:hover {
+                    path {
+                        fill: $instagram-brown;
+                    }
+                }
+            }
+
+            &--pinterest {
+                &:hover {
+                    path {
+                        fill: $pinterest-red;
+                    }
+                }
+            }
+        }
+    }
+
 }

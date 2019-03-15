@@ -27,14 +27,21 @@ $to-love-global-header-height-desktop: 51px;
 $global-header-height: $to-love-global-header-height-mobile;
 $global-header-height-desktop: $to-love-global-header-height-desktop;
 
-$header-height: 54px;
-$header-height-desktop: 58px;
-$header-banner-logo-height: 170px;
+$header-height: 46px;
+$header-height-small: 54px;
+$header-height-medium-up: 46px;
+$header-height-desktop: 46px;
 $header-logo-width-desktop: 212px;
 $header-logo-container-width-desktop: $header-logo-width-desktop;
 $header-logo-path: '/assets/logos/header-logo.svg';
-$header-banner-background-path: '/assets/backgrounds/header.png';
 $header-transition-duration: 200ms;
+
+$header-logo-aspect-ratio: 12; // (width / height)
+$header-banner-background-path: '/assets/backgrounds/header.png';
+$header-banner-logo-height: 170px;
+$header-banner-height-mobile: 58px;
+$header-banner-height-medium-up: 221px;
+$header-banner-height-large-up: 221px;
 
 $page-title-height: 135px;
 $ad-wallpaper-top-mobile: $header-height;
@@ -69,7 +76,6 @@ $gallery-color-grey: $color-black;
 $related-content-border-color: #dddddd;
 
 // Footer
-$back-to-top-background-color: $color-primary;
 $footer-gap: 40px;
 
 

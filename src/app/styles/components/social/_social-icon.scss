@@ -1,0 +1,76 @@
+$brand-hover-lighten: 15%;
+
+.social-icon {
+    $root: &;
+
+    display: inline-block;
+    padding: 0 10px;
+
+    svg {
+        display: inline;
+        height: 20px;
+        width: 20px;
+        fill: $color-darkest-blue;
+    }
+
+    path {
+        transition: fill .5s;
+    }
+
+    &--facebook {
+        &:hover {
+            path {
+                fill: lighten($facebook-blue, $brand-hover-lighten);
+            }
+        }
+    }
+
+    &--twitter {
+        &:hover {
+            path {
+                fill: lighten($twitter-blue, $brand-hover-lighten);
+            }
+        }
+    }
+
+    &--instagram {
+        &:hover {
+            path {
+                fill: lighten($instagram-brown, $brand-hover-lighten);
+            }
+        }
+    }
+
+    &--pinterest {
+        &:hover {
+            path {
+                fill: lighten($pinterest-red, $brand-hover-lighten);
+            }
+        }
+    }
+
+    &--in-footer {
+        width: 35px;
+
+        @media #{$medium-up} {
+            padding-top: 30px;
+        }
+
+        #{$root}__icon {
+            svg {
+                height: 18px;
+                width: 18px;
+                margin: 0;
+
+                path {
+                    fill: $color-navy-blue;
+                }
+            }
+
+            :hover svg path,
+            :hover #{$root}__icon svg path {
+                fill: $color-secondary-light;
+            }
+        }
+}
+}

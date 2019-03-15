@@ -41,7 +41,7 @@ Feature: Brand Landing page
         * I should see the brand title logo on the brand landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
-        * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source without date
+        # * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source without date
         @med
         Examples:
             |device           |
@@ -57,7 +57,7 @@ Feature: Brand Landing page
         * I should see the brand title logo on the brand landing page
         * I should see the main hero item containing its image and clickable to open its page
         * I should see the main hero item containing its title and clickable to open its page
-        * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source without date
+        # * I should see the main hero item containing "AUSTRALIAN WOMEN'S WEEKLY" source without date
         @high
         Examples:
             |device          |

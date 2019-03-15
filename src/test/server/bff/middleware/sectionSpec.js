@@ -19,7 +19,7 @@ const sectionMiddleware = proxyquire('../../../../app/server/bff/middleware/sect
 describe('Section middleware', () => {
     const config = {
         brands: {
-            uniheader: [
+            site: [
                 {
                     id: 'aww',
                     imageUrl: '/assets/images/headerlogos/AWW-logo.svg',

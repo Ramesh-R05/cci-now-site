@@ -8,11 +8,13 @@ noCallThru();
 const TeaserStub = Context.createStubComponent();
 const AdStub = Context.createStubComponent();
 const PromotedStub = Context.createStubComponent();
+const SocialContainer = Context.createStubComponent();
 
 const HeroTeaser = proxyquire('../../../app/components/teaser/hero', {
     './teaser': TeaserStub,
     '@bxm/ad/lib/google/components/ad': AdStub,
-    '../promoted/promoted': PromotedStub
+    '../promoted/promoted': PromotedStub,
+    '@bxm/social/lib/components/socialIcons/socialContainer': SocialContainer
 }).default;
 
 AdStub.pos = {
@@ -27,12 +29,12 @@ AdStub.pos = {
 describe('Hero Teaser Component', () => {
     const article = { id: 'HERO-TEASER', title: 'title', source: "Australian women's weekly" };
     const defaultImageSizes = {
-        s: { w: 700, h: 583 },
-        m: { w: 619, h: 515 },
-        l: { w: 810, h: 456 },
-        xl: { w: 619, h: 515 }
+        s: { w: 690, h: 575 },
+        m: { w: 768, h: 476 },
+        l: { w: 636, h: 504 },
+        xl: { w: 636, h: 504 }
     };
-    const imageSizes = { xl: { w: 619, h: 515 } };
+    const imageSizes = { xl: { w: 636, h: 504 } };
     let reactModule;
     let TeaserComponent;
     const contextConfigStub = {
@@ -40,10 +42,13 @@ describe('Hero Teaser Component', () => {
         type: '',
         value: {
             urls: {
-                socialUrls: {
-                    facebookUrl: 'https://www.facebook.com/nowtolovenz',
-                    twitterUrl: 'https://twitter.com/NowToLovenz',
-                    instagramUrl: 'https://www.instagram.com/NowToLovenz'
+                newsletterUrl: 'http://someurl.com'
+            },
+            site: {
+                defaultSocialLinks: {
+                    facebook: 'https://www.facebook.com/nowtoloveau',
+                    twitter: 'https://twitter.com/nowtoloveau',
+                    instagram: 'https://www.instagram.com/nowtoloveau'
                 }
             }
         }
@@ -62,7 +67,7 @@ describe('Hero Teaser Component', () => {
         });
 
         it(`should attach \'hero-wrapper--no-teaser\' to wrapper`, () => {
-            const wrapper = shallow(<HeroTeaser />, { context: { config: { urls: { socialUrls: {} } } } });
+            const wrapper = shallow(<HeroTeaser />, { context: { config: { site: { defaultSocialLinks: {} } } } });
             expect(wrapper.props().className).to.eq('hero-wrapper hero-wrapper--no-teaser');
         });
     });
@@ -89,7 +94,7 @@ describe('Hero Teaser Component', () => {
         });
 
         it('should render 1 ad', () => {
-            const wrapper = shallow(<HeroTeaser article={article} />, { context: { config: { urls: { socialUrls: {} } } } });
+            const wrapper = shallow(<HeroTeaser article={article} />, { context: { config: { site: { defaultSocialLinks: {} } } } });
             const elm = wrapper.find(TeaserStub);
             expect(elm.length).to.be.equal(1);
         });

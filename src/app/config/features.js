@@ -40,5 +40,8 @@ export default {
     ias: {
         enabled: true,
         id: 926929
+    },
+    brandsModalInHeader: {
+        enabled: true
     }
 };

@@ -9,9 +9,7 @@ import classnames from 'classnames';
 import Ad from '@bxm/ad/lib/google/components/ad';
 import StandardPageAdsWrapper from '@bxm/ad/lib/google/components/standardPageAdsWrapper';
 import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
-import Logos from '../components/page/logos';
-import UniHeader from '../components/uniheader';
-import Footer from '../components/footer';
+import SiteFooter from '../components/site-footer';
 
 function mapStateToProps(context) {
     return {
@@ -31,18 +29,27 @@ export default class Page extends Component {
         className: PropTypes.string,
         children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]).isRequired,
         content: PropTypes.object.isRequired,
-        headerExpanded: PropTypes.bool.isRequired,
-        hideFooter: PropTypes.bool,
         menuClasses: PropTypes.string.isRequired,
         headerNavItems: PropTypes.array.isRequired,
         hamburgerNavItems: PropTypes.array.isRequired,
         toggleSideMenu: PropTypes.func.isRequired,
         currentUrl: PropTypes.string.isRequired,
-        showUniheader: PropTypes.bool,
         hideLeaderboard: PropTypes.bool,
         pageTitle: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
         headerThemeClassName: PropTypes.string,
-        theme: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+        theme: PropTypes.oneOfType([
+            PropTypes.shape({
+                headerSmallBackground: PropTypes.string,
+                headerMediumBackground: PropTypes.string,
+                headerLargeBackground: PropTypes.string,
+                headerLogoAlignment: PropTypes.string,
+                headerLogoColour: PropTypes.string,
+                themeAlignment: PropTypes.string,
+                themeColour: PropTypes.string,
+                themeImage: PropTypes.string
+            }),
+            PropTypes.array
+        ]),
         showWallpaper: PropTypes.bool,
         emailLinkTrackingData: PropTypes.shape({
             bauer_global_unique_id: PropTypes.string,
@@ -58,12 +65,10 @@ export default class Page extends Component {
 
     static defaultProps = {
         hideLeaderboard: false,
-        hideFooter: false,
         headerThemeClassName: '',
         className: '',
         pageTitle: '',
-        theme: {},
-        showUniheader: false,
+        theme: null,
         showWallpaper: true,
         emailLinkTrackingData: null
     };
@@ -87,20 +92,22 @@ export default class Page extends Component {
         const {
             headerNavItems,
             hamburgerNavItems,
-            showUniheader,
             currentUrl,
-            headerExpanded,
-            hideFooter,
+            children,
             hideLeaderboard,
             pageTitle,
             headerThemeClassName,
             content,
-            showWallpaper
+            showWallpaper,
+            theme,
+            className,
+            menuClasses
         } = this.props;
+        const { config } = this.context;
         const pageLocation = Ad.pos.outside;
         const mobileNav = hamburgerNavItems ? hamburgerNavItems.slice() : headerNavItems.slice();
         mobileNav.unshift({ name: 'Home', url: '/' });
-        const pageClassName = classnames('page', this.props.className);
+        const pageClassName = classnames('page', className);
         let keyword;
 
         if (content) {
@@ -121,22 +128,23 @@ export default class Page extends Component {
             },
             pageLocation
         };
-        const brands = this.context.config.brands;
+
+        const themeEnabled = !!theme && !!theme.headerSmallBackground && !!theme.headerMediumBackground && !!theme.headerLargeBackground;
 
         return (
             <div className={pageClassName}>
-                <div className={this.props.menuClasses}>
-                    {showUniheader && <UniHeader className="uniheader" logoList={brands.uniheader} />}
-
+                <div className={menuClasses}>
                     <Header
                         currentUrl={currentUrl}
-                        isExpanded={headerExpanded}
                         navItems={headerNavItems}
-                        siteName={this.context.config.get('site.name')}
+                        siteName={config.site.name}
                         toggleMenu={this.toggleMenu}
+                        permanentlyFixedIfShorterThan={46}
                         headerThemeClassName={headerThemeClassName}
-                        theme={this.props.theme}
-                        permanentlyFixedIfShorterThan={10}
+                        theme={themeEnabled ? theme : {}}
+                        isExpanded
+                        wrapperClassName="header"
+                        headerClassName="header__inner"
                     />
 
                     {!hideLeaderboard && (
@@ -153,11 +161,10 @@ export default class Page extends Component {
                     {pageTitle && <div className="page-title-container"> {pageTitle} </div>}
 
                     <StandardPageAdsWrapper showWallpaper={showWallpaper}>
-                        <div className="content-wrapper">
-                            {this.props.children}
-                            {!hideFooter && <Footer logoList={brands.uniheader} />}
-                        </div>
+                        <div className="content-wrapper">{children}</div>
                     </StandardPageAdsWrapper>
+
+                    <SiteFooter />
 
                     <MobileOffCanvas side="left" toggleSideMenu={this.toggleMenu}>
                         <div className="off-canvas-content-wrapper">
@@ -174,7 +181,6 @@ export default class Page extends Component {
                                 }}
                             />
                             <HamburgerNav className="mobile-menu" items={mobileNav} currentUrl={currentUrl} />
-                            <Logos className="mobile-menu-list" gtmPrefix="hamburger" openInNewTab logoList={brands.hamburgers} />
                         </div>
                     </MobileOffCanvas>
                 </div>

@@ -10,5 +10,11 @@ export default {
     adTaggingId: 'NowToLove',
     alternateHrefLangUrl: 'http://www.nowtolove.co.nz',
     feedTitle: 'Read More',
-    useFeedTitlePrefix: false
+    useFeedTitlePrefix: false,
+    buyMagazinesLink: 'https://www.magshop.com.au/',
+    defaultSocialLinks: {
+        facebook: 'https://www.facebook.com/nowtolove',
+        twitter: 'https://twitter.com/nowtolove',
+        instagram: 'https://www.instagram.com/nowtolove'
+    }
 };

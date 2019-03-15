@@ -9,7 +9,7 @@ const SocialContainerStub = Context.createStubComponent();
 
 const BrandMagazine = proxyquire('../../../app/components/brand/brandMagazine', {
     '@bxm/ui/lib/common/ResponsiveImage': ResponsiveImageStub,
-    '../social/block': SocialContainerStub
+    '@bxm/social/lib/components/socialIcons/socialContainer': SocialContainerStub
 }).default;
 
 const magImageUrlStub = 'http://stubbedimages.biz/content.jpg';
@@ -62,7 +62,10 @@ describe(`BrandMagazine`, () => {
 
         it('should render the SocialContainer component with the AWW social link props', () => {
             expect(socialContainerStub.props).to.deep.eq({
-                socialUrls: brandPropStub.socialLinks
+                socialUrls: brandPropStub.socialLinks,
+                title: 'Follow Us',
+                classModifier: 'in-brand-magazine',
+                gtmClass: 'gtm-follow-social-in-brand-magazine'
             });
         });
 

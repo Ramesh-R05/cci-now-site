@@ -4,16 +4,16 @@
     margin-bottom: 14px;
 
     &:hover {
-        color: $color-primary;
+        color: $color-secondary;
         text-decoration: none;
     }
 
     &--active {
-        color: $color-primary;
+        color: $color-secondary;
     }
 
     &:focus {
-        color: $color-primary;
+        color: $color-secondary;
     }
 
     &--subsection {

@@ -4,7 +4,7 @@
     color: $color-grey-light;
     text-transform: uppercase;
     letter-spacing: .7px;
-    font: 400 11px/15px $font-family-sans-serif-primary;
+    font: 400 11px/15px $font-family-serif-primary;
 
     @media #{$medium-up} {
         padding: 0;
@@ -57,10 +57,12 @@
     }  
 
     &__breaker span:first-child {
-        margin: 0 5px;
+        margin: 0 3px 0 2px;
+        color: $color-grey-lighter-level-one;
     }
 
     &__breaker {
-        margin: 0 5px;
+        margin: 0 3px 0 2px;
+        color: $color-grey-lighter-level-one
     }
 }

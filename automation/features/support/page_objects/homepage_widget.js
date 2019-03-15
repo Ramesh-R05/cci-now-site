@@ -1,11 +1,9 @@
 var homepage_widget = {
 
     mustreadHeader: '.mustread-teaser-view-grid .home-page__teasers-title',
-    mustreadImage: '.mustread-teaser-view-grid .teaser__list-item .teaser__inner img',
-    mustreadImageLink: '.mustread-teaser-view-grid .teaser__list-item .teaser__inner > a',
-    mustreadTitle: '.mustread-teaser-view-grid .teaser__list-item .teaser__title a',
+    mustReadItem: '.mustread-teaser-view-grid .teaser__list-item',
     promotedHeader: '.promoted-teaser-view-grid .home-page__teasers-title',
-    promotedImage: '.promoted-teaser-view-grid .teaser__list-item .teaser__inner img',
+    promotedItems: '.promoted-teaser-view-grid .teaser__list-item',
     promotedImageLink: '.promoted-teaser-view-grid .teaser__list-item .teaser__inner > a',
     promotedTitle: '.promoted-teaser-view-grid .teaser__list-item .teaser__title a',
     heroImg: '.hero-wrapper .hero-teaser',

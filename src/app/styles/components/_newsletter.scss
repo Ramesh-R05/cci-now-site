@@ -1,21 +1,42 @@
 .newsletter-subscribe {
+    $root: &;
+
     font-size: 14px;
     text-align: center;
     font-family: $font-family-sans-serif-primary;
 
+    &__text {
+        margin: 5px 0 -5px 0;
+        font-family: $font-family-questrial;
+        font-size: 14px;
+        line-height: 16px;
+        color: $color-primary;
+        font-weight: 400;
+    }
+
+    &__title {
+        font-family: $font-family-muli;
+        font-size: 18px;
+        line-height: 16px;
+        text-transform: uppercase;
+        color: $color-primary;
+        font-weight: 600;
+        margin-bottom: 14px;
+    }
+
     a {
-        width: 148px;
-        height: 42px;
         color: #fff;
         display: inline-block;
-        padding-top: 10px;
+        padding: 8px 18px;
         margin: 20px 0 20px;
         letter-spacing: 0.7px;
         text-decoration: none;
+        font-size: 12px;
+        font-family: $font-family-muli;
     }
 
     &__button-default a {
-        background-color: $nl-color;
+        background-color: $color-primary;
     }
 
     &__button-wd a {
@@ -89,16 +110,31 @@
     &__button-empire a {
         background-color: $empire-color;
     }
+
+    &--in-footer {
+        border-top: 0;
+        padding-top: 0;
+
+        @media #{$medium-up} {
+            padding-top: 30px;
+        }
+
+        @media #{$large-up} {
+            padding-top: 0;
+        }
+
+        #{$root}__title {
+            @include type-footer-column-heading;
+            margin-bottom: 20px;
+        }
+
+        #{$root}__text {
+            @include type-footer-text;
+        }
+
+        #{$root}__button-default a {
+            background-color: $color-navy-blue;
+            margin: 20px 0 0;
+        }
+    }
 }
-
-
-.newsletter-subscribe__text {
-    margin: 5px 0 -5px 0;
-}
-
-.newsletter-subscribe__title {
-    font-size: 20px;
-    color: #333;
-    font-weight: 500;
-}
-

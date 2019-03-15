@@ -1,5 +1,8 @@
 .article {
     margin: 25px 0 0 0;
+    @media #{$large-up} {
+        border-right: none;
+    }
 
     .ad--article-top {
         margin-bottom: 25px;
@@ -24,15 +27,7 @@
 
     @media #{large-up} {
         padding-bottom: 30px;
-    }
-
-    &-section {
-        .footer {
-            @media #{$large-up} {
-                margin-top: 0;
-            }
-        }
-    }
+    }    
 
     .article-header-source {
         &.article-header-source--bottom {
@@ -74,7 +69,7 @@
                 font-size: 11px;
                 color: $color-grey-light;
                 text-transform: uppercase;
-                font-family: $font-family-sans-serif-primary;
+                font-family: $font-family-serif-primary;
             }
 
             img {
@@ -101,6 +96,12 @@
     .article__image-count:before {
         content: ' ';
         margin-right: 5px;
+    }
+
+    .gallery__caption {
+        p {
+            font: 400 16px/24px $font-family-muli;
+        }
     }
 }
 
@@ -169,15 +170,19 @@
     margin-bottom: 6px;
     margin-top: 13px;
     text-align: center;
+    @include type-article-title;
 }
 
 .article__summary {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     text-align: center;
+    color: $color-darkish-grey;
+    font: 400 18px/34px $font-family-sans-serif-primary;
 
     @media #{$medium-up} {
         padding-top: 0;
         text-align: center;
+        font: 400 18px/34px $font-family-sans-serif-primary;
     }
 }
 
@@ -204,10 +209,21 @@
 }
 
 .article__tags {
+
+    .tags__title {
+        font: 600 11px/22px $font-family-muli;
+        color: $color-grey-lighter-level-one;
+        text-transform: uppercase;
+    }
+
     .related-tags {
+
         li {
             a {
+                font: 600 11px/22px $font-family-muli;
+                color: $color-black-origin;
                 text-decoration: underline;
+                text-transform: uppercase;
             }
         }
     }
@@ -217,10 +233,11 @@
 .article-header-author,
 .article__image-count {
     font-size: 11px;
+    line-height: 20px;
     text-transform: uppercase;
     font-weight: 400;
-    font-family: $font-family-sans-serif-primary;
-    color: $color-grey-light;
+    font-family: $font-family-questrial;
+    color: $color-grey-lighter-level-one;
     letter-spacing: 0.6px;
     margin-top: 15px;
     margin-right: 0;

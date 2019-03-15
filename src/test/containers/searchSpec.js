@@ -35,11 +35,7 @@ AdStub.pos = {
 
 const context = {
     config: {
-        urls: {
-            socialUrls: {}
-        },
         features: {
-            headerExpanded: true,
             mustRead: {
                 showOutsideContainer: true,
                 showInsideContainer: false
@@ -49,8 +45,15 @@ const context = {
                 showAboveBottomTeasers: true
             }
         },
+        site: {
+            defaultSocialLinks: {
+                facebook: 'https://www.facebook.com/nowtoloveau',
+                twitter: 'https://twitter.com/nowtoloveau',
+                instagram: 'https://www.instagram.com/nowtoloveau'
+            }
+        },
         brands: {
-            uniheader: [
+            sie: [
                 {
                     id: 'aww',
                     title: "Australian Women's Weekly",

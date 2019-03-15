@@ -118,7 +118,6 @@ describe('ErrorPage Component', () => {
         it('should pass the appropriate props', () => {
             const PageComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
             expect(PageComponent.props).to.deep.contain({
-                headerExpanded: true,
                 className: 'error-page',
                 currentUrl: '/url'
             });

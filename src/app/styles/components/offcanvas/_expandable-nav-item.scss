@@ -25,15 +25,15 @@
         flex-basis: auto;
 
         &:hover {
-            color: $color-primary;
+            color: $color-secondary;
         }
 
         &--active {
-            color: $color-primary;
+            color: $color-secondary;
         }
 
         &:focus {
-            color: $color-primary;
+            color: $color-secondary;
         }
     }
 

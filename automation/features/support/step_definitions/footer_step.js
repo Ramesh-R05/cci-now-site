@@ -1,60 +1,64 @@
-var footer = require('../page_objects/footer_widget');
+const footer = require('../page_objects/footer_widget');
 
 module.exports = function() {
 
-    this.Given(/^I can see the social logo in the footer$/, function () {
-        //Validate the existence of the logo
-        var socialLogo = browser.getCssProperty(footer.footerSocialLogo, 'background-image').value;
-        expect(socialLogo).toMatch("/assets/logos/follow-logo.svg");
+    this.Given(/^I can see the social icons clickable to open its page in the footer$/,  (dataTable) => {
+        const [facebook, twitter, instagram] = dataTable.hashes();
+        const { footerSocialFacebook, footerSocialTwitter, footerSocialInsta } = footer;
+
+        expect(browser.$(footerSocialFacebook).$('a').getAttribute('href')).toEqual(facebook.url);
+        expect(browser.$(footerSocialTwitter).$('a').getAttribute('href')).toEqual(twitter.url);
+        expect(browser.$(footerSocialInsta).$('a').getAttribute('href')).toEqual(instagram.url);
     });
 
-    this.Given(/^I can see the social icons clickable to open its page in the footer$/, function (dataTable) {
-        var rows = dataTable.hashes();
+    this.Given(/^I can navigate to all brands in the footer$/,  (dataTable) => {
+        const rows = dataTable.hashes();
+        const { footerBrandslinks } = footer;        
 
-        //below captures the array of social links to validate against the table
-        var socialLink = browser.getAttribute(footer.footerSocialLink, 'href');
+        browser.$$(footerBrandslinks).forEach((link, index) => {
+            const {title, url} = rows[index];
 
-        for (var i = 0; i < rows.length; ++i) {
-            var row = rows[i];
-            //validates position of social icons on Index and their link
-            console.log(row['social'] + ' : ' + socialLink[i]);
-            expect(socialLink[i]).toContain(row['url']);
-        }
+            expect(link.getText()).toEqual(title);
+            expect(link.getAttribute('href')).toContain(url);
+        });
     });
 
-    this.Given(/^I can see the brands title in the footer as "([^"]*)"$/, function (text) {
-        //Validate the brands title is correct.
-        expect(browser.getText(footer.footerLogosTitle)).toEqual(text)
+    this.Given(/^I can navigate to all network sites in the footer$/,  (dataTable) => {
+        const rows = dataTable.hashes();
+        const { footerNetworkLinks } = footer;        
+
+        browser.$$(footerNetworkLinks).forEach((link, index) => {
+            const {title, url} = rows[index];
+
+            expect(link.getText()).toEqual(title);
+            expect(link.getAttribute('href')).toEqual(url);
+        });
     });
 
-    this.Given(/^I can navigate to all sites in the footer$/, function (dataTable) {
-        var rows = dataTable.hashes();
+    this.Given(/^I can navigate to all standard pages in the footer$/,  (dataTable) => {
+        const rows = dataTable.hashes();
+        const { footerCorporateLinks } = footer;        
 
-        //below captures the array of menu items to validate against the table
-        var brandTitle = browser.getAttribute(footer.footerLogosList, 'title');
-        var brandHref = browser.getAttribute(footer.footerLogosList, 'href');
-        var brandGTM = browser.getAttribute(footer.footerLogosList, 'class');
-        //end
+        browser.$$(footerCorporateLinks).forEach((link, index) => {
+            const {page, url} = rows[index];
 
-        for (var i = 0; i < rows.length; ++i) {
-            var row = rows[i];
-            //validates position of menu base on Index including their url and gtm
-            expect(brandTitle[i]).toEqual(row['title']);
-            expect(brandHref[i]).toMatch(row['url']);
-            expect(brandGTM[i]).toEqual(row['gtm']);
-        }
+            expect(link.getText()).toEqual(page);
+            expect(link.getAttribute('href')).toEqual(url);
+        })
     });
 
-    this.Given(/^I can see the standard copyright text in the footer as "([^"]*)"$/, function (text) {
-        //Validate the copyright text is correct
+    this.Given(/^I can see the standard copyright text in the footer as "([^"]*)"$/,  (text) => {
+        // Validate the copyright text is correct
         expect(browser.getText(footer.footerElementCopyright)).toContain(text)
     });
 
-    this.Given(/^I can see all main elements in the footer$/, function () {
-        //Validate that the four main elements in the footer appears
+    this.Given(/^I can see all main elements in the footer$/,  () => {
+        // Validate that the four main elements in the footer appears
+
+        expect(browser.isVisible(footer.footerNewsletterSubscribe)).toBe(true);
         expect(browser.isVisible(footer.footerElementSocialContainer)).toBe(true);
-        expect(browser.isVisible(footer.footerElementLogos)).toBe(true);
-        expect(browser.isVisible(footer.footerElementNavigation)).toBe(true);
-        expect(browser.isVisible(footer.footerElementCopyright)).toBe(true);
+        expect(browser.isVisible(footer.footerBrandsList)).toBe(true);
+        expect(browser.isVisible(footer.footerNetworkList)).toBe(true);
+        expect(browser.isVisible(footer.footerCorporateList)).toBe(true);
     });
 };

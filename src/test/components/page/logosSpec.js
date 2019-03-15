@@ -31,7 +31,7 @@ describe('Brand Header', () => {
             reactModule = Context.mountComponent(Logos, {
                 currentUrl: '/',
                 logoList: logoListStub,
-                className: 'uniheader'
+                className: 'logos'
             });
         });
 
@@ -55,7 +55,7 @@ describe('Brand Header', () => {
         it('should apply the correct gtm class to the anchor', () => {
             const anchor = TestUtils.scryRenderedDOMComponentsWithTag(reactModule, 'a');
             const anchorClass = anchor[0].className;
-            const correctClass = 'gtm-uniheader-' + logoListStub[0].id;
+            const correctClass = 'gtm-logos-' + logoListStub[0].id;
             expect(anchorClass).to.equal(correctClass);
         });
     });
@@ -65,7 +65,7 @@ describe('Brand Header', () => {
             reactModule = Context.mountComponent(Logos, {
                 currentUrl: '/',
                 logoList: logoListStub,
-                className: 'uniheader',
+                className: 'logos',
                 openInNewTab: true
             });
         });
@@ -82,7 +82,7 @@ describe('Brand Header', () => {
             reactModule = Context.mountComponent(Logos, {
                 currentUrl: '/',
                 logoList: logoListStub,
-                className: 'uniheader'
+                className: 'logos'
             });
         });
 

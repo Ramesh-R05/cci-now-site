@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import TeaserTitle from '@bxm/teaser/lib/components/title';
+import TeaserTitle from '@bxm/article/lib/components/teaser/title';
 import TeaserImage from '@bxm/teaser/lib/components/image';
 import TeaserSummary from '@bxm/teaser/lib/components/summary';
 import Date from '@bxm/datetime/lib/components/Date';
@@ -20,7 +20,6 @@ export default class Teaser extends Component {
         sourceClassName: PropTypes.string,
         onClick: PropTypes.func,
         showDate: PropTypes.bool,
-        sourceDefault: PropTypes.string,
         polar: PropTypes.oneOfType([
             PropTypes.shape({
                 targets: PropTypes.shape({
@@ -59,7 +58,6 @@ export default class Teaser extends Component {
             xl: { w: 880, h: 710 }
         },
         onClick: function onClick() {},
-        sourceDefault: '',
         polar: false
     };
 
@@ -68,6 +66,8 @@ export default class Teaser extends Component {
 
         return has(article, 'id') ? `gtm-${article.id}` : '';
     };
+
+    ellipseDateHTML = () => ({ __html: '&bull;' });
 
     renderImage = () => {
         const { article, imageSizes } = this.props;
@@ -103,7 +103,7 @@ export default class Teaser extends Component {
 
     render() {
         const { config } = this.context;
-        const { className, sourceClassName, showDate, sourceDefault, polar } = this.props;
+        const { className, sourceClassName, showDate, polar } = this.props;
         let { article } = this.props;
 
         if (!article) {
@@ -114,6 +114,8 @@ export default class Teaser extends Component {
 
         const articleTitle = article.shortTitle || article.summaryTitle || article.title;
         const siteRegionSuffix = get(config, 'site.region', '');
+        const showTeaserBrandSource = config.isFeatureEnabled('showTeaserBrandSource');
+        const siteBrands = get(config, 'brands.site', []);
         const siteRegionClass = siteRegionSuffix && `teaser--${siteRegionSuffix.toLowerCase()}`;
         const hasVideoIcon = get(article, 'video.properties.videoConfiguration.statusCode') === 200;
         const hasGalleryIcon = get(article, 'nodeType', '').toLowerCase() === 'gallery';
@@ -126,30 +128,46 @@ export default class Teaser extends Component {
             'teaser--gallery-icon-hidden': hasGalleryIcon && isGalleryIconDisabled
         });
 
+        const sourceName = article.source || 'Now to love';
         let articleSourceClassName = sourceClassName;
 
         if (article.source) {
             articleSourceClassName = `${sourceClassName} ${sourceClassName}--${article.source.toLowerCase().replace(/[^A-Z0-9]/gi, '-')}`;
         }
 
-        const sourceName = article.source || 'Now to love';
+        let brandImage = null;
+        let brandImgElm = null;
+
+        if (showTeaserBrandSource) {
+            if (sourceName === 'Now to love') {
+                const NTL_LOGO_PATH = '/assets/images/headerlogos/NTL-logo.svg';
+                brandImgElm = <img className="teaser__brand-image" alt={sourceName} src={NTL_LOGO_PATH} />;
+            } else {
+                brandImage = siteBrands.filter(brand => brand.title === sourceName);
+                brandImgElm = brandImage.length ? <img className="teaser__brand-image" alt={sourceName} src={brandImage[0].imageUrl} /> : null;
+            }
+        }
 
         return (
             <article className={containerClassNames} onClick={this.props.onClick}>
                 <div className="teaser__inner">
                     {this.renderImage()}
-
+                    {className === 'hero-teaser' ? <div className="teaser__hero-background">{brandImgElm}</div> : null}
                     <div className="teaser__body">
                         <TeaserTitle title={articleTitle} url={article.url} gtmClass={this.getGTMClass()} />
 
                         {this.renderSummary()}
 
                         <p className={articleSourceClassName}>
-                            {sourceDefault || `${sourceName}`}
+                            {className !== 'hero-teaser' && brandImgElm}
 
                             {showDate ? (
-                                <span>
-                                    <span className={`${sourceClassName}__breaker`}>|</span>
+                                <span className={`${sourceClassName}-info`}>
+                                    <span
+                                        className={`${sourceClassName}__breaker`}
+                                        dangerouslySetInnerHTML={this.ellipseDateHTML()}
+                                        style={{ display: brandImgElm ? 'inline-block' : 'none' }}
+                                    />
                                     <Date className="teaser__source-date" dateCreated={article.dateCreated} showElapsed />
                                 </span>
                             ) : null}

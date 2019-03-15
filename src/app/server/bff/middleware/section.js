@@ -39,7 +39,7 @@ export default async function sectionMiddleware(req, res, next) {
         if (nodeTypeAlias === 'Brand') {
             latestTeaserCount = latestTeaserCountForBrand;
             const source = get(req, 'data.entity.source', '');
-            const adBrand = find(req.app.locals.config.brands.uniheader, b => b.title === source);
+            const adBrand = find(req.app.locals.config.brands.site, b => b.title === source);
             req.data.entity.adBrand = get(adBrand, 'id', 'ntl');
             sectionQuery = `/${section}`;
             teaserQuery = source.replace(/'/g, "''");

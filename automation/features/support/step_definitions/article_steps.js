@@ -100,7 +100,7 @@ module.exports = function() {
     });
 
     this.Given(/^I can see the body list "([^"]*)"$/, function (articleBodyList) {
-        expect(browser.element(wn_article.bodyList).getText()).toContain(articleBodyList);
+        expect(browser.$(wn_article.bodyList).getText()).toContain(articleBodyList);
     });
 
     this.Given(/^I can see the body heading "([^"]*)"$/, function (articleBodyHeading) {

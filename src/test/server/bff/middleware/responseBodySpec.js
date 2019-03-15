@@ -40,7 +40,7 @@ describe('ResponseBody middleware', () => {
     };
     const config = {
         brands: {
-            uniheader: [
+            site: [
                 {
                     id: 'aww',
                     imageUrl: '/assets/images/headerlogos/AWW-logo.svg',

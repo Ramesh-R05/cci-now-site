@@ -42,14 +42,12 @@ export default {
             title: 'Sorry, this page is not found.',
             symbol: null,
             content: [''],
-            emojiSrc: '/assets/images/error.gif',
             returnHomeText: 'Try refreshing this page or join us back on the homepage'
         },
         503: {
             title: 'Sorry, this page is broken.',
             symbol: null,
             content: [''],
-            emojiSrc: '/assets/images/error.gif',
             returnHomeText: 'Try refreshing this page or join us back on the homepage'
         }
     },
@@ -78,5 +76,31 @@ export default {
             url: 'http://www.tvweeklogieawards.com.au/'
         }
     },
-    useBrandTitleSuffix: true
+    useBrandTitleSuffix: true,
+    footer: {
+        links: {
+            corporate: [
+                {
+                    title: 'Privacy Policy',
+                    url: 'http://www.bauer-media.com.au/privacy',
+                    gtmClass: 'gtm-footer-privacy'
+                },
+                {
+                    title: 'Advertise',
+                    url: 'http://www.bauer-media.com.au/advertising/advertise-with-us',
+                    gtmClass: 'gtm-footer-advertising'
+                },
+                {
+                    title: 'Terms of Use',
+                    url: 'http://www.bauer-media.com.au/terms/website-terms',
+                    gtmClass: 'gtm-footer-terms'
+                },
+                {
+                    title: 'Magshop',
+                    url: 'https://www.magshop.com.au/',
+                    gtmClass: 'gtm-footer-magshop'
+                }
+            ]
+        }
+    }
 };

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Ad from '@bxm/ad/lib/google/components/ad';
+import SocialContainer from '@bxm/social/lib/components/socialIcons/socialContainer';
 import Teaser from './teaser';
-import SocialContainer from '../social/block';
 import Promoted from '../promoted/promoted';
 import BrandMagazine from '../brand/brandMagazine';
 import BrandNewsletter from '../brand/brandNewsletter';
@@ -19,10 +19,10 @@ export default class HeroTeaser extends Component {
     static defaultProps = {
         showDate: true,
         imageSizes: {
-            s: { w: 700, h: 583 },
-            m: { w: 619, h: 515 },
-            l: { w: 810, h: 456 },
-            xl: { w: 619, h: 515 }
+            s: { w: 690, h: 575 },
+            m: { w: 768, h: 476 },
+            l: { w: 636, h: 504 },
+            xl: { w: 636, h: 504 }
         },
         showPromoted: false,
         brand: null
@@ -34,37 +34,49 @@ export default class HeroTeaser extends Component {
 
     render() {
         const { article, imageSizes, showPromoted, brand, showDate } = this.props;
+        const { config } = this.context;
         const pageLocation = Ad.pos.outside;
         const shouldDisplayHeroTeaser = !!this.props.article;
         const heroClassName = shouldDisplayHeroTeaser ? 'hero-wrapper' : 'hero-wrapper hero-wrapper--no-teaser';
 
         return (
             <div className={heroClassName}>
-                {shouldDisplayHeroTeaser && (
-                    <Teaser
-                        sourceClassName="hero-teaser__source"
-                        className="hero-teaser"
-                        showDate={showDate}
-                        article={article}
-                        imageSizes={imageSizes}
-                    />
-                )}
+                <section className="top-teasers">
+                    {shouldDisplayHeroTeaser && (
+                        <div className="row">
+                            <Teaser
+                                sourceClassName="hero-teaser__source"
+                                className="hero-teaser"
+                                showDate={showDate}
+                                article={article}
+                                imageSizes={imageSizes}
+                            />
+                        </div>
+                    )}
 
-                <Ad displayFor={['small', 'medium']} className="ad--section-top-mrec" sizes="mrec" pageLocation={pageLocation} />
+                    <div className="row">{showPromoted && <Promoted />}</div>
 
-                {showPromoted && <Promoted />}
-
-                {brand ? (
-                    <div className="hide-for-large-up">
-                        <BrandMagazine brand={brand} />{' '}
+                    <div className="row hide-for-large-up">
+                        <div className="columns medium-6">
+                            <Ad displayFor={['small', 'medium']} className="ad--section-top-mrec" sizes="mrec" pageLocation={pageLocation} />
+                        </div>
+                        <div className="columns medium-6">
+                            {brand ? (
+                                <BrandMagazine brand={brand} />
+                            ) : (
+                                <div className="hero-wrapper__get-social-container">
+                                    <BrandNewsletter />
+                                    <div className="hero-wrapper__follow-us">Follow Us</div>
+                                    <SocialContainer
+                                        socialUrls={config.site.defaultSocialLinks}
+                                        classModifier="in-hero"
+                                        gtmClass="gtm-follow-social-in-hero"
+                                    />
+                                </div>
+                            )}
+                        </div>
                     </div>
-                ) : (
-                    <div className="hero-wrapper__get-social-container">
-                        <BrandNewsletter />
-                        <span className="hero-wrapper__social-logo">Now To Love</span>
-                        <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
-                    </div>
-                )}
+                </section>
             </div>
         );
     }

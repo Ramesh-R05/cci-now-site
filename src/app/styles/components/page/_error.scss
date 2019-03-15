@@ -1,29 +1,64 @@
 .error-page {
 
+    .header-banner {
+
+        &__inner {
+            text-align: center !important;
+            padding: 35px 85px;
+        }
+
+        .icon-logo {
+            font-size: 60px;
+
+            @media #{$medium-up} {
+                font-size: 105px;
+            }
+        }
+    }
+
+    .header--expanded.header--pinned:not(.header--hidden) .header-banner {
+        display: block;
+    }
+
     .header-wrapper--expanded {
         @media #{$medium-up} {
             margin-bottom: 213px - 76px;
         }
     }
 
-    .header__sections {
-        @media #{$medium-up} {
-            display: none;
-        }
+    .header-banner__logo {
+        text-align: center;
+        margin-top: 25px;
     }
 
-    .footer {
-        margin-top: 0px;
+    .header__sections {
+        display: none;
     }
+
+    .social-links {
+        display: none;
+    }
+
+    .buy-magazines {
+        display: none;
+    }    
 }
 
 .error-page-container {
     color: $color-black;
-    padding: 0 $column-gutter/2;
+    margin-top: -49px;
     text-align: center;
 
+    padding: {
+        bottom: 120px;
+        top: 180px;
+    }
+
     @media #{$medium-up} {
-        text-align: center;
+        padding: {
+            bottom: 150px;
+            top: 80px
+        }
     }
 
     .emoji {
@@ -46,9 +81,8 @@
 
 .error-page-container__homepage-link {
     font-weight: normal;
-    color: $color-dark-aqua;
-    font: italic 22px/30px $font-family-serif-primary;
-    text-decoration: underline;
+    color: $color-secondary;
+    font: 22px/30px $font-family-sans-serif-primary;
     text-transform: none;
 }
 
@@ -58,8 +92,8 @@
 }
 
 .error-page-container__title {
-    font: 38px/46px $font-family-sans-serif-primary;
-    font-weight: 400;
+    font: 38px/46px $font-family-serif-primary;
+    font-weight: 600;
     text-transform: none;
     line-height: 1.2em;
     letter-spacing: -1px;

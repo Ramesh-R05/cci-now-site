@@ -6,13 +6,13 @@ import imageResize from '@bxm/ui/lib/common/ImageResize';
 import get from 'lodash/object/get';
 import { find } from 'lodash';
 import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
+import SocialContainer from '@bxm/social/lib/components/socialIcons/socialContainer';
 import Page from './page';
 import HeroTeaser from '../components/teaser/hero';
 import TeaserGridView from '../components/teaser/grid';
 import TeaserListView from '../components/teaser/list';
 import Repeatable from '../components/repeatable';
 import loadList from '../actions/loadList';
-import SocialContainer from '../components/social/block';
 import StickyAndDockAd from '../components/page/stickyAndDockAd';
 import BrandMagazine from '../components/brand/brandMagazine';
 import BrandTitle from '../components/brand/brandTitle';
@@ -82,6 +82,8 @@ export default class Section extends Component {
 
     render() {
         const { nodeType, teasers, title, currentUrl, shortTitle, summary, theme, imageUrl, subsections, heroTeaser } = this.props;
+        const { bottomElm, topElm } = this.state;
+        const { config } = this.context;
         let sectionHeroTeaser = teasers[0];
         let firstTeaserList = teasers.slice(1);
         const keyword = nodeType === 'TagSection' && title ? [title] : [];
@@ -116,19 +118,19 @@ export default class Section extends Component {
         );
 
         const isBrandPage = nodeType === 'Brand';
-        const brand = isBrandPage ? find(this.context.config.brands.uniheader, b => b.url === currentUrl.match(/\/[^/|?]*/)[0]) : null;
+        const brand = isBrandPage ? find(config.brands.site, b => b.url === currentUrl.match(/\/[^/|?]*/)[0]) : null;
 
         if (isBrandPage) {
             headerThemeClassName = `header-${brand.id}`;
             pageTitle = <BrandTitle brand={brand} shortTitle={shortTitle} summary={summary} />;
-            sectionClassNames += ' brand-section-page';
+            sectionClassNames += ` brand-section-page brand-section--${brand.id}`;
 
             sectionHeroTeaser = heroTeaser.isBrandHero && heroTeaser;
             firstTeaserList = teasers.slice();
         }
 
         return (
-            <Page currentUrl={currentUrl} headerExpanded={false} pageTitle={pageTitle} headerThemeClassName={headerThemeClassName} theme={theme}>
+            <Page currentUrl={currentUrl} pageTitle={pageTitle} headerThemeClassName={headerThemeClassName} theme={theme}>
                 <div className={sectionClassNames}>
                     <div className="container">
                         <div className="row">
@@ -165,24 +167,31 @@ export default class Section extends Component {
                                         />
                                     </div>
                                     <div className="page__social-wrapper columns large-4 xlarge-3">
-                                        <div className="columns medium-6 large-12">
-                                            <StickyAndDockAd
-                                                offsetTop={95}
-                                                offsetBottom={16}
-                                                customiseBreakpoint={1024}
-                                                bottomElm={this.state.bottomElm}
-                                                topElm={this.state.topElm}
-                                            >
-                                                <Ad className="ad--section-mrec" sizes="mrec" displayFor="large" pageLocation={Ad.pos.aside} />
-                                                {isBrandPage ? (
-                                                    <BrandMagazine brand={brand} />
-                                                ) : (
-                                                    <div className="page__get-social-container">
-                                                        <span className="page__social-logo">Now To Love</span>
-                                                        <SocialContainer socialUrls={this.context.config.urls.socialUrls} />
-                                                    </div>
-                                                )}
-                                            </StickyAndDockAd>
+                                        <div className="row">
+                                            <div className="columns medium-6 large-12">
+                                                <StickyAndDockAd
+                                                    offsetTop={95}
+                                                    offsetBottom={16}
+                                                    customiseBreakpoint={1024}
+                                                    bottomElm={bottomElm}
+                                                    topElm={topElm}
+                                                >
+                                                    <Ad className="ad--section-mrec" sizes="mrec" displayFor="large" pageLocation={Ad.pos.aside} />
+                                                    {isBrandPage ? (
+                                                        <BrandMagazine brand={brand} />
+                                                    ) : (
+                                                        <div className="page__get-social-container">
+                                                            <span className="page__social-logo">Now To Love</span>
+                                                            <SocialContainer
+                                                                socialUrls={config.site.defaultSocialLinks}
+                                                                title="Follow Us"
+                                                                classModifier="in-section"
+                                                                gtmClass="gtm-follow-social-in-section"
+                                                            />
+                                                        </div>
+                                                    )}
+                                                </StickyAndDockAd>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

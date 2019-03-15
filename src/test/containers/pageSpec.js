@@ -5,14 +5,12 @@ import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 const OffCanvasStub = Context.createStubComponentWithChildren();
-const UniHeaderStub = Context.createStubComponent();
 const SiteHeaderStub = Context.createStubComponent();
-const SiteFooterStub = Context.createStubComponent();
 const HamburgerNavStub = Context.createStubComponent();
-const LogosStub = Context.createStubComponent();
 const AdStub = Context.createStubComponent();
 const StickyAdStub = Context.createStubComponent();
 const StandardPageAdsWrapperStub = Context.createStubComponentWithChildren();
+const SiteFooterStub = Context.createStubComponent();
 
 let reactModuleInstance;
 const toggleMenuStub = sinon.stub();
@@ -28,13 +26,11 @@ const PageWrapper = proxyquire('../../app/containers/page', {
     },
     '@bxm/nav/lib/components/offcanvas/content': OffCanvasStub,
     '@bxm/site-header': SiteHeaderStub,
-    '../components/footer': SiteFooterStub,
-    '../components/uniheader': UniHeaderStub,
-    '../components/page/logos': LogosStub,
     '@bxm/site-header/lib/components/hamburgerNav': HamburgerNavStub,
     '@bxm/ad/lib/google/components/ad': AdStub,
     '@bxm/ad/lib/google/components/stickyAd': StickyAdStub,
-    '@bxm/ad/lib/google/components/standardPageAdsWrapper': StandardPageAdsWrapperStub
+    '@bxm/ad/lib/google/components/standardPageAdsWrapper': StandardPageAdsWrapperStub,
+    '../components/site-footer': SiteFooterStub
 }).default;
 
 AdStub.pos = {
@@ -55,16 +51,19 @@ const emailLinkTrackingMock = {
 };
 
 describe('Page Container', () => {
-    const siteName = 'Dolly';
+    const siteName = 'Now';
     const brandStubData = {
-        uniheader: [],
-        hamburgers: []
+        site: [],
+        network: []
     };
     const contextConfigStub = {
         key: 'config',
         type: '',
         value: {
             brands: brandStubData,
+            site: {
+                name: 'Now'
+            },
             get() {
                 return siteName;
             }
@@ -79,11 +78,9 @@ describe('Page Container', () => {
     ];
     let reactModule;
     let offCanvas;
-    let uniHeaderStub;
     let siteHeaderStub;
     let siteFooterStub;
     let hamburgerNavStub;
-    let logosStub;
     let closeButton;
     let currentInstance;
     let adStub;
@@ -129,11 +126,8 @@ describe('Page Container', () => {
         const props = {
             className: 'customClass',
             children: <h1>Test Children</h1>,
-            headerExpanded: true,
-            hideFooter: false,
             menuClasses: 'site-menu',
             currentUrl: '/',
-            showUniheader: true,
             hideLeaderboard: false,
             theme: {}
         };
@@ -143,11 +137,9 @@ describe('Page Container', () => {
             reactModule = Context.mountComponent(PageWrapper, props, [contextConfigStub]);
             currentInstance = TestUtils.findRenderedComponentWithType(reactModule, reactModuleInstance);
             offCanvas = TestUtils.findRenderedComponentWithType(reactModule, OffCanvasStub);
-            uniHeaderStub = TestUtils.findRenderedComponentWithType(reactModule, UniHeaderStub, [contextConfigStub]);
             siteHeaderStub = TestUtils.findRenderedComponentWithType(reactModule, SiteHeaderStub);
             siteFooterStub = TestUtils.findRenderedComponentWithType(reactModule, SiteFooterStub);
             hamburgerNavStub = TestUtils.findRenderedComponentWithType(reactModule, HamburgerNavStub);
-            logosStub = TestUtils.findRenderedComponentWithType(reactModule, LogosStub);
             adStub = TestUtils.scryRenderedComponentsWithType(reactModule, AdStub);
             stickyAdStub = TestUtils.scryRenderedComponentsWithType(reactModule, StickyAdStub);
             closeButton = TestUtils.findRenderedDOMComponentWithTag(reactModule, 'button');
@@ -170,28 +162,24 @@ describe('Page Container', () => {
             expect(TestUtils.scryRenderedDOMComponentsWithClass(reactModule, props.menuClasses)[0]).to.exist;
         });
 
-        it(`should render the Uni Header component`, () => {
-            expect(ReactDOM.findDOMNode(uniHeaderStub)).to.exist;
-        });
-
         it(`should render the Header component, passing the appropriate props`, () => {
             expect(siteHeaderStub.props).to.deep.eq({
                 currentUrl: props.currentUrl,
-                isExpanded: props.headerExpanded,
                 headerThemeClassName: '',
+                isExpanded: true,
                 navItems: headerItems,
                 siteName: siteName,
                 toggleMenu: currentInstance.toggleMenu,
                 theme: {},
-                permanentlyFixedIfShorterThan: 10
+                permanentlyFixedIfShorterThan: 46,
+                headerClassName: 'header__inner',
+                wrapperClassName: 'header'
             });
         });
 
-        it(`should render the children and footer inside a content-wrapper div`, () => {
+        it(`should render the children inside a content-wrapper div`, () => {
             const wrapper = TestUtils.findRenderedDOMComponentWithClass(reactModule, 'content-wrapper');
-            expect(ReactDOM.findDOMNode(wrapper).getElementsByTagName('h1')[0].outerHTML + ReactDOM.findDOMNode(siteFooterStub).outerHTML).to.eq(
-                ReactDOM.findDOMNode(wrapper).innerHTML
-            );
+            expect(ReactDOM.findDOMNode(wrapper).getElementsByTagName('h1')[0].outerHTML).to.eq(ReactDOM.findDOMNode(wrapper).innerHTML);
         });
 
         it(`should render the offCanvas menu with the appropriate props`, () => {
@@ -199,14 +187,6 @@ describe('Page Container', () => {
             expect(offCanvas.props).to.deep.contain({
                 side: 'left',
                 toggleSideMenu: currentInstance.toggleMenu
-            });
-        });
-
-        it(`should render the Logos with the appropriate props`, () => {
-            expect(ReactDOM.findDOMNode(logosStub)).to.exist;
-            expect(logosStub.props).to.deep.contain({
-                className: 'mobile-menu-list',
-                openInNewTab: true
             });
         });
 
@@ -251,40 +231,12 @@ describe('Page Container', () => {
         const props = {
             className: 'customClass',
             children: <h1>Test Children</h1>,
-            headerExpanded: true,
-            hideFooter: false,
             menuClasses: 'site-menu',
-            currentUrl: '/page',
-            showUniheader: false
+            currentUrl: '/page'
         };
 
         before(() => {
             reactModule = Context.mountComponent(PageWrapper, props, [contextConfigStub]);
-            uniHeaderStub = TestUtils.scryRenderedComponentsWithType(reactModule, UniHeaderStub);
-        });
-
-        it(`should not render the Brand Component`, () => {
-            expect(uniHeaderStub.length).to.eq(0);
-        });
-    });
-
-    describe(`when hiding the footer`, () => {
-        const props = {
-            className: 'customClass',
-            children: <h1>Test Children</h1>,
-            headerExpanded: true,
-            hideFooter: true,
-            menuClasses: 'site-menu',
-            siteName: 'Dolly'
-        };
-
-        before(() => {
-            reactModule = Context.mountComponent(PageWrapper, props, [contextConfigStub]);
-        });
-
-        it(`shouldn't render the footer`, () => {
-            const footer = TestUtils.scryRenderedComponentsWithType(reactModule, SiteFooterStub);
-            expect(footer.length).to.eq(0);
         });
     });
 
@@ -292,8 +244,6 @@ describe('Page Container', () => {
         const props = {
             className: 'customClass',
             children: <h1>Test Children</h1>,
-            headerExpanded: true,
-            hideFooter: false,
             menuClasses: 'site-menu',
             currentUrl: '/'
         };

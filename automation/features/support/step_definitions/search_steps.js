@@ -16,16 +16,14 @@ module.exports = function() {
     });
 
     this.Then(/^I should still see the search box after scrolling the page down$/, function () {
+        const { searchNavBox, searchNavIcon } = search;
+        
         browser.scroll(0,1500);
-        wait(2000);
-        var searchBox = browser.isVisible(search.searchNavBox);
-        expect(searchBox).toBe(true);
-
-        //Check if the box is hidden after clicking the icon again
-        browser.click(search.searchNavIcon);
-        wait(1000);
-        var searchBox = browser.isVisible(search.searchNavBox);
-        expect(searchBox).toBe(false);
+        wait(3000);
+        
+        const searchBox = browser.$(searchNavBox)
+        
+        expect(searchBox.isVisible()).toBe(true);
     });
 
     this.Then(/^I should be able to search a keyword "([^"]*)" on "([^"]*)" and see the result page$/, function (keyword, position) {
@@ -55,7 +53,10 @@ module.exports = function() {
         //Check the search result title
         browser.waitForVisible(search.searchResultPageTitle, 5000);
         var searchTitle = browser.getText(search.searchResultPageTitle);
-        expect(searchTitle).toContain(keyword.toUpperCase() + ' RESULT');
+
+        const capitalisedKeyword = keyword[0].toUpperCase() + keyword.slice(1)
+
+        expect(searchTitle).toContain(`${capitalisedKeyword} Results`);
 
         //Check the first teaser containing the keyword in the teaser title
         var searchTeaserTitle = browser.getText(search.searchResultPageTeaserTitle);

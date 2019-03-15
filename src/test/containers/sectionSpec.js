@@ -35,11 +35,15 @@ const contextConfigStub = {
     key: 'config',
     type: '',
     value: {
-        urls: {
-            socialUrls: {}
+        site: {
+            defaultSocialLinks: {
+                facebook: 'https://www.facebook.com/nowtoloveau',
+                twitter: 'https://twitter.com/nowtoloveau',
+                instagram: 'https://www.instagram.com/nowtoloveau'
+            }
         },
         brands: {
-            uniheader: [
+            site: [
                 {
                     id: 'aww',
                     title: "Australian Women's Weekly",
@@ -177,7 +181,7 @@ describe('Brand Container', () => {
     it('should render page with correct pagetitle prop', () => {
         const reactModule = Context.mountComponent(SectionContainer, { currentUrl: '/aww', nodeType: 'Brand' }, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
-        expect(PageStubComponent.props.pageTitle.props.brand).to.deep.eq(contextConfigStub.value.brands.uniheader[0]);
+        expect(PageStubComponent.props.pageTitle.props.brand).to.deep.eq(contextConfigStub.value.brands.site[0]);
     });
 
     it('should render page with correct brand props when params are passed through url', () => {
@@ -189,7 +193,7 @@ describe('Brand Container', () => {
     it('should render page with correct pagetitle prop when params are passed through url', () => {
         const reactModule = Context.mountComponent(SectionContainer, { currentUrl: '/aww?pageNo=2', nodeType: 'Brand' }, [contextConfigStub]);
         const PageStubComponent = TestUtils.findRenderedComponentWithType(reactModule, PageStub);
-        expect(PageStubComponent.props.pageTitle.props.brand).to.deep.eq(contextConfigStub.value.brands.uniheader[0]);
+        expect(PageStubComponent.props.pageTitle.props.brand).to.deep.eq(contextConfigStub.value.brands.site[0]);
     });
 
     it('should render the section banner', () => {

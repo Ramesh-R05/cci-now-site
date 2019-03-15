@@ -10,15 +10,7 @@
             width: $feed-item-body-width;
 
             .article__date-created {
-                font-family: $font-family-sans-serif-primary;
-                display: block;
-                margin-top: 1px;
-                text-align: left;
-                font-weight: 400;
-                line-height: 1.2;
-                letter-spacing: 0.5px;
-                text-transform: uppercase;
-                color: $color-grey-light;
+                display: none;
             }
 
             &-title {
@@ -31,10 +23,19 @@
                     text-decoration: none;
                 }
             }
+        }
 
-            &-source {
-                color: $nl-color;
-            }
+        &__source {
+            font-family: $font-family-questrial;
+            font-size: 9px;
+            line-height: 12px;
+            display: block;
+            margin-top: 1px;
+            text-align: left;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: $color-source-grey;
         }
 
         &.polar-feed-item {

@@ -1,39 +1,98 @@
 .home-page {
     &__teasers-title {
         clear: both;
-        display: none;
         position: relative;
-        text-align: center;
+        text-align: left;
         margin-top: 20px;
         text-transform: uppercase;
         color: #333333;
-        font: 14px/30px $font-family-sans-serif-primary;
+        font: 600 18px/28px $font-family-muli,sans-serif;
         letter-spacing: 1px;
 
         @media #{$medium-up} {
-            display: block;
-        }
-
-        &::before {
-            border-top: 1px solid $color-grey-lighter;
-            content: '';
-            margin: 0 auto;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            z-index: -1;
+            text-align: center;
         }
 
         span {
-            padding: 0 17px;
             background: $color-white;
+            padding-left: 0;
+            padding-right: 17px;
+
+            @media #{$medium-up} {
+                padding: 0 17px;
+            }
+        }
+
+        &:before {
+            border-top: 1px solid $color-darker-grey;
+            content: '';
+            margin: 0 auto;
+            position: absolute;
+            top: 13px;
+            right: -30px;
+            bottom: 0;
+            width: 100%;
+            z-index: -1;
+
+            @media #{$medium-up} {
+                border-top: 1px solid $color-lightish-grey;
+                top: -22px;
+                right: 0;
+            }
         }
     }
 
     .teaser__inner:hover .teaser__body h3 {
         color: #aaaaaa;
+    }
+
+    &__teasers-title-top-news-feed {
+        font-size: 16px;
+        line-height: 42px;
+        text-align: left;
+        font-weight: 800;
+        letter-spacing: 0;
+
+        @media #{$medium-up} {
+            font-size: 24px;
+        }
+
+        span {
+            padding-left: 0;
+            padding-right: 17px;
+        }
+
+        &:before {
+            border-top: 1px solid $color-darker-grey;
+            content: '';
+            margin: 0 auto;
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            bottom: 0;
+            width: 100%;
+            z-index: -1;
+
+
+            @media #{$medium-up} {
+                top: 21px;
+                right: 0;
+            }
+        }
+    }
+}
+
+// Workaround for only showing the sponsored
+.mustread-teaser-view-grid {
+
+    .teaser__list-item {
+
+        .teaser__body.plr-must-body {
+
+            .teaser__source {
+                display: block;
+                color: $color-grey-lighter-level-one;
+            }
+        }
     }
 }

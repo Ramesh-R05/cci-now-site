@@ -8,7 +8,6 @@
             padding-bottom: 0;
 
             &:after {
-                content: '';
                 display: block;
                 height: 1px;
                 background-color:  transparent;
@@ -72,7 +71,7 @@
         }
 
         &__body {
-            font-family: $font-family-sans-serif-primary;
+            font-family: $font-family-serif-primary;
 
             @media #{$small-only} {
                 margin-top: -4px;
@@ -95,10 +94,9 @@
         }
 
         &__title {
-            @include type-bottom-teaser-title;
 
             @media #{$medium-up} {
-                margin-bottom: 8px;
+                margin-bottom: 15px;
             }
 
             @media #{$xlarge-only} {
@@ -108,6 +106,7 @@
             }
 
             a {
+                @include type-bottom-teaser-title;
                 text-decoration: none;
             }
         }
@@ -118,8 +117,9 @@
             font-weight: 400;
             color: $nl-color;
             text-transform: uppercase;
-            margin-top: 7px;
             letter-spacing: .7px;
+            display: flex;
+            align-items: center;
 
             @media #{$medium-up} {
                 padding: 0;
@@ -176,18 +176,26 @@
             }
     
             &__breaker span:first-child {
-                color: $color-grey-light;
-                margin: 0 5px;
+                color: $color-grey-lighter-level-one;
+                margin: 0 3px 0 2px;
             }
     
             &__breaker {
-                color: $color-grey-light;
-                margin: 0 5px;
+                color: $color-grey-lighter-level-one;
+                margin: 0 3px 0 2px;
             }
         }
 
-        .teaser__source-date {
-            color: $color-grey-light;
+        &__source-date {
+            font-family: $font-family-questrial;
+            font-size: 10px;
+            color: $color-grey-lighter-level-one;
+        }
+
+        &__brand-image {
+            max-height: 17px;
+            max-width: 85px;
+            margin: 0;
         }
 
         &__badge-container {

@@ -1,0 +1,37 @@
+.brands-modal-button {
+    @include flat-button;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    @media #{$medium-up} {
+        height: 100%;
+        padding: 8px 0;
+        margin-top: 0;
+    }
+
+    &__text {
+        display: none;
+
+        @media #{$large-up} {
+            @include type-header;
+            display: block;
+            color: $color-darkest-blue;
+            flex: 0 0 auto;
+            text-transform: capitalize;
+            margin-left: 6px;
+            margin-right: 5px;
+            margin-bottom: 3px;
+        }
+    }
+
+    &__icon-container {
+        flex: 0 0 auto;
+    }
+
+    &__icon {
+        fill: $color-darkest-blue;
+        width: 28px;
+    }
+}

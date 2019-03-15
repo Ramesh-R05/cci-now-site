@@ -16,7 +16,7 @@ const articleMiddleware = proxyquire('../../../../app/server/bff/middleware/arti
 describe('Article middleware', () => {
     const config = {
         brands: {
-            uniheader: [
+            site: [
                 {
                     id: 'aww',
                     imageUrl: '/assets/images/headerlogos/AWW-logo.svg',

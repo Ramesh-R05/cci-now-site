@@ -14,5 +14,14 @@ export default {
     ias: {
         enabled: true,
         id: 926929
+    },
+    showHeaderSocialIcons: {
+        enabled: true
+    },
+    showBuyMagazinesButton: {
+        enabled: true
+    },
+    showTeaserBrandSource: {
+        enabled: false
     }
 };
