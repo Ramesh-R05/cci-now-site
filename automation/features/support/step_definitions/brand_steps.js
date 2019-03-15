@@ -47,19 +47,19 @@ module.exports = function(){
         //Identify the element
         switch(element) {
             case 'subscribe':
-                var brandElement = brand.brandSubscribeLink
+                var brandElement = brand.brandSubscribeLink;
                 break;
             case 'facebook':
-                var brandElement = brand.brandFacebookLink
+                var brandElement = brand.brandFacebookLink;
                 break;
             case 'twitter':
-                var brandElement = brand.brandTwitterLink
+                var brandElement = brand.brandTwitterLink;
                 break;
             case 'instagram':
-                var brandElement = brand.brandInstagramLink
+                var brandElement = brand.brandInstagramLink;
                 break;
             case 'pinterest':
-                var brandElement = brand.brandPinterestLink
+                var brandElement = brand.brandPinterestLink;
                 break;
         }
 

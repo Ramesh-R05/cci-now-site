@@ -16,17 +16,6 @@ Feature: Specific value for NZ NTL
             |Nadia                              |/nadia                 |
             |Beauty To Love                     |/beauty-to-love        |
 
-    Scenario: I can see the brand logos in the hamburger menu
-        Given I switch to "mobile" view
-        When I am currently viewing the homepage
-        * I can navigate to all sites in the hamburger navigation menu
-            |title              |url                                 |gtm                    |
-            |Homes To Love      |https://www.homestolove.co.nz/      |gtm-hamburger-nzhomes  |
-            |Food To Love       |http://www.foodtolove.co.nz/        |gtm-hamburger-nzfood   |
-            |Fashion Quarterly  |https://www.fq.co.nz/               |gtm-hamburger-fq       |
-            |Miss FQ            |https://www.fq.co.nz/missfqhome/    |gtm-hamburger-missfq   |
-            |Noted              |https://www.noted.co.nz/            |gtm-hamburger-noted    |
-
     Scenario Outline: Verify the subscribe now link and social links of "<brand>" landing page
         Given I switch to "desktop" view
         When I am currently viewing "<brand>"

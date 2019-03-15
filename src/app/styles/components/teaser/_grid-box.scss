@@ -194,10 +194,9 @@
         margin-top: 20px;
         margin-bottom: 18px;
         display: block;
-        font: 600 16px/28px $font-family-muli;
+        @include type-teaser-grid-title-font;
 
         @media #{$medium-up} {
-            font: 600 18px/28px $font-family-muli;
             margin-top: 0;
 
             &:before {
@@ -313,7 +312,7 @@
     }
 
     .home-page__teasers-title {
-        font: 600 18px/28px $font-family-muli, sans-serif;
+        @include type-teaser-grid-title-font;
         margin-top: 20px;
         margin-bottom: 18px;
         display: block;

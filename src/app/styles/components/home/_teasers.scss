@@ -15,7 +15,7 @@
 
         span {
             background: $color-white;
-            padding-left: 0;
+            padding-left: 15px;
             padding-right: 17px;
 
             @media #{$medium-up} {
@@ -47,14 +47,14 @@
     }
 
     &__teasers-title-top-news-feed {
-        font-size: 16px;
-        line-height: 42px;
+        @include type-teaser-grid-title-font;
         text-align: left;
-        font-weight: 800;
         letter-spacing: 0;
 
         @media #{$medium-up} {
             font-size: 24px;
+            line-height: 42px;
+            font-weight: 800;
         }
 
         span {
@@ -67,12 +67,11 @@
             content: '';
             margin: 0 auto;
             position: absolute;
-            top: 20px;
+            top: 13px;
             right: -30px;
             bottom: 0;
             width: 100%;
             z-index: -1;
-
 
             @media #{$medium-up} {
                 top: 21px;

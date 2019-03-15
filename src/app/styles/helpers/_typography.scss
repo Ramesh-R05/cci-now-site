@@ -229,6 +229,13 @@ a {
     @include type-teaser-summary;
 }
 
+@mixin type-teaser-grid-title-font {
+    font: 600 16px/28px $font-family-muli;
+
+    @media #{$medium-up} {
+        font: 600 18px/28px $font-family-muli;
+    }
+}
 
 // Article
 @mixin type-article-title {

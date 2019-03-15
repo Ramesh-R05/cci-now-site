@@ -1,7 +1,7 @@
 var ads_widget = {
 
     //For checking attribute of sticky ads
-    adMrecNextToTopFeedSticky: '.page__top-container .page__social-wrapper > div > div > span', //homepage, section
+    adMrecNextToTopFeedSticky: '.page__top-container .page__social-wrapper > div > div > div > span', //homepage, section
     adMrecNextToBottomFeedSticky: '.bottom-news-feed div.carriage', //homepage, section
 
     // For ad wrapper

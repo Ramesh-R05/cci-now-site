@@ -60,27 +60,6 @@ module.exports = function() {
         browser.click(site_nav.siteHamburgerClose);
     });
 
-    this.Then(/^I can navigate to all sites in the hamburger navigation menu/, function(dataTable){
-        browser.click(site_nav.siteHamburger);
-        browser.waitForVisible(site_nav.siteHamburgerDetail, 3000);
-        wait(500); // ensure it waits for transition effect to complete
-        var rows = dataTable.hashes();
-
-        var menuTitle = browser.getAttribute(site_nav.siteNavLogos, 'title');
-        var menuhref = browser.getAttribute(site_nav.siteNavLogos, 'href');
-        var menuGTM = browser.getAttribute(site_nav.siteNavLogos, 'class');
-        //end
-
-        for (var i = 0; i < rows.length; ++i) {
-            var row = rows[i];
-            //validates position of menu base on Index
-            expect(menuTitle[i]).toEqual(row['title']);
-            expect(menuhref[i]).toMatch(row['url']);
-            expect(menuGTM[i]).toEqual(row['gtm']);
-        }
-        browser.click(site_nav.siteHamburgerClose);
-    });
-
     this.Then(/^when I scroll down in the page$/, function () {
         browser.scroll(0, 1000);
 

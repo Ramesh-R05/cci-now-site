@@ -140,11 +140,17 @@ $hero-teaser-line-height: 25px;
     &__get-social-container {
         text-align: center;
         margin: {
-            top: 35px;
+            top: 55px;
         }
 
         @media #{$medium-only} {
             text-align: center;
+        }
+
+        @media #{$medium-up} {
+            margin: {
+                top: 35px;
+            }
         }
     }
 }
