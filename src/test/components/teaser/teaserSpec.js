@@ -141,7 +141,7 @@ describe('Component', () => {
 
             it('it should render the NTL logo', () => {
                 const elm = wrapper.find('.teaser__brand-image');
-                expect(elm.prop('src')).to.be.equal('/assets/images/headerlogos/NTL-logo.svg');
+                expect(elm.prop('src')).to.be.equal('/assets/images/headerlogos/header-logo.svg');
             });
 
             it('it should find source with correct className to style', () => {
