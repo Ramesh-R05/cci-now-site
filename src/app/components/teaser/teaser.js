@@ -140,7 +140,7 @@ export default class Teaser extends Component {
 
         if (showTeaserBrandSource) {
             if (sourceName === 'Now to love') {
-                const NTL_LOGO_PATH = '/assets/images/headerlogos/header-logo.svg';
+                const NTL_LOGO_PATH = '/assets/images/headerlogos/NTL-logo.svg';
                 brandImgElm = <img className="teaser__brand-image" alt={sourceName} src={NTL_LOGO_PATH} />;
             } else {
                 brandImage = siteBrands.filter(brand => brand.title === sourceName);
