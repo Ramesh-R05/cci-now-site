@@ -163,9 +163,12 @@ $hero-teaser-line-height: 25px;
     }
 
     .teaser__inner {
-        img {
-            width: 100%;
-            height: auto;
+
+        a {
+            img {
+                width: 100%;
+                height: auto;
+            }
         }
     }
 
