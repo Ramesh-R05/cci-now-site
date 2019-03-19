@@ -147,18 +147,19 @@ export default class Page extends Component {
                         headerClassName="header__inner"
                     />
 
-                    {!hideLeaderboard && (
-                        <StickyAd
-                            adProps={stickyAdProps}
-                            minHeight={450}
-                            stickyAtViewPort="largeRangeMax"
-                            stickyDelay={2000}
-                            isStickyTemporary
-                            stickyDuration={3500}
-                        />
-                    )}
-
-                    {pageTitle && <div className="page-title-container"> {pageTitle} </div>}
+                    <div className="page__content-header">
+                        {!hideLeaderboard && (
+                            <StickyAd
+                                adProps={stickyAdProps}
+                                minHeight={450}
+                                stickyAtViewPort="largeRangeMax"
+                                stickyDelay={2000}
+                                isStickyTemporary
+                                stickyDuration={3500}
+                            />
+                        )}
+                        {pageTitle && <div className="page-title-container"> {pageTitle} </div>}
+                    </div>
 
                     <StandardPageAdsWrapper showWallpaper={showWallpaper}>
                         <div className="content-wrapper">{children}</div>

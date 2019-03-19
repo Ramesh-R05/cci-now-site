@@ -43,11 +43,11 @@ $header-banner-height-mobile: 58px;
 $header-banner-height-medium-up: 221px;
 $header-banner-height-large-up: 221px;
 
-$page-title-height: 135px;
+$page-title-height: 160px;
 $ad-wallpaper-top-mobile: $header-height;
 $ad-wallpaper-top-pinned: $header-height-desktop;
-$ad-wallpaper-top-unpinned-90: -148px;  // top leaderBoard has 90 height
-$ad-wallpaper-top-unpinned-250: -308px; // top leaderBoard has 250 height
+$ad-wallpaper-top-unpinned-90: -130px;  // top leaderBoard has 90 height
+$ad-wallpaper-top-unpinned-250: -290px; // top leaderBoard has 250 height
 $ad-wallpaper-top-unpinned-90-with-page-title: $ad-wallpaper-top-unpinned-90 + -$page-title-height;
 $ad-wallpaper-top-unpinned-250-with-page-title: $ad-wallpaper-top-unpinned-250 + -$page-title-height;
 

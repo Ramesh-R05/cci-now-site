@@ -5,11 +5,11 @@
     text-align: center;
 
     @media #{$medium-only} {
-        padding: 75px $column-gutter/2 55px;
+        padding: 35px $column-gutter/2 55px;
     }
 
     @media #{$large-up} {
-        padding: 75px $column-gutter/2 55px;
+        padding: 35px $column-gutter/2 55px;
     }
     
     span {

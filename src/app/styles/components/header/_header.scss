@@ -41,13 +41,13 @@
 
     // expanded states
     &--expanded {
-        position: fixed;
+        position: absolute;
         height: 0;
         margin-top: 0;
 
         @media #{$medium-up} {
-            position: relative;
-            margin-bottom: 255px;
+            position: absolute;
+            margin-bottom: 215px;
         }
 
         .header-menu {
