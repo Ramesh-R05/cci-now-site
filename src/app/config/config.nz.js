@@ -5,6 +5,7 @@ import urls from './nzconfig/urls';
 import brands from './nzconfig/brands';
 import features from './nzconfig/features';
 import polar from './nzconfig/polar';
+import footer from './nzconfig/footer';
 
 export default {
     ga: { id: 'UA-57795117-7' },
@@ -39,5 +40,7 @@ export default {
 
     parsely: {
         apiKey: 'nowtolove.co.nz'
-    }
+    },
+
+    footer
 };
