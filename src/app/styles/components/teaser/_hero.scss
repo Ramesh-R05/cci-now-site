@@ -60,7 +60,100 @@ $hero-teaser-line-height: 25px;
                 max-height: 25px;
                 max-width: 85px;
                 margin: 10px;
-                filter: brightness(0) invert(1);
+            }
+
+            // Workaround so logos display correctly on IE 11
+            // AU hero logos
+            &--ntl {
+                margin: 12px;
+                height: 20px;
+            }
+
+            &--aww {
+                margin: 14px;
+                height: 18px;
+            }
+
+            &--wd {
+                margin: 14px;
+                height: 18px;
+            }
+
+            &--gh {
+                margin: 11px;
+                height: 24px;
+            }
+
+            &--ok {
+                margin: 12px;
+                height: 20px;
+            }
+
+            &--nw {
+                height: 25px;
+            }
+
+            &--take5 {
+                margin: 16px;
+                height: 15px;
+            }
+
+            &--yours {
+                margin: 12px;
+                height: 21px;
+            }
+
+            &--mb {
+                margin: 15px;
+                height: 16px;
+            }
+
+            &--ptl {
+                margin: 17px;
+                height: 12px;
+            }
+
+            &--tvweek {
+                height: 25px;
+            }
+
+            &--empire {
+                height: 25px;
+            }
+
+            // NZ hero logos
+            &--nzww {
+                margin: 14px;
+                height: 18px;
+            }
+
+            &--awwnz {
+                margin: 14px;
+                height: 18px;
+            }
+
+            &--next {
+                height: 25px;
+            }
+
+            &--nzgh {
+                margin: 11px;
+                height: 24px;
+            }
+
+            &--nzwd {
+                margin: 14px;
+                height: 18px;
+            }
+
+            &--nadia {
+                margin: 12px;
+                height: 21px;
+            }
+
+            &--btl {
+                margin: 12px;
+                height: 21px;
             }
         }
 

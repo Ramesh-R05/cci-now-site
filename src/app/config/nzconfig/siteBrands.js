@@ -4,6 +4,7 @@ export default [
         title: "New Zealand Woman's Weekly",
         magazineTitle: "New Zealand Woman's Weekly",
         imageUrl: '/assets/images/nzheaderlogos/NZWW-logo.svg',
+        heroImageUrl: '/assets/images/nzherologos/NZWW-logo.svg',
         url: '/nz-womans-weekly',
         socialLinks: {
             facebook: 'https://www.facebook.com/nzwomansweekly',
@@ -17,6 +18,7 @@ export default [
         title: "Woman's Day",
         magazineTitle: "Woman's Day",
         imageUrl: '/assets/images/nzheaderlogos/NZWD-logo.svg',
+        heroImageUrl: '/assets/images/nzherologos/NZWD-logo.svg',
         url: '/womans-day',
         socialLinks: {
             facebook: 'https://www.facebook.com/womansdaynz',
@@ -31,6 +33,7 @@ export default [
         title: "The Australian Women's Weekly",
         magazineTitle: "The Australian Women's Weekly",
         imageUrl: '/assets/images/nzheaderlogos/NZAWW-logo.svg',
+        heroImageUrl: '/assets/images/nzherologos/NZAWW-logo.svg',
         url: '/australianwomensweekly',
         socialLinks: {
             facebook: 'https://www.facebook.com/awwmagazine',
@@ -44,6 +47,7 @@ export default [
         title: 'NEXT',
         magazineTitle: 'NEXT Magazine',
         imageUrl: '/assets/images/nzheaderlogos/NEXT-logo.svg',
+        heroImageUrl: '/assets/images/nzherologos/NEXT-logo.svg',
         url: '/next',
         socialLinks: {
             facebook: 'https://www.facebook.com/nextmagazine/',
@@ -57,6 +61,7 @@ export default [
         title: 'Good Health Choices',
         magazineTitle: 'Good Health Choices',
         imageUrl: '/assets/images/nzheaderlogos/GHC-logo.svg',
+        heroImageUrl: '/assets/images/nzherologos/GHC-logo.svg',
         url: '/good-health-choices',
         socialLinks: {
             facebook: 'https://www.facebook.com/goodhealthchoicesnz/',
@@ -72,6 +77,7 @@ export default [
         title: 'Nadia',
         magazineTitle: 'Nadia',
         imageUrl: '/assets/images/nzheaderlogos/NADIA-logo.svg',
+        heroImageUrl: '/assets/images/nzherologos/NADIA-logo.svg',
         url: '/nadia',
         socialLinks: {
             instagram: 'https://www.instagram.com/nadiamagazine'
@@ -83,6 +89,7 @@ export default [
         title: 'Beauty To Love',
         magazineTitle: 'Beauty To Love',
         imageUrl: '/assets/images/nzheaderlogos/BTL-logo.svg',
+        heroImageUrl: '/assets/images/nzherologos/BTL-logo.svg',
         url: '/beauty-to-love'
     }
 ];

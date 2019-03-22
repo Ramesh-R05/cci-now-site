@@ -16,5 +16,10 @@ export default {
         facebook: 'https://www.facebook.com/nowtolove',
         twitter: 'https://twitter.com/nowtolove',
         instagram: 'https://www.instagram.com/nowtolove'
-    }
+    },
+    customFonts: [
+        { url: 'https://fonts.googleapis.com/css?family=Questrial' },
+        { url: 'https://fonts.googleapis.com/css?family=Muli:400,600,800' },
+        { url: 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700' }
+    ]
 };

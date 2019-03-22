@@ -140,11 +140,14 @@ export default class Teaser extends Component {
 
         if (showTeaserBrandSource) {
             if (sourceName === 'Now to love') {
-                const NTL_LOGO_PATH = '/assets/images/headerlogos/NTL-logo.svg';
-                brandImgElm = <img className="teaser__brand-image" alt={sourceName} src={NTL_LOGO_PATH} />;
+                const NTL_LOGO_PATH = '/assets/images/herologos/NTL-logo.svg';
+                brandImgElm = <img className="teaser__brand-image teaser__brand-image--ntl" alt={sourceName} src={NTL_LOGO_PATH} />;
             } else {
                 brandImage = siteBrands.filter(brand => brand.title === sourceName);
-                brandImgElm = brandImage.length ? <img className="teaser__brand-image" alt={sourceName} src={brandImage[0].imageUrl} /> : null;
+                const brandId = brandImage.length && brandImage[0].id;
+                brandImgElm = brandImage.length ? (
+                    <img className={`teaser__brand-image teaser__brand-image--${brandId}`} alt={sourceName} src={brandImage[0].heroImageUrl} />
+                ) : null;
             }
         }
 

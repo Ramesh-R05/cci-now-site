@@ -23,6 +23,7 @@ const context = {
                     title: "Australian Women's Weekly",
                     magazineTitle: 'The Weekly',
                     imageUrl: '/assets/images/headerlogos/AWW-logo.svg',
+                    heroImageUrl: '/assets/images/herologos/AWW-logo.svg',
                     url: '/aww',
                     socialLinks: {
                         facebook: 'https://www.facebook.com/WomensWeeklyMag',
@@ -37,6 +38,7 @@ const context = {
                     id: 'wd',
                     title: "Woman's Day",
                     imageUrl: '/assets/images/headerlogos/WD-logo.svg',
+                    heroImageUrl: '/assets/images/herologos/WD-logo.svg',
                     url: '/womansday',
                     socialLinks: {
                         facebook: 'https://www.facebook.com/WomansDayAUS',
@@ -119,7 +121,7 @@ describe('Component', () => {
 
             it('it should render the correct logo', () => {
                 const elm = wrapper.find('.teaser__brand-image');
-                expect(elm.prop('src')).to.be.equal('/assets/images/headerlogos/AWW-logo.svg');
+                expect(elm.prop('src')).to.be.equal('/assets/images/herologos/AWW-logo.svg');
             });
 
             it('it should find source with correct className to style', () => {
@@ -141,7 +143,7 @@ describe('Component', () => {
 
             it('it should render the NTL logo', () => {
                 const elm = wrapper.find('.teaser__brand-image');
-                expect(elm.prop('src')).to.be.equal('/assets/images/headerlogos/NTL-logo.svg');
+                expect(elm.prop('src')).to.be.equal('/assets/images/herologos/NTL-logo.svg');
             });
 
             it('it should find source with correct className to style', () => {

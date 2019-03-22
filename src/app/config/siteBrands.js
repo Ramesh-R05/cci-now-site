@@ -4,6 +4,7 @@ export default [
         title: "Australian Women's Weekly",
         magazineTitle: 'The Weekly',
         imageUrl: '/assets/images/headerlogos/AWW-logo.svg',
+        heroImageUrl: '/assets/images/herologos/AWW-logo.svg',
         url: '/aww',
         socialLinks: {
             facebook: 'https://www.facebook.com/WomensWeeklyMag',
@@ -18,6 +19,7 @@ export default [
         id: 'wd',
         title: "Woman's Day",
         imageUrl: '/assets/images/headerlogos/WD-logo.svg',
+        heroImageUrl: '/assets/images/herologos/WD-logo.svg',
         url: '/womansday',
         socialLinks: {
             facebook: 'https://www.facebook.com/WomansDayAUS',
@@ -32,6 +34,7 @@ export default [
         id: 'gh',
         title: 'Good Health',
         imageUrl: '/assets/images/headerlogos/GH-logo.svg',
+        heroImageUrl: '/assets/images/herologos/GH-logo.svg',
         url: '/good-health',
         socialLinks: {
             facebook: 'https://www.facebook.com/GoodHealthMag/',
@@ -45,6 +48,7 @@ export default [
         id: 'ok',
         title: 'OK! Magazine',
         imageUrl: '/assets/images/headerlogos/OK-logo.svg',
+        heroImageUrl: '/assets/images/herologos/OK-logo.svg',
         url: '/okmagazine',
         socialLinks: {
             facebook: 'https://www.facebook.com/OKmagAustralia',
@@ -58,6 +62,7 @@ export default [
         id: 'nw',
         title: 'NW',
         imageUrl: '/assets/images/headerlogos/NW-logo.svg',
+        heroImageUrl: '/assets/images/herologos/NW-logo.svg',
         url: '/nw',
         socialLinks: {
             facebook: 'https://www.facebook.com/NWmagazine',
@@ -71,6 +76,7 @@ export default [
         id: 'take5',
         title: 'Take 5',
         imageUrl: '/assets/images/headerlogos/T5-logo.svg',
+        heroImageUrl: '/assets/images/herologos/T5-logo.svg',
         url: '/take5mag',
         socialLinks: {
             facebook: 'https://www.facebook.com/take5magazine',
@@ -84,6 +90,7 @@ export default [
         id: 'mb',
         title: 'Mother and Baby',
         imageUrl: '/assets/images/headerlogos/MB-logo.svg',
+        heroImageUrl: '/assets/images/herologos/MB-logo.svg',
         url: '/mother-and-baby',
         socialLinks: {
             facebook: 'https://www.facebook.com/mbmag/',
@@ -97,6 +104,7 @@ export default [
         id: 'tvweek',
         title: 'TV WEEK',
         imageUrl: '/assets/images/headerlogos/TVWEEK-logo.svg',
+        heroImageUrl: '/assets/images/herologos/TVWEEK-logo.svg',
         url: '/tvweek',
         socialLinks: {
             facebook: 'https://www.facebook.com/tvweekmag',
@@ -110,6 +118,7 @@ export default [
         id: 'empire',
         title: 'Empire',
         imageUrl: '/assets/images/headerlogos/Empire.svg',
+        heroImageUrl: '/assets/images/herologos/Empire-logo.svg',
         url: '/empire',
         socialLinks: {
             facebook: 'https://www.facebook.com/EmpireAust/',
@@ -123,6 +132,7 @@ export default [
         id: 'ptl',
         title: 'Prizes To Love',
         imageUrl: '/assets/images/headerlogos/PTL-logo.svg',
+        heroImageUrl: '/assets/images/herologos/PTL-logo.svg',
         url: '/prizestolove',
         socialLinks: {
             facebook: 'https://www.facebook.com/prizestolove/',
