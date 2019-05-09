@@ -103,6 +103,11 @@
             font: 400 16px/24px $font-family-muli;
         }
     }
+
+    .gallery__photo-credit {
+        font: 400 16px/24px $font-family-muli;   
+        font-style: italic;
+    }
 }
 
 .article-section {
