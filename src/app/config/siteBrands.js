@@ -101,6 +101,19 @@ export default [
         renderSubscribeElements: false
     },
     {
+        id: 'bounty',
+        title: 'Bounty',
+        imageUrl: '/assets/images/headerlogos/BOUNTY-logo.svg',
+        heroImageUrl: '/assets/images/herologos/BOUNTY-logo.svg',
+        url: '/bounty',
+        socialLinks: {
+            facebook: 'https://www.facebook.com/mbmag/',
+            instagram: 'https://www.instagram.com/motherbaby_au'
+        },
+        newsletterUrl: 'https://www.nowtolove.com.au/mother-and-baby-newsletter',
+        renderSubscribeElements: false
+    },
+    {
         id: 'tvweek',
         title: 'TV WEEK',
         imageUrl: '/assets/images/headerlogos/TVWEEK-logo.svg',

@@ -212,6 +212,8 @@ hr {
 
     &-mb { color: $mother-baby-color }
 
+    &-bounty { color: $bounty-color }
+
     &-ptl { color: $ptl-color; }
 
     &-tvweek { color: $tv-color }
@@ -268,6 +270,8 @@ hr {
 
     &-mb { background-color: $mother-baby-color }
 
+    &-bounty { color: $bounty-color }
+
     &-ptl { background-color: $ptl-color; }
 
     &-tvweek { background-color: $tv-color }
@@ -306,6 +310,8 @@ hr {
 
     &-mb { background-color: $mother-baby-color }
 
+    &-bounty { color: $bounty-color }
+
     &-ptl { background-color: $ptl-color; }
 
     &-tvweek { background-color: $tv-color }
@@ -327,7 +333,7 @@ hr {
     &-empire { background-color: $empire-color; }
 }
 
-.header-gh, .header-aww, .header-wd, .header-ok, .header-nw, .header-take5, .header-yours, .header-mb, .header-empire {
+.header-gh, .header-aww, .header-wd, .header-ok, .header-nw, .header-take5, .header-yours, .header-mb, .header-bounty, .header-empire {
     .header-nav:before {
         border-left: 1px solid #FFF;
     }

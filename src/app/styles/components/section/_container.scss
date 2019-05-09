@@ -244,6 +244,51 @@
         }
     }
 
+    &--bounty {
+
+        .social-icon {
+            &__icon {
+                svg {
+                    path {
+                        fill: $bounty-color;
+                    }
+                }
+            }
+
+            &--facebook {
+                &:hover {
+                    path {
+                        fill: $facebook-blue;
+                    }
+                }
+            }
+
+            &--twitter {
+                &:hover {
+                    path {
+                        fill: $twitter-blue;
+                    }
+                }
+            }
+
+            &--instagram {
+                &:hover {
+                    path {
+                        fill: $instagram-brown;
+                    }
+                }
+            }
+
+            &--pinterest {
+                &:hover {
+                    path {
+                        fill: $pinterest-red;
+                    }
+                }
+            }
+        }
+    }
+
     &--take5 {
 
         .social-icon {
