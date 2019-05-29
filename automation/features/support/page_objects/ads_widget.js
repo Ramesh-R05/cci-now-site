@@ -53,7 +53,7 @@ var ads_widget = {
 
     //Body
     ad_MrecAfterSlide3: '.gallery__feed-item--ad:nth-child(4)  .gallery__ad [id^=ad-gpt-slot-]', //gallery
-    ad_MrecAfterSlide7: '.gallery__feed-item--ad:nth-child(9)  .gallery__ad [id^=ad-gpt-slot-]', //gallery
+    ad_MrecAfterSlide7: '.gallery__feed-item--ad:nth-child(8)  .gallery__ad [id^=ad-gpt-slot-]', //gallery
 
     //Mobile
     ad_MrecUnderHeroTeaser: '.hero-wrapper [id^=ad-gpt-slot-]', //mobile homepage, index, brand
@@ -72,7 +72,7 @@ var ads_widget = {
     bottomFeedItem4: '.teaser-view-list .teaser__list-item:nth-child(4)', //for 'I should see sticky MREC ad next to the bottom news feed'
     bottomFeedItem7: '.teaser-view-list .teaser__list-item:nth-child(7)', //for 'I should see sticky MREC ad next to the bottom news feed'
     gallerySlide3: '.gallery__feed-item:nth-child(3)', //for 'I should see MREC ad between images'
-    gallerySlide7: '.gallery__feed-item:nth-child(8)', //for 'I should see MREC ad between images'
+    gallerySlide7: '.gallery__feed-item:nth-child(7)', //for 'I should see MREC ad between images'
 
     // Vertical Gallery
     galleryNativeAd: '.ad--article-native',

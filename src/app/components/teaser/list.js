@@ -81,6 +81,7 @@ export default class TeaserListView extends Component {
                                 l: { w: 409, h: 230 },
                                 xl: { w: 1010, h: 478 }
                             }}
+                            AdComponentClass={Ad}
                             adPosition={4}
                             adConfig={{
                                 className: 'ad--teaser-list',

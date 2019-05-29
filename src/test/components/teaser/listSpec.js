@@ -69,6 +69,7 @@ describe('TeaserListView', () => {
                     imageSizes,
                     showSubSection: true,
                     loadAgain: true,
+                    AdComponentClass: AdStub,
                     adConfig: {
                         className: 'ad--teaser-list',
                         displayFor: 'small',
@@ -76,6 +77,7 @@ describe('TeaserListView', () => {
                         targets: {},
                         pageLocation: 'body'
                     },
+
                     nativeAdConfig: {},
                     adPosition: 4
                 });
