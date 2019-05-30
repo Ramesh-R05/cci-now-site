@@ -75,6 +75,7 @@ export default class TeaserListView extends Component {
                             showDate={showDate}
                             articles={items}
                             showSubSection
+                            AdComponentClass={Ad}
                             imageSizes={{
                                 s: { w: 323, h: 269 },
                                 m: { w: 452, h: 254 },
