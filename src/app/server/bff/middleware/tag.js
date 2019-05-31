@@ -26,6 +26,13 @@ export default async function tagMiddleware(req, res, next) {
             return;
         }
 
+        // Exclude metadata tags from displaying as tags pages
+        if (tag.indexOf('metadata') > 0) {
+            next();
+
+            return;
+        }
+
         let title = tag
             .split('-')
             .map(capitalize)

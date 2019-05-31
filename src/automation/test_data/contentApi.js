@@ -49,67 +49,54 @@ export default function stubServer(siteServer, siteConfig) {
             return res.json(section);
         }
         if (section === 'beauty') {
-            //beauty section has the Inskin ad
             const section = require('../test_data/listing/section_inskin').default;
             return res.json(section);
         }
         if (section === 'aww') {
-            //AWW brand page
             const section = require('../test_data/pages/brand_aww').default;
             return res.json(section);
         }
         if (section === 'womansday') {
-            //Woman's Day brand page
             const section = require('../test_data/pages/brand_wd').default;
             return res.json(section);
         }
         if (section === 'good-health') {
-            //Good Health brand page
             const section = require('../test_data/pages/brand_gh').default;
             return res.json(section);
         }
         if (section === 'okmagazine') {
-            //OK Magazine brand page
             const section = require('../test_data/pages/brand_ok').default;
             return res.json(section);
         }
         if (section === 'shop-til-you-drop') {
-            //Shop Til You Drop brand page
             const section = require('../test_data/pages/brand_shop').default;
             return res.json(section);
         }
         if (section === 'nw') {
-            //NW brand page
             const section = require('../test_data/pages/brand_nw').default;
             return res.json(section);
         }
         if (section === 'take5mag') {
-            //Take 5 brand page
             const section = require('../test_data/pages/brand_take5').default;
             return res.json(section);
         }
         if (section === 'yours') {
-            //Yours brand page
             const section = require('../test_data/pages/brand_yours').default;
             return res.json(section);
         }
         if (section === 'mother-and-baby') {
-            //Mother & Baby brand page
             const section = require('../test_data/pages/brand_mb').default;
             return res.json(section);
         }
         if (section === 'tvweek') {
-            //TV Week brand page
             const section = require('../test_data/pages/brand_tvweek').default;
             return res.json(section);
         }
         if (section === 'prizestolove') {
-            //Prizes To Love brand page
             const section = require('../test_data/pages/brand_ptl').default;
             return res.json(section);
         }
         if (section === 'empire') {
-            //Empire brand page
             const section = require('../test_data/pages/brand_empire').default;
             return res.json(section);
         } else {
