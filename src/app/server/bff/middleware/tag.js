@@ -19,6 +19,8 @@ export default async function tagMiddleware(req, res, next) {
         pageNo = parseInt(query.pageNo || pageNo, 10);
         const tag = query ? query.tag || query.section : null;
         const entity = get(req, 'data.entity');
+        const err = new Error('Page not found');
+        err.status = 404;
 
         if (!tag || query.page || (entity && entity.nodeTypeAlias !== 'TagSection')) {
             next();
@@ -28,9 +30,7 @@ export default async function tagMiddleware(req, res, next) {
 
         // Exclude metadata tags from displaying as tags pages
         if (tag.indexOf('metadata') > 0) {
-            next();
-
-            return;
+            throw err;
         }
 
         let title = tag
