@@ -114,7 +114,10 @@ export default function stubServer(siteServer, siteConfig) {
 
         // /section
         if (tag === 'video') {
-            const tagData = require('../test_data/listing/tag').default;
+            const tagData = require('../test_data/listing/tag_video').default;
+            return res.json(tagData);
+        } else if (tag === '1') {
+            const tagData = require('../test_data/listing/tag_1').default;
             return res.json(tagData);
         } else {
             return next({ body: 'Could not find the tag page', err: null, status: 404 });
