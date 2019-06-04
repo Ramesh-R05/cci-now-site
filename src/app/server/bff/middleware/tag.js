@@ -4,6 +4,7 @@ import getTagName from '@bxm/tags/lib/utils/getTagName';
 import makeRequest from '../../makeRequest';
 import { getLatestTeasers } from '../api/listing';
 import { parseEntities } from '../helper/parseEntity';
+import logger from '../../../../logger';
 
 const latestTeaserCount = 7;
 const listCount = 14;
@@ -29,6 +30,8 @@ export default async function tagMiddleware(req, res, next) {
         }
 
         // Exclude metadata tags from displaying as tags pages
+        logger.log(`tag-----`, tag);
+
         if (tag.indexOf('metadata') > 0) {
             throw err;
         }
