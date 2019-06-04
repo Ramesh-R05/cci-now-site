@@ -20,7 +20,7 @@ export default class Logies extends Component {
         config: PropTypes.object.isRequired
     };
 
-    static DEFAULT_PATH = '/logies-vote';
+    static DEFAULT_PATH = '/_tectonic-test';
 
     componentDidMount() {
         const options = {
@@ -43,7 +43,7 @@ export default class Logies extends Component {
             <Page currentUrl={currentUrl} pageTitle={pageTitle} headerThemeClassName="" theme={theme} showWallpaper={false} hideLeaderboard>
                 <div style={{ maxWidth: '593px', margin: '0 auto' }}>
                     <iframe
-                        src="https://webapp.tectonicinteractive.com/logies2018/polling_v1.html"
+                        src="https://webapp.tectonicinteractive.com/logies2019/polling_v1.html"
                         ref={c => {
                             this.iframe = c;
                         }}
