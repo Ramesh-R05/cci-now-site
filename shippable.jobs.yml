@@ -121,6 +121,11 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
+        - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        - script: sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+        - script: sudo apt-get update
+        - script: sudo apt-get install google-chrome-stable
+        - script: google-chrome --product-version
         - script: export URL=http://now-site.test.bxm.net.au/
         - script: npm run test:high || true
         - script: actualsize=$(wc -c <"@rerun.txt")
@@ -175,6 +180,11 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
+        - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        - script: sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+        - script: sudo apt-get update
+        - script: sudo apt-get install google-chrome-stable
+        - script: google-chrome --product-version
         - script: export URL=http://now-site-nz.sit.bxm.net.au/
         - script: npm run test:nzlow || true
         - script: actualsize=$(wc -c <"@rerun.txt")
@@ -200,6 +210,11 @@ jobs:
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
+        - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        - script: sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+        - script: sudo apt-get update
+        - script: sudo apt-get install google-chrome-stable
+        - script: google-chrome --product-version
         - script: export URL=https://www.sit.nowtolove.com.au/
         - script: npm run sit:au || true
         - script: actualsize=$(wc -c <"@rerun.txt")
