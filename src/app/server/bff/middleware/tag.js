@@ -29,18 +29,12 @@ export default async function tagMiddleware(req, res, next) {
             return;
         }
 
-        // Exclude metadata tags from displaying as tags pages
-        logger.log(`tag-----`, tag);
-
-        if (tag.indexOf('metadata') > 0) {
-            throw err;
-        }
-
         let title = tag
             .split('-')
             .map(capitalize)
             .join(' ');
         const { entity: entityService, tag: tagService } = req.app.locals.config.services.remote;
+        logger.error(`title-----`, title);
 
         // TODO(thatzi): I don't like this. Need a better way to handle tag pages, tag data and tag canonicals
         // Check the current entity url if it is a /:section page. If this is a /tags/:tag page, then this won't exist.
@@ -61,6 +55,16 @@ export default async function tagMiddleware(req, res, next) {
                 if (!data.length) {
                     return {};
                 }
+
+                logger.error(`nameData--aa`, data);
+                console.log(`data-----`, data);
+
+                // Exclude metadata tags from displaying as tags pages
+                data.forEach(element => {
+                    if (element.tag.name.includes('metadata')) {
+                        throw err;
+                    }
+                });
 
                 return (
                     find(data, tagObj => {

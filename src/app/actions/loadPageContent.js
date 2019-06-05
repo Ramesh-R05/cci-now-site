@@ -1,5 +1,4 @@
 import pageService from '../services/page';
-import logger from '../../logger';
 
 export default function loadPageContent(context, payload) {
     const { url, query, params } = payload;
@@ -23,9 +22,6 @@ export default function loadPageContent(context, payload) {
 
     return pageService.read(args).then(
         content => {
-            logger.log(`context----`, context);
-            logger.log(`payload----`, payload);
-
             if (content instanceof Error) {
                 context.dispatch('LOAD_CONTENT_FAILED', content);
             } else {
