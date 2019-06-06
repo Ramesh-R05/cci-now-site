@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "sit:au": "bxm-automation ./config/chimp.shippable.js --browser=chrome --format=rerun:@rerun.txt --tags=@sitAU",
+    "sit:au": "bxm-automation ./config/chimpy.shippable.js --browser=chrome --format=rerun:@rerun.txt --tags=@sitAU",
     "test:mobile": "APP_KEY=now-mobile node runner.js --tags=@mobile --pMode=mobile",
     "test:desktop": "APP_KEY=now-desktop node runner.js --tags=@desktop",
     "test:tags": "bxm-automation ./config/chimpy.js --browser=chrome --format=rerun:@rerun.txt --tags=$0",
