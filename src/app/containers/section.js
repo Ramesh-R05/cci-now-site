@@ -142,11 +142,12 @@ export default class Section extends Component {
                                             this.top = c;
                                         }}
                                     >
-                                        {imageUrl && !isBrandPage && (
-                                            <div className="banner-wrapper">
-                                                <img src={imageSrc} alt={title} />
-                                            </div>
-                                        )}
+                                        {imageUrl &&
+                                            !isBrandPage && (
+                                                <div className="banner-wrapper">
+                                                    <img src={imageSrc} alt={title} />
+                                                </div>
+                                            )}
 
                                         {subsections.totalCount > 1 && <SubsectionList subsections={subsections.data} currentUrl={currentUrl} />}
 

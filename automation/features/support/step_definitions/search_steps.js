@@ -27,7 +27,9 @@ module.exports = function() {
     });
 
     this.Then(/^I should be able to search a keyword "([^"]*)" on "([^"]*)" and see the result page$/, function (keyword, position) {
-        var searchBox, searchSubmit;
+        let searchBox
+        let searchSubmit;
+
         browser.scroll(0,0);
 
         switch (position){
@@ -46,7 +48,7 @@ module.exports = function() {
                 break;
         }
 
-        browser.setValue(searchBox, keyword);
+        browser.$(searchBox).setValue(keyword); 
         browser.click(searchSubmit);
         wait(1000);
 
@@ -54,7 +56,7 @@ module.exports = function() {
         browser.waitForVisible(search.searchResultPageTitle, 5000);
         var searchTitle = browser.getText(search.searchResultPageTitle);
 
-        const capitalisedKeyword = keyword[0].toUpperCase() + keyword.slice(1)
+        const capitalisedKeyword = keyword[0].toUpperCase() + keyword && keyword.slice(1)
 
         expect(searchTitle).toContain(`${capitalisedKeyword} Results`);
 
