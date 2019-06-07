@@ -27,7 +27,7 @@ function transformToLowerCaseTag(tag) {
     return tag.toLowerCase().replace('%20', '-');
 }
 
-describe.only('Tag middleware', () => {
+describe('Tag middleware', () => {
     const entityService = 'http://entitiesUrl.com';
     const tagService = 'http://tagUrl.com';
     const config = { site: { host: 'http://www.dolly.com.au' }, services: { remote: { entity: entityService, tag: tagService } } };
