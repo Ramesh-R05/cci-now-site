@@ -55,7 +55,9 @@ class Application extends Component {
     }
 
     componentDidCatch(error, info) {
+        // eslint-disable-next-line no-console
         console.log(`error------`, error);
+        // eslint-disable-next-line no-console
         console.log(`info----`, info);
     }
 
