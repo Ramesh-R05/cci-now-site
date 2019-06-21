@@ -20,7 +20,7 @@ export default class Logies extends Component {
         config: PropTypes.object.isRequired
     };
 
-    static DEFAULT_PATH = '/_tectonic-test';
+    static DEFAULT_PATH = '/logies-vote';
 
     componentDidMount() {
         const options = {
