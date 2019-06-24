@@ -40,9 +40,9 @@ Feature: Smoke test for AU NOW
         Then I should see the main hero item containing its image and clickable to open its page
         And I should see a "top" feed item containing its image and clickable to open its page
         And I should see a "bottom" feed item containing its image and clickable to open its page
-        When I click on the Load More button
-        Then I should see extra 14 teasers after loading more
-        And I should see a load more feed item containing its image and clickable to open its page
+        #When I click on the Load More button
+        #Then I should see extra 14 teasers after loading more
+        #And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the section landing page
         Given I switch to "mobile" view
@@ -60,9 +60,9 @@ Feature: Smoke test for AU NOW
         Then I should see the main hero item containing its image and clickable to open its page
         And I should see a "top" feed item containing its image and clickable to open its page
         And I should see a "bottom" feed item containing its image and clickable to open its page
-        When I click on the Load More button
-        Then I should see extra 14 teasers after loading more
-        And I should see a load more feed item containing its image and clickable to open its page
+        #When I click on the Load More button
+        #Then I should see extra 14 teasers after loading more
+        #And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the 404 page
         Given I switch to "mobile" view
