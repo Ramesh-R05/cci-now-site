@@ -26,6 +26,7 @@ function mapStateToProps(context) {
         title: pageStore.getTitle(),
         shortTitle: pageStore.getShortTitle(),
         summary: pageStore.getSummary(),
+        siteAlert: pageStore.getSiteAlert(),
         teasers: teaserStore.getLatestTeasers(),
         list: teaserStore.getList(),
         heroTeaser: teaserStore.getHeroTeaser(),
@@ -50,6 +51,7 @@ export default class Section extends Component {
         shortTitle: PropTypes.string,
         summary: PropTypes.string,
         theme: PropTypes.array,
+        siteAlert: PropTypes.object,
         imageUrl: PropTypes.string,
         subsections: PropTypes.object
     };
@@ -57,6 +59,7 @@ export default class Section extends Component {
     static defaultProps = {
         teasers: [],
         theme: {},
+        siteAlert: {},
         imageUrl: '',
         summary: '',
         shortTitle: '',
@@ -81,7 +84,7 @@ export default class Section extends Component {
     }
 
     render() {
-        const { nodeType, teasers, title, currentUrl, shortTitle, summary, theme, imageUrl, subsections, heroTeaser } = this.props;
+        const { nodeType, teasers, title, currentUrl, shortTitle, summary, theme, imageUrl, subsections, heroTeaser, siteAlert } = this.props;
         const { bottomElm, topElm } = this.state;
         const { config } = this.context;
         let sectionHeroTeaser = teasers[0];
@@ -130,7 +133,7 @@ export default class Section extends Component {
         }
 
         return (
-            <Page currentUrl={currentUrl} pageTitle={pageTitle} headerThemeClassName={headerThemeClassName} theme={theme}>
+            <Page currentUrl={currentUrl} pageTitle={pageTitle} headerThemeClassName={headerThemeClassName} theme={theme} siteAlert={siteAlert}>
                 <div className={sectionClassNames}>
                     <div className="container">
                         <div className="row">

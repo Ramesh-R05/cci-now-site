@@ -17,7 +17,29 @@ export default {
         url: '/',
         parentName: 'Now',
         parentUrl: '/',
-        siteUrl: 'http://dev.now-site.bauer-media.net.au'
+        siteUrl: 'http://dev.now-site.bauer-media.net.au',
+        enableSiteAlert: true,
+        siteAlertButtonLink:
+            'https://aws.amazon.com/blogs/networking-and-content-delivery/continually-enhancing-domain-security-on-amazon-cloudfront/',
+        siteAlertButtonText: 'not used button text',
+        siteAlertTextColour: 'red',
+        siteAlertPrimaryText: 'NOW TO LOVE.',
+        siteAlertButtonColour: 'button color not used',
+        siteAlertSecondaryText: 'secondary text.',
+        siteAlertBackgroundImage: {
+            url: 'http://d36kx15wbx6ooz.cloudfront.net/s3/digital-cougar-assets-dev/now/2019/06/18/1560829316336_ScreenShot2019-06-14at3.38.24pm.png',
+            link: 'http://localhost:3001/any/thing/kendall-jenners-skin-doctor-tells-us-what-mistake-3640',
+            tags: [],
+            title: 'Site Alert Background Image',
+            valid: true,
+            width: 1486,
+            height: 728,
+            source: '',
+            caption: 'Site Alert Background Image caption',
+            credits: [],
+            creditText: 'Site Alert Background Image caption'
+        },
+        siteAlertBackgroundColour: 'yellow'
     },
     headerMetaData: {
         googleTagManagerEnvironment: 'dev',
@@ -42,6 +64,17 @@ export default {
             totalCount: 0,
             data: []
         }
+    },
+    siteAlert: {
+        styles: {
+            textColor: ' #ffffff',
+            backgroundColor: '#031424',
+            backgroundImage: ''
+        },
+        primaryText: 'THE LOGIES ARE ALMOST HERE.',
+        secondaryText: 'Support your favourite actor and vote now!',
+        link: 'https://aws.amazon.com/blogs/networking-and-content-delivery/continually-enhancing-domain-security-on-amazon-cloudfront/',
+        isEnabled: true
     },
     headerNavigation: navigation.getData(),
     hamburgerNavigation: hamburgerNavigation.getData(),

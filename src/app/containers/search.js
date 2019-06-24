@@ -22,7 +22,8 @@ function mapStateToProps(context) {
         magazineImageUrl: SearchStore.getMagazineImageUrl(),
         searchTotal: SearchStore.getSearchTotal(),
         teasers: SearchStore.getInitialSearchResults(),
-        list: SearchStore.getSearchResultsList()
+        list: SearchStore.getSearchResultsList(),
+        siteAlert: SearchStore.getSiteAlert()
     };
 }
 
@@ -36,6 +37,7 @@ export default class Search extends Component {
         title: PropTypes.string.isRequired,
         currentUrl: PropTypes.string.isRequired,
         theme: PropTypes.object,
+        siteAlert: PropTypes.object,
         searchTotal: PropTypes.number.isRequired,
         teasers: PropTypes.array,
         list: PropTypes.object.isRequired
@@ -43,7 +45,8 @@ export default class Search extends Component {
 
     static defaultProps = {
         teasers: [],
-        theme: {}
+        theme: {},
+        siteAlert: {}
     };
 
     static contextTypes = {
@@ -65,7 +68,7 @@ export default class Search extends Component {
 
     render() {
         const { config } = this.context;
-        const { nodeType, teasers, title, currentUrl, theme, searchTotal, list, listNextParams } = this.props;
+        const { nodeType, teasers, title, currentUrl, theme, searchTotal, list, listNextParams, siteAlert } = this.props;
         const keyword = nodeType === 'TagSection' && title ? [title] : [];
         const pageLocation = Ad.pos.outside;
 
@@ -91,7 +94,7 @@ export default class Search extends Component {
         };
 
         return (
-            <Page currentUrl={currentUrl} pageTitle={pageTitle} className="page--section" theme={themeEnabled ? theme : {}}>
+            <Page currentUrl={currentUrl} pageTitle={pageTitle} className="page--section" theme={themeEnabled ? theme : {}} siteAlert={siteAlert}>
                 <div className="section-page search-page">
                     <div className="container">
                         <div className="row">

@@ -38,6 +38,10 @@ export default createReducerStore({
             return state.footer;
         },
 
+        getSiteAlert(state) {
+            return state.siteAlert;
+        },
+
         getMustReadItems(state) {
             return state.mustRead;
         },

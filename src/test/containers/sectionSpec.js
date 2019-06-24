@@ -87,6 +87,9 @@ describe('Section Container', () => {
         },
         getSubsections() {
             return {};
+        },
+        getSiteAlert() {
+            return {};
         }
     });
 

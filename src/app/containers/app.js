@@ -13,6 +13,7 @@ function mapStateToProps(context) {
         nodeType: context.getStore('PageStore').getNodeType(),
         error: context.getStore('PageStore').getErrorStatus(),
         theme: context.getStore('PageStore').getModule('theme'),
+        siteAlert: context.getStore('PageStore').getSiteAlert(),
         isNavigateComplete: context.getStore('RouteStore').isNavigateComplete()
     };
 }
@@ -33,12 +34,14 @@ class Application extends Component {
         nodeType: PropTypes.string.isRequired,
         error: PropTypes.object,
         theme: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+        siteAlert: PropTypes.object,
         isNavigateComplete: PropTypes.bool.isRequired
     };
 
     static defaultProps = {
         error: null,
         theme: {},
+        siteAlert: {},
         currentRoute: null,
         currentNavigateError: null
     };
@@ -96,7 +99,12 @@ class Application extends Component {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div className={`${className} ${regionClassName}`}>
-                    <Handler currentUrl={this.props.currentRoute.url} nodeType={this.props.nodeType} theme={this.props.theme} />
+                    <Handler
+                        currentUrl={this.props.currentRoute.url}
+                        nodeType={this.props.nodeType}
+                        theme={this.props.theme}
+                        siteAlert={this.props.siteAlert}
+                    />
                 </div>
             </MuiThemeProvider>
         );

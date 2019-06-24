@@ -36,6 +36,7 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
                 footer,
                 imageUrl: entity.imageUrl,
                 theme: payload.body.theme,
+                siteAlert: payload.body.siteAlert,
                 request,
                 subsections,
                 comScoreSegmentIds,

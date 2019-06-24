@@ -9,6 +9,7 @@ import https from './bff/middleware/https';
 import render from './bff/middleware/render';
 import error from './bff/middleware/error';
 import pageModules from './bff/middleware/pageModules';
+import siteAlert from './bff/middleware/siteAlert';
 import listing from './bff/middleware/listing';
 import section from './bff/middleware/section';
 import tag from './bff/middleware/tag';
@@ -45,6 +46,7 @@ export default function bff(server) {
             server.locals.config.services.endpoints.page,
             emailLinkTracking,
             pageModules,
+            siteAlert,
             comScore,
             home,
             listing,

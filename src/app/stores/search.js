@@ -23,6 +23,10 @@ export default createReducerStore({
             return state.latestTeasers;
         },
 
+        getSiteAlert(state) {
+            return state.siteAlert;
+        },
+
         getSearchResultsList(state) {
             return state.list;
         },

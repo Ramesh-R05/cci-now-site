@@ -16,6 +16,10 @@ export default function responseBody(req, res, next) {
             res.body.theme = req.data.theme;
         }
 
+        if (get(req, 'data.siteAlert')) {
+            res.body.siteAlert = req.data.siteAlert;
+        }
+
         if (get(req, 'data.headernavigation')) {
             res.body.headerNavigation = {
                 items: parseEntities(req.data.headernavigation, { contentTitle: 'name' })

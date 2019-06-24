@@ -129,7 +129,8 @@ describe('Page Container', () => {
             menuClasses: 'site-menu',
             currentUrl: '/',
             hideLeaderboard: false,
-            theme: {}
+            theme: {},
+            siteAlert: {}
         };
 
         before(() => {
@@ -171,6 +172,8 @@ describe('Page Container', () => {
                 siteName: siteName,
                 toggleMenu: currentInstance.toggleMenu,
                 theme: {},
+                SubHeaderComponent: null,
+                subHeaderComponentProps: {},
                 permanentlyFixedIfShorterThan: 46,
                 headerClassName: 'header__inner',
                 wrapperClassName: 'header'

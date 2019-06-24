@@ -91,6 +91,7 @@ describe(`loadSearch Reducer`, () => {
                 footer: {},
                 title: '',
                 theme: {},
+                siteAlert: {},
                 magazineImageUrl: '',
                 magCover: DEFAULT_MAGCOVER,
                 list: {
@@ -116,6 +117,7 @@ describe(`loadSearch Reducer`, () => {
                 title: '',
                 magazineImageUrl: '',
                 theme: {},
+                siteAlert: {},
                 magCover: DEFAULT_MAGCOVER,
                 list: {
                     items: []

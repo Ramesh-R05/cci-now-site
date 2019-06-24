@@ -35,12 +35,14 @@ export default class Home extends Component {
         listNextParams: PropTypes.object.isRequired,
         teasers: PropTypes.array,
         currentUrl: PropTypes.string.isRequired,
-        theme: PropTypes.object
+        theme: PropTypes.object,
+        siteAlert: PropTypes.object
     };
 
     static defaultProps = {
         teasers: [],
-        theme: {}
+        theme: {},
+        siteAlert: {}
     };
 
     static contextTypes = {
@@ -61,7 +63,7 @@ export default class Home extends Component {
     }
 
     render() {
-        const { currentUrl, heroTeaser, teasers, theme } = this.props;
+        const { currentUrl, heroTeaser, teasers, theme, siteAlert } = this.props;
         const { bottomElm, topElm } = this.state;
         const { config } = this.context;
         const polarLabels = this.context.config.polar.details;
@@ -78,7 +80,7 @@ export default class Home extends Component {
         };
 
         return (
-            <Page currentUrl={currentUrl} theme={theme}>
+            <Page currentUrl={currentUrl} theme={theme} siteAlert={siteAlert}>
                 <div className="home-page">
                     {/* 1st Leaderboard or billboard to show on tablet and up */}
                     <div className="stripe-bg">

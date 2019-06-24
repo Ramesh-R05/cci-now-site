@@ -11,11 +11,13 @@ export default class Document extends Component {
     static propTypes = {
         currentUrl: PropTypes.string.isRequired,
         nodeType: PropTypes.string.isRequired,
-        theme: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+        theme: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+        siteAlert: PropTypes.object
     };
 
     static defaultProps = {
-        theme: {}
+        theme: {},
+        siteAlert: {}
     };
 
     static articleContentBodyConfig = {
@@ -42,7 +44,7 @@ export default class Document extends Component {
     };
 
     render() {
-        const { currentUrl, nodeType, theme } = this.props;
+        const { currentUrl, nodeType, theme, siteAlert } = this.props;
 
         const socialShare = {
             facebook: true,
@@ -53,7 +55,7 @@ export default class Document extends Component {
 
         if (nodeType === 'Gallery') {
             return (
-                <Page currentUrl={currentUrl} hideFooter={false} theme={theme}>
+                <Page currentUrl={currentUrl} hideFooter={false} theme={theme} siteAlert={siteAlert}>
                     <Gallery
                         articleHeaderOrder={['Source', 'Title', 'Summary', 'Date', 'Author', 'ImageCount', 'NativeAd', 'Hero']}
                         contentBodyConfig={galleryContentBodyConfig}
@@ -69,7 +71,7 @@ export default class Document extends Component {
         }
 
         return (
-            <Page currentUrl={currentUrl} hideFooter={false} theme={theme}>
+            <Page currentUrl={currentUrl} hideFooter={false} theme={theme} siteAlert={siteAlert}>
                 <Article
                     articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero']}
                     contentBodyConfig={Document.articleContentBodyConfig}

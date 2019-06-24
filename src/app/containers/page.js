@@ -10,6 +10,7 @@ import Ad from '@bxm/ad/lib/google/components/ad';
 import StandardPageAdsWrapper from '@bxm/ad/lib/google/components/standardPageAdsWrapper';
 import StickyAd from '@bxm/ad/lib/google/components/stickyAd';
 import SiteFooter from '../components/site-footer';
+import SiteAlert from '../components/siteAlert';
 
 function mapStateToProps(context) {
     return {
@@ -51,6 +52,7 @@ export default class Page extends Component {
             PropTypes.array
         ]),
         showWallpaper: PropTypes.bool,
+        siteAlert: PropTypes.object,
         emailLinkTrackingData: PropTypes.shape({
             bauer_global_unique_id: PropTypes.string,
             source: PropTypes.string,
@@ -69,6 +71,7 @@ export default class Page extends Component {
         className: '',
         pageTitle: '',
         theme: null,
+        siteAlert: null,
         showWallpaper: true,
         emailLinkTrackingData: null
     };
@@ -100,6 +103,7 @@ export default class Page extends Component {
             content,
             showWallpaper,
             theme,
+            siteAlert,
             className,
             menuClasses
         } = this.props;
@@ -145,6 +149,8 @@ export default class Page extends Component {
                         isExpanded
                         wrapperClassName="header"
                         headerClassName="header__inner"
+                        SubHeaderComponent={siteAlert && siteAlert.isEnabled ? SiteAlert : null}
+                        subHeaderComponentProps={siteAlert && siteAlert.isEnabled ? siteAlert : {}}
                     />
 
                     <div className="page__content-header">
