@@ -56,8 +56,10 @@
 
     &__form {
         display: flex;
+        position: absolute;
         justify-content: space-around;
         width: 100%;
+        z-index: $z-index-11;
     }
 
     &__text-input {

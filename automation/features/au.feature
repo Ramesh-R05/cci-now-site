@@ -12,9 +12,9 @@ Feature: Smoke test for AU NOW
         And I should see 2 promoted images and titles which are clickable to open their page
         And I should see a "top" feed item containing its image and clickable to open its page
         And I should see a "bottom" feed item containing its image and clickable to open its page
-        When I click on the Load More button
-        Then I should see extra 14 teasers after loading more
-        And I should see a load more feed item containing its image and clickable to open its page
+        #When I click on the Load More button
+        #Then I should see extra 14 teasers after loading more
+        #And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario Outline: Verify the static <page> brand data on its brand landing page
         Given I switch to "mobile" view
