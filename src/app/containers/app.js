@@ -79,15 +79,17 @@ class Application extends Component {
     }
 
     render() {
-        if (!this.props.currentRoute) {
-            return <ErrorPage currentUrl={this.props.currentNavigate.url} status={this.props.currentNavigateError.statusCode} />;
+        const { currentRoute, currentNavigate, error, currentNavigateError, nodeType, theme, siteAlert } = this.props;
+
+        if (!currentRoute) {
+            return <ErrorPage currentUrl={currentNavigate && currentNavigate.url} status={currentNavigateError && currentNavigateError.statusCode} />;
         }
 
-        if (this.props.error) {
-            return <ErrorPage currentUrl={this.props.currentRoute.url} status={this.props.error.status} />;
+        if (error) {
+            return <ErrorPage currentUrl={currentRoute && currentRoute.url} status={error.status} />;
         }
 
-        const Handler = this.props.currentRoute.handler;
+        const Handler = (currentRoute && currentRoute.handler) || ErrorPage;
 
         const muiTheme = getMuiTheme({
             fontFamily: '"Amsi Pro Narrow",sans-serif',
@@ -99,12 +101,7 @@ class Application extends Component {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div className={`${className} ${regionClassName}`}>
-                    <Handler
-                        currentUrl={this.props.currentRoute.url}
-                        nodeType={this.props.nodeType}
-                        theme={this.props.theme}
-                        siteAlert={this.props.siteAlert}
-                    />
+                    <Handler currentUrl={currentRoute && currentRoute.url} nodeType={nodeType} theme={theme} siteAlert={siteAlert} />
                 </div>
             </MuiThemeProvider>
         );
