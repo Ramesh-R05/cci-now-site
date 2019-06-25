@@ -22,6 +22,8 @@
     &__nav {
         display: inline-block;
         margin-left: 0;
+        z-index: $z-index-11;
+        position: relative;
         transform: translate(0, 0);
 
         @media #{$xlarge-up} {

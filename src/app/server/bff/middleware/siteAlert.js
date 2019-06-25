@@ -4,18 +4,28 @@ import makeRequest from '../../makeRequest';
 export default async function siteAlert(req, res, next) {
     try {
         const homepageData = await makeRequest(`${req.app.locals.config.services.remote.entity}/homepage`);
+        const {
+            siteAlertTextColour,
+            siteAlertBackgroundColour,
+            siteAlertBackgroundImage,
+            siteAlertButtonColour,
+            siteAlertPrimaryText,
+            siteAlertSecondaryText,
+            siteAlertButtonLink,
+            enableSiteAlert
+        } = homepageData;
         req.data = req.data || {};
         req.data.siteAlert = {
             styles: {
-                textColor: homepageData.siteAlertTextColour,
-                backgroundColor: homepageData.siteAlertBackgroundColour,
-                backgroundImage: homepageData.siteAlertBackgroundImage.url,
-                buttonColor: homepageData.siteAlertButtonColour
+                textColor: siteAlertTextColour,
+                backgroundColor: siteAlertBackgroundColour,
+                backgroundImage: siteAlertBackgroundImage && siteAlertBackgroundImage.url ? siteAlertBackgroundImage.url : '',
+                buttonColor: siteAlertButtonColour
             },
-            primaryText: homepageData.siteAlertPrimaryText,
-            secondaryText: homepageData.siteAlertSecondaryText,
-            link: homepageData.siteAlertButtonLink,
-            isEnabled: homepageData.enableSiteAlert
+            primaryText: siteAlertPrimaryText,
+            secondaryText: siteAlertSecondaryText,
+            link: siteAlertButtonLink,
+            isEnabled: enableSiteAlert
         };
     } catch (error) {
         logger.error(error);
