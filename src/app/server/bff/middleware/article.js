@@ -17,9 +17,6 @@ export default async function article(req, res, next) {
 
         const source = get(req, 'data.entity.articleSource', '');
         const adBrand = find(req.app.locals.config.brands.site, b => b.title === source);
-        req.data.entity.adBrand = get(adBrand, 'id', 'ntl');
-        // TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
-        req.data.entity.pageDateCreated = momentTimezone.tz(req.data.entity.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
 
         let listingQuery = '';
 
@@ -29,7 +26,20 @@ export default async function article(req, res, next) {
             listingQuery = "nodeTypeAlias eq 'Article' or nodeTypeAlias eq 'Gallery'";
         }
 
-        req.data.leftHandSide = await getLatestTeasers(TOP, undefined, listingQuery);
+        const leftHandSide = await getLatestTeasers(TOP, undefined, listingQuery);
+
+        req.data = req.data || {};
+
+        req.data = {
+            ...req.data,
+            entity: {
+                ...req.data.entity,
+                adBrand: get(adBrand, 'id', 'ntl'),
+                // TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
+                pageDateCreated: momentTimezone.tz(req.data.entity.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss')
+            },
+            leftHandSide
+        };
 
         next();
     } catch (error) {

@@ -26,17 +26,11 @@ export default async function tagMiddleware(req, res, next) {
             return;
         }
 
-        // Exclude metadata tags from displaying as tags pages
-        if (tag.indexOf('metadata') > 0) {
-            next();
-
-            return;
-        }
-
         let title = tag
             .split('-')
             .map(capitalize)
             .join(' ');
+
         const { entity: entityService, tag: tagService } = req.app.locals.config.services.remote;
 
         // TODO(thatzi): I don't like this. Need a better way to handle tag pages, tag data and tag canonicals
@@ -81,9 +75,7 @@ export default async function tagMiddleware(req, res, next) {
         const latestTeasersResp = await getLatestTeasers(listCount, skip, listingQuery);
 
         // TODO: need to handle `data` in resp better
-        const latestTeasers = latestTeasersResp || {
-            data: []
-        };
+        const latestTeasers = latestTeasersResp && latestTeasersResp.data;
 
         const basePath = query.section ? `/${tag}` : `/tags/${tag}`;
         let previousPage = null;
@@ -98,7 +90,7 @@ export default async function tagMiddleware(req, res, next) {
 
         let nextPage = null;
 
-        if (skip + latestTeasers.data.length < latestTeasers.totalCount) {
+        if (skip + latestTeasers.length < latestTeasers.totalCount) {
             const path = `${basePath}?pageNo=${pageNo + 1}`;
             nextPage = {
                 path,
@@ -113,30 +105,32 @@ export default async function tagMiddleware(req, res, next) {
         };
 
         req.data = req.data || {};
-        req.data.entity = Object.assign(
-            {},
-            { nodeTypeAlias: 'TagSection' },
-            {
+
+        req.data = {
+            ...req.data,
+            entity: {
+                nodeTypeAlias: 'TagSection',
                 contentTitle: title,
                 url,
                 pageTitle: tagData.title || title,
                 pageMetaDescription: tagData.description || ''
-            }
-        );
-        req.data.latestTeasers = latestTeasers.data.slice(0, latestTeaserCount);
-        req.data.list = {
-            listName: title,
-            params: {
-                pageNo,
-                section: title,
-                filter: 'contentTags'
             },
-            items: [parseEntities(latestTeasers.data.slice(latestTeaserCount))],
-            previous: previousPage,
-            current: currentPage,
-            next: nextPage
+            latestTeasers: latestTeasers.slice(0, latestTeaserCount),
+            list: {
+                listName: title,
+                params: {
+                    pageNo,
+                    section: title,
+                    filter: 'contentTags'
+                },
+                items: [parseEntities(latestTeasers.slice(latestTeaserCount))],
+                previous: previousPage,
+                current: currentPage,
+                next: nextPage
+            },
+            section: { name: 'Tag', urlName: 'tag' }
         };
-        req.data.section = { name: 'Tag', urlName: 'tag' }; // Initally used to set the ad slot within @bxm/ads
+
         next();
     } catch (error) {
         next(error);

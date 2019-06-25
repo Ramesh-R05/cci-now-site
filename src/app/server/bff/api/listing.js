@@ -3,6 +3,11 @@ import config from '../../../config';
 import logger from '../../../../logger';
 const FEEDPATH = '/teasers';
 
+const emptyResponse = {
+    data: [],
+    totalCount: 0
+};
+
 export function getLatestTeasers(top = 20, skip = 0, filter) {
     let query = '?$select=*';
 
@@ -15,9 +20,9 @@ export function getLatestTeasers(top = 20, skip = 0, filter) {
     return makeRequest(`${config.services.remote.listings}${FEEDPATH}/${query}`)
         .then(res => res)
         .catch(err => {
-            logger.error(err);
+            logger.error({ msg: 'getLatestTeasers makeRequest catch', err });
 
-            return [];
+            return emptyResponse;
         });
 }
 
@@ -26,5 +31,9 @@ export function getMoreGalleries(top = 10) {
 
     return makeRequest(`${config.services.remote.listings}${FEEDPATH}/${query}`)
         .then(res => res)
-        .catch(() => []);
+        .catch(err => {
+            logger.error({ msg: 'getMoreGalleries makeRequest catch', err });
+
+            return emptyResponse;
+        });
 }

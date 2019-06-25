@@ -29,18 +29,22 @@ export default function headerMeta(req, res, next) {
         // https://bitbucket.org/bauermediaau/bauerdigital/src/5e59351b2544c5ce91bb20e0e4d99593076d074a/Lynx.Services.Common/Implementations/HeaderMetaService.cs?at=develop-v3.1&fileviewer=file-view-default#HeaderMetaService.cs-36
     }
 
-    req.data = req.data || {};
-    req.data.headerMetaData = {
-        googleTagManagerEnvironment: env,
-        googleTagManagerMasthead: config.gtm.masthead,
-        robots: `${robotsIndex},${robotsFollow}`
-    };
-
     const currentPageUrl = get(req, 'data.list.current.url');
 
-    if (currentPageUrl) {
-        req.data.entity.pageCanonicalUrl = currentPageUrl;
-    }
+    req.data = req.data || {};
+
+    req.data = {
+        ...req.data,
+        entity: {
+            ...req.data.entity,
+            ...(currentPageUrl && { pageCanonicalUrl: currentPageUrl })
+        },
+        headerMetaData: {
+            googleTagManagerEnvironment: env,
+            googleTagManagerMasthead: config.gtm.masthead,
+            robots: `${robotsIndex},${robotsFollow}`
+        }
+    };
 
     next();
 }

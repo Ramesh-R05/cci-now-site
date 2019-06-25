@@ -3,16 +3,14 @@ import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
 
 let makeRequestStub = () => {};
-let getLatestTeasersStub = () => {};
+const getLatestTeasersStub = sinon.stub();
 
 const tagMiddleware = proxyquire('../../../../app/server/bff/middleware/tag', {
     '../../makeRequest': (...args) => {
         return makeRequestStub(...args);
     },
     '../api/listing': {
-        getLatestTeasers: (...args) => {
-            return getLatestTeasersStub(...args);
-        }
+        getLatestTeasers: getLatestTeasersStub
     }
 }).default;
 
@@ -40,6 +38,10 @@ describe('Tag middleware', () => {
     let req;
     let rejectedResponse;
 
+    afterEach(() => {
+        getLatestTeasersStub.reset();
+    });
+
     describe('when a tag is set in the query params', () => {
         const baseReq = { app: { locals: { config } }, query: { tag: 'two-words' } };
         describe('and an entity is not defined', () => {
@@ -55,7 +57,7 @@ describe('Tag middleware', () => {
                     makeRequestStub = sinon.stub();
                     makeRequestStub.withArgs(`${entityService}/section/${req.query.tag}`).resolves({ nodeTypeAlias: 'TagSection' });
                     makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
-                    getLatestTeasersStub = sinon.stub().rejects(rejectedResponse);
+                    getLatestTeasersStub.rejects(rejectedResponse);
                 });
 
                 it('should have called the entity service', done => {
@@ -91,7 +93,7 @@ describe('Tag middleware', () => {
                     next = sinon.spy();
                     makeRequestStub = sinon.stub();
                     makeRequestStub.withArgs(`${entityService}/section/${req.query.tag}`).rejects(rejectedResponse);
-                    getLatestTeasersStub = sinon.stub().resolves(latestTeasers);
+                    getLatestTeasersStub.resolves(latestTeasers);
                 });
 
                 describe('and the tag service returns an error response', () => {
@@ -228,6 +230,11 @@ describe('Tag middleware', () => {
                         const obj2 = { title: 'Title1', description: 'desc1', tag: { name: 'this:is:a:Two Words' } };
 
                         beforeEach(() => {
+                            getLatestTeasersStub.resolves({
+                                data: [],
+                                totalCount: 0
+                            });
+
                             makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).resolves({ data: [obj1, obj2] });
                         });
 
@@ -259,7 +266,7 @@ describe('Tag middleware', () => {
                             .withArgs(`${entityService}/section/${req.query.tag}`)
                             .resolves({ nodeTypeAlias: 'Section', url: '/url-here' });
                         makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
-                        getLatestTeasersStub = sinon.stub();
+                        getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
                     });
 
                     it('should set the entity with valid properties', done => {
@@ -285,7 +292,7 @@ describe('Tag middleware', () => {
                         makeRequestStub = sinon.stub();
                         makeRequestStub.withArgs(`${entityService}/section/${req.query.tag}`).resolves({ nodeTypeAlias: 'TagSection' });
                         makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
-                        getLatestTeasersStub = sinon.stub();
+                        getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
                     });
 
                     it('should set the entity with valid properties', done => {
@@ -313,7 +320,7 @@ describe('Tag middleware', () => {
                             .withArgs(`${entityService}/section/${req.query.tag}`)
                             .resolves({ nodeTypeAlias: 'TagSection', url: '/url-of-tag-page' });
                         makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
-                        getLatestTeasersStub = sinon.stub();
+                        getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
                     });
 
                     it('should set the entity with valid properties', done => {
@@ -342,7 +349,7 @@ describe('Tag middleware', () => {
                     makeRequestStub = sinon.stub();
                     makeRequestStub.withArgs(`${entityService}/section/${req.query.tag}`).resolves({});
                     makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
-                    getLatestTeasersStub = sinon.stub().resolves(latestTeasers);
+                    getLatestTeasersStub.resolves(latestTeasers);
                 });
 
                 it('should call both the listing and entity service, along with calling next', done => {
@@ -375,7 +382,7 @@ describe('Tag middleware', () => {
                     next = sinon.spy();
                     makeRequestStub = sinon.stub();
                     makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
-                    getLatestTeasersStub = sinon.stub().resolves({});
+                    getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
                 });
 
                 it('should not call the listing or entity services, only call next', done => {
@@ -396,7 +403,7 @@ describe('Tag middleware', () => {
                     next = sinon.spy();
                     makeRequestStub = sinon.stub();
                     makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
-                    getLatestTeasersStub = sinon.stub();
+                    getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
                 });
 
                 it('should not need to call the entity service', done => {
@@ -418,7 +425,7 @@ describe('Tag middleware', () => {
                 next = sinon.spy();
                 makeRequestStub = sinon.stub();
                 makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
-                getLatestTeasersStub = sinon.stub();
+                getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
             });
 
             it('should not call the listing or entity services, only call next', done => {
@@ -441,7 +448,7 @@ describe('Tag middleware', () => {
             makeRequestStub = sinon.stub();
             makeRequestStub.withArgs(`${entityService}/section/${req.query.section}`).resolves({});
             makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.section)}`).rejects();
-            getLatestTeasersStub = sinon.stub().resolves({});
+            getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
         });
 
         it('should call both the listing and entity service, along with calling next', done => {
@@ -461,7 +468,7 @@ describe('Tag middleware', () => {
             req = { app: { locals: { config } } };
             next = sinon.spy();
             makeRequestStub = sinon.stub();
-            getLatestTeasersStub = sinon.stub().resolves({});
+            getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
         });
         it('should not call the listing or entity services, only call next', done => {
             tagMiddleware(req, res, next)

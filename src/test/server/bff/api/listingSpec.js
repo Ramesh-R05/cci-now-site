@@ -138,10 +138,13 @@ describe('ListingAPI', () => {
                     makeRequestStub = sinon.stub().rejects(rejectedResponse);
                 });
 
-                it('should return an empty array object', done => {
+                it('should return a valid default with data and totalCount properties as initial values', done => {
                     SectionApi.getLatestTeasers(top, undefined, sectionId)
                         .then(value => {
-                            expect(value).to.deep.eq([]);
+                            expect(value).to.deep.eq({
+                                totalCount: 0,
+                                data: []
+                            });
                             done();
                         })
                         .catch(done);

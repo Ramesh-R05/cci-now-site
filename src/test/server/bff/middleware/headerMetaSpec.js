@@ -39,6 +39,7 @@ describe('HeaderMeta middleware', () => {
 
             it(`should set the req data object to contain 'headerMetaData' object`, () => {
                 expect(req.data).to.deep.eq({
+                    entity: {},
                     headerMetaData: {
                         googleTagManagerEnvironment: 'local',
                         googleTagManagerMasthead: config.gtm.masthead,
@@ -133,6 +134,7 @@ describe('HeaderMeta middleware', () => {
 
         it(`should set the req data object to contain 'headerMetaData' object`, () => {
             expect(req.data).to.deep.eq({
+                entity: {},
                 headerMetaData: {
                     googleTagManagerEnvironment: 'prod',
                     googleTagManagerMasthead: config.gtm.masthead,
@@ -161,6 +163,7 @@ describe('HeaderMeta middleware', () => {
 
             it(`should set the req data object to contain 'headerMetaData' object`, () => {
                 expect(req.data).to.deep.eq({
+                    entity: {},
                     headerMetaData: {
                         googleTagManagerEnvironment: 'prod',
                         googleTagManagerMasthead: config.gtm.masthead,

@@ -3,7 +3,12 @@ import makeRequest from '../../makeRequest';
 
 export default async function siteAlert(req, res, next) {
     try {
-        const homepageData = await makeRequest(`${req.app.locals.config.services.remote.entity}/homepage`);
+        req.data = req.data || {};
+
+        const homepageData = await makeRequest(`${req.app.locals.config.services.remote.entity}/homepage`)
+            .then(data => data)
+            .catch(() => ({}));
+
         const {
             siteAlertTextColour,
             siteAlertBackgroundColour,
@@ -14,7 +19,7 @@ export default async function siteAlert(req, res, next) {
             siteAlertButtonLink,
             enableSiteAlert
         } = homepageData;
-        req.data = req.data || {};
+
         req.data.siteAlert = {
             styles: {
                 textColor: siteAlertTextColour,

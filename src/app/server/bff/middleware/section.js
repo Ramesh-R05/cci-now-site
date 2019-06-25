@@ -58,10 +58,7 @@ export default async function sectionMiddleware(req, res, next) {
             throw err;
         }
 
-        // TODO: need to handle `data` in resp better
-        const latestTeasers = latestTeasersResp || {
-            data: []
-        };
+        const latestTeasers = latestTeasersResp && latestTeasersResp.data;
 
         let previousPage = null;
 
@@ -75,7 +72,7 @@ export default async function sectionMiddleware(req, res, next) {
 
         let nextPage = null;
 
-        if (skip + latestTeasers.data.length < latestTeasers.totalCount) {
+        if (skip + latestTeasers.length < latestTeasers.totalCount) {
             const path = `${sectionQuery}?pageNo=${pageNo + 1}`;
             nextPage = {
                 path,
@@ -89,19 +86,22 @@ export default async function sectionMiddleware(req, res, next) {
             url: `${req.app.locals.config.site.host}${path}`
         };
 
-        req.data.latestTeasers = latestTeasers.data.slice(0, latestTeaserCount);
-        req.data.list = {
-            listName: section,
-            params: {
-                pageNo,
-                section: teaserQuery,
-                filter: teaserFilter,
-                sectionFormatted: section
-            },
-            items: [parseEntities(latestTeasers.data.slice(latestTeaserCount))],
-            previous: previousPage,
-            current: currentPage,
-            next: nextPage
+        req.data = {
+            ...req.data,
+            latestTeasers: latestTeasers.slice(0, latestTeaserCount),
+            list: {
+                listName: section,
+                params: {
+                    pageNo,
+                    section: teaserQuery,
+                    filter: teaserFilter,
+                    sectionFormatted: section
+                },
+                items: [parseEntities(latestTeasers.slice(latestTeaserCount))],
+                previous: previousPage,
+                current: currentPage,
+                next: nextPage
+            }
         };
 
         next();

@@ -46,10 +46,10 @@ describe('Home middleware', () => {
 
         before(() => {
             next = sinon.spy();
-            makeRequestStub = sinon.stub().rejects(rejectedResponse);
+            makeRequestStub = sinon.stub().throws(rejectedResponse);
             getLatestTeasersStub = sinon.stub();
             getLatestTeasersStub.onFirstCall().resolves([]);
-            getLatestTeasersStub.onSecondCall().resolves([]);
+            getLatestTeasersStub.onSecondCall().resolves({ data: [], totalCount: 0 });
         });
 
         it('should pass error to next middleware', done => {
@@ -124,17 +124,22 @@ describe('Home middleware', () => {
         });
 
         describe('and getLatestTeasers returns an error when getting video gallery teasers', () => {
+            let emptyResponse;
             const req = { app: { locals: { config } } };
 
             before(() => {
+                emptyResponse = {
+                    data: [],
+                    totalCount: 0
+                };
+
                 next = sinon.spy();
                 makeRequestStub = sinon.stub().resolves(entity);
-                getLatestTeasersStub = sinon.stub();
-                getLatestTeasersStub.onSecondCall().rejects();
+                getLatestTeasersStub = sinon.stub().resolves(latestTeasers);
+                getLatestTeasersStub.onSecondCall().resolves(emptyResponse);
             });
 
             it('should return an empty object for videoGalleryTeasers in `req.data.videoGalleryTeasers`', done => {
-                const emptyResponse = { data: [] };
                 homeMiddleware(req, res, next)
                     .then(() => {
                         expect(req.data.videoGalleryTeasers).to.deep.equal(emptyResponse);

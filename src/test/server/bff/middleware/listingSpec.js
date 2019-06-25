@@ -18,6 +18,7 @@ describe('Listing middleware', () => {
 
     describe('when there is a section in the query param', () => {
         const reqBase = { query: { section: 'sec' }, app: { locals: { config } } };
+
         describe('when the remote returns an error response', () => {
             const req = { ...reqBase };
             const rejectedResponse = {
@@ -28,7 +29,7 @@ describe('Listing middleware', () => {
 
             before(() => {
                 next = sinon.spy();
-                makeRequestStub = sinon.stub().rejects(rejectedResponse);
+                makeRequestStub = sinon.stub().throws(rejectedResponse);
             });
 
             it('should pass error to next middleware', done => {

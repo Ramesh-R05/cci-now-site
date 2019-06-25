@@ -25,27 +25,30 @@ export default async function home(req, res, next) {
 
         const skip = (pageNo - 1) * listCount;
         const [pageData, latestTeasersResp, videoGalleryTeasers] = await Promise.all([
-            makeRequest(`${req.app.locals.config.services.remote.entity}/homepage`),
+            makeRequest(`${req.app.locals.config.services.remote.entity}/homepage`)
+                .then(data => data)
+                .catch(() => ({})),
             getLatestTeasers(listCount, skip),
-            getLatestTeasers(videoGalleryTeaserCount, undefined, 'video eq %27$contentTags%27').catch(() => ({ data: [] }))
+            getLatestTeasers(videoGalleryTeaserCount, undefined, 'video eq %27$contentTags%27')
         ]);
-        videoGalleryTeasers.data = videoGalleryTeasers.data.map(gallery => {
-            gallery.contentImageUrl = get(gallery, 'contentVideo.properties.videoConfiguration.videoStillUrl', gallery.contentImageUrl);
 
-            return gallery;
-        });
+        videoGalleryTeasers &&
+            videoGalleryTeasers.data &&
+            videoGalleryTeasers.data.forEach(gallery => {
+                gallery.contentImageUrl = get(gallery, 'contentVideo.properties.videoConfiguration.videoStillUrl', gallery.contentImageUrl);
 
-        // TODO: need to handle `data` in resp better
-        const latestTeasers = latestTeasersResp || {
-            data: []
-        };
+                return gallery;
+            });
 
-        latestTeasers.data.map(teaser => {
-            // TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
-            teaser.pageDateCreated = momentTimezone.tz(teaser.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
+        const latestTeasers = latestTeasersResp && latestTeasersResp.data;
 
-            return teaser;
-        });
+        latestTeasers &&
+            latestTeasers.forEach(teaser => {
+                // TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
+                teaser.pageDateCreated = momentTimezone.tz(teaser.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');
+
+                return teaser;
+            });
 
         let previousPage = null;
 
@@ -59,7 +62,7 @@ export default async function home(req, res, next) {
 
         let nextPage = null;
 
-        if (skip + latestTeasers.data.length < latestTeasers.totalCount) {
+        if (skip + latestTeasers.length < latestTeasers.totalCount) {
             const path = `/?pageNo=${pageNo + 1}`;
             nextPage = {
                 path,
@@ -75,14 +78,14 @@ export default async function home(req, res, next) {
 
         req.data = req.data || {};
         req.data.entity = { ...pageData };
-        req.data.latestTeasers = latestTeasers.data.slice(0, latestTeaserCount);
+        req.data.latestTeasers = latestTeasers.slice(0, latestTeaserCount);
 
         req.data.list = {
             listName: 'home',
             params: {
                 pageNo
             },
-            items: [parseEntities(latestTeasers.data.slice(latestTeaserCount))],
+            items: [parseEntities(latestTeasers.slice(latestTeaserCount))],
             previous: previousPage,
             current: currentPage,
             next: nextPage

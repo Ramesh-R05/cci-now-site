@@ -1,4 +1,3 @@
-import logger from '../../../../logger';
 import getModules from '../api/module';
 
 export default async function pageModules(req, res, next) {
@@ -15,9 +14,11 @@ export default async function pageModules(req, res, next) {
             `${section}hero`,
             `${section}theme`
         );
-    } catch (error) {
-        logger.error(error);
-    }
 
-    next();
+        next();
+    } catch (error) {
+        console.log(error);
+
+        next(error);
+    }
 }

@@ -90,7 +90,7 @@ describe('Page middleware', () => {
                 status: 404
             };
             next = sinon.spy();
-            makeRequestStub = sinon.stub().rejects(rejectedResponse);
+            makeRequestStub = sinon.stub().throws(rejectedResponse);
             getPageIDStub = sinon.stub().returns('DOLLY-1234');
         });
 
