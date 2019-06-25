@@ -2,6 +2,10 @@
 import navigation from '../modules/navigation';
 
 export default {
+    section: {
+        id: '1234',
+        name: 'somesection'
+    },
     entity: {
         authorProfiles: [],
         body: [
