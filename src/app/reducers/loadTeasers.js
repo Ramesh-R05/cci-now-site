@@ -1,7 +1,6 @@
 export const initialState = {
     heroTeaser: null,
     latestTeasers: [],
-    videoGalleryTeasers: [],
     mustRead: [],
     promoted: { title: '', items: [] },
     list: {}
@@ -12,19 +11,11 @@ export function reducer(state = initialState, payload = { body: {} }, eventName 
 
     switch (actionType) {
         case 'LOAD_CONTENT': {
-            const {
-                heroTeaser = null,
-                latestTeasers = [],
-                videoGalleryTeasers = [],
-                list = {},
-                mustRead = [],
-                promoted = { title: '', items: [] }
-            } = payload.body;
+            const { heroTeaser = null, latestTeasers = [], list = {}, mustRead = [], promoted = { title: '', items: [] } } = payload.body;
 
             return {
                 heroTeaser,
                 latestTeasers,
-                videoGalleryTeasers,
                 mustRead,
                 promoted,
                 list
@@ -35,7 +26,6 @@ export function reducer(state = initialState, payload = { body: {} }, eventName 
             return {
                 heroTeaser: null,
                 latestTeasers: [],
-                videoGalleryTeasers: [],
                 mustRead: [],
                 promoted: { title: '', items: [] },
                 list: {}

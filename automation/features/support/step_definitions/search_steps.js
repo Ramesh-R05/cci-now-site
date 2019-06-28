@@ -3,16 +3,19 @@ var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
 var world = require('../world');
 
 module.exports = function() {
-    this.Then(/^I should see the search icon in the navigation bar$/, function () {
+    this.Then(/^I should see the search icon in the navigation bar$/,  () => {
+        const { searchNavIcon } = search
+        
         browser.scroll(0,0);
-        var searchIcon = browser.waitForVisible(search.searchNavIcon,5000);
-        expect(searchIcon).toBe(true);
+
+        expect(browser.waitForVisible(searchNavIcon, 6000)).toBe(true)
     });
 
-    this.Then(/^I should see the search box after clicking the icon$/, function () {
-        browser.click(search.searchNavIcon);
-        var searchBox = browser.waitForVisible(search.searchNavBox,5000);
-        expect(searchBox).toBe(true);
+    this.Then(/^I should see the search box after clicking the icon$/,  () => {
+        const { searchNavIcon, searchNavBox} = search
+    
+        browser.$(searchNavIcon).click()
+        expect(browser.waitForVisible(searchNavBox, 6000)).toBe(true);
     });
 
     this.Then(/^I should still see the search box after scrolling the page down$/, function () {
@@ -38,7 +41,7 @@ module.exports = function() {
                 searchSubmit = search.searchNavSubmit;
                 if (browser.isVisible(search.searchNavBox) === false) {
                     browser.click(search.searchNavIcon);
-                    browser.waitForVisible(searchBox,5000);
+                    browser.waitForVisible(searchBox,6000);
                 }
                 break;
             case 'search result page' :

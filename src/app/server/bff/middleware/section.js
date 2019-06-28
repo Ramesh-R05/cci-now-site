@@ -1,8 +1,9 @@
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 import { getLatestTeasers } from '../api/listing';
-import { parseEntities } from '../helper/parseEntity';
 import makeRequest from '../../makeRequest';
+import createReapeatableList from '../helper/createReapeatableList';
+
 const latestTeaserCountForBrand = 6;
 const latestTeaserCountDefault = 7;
 let latestTeaserCount = latestTeaserCountDefault;
@@ -49,8 +50,12 @@ export default async function sectionMiddleware(req, res, next) {
 
         const skip = (pageNo - 1) * listCount;
         const latestTeasersResp = await getLatestTeasers(listCount, skip, listingQuery);
-        const totalPageFloor = Math.floor(latestTeasersResp.totalCount / listCount);
-        const totalPage = latestTeasersResp.totalCount % listCount ? totalPageFloor : totalPageFloor + 1;
+
+        const latestTeasers = latestTeasersResp && latestTeasersResp.data;
+        const totalCount = latestTeasersResp.totalCount;
+
+        const totalPageFloor = Math.floor(totalCount / listCount);
+        const totalPage = totalCount % listCount ? totalPageFloor : totalPageFloor + 1;
         const err = new Error('Page not found');
         err.status = 404;
 
@@ -58,50 +63,25 @@ export default async function sectionMiddleware(req, res, next) {
             throw err;
         }
 
-        const latestTeasers = latestTeasersResp && latestTeasersResp.data;
-
-        let previousPage = null;
-
-        if (pageNo > 1) {
-            const path = pageNo === 2 ? `${sectionQuery}` : `${sectionQuery}?pageNo=${pageNo - 1}`;
-            previousPage = {
-                path,
-                url: `${req.app.locals.config.site.host}${path}`
-            };
-        }
-
-        let nextPage = null;
-
-        if (skip + latestTeasers.length < latestTeasers.totalCount) {
-            const path = `${sectionQuery}?pageNo=${pageNo + 1}`;
-            nextPage = {
-                path,
-                url: `${req.app.locals.config.site.host}${path}`
-            };
-        }
-
-        const path = pageNo > 1 ? `${sectionQuery}?pageNo=${pageNo}` : `${sectionQuery}`;
-        const currentPage = {
-            path,
-            url: `${req.app.locals.config.site.host}${path}`
-        };
+        const list = createReapeatableList({
+            listName: section,
+            basePath: sectionQuery,
+            pageNo,
+            skip,
+            items: latestTeasers,
+            totalCount,
+            startFrom: latestTeaserCount,
+            additionalParams: {
+                section: teaserQuery,
+                filter: teaserFilter,
+                sectionFormatted: section
+            }
+        });
 
         req.data = {
             ...req.data,
             latestTeasers: latestTeasers.slice(0, latestTeaserCount),
-            list: {
-                listName: section,
-                params: {
-                    pageNo,
-                    section: teaserQuery,
-                    filter: teaserFilter,
-                    sectionFormatted: section
-                },
-                items: [parseEntities(latestTeasers.slice(latestTeaserCount))],
-                previous: previousPage,
-                current: currentPage,
-                next: nextPage
-            }
+            list
         };
 
         next();

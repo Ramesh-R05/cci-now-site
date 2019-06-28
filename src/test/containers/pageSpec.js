@@ -1,7 +1,9 @@
 import { betterMockComponentContext } from '@bxm/flux';
+import PropTypes from 'prop-types';
 const Context = betterMockComponentContext();
 const { React, ReactDOM, TestUtils } = Context;
 import proxyquire, { noCallThru } from 'proxyquire';
+
 noCallThru();
 
 const OffCanvasStub = Context.createStubComponentWithChildren();
@@ -58,7 +60,7 @@ describe('Page Container', () => {
     };
     const contextConfigStub = {
         key: 'config',
-        type: '',
+        type: PropTypes.object,
         value: {
             brands: brandStubData,
             site: {
@@ -204,8 +206,10 @@ describe('Page Container', () => {
             });
         });
 
-        it.skip(`should pass the toggleMenu function to the button as an onClick`, () => {
-            expect(closeButton.props.onClick).to.eq(currentInstance.toggleMenu);
+        it(`should pass the toggleMenu function to the button as an onClick`, () => {
+            TestUtils.Simulate.click(closeButton);
+
+            expect(toggleMenuStub).to.be.called;
         });
 
         it(`should render close button and Navigation component as children of the offCanvas component`, () => {

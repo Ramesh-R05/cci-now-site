@@ -28,7 +28,8 @@ describe('HeaderMeta middleware', () => {
             process.env.APP_ENV = '';
             req = {
                 ...baseReq,
-                query: { hostname: 'dev.url.com' }
+                query: { hostname: 'dev.url.com' },
+                data: {}
             };
         });
 
@@ -127,7 +128,8 @@ describe('HeaderMeta middleware', () => {
             process.env.APP_ENV = 'prod';
             req = {
                 ...baseReq,
-                query: { hostname: 'prelive.url.com' }
+                query: { hostname: 'prelive.url.com' },
+                data: {}
             };
             headerMetaMiddleware(req, res, next);
         });
@@ -156,7 +158,8 @@ describe('HeaderMeta middleware', () => {
                 process.env.APP_ENV = 'prod';
                 req = {
                     ...baseReq,
-                    query: { hostname: configStub.site.prodDomain }
+                    query: { hostname: configStub.site.prodDomain },
+                    data: {}
                 };
                 headerMetaMiddleware(req, res, next);
             });
@@ -182,7 +185,8 @@ describe('HeaderMeta middleware', () => {
                 process.env.APP_ENV = 'prod';
                 req = {
                     ...baseReq,
-                    query: { hostname: configStub.site.prodDomain, preview: 'preview' }
+                    query: { hostname: configStub.site.prodDomain, preview: 'preview' },
+                    data: {}
                 };
                 headerMetaMiddleware(req, res, next);
             });

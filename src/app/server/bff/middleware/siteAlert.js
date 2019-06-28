@@ -3,8 +3,6 @@ import makeRequest from '../../makeRequest';
 
 export default async function siteAlert(req, res, next) {
     try {
-        req.data = req.data || {};
-
         const homepageData = await makeRequest(`${req.app.locals.config.services.remote.entity}/homepage`)
             .then(data => data)
             .catch(() => ({}));

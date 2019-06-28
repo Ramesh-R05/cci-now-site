@@ -14,7 +14,7 @@
     "test": "babel-node ./node_modules/babel-istanbul/lib/cli cover --root ./app --include-all-sources --report cobertura --report html ./node_modules/mocha/bin/_mocha -- --require ./test/setup.js --recursive --check-leaks",
     "test:debug": "babel-node $NODE_DEBUG_OPTION ./node_modules/babel-istanbul/lib/cli cover --root ./app --include-all-sources --report cobertura --report html ./node_modules/mocha/bin/_mocha -- --require ./test/setup.js --recursive --check-leaks",
     "test:ci": "npm run test -- --reporter=xunit --reporter-options output=./../shippable/testresults/result.xml",
-    "test:unit": "mocha --require babel-polyfill --require babel-register --require test/setup.js --reporter min --recursive --check-leaks",
+    "test:unit": "mocha --require babel-polyfill --require babel-register --require test/setup.js --reporter spec --recursive --check-leaks",
     "test:tdd": "npm run test:unit -- --watch",
     "clean": "rimraf dist/ coverage/ && mkdir dist",
     "build": "npm run clean && NODE_ENV=production webpack --bail --hide-modules --progress --mode production",
@@ -95,6 +95,7 @@
     "superagent-proxy": "^1.0.2"
   },
   "devDependencies": {
+    "@bxm/unit-test-utils": "^3.0.0",
     "autoprefixer": "^9.0.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.6",

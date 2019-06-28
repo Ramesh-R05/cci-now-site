@@ -31,8 +31,6 @@ export default function headerMeta(req, res, next) {
 
     const currentPageUrl = get(req, 'data.list.current.url');
 
-    req.data = req.data || {};
-
     req.data = {
         ...req.data,
         entity: {

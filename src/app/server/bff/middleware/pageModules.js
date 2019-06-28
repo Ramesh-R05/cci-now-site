@@ -2,8 +2,8 @@ import getModules from '../api/module';
 
 export default async function pageModules(req, res, next) {
     try {
-        req.data = {};
         const section = (req.query && req.query.section) || 'home';
+
         req.data = await getModules(
             'headernavigation',
             'hamburgernavigation',
@@ -17,8 +17,6 @@ export default async function pageModules(req, res, next) {
 
         next();
     } catch (error) {
-        console.log(error);
-
         next(error);
     }
 }

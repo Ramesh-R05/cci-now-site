@@ -2,8 +2,9 @@ import proxyquire, { noCallThru } from 'proxyquire';
 
 noCallThru();
 
-let makeRequestStub = () => {};
+const makeRequestStub = sinon.stub();
 const getLatestTeasersStub = sinon.stub();
+const createRepeatableListStub = sinon.stub();
 
 const tagMiddleware = proxyquire('../../../../app/server/bff/middleware/tag', {
     '../../makeRequest': (...args) => {
@@ -11,7 +12,8 @@ const tagMiddleware = proxyquire('../../../../app/server/bff/middleware/tag', {
     },
     '../api/listing': {
         getLatestTeasers: getLatestTeasersStub
-    }
+    },
+    '../helper/createReapeatableList': createRepeatableListStub
 }).default;
 
 function generateTagToTitle(tag) {
@@ -21,16 +23,11 @@ function generateTagToTitle(tag) {
         .join(' ');
 }
 
-function transformToLowerCaseTag(tag) {
-    return tag.toLowerCase().replace('%20', '-');
-}
-
 describe('Tag middleware', () => {
     const entityService = 'http://entitiesUrl.com';
     const tagService = 'http://tagUrl.com';
     const config = { site: { host: 'http://www.dolly.com.au' }, services: { remote: { entity: entityService, tag: tagService } } };
-    const latestTeasers = { data: ['Teaser 1', 'Teaser 2'] };
-    const entity = {};
+    const latestTeasers = { data: ['Teaser 1', 'Teaser 2'], totalCount: 2 };
     const res = {};
     const expectedTitle = 'Two Words';
     const expectedUrl = `/tags/two-words`;
@@ -40,6 +37,7 @@ describe('Tag middleware', () => {
 
     afterEach(() => {
         getLatestTeasersStub.reset();
+        makeRequestStub.reset();
     });
 
     describe('when a tag is set in the query params', () => {
@@ -54,7 +52,6 @@ describe('Tag middleware', () => {
                     };
                     req = { ...baseReq };
                     next = sinon.spy();
-                    makeRequestStub = sinon.stub();
                     makeRequestStub.withArgs(`${entityService}/section/${req.query.tag}`).resolves({ nodeTypeAlias: 'TagSection' });
                     makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
                     getLatestTeasersStub.rejects(rejectedResponse);
@@ -91,7 +88,6 @@ describe('Tag middleware', () => {
                     };
                     req = { ...baseReq };
                     next = sinon.spy();
-                    makeRequestStub = sinon.stub();
                     makeRequestStub.withArgs(`${entityService}/section/${req.query.tag}`).rejects(rejectedResponse);
                     getLatestTeasersStub.resolves(latestTeasers);
                 });
@@ -261,7 +257,6 @@ describe('Tag middleware', () => {
                     beforeEach(() => {
                         req = { ...baseReq };
                         next = sinon.spy();
-                        makeRequestStub = sinon.stub();
                         makeRequestStub
                             .withArgs(`${entityService}/section/${req.query.tag}`)
                             .resolves({ nodeTypeAlias: 'Section', url: '/url-here' });
@@ -289,7 +284,6 @@ describe('Tag middleware', () => {
                     beforeEach(() => {
                         req = { ...baseReq };
                         next = sinon.spy();
-                        makeRequestStub = sinon.stub();
                         makeRequestStub.withArgs(`${entityService}/section/${req.query.tag}`).resolves({ nodeTypeAlias: 'TagSection' });
                         makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
                         getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
@@ -315,7 +309,6 @@ describe('Tag middleware', () => {
                     beforeEach(() => {
                         req = { ...baseReq };
                         next = sinon.spy();
-                        makeRequestStub = sinon.stub();
                         makeRequestStub
                             .withArgs(`${entityService}/section/${req.query.tag}`)
                             .resolves({ nodeTypeAlias: 'TagSection', url: '/url-of-tag-page' });
@@ -346,7 +339,6 @@ describe('Tag middleware', () => {
                 beforeEach(() => {
                     req = { ...baseReq, data: { entity: { nodeTypeAlias: 'TagSection' } } };
                     next = sinon.spy();
-                    makeRequestStub = sinon.stub();
                     makeRequestStub.withArgs(`${entityService}/section/${req.query.tag}`).resolves({});
                     makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
                     getLatestTeasersStub.resolves(latestTeasers);
@@ -362,25 +354,12 @@ describe('Tag middleware', () => {
                         })
                         .catch(done);
                 });
-
-                describe('when a query param of pageNo 2 is passed in', () => {
-                    it('should not have a query param in the previous page url', done => {
-                        req.query.pageNo = 2;
-                        tagMiddleware(req, res, next)
-                            .then(() => {
-                                expect(req.data.list.previous.url).to.equal('http://www.dolly.com.au/tags/two-words');
-                                done();
-                            })
-                            .catch(done);
-                    });
-                });
             });
 
             describe('and the nodeTypeAlias equals to Section', () => {
                 before(() => {
                     req = { ...baseReq, data: { entity: { nodeTypeAlias: 'Section' } } };
                     next = sinon.spy();
-                    makeRequestStub = sinon.stub();
                     makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
                     getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
                 });
@@ -401,7 +380,6 @@ describe('Tag middleware', () => {
                 before(() => {
                     req = { ...baseReq, data: { entity: { nodeTypeAlias: 'TagSection', url: '/tag-url' } } };
                     next = sinon.spy();
-                    makeRequestStub = sinon.stub();
                     makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
                     getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
                 });
@@ -423,7 +401,6 @@ describe('Tag middleware', () => {
                 req = { ...baseReq };
                 req.query.page = 'page';
                 next = sinon.spy();
-                makeRequestStub = sinon.stub();
                 makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.tag)}`).rejects();
                 getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
             });
@@ -445,7 +422,6 @@ describe('Tag middleware', () => {
         beforeEach(() => {
             req = { app: { locals: { config } }, query: { section: 'two-words' } };
             next = sinon.spy();
-            makeRequestStub = sinon.stub();
             makeRequestStub.withArgs(`${entityService}/section/${req.query.section}`).resolves({});
             makeRequestStub.withArgs(`${tagService}/tags/${generateTagToTitle(req.query.section)}`).rejects();
             getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
@@ -467,7 +443,6 @@ describe('Tag middleware', () => {
         beforeEach(() => {
             req = { app: { locals: { config } } };
             next = sinon.spy();
-            makeRequestStub = sinon.stub();
             getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
         });
         it('should not call the listing or entity services, only call next', done => {

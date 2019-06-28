@@ -28,8 +28,6 @@ export default async function article(req, res, next) {
 
         const leftHandSide = await getLatestTeasers(TOP, undefined, listingQuery);
 
-        req.data = req.data || {};
-
         req.data = {
             ...req.data,
             entity: {

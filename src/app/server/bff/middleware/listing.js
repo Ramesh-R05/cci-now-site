@@ -32,7 +32,6 @@ export default async function listing(req, res, next) {
                 .catch(e => {
                     const error = new Error(`entity not found for section: ${section}`);
                     error.status = 404;
-
                     logger.error({ msg: 'listing middleware: entity not found', e });
 
                     throw error;

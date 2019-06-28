@@ -3,7 +3,7 @@ import find from 'lodash/collection/find';
 import getTagName from '@bxm/tags/lib/utils/getTagName';
 import makeRequest from '../../makeRequest';
 import { getLatestTeasers } from '../api/listing';
-import { parseEntities } from '../helper/parseEntity';
+import createReapeatableList from '../helper/createReapeatableList';
 
 const latestTeaserCount = 7;
 const listCount = 14;
@@ -76,35 +76,24 @@ export default async function tagMiddleware(req, res, next) {
 
         // TODO: need to handle `data` in resp better
         const latestTeasers = latestTeasersResp && latestTeasersResp.data;
+        const totalCount = latestTeasersResp.totalCount;
 
         const basePath = query.section ? `/${tag}` : `/tags/${tag}`;
-        let previousPage = null;
 
-        if (pageNo > 1) {
-            const path = pageNo === 2 ? `${basePath}` : `${basePath}?pageNo=${pageNo - 1}`;
-            previousPage = {
-                path,
-                url: `${req.app.locals.config.site.host}${path}`
-            };
-        }
-
-        let nextPage = null;
-
-        if (skip + latestTeasers.length < latestTeasers.totalCount) {
-            const path = `${basePath}?pageNo=${pageNo + 1}`;
-            nextPage = {
-                path,
-                url: `${req.app.locals.config.site.host}${path}`
-            };
-        }
-
-        const path = pageNo > 1 ? `${url}?pageNo=${pageNo}` : url;
-        const currentPage = {
-            path,
-            url: `${req.app.locals.config.site.host}${path}`
-        };
-
-        req.data = req.data || {};
+        const list = createReapeatableList({
+            basePath,
+            host: req.app.locals.config.site.host,
+            listName: title,
+            additionalParams: {
+                section: title,
+                filter: 'contentTags'
+            },
+            items: latestTeasers,
+            pageNo,
+            startFrom: latestTeaserCount,
+            skip,
+            totalCount
+        });
 
         req.data = {
             ...req.data,
@@ -116,18 +105,7 @@ export default async function tagMiddleware(req, res, next) {
                 pageMetaDescription: tagData.description || ''
             },
             latestTeasers: latestTeasers.slice(0, latestTeaserCount),
-            list: {
-                listName: title,
-                params: {
-                    pageNo,
-                    section: title,
-                    filter: 'contentTags'
-                },
-                items: [parseEntities(latestTeasers.slice(latestTeaserCount))],
-                previous: previousPage,
-                current: currentPage,
-                next: nextPage
-            },
+            list,
             section: { name: 'Tag', urlName: 'tag' }
         };
 

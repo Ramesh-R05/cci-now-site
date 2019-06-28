@@ -15,10 +15,6 @@ export default createReducerStore({
             return state.latestTeasers;
         },
 
-        getVideoGalleryTeasers(state) {
-            return state.videoGalleryTeasers;
-        },
-
         getList(state) {
             return state.list;
         },

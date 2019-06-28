@@ -34,8 +34,6 @@ export default async function pageMiddleware(req, res, next) {
             throw { status: 404, message: `Path ${path} does not match page` };
         }
 
-        req.data = req.data || {};
-
         req.data = {
             ...req.data,
             entity: { ...pageData },

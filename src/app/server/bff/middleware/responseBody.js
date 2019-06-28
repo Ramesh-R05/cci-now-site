@@ -74,10 +74,6 @@ export default function responseBody(req, res, next) {
             res.body.list = req.data.list;
         }
 
-        if (get(req, 'data.videoGalleryTeasers')) {
-            res.body.videoGalleryTeasers = parseEntities(req.data.videoGalleryTeasers.data);
-        }
-
         if (get(req, 'data.section')) {
             res.body.section = req.data.section;
         }

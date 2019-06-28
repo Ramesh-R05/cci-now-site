@@ -130,18 +130,18 @@ module.exports = function() {
                 break;
         }
 
-        for(var i = 0; i < 20; i++) {
-            wait(1000); //add 1 sec wait for every loop to let the document publish
+        browser.waitUntil( () => {
             browser.refresh();
             browser.url(pageURL);
-            if(browser.isExisting(elementOnPage) == true){
+
+            if(browser.isExisting(elementOnPage)) {
                 console.log("Page Loaded Successfully : ID-" + docTypeID[docType] + ": " + pageURL);
-                break;
-            } else {
-                console.log("Page not created yet, current page url is : " + browser.getUrl());
-                wait(2000);
+                return true;
             }
-        }
+
+            console.log("Page not created yet, current page url is : " + browser.getUrl());
+          }, 20000, 'document did not load in time',1000)
+
     });
 
 

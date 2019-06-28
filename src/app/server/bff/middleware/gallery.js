@@ -30,8 +30,6 @@ export default async function gallery(req, res, next) {
 
         const leftHandSide = await getLatestTeasers(TOP, undefined, listingQuery);
 
-        req.data = req.data || {};
-
         req.data = {
             ...req.data,
             entity: {

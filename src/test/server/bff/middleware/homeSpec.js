@@ -1,221 +1,378 @@
+import { MiddlewareTestFactory } from '@bxm/unit-test-utils';
 import proxyquire, { noCallThru } from 'proxyquire';
-import videoGalleryMock from '../../../mocks/galleryOfGalleries';
+import homepageTeasersMock from '../../../mocks/listing';
+import homePagEntityMock from '../../../mocks/home';
 
 noCallThru();
 
-let makeRequestStub = () => {};
-let getLatestTeasersStub = () => {};
-let getHeroTeaserStub = () => {};
+const configBase = {
+    services: { remote: { entity: 'http://entitiesUrl.com/' } },
+    site: { host: 'http://site-host.com' }
+};
+
+const repeatableListDataMock = {
+    listName: 'Home',
+    params: {
+        pageNo: 1
+    },
+    items: [],
+    previous: {},
+    current: {},
+    next: {}
+};
+
+const makeRequestStub = sinon.stub();
+const getLatestTeasersStub = sinon.stub();
+const transformTeaserPageDateCreatedStub = sinon.stub();
+const createRepeatableListStub = sinon.stub();
 
 const homeMiddleware = proxyquire('../../../../app/server/bff/middleware/home', {
-    '../../makeRequest': (...args) => {
-        return makeRequestStub(...args);
-    },
+    '../../makeRequest': makeRequestStub,
     '../api/listing': {
-        getLatestTeasers: () => {
-            return getLatestTeasersStub();
-        }
+        getLatestTeasers: getLatestTeasersStub
     },
-    '../api/module': {
-        getHeroTeaser() {
-            return getHeroTeaserStub();
-        }
-    }
+    '../helper/createReapeatableList': createRepeatableListStub,
+    '../helper/transformTeaserPageDateCreated': transformTeaserPageDateCreatedStub
 }).default;
 
+const MiddlewareTestWrapper = new MiddlewareTestFactory(homeMiddleware, {
+    baseRequest: {
+        data: {},
+        app: {
+            locals: {
+                config: configBase
+            }
+        }
+    }
+});
+
 describe('Home middleware', () => {
-    const config = {
-        services: { remote: { entity: 'http://entitiesUrl.com/' }, module: 'http://module.url' },
-        site: { host: 'http://site-host.com' }
-    };
-    const latestTeasers = { data: [{ pageDateCreated: '2017-03-29T04:27:09.00Z' }, { pageDateCreated: '2017-03-29T04:27:09.00Z' }] };
-    const hero = { name: 'hero' };
-    const entity = {
-        id: 'DOLLY-ID'
-    };
-    const res = {};
-    let next;
+    afterEach(() => {
+        makeRequestStub.reset();
+        getLatestTeasersStub.reset();
+        transformTeaserPageDateCreatedStub.reset();
+        createRepeatableListStub.reset();
+    });
 
-    describe('when the remote returns an error response', () => {
-        const rejectedResponse = {
-            body: 'Could not find the article DOLLY-36424',
-            err: 'Error 404',
-            status: 404
-        };
-        const req = { app: { locals: { config } } };
+    describe('when the entity request returns an error response', () => {
+        let testArgs;
+        let result;
+        let entityResponse;
+        let callMiddleware;
 
-        before(() => {
-            next = sinon.spy();
-            makeRequestStub = sinon.stub().throws(rejectedResponse);
-            getLatestTeasersStub = sinon.stub();
-            getLatestTeasersStub.onFirstCall().resolves([]);
-            getLatestTeasersStub.onSecondCall().resolves({ data: [], totalCount: 0 });
+        before(async () => {
+            [testArgs, callMiddleware] = await MiddlewareTestWrapper({
+                req: { query: {} }
+            });
+
+            entityResponse = new Error('request error');
+            makeRequestStub.withArgs(`${configBase.services.remote.entity}/homepage`).throws(entityResponse);
+
+            result = await callMiddleware();
         });
 
-        it('should pass error to next middleware', done => {
-            homeMiddleware(req, res, next)
-                .then(() => {
-                    expect(next).to.be.calledWith(rejectedResponse);
-                    done();
-                })
-                .catch(done);
+        it('should pass error to next middleware', () => {
+            expect(testArgs.next).to.be.calledWith(entityResponse);
+        });
+
+        it('should not modify the request data object', () => {
+            expect(result.req.data).to.be.empty;
         });
     });
 
     describe('when the remote returns an entity in the response', () => {
-        describe('and getLatestTeasers returns the teasers and video gallery teasers', () => {
-            const req = { app: { locals: { config } } };
+        describe('and getLatestTeasers returns the teasers', () => {
+            let testArgs;
+            let result;
+            let entityResponse;
+            let listingResponse;
+            let callMiddleware;
 
-            before(() => {
-                next = sinon.spy();
-                makeRequestStub = sinon.stub().resolves(entity);
-                getLatestTeasersStub = sinon.stub();
-                getLatestTeasersStub.onFirstCall().resolves(latestTeasers);
-                getLatestTeasersStub.onSecondCall().resolves(videoGalleryMock);
+            before(async () => {
+                [testArgs, callMiddleware] = await MiddlewareTestWrapper({
+                    req: { query: {} }
+                });
+
+                entityResponse = homePagEntityMock;
+                listingResponse = homepageTeasersMock;
+
+                makeRequestStub.withArgs(`${configBase.services.remote.entity}/homepage`).resolves(entityResponse);
+                getLatestTeasersStub.withArgs(14, 0).resolves(listingResponse);
+                transformTeaserPageDateCreatedStub.withArgs(listingResponse.data).returnsArg(0);
+                createRepeatableListStub
+                    .withArgs({
+                        host: configBase.site.host,
+                        basePath: '/',
+                        pageNo: 1,
+                        skip: 0,
+                        items: listingResponse.data,
+                        totalCount: listingResponse.totalCount,
+                        listName: 'home',
+                        startFrom: 6
+                    })
+                    .returns(repeatableListDataMock);
+
+                result = await callMiddleware();
             });
 
-            it('should store the entity in `req.data`', done => {
-                homeMiddleware(req, res, next)
-                    .then(() => {
-                        expect(req.data.entity).to.deep.equal(entity);
-                        done();
-                    })
-                    .catch(done);
+            it('should store the entity in the request data', () => {
+                expect(result.req.data)
+                    .to.have.property('entity')
+                    .and.to.deep.eq(entityResponse);
+            });
+            it('should store the section in the request data', () => {
+                expect(result.req.data)
+                    .to.have.property('section')
+                    .and.to.deep.eq({
+                        id: entityResponse.id,
+                        name: 'Home',
+                        urlName: 'home'
+                    });
             });
 
-            it('should store the section in `req.data`', done => {
-                homeMiddleware(req, res, next)
-                    .then(() => {
-                        expect(req.data.section).to.deep.equal({ id: entity.id, name: 'Home', urlName: 'home' });
-                        done();
-                    })
-                    .catch(done);
+            it('should store the listing response teasers in the request data', () => {
+                expect(result.req.data)
+                    .to.have.property('latestTeasers')
+                    .and.to.deep.eq(listingResponse.data);
             });
 
-            it('should store the latestTeasers in `req.data`', done => {
-                homeMiddleware(req, res, next)
-                    .then(() => {
-                        expect(req.data.latestTeasers).to.deep.equal(latestTeasers.data);
-                        done();
-                    })
-                    .catch(done);
+            it('should store the list property on the request data', () => {
+                expect(result.req.data)
+                    .to.have.property('list')
+                    .and.to.deep.eq(repeatableListDataMock);
             });
 
-            it('should store the videoGalleryTeasers in `req.data`', done => {
-                homeMiddleware(req, res, next)
-                    .then(() => {
-                        expect(req.data.videoGalleryTeasers).to.equal(videoGalleryMock);
-                        done();
-                    })
-                    .catch(done);
+            it('should only have the correct keys in the request data', () => {
+                expect(result.req.data).to.have.keys(['entity', 'latestTeasers', 'section', 'list']);
             });
 
-            it('the videoGalleryTeasers should set the contentImageUrl as brightcove image still', done => {
-                let brightCoveImageStill =
-                    'http://brightcove04.o.brightcove.com/761709621001/761709621001_4761294440001_4761284339001-vs.jpg?pubId=761709621001';
-
-                homeMiddleware(req, res, next)
-                    .then(() => {
-                        expect(req.data.videoGalleryTeasers.data[0].contentImageUrl).to.deep.equal(brightCoveImageStill);
-                        done();
-                    })
-                    .catch(done);
+            it('should call the next middleware', () => {
+                expect(testArgs.next).to.calledOnce;
             });
         });
 
-        describe('and getLatestTeasers returns an error when getting video gallery teasers', () => {
-            let emptyResponse;
-            const req = { app: { locals: { config } } };
+        describe('and getLatestTeasers returns no teasers', () => {
+            let testArgs;
+            let result;
+            let entityResponse;
+            let listingResponse;
+            let callMiddleware;
 
-            before(() => {
-                emptyResponse = {
-                    data: [],
-                    totalCount: 0
-                };
+            before(async () => {
+                [testArgs, callMiddleware] = await MiddlewareTestWrapper({
+                    req: { query: {} }
+                });
 
-                next = sinon.spy();
-                makeRequestStub = sinon.stub().resolves(entity);
-                getLatestTeasersStub = sinon.stub().resolves(latestTeasers);
-                getLatestTeasersStub.onSecondCall().resolves(emptyResponse);
+                entityResponse = homePagEntityMock;
+                listingResponse = { data: [], totalCount: 0 };
+
+                makeRequestStub.withArgs(`${configBase.services.remote.entity}/homepage`).resolves(entityResponse);
+                getLatestTeasersStub.withArgs(14, 0).resolves(listingResponse);
+                transformTeaserPageDateCreatedStub.withArgs(listingResponse.data).returnsArg(0);
+                createRepeatableListStub
+                    .withArgs({
+                        host: configBase.site.host,
+                        basePath: '/',
+                        pageNo: 1,
+                        skip: 0,
+                        items: listingResponse.data,
+                        totalCount: listingResponse.totalCount,
+                        listName: 'home',
+                        startFrom: 6
+                    })
+                    .returns(repeatableListDataMock);
+
+                result = await callMiddleware();
             });
 
-            it('should return an empty object for videoGalleryTeasers in `req.data.videoGalleryTeasers`', done => {
-                homeMiddleware(req, res, next)
-                    .then(() => {
-                        expect(req.data.videoGalleryTeasers).to.deep.equal(emptyResponse);
-                        done();
-                    })
-                    .catch(done);
+            it('should store the entity in the request data', () => {
+                expect(result.req.data)
+                    .to.have.property('entity')
+                    .and.to.deep.eq(entityResponse);
+            });
+            it('should store the section in the request data', () => {
+                expect(result.req.data)
+                    .to.have.property('section')
+                    .and.to.deep.eq({
+                        id: entityResponse.id,
+                        name: 'Home',
+                        urlName: 'home'
+                    });
+            });
+
+            it('should store the listing response teasers in the request data', () => {
+                expect(result.req.data)
+                    .to.have.property('latestTeasers')
+                    .and.to.deep.eq(listingResponse.data);
+            });
+
+            it('should store the list property on the request data', () => {
+                expect(result.req.data)
+                    .to.have.property('list')
+                    .and.to.deep.eq(repeatableListDataMock);
+            });
+
+            it('should only have the correct keys in the request data', () => {
+                expect(result.req.data).to.have.keys(['entity', 'latestTeasers', 'section', 'list']);
+            });
+
+            it('should call the next middleware', () => {
+                expect(testArgs.next).to.calledOnce;
             });
         });
     });
 
     describe('when the request contains existing data', () => {
-        const req = { data: { header: 'Test' }, app: { locals: { config } } };
+        let testArgs;
+        let existingData;
+        let result;
+        let entityResponse;
+        let listingResponse;
+        let callMiddleware;
 
-        before(() => {
-            next = sinon.spy();
-            makeRequestStub = sinon.stub().resolves(entity);
-            getLatestTeasersStub = sinon.stub();
-            getLatestTeasersStub.onFirstCall().returns(latestTeasers);
-            getLatestTeasersStub.onSecondCall().returns({ data: [] });
+        before(async () => {
+            existingData = {
+                module: 'value'
+            };
+
+            [testArgs, callMiddleware] = await MiddlewareTestWrapper({
+                req: { query: {}, data: { ...existingData } }
+            });
+
+            entityResponse = homePagEntityMock;
+            listingResponse = { data: [], totalCount: 0 };
+
+            makeRequestStub.withArgs(`${configBase.services.remote.entity}/homepage`).resolves(entityResponse);
+            getLatestTeasersStub.withArgs(14, 0).resolves(listingResponse);
+            transformTeaserPageDateCreatedStub.withArgs(listingResponse.data).returnsArg(0);
+            createRepeatableListStub
+                .withArgs({
+                    host: configBase.site.host,
+                    basePath: '/',
+                    pageNo: 1,
+                    skip: 0,
+                    items: listingResponse.data,
+                    totalCount: listingResponse.totalCount,
+                    listName: 'home',
+                    startFrom: 6
+                })
+                .returns(repeatableListDataMock);
+
+            result = await callMiddleware();
         });
 
-        it(`should keep the existing header data in 'req.data'`, done => {
-            homeMiddleware(req, res, next)
-                .then(() => {
-                    expect(req.data.header).to.equal(req.data.header);
-                    done();
-                })
-                .catch(done);
+        it('should not overwrite the data in req.data', () => {
+            expect(result.req.data)
+                .to.have.property('module')
+                .and.eq(existingData.module);
+        });
+
+        it('should have the correct keys in the request data and the key for the existing data', () => {
+            expect(result.req.data).to.have.keys(['entity', 'latestTeasers', 'section', 'list', 'module']);
         });
     });
 
     describe('when there is a query param', () => {
-        const req = { app: { locals: { config } }, query: {} };
         const skippedQueries = ['page', 'section', 'tag'];
-        after(() => {
-            req.query = {};
-        });
 
-        skippedQueries.map(query => {
-            describe(`and it contains a ${query} value`, () => {
-                before(() => {
-                    next = sinon.stub();
-                    makeRequestStub = sinon.stub();
-                    req.query[query] = query.toUpperCase();
+        skippedQueries.forEach(query => {
+            let testArgs;
+            let result;
+            let callMiddleware;
+
+            before(async () => {
+                [testArgs, callMiddleware] = await MiddlewareTestWrapper({
+                    req: {
+                        query: {
+                            [query]: query
+                        }
+                    }
                 });
 
-                it(`should call next without making a request`, done => {
-                    homeMiddleware(req, res, next)
-                        .then(() => {
-                            expect(next).to.have.been.called;
-                            expect(makeRequestStub).to.not.have.been.called;
-                            done();
-                        })
-                        .catch(done);
+                result = await callMiddleware();
+            });
+
+            describe(`and it contains a ${query} value`, () => {
+                it('should call next without making a request', () => {
+                    expect(testArgs.next).to.be.called;
+                });
+
+                it('should not modify the request data', () => {
+                    expect(result.req.data).to.be.empty;
                 });
             });
         });
     });
 
-    describe('when a query param of pageNo 2 is passed in', () => {
-        const req = { app: { locals: { config } }, query: { pageNo: 2 } };
-        before(() => {
-            next = sinon.stub();
-            makeRequestStub = sinon.stub().resolves(entity);
-            getLatestTeasersStub = sinon.stub();
-            getLatestTeasersStub.onFirstCall().resolves(latestTeasers);
-            getLatestTeasersStub.onSecondCall().resolves(videoGalleryMock);
-        });
+    describe('creates the correct data for the repeatable list', () => {
+        describe('when a page number query paramater in the request', () => {
+            let testArgs;
+            let result;
+            let entityResponse;
+            let listingResponse;
+            let callMiddleware;
 
-        it('should not have a query param in the previous page url', done => {
-            homeMiddleware(req, res, next)
-                .then(() => {
-                    expect(req.data.list.previous.url).to.equal('http://site-host.com/');
-                    done();
-                })
-                .catch(done);
+            before(async () => {
+                [testArgs, callMiddleware] = await MiddlewareTestWrapper({
+                    req: { query: { pageNo: 2 } }
+                });
+
+                entityResponse = homePagEntityMock;
+                listingResponse = homepageTeasersMock;
+
+                makeRequestStub.withArgs(`${configBase.services.remote.entity}/homepage`).resolves(entityResponse);
+                getLatestTeasersStub.withArgs(14, (testArgs.req.query.pageNo - 1) * 14).resolves(listingResponse);
+                transformTeaserPageDateCreatedStub.withArgs(listingResponse.data).returnsArg(0);
+                createRepeatableListStub
+                    .withArgs({
+                        host: configBase.site.host,
+                        basePath: '/',
+                        pageNo: testArgs.req.query.pageNo,
+                        skip: (testArgs.req.query.pageNo - 1) * 14,
+                        items: listingResponse.data,
+                        totalCount: listingResponse.totalCount,
+                        listName: 'home',
+                        startFrom: 6
+                    })
+                    .returns(repeatableListDataMock);
+
+                result = await callMiddleware();
+            });
+
+            it('should store the entity in the request data', () => {
+                expect(result.req.data)
+                    .to.have.property('entity')
+                    .and.to.deep.eq(entityResponse);
+            });
+            it('should store the section in the request data', () => {
+                expect(result.req.data)
+                    .to.have.property('section')
+                    .and.to.deep.eq({
+                        id: entityResponse.id,
+                        name: 'Home',
+                        urlName: 'home'
+                    });
+            });
+
+            it('should store the listing response teasers in the request data', () => {
+                expect(result.req.data)
+                    .to.have.property('latestTeasers')
+                    .and.to.deep.eq(listingResponse.data);
+            });
+
+            it('should store the list property on the request data', () => {
+                expect(result.req.data)
+                    .to.have.property('list')
+                    .and.to.deep.eq(repeatableListDataMock);
+            });
+
+            it('should only have the correct keys in the request data', () => {
+                expect(result.req.data).to.have.keys(['entity', 'latestTeasers', 'section', 'list']);
+            });
+
+            it('should call the next middleware', () => {
+                expect(testArgs.next).to.calledOnce;
+            });
         });
     });
 });

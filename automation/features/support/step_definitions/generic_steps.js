@@ -4,7 +4,6 @@ var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
 var loadMore = require('../page_objects/loadmore_widget');
 
 module.exports = function() {
-
     this.When(/^I switch to "([^"]*)" view$/, function(device) {
         var window = new window_handler(browser);
         window.windowResize(device);
@@ -55,17 +54,21 @@ module.exports = function() {
     });
 
     this.When(/^I click on the Load More button$/, function() {
+        const { loadMoreButton } = loadMore;
+
         function scrollAndCentreLoadMore() {
             const x = browser.getLocation(loadMore.loadMoreButton, 'x');
             const y = browser.getLocation(loadMore.loadMoreButton, 'y');
 
-            browser.scroll(x - 50, y - 50);
+            browser.scroll(x, y - 150);
         }
 
+        browser.$(loadMoreButton).waitForVisible(5000);
         scrollAndCentreLoadMore();
-        browser.waitForVisible(loadMore.loadMoreButton, 5000);
+        browser.$(loadMoreButton).waitForVisible(8000);
         scrollAndCentreLoadMore();
-        browser.waitForVisible(loadMore.loadMoreButton, 5000);
+        browser.$(loadMoreButton).waitForVisible(8000);
+        scrollAndCentreLoadMore();
 
         browser.click(loadMore.loadMoreButton);
 

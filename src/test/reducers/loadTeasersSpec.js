@@ -8,7 +8,6 @@ describe(`loadTeasers Reducer`, () => {
             body = {
                 heroTeaser: {},
                 latestTeasers: ['Teaser 1', 'Teaser 2'],
-                videoGalleryTeasers: ['VideoTeaser 1', 'VideoTeaser 2', 'VideoTeaser 3'],
                 mustRead: [],
                 promoted: { title: '', items: [] },
                 list: {
@@ -29,7 +28,6 @@ describe(`loadTeasers Reducer`, () => {
                 expect(reducer(initialState, payload)).to.deep.eq({
                     heroTeaser: payload.body.heroTeaser,
                     latestTeasers: payload.body.latestTeasers,
-                    videoGalleryTeasers: payload.body.videoGalleryTeasers,
                     mustRead: payload.body.mustRead,
                     promoted: payload.body.promoted,
                     list: {
@@ -45,7 +43,6 @@ describe(`loadTeasers Reducer`, () => {
                 expect(reducer(initialState, payload)).to.deep.eq({
                     heroTeaser: payload.body.heroTeaser,
                     latestTeasers: payload.body.latestTeasers,
-                    videoGalleryTeasers: payload.body.videoGalleryTeasers,
                     mustRead: payload.body.mustRead,
                     promoted: payload.body.promoted,
                     list: {
@@ -73,7 +70,6 @@ describe(`loadTeasers Reducer`, () => {
                 expect(reducer(initialState, payload)).to.deep.eq({
                     heroTeaser: null,
                     latestTeasers: payload.body.latestTeasers,
-                    videoGalleryTeasers: payload.body.videoGalleryTeasers,
                     list: {
                         params: {
                             pageNo: payload.body.list.params.pageNo
@@ -98,7 +94,6 @@ describe(`loadTeasers Reducer`, () => {
                 expect(reducer(initialState, payload)).to.deep.eq({
                     heroTeaser: payload.body.heroTeaser,
                     latestTeasers: [],
-                    videoGalleryTeasers: payload.body.videoGalleryTeasers,
                     list: {
                         params: {
                             pageNo: payload.body.list.params.pageNo
@@ -123,7 +118,6 @@ describe(`loadTeasers Reducer`, () => {
                 expect(reducer(initialState, payload)).to.deep.eq({
                     heroTeaser: payload.body.heroTeaser,
                     latestTeasers: payload.body.latestTeasers,
-                    videoGalleryTeasers: [],
                     list: {
                         params: {
                             pageNo: payload.body.list.params.pageNo
@@ -145,7 +139,6 @@ describe(`loadTeasers Reducer`, () => {
             body = {
                 heroTeaser: {},
                 latestTeasers: ['Teaser 1', 'Teaser 2'],
-                videoGalleryTeasers: ['VideoTeaser 1', 'VideoTeaser 2', 'VideoTeaser 3'],
                 list: {
                     params: {
                         pageNo: 1
@@ -174,7 +167,6 @@ describe(`loadTeasers Reducer`, () => {
             body = {
                 heroTeaser: {},
                 latestTeasers: ['Teaser 1', 'Teaser 2'],
-                videoGalleryTeasers: ['VideoTeaser 1', 'VideoTeaser 2', 'VideoTeaser 3'],
                 list: {
                     params: {
                         pageNo: 1

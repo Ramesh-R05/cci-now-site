@@ -12,9 +12,9 @@ Feature: Smoke test for AU NOW
         And I should see 2 promoted images and titles which are clickable to open their page
         And I should see a "top" feed item containing its image and clickable to open its page
         And I should see a "bottom" feed item containing its image and clickable to open its page
-        #When I click on the Load More button
-        #Then I should see extra 14 teasers after loading more
-        #And I should see a load more feed item containing its image and clickable to open its page
+        When I click on the Load More button
+        Then I should see extra 14 teasers after loading more
+        And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario Outline: Verify the static <page> brand data on its brand landing page
         Given I switch to "mobile" view
@@ -22,17 +22,17 @@ Feature: Smoke test for AU NOW
         Then I should see the sign up button containing "<link>" url in "mobile" view
         And I should see the brand title logo on the brand landing page
         Examples:
-            | page                  | link                                                    |
-            | aww                   | https://www.nowtolove.com.au/aww-newsletter             |
-            | womansday             | https://www.nowtolove.com.au/womansday-newsletter       |
-            | good-health           | https://www.nowtolove.com.au/good-health-newsletter     |
-            | okmagazine            | https://www.nowtolove.com.au/okmagazine-newsletter      |
-            | nw                    | https://www.nowtolove.com.au/nw-newsletter              |
-            | take5mag              | https://www.nowtolove.com.au/take5mag-newsletter        |
-            | mother-and-baby       | https://www.nowtolove.com.au/mother-and-baby-newsletter |
-            | tvweek                | https://www.nowtolove.com.au/tvweek-newsletter          |
-            | empire                | https://www.nowtolove.com.au/empire-newsletter          |
-            | prizestolove          | https://www.nowtolove.com.au/prizestolove-newsletter    |
+            | page            | link                                                    |
+            | aww             | https://www.nowtolove.com.au/aww-newsletter             |
+            | womansday       | https://www.nowtolove.com.au/womansday-newsletter       |
+            | good-health     | https://www.nowtolove.com.au/good-health-newsletter     |
+            | okmagazine      | https://www.nowtolove.com.au/okmagazine-newsletter      |
+            | nw              | https://www.nowtolove.com.au/nw-newsletter              |
+            | take5mag        | https://www.nowtolove.com.au/take5mag-newsletter        |
+            | mother-and-baby | https://www.nowtolove.com.au/mother-and-baby-newsletter |
+            | tvweek          | https://www.nowtolove.com.au/tvweek-newsletter          |
+            | empire          | https://www.nowtolove.com.au/empire-newsletter          |
+            | prizestolove    | https://www.nowtolove.com.au/prizestolove-newsletter    |
 
     Scenario: Verify the brand landing page
         Given I switch to "mobile" view
@@ -40,9 +40,9 @@ Feature: Smoke test for AU NOW
         Then I should see the main hero item containing its image and clickable to open its page
         And I should see a "top" feed item containing its image and clickable to open its page
         And I should see a "bottom" feed item containing its image and clickable to open its page
-        #When I click on the Load More button
-        #Then I should see extra 14 teasers after loading more
-        #And I should see a load more feed item containing its image and clickable to open its page
+        When I click on the Load More button
+        Then I should see extra 14 teasers after loading more
+        And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the section landing page
         Given I switch to "mobile" view
@@ -50,9 +50,9 @@ Feature: Smoke test for AU NOW
         Then I should see the main hero item containing its image and clickable to open its page
         And I should see a "top" feed item containing its image and clickable to open its page
         And I should see a "bottom" feed item containing its image and clickable to open its page
-        #When I click on the Load More button
-        #Then I should see extra 14 teasers after loading more
-        #And I should see a load more feed item containing its image and clickable to open its page
+        When I click on the Load More button
+        Then I should see extra 14 teasers after loading more
+        And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the tag landing page
         Given I switch to "mobile" view
@@ -60,9 +60,9 @@ Feature: Smoke test for AU NOW
         Then I should see the main hero item containing its image and clickable to open its page
         And I should see a "top" feed item containing its image and clickable to open its page
         And I should see a "bottom" feed item containing its image and clickable to open its page
-        #When I click on the Load More button
-        #Then I should see extra 14 teasers after loading more
-        #And I should see a load more feed item containing its image and clickable to open its page
+        When I click on the Load More button
+        Then I should see extra 14 teasers after loading more
+        And I should see a load more feed item containing its image and clickable to open its page
 
     Scenario: Verify the 404 page
         Given I switch to "mobile" view
@@ -112,35 +112,41 @@ Feature: Smoke test for AU NOW
         * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
         * I should not see the search bar on the search result page in mobile version
         Examples:
-            |device             |page       |pageUrl                                            |
-            |mobile             |homepage   |                                                   |
+            | device | page     | pageUrl |
+            | mobile | homepage |         |
 
-# Will enable once the wallpaper ad issue in the secured URL is clarified
+
+    # Will enable once the wallpaper ad issue in the secured URL is clarified
     Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
         Given I switch to "<device>" view
         When I am currently viewing "<pageUrl>"
         * I should see the search icon in the navigation bar
         * I should see the search box after clicking the icon
         * I should still see the search box after scrolling the page down
-        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page 
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
         * I should be able to search a keyword "cake" on "search result page" and see the result page
         Examples:
-            |device             |page       |pageUrl                                            |
-            |desktop            |homepage   |                                                   |
+            | device  | page     | pageUrl |
+            | desktop | homepage |         |
 
-# Will enable once the wallpaper ad issue in the secured URL is clarified
+    # Will enable once the wallpaper ad issue in the secured URL is clarified
     Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
         Given I switch to "<device>" view
         When I am currently viewing "<pageUrl>"
+        * I should see the search icon in the navigation bar
+        * I should see the search box after clicking the icon
+        * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
         * I should be able to search a keyword "cake" on "search result page" and see the result page
         Examples:
-            |device             |page       |pageUrl                                            |
-            |tablet landscape   |section    |news                                               |
+            | device           | page    | pageUrl |
+            | tablet landscape | section | news    |
 
     Scenario Outline: Verify the search feature on <page> in <device> (Desktop style)
         Given I switch to "<device>" view
         When I am currently viewing "<pageUrl>"
+        * I should see the search icon in the navigation bar
+        * I should see the search box after clicking the icon
         * I should be able to search a keyword "wedding" on "navigation bar" and see the result page
         Examples:
-            |device             |page       |pageUrl                                                         |
-            |tablet portrait    |article    |celebrity/tv/noni-hazlehurst-opens-up-about-her-childhood-34854 |
+            | device          | page    | pageUrl                                                         |
+            | tablet portrait | article | celebrity/tv/noni-hazlehurst-opens-up-about-her-childhood-34854 |
