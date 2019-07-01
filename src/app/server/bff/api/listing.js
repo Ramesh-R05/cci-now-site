@@ -1,6 +1,7 @@
-import makeRequest from '../../makeRequest';
-import config from '../../../config';
+import { getLatestTeasersStub, getMoreGalleriesStub } from '../../../../automation/test_data/api/listingStub';
 import logger from '../../../../logger';
+import config from '../../../config';
+import makeRequest from '../../makeRequest';
 const FEEDPATH = '/teasers';
 
 const emptyResponse = {
@@ -8,32 +9,44 @@ const emptyResponse = {
     totalCount: 0
 };
 
-export function getLatestTeasers(top = 20, skip = 0, filter) {
-    let query = '?$select=*';
-
-    if (filter) {
-        query += `&$filter=${filter}`;
+const { getLatestTeasers, getMoreGalleries } = (() => {
+    if (process.env.APP_STUBBED === 'true') {
+        return {
+            getLatestTeasers: getLatestTeasersStub,
+            getMoreGalleries: getMoreGalleriesStub
+        };
     }
 
-    query += `&$orderby=pageDateCreated desc&$top=${top}&$skip=${skip}`;
+    return {
+        getLatestTeasers(top = 20, skip = 0, filter) {
+            let query = '?$select=*';
 
-    return makeRequest(`${config.services.remote.listings}${FEEDPATH}/${query}`)
-        .then(res => res)
-        .catch(err => {
-            logger.error({ msg: 'getLatestTeasers makeRequest catch', err });
+            if (filter) {
+                query += `&$filter=${filter}`;
+            }
 
-            return emptyResponse;
-        });
-}
+            query += `&$orderby=pageDateCreated desc&$top=${top}&$skip=${skip}`;
 
-export function getMoreGalleries(top = 10) {
-    const query = `?$select=*&$filter=nodeTypeAlias eq %27Gallery%27&$orderby=pageDateCreated desc&$top=${top}`;
+            return makeRequest(`${config.services.remote.listings}${FEEDPATH}/${query}`)
+                .then(res => res)
+                .catch(err => {
+                    logger.error({ msg: 'getLatestTeasers makeRequest catch', err });
 
-    return makeRequest(`${config.services.remote.listings}${FEEDPATH}/${query}`)
-        .then(res => res)
-        .catch(err => {
-            logger.error({ msg: 'getMoreGalleries makeRequest catch', err });
+                    return emptyResponse;
+                });
+        },
+        getMoreGalleries(top = 10) {
+            const query = `?$select=*&$filter=nodeTypeAlias eq %27Gallery%27&$orderby=pageDateCreated desc&$top=${top}`;
 
-            return emptyResponse;
-        });
-}
+            return makeRequest(`${config.services.remote.listings}${FEEDPATH}/${query}`)
+                .then(res => res)
+                .catch(err => {
+                    logger.error({ msg: 'getMoreGalleries makeRequest catch', err });
+
+                    return emptyResponse;
+                });
+        }
+    };
+})();
+
+export { getLatestTeasers, getMoreGalleries };

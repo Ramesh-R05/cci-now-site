@@ -1,0 +1,30 @@
+export default {
+    id: 'NOW-1159',
+    contentTitle: 'Now',
+    pageDateCreated: '2016-10-05T05:54:47.00Z',
+    contentFacebookImageUrl: { tags: [], source: '', credits: [] },
+    nodeTypeAlias: 'Homepage',
+    location: '/',
+    parentName: 'Now',
+    parentUrl: '/',
+    siteUrl: 'http://dev.now-site.bauer-media.net.au',
+    siteAlertButtonText: 'not used button text',
+    siteAlertTextColour: 'red',
+    siteAlertPrimaryText: 'NOW TO LOVE.',
+    siteAlertButtonColour: 'button color not used',
+    siteAlertSecondaryText: 'secondary text.',
+    siteAlertBackgroundImage: {
+        url: 'http://d36kx15wbx6ooz.cloudfront.net/s3/digital-cougar-assets-dev/now/2019/06/18/1560829316336_ScreenShot2019-06-14at3.38.24pm.png',
+        link: 'http://localhost:3001/any/thing/kendall-jenners-skin-doctor-tells-us-what-mistake-3640',
+        tags: [],
+        title: 'Site Alert Background Image',
+        valid: true,
+        width: 1486,
+        height: 728,
+        source: '',
+        caption: 'Site Alert Background Image caption',
+        credits: [],
+        creditText: 'Site Alert Background Image caption'
+    },
+    siteAlertBackgroundColour: 'yellow'
+};

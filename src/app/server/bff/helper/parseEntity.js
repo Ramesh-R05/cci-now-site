@@ -32,7 +32,14 @@ const entityPropertyMap = {
     subsections: 'subsections',
     isBrandHero: 'isBrandHero',
     disableAmp: 'disableAmp',
-    isAllAmpCompatible: 'isAllAmpCompatible'
+    isAllAmpCompatible: 'isAllAmpCompatible',
+    siteAlertButtonText: 'siteAlertButtonText',
+    siteAlertTextColour: 'siteAlertTextColour',
+    siteAlertPrimaryText: 'siteAlertPrimaryText',
+    siteAlertButtonColour: 'siteAlertButtonColour',
+    siteAlertSecondaryText: 'siteAlertSecondaryText',
+    siteAlertBackgroundImage: 'siteAlertBackgroundImage',
+    siteAlertBackgroundColour: 'siteAlertBackgroundColour'
 };
 
 export function parseEntity(data, propertyMapOverride = {}) {
