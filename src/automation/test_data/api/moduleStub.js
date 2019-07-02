@@ -1,16 +1,17 @@
 import sinon from 'sinon';
-import { newHamburgerNav } from '../modules/hamburgerNavigation';
+import hamburgernavigation from '../modules/hamburgerNavigation';
 import mustRead from '../modules/mustRead';
 import promoted from '../modules/promoted';
 import hometheme from '../modules/hometheme';
 import headernavigation from '../modules/headernavigation';
 import subsectionList from '../modules/subsectionList';
+import awwhero from '../modules/awwhero';
 
 const getModulesStub = sinon.stub();
 
 getModulesStub.withArgs('headernavigation', 'hamburgernavigation', 'footer', 'mustread', 'promoted', 'hero', `homehero`, `hometheme`).resolves({
     headernavigation,
-    hamburgernavigation: newHamburgerNav,
+    hamburgernavigation,
     footer: {},
     mustread: mustRead,
     promoted,
@@ -22,11 +23,22 @@ getModulesStub
     .withArgs('headernavigation', 'hamburgernavigation', 'footer', 'mustread', 'promoted', 'hero', sinon.match.string, sinon.match.string)
     .resolves({
         headernavigation,
-        hamburgernavigation: newHamburgerNav,
+        hamburgernavigation,
         footer: {},
         mustread: mustRead,
         promoted,
         hero: {}
+    });
+
+getModulesStub
+    .withArgs('headernavigation', 'hamburgernavigation', 'footer', 'mustread', 'promoted', 'hero', 'awwtheme', sinon.match.string)
+    .resolves({
+        headernavigation,
+        hamburgernavigation,
+        footer: {},
+        mustread: mustRead,
+        promoted,
+        hero: awwhero
     });
 
 const getModuleStub = sinon.stub();

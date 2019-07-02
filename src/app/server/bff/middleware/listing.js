@@ -29,14 +29,14 @@ export default async function listing(req, res, next) {
             entity: { ...entityData },
             section: {
                 id: sectionData && sectionData.id,
-                name: sectionData.contentTitle,
-                urlName: sectionData.urlName
+                name: sectionData && sectionData.contentTitle,
+                urlName: sectionData && sectionData.urlName
             },
             ...(subsectionData && {
                 subsection: {
                     id: subsectionData && sectionData.id,
-                    name: subsectionData.contentTitle,
-                    urlName: subsectionData.urlName
+                    name: subsectionData && subsectionData.contentTitle,
+                    urlName: subsectionData && subsectionData.urlName
                 }
             })
         };
