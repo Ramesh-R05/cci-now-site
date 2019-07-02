@@ -4,6 +4,7 @@ import mustRead from '../modules/mustRead';
 import promoted from '../modules/promoted';
 import hometheme from '../modules/hometheme';
 import headernavigation from '../modules/headernavigation';
+import subsectionList from '../subsectionList';
 
 const getModulesStub = sinon.stub();
 
@@ -29,5 +30,6 @@ getModulesStub
     });
 
 const getModuleStub = sinon.stub();
+getModuleStub.withArgs(sinon.match(value => value.startsWith('sections/'))).resolves(subsectionList);
 
 export { getModulesStub, getModuleStub };

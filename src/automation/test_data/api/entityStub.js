@@ -1,10 +1,35 @@
 import sinon from 'sinon';
 import entityHome from '../entities/entity-home';
 import entitySectionFashion from '../entities/entity-seciton-fashion';
+import entitySectionBeauty from '../entities/entity-section-beauty';
+import entityBrandAww from '../entities/entity-brand-aww';
+import entityBrandWd from '../entities/entity-brand-wd';
+import entityBrandGh from '../entities/entity-brand-gh';
+import entityBrandOk from '../entities/entity-brand-ok';
+import entityBrandShop from '../entities/entity-brand-shop';
+import entityBrandNw from '../entities/entity-brand-nw';
+import entityBrandTake5 from '../entities/entity-brand-take5';
+import entityBrandMb from '../entities/entity-brand-mb';
+import entityBrandTvweek from '../entities/entity-brand-tvweek';
+import entityBrandPtl from '../entities/entity-brand-ptl';
+import entityBrandEmpire from '../entities/entity-brand-empire';
 
 const getEntityStub = sinon.stub();
 getEntityStub.withArgs('homepage', { throwOnFailedRequest: false }).resolves(entityHome);
 getEntityStub.withArgs('homepage').resolves(entityHome);
 getEntityStub.withArgs('?url=/fashion').resolves(entitySectionFashion);
+getEntityStub.withArgs(sinon.match(val => val.startsWith('?url=/fashion/'))).resolves(entitySectionFashion);
+getEntityStub.withArgs('?url=/beauty').resolves(entitySectionBeauty);
+getEntityStub.withArgs('?url=/aww').resolves(entityBrandAww);
+getEntityStub.withArgs('?url=/womansday').resolves(entityBrandWd);
+getEntityStub.withArgs('?url=/good-health').resolves(entityBrandGh);
+getEntityStub.withArgs('?url=/okmagazine').resolves(entityBrandOk);
+getEntityStub.withArgs('?url=/shop-til-you-drop').resolves(entityBrandShop);
+getEntityStub.withArgs('?url=/nw').resolves(entityBrandNw);
+getEntityStub.withArgs('?url=/take5').resolves(entityBrandTake5);
+getEntityStub.withArgs('?url=/mother-and-baby').resolves(entityBrandMb);
+getEntityStub.withArgs('?url=/tvweek').resolves(entityBrandTvweek);
+getEntityStub.withArgs('?url=/prizestolove').resolves(entityBrandPtl);
+getEntityStub.withArgs('?url=/empire').resolves(entityBrandEmpire);
 
 export default getEntityStub;
