@@ -26,7 +26,7 @@ Feature: Verify AMP page
     @article @med
     Scenario: Verify the social embeds on AMP article page
         When I switch to "mobile" view
-        Given I am currently viewing "amp/fashion/red-carpet/automation-test-article-with-social-embed-3663"
+        Given I am currently viewing "amp/fashion/red-carpet/automation-test-article-with-social-embed-41300"
         Then I can see the amp body Twitter embed "697199025729048577"
         * I can see the amp body Facebook embed "https://www.facebook.com/Foodtoloveau/posts/823515874446034"
         * I can see the amp body Youtube embed "https://www.youtube.com/embed/4GpnNxjy6m0"

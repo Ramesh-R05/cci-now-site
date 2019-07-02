@@ -84,7 +84,6 @@ describe('ErrorPage Component', () => {
         it('should render an emoji at the end of the last paragraph', () => {
             const lastPara = TestUtils.findRenderedDOMComponentWithClass(reactModule, 'error-page-container__body-item');
             const emoji = TestUtils.findRenderedDOMComponentWithTag(reactModule, 'img');
-            console.log(ReactDOM.findDOMNode(lastPara).innerHTML);
             expect(ReactDOM.findDOMNode(lastPara).innerHTML).to.contain(ReactDOM.findDOMNode(emoji).outerHTML);
         });
     });

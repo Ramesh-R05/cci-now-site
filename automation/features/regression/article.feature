@@ -155,7 +155,7 @@ Feature: Article
 # -------- Social embed is Medium ---------------#
     Scenario Outline: Editorial team can add social feeds to the article body
         Given I switch to "<device>" view
-        When I am currently viewing "fashion/red-carpet/automation-test-article-with-social-embed-3663"
+        When I am currently viewing "fashion/red-carpet/automation-test-article-with-social-embed-3662"
         Then I can see the body Twitter embed "697199025729048577"
         * I can see the body Instagram embed with caption "https://www.instagram.com/p/BBda49yyr4J/embed/captioned/"
         * I can see the body Instagram embed without caption "https://www.instagram.com/p/BA4NkZeSr_r/embed/"
