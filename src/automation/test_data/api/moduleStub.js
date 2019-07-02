@@ -17,6 +17,16 @@ getModulesStub.withArgs('headernavigation', 'hamburgernavigation', 'footer', 'mu
     homehero: {},
     theme: hometheme
 });
+getModulesStub
+    .withArgs('headernavigation', 'hamburgernavigation', 'footer', 'mustread', 'promoted', 'hero', sinon.match.string, sinon.match.string)
+    .resolves({
+        headernavigation,
+        hamburgernavigation: newHamburgerNav,
+        footer: {},
+        mustread: mustRead,
+        promoted,
+        hero: {}
+    });
 
 const getModuleStub = sinon.stub();
 

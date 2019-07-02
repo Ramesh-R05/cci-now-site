@@ -17,6 +17,8 @@ export default async function listing(req, res, next) {
         let sectionData = listingData;
         let subsectionData;
 
+        console.log(path);
+
         if (subsection) {
             sectionData = await getEntity(`?url=/${section}`);
 
