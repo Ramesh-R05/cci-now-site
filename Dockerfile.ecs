@@ -4,9 +4,6 @@ MAINTAINER Richard Lennox <rlennox@bauerxcelmedia.com.au>
 
 ENV APP_KEY=now-site
 
-# Should set the environment variable when running the container, the default is to run in stubbed mode.
-# ENV NODE_ENV=stubbed
-
 COPY ./src /app
 WORKDIR /app
 EXPOSE 3001
