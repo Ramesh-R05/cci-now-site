@@ -1,8 +1,8 @@
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 import { getLatestTeasers } from '../api/listing';
-import makeRequest from '../../makeRequest';
 import createReapeatableList from '../helper/createReapeatableList';
+import { getModule } from '../api/module';
 
 const latestTeaserCountForBrand = 6;
 const latestTeaserCountDefault = 7;
@@ -34,7 +34,7 @@ export default async function sectionMiddleware(req, res, next) {
             sectionQuery = `/${section}${subsection ? `/${subsection}` : ''}`;
             teaserFilter = 'parentUrl';
             listingQuery = `${teaserFilter} eq %27${teaserQuery}%27`;
-            req.data.subsectionList = await makeRequest(`${req.app.locals.config.services.remote.module}/sections/${section}`);
+            req.data.subsectionList = await getModule(`sections/${section}`);
         }
 
         if (nodeTypeAlias === 'Brand') {

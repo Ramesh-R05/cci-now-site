@@ -6,7 +6,6 @@ import homePagEntityMock from '../../../mocks/home';
 noCallThru();
 
 const configBase = {
-    services: { remote: { entity: 'http://entitiesUrl.com/' } },
     site: { host: 'http://site-host.com' }
 };
 
@@ -21,13 +20,13 @@ const repeatableListDataMock = {
     next: {}
 };
 
-const makeRequestStub = sinon.stub();
+const getEntityStub = sinon.stub();
 const getLatestTeasersStub = sinon.stub();
 const transformTeaserPageDateCreatedStub = sinon.stub();
 const createRepeatableListStub = sinon.stub();
 
 const homeMiddleware = proxyquire('../../../../app/server/bff/middleware/home', {
-    '../../makeRequest': makeRequestStub,
+    '../api/entity': getEntityStub,
     '../api/listing': {
         getLatestTeasers: getLatestTeasersStub
     },
@@ -48,7 +47,7 @@ const MiddlewareTestWrapper = new MiddlewareTestFactory(homeMiddleware, {
 
 describe('Home middleware', () => {
     afterEach(() => {
-        makeRequestStub.reset();
+        getEntityStub.reset();
         getLatestTeasersStub.reset();
         transformTeaserPageDateCreatedStub.reset();
         createRepeatableListStub.reset();
@@ -66,7 +65,7 @@ describe('Home middleware', () => {
             });
 
             entityResponse = new Error('request error');
-            makeRequestStub.withArgs(`${configBase.services.remote.entity}/homepage`).throws(entityResponse);
+            getEntityStub.withArgs('homepage').throws(entityResponse);
 
             result = await callMiddleware();
         });
@@ -96,7 +95,7 @@ describe('Home middleware', () => {
                 entityResponse = homePagEntityMock;
                 listingResponse = homepageTeasersMock;
 
-                makeRequestStub.withArgs(`${configBase.services.remote.entity}/homepage`).resolves(entityResponse);
+                getEntityStub.withArgs('homepage').resolves(entityResponse);
                 getLatestTeasersStub.withArgs(14, 0).resolves(listingResponse);
                 transformTeaserPageDateCreatedStub.withArgs(listingResponse.data).returnsArg(0);
                 createRepeatableListStub
@@ -166,7 +165,7 @@ describe('Home middleware', () => {
                 entityResponse = homePagEntityMock;
                 listingResponse = { data: [], totalCount: 0 };
 
-                makeRequestStub.withArgs(`${configBase.services.remote.entity}/homepage`).resolves(entityResponse);
+                getEntityStub.withArgs('homepage').resolves(entityResponse);
                 getLatestTeasersStub.withArgs(14, 0).resolves(listingResponse);
                 transformTeaserPageDateCreatedStub.withArgs(listingResponse.data).returnsArg(0);
                 createRepeatableListStub
@@ -242,7 +241,7 @@ describe('Home middleware', () => {
             entityResponse = homePagEntityMock;
             listingResponse = { data: [], totalCount: 0 };
 
-            makeRequestStub.withArgs(`${configBase.services.remote.entity}/homepage`).resolves(entityResponse);
+            getEntityStub.withArgs('homepage').resolves(entityResponse);
             getLatestTeasersStub.withArgs(14, 0).resolves(listingResponse);
             transformTeaserPageDateCreatedStub.withArgs(listingResponse.data).returnsArg(0);
             createRepeatableListStub
@@ -320,7 +319,7 @@ describe('Home middleware', () => {
                 entityResponse = homePagEntityMock;
                 listingResponse = homepageTeasersMock;
 
-                makeRequestStub.withArgs(`${configBase.services.remote.entity}/homepage`).resolves(entityResponse);
+                getEntityStub.withArgs('homepage').resolves(entityResponse);
                 getLatestTeasersStub.withArgs(14, (testArgs.req.query.pageNo - 1) * 14).resolves(listingResponse);
                 transformTeaserPageDateCreatedStub.withArgs(listingResponse.data).returnsArg(0);
                 createRepeatableListStub

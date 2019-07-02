@@ -2,12 +2,10 @@ import proxyquire, { noCallThru } from 'proxyquire';
 
 noCallThru();
 
-let makeRequestStub = () => {};
+const getEntityStub = sinon.stub();
 
 const listingMiddleware = proxyquire('../../../../app/server/bff/middleware/listing', {
-    '../../makeRequest': (...args) => {
-        return makeRequestStub(...args);
-    }
+    '../api/entity': getEntityStub
 }).default;
 
 describe('Listing middleware', () => {
@@ -15,6 +13,10 @@ describe('Listing middleware', () => {
     const entity = { id: 'SECTION_ID_123', contentTitle: 'Title' };
     const res = {};
     let next;
+
+    afterEach(() => {
+        getEntityStub.reset();
+    });
 
     describe('when there is a section in the query param', () => {
         const reqBase = { query: { section: 'sec' }, app: { locals: { config } } };
@@ -29,7 +31,7 @@ describe('Listing middleware', () => {
 
             before(() => {
                 next = sinon.spy();
-                makeRequestStub = sinon.stub().throws(rejectedResponse);
+                getEntityStub.throws(rejectedResponse);
             });
 
             it('should pass error to next middleware', done => {
@@ -48,7 +50,7 @@ describe('Listing middleware', () => {
             describe('and there is not a req.data object set', () => {
                 before(() => {
                     next = sinon.spy();
-                    makeRequestStub = sinon.stub().resolves(entity);
+                    getEntityStub.resolves(entity);
                 });
 
                 it('should store the entity in `req.data`', done => {
@@ -69,7 +71,7 @@ describe('Listing middleware', () => {
 
                 before(() => {
                     next = sinon.spy();
-                    makeRequestStub = sinon.stub().resolves(entity);
+                    getEntityStub.resolves(entity);
                 });
 
                 it('should store the entity in `req.data`', done => {
@@ -92,14 +94,13 @@ describe('Listing middleware', () => {
 
         before(() => {
             next = sinon.stub();
-            makeRequestStub = sinon.stub();
         });
 
         it(`should call next without making a request`, done => {
             listingMiddleware(req, res, next)
                 .then(() => {
                     expect(next).to.have.been.called;
-                    expect(makeRequestStub).to.not.have.been.called;
+                    expect(getEntityStub).to.not.have.been.called;
                     done();
                 })
                 .catch(done);
@@ -111,14 +112,13 @@ describe('Listing middleware', () => {
 
         before(() => {
             next = sinon.stub();
-            makeRequestStub = sinon.stub();
         });
 
         it(`should call next without making a request`, done => {
             listingMiddleware(req, res, next)
                 .then(() => {
                     expect(next).to.have.been.called;
-                    expect(makeRequestStub).to.not.have.been.called;
+                    expect(getEntityStub).to.not.have.been.called;
                     done();
                 })
                 .catch(done);
@@ -131,14 +131,13 @@ describe('Listing middleware', () => {
 
         before(() => {
             next = sinon.stub();
-            makeRequestStub = sinon.stub();
         });
 
         it(`should call next without making a request`, done => {
             listingMiddleware(req, res, next)
                 .then(() => {
                     expect(next).to.have.been.called;
-                    expect(makeRequestStub).to.not.have.been.called;
+                    expect(getEntityStub).to.not.have.been.called;
                     done();
                 })
                 .catch(done);

@@ -1,8 +1,7 @@
-import makeRequest from '../../makeRequest';
 import { getLatestTeasers } from '../api/listing';
 import createRepeatableList from '../helper/createReapeatableList';
 import transformTeaserPageDateCreated from '../helper/transformTeaserPageDateCreated';
-import logger from '../../../../logger';
+import getEntity from '../api/entity';
 
 const latestTeaserCount = 6;
 const listCount = 14;
@@ -25,18 +24,7 @@ export default async function home(req, res, next) {
 
         const skip = (pageNo - 1) * listCount;
 
-        const [pageData, latestTeasersResp] = await Promise.all([
-            makeRequest(`${req.app.locals.config.services.remote.entity}/homepage`)
-                .then(data => data)
-                .catch(e => {
-                    const error = new Error(`entity not found for homepage`);
-                    error.status = 404;
-                    logger.error({ msg: 'listing middleware: entity not found', e });
-
-                    throw error;
-                }),
-            getLatestTeasers(listCount, skip)
-        ]);
+        const [pageData, latestTeasersResp] = await Promise.all([getEntity('homepage'), getLatestTeasers(listCount, skip)]);
 
         const latestTeasers = latestTeasersResp && transformTeaserPageDateCreated(latestTeasersResp.data);
         const totalCount = latestTeasersResp.totalCount;

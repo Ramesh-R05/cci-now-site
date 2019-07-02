@@ -40,8 +40,21 @@ export default async function getModules(...args) {
 
         return moduleList;
     } catch (error) {
-        logger.error(error);
+        logger.error({ msg: 'getModules: makeRequest error', error });
 
         return {};
     }
+}
+
+export function getModule(modulePath) {
+    return makeRequest(`${config.services.remote.module}/${modulePath}`)
+        .then(res => res)
+        .catch(err => {
+            logger.error({ msg: 'getModule: makeRequest error', err });
+
+            return {
+                data: [],
+                totalCount: 0
+            };
+        });
 }

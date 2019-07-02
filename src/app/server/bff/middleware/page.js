@@ -1,6 +1,6 @@
 import has from 'lodash/object/has';
-import makeRequest from '../../makeRequest';
 import getPageID from '../helper/getPageID';
+import getEntity from '../api/entity';
 
 export default async function pageMiddleware(req, res, next) {
     try {
@@ -24,10 +24,7 @@ export default async function pageMiddleware(req, res, next) {
         }
 
         const saved = `?saved=${!!preview}`;
-        const pageData = await makeRequest(`${req.app.locals.config.services.remote.entity}/${pageID}${saved}`)
-            .then(data => data)
-            .catch(() => ({}));
-
+        const pageData = await getEntity(`${pageID}${saved}`);
         const path = `/${section}/${subsection}/${page}`;
 
         if (!pageData.url || pageData.url !== path) {

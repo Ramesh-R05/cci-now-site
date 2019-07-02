@@ -1,11 +1,9 @@
 import logger from '../../../../logger';
-import makeRequest from '../../makeRequest';
+import getEntity from '../api/entity';
 
 export default async function siteAlert(req, res, next) {
     try {
-        const homepageData = await makeRequest(`${req.app.locals.config.services.remote.entity}/homepage`)
-            .then(data => data)
-            .catch(() => ({}));
+        const homepageData = await getEntity(`${req.app.locals.config.services.remote.entity}/homepage`, { throwOnFailedRequest: false });
 
         const {
             siteAlertTextColour,

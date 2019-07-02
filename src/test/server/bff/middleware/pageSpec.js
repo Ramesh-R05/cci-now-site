@@ -2,16 +2,12 @@ import proxyquire, { noCallThru } from 'proxyquire';
 import entity from '../../../mocks/article';
 noCallThru();
 
-let makeRequestStub = () => {};
-let getPageIDStub = () => {};
+const getEntityStub = sinon.stub();
+const getPageIDStub = sinon.stub();
 
 const pageMiddleware = proxyquire('../../../../app/server/bff/middleware/page', {
-    '../../makeRequest': (...args) => {
-        return makeRequestStub(...args);
-    },
-    '../helper/getPageID': () => {
-        return getPageIDStub();
-    }
+    '../api/entity': getEntityStub,
+    '../helper/getPageID': getPageIDStub
 }).default;
 
 describe('Page middleware', () => {
@@ -27,6 +23,11 @@ describe('Page middleware', () => {
     let next;
     let req;
 
+    afterEach(() => {
+        getEntityStub.reset();
+        getPageIDStub.reset();
+    });
+
     describe('when the path does not contain an ID number in the slug', () => {
         before(() => {
             req = {
@@ -34,7 +35,7 @@ describe('Page middleware', () => {
                 query: { section: validSection, subSection: validSubsection, page: validPage }
             };
             next = sinon.spy();
-            getPageIDStub = sinon.stub().returns(undefined);
+            getPageIDStub.returns(undefined);
         });
 
         it('should pass error to next middleware', done => {
@@ -60,8 +61,6 @@ describe('Page middleware', () => {
                 query: { section: validSection, page: validPage }
             };
             next = sinon.spy();
-            getPageIDStub = sinon.stub();
-            makeRequestStub = sinon.stub();
         });
 
         it('should pass error to next middleware', done => {
@@ -69,7 +68,7 @@ describe('Page middleware', () => {
                 .then(() => {
                     expect(next).to.be.calledWith();
                     expect(getPageIDStub).to.not.have.been.called;
-                    expect(makeRequestStub).to.not.have.been.called;
+                    expect(getEntityStub).to.not.have.been.called;
                     done();
                 })
                 .catch(done);
@@ -90,8 +89,8 @@ describe('Page middleware', () => {
                 status: 404
             };
             next = sinon.spy();
-            makeRequestStub = sinon.stub().throws(rejectedResponse);
-            getPageIDStub = sinon.stub().returns('DOLLY-1234');
+            getEntityStub.throws(rejectedResponse);
+            getPageIDStub.returns('DOLLY-1234');
         });
 
         it('should pass error to next middleware', done => {
@@ -111,14 +110,14 @@ describe('Page middleware', () => {
                 query: { section: validSection, page: validPage, preview: 'preview' }
             };
             next = sinon.spy();
-            makeRequestStub = sinon.stub().resolves(entity);
-            getPageIDStub = sinon.stub().returns('DOLLY-1234');
+            getEntityStub.resolves(entity);
+            getPageIDStub.returns('DOLLY-1234');
         });
 
         it('should call makeRequest with saved data', done => {
             pageMiddleware(req, res, next)
                 .then(() => {
-                    expect(makeRequestStub).to.have.been.calledWith(`${config.services.remote.entity}/DOLLY-1234?saved=true`);
+                    expect(getEntityStub).to.have.been.calledWith(`DOLLY-1234?saved=true`);
                     done();
                 })
                 .catch(done);
@@ -133,15 +132,15 @@ describe('Page middleware', () => {
                     query: { section: validSection, subsection: validSubsection, page: validPage }
                 };
                 next = sinon.spy();
-                makeRequestStub = sinon.stub().resolves(entity);
-                getPageIDStub = sinon.stub().returns('DOLLY-1234');
+                getEntityStub.resolves(entity);
+                getPageIDStub.returns('DOLLY-1234');
             });
 
             it('should call makeRequest without saved data', done => {
                 req.query.section = 'anotherSection';
                 pageMiddleware(req, res, next)
                     .then(() => {
-                        expect(makeRequestStub).to.have.been.calledWith(`${config.services.remote.entity}/DOLLY-1234?saved=false`);
+                        expect(getEntityStub).to.have.been.calledWith('DOLLY-1234?saved=false');
                         done();
                     })
                     .catch(done);
@@ -188,8 +187,8 @@ describe('Page middleware', () => {
                     }
                 };
                 next = sinon.spy();
-                makeRequestStub = sinon.stub().resolves(entity);
-                getPageIDStub = sinon.stub().returns('DOLLY-1234');
+                getEntityStub.resolves(entity);
+                getPageIDStub.returns('DOLLY-1234');
             });
 
             it('should store the entity in `req.data`', done => {
@@ -221,8 +220,8 @@ describe('Page middleware', () => {
                 query: { section: validSection, page: validPage }
             };
             next = sinon.spy();
-            makeRequestStub = sinon.stub().resolves(entity);
-            getPageIDStub = sinon.stub().returns('DOLLY-1234');
+            getEntityStub.resolves(entity);
+            getPageIDStub.returns('DOLLY-1234');
         });
 
         it(`should keep the existing header data in 'req.data'`, done => {
