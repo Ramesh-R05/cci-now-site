@@ -1,6 +1,4 @@
-import DataManager from '../class/DataManager';
-
-const hero = {
+export default {
     id: 'NOW-19532',
     title: 'Prince Harry makes secret trip to see Meghan Markle in Toronto',
     dateCreated: '2016-11-03T20:44:00.00Z',
@@ -30,5 +28,3 @@ const hero = {
         }
     ]
 };
-
-export default new DataManager(hero);

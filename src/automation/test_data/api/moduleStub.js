@@ -4,7 +4,7 @@ import mustRead from '../modules/mustRead';
 import promoted from '../modules/promoted';
 import hometheme from '../modules/hometheme';
 import headernavigation from '../modules/headernavigation';
-import subsectionList from '../subsectionList';
+import subsectionList from '../modules/subsectionList';
 
 const getModulesStub = sinon.stub();
 

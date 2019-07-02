@@ -1,6 +1,4 @@
-import DataManager from '../class/DataManager';
-
-const navigation = {
+export default {
     items: [
         {
             id: 'NOW-1168',
@@ -60,5 +58,3 @@ const navigation = {
         }
     ]
 };
-
-export default new DataManager(navigation);

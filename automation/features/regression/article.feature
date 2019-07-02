@@ -42,7 +42,7 @@ Feature: Article
     @low
     Scenario Outline: Editorial team can create content with hero video
         When I switch to "<device>" view
-        Given I am currently viewing "beauty/hair/automation-test-article-with-hero-video-3664"
+        Given I am currently viewing "fashion/red-carpet/automation-test-article-with-hero-video-3664"
         * I can see the hero video instead of the main image
         * I should not see the hero image caption
 

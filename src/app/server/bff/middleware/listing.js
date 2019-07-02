@@ -28,13 +28,13 @@ export default async function listing(req, res, next) {
             ...req.data,
             entity: { ...entityData },
             section: {
-                id: sectionData.id,
+                id: sectionData && sectionData.id,
                 name: sectionData.contentTitle,
                 urlName: sectionData.urlName
             },
             ...(subsectionData && {
                 subsection: {
-                    id: subsectionData.id,
+                    id: subsectionData && sectionData.id,
                     name: subsectionData.contentTitle,
                     urlName: subsectionData.urlName
                 }

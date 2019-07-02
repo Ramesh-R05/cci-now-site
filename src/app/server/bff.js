@@ -1,7 +1,5 @@
 import amp from '@bxm/server/lib/middleware/amp';
 import emailLinkTracking from '@bxm/server/lib/middleware/emailLinkTracking';
-// import stubServer from '../../automation/test_data/contentApi';
-// import logger from '../../logger';
 import article from './bff/middleware/article';
 import assetProxy from './bff/middleware/assetProxy';
 import comScore from './bff/middleware/comScore';
@@ -26,10 +24,6 @@ import tag from './bff/middleware/tag';
 export default function bff(server) {
     server.get('/api/asset', assetProxy);
 
-    // if (process.env.APP_STUBBED === 'true') {
-    //     stubServer(server, server.locals.config);
-    //     logger.warn('stubbing does not exercise BFF code');
-    // } else {
     server.get(
         '(/:preview(preview))?/amp/:section/:subsection/:page',
         createRequestData,
@@ -65,5 +59,4 @@ export default function bff(server) {
         error
     );
     server.get(server.locals.config.services.endpoints.search, pageModules, comScore, headerMeta, search, https, render, error);
-    // }
 }
