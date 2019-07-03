@@ -28,5 +28,11 @@ export default [
         imageUrl: '/assets/images/nzmenulogos/NOTED-logo.svg',
         url: 'https://www.noted.co.nz/',
         title: 'Noted'
+    },
+    {
+        id: 'beautyheaven',
+        imageUrl: '/assets/images/menulogos/BEAUTYHEAVEN-logo.svg',
+        url: 'https://www.beautyheaven.co.nz/',
+        title: 'Beauty Heaven'
     }
 ];

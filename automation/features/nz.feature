@@ -14,7 +14,6 @@ Feature: Specific value for NZ NTL
             |NEXT                               |/next                  |
             |Good Health Choices                |/good-health-choices   |
             |Nadia                              |/nadia                 |
-            |Beauty To Love                     |/beauty-to-love        |
 
     Scenario Outline: Verify the subscribe now link and social links of "<brand>" landing page
         Given I switch to "desktop" view
@@ -51,7 +50,6 @@ Feature: Specific value for NZ NTL
             |NEXT                               |/next                  |gtm-footer__logos-list-next     |
             |Good Health Choices                |/good-health-choices   |gtm-footer__logos-list-nzgh     |
             |Nadia                              |/nadia                 |gtm-footer__logos-list-nadia    |
-            |Beauty To Love                     |/beauty-to-love        |gtm-footer__logos-list-btl      |
 
 
     @BXMA-304

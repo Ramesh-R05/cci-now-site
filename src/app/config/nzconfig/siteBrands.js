@@ -83,13 +83,5 @@ export default [
             instagram: 'https://www.instagram.com/nadiamagazine'
         },
         newsletterUrl: 'https://www.nowtolove.co.nz/nadia-newsletter'
-    },
-    {
-        id: 'btl',
-        title: 'Beauty To Love',
-        magazineTitle: 'Beauty To Love',
-        imageUrl: '/assets/images/nzheaderlogos/BTL-logo.svg',
-        heroImageUrl: '/assets/images/nzherologos/BTL-logo.svg',
-        url: '/beauty-to-love'
     }
 ];
