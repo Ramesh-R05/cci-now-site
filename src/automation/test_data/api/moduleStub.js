@@ -9,6 +9,8 @@ import awwhero from '../modules/awwhero';
 
 const getModulesStub = sinon.stub();
 
+getModulesStub.resolves({});
+
 getModulesStub.withArgs('headernavigation', 'hamburgernavigation', 'footer', 'mustread', 'promoted', 'hero', `homehero`, `hometheme`).resolves({
     headernavigation,
     hamburgernavigation,

@@ -25,6 +25,7 @@ import entityAmpArticle41200 from '../entities/entity-amp-article-41200';
 import entityAmpArticle41300 from '../entities/entity-amp-article-41300';
 
 const getEntityStub = sinon.stub();
+getEntityStub.resolves({});
 getEntityStub.withArgs('homepage', { throwOnFailedRequest: false }).resolves(entityHome);
 getEntityStub.withArgs('homepage').resolves(entityHome);
 getEntityStub.withArgs('?url=/fashion').resolves(entitySectionFashion);
