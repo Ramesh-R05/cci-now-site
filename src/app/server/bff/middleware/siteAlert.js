@@ -3,7 +3,7 @@ import getEntity from '../api/entity';
 
 export default async function siteAlert(req, res, next) {
     try {
-        const homepageData = await getEntity(`${req.app.locals.config.services.remote.entity}/homepage`, { throwOnFailedRequest: false });
+        const homepageData = await getEntity('homepage', { throwOnFailedRequest: false });
 
         const {
             siteAlertTextColour,
