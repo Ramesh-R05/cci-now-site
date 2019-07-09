@@ -107,8 +107,8 @@ export default [
         heroImageUrl: '/assets/images/herologos/BOUNTY-logo.svg',
         url: '/bounty',
         socialLinks: {
-            facebook: 'https://www.facebook.com/mbmag/',
-            instagram: 'https://www.instagram.com/motherbaby_au'
+            facebook: 'https://www.facebook.com/bountyrewardsau',
+            instagram: 'https://www.instagram.com/bountyrewardsau'
         },
         newsletterUrl: 'https://www.nowtolove.com.au/mother-and-baby-newsletter',
         renderSubscribeElements: false
