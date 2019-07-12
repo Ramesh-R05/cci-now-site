@@ -8,8 +8,11 @@ const httpsSet = (obj, path) => {
         return;
     }
 
-    url = url.replace('http://d3lp4xedbqa8a5.cloudfront.net', 'https://d3lp4xedbqa8a5.cloudfront.net');
-    url = url.replace('http://cdn.assets.cougar.bauer-media.net.au', 'https://d3lp4xedbqa8a5.cloudfront.net');
+    const secureCloudFrontUrl = 'https://d3lp4xedbqa8a5.cloudfront.net';
+
+    url = url.replace('http://d3lp4xedbqa8a5.cloudfront.net', secureCloudFrontUrl);
+    url = url.replace('http://cdn.assets.cougar.bauer-media.net.au', secureCloudFrontUrl);
+    url = url.replace('http://assets.cougar.nineentertainment.com.au', secureCloudFrontUrl);
 
     if (url.startsWith('https')) {
         set(obj, path, url);
