@@ -1,4 +1,7 @@
 export default {
+    jwPlayer: {
+        enabled: false
+    },
     galleryOfGalleries: {
         enabled: true
     },

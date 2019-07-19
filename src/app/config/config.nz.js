@@ -20,6 +20,11 @@ export default {
 
     site,
 
+    jwPlayer: {
+        scriptKey: 'OvEAG7PA',
+        baseUrl: 'https://cdn.jwplayer.com'
+    },
+
     brightcove,
 
     urls,
