@@ -5,7 +5,6 @@
 ####################################################################
 
 resources:
-
   # Docker Image Options to run the container
   - name: now-site-opts-sit
     type: dockerOptions
@@ -15,27 +14,27 @@ resources:
       cpuShares: 192
       portMappings:
         - 0:3001
-      publishAllPorts : true
+      publishAllPorts: true
       logConfig:
         type: awslogs
         options:
-          awslogs-group: "app_ecs"
-          awslogs-region: "ap-southeast-2"
-          awslogs-stream-prefix: "app-now-site"
+          awslogs-group: 'app_ecs'
+          awslogs-region: 'ap-southeast-2'
+          awslogs-stream-prefix: 'app-now-site'
 
   # Seed image version MASTER Docker Image for the now-site
   - name: now-site-img-master
     type: image
     pointer:
-      sourceName: "317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site"
+      sourceName: '317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site'
     seed:
-      versionName: "master.3614"  # This can be changed for Roll back
+      versionName: 'master.3614' # This can be changed for Roll back
 
   # Seed image version Feature BRANCH Docker Image for the now-site
   - name: now-site-img-branch
     type: image
     pointer:
-      sourceName: "317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site"
+      sourceName: '317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site'
     seed:
       versionName: latest
 
@@ -58,42 +57,42 @@ resources:
 
   # Slack connection
   - name: now-slack-notifications
-    type: notification                          #required
+    type: notification #required
     integration: slack-bauerxcelmedia
     pointer:
       recipients:
-        - "#au-shippable"
+        - '#au-shippable'
 
   # Slack connection
   - name: now-qa-team-notifications
-    type: notification                          #required
+    type: notification #required
     integration: slack-bauerxcelmedia
     pointer:
       recipients:
-        - "#bxm_qa_notifications"
+        - '#bxm_qa_notifications'
 
- # Slack connection
+  # Slack connection
   - name: now-deployment-notifications
-    type: notification                          #required
+    type: notification #required
     integration: slack-bauerxcelmedia
     pointer:
       recipients:
-        - "#survivors_outlast_au"
+        - '#survivors_outlast_au'
 
   # Seed Release version
-    # for Rollback refer to below URL
-    # http://docs.shippable.com/deploy/rollback/#rolling-back-your-deployments
+  # for Rollback refer to below URL
+  # http://docs.shippable.com/deploy/rollback/#rolling-back-your-deployments
   - name: now-site-version
     type: version
     seed:
-      versionName: "1.180.0" # This can be changed for Roll back
+      versionName: '1.180.0' # This can be changed for Roll back
 
   # REGION Parameter
   - name: now-site-params-nz-region
     type: params
     version:
       params:
-        APP_REGION: "nz"
+        APP_REGION: 'nz'
 
   #Schedule Run of automation
   # This is using Shippable timezone
@@ -102,31 +101,31 @@ resources:
   - name: now-morning-trigger
     type: time
     seed:
-      interval: "30 21 * * *"
+      interval: '30 21 * * *'
 
   #"0 22 * * 1" is 10:00pm Monday which is Tuesday morning 9:00am daylight saving or 8:00am standard time in Sydney
   - name: now-weekly-trigger
     type: time
     seed:
-      interval: "0 22 * * 1"
+      interval: '0 22 * * 1'
 
   #"0 22 * * 3" is 10:00pm Wednesday which is Thursday morning 9:00am daylight saving or 8:00am standard time in Sydney
   - name: nznow-weekly-trigger
     type: time
     seed:
-      interval: "0 22 * * 3"
+      interval: '0 22 * * 3'
 
   #"30 22 * * 1,4" is 10:30pm Monday & Thursday which are Tuesday morning and Friday morning 9:30am daylight saving or 8:30am standard time in Sydney
   - name: now-perf-live-trigger
     type: time
     seed:
-      interval: "30 22 * * 1,4"
+      interval: '30 22 * * 1,4'
 
   #"30 22 * * 1" is 10:30pm Monday which is Tuesday morning 9:30am daylight saving or 8:30am standard time in Sydney
   - name: now-seo-live-trigger
     type: time
     seed:
-      interval: "30 22 * * 1"
+      interval: '30 22 * * 1'
 
   ####################################
   # NON PROD environment configuration
@@ -137,15 +136,15 @@ resources:
     type: cluster
     integration: digital-nonprod-AWS
     pointer:
-      sourceName : "app_ecs"
-      region: "ap-southeast-2"
+      sourceName: 'app_ecs'
+      region: 'ap-southeast-2'
 
   # AWS S3 bucket for storing test result files
   - name: test-result-s3-param
     type: params
     versionTemplate:
       params:
-        AWS_S3_BUCKET: "s3://test-result-s3/"
+        AWS_S3_BUCKET: 's3://test-result-s3/'
         secure: eLFlf9nWSWJbMdNziICYW5J6aHjIKLsuK5qU/IXyCLXlWyMuaw3HZrPqoL5nqyJYudHYI1se56UVw2AFytKPI11kloH4J7vx/CHz3Lp2AcdBAq/w4ZTWiWVKmq15MUjlUAegOwX2TEBgD4IDnIbdeDgC15kPavRTqtqKEYAi9DgPTgqW02tvsu2Q+xiJFtihqSOD126M2xz1JGEM2dMwZYJSZiMA2CHSSlXhVNZBtonC3PTYwfwKt1o26IrIcVXfy17J/5/6Dme9l8fJLP4bxxCUa8PEpNUqeAt5mDpMPged6sFz+g6mX4kWMLjM6wimpy+tLdHXM+4OhzKfcbT5UA==
         IMAGE: 317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/now-site
 
@@ -153,66 +152,73 @@ resources:
   - name: au-now-site-alb-sit
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-au-sit/40d9881a0008f4b1"
+      sourceName: 'arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-au-sit/40d9881a0008f4b1'
       method: application
 
   # AWS SIT load Balancer - NOW NZ - MASTER branch
   - name: nz-now-site-alb-sit
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-nz-sit/46fe04e2d10ce191"
+      sourceName: 'arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-nz-sit/46fe04e2d10ce191'
       method: application
 
   # AWS SIT:8080 load Balancer - NOW AU - feature BRANCH
   - name: now-site-alb-sit-branch
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-au-branch-sit/e20cca1138db8557"
+      sourceName: 'arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-au-branch-sit/e20cca1138db8557'
       method: application
 
   # AWS TEST load Balancer - Homes STUBBED - MASTER branch
   - name: now-site-alb-test
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-test/3640de7200782c72"
+      sourceName: 'arn:aws:elasticloadbalancing:ap-southeast-2:014901580825:targetgroup/now-site-test/3640de7200782c72'
       method: application
+
+  - name: now-site-test-env
+    type: params
+    versionTemplate:
+      params:
+        # EMAIL_HASH_SERVICE_SECRET_KEY,APP_SERVICES_ACCESS_KEY
+        secure: TzeL4hakIO5ztpLBWSQ5SdBNQ8RNw1lLpNBPQHxHtgbPmD1YzaEpCmiNrudO0bSayrrfqs3iBydEiW3hkZjhEFZqLG1coi5dXJvtagJdpzvavTtlu4pdwWdp1ag8ntlfAvrOuhowyyCnNrmzqlwgXDFyhjEoECqpcJ/qiLS41+ns0fOUy+SyuRSmAUi0cOqdtppp/pXucPgIJN/tLnkD1zOwXKhNtHyWNHyWp0cAgV/81Kj7De4FHgyQC0RfMeghB6UaRVw8UW5ie3QKbSF+0AweYNeVqwSmWyf7JzXaibcbT7dKN4XtrVJ7hhrjRB87lIWCwNOGW20MRdQrGwMHKA==
 
   # SIT AU Parameter
   - name: now-site-au-params-sit
     type: params
     version:
       params:
-        NODE_ENV: "production"  #change this to dev when we are ready
-        APP_ENV: "sit"
-        APM_KEY: "c777240932e6282ffacc6a42ae6a0709426522bb"
+        NODE_ENV: 'production' #change this to dev when we are ready
+        APP_ENV: 'sit'
+        APM_KEY: 'c777240932e6282ffacc6a42ae6a0709426522bb'
         APP_DEBUG: true
-        APP_REGION: "au"
-        # EMAIL_HASH_SERVICE_SECRET_KEY
-        secure: oVyEE7T+g+VsVQhrAt36xQz8NQOHvz3kNhIWYxZ5IsMusszkrfcwb7hoQk5lL1tM4wuHNciLF6AakZhe/bj7o9b+U+bKzsU3j/VUYlrB8zWUaPgjPlBGtbWV2TyT4/EfCReFOD4LDI8Jb+NEiaYBrnZVEt1/rI77rGYG7hmJYrA03GvtCBkV1Cck9JpMmtZSrFqL7klidbNRe0GWvIN0gkgvjJCZtltX5+v1+f/wArzw4mcLOX2WPZ5ESZE3Cee/W6CbNnRcrdFNfgWJm+QBGdxVJL5v0Jd1ijivNGwCGMw1B/Nf6kCTMgWroAO4miESEBODWOTmobGGLnUDR8bCOg==
-  
+        APP_REGION: 'au'
+        # EMAIL_HASH_SERVICE_SECRET_KEY,APP_SERVICES_ACCESS_KEY
+        secure: TzeL4hakIO5ztpLBWSQ5SdBNQ8RNw1lLpNBPQHxHtgbPmD1YzaEpCmiNrudO0bSayrrfqs3iBydEiW3hkZjhEFZqLG1coi5dXJvtagJdpzvavTtlu4pdwWdp1ag8ntlfAvrOuhowyyCnNrmzqlwgXDFyhjEoECqpcJ/qiLS41+ns0fOUy+SyuRSmAUi0cOqdtppp/pXucPgIJN/tLnkD1zOwXKhNtHyWNHyWp0cAgV/81Kj7De4FHgyQC0RfMeghB6UaRVw8UW5ie3QKbSF+0AweYNeVqwSmWyf7JzXaibcbT7dKN4XtrVJ7hhrjRB87lIWCwNOGW20MRdQrGwMHKA==
+
   # SIT NZ Parameter
   - name: now-site-nz-params-sit
     type: params
     version:
       params:
-        NODE_ENV: "production"  #change this to dev when we are ready
-        APP_ENV: "sit"
-        APM_KEY: "c777240932e6282ffacc6a42ae6a0709426522bb"
+        NODE_ENV: 'production' #change this to dev when we are ready
+        APP_ENV: 'sit'
+        APM_KEY: 'c777240932e6282ffacc6a42ae6a0709426522bb'
         APP_DEBUG: true
-        APP_REGION: "nz"
-        # EMAIL_HASH_SERVICE_SECRET_KEY
-        secure: oVyEE7T+g+VsVQhrAt36xQz8NQOHvz3kNhIWYxZ5IsMusszkrfcwb7hoQk5lL1tM4wuHNciLF6AakZhe/bj7o9b+U+bKzsU3j/VUYlrB8zWUaPgjPlBGtbWV2TyT4/EfCReFOD4LDI8Jb+NEiaYBrnZVEt1/rI77rGYG7hmJYrA03GvtCBkV1Cck9JpMmtZSrFqL7klidbNRe0GWvIN0gkgvjJCZtltX5+v1+f/wArzw4mcLOX2WPZ5ESZE3Cee/W6CbNnRcrdFNfgWJm+QBGdxVJL5v0Jd1ijivNGwCGMw1B/Nf6kCTMgWroAO4miESEBODWOTmobGGLnUDR8bCOg==
-        
+        APP_REGION: 'nz'
+        # EMAIL_HASH_SERVICE_SECRET_KEY,APP_SERVICES_ACCESS_KEY
+        secure: TzeL4hakIO5ztpLBWSQ5SdBNQ8RNw1lLpNBPQHxHtgbPmD1YzaEpCmiNrudO0bSayrrfqs3iBydEiW3hkZjhEFZqLG1coi5dXJvtagJdpzvavTtlu4pdwWdp1ag8ntlfAvrOuhowyyCnNrmzqlwgXDFyhjEoECqpcJ/qiLS41+ns0fOUy+SyuRSmAUi0cOqdtppp/pXucPgIJN/tLnkD1zOwXKhNtHyWNHyWp0cAgV/81Kj7De4FHgyQC0RfMeghB6UaRVw8UW5ie3QKbSF+0AweYNeVqwSmWyf7JzXaibcbT7dKN4XtrVJ7hhrjRB87lIWCwNOGW20MRdQrGwMHKA==
+
   # TEST Parameter
   - name: now-site-params-test
     type: params
     version:
       params:
-        NODE_ENV: "production"
-        APP_ENV: "test"
+        NODE_ENV: 'production'
+        APP_ENV: 'test'
         APP_STUBBED: true
         APP_DEBUG: true
-        APP_REGION: "au"
+        APP_REGION: 'au'
 
   ####################################
   # PROD environment configuration
@@ -226,21 +232,21 @@ resources:
     type: cluster
     integration: digital-prod-AWS
     pointer:
-      sourceName : "app_ecs"
-      region: "ap-southeast-2"
+      sourceName: 'app_ecs'
+      region: 'ap-southeast-2'
 
   # AWS PROD load Balancer - AU NOW PROD - MASTER branch
   - name: au-now-site-alb-prod
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:622156575630:targetgroup/now-site-prod/d470fcdb27032289"
+      sourceName: 'arn:aws:elasticloadbalancing:ap-southeast-2:622156575630:targetgroup/now-site-prod/d470fcdb27032289'
       method: application
 
   # AWS PROD load Balancer - NZ NOW PROD - MASTER branch
   - name: nz-now-site-alb-prod
     type: loadBalancer
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:ap-southeast-2:622156575630:targetgroup/now-site-nz-prod/954d2eeb427e106a"
+      sourceName: 'arn:aws:elasticloadbalancing:ap-southeast-2:622156575630:targetgroup/now-site-nz-prod/954d2eeb427e106a'
       method: application
 
   # PROD parameters
@@ -248,8 +254,8 @@ resources:
     type: params
     version:
       params:
-        NODE_ENV: "production"
-        APP_ENV: "prod"
-        APM_KEY: "c777240932e6282ffacc6a42ae6a0709426522bb"
-        # EMAIL_HASH_SERVICE_SECRET_KEY
-        secure: YTSUblTEQb4LrMM/28/vshr3sTBx7YMBOGjHg945LpMV5zPaIp7aWWI4R3YAxz3hC2j9NoJUy2rZb5yEKoKDVVvZHGa00YDKpntRlxmiMuY1AveWduTw/N71RPh2V16KnAVBcBSQRDRUNhp2qNIVo8dmPTUUNLfZKgAgckYOO267qNQlV9y6GjtCl00Jalp1ItVT3eLeSGqO8Fw1/148T3xvR4DzG/0NKZllpz8jHm42SHk/OUhjnai9/SYUGYx+n7EZgYlyEMdrRY59WTPkVITYLEwCY7nMXsTI/NKOQv96AHILwGPIyKFHOkSUh5HTT3Ur9/NCcYoZHL7iAqNiIg==
+        NODE_ENV: 'production'
+        APP_ENV: 'prod'
+        APM_KEY: 'c777240932e6282ffacc6a42ae6a0709426522bb'
+        # EMAIL_HASH_SERVICE_SECRET_KEY,APP_SERVICES_ACCESS_KEY
+        secure: YNrJPqd/9BMbTwf7V1zvL0ZX3kM7eNWcd9GQjSVDEcyJKzF06b4fIU/bgMGfho5FLd27Vsr/tHNngAV7kHqyGYpScHhcLbdvWoFEZuClq+32aGGMBmyTPTgPPEEAkmg34yHbNVox+Ljq843sEAY8WxngeuJE/J0RpktOOuOha0s1x5uXoFkXbCCjI8Pjqd1yoEWgtpeIhT27Cu+hKKvHKsbhh1KWjw3SPb1Co93MYQVzs+uct8C21RuYFybPU+MTaJgKOxLQ6A/YK7TCZ1aRRkT5/JulyfioLdjNCx/nFjxbNdiKrjo/yx6oiuh14N0LmiZicQ7eh6AtreXNkq3xcA==
