@@ -1,6 +1,6 @@
 var wait = require('../../../node_modules/@bxm/automation/lib/utils/wait');
 var world = require('../world');
-var fs = require("fs");
+var fs = require('fs');
 var request = require('request');
 var sectionName;
 var subsectionName;
@@ -9,19 +9,18 @@ var docTypeID = {}; //Global Hash variable to collect the value of random ID fro
 var docType;
 
 function randomValue() {
-    return Math.floor(Math.random() * 60000) + 50000
+    return Math.floor(Math.random() * 60000) + 50000;
 }
 var randomId = randomValue();
 
 module.exports = function() {
-
-    this.Given(/^Emily just published the "([^"]*)" doc type item$/, function (page) {
+    this.Given(/^Emily just published the "([^"]*)" doc type item$/, function(page) {
         var content_json;
         var documentPath;
         docType = page;
 
         //Specify json file and path
-        switch(page) {
+        switch (page) {
             case 'article':
                 randomId = randomId + 2;
                 content_json = 'test-article-on-sit.json'; //The data in this json file is from http://dev.umbraco.services.bauer-media.internal/v1/now/documents/32106
@@ -35,23 +34,23 @@ module.exports = function() {
             case 'section':
                 randomId = randomId;
                 content_json = 'test-section-on-sit.json'; //The data in this json file is from http://dev.umbraco.services.bauer-media.internal/v1/now/documents/34189
-                documentPath = '-1,1159,';  //Parent node in dev CMS
+                documentPath = '-1,1159,'; //Parent node in dev CMS
                 break;
             case 'subsection':
                 randomId = randomId + 1;
                 content_json = 'test-subsection-on-sit.json'; //The data in this json file is from http://dev.umbraco.services.bauer-media.internal/v1/now/documents/34189
-                documentPath = '-1,1159,';  //Parent node in dev CMS
+                documentPath = '-1,1159,'; //Parent node in dev CMS
                 break;
         }
 
         //Read Json File and update Title and ID
-        var body_content = JSON.parse(fs.readFileSync('../automation/features/support/files/' + content_json , 'utf8'));
-        switch(page) {
+        var body_content = JSON.parse(fs.readFileSync('../automation/features/support/files/' + content_json, 'utf8'));
+        switch (page) {
             case 'article':
             case 'gallery':
-                body_content['document']['nodeName'] = docType + " Test"; //e.g. Article Test
-                body_content['document']['urlName'] = docType + "-test-"  + randomId; //e.g. article-test-xxxx
-                body_content['document']['contentTitle'] = docType + " Test " + randomId; //e.g. Article Test xxxx
+                body_content['document']['nodeName'] = docType + ' Test'; //e.g. Article Test
+                body_content['document']['urlName'] = docType + '-test-' + randomId; //e.g. article-test-xxxx
+                body_content['document']['contentTitle'] = docType + ' Test ' + randomId; //e.g. Article Test xxxx
                 body_content['document']['id'] = randomId;
                 body_content['document']['path'] = documentPath + docTypeID['section'] + ',' + docTypeID['subsection'] + ',' + randomId;
                 body_content['document']['parentID'] = docTypeID['subsection'];
@@ -59,18 +58,18 @@ module.exports = function() {
                 docTypeID[page] = randomId;
                 break;
             case 'section':
-                body_content['document']['nodeName'] = "SectionTest-"  + randomId;
-                body_content['document']['urlName'] = "sectiontest-"  + randomId;
+                body_content['document']['nodeName'] = 'SectionTest-' + randomId;
+                body_content['document']['urlName'] = 'sectiontest-' + randomId;
                 body_content['document']['contentTitle'] = body_content['document']['nodeName'];
                 body_content['document']['id'] = randomId;
                 body_content['document']['path'] = documentPath + randomId;
                 docTypeID[page] = randomId;
                 sectionName = body_content['document']['urlName'];
-                console.log("Section random ID is " + docTypeID[page]);
+                console.log('Section random ID is ' + docTypeID[page]);
                 break;
             case 'subsection':
-                body_content['document']['nodeName'] = "SubsectionTest-"  + randomId;
-                body_content['document']['urlName'] = "subsectiontest-"  + randomId;
+                body_content['document']['nodeName'] = 'SubsectionTest-' + randomId;
+                body_content['document']['urlName'] = 'subsectiontest-' + randomId;
                 body_content['document']['contentTitle'] = body_content['document']['nodeName'];
                 body_content['document']['id'] = randomId;
                 body_content['document']['path'] = documentPath + docTypeID['section'] + ',' + randomId;
@@ -80,92 +79,95 @@ module.exports = function() {
                 break;
         }
 
-        // Post File to PUBLISHING BR0KER
-        var options = { method: 'POST',
-            url: 'http://services.sit.bxm.internal/publishing-broker/',
-            json: true,
-            headers: {
-                'postman-token': '98215063-b20d-eb89-4865-35af75c73e11',
-                'content-type': 'application/json'
+        request(
+            {
+                url: 'https://services.sit.bxm.net.au/publishing-broker/',
+                method: 'POST',
+                json: true,
+                headers: {
+                    'postman-token': '98215063-b20d-eb89-4865-35af75c73e11',
+                    'content-type': 'application/json',
+                    'x-service-access-key': process.env.APP_SERVICES_ACCESS_KEY
+                },
+                body: body_content
             },
-            body: body_content
-        };
-        request(options, function (error, response, body) {
-            if (error) throw new Error(error);
-            console.log(body);
-        });
-
-
+            function(error, response, body) {
+                if (error) throw new Error(error);
+            }
+        );
     });
 
     //only used for smoke test
-    this.When(/^I navigate to the "([^"]*)" page$/, function (docType) {
+    this.When(/^I navigate to the "([^"]*)" page$/, function(docType) {
         var elementOnPage;
         var pageURL;
-        var sitUrl = "http://now-site-au.sit.bxm.net.au/";
+        var sitUrl = 'http://now-site-au.sit.bxm.net.au/';
 
-        switch(docType) {
+        switch (docType) {
             case 'article':
             case 'gallery':
-                elementOnPage = ".article__title";
+                elementOnPage = '.article__title';
                 pageURL = sitUrl + sectionName + '/' + subsectionName + '/' + contentName[docType];
                 break;
             case 'section':
-                elementOnPage = ".page-title-container .page-title";
+                elementOnPage = '.page-title-container .page-title';
                 pageURL = sitUrl + sectionName;
                 break;
             case 'subsection':
-                elementOnPage = ".page-title-container .page-title";
-                pageURL = sitUrl + sectionName + '/' + subsectionName ;
+                elementOnPage = '.page-title-container .page-title';
+                pageURL = sitUrl + sectionName + '/' + subsectionName;
                 break;
             case 'amp article':
-                elementOnPage = ".article__title";
+                elementOnPage = '.article__title';
                 pageURL = sitUrl + 'amp/' + sectionName + '/' + subsectionName + '/' + contentName['article'];
-                docTypeID[docType] = docTypeID["article"];
+                docTypeID[docType] = docTypeID['article'];
                 break;
             case 'amp gallery':
-                elementOnPage = ".article__title";
+                elementOnPage = '.article__title';
                 pageURL = sitUrl + 'amp/' + sectionName + '/' + subsectionName + '/' + contentName['gallery'];
-                docTypeID[docType] = docTypeID["gallery"];
+                docTypeID[docType] = docTypeID['gallery'];
                 break;
         }
 
-        browser.waitUntil( () => {
-            browser.refresh();
-            browser.url(pageURL);
+        browser.waitUntil(
+            () => {
+                browser.refresh();
+                browser.url(pageURL);
 
-            if(browser.isExisting(elementOnPage)) {
-                console.log("Page Loaded Successfully : ID-" + docTypeID[docType] + ": " + pageURL);
-                return true;
-            }
+                if (browser.isExisting(elementOnPage)) {
+                    console.log('Page Loaded Successfully : ID-' + docTypeID[docType] + ': ' + pageURL);
+                    return true;
+                }
 
-            console.log("Page not created yet, current page url is : " + browser.getUrl());
-          }, 20000, 'document did not load in time',1000)
-
+                console.log('Page not created yet, current page url is : ' + browser.getUrl());
+            },
+            20000,
+            'document did not load in time',
+            1000
+        );
     });
 
-
-    this.Then(/^our readers can enjoy the created "([^"]*)" page$/, function (docType) {
+    this.Then(/^our readers can enjoy the created "([^"]*)" page$/, function(docType) {
         var ID = docTypeID[docType];
-        switch(docType) {
+        switch (docType) {
             case 'article':
             case 'amp article':
-                browser.waitForVisible(".article__title", 30000);
-                expect(browser.getText(".article__title")).toEqual("article Test " + ID);
+                browser.waitForVisible('.article__title', 30000);
+                expect(browser.getText('.article__title')).toEqual('article Test ' + ID);
                 break;
             case 'gallery':
             case 'amp gallery':
-                browser.waitForVisible(".article__title", 30000);
-                expect(browser.getText(".article__title")).toEqual("gallery Test " + ID);
+                browser.waitForVisible('.article__title', 30000);
+                expect(browser.getText('.article__title')).toEqual('gallery Test ' + ID);
                 break;
             case 'section':
-                browser.waitForVisible("h1.page-title", 30000);
-                console.log("section " + ID);
-                expect(browser.getText("h1.page-title")).toEqual("SectionTest-" + ID);
+                browser.waitForVisible('h1.page-title', 30000);
+                console.log('section ' + ID);
+                expect(browser.getText('h1.page-title')).toEqual('SectionTest-' + ID);
                 break;
             case 'subsection':
-                browser.waitForVisible("h1.page-title", 30000);
-                expect(browser.getText("h1.page-title")).toEqual("SubsectionTest-" + ID);
+                browser.waitForVisible('h1.page-title', 30000);
+                expect(browser.getText('h1.page-title')).toEqual('SubsectionTest-' + ID);
                 break;
         }
     });

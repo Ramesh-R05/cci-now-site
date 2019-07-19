@@ -1,8 +1,9 @@
 import get from 'lodash/object/get';
+import APIUtils from '@bxm/api-utils';
 import { parseEntities } from '../helper/parseEntity';
 import parseHeaderMetaData from '../helper/parseHeaderMetaData';
-import getSearchResults from '../api/search';
 import parseModule from '../helper/parseModule';
+import logger from '../../../../logger';
 
 const searchResultTeaserCount = 6;
 const searchCount = 14;
@@ -20,8 +21,10 @@ export default async function searchMiddleware(req, res, next) {
         }
 
         const query = req.query.params ? get(req, 'query.params.query', '') : get(req, 'query.q', '');
+        const { config } = req.app.locals;
         const from = (pageNo - 1) * searchCount;
-        const searchDataResp = await getSearchResults(searchCount, from, query);
+        const { getSearchResults } = new APIUtils(logger, config);
+        const searchDataResp = await getSearchResults({ size: searchCount, from, query });
 
         const basePath = `/search/${query}`;
 

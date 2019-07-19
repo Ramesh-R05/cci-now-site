@@ -43,8 +43,8 @@ const config = {
                     {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['es2015', 'react', 'stage-1'],
-                            plugins: ['transform-decorators-legacy']
+                            presets: ['@babel/preset-env', '@babel/react'],
+                            plugins: [['@babel/plugin-proposal-decorators', { legacy: true }], '@babel/plugin-proposal-class-properties']
                         }
                     }
                 ]
@@ -95,7 +95,7 @@ const config = {
             fileName: `[name]${production ? '-[contenthash]' : ''}.css`
         }),
         new ManifestPlugin({
-            publicPath: '' // This removes the /dist/ prefix so that @bxm/server/lib/index.js can load properly
+            publicPath: '' // This removes the /dist/ prefix so that @bxm/server/lib/index.js can load properly,
         })
     ]
 };

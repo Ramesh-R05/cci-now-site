@@ -2,17 +2,16 @@ import proxyquire, { noCallThru } from 'proxyquire';
 
 noCallThru();
 
+const APIUtilsStub = sinon.stub();
 const getEntityStub = sinon.stub();
 const getTagStub = sinon.stub();
 const getLatestTeasersStub = sinon.stub();
 const createRepeatableListStub = sinon.stub();
+const loggerStub = sinon.stub();
 
 const tagMiddleware = proxyquire('../../../../app/server/bff/middleware/tag', {
-    '../api/entity': getEntityStub,
-    '../api/tag': getTagStub,
-    '../api/listing': {
-        getLatestTeasers: getLatestTeasersStub
-    },
+    '@bxm/api-utils': APIUtilsStub,
+    '../../../../logger': loggerStub,
     '../helper/createReapeatableList': createRepeatableListStub
 }).default;
 
@@ -34,6 +33,7 @@ describe('Tag middleware', () => {
     let rejectedResponse;
 
     afterEach(() => {
+        APIUtilsStub.reset();
         getEntityStub.reset();
         getLatestTeasersStub.reset();
     });
@@ -50,6 +50,12 @@ describe('Tag middleware', () => {
                     };
                     req = { ...baseReq };
                     next = sinon.spy();
+                    APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                        getEntity: getEntityStub,
+                        getTags: getTagStub,
+                        getLatestTeasers: getLatestTeasersStub
+                    });
+
                     getEntityStub.withArgs(`section/${req.query.tag}`).resolves({ nodeTypeAlias: 'TagSection' });
                     getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).rejects();
                     getLatestTeasersStub.rejects(rejectedResponse);
@@ -86,6 +92,11 @@ describe('Tag middleware', () => {
                     };
                     req = { ...baseReq };
                     next = sinon.spy();
+                    APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                        getEntity: getEntityStub,
+                        getTags: getTagStub,
+                        getLatestTeasers: getLatestTeasersStub
+                    });
                     getEntityStub.withArgs(`section/${req.query.tag}`).rejects(rejectedResponse);
                     getLatestTeasersStub.resolves(latestTeasers);
                 });
@@ -133,6 +144,11 @@ describe('Tag middleware', () => {
                 describe('and the tag service returns an valid response', () => {
                     describe('that is empty', () => {
                         beforeEach(() => {
+                            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                                getEntity: getEntityStub,
+                                getTags: getTagStub,
+                                getLatestTeasers: getLatestTeasersStub
+                            });
                             getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).resolves({});
                         });
 
@@ -154,6 +170,11 @@ describe('Tag middleware', () => {
 
                     describe('that contains an empty array of data', () => {
                         beforeEach(() => {
+                            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                                getEntity: getEntityStub,
+                                getTags: getTagStub,
+                                getLatestTeasers: getLatestTeasersStub
+                            });
                             getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).resolves({ data: [] });
                         });
 
@@ -177,6 +198,11 @@ describe('Tag middleware', () => {
                         const obj = { title: 'Title', description: 'desc', tag: { name: 'this:is:a:Tag Name' } };
 
                         beforeEach(() => {
+                            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                                getEntity: getEntityStub,
+                                getTags: getTagStub,
+                                getLatestTeasers: getLatestTeasersStub
+                            });
                             getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).resolves({ data: [obj] });
                         });
 
@@ -200,6 +226,11 @@ describe('Tag middleware', () => {
                         const obj = { title: 'Title', description: 'desc', tag: { name: 'this:is:a:Two Words' } };
 
                         beforeEach(() => {
+                            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                                getEntity: getEntityStub,
+                                getTags: getTagStub,
+                                getLatestTeasers: getLatestTeasersStub
+                            });
                             getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).resolves({ data: [obj] });
                         });
 
@@ -224,6 +255,11 @@ describe('Tag middleware', () => {
                         const obj2 = { title: 'Title1', description: 'desc1', tag: { name: 'this:is:a:Two Words' } };
 
                         beforeEach(() => {
+                            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                                getEntity: getEntityStub,
+                                getTags: getTagStub,
+                                getLatestTeasers: getLatestTeasersStub
+                            });
                             getLatestTeasersStub.resolves({
                                 data: [],
                                 totalCount: 0
@@ -255,6 +291,11 @@ describe('Tag middleware', () => {
                     beforeEach(() => {
                         req = { ...baseReq };
                         next = sinon.spy();
+                        APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                            getEntity: getEntityStub,
+                            getTags: getTagStub,
+                            getLatestTeasers: getLatestTeasersStub
+                        });
                         getEntityStub.withArgs(`section/${req.query.tag}`).resolves({ nodeTypeAlias: 'Section', url: '/url-here' });
                         getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).rejects();
                         getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
@@ -280,6 +321,11 @@ describe('Tag middleware', () => {
                     beforeEach(() => {
                         req = { ...baseReq };
                         next = sinon.spy();
+                        APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                            getEntity: getEntityStub,
+                            getTags: getTagStub,
+                            getLatestTeasers: getLatestTeasersStub
+                        });
                         getEntityStub.withArgs(`section/${req.query.tag}`).resolves({ nodeTypeAlias: 'TagSection' });
                         getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).rejects();
                         getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
@@ -305,6 +351,11 @@ describe('Tag middleware', () => {
                     beforeEach(() => {
                         req = { ...baseReq };
                         next = sinon.spy();
+                        APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                            getEntity: getEntityStub,
+                            getTags: getTagStub,
+                            getLatestTeasers: getLatestTeasersStub
+                        });
                         getEntityStub.withArgs(`section/${req.query.tag}`).resolves({ nodeTypeAlias: 'TagSection', url: '/url-of-tag-page' });
                         getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).rejects();
                         getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
@@ -333,6 +384,11 @@ describe('Tag middleware', () => {
                 beforeEach(() => {
                     req = { ...baseReq, data: { entity: { nodeTypeAlias: 'TagSection' } } };
                     next = sinon.spy();
+                    APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                        getEntity: getEntityStub,
+                        getTags: getTagStub,
+                        getLatestTeasers: getLatestTeasersStub
+                    });
                     getEntityStub.withArgs(`section/${req.query.tag}`).resolves({});
                     getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).rejects();
                     getLatestTeasersStub.resolves(latestTeasers);
@@ -354,6 +410,11 @@ describe('Tag middleware', () => {
                 before(() => {
                     req = { ...baseReq, data: { entity: { nodeTypeAlias: 'Section' } } };
                     next = sinon.spy();
+                    APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                        getEntity: getEntityStub,
+                        getTags: getTagStub,
+                        getLatestTeasers: getLatestTeasersStub
+                    });
                     getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).rejects();
                     getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
                 });
@@ -373,6 +434,11 @@ describe('Tag middleware', () => {
             describe('and there is a url set inside the entity', () => {
                 before(() => {
                     req = { ...baseReq, data: { entity: { nodeTypeAlias: 'TagSection', url: '/tag-url' } } };
+                    APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                        getEntity: getEntityStub,
+                        getTags: getTagStub,
+                        getLatestTeasers: getLatestTeasersStub
+                    });
                     next = sinon.spy();
                     getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).rejects();
                     getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
@@ -395,6 +461,11 @@ describe('Tag middleware', () => {
                 req = { ...baseReq };
                 req.query.page = 'page';
                 next = sinon.spy();
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                    getEntity: getEntityStub,
+                    getTags: getTagStub,
+                    getLatestTeasers: getLatestTeasersStub
+                });
                 getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).rejects();
                 getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
             });
@@ -416,6 +487,11 @@ describe('Tag middleware', () => {
         beforeEach(() => {
             req = { app: { locals: { config } }, query: { section: 'two-words' } };
             next = sinon.spy();
+            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                getEntity: getEntityStub,
+                getTags: getTagStub,
+                getLatestTeasers: getLatestTeasersStub
+            });
             getEntityStub.withArgs(`section/${req.query.section}`).resolves({});
             getTagStub.withArgs(`${generateTagToTitle(req.query.section)}`).rejects();
             getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
@@ -437,6 +513,11 @@ describe('Tag middleware', () => {
         beforeEach(() => {
             req = { app: { locals: { config } } };
             next = sinon.spy();
+            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                getEntity: getEntityStub,
+                getTags: getTagStub,
+                getLatestTeasers: getLatestTeasersStub
+            });
             getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
         });
         it('should not call the listing or entity services, only call next', done => {

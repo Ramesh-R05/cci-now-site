@@ -184,3 +184,12 @@ The Backend For Frontend is a place to aggregate data for the site. How it works
 
 - integrates with remote services
 
+### Using content services locally outside of the network
+In order to access the content services at `*.bxm.internal` urls we send requests to proxy serve which pipes calls through to the internal services.
+
+This service requires the correct authorization header to be passed. This needs to be set as `APP_SERVICES_ACCESS_KEY` which is injected into the environment via shippable.
+
+in order to replicate this locally, copy and rename the `.sample.sit.env` and `sample.prod.env` and rename them to `.sit.env` and `.prod.env` then fill in the correct key using the keys stored in `keybase`. You'll find them at this path: `/keybase/team/bauerxcelmedia/keys/services-access-keys.txt`. 
+
+Once you have created these files, run your site with `APP_ENV=sit` or `APP_ENV=production` and the `dotenv` package will load the correct envinronment. The keys are also required for one integration test.
+

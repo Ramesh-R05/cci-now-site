@@ -1,8 +1,8 @@
+import APIUtils from '@bxm/api-utils';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
-import { getLatestTeasers } from '../api/listing';
+import logger from '../../../../logger';
 import createReapeatableList from '../helper/createReapeatableList';
-import { getModule } from '../api/module';
 
 const latestTeaserCountForBrand = 6;
 const latestTeaserCountDefault = 7;
@@ -13,6 +13,7 @@ export default async function sectionMiddleware(req, res, next) {
     try {
         let pageNo = 1;
         const { page, section, subsection } = req.query;
+        const { config } = req.app.locals;
         pageNo = parseInt(req.query.pageNo || pageNo, 10);
 
         const nodeTypeAlias = get(req, 'data.entity.nodeTypeAlias', '');
@@ -28,13 +29,15 @@ export default async function sectionMiddleware(req, res, next) {
         let teaserFilter;
         let sectionQuery;
 
+        const { getLatestTeasers, getModules } = new APIUtils(logger, config);
+
         if (nodeTypeAlias === 'Section' || nodeTypeAlias === 'Subsection') {
             latestTeaserCount = latestTeaserCountDefault;
             teaserQuery = `/${section}${subsection ? `/${subsection}` : ''}`;
             sectionQuery = `/${section}${subsection ? `/${subsection}` : ''}`;
             teaserFilter = 'parentUrl';
             listingQuery = `${teaserFilter} eq %27${teaserQuery}%27`;
-            req.data.subsectionList = await getModule(`sections/${section}`);
+            req.data.subsectionList = await getModules([`sections/${section}`]);
         }
 
         if (nodeTypeAlias === 'Brand') {
@@ -49,6 +52,7 @@ export default async function sectionMiddleware(req, res, next) {
         }
 
         const skip = (pageNo - 1) * listCount;
+
         const latestTeasersResp = await getLatestTeasers(listCount, skip, listingQuery);
 
         const latestTeasers = latestTeasersResp && latestTeasersResp.data;

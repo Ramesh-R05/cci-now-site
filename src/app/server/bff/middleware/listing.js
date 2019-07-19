@@ -1,9 +1,13 @@
 import has from 'lodash/object/has';
-import getEntity from '../api/entity';
+import APIUtils from '@bxm/api-utils';
+import logger from '../../../../logger';
 
 export default async function listing(req, res, next) {
     try {
         const { page, section, subsection, path } = req.query;
+        const { config } = req.app.locals;
+
+        const { getEntity } = new APIUtils(logger, config);
 
         if (has(req, 'data.entity') || !section || page) {
             next();

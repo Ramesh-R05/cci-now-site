@@ -1,7 +1,8 @@
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 import momentTimezone from 'moment-timezone';
-import { getLatestTeasers, getMoreGalleries } from '../api/listing';
+import APIUtils from '@bxm/api-utils';
+import logger from '../../../../logger';
 
 const TOP = 20;
 
@@ -17,6 +18,8 @@ export default async function gallery(req, res, next) {
 
         const source = get(req, 'data.entity.source', '');
         const adBrand = find(req.app.locals.config.brands.site, b => b.title === source);
+        const { config } = req.app.locals;
+        const { getMoreGalleries, getLatestTeasers } = new APIUtils(logger, config);
 
         const moreGalleries = await getMoreGalleries();
 

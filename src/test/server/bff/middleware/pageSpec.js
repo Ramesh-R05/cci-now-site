@@ -2,11 +2,15 @@ import proxyquire, { noCallThru } from 'proxyquire';
 import entity from '../../../mocks/article';
 noCallThru();
 
+const APIUtilsStub = sinon.stub();
+const loggerStub = sinon.stub();
 const getEntityStub = sinon.stub();
 const getPageIDStub = sinon.stub();
 
 const pageMiddleware = proxyquire('../../../../app/server/bff/middleware/page', {
+    '@bxm/api-utils': APIUtilsStub,
     '../api/entity': getEntityStub,
+    '../../../../logger': loggerStub,
     '../helper/getPageID': getPageIDStub
 }).default;
 
@@ -26,6 +30,7 @@ describe('Page middleware', () => {
     afterEach(() => {
         getEntityStub.reset();
         getPageIDStub.reset();
+        APIUtilsStub.reset();
     });
 
     describe('when the path does not contain an ID number in the slug', () => {
@@ -34,6 +39,11 @@ describe('Page middleware', () => {
                 app: { locals: { config } },
                 query: { section: validSection, subSection: validSubsection, page: validPage }
             };
+
+            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                getEntity: getEntityStub
+            });
+
             next = sinon.spy();
             getPageIDStub.returns(undefined);
         });
@@ -88,6 +98,9 @@ describe('Page middleware', () => {
                 err: 'Error 404',
                 status: 404
             };
+            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                getEntity: getEntityStub
+            });
             next = sinon.spy();
             getEntityStub.throws(rejectedResponse);
             getPageIDStub.returns('DOLLY-1234');
@@ -110,6 +123,9 @@ describe('Page middleware', () => {
                 query: { section: validSection, page: validPage, preview: 'preview' }
             };
             next = sinon.spy();
+            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                getEntity: getEntityStub
+            });
             getEntityStub.resolves(entity);
             getPageIDStub.returns('DOLLY-1234');
         });
@@ -132,6 +148,9 @@ describe('Page middleware', () => {
                     query: { section: validSection, subsection: validSubsection, page: validPage }
                 };
                 next = sinon.spy();
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                    getEntity: getEntityStub
+                });
                 getEntityStub.resolves(entity);
                 getPageIDStub.returns('DOLLY-1234');
             });
@@ -186,6 +205,9 @@ describe('Page middleware', () => {
                         page: validPage
                     }
                 };
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                    getEntity: getEntityStub
+                });
                 next = sinon.spy();
                 getEntityStub.resolves(entity);
                 getPageIDStub.returns('DOLLY-1234');
@@ -215,10 +237,14 @@ describe('Page middleware', () => {
     describe('when the request contains existing data', () => {
         before(() => {
             req = {
+                app: { locals: { config } },
                 data: { header: 'Test' },
                 app: { locals: { config } },
                 query: { section: validSection, page: validPage }
             };
+            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                getEntity: getEntityStub
+            });
             next = sinon.spy();
             getEntityStub.resolves(entity);
             getPageIDStub.returns('DOLLY-1234');

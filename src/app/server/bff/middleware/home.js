@@ -1,13 +1,15 @@
-import { getLatestTeasers } from '../api/listing';
+import APIUtils from '@bxm/api-utils';
 import createRepeatableList from '../helper/createReapeatableList';
 import transformTeaserPageDateCreated from '../helper/transformTeaserPageDateCreated';
-import getEntity from '../api/entity';
+import logger from '../../../../logger';
 
 const latestTeaserCount = 6;
 const listCount = 14;
 
 export default async function home(req, res, next) {
     try {
+        const { config } = req.app.locals;
+
         let pageNo = 1;
 
         if (req.query) {
@@ -23,6 +25,8 @@ export default async function home(req, res, next) {
         }
 
         const skip = (pageNo - 1) * listCount;
+
+        const { getEntity, getLatestTeasers } = new APIUtils(logger, config);
 
         const [pageData, latestTeasersResp] = await Promise.all([getEntity('homepage'), getLatestTeasers(listCount, skip)]);
 

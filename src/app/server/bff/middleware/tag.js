@@ -1,10 +1,9 @@
 import get from 'lodash/object/get';
 import find from 'lodash/collection/find';
 import getTagName from '@bxm/tags/lib/utils/getTagName';
-import { getLatestTeasers } from '../api/listing';
+import APIUtils from '@bxm/api-utils';
+import logger from '../../../../logger';
 import createReapeatableList from '../helper/createReapeatableList';
-import getEntity from '../api/entity';
-import getTags from '../api/tag';
 
 const latestTeaserCount = 7;
 const listCount = 14;
@@ -17,6 +16,7 @@ export default async function tagMiddleware(req, res, next) {
     try {
         let pageNo = 1;
         const query = req.query;
+        const { config } = req.app.locals;
         pageNo = parseInt(query.pageNo || pageNo, 10);
         const tag = query ? query.tag || query.section : null;
         const entity = get(req, 'data.entity');
@@ -31,6 +31,8 @@ export default async function tagMiddleware(req, res, next) {
             .split('-')
             .map(capitalize)
             .join(' ');
+
+        const { getEntity, getTags, getLatestTeasers } = new APIUtils(logger, config);
 
         // TODO(thatzi): I don't like this. Need a better way to handle tag pages, tag data and tag canonicals
         // Check the current entity url if it is a /:section page. If this is a /tags/:tag page, then this won't exist.

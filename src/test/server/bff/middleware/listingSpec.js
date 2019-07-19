@@ -2,10 +2,13 @@ import proxyquire, { noCallThru } from 'proxyquire';
 
 noCallThru();
 
+const APIUtilsStub = sinon.stub();
 const getEntityStub = sinon.stub();
+const loggerStub = sinon.stub();
 
 const listingMiddleware = proxyquire('../../../../app/server/bff/middleware/listing', {
-    '../api/entity': getEntityStub
+    '@bxm/api-utils': APIUtilsStub,
+    '../../../../logger': loggerStub
 }).default;
 
 describe('Listing middleware', () => {
@@ -16,6 +19,7 @@ describe('Listing middleware', () => {
 
     afterEach(() => {
         getEntityStub.reset();
+        APIUtilsStub.reset();
     });
 
     describe('when there is a section in the query param', () => {
@@ -31,6 +35,7 @@ describe('Listing middleware', () => {
 
             before(() => {
                 next = sinon.spy();
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({ getEntity: getEntityStub });
                 getEntityStub.throws(rejectedResponse);
             });
 
@@ -50,6 +55,7 @@ describe('Listing middleware', () => {
             describe('and there is not a req.data object set', () => {
                 before(() => {
                     next = sinon.spy();
+                    APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({ getEntity: getEntityStub });
                     getEntityStub.resolves(entity);
                 });
 
@@ -71,6 +77,7 @@ describe('Listing middleware', () => {
 
                 before(() => {
                     next = sinon.spy();
+                    APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({ getEntity: getEntityStub });
                     getEntityStub.resolves(entity);
                 });
 
@@ -93,6 +100,7 @@ describe('Listing middleware', () => {
         const req = { app: { locals: { config } }, query: { page: 'page' } };
 
         before(() => {
+            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({ getEntity: getEntityStub });
             next = sinon.stub();
         });
 
@@ -111,6 +119,7 @@ describe('Listing middleware', () => {
         const req = { app: { locals: { config } }, query: { page: 'page', section: 'section' } };
 
         before(() => {
+            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({ getEntity: getEntityStub });
             next = sinon.stub();
         });
 
@@ -130,6 +139,7 @@ describe('Listing middleware', () => {
         const req = { app: { locals: { config } }, data: { ...overridenEntity }, query: { section: 'section' } };
 
         before(() => {
+            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({ getEntity: getEntityStub });
             next = sinon.stub();
         });
 

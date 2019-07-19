@@ -4,19 +4,26 @@ import moreGalleries from '../../../mocks/moreGalleries';
 import listing from '../../../mocks/listing';
 noCallThru();
 
-let getLatestTeasersStub = () => {};
-let getMoreGalleriesStub = () => {};
+const APIUtilsStub = sinon.stub();
+const loggerStub = sinon.stub();
+const getLatestTeasersStub = sinon.stub();
+const getMoreGalleriesStub = sinon.stub();
+
+const APIUtilsReturn = {
+    getLatestTeasers: getLatestTeasersStub,
+    getMoreGalleries: getMoreGalleriesStub
+};
 
 const galleryMiddleware = proxyquire('../../../../app/server/bff/middleware/gallery', {
-    '../api/listing': {
-        getLatestTeasers: () => {
-            return getLatestTeasersStub();
-        },
-        getMoreGalleries: () => {
-            return getMoreGalleriesStub();
-        }
-    }
+    '@bxm/api-utils': APIUtilsStub,
+    '../../../../logger': loggerStub
 }).default;
+
+function resetStubs() {
+    APIUtilsStub.reset();
+    getLatestTeasersStub.reset();
+    getMoreGalleriesStub.reset();
+}
 
 describe('Gallery middleware', () => {
     const config = {
@@ -57,16 +64,22 @@ describe('Gallery middleware', () => {
     describe('when nodeTypeAlias is NOT `Gallery`', () => {
         before(() => {
             req = {
-                app: { locals: {} },
+                app: {
+                    locals: {
+                        config
+                    }
+                },
                 data: { entity: gallery }
             };
+            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns(APIUtilsReturn);
             next = sinon.spy();
             req.data.entity.nodeTypeAlias = 'Article';
-            getLatestTeasersStub = sinon.stub().resolves(listing);
-            getMoreGalleriesStub = sinon.stub().resolves(moreGalleries);
+            getLatestTeasersStub.resolves(listing);
+            getMoreGalleriesStub.resolves(moreGalleries);
         });
 
         after(() => {
+            resetStubs();
             req.data.entity.nodeTypeAlias = validNodeType;
         });
 
@@ -79,26 +92,6 @@ describe('Gallery middleware', () => {
                 })
                 .catch(done);
         });
-        it('should not set leftHandSide on `req.data` object', done => {
-            galleryMiddleware(req, res, next)
-                .then(() => {
-                    expect(req.data).to.not.include.keys('leftHandSide');
-                    expect(next).to.be.called;
-                    done();
-                })
-                .catch(done);
-        });
-    });
-
-    describe('when there is no sectionId', () => {
-        before(() => {
-            delete req.data.entity.sectionId;
-        });
-
-        after(() => {
-            req.data.entity.sectionId = validSectionId;
-        });
-
         it('should not set leftHandSide on `req.data` object', done => {
             galleryMiddleware(req, res, next)
                 .then(() => {
@@ -135,9 +128,12 @@ describe('Gallery middleware', () => {
                     }
                 };
                 req = { ...reqBase };
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns(APIUtilsReturn);
                 next = sinon.spy();
-                getMoreGalleriesStub = sinon.stub().resolves(moreGalleries);
+                getMoreGalleriesStub.resolves(moreGalleries);
             });
+
+            after(resetStubs);
 
             it('should set adBrand as gh', done => {
                 galleryMiddleware(req, res, next)
@@ -167,9 +163,12 @@ describe('Gallery middleware', () => {
                     }
                 };
                 req = { ...reqBase };
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns(APIUtilsReturn);
                 next = sinon.spy();
-                getMoreGalleriesStub = sinon.stub().resolves(moreGalleries);
+                getMoreGalleriesStub.resolves(moreGalleries);
             });
+
+            after(resetStubs);
 
             it('should set adBrand as ntl', done => {
                 galleryMiddleware(req, res, next)
@@ -201,8 +200,11 @@ describe('Gallery middleware', () => {
                 };
                 req = { ...reqBase };
                 next = sinon.spy();
-                getMoreGalleriesStub = sinon.stub().resolves(moreGalleries);
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns(APIUtilsReturn);
+                getMoreGalleriesStub.resolves(moreGalleries);
             });
+
+            after(resetStubs);
 
             it('should set moreGalleries in req.data with `getMoreGalleries` response', done => {
                 galleryMiddleware(req, res, next)
@@ -236,9 +238,12 @@ describe('Gallery middleware', () => {
                 };
                 req = { ...reqBase };
                 next = sinon.spy();
-                getLatestTeasersStub = sinon.stub().resolves(listing);
-                getMoreGalleriesStub = sinon.stub().resolves(moreGalleries);
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns(APIUtilsReturn);
+                getLatestTeasersStub.resolves(listing);
+                getMoreGalleriesStub.resolves(moreGalleries);
             });
+
+            after(resetStubs);
 
             it('should set leftHandSide in req.data with `getLatestTeasers` response', done => {
                 galleryMiddleware(req, res, next)

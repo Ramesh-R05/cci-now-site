@@ -20,18 +20,18 @@ const repeatableListDataMock = {
     next: {}
 };
 
+const APIUtilsStub = sinon.stub();
 const getEntityStub = sinon.stub();
 const getLatestTeasersStub = sinon.stub();
 const transformTeaserPageDateCreatedStub = sinon.stub();
 const createRepeatableListStub = sinon.stub();
+const loggerStub = sinon.stub();
 
 const homeMiddleware = proxyquire('../../../../app/server/bff/middleware/home', {
-    '../api/entity': getEntityStub,
-    '../api/listing': {
-        getLatestTeasers: getLatestTeasersStub
-    },
+    '@bxm/api-utils': APIUtilsStub,
     '../helper/createReapeatableList': createRepeatableListStub,
-    '../helper/transformTeaserPageDateCreated': transformTeaserPageDateCreatedStub
+    '../helper/transformTeaserPageDateCreated': transformTeaserPageDateCreatedStub,
+    '../../../../logger': loggerStub
 }).default;
 
 const MiddlewareTestWrapper = new MiddlewareTestFactory(homeMiddleware, {
@@ -51,6 +51,7 @@ describe('Home middleware', () => {
         getLatestTeasersStub.reset();
         transformTeaserPageDateCreatedStub.reset();
         createRepeatableListStub.reset();
+        APIUtilsStub.reset();
     });
 
     describe('when the entity request returns an error response', () => {
@@ -61,10 +62,14 @@ describe('Home middleware', () => {
 
         before(async () => {
             [testArgs, callMiddleware] = await MiddlewareTestWrapper({
-                req: { query: {} }
+                req: { query: {}, app: { locals: { config: configBase } } }
             });
 
             entityResponse = new Error('request error');
+            APIUtilsStub.withArgs(loggerStub, testArgs.req.app.locals.config).returns({
+                getLatestTeasers: getLatestTeasersStub,
+                getEntity: getEntityStub
+            });
             getEntityStub.withArgs('homepage').throws(entityResponse);
 
             result = await callMiddleware();
@@ -89,11 +94,15 @@ describe('Home middleware', () => {
 
             before(async () => {
                 [testArgs, callMiddleware] = await MiddlewareTestWrapper({
-                    req: { query: {} }
+                    req: { query: {}, app: { locals: { config: configBase } } }
                 });
 
                 entityResponse = homePagEntityMock;
                 listingResponse = homepageTeasersMock;
+                APIUtilsStub.withArgs(loggerStub, testArgs.req.app.locals.config).returns({
+                    getLatestTeasers: getLatestTeasersStub,
+                    getEntity: getEntityStub
+                });
 
                 getEntityStub.withArgs('homepage').resolves(entityResponse);
                 getLatestTeasersStub.withArgs(14, 0).resolves(listingResponse);
@@ -159,11 +168,16 @@ describe('Home middleware', () => {
 
             before(async () => {
                 [testArgs, callMiddleware] = await MiddlewareTestWrapper({
-                    req: { query: {} }
+                    req: { query: {}, app: { locals: { config: configBase } } }
                 });
 
                 entityResponse = homePagEntityMock;
                 listingResponse = { data: [], totalCount: 0 };
+
+                APIUtilsStub.withArgs(loggerStub, testArgs.req.app.locals.config).returns({
+                    getLatestTeasers: getLatestTeasersStub,
+                    getEntity: getEntityStub
+                });
 
                 getEntityStub.withArgs('homepage').resolves(entityResponse);
                 getLatestTeasersStub.withArgs(14, 0).resolves(listingResponse);
@@ -235,11 +249,16 @@ describe('Home middleware', () => {
             };
 
             [testArgs, callMiddleware] = await MiddlewareTestWrapper({
-                req: { query: {}, data: { ...existingData } }
+                req: { query: {}, data: { ...existingData }, app: { locals: { config: configBase } } }
             });
 
             entityResponse = homePagEntityMock;
             listingResponse = { data: [], totalCount: 0 };
+
+            APIUtilsStub.withArgs(loggerStub, testArgs.req.app.locals.config).returns({
+                getLatestTeasers: getLatestTeasersStub,
+                getEntity: getEntityStub
+            });
 
             getEntityStub.withArgs('homepage').resolves(entityResponse);
             getLatestTeasersStub.withArgs(14, 0).resolves(listingResponse);
@@ -313,11 +332,16 @@ describe('Home middleware', () => {
 
             before(async () => {
                 [testArgs, callMiddleware] = await MiddlewareTestWrapper({
-                    req: { query: { pageNo: 2 } }
+                    req: { query: { pageNo: 2 }, app: { locals: { config: configBase } } }
                 });
 
                 entityResponse = homePagEntityMock;
                 listingResponse = homepageTeasersMock;
+
+                APIUtilsStub.withArgs(loggerStub, testArgs.req.app.locals.config).returns({
+                    getLatestTeasers: getLatestTeasersStub,
+                    getEntity: getEntityStub
+                });
 
                 getEntityStub.withArgs('homepage').resolves(entityResponse);
                 getLatestTeasersStub.withArgs(14, (testArgs.req.query.pageNo - 1) * 14).resolves(listingResponse);

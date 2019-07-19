@@ -1,9 +1,12 @@
 import has from 'lodash/object/has';
+import APIUtils from '@bxm/api-utils';
 import getPageID from '../helper/getPageID';
-import getEntity from '../api/entity';
+import logger from '../../../../logger';
 
 export default async function pageMiddleware(req, res, next) {
     try {
+        const { config } = req.app.locals;
+
         if (has(req, 'data.entity')) {
             next();
 
@@ -22,6 +25,8 @@ export default async function pageMiddleware(req, res, next) {
                 page
             };
         }
+
+        const { getEntity } = new APIUtils(logger, config);
 
         const saved = `?saved=${!!preview}`;
         const pageData = await getEntity(`${pageID}${saved}`);

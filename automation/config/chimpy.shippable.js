@@ -4,6 +4,11 @@
     https://github.com/TheBrainFamily/chimpy/blob/master/src/bin/default.js
 */
 
+const path = require('path');
+require('dotenv').config({
+    path: path.resolve(process.cwd(), '../src/.sit.env')
+});
+
 module.exports = {
     screenshotsOnError: false,
     captureAllStepScreenshots: false,

@@ -2,15 +2,15 @@ import proxyquire, { noCallThru } from 'proxyquire';
 
 noCallThru();
 
-const makeRequestStub = sinon.stub();
+const APIUtilsStub = sinon.stub();
+const getModulesStub = sinon.stub();
+const loggerStub = sinon.stub();
 const getLatestTeasersStub = sinon.stub();
 const createRepeatableListStub = sinon.stub();
 
 const sectionMiddleware = proxyquire('../../../../app/server/bff/middleware/section', {
-    '../../makeRequest': makeRequestStub,
-    '../api/listing': {
-        getLatestTeasers: getLatestTeasersStub
-    },
+    '@bxm/api-utils': APIUtilsStub,
+    '../../../../logger': loggerStub,
     '../helper/createReapeatableList': createRepeatableListStub
 }).default;
 
@@ -52,8 +52,8 @@ describe('Section middleware', () => {
 
     describe('when there is a section in the query param and nodeTypeAlias equal to Section', () => {
         afterEach(() => {
+            APIUtilsStub.reset();
             getLatestTeasersStub.reset();
-            makeRequestStub.reset();
         });
 
         before(() => {
@@ -81,6 +81,10 @@ describe('Section middleware', () => {
                 };
                 req.data.headerNav = [1, 2, 3];
                 next = sinon.spy();
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                    getModules: getModulesStub,
+                    getLatestTeasers: getLatestTeasersStub
+                });
                 getLatestTeasersStub.resolves(validRes);
             });
 
@@ -99,7 +103,11 @@ describe('Section middleware', () => {
         let next;
 
         before(() => {
-            req = { data: { entity: { nodeTypeAlias: 'Section' } }, query: { page: 'page' } };
+            req = { data: { entity: { nodeTypeAlias: 'Section' } }, query: { page: 'page' }, app: { locals: { config } } };
+            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                getModules: getModulesStub,
+                getLatestTeasers: getLatestTeasersStub
+            });
             next = sinon.stub();
         });
 
@@ -118,7 +126,11 @@ describe('Section middleware', () => {
         let next;
 
         before(() => {
-            req = { data: { entity: { nodeTypeAlias: 'Section' } }, query: { page: 'page', section: 'section' } };
+            req = { data: { entity: { nodeTypeAlias: 'Section' } }, query: { page: 'page', section: 'section' }, app: { locals: { config } } };
+            APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                getModules: getModulesStub,
+                getLatestTeasers: getLatestTeasersStub
+            });
             next = sinon.stub();
         });
 
@@ -137,12 +149,16 @@ describe('Section middleware', () => {
         let next;
 
         before(() => {
-            reqBase = { data: { entity: { nodeTypeAlias: 'Article' } }, query: { section: 'section' } };
+            reqBase = { data: { entity: { nodeTypeAlias: 'Article' } }, query: { section: 'section' }, app: { locals: { config } } };
         });
 
         describe('and there is a nodeTypeAlias equal Section', () => {
             before(() => {
                 req = { ...reqBase, data: { entity: 'Section' } };
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                    getModules: getModulesStub,
+                    getLatestTeasers: getLatestTeasersStub
+                });
                 next = sinon.stub();
             });
 
@@ -179,8 +195,15 @@ describe('Section middleware', () => {
                     }
                 };
 
-                getLatestTeasersStub.resolves(validRes);
                 req = { ...reqBase };
+
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                    getModules: getModulesStub,
+                    getLatestTeasers: getLatestTeasersStub
+                });
+
+                getLatestTeasersStub.resolves(validRes);
+
                 next = sinon.spy();
             });
 
@@ -209,6 +232,11 @@ describe('Section middleware', () => {
                         }
                     }
                 };
+
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                    getModules: getModulesStub,
+                    getLatestTeasers: getLatestTeasersStub
+                });
 
                 getLatestTeasersStub.resolves(validRes);
                 req = { ...reqBase };
@@ -239,8 +267,15 @@ describe('Section middleware', () => {
                             nodeTypeAlias: 'Brand',
                             source: "Australian Women's Weekly"
                         }
-                    }
+                    },
+                    app: { locals: { config } }
                 };
+
+                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
+                    getModules: getModulesStub,
+                    getLatestTeasers: getLatestTeasersStub
+                });
+
                 req = { ...reqBase };
                 next = sinon.spy();
             });

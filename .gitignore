@@ -126,3 +126,10 @@ automation/screenshots/
 
 # Shippable
 shippable/
+
+# nyc test coverage
+.nyc_output
+
+# dotenv files
+*.env
+!*sample.*.env
