@@ -181,7 +181,7 @@ resources:
     versionTemplate:
       params:
         # EMAIL_HASH_SERVICE_SECRET_KEY,APP_SERVICES_ACCESS_KEY
-        secure: TzeL4hakIO5ztpLBWSQ5SdBNQ8RNw1lLpNBPQHxHtgbPmD1YzaEpCmiNrudO0bSayrrfqs3iBydEiW3hkZjhEFZqLG1coi5dXJvtagJdpzvavTtlu4pdwWdp1ag8ntlfAvrOuhowyyCnNrmzqlwgXDFyhjEoECqpcJ/qiLS41+ns0fOUy+SyuRSmAUi0cOqdtppp/pXucPgIJN/tLnkD1zOwXKhNtHyWNHyWp0cAgV/81Kj7De4FHgyQC0RfMeghB6UaRVw8UW5ie3QKbSF+0AweYNeVqwSmWyf7JzXaibcbT7dKN4XtrVJ7hhrjRB87lIWCwNOGW20MRdQrGwMHKA==
+        secure: e9fzI0oTv1zaH/PqbJCgxD1/Cs+RAfIFMVFR7tQd4PigQ770TyqxjnzaAaLVu+9F372c9TqTyfrC965Gaus6C2crgZfE+gs2v64665qHmrl6Q0Qek9DFCxXl3WUQKs1MQmXNyl5351P6TBVQ8qDG6d7gJC97c0S+pXbu7b8FDCR7kP1aNHUFJXB94PNi1me2VzJn1xSqld6HhhOMopU9UqpCbKDqDhCe5vd+LS7aNfu4Rl2Jw37Qglh8//WbEduFuoMsMs2RXKr0UeUoO4T2MVRSd+1WwrvPud8zC9cnD1X/cCXqk9aE8xmE6gS9eII1XFeCYr736cpFScLcifs6+Q==
 
   # SIT AU Parameter
   - name: now-site-au-params-sit
@@ -194,7 +194,7 @@ resources:
         APP_DEBUG: true
         APP_REGION: 'au'
         # EMAIL_HASH_SERVICE_SECRET_KEY,APP_SERVICES_ACCESS_KEY
-        secure: TzeL4hakIO5ztpLBWSQ5SdBNQ8RNw1lLpNBPQHxHtgbPmD1YzaEpCmiNrudO0bSayrrfqs3iBydEiW3hkZjhEFZqLG1coi5dXJvtagJdpzvavTtlu4pdwWdp1ag8ntlfAvrOuhowyyCnNrmzqlwgXDFyhjEoECqpcJ/qiLS41+ns0fOUy+SyuRSmAUi0cOqdtppp/pXucPgIJN/tLnkD1zOwXKhNtHyWNHyWp0cAgV/81Kj7De4FHgyQC0RfMeghB6UaRVw8UW5ie3QKbSF+0AweYNeVqwSmWyf7JzXaibcbT7dKN4XtrVJ7hhrjRB87lIWCwNOGW20MRdQrGwMHKA==
+        secure: e9fzI0oTv1zaH/PqbJCgxD1/Cs+RAfIFMVFR7tQd4PigQ770TyqxjnzaAaLVu+9F372c9TqTyfrC965Gaus6C2crgZfE+gs2v64665qHmrl6Q0Qek9DFCxXl3WUQKs1MQmXNyl5351P6TBVQ8qDG6d7gJC97c0S+pXbu7b8FDCR7kP1aNHUFJXB94PNi1me2VzJn1xSqld6HhhOMopU9UqpCbKDqDhCe5vd+LS7aNfu4Rl2Jw37Qglh8//WbEduFuoMsMs2RXKr0UeUoO4T2MVRSd+1WwrvPud8zC9cnD1X/cCXqk9aE8xmE6gS9eII1XFeCYr736cpFScLcifs6+Q==
 
   # SIT NZ Parameter
   - name: now-site-nz-params-sit
@@ -207,7 +207,7 @@ resources:
         APP_DEBUG: true
         APP_REGION: 'nz'
         # EMAIL_HASH_SERVICE_SECRET_KEY,APP_SERVICES_ACCESS_KEY
-        secure: TzeL4hakIO5ztpLBWSQ5SdBNQ8RNw1lLpNBPQHxHtgbPmD1YzaEpCmiNrudO0bSayrrfqs3iBydEiW3hkZjhEFZqLG1coi5dXJvtagJdpzvavTtlu4pdwWdp1ag8ntlfAvrOuhowyyCnNrmzqlwgXDFyhjEoECqpcJ/qiLS41+ns0fOUy+SyuRSmAUi0cOqdtppp/pXucPgIJN/tLnkD1zOwXKhNtHyWNHyWp0cAgV/81Kj7De4FHgyQC0RfMeghB6UaRVw8UW5ie3QKbSF+0AweYNeVqwSmWyf7JzXaibcbT7dKN4XtrVJ7hhrjRB87lIWCwNOGW20MRdQrGwMHKA==
+        secure: e9fzI0oTv1zaH/PqbJCgxD1/Cs+RAfIFMVFR7tQd4PigQ770TyqxjnzaAaLVu+9F372c9TqTyfrC965Gaus6C2crgZfE+gs2v64665qHmrl6Q0Qek9DFCxXl3WUQKs1MQmXNyl5351P6TBVQ8qDG6d7gJC97c0S+pXbu7b8FDCR7kP1aNHUFJXB94PNi1me2VzJn1xSqld6HhhOMopU9UqpCbKDqDhCe5vd+LS7aNfu4Rl2Jw37Qglh8//WbEduFuoMsMs2RXKr0UeUoO4T2MVRSd+1WwrvPud8zC9cnD1X/cCXqk9aE8xmE6gS9eII1XFeCYr736cpFScLcifs6+Q==
 
   # TEST Parameter
   - name: now-site-params-test
@@ -258,4 +258,4 @@ resources:
         APP_ENV: 'prod'
         APM_KEY: 'c777240932e6282ffacc6a42ae6a0709426522bb'
         # EMAIL_HASH_SERVICE_SECRET_KEY,APP_SERVICES_ACCESS_KEY
-        secure: YNrJPqd/9BMbTwf7V1zvL0ZX3kM7eNWcd9GQjSVDEcyJKzF06b4fIU/bgMGfho5FLd27Vsr/tHNngAV7kHqyGYpScHhcLbdvWoFEZuClq+32aGGMBmyTPTgPPEEAkmg34yHbNVox+Ljq843sEAY8WxngeuJE/J0RpktOOuOha0s1x5uXoFkXbCCjI8Pjqd1yoEWgtpeIhT27Cu+hKKvHKsbhh1KWjw3SPb1Co93MYQVzs+uct8C21RuYFybPU+MTaJgKOxLQ6A/YK7TCZ1aRRkT5/JulyfioLdjNCx/nFjxbNdiKrjo/yx6oiuh14N0LmiZicQ7eh6AtreXNkq3xcA==
+        secure: PrzfzlCCEw9U2tfgZwtQcTDxzfFtU1rjTpjtmmjQdD1unV6ijJABXniNTGjEGa5tiEMW5nlbMRBNFUEY+raKRKyWrPdTGQB4BsEFtBRJo0ll/JhFKihY55J5jYGtwmfeNeAHnbAcRC8uKzcxcSpZQ+YuY5X+xDB0mi6HMUVduzqXXBjz16DHtK6eseiz2cHtUZVWE4b/0pO81Tfa2WEMxIF2z4FJKkLOUTBqvf0XRPRdGWuuogeWZwwC0wPkNchnMhyXxuExzi36uJUHdsjyGHCgLcCwMq3eDSBBKfsRa2xFLN/yyfNiR+fn64AGAVa2LT+h80dH39SfU6fheOCLQQ==
