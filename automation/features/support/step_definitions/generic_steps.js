@@ -7,15 +7,14 @@ module.exports = function() {
     this.When(/^I switch to "([^"]*)" view$/, function(device) {
         var window = new window_handler(browser);
         window.windowResize(device);
+
         browser.waitUntil(
             () => {
-                const isDocumentReady = browser.execute(
-                    () => document.readyState
-                );
+                const isDocumentReady = browser.execute(() => document.readyState);
 
                 return isDocumentReady.value === 'complete';
             },
-            5000,
+            10000,
             'page not fully loaded',
             500
         );
@@ -26,11 +25,17 @@ module.exports = function() {
         browser.url(pageUrl);
         browser.waitUntil(
             function() {
+                console.log(browser.getUrl());
+                console.log(pageUrl);
+                console.log(browser.getUrl() === pageUrl);
+
                 return browser.getUrl() === pageUrl;
             },
-            20000,
-            1000
+            10000,
+            500
         );
+
+        expect(browser.getUrl() === pageUrl);
     });
 
     this.Given(/^I am currently viewing "([^"]*)"$/, function(pagename) {

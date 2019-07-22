@@ -101,7 +101,7 @@ module.exports = function() {
     this.When(/^I navigate to the "([^"]*)" page$/, function(docType) {
         var elementOnPage;
         var pageURL;
-        var sitUrl = 'http://now-site-au.sit.bxm.net.au/';
+        var sitUrl = process.env.URL || 'http://now-site-au.sit.bxm.net.au/';
 
         switch (docType) {
             case 'article':
@@ -141,7 +141,7 @@ module.exports = function() {
 
                 console.log('Page not created yet, current page url is : ' + browser.getUrl());
             },
-            20000,
+            60000,
             'document did not load in time',
             1000
         );
