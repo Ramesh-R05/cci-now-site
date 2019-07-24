@@ -186,8 +186,9 @@ jobs:
         - script: sudo apt-get update
         - script: sudo apt-get install google-chrome-stable
         - script: google-chrome --product-version
+        - script: java -version
         - script: export URL=http://now-site-nz.sit.bxm.net.au/
-        - script: npm run test:nzlow || true
+        - script: npm run test:nzlow -- --debug --seleniumDebug --log="silly" || true
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
     on_failure:
@@ -217,8 +218,9 @@ jobs:
         - script: sudo apt-get update
         - script: sudo apt-get install google-chrome-stable
         - script: google-chrome --product-version
+        - script: java -version
         - script: export URL=https://www.sit.nowtolove.com.au/
-        - script: npm run sit:au || true
+        - script: npm run sit:au -- --debug --seleniumDebug --log="silly" || true
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
     on_failure:
