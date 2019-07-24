@@ -65,7 +65,6 @@ module.exports = function() {
                 body_content['document']['path'] = documentPath + randomId;
                 docTypeID[page] = randomId;
                 sectionName = body_content['document']['urlName'];
-                console.log('Section random ID is ' + docTypeID[page]);
                 break;
             case 'subsection':
                 body_content['document']['nodeName'] = 'SubsectionTest-' + randomId;
@@ -135,7 +134,6 @@ module.exports = function() {
                 browser.url(pageURL);
 
                 if (browser.isExisting(elementOnPage)) {
-                    console.log('Page Loaded Successfully : ID-' + docTypeID[docType] + ': ' + pageURL);
                     return true;
                 }
 
@@ -162,7 +160,6 @@ module.exports = function() {
                 break;
             case 'section':
                 browser.waitForVisible('h1.page-title', 30000);
-                console.log('section ' + ID);
                 expect(browser.getText('h1.page-title')).toEqual('SectionTest-' + ID);
                 break;
             case 'subsection':

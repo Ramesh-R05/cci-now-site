@@ -5,6 +5,8 @@
 */
 
 const path = require('path');
+const debug = process.env.APP_DEBUG === 'true';
+
 require('dotenv').config({
     path: path.resolve(process.cwd(), '../src/.sit.env')
 });
@@ -14,6 +16,7 @@ module.exports = {
     captureAllStepScreenshots: false,
     jsonOutput: 'reports/regression.json',
     webdriverio: {
+        execArgv: debug ? ['--inspect'] : [],
         desiredCapabilities: {
             // go to https://peter.sh/experiments/chromium-command-line-switches/
             chromeOptions: {
@@ -46,5 +49,6 @@ module.exports = {
                 baseURL: 'https://chromedriver.storage.googleapis.com'
             }
         }
-    }
+    },
+    debugCucumber: debug ? true : null
 };

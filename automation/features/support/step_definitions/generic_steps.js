@@ -25,10 +25,6 @@ module.exports = function() {
         browser.url(pageUrl);
         browser.waitUntil(
             function() {
-                console.log(browser.getUrl());
-                console.log(pageUrl);
-                console.log(browser.getUrl() === pageUrl);
-
                 return browser.getUrl() === pageUrl;
             },
             10000,
