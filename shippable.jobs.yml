@@ -116,8 +116,8 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "8.9.1"
-        - script: nvm use "8.9.1"
+        - script: nvm install
+        - script: nvm use
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
@@ -176,8 +176,7 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "8.9.1"
-        - script: nvm use "8.9.1"
+        - script: nvm use
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
@@ -188,7 +187,7 @@ jobs:
         - script: google-chrome --product-version
         - script: java -version
         - script: export URL=http://now-site-nz.sit.bxm.net.au/
-        - script: npm run test:nzlow -- --debug --seleniumDebug --log="silly" || true
+        - script: npm run test:nzlow || true
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
     on_failure:
@@ -208,8 +207,7 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "8.9.1"
-        - script: nvm use "8.9.1"
+        - script: nvm use
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
@@ -220,7 +218,7 @@ jobs:
         - script: google-chrome --product-version
         - script: java -version
         - script: export URL=https://www.sit.nowtolove.com.au/
-        - script: npm run sit:au -- --debug --seleniumDebug --log="silly" || true
+        - script: npm run sit:au || true
         - script: actualsize=$(wc -c <"@rerun.txt")
         - script: bash -c "if [ $actualsize -eq 0 ]; then  echo 'rerun exit code' $actualsize; else npm run test:rerun; fi"
     on_failure:
@@ -330,8 +328,7 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "8.9.1"
-        - script: nvm use "8.9.1"
+        - script: nvm use
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
