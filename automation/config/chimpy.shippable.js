@@ -24,7 +24,7 @@ module.exports = {
          * error : error only
          * verbose : command + data + result
          */
-        logLevel: 'error',
+        logLevel: 'verbose',
         desiredCapabilities: {
             execArgv: debug ? ['--inspect'] : [],
             // go to https://peter.sh/experiments/chromium-command-line-switches/
