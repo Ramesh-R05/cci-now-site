@@ -116,9 +116,9 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install
-        - script: nvm use
+        - script: nvm install        
         - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: nvm use
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -175,9 +175,9 @@ jobs:
        switch: off
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-        - script: source ~/.nvm/nvm.sh
-        - script: nvm use
+        - script: source ~/.nvm/nvm.sh        
         - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: nvm use
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -206,9 +206,9 @@ jobs:
        switch: off
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-        - script: source ~/.nvm/nvm.sh
-        - script: nvm use
+        - script: source ~/.nvm/nvm.sh        
         - script: cd ./IN/now-site-repo/gitRepo/automation
+        - script: nvm use
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
         - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
