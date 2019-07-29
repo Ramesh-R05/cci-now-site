@@ -25,7 +25,8 @@ module.exports = function() {
         browser.url(pageUrl);
         browser.waitUntil(
             function() {
-                return browser.getUrl() === pageUrl;
+                const isDocumentReady = browser.execute(() => document.readyState);
+                return browser.getUrl() === pageUrl && isDocumentReady.value === 'complete';
             },
             10000,
             500
