@@ -31,7 +31,7 @@ module.exports = {
                     '--no-sandbox',
                     '--enable-features=NetworkService,NetworkServiceInProcess',
                     '--disable-setuid-sandbox',
-                    '--whitelisted-ips'
+                    '--whitelisted-ips='
                 ]
             }
         }
