@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "sit:au": "DEBUG=selenium-standalone:* bxm-automation ./config/chimpy.shippable.js --format=rerun:@rerun.txt --tags=@sitAU",
+    "sit:au": "DEBUG=selenium-standalone:* bxm-automation ./config/chimpy.shippable.js --format=rerun:@rerun.txt --tags=@sitAU --debug",
     "test:tags": "bxm-automation ./config/chimpy.js --browser=chrome --format=rerun:@rerun.txt --tags=$0",
     "test:high": "bxm-automation ./config/chimpy.js --browser=chrome --format=rerun:@rerun.txt --tags=@now --tags=@high",
     "test:med": "bxm-automation ./config/chimpy.js --browser=chrome --format=rerun:@rerun.txt --tags=@now --tags=@med",
