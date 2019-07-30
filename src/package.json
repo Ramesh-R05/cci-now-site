@@ -46,7 +46,7 @@
     "@babel/register": "^7.4.4",
     "@bxm/ad": "^16.2.1",
     "@bxm/api-utils": "^1.0.3",
-    "@bxm/article": "^29.12.1",
+    "@bxm/article": "^29.13.0",
     "@bxm/behaviour": "^2.0.0",
     "@bxm/datetime": "^4.0.1",
     "@bxm/flux": "^6.0.0",
