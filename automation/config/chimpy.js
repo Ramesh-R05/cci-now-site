@@ -16,6 +16,15 @@ module.exports = {
     captureAllStepScreenshots: false,
     jsonOutput: 'reports/regression.json',
     webdriverio: {
+        /**
+         * log level
+         * silent : no logs
+         * command : command only
+         * result : result only
+         * error : error only
+         * verbose : command + data + result
+         */
+        logLevel: 'verbose',
         execArgv: debug ? ['--inspect'] : [],
         desiredCapabilities: {
             // go to https://peter.sh/experiments/chromium-command-line-switches/
@@ -51,5 +60,6 @@ module.exports = {
             }
         }
     },
-    debugCucumber: debug ? true : null
+    debugCucumber: debug ? true : null,
+    seleniumDebug: true
 };
