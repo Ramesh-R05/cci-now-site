@@ -170,9 +170,9 @@ jobs:
       - NOTIFY: now-qa-team-notifications
     steps:
      - IN: nz-now-site-sit-deploy-master
+       switch: off
      - IN: now-site-repo
      - IN: now-site-test-env
-       switch: off
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh        
@@ -202,9 +202,9 @@ jobs:
       - NOTIFY: now-qa-team-notifications
     steps:
      - IN: au-now-site-sit-deploy-master
+       switch: off
      - IN: now-site-repo
      - IN: now-site-test-env
-       switch: off
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh        
@@ -231,9 +231,9 @@ jobs:
     type: runSh
     steps:
       - IN: now-site-test-deploy-master
+        switch: off
       - IN: test-result-s3-param
       - IN: now-site-repo
-        switch: off
       - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
