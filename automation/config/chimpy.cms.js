@@ -31,7 +31,7 @@ module.exports = {
     seleniumStandaloneOptions: {
         // check for more recent versions of selenium here:
         // http://selenium-release.storage.googleapis.com/index.html
-        version: '3.8.0',
+        version: '3.0.1',
         baseURL: 'https://selenium-release.storage.googleapis.com',
         drivers: {
             chrome: {

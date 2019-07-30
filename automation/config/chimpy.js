@@ -24,7 +24,7 @@ module.exports = {
          * error : error only
          * verbose : command + data + result
          */
-        logLevel: 'verbose',
+        // logLevel: 'verbose',
         execArgv: debug ? ['--inspect'] : [],
         desiredCapabilities: {
             // go to https://peter.sh/experiments/chromium-command-line-switches/
@@ -40,7 +40,7 @@ module.exports = {
                     '--no-sandbox',
                     '--enable-features=NetworkService,NetworkServiceInProcess',
                     '--disable-setuid-sandbox',
-                    '--whitelisted-ips='
+                    '--whitelisted-ips=""'
                 ]
             }
         }
@@ -48,7 +48,7 @@ module.exports = {
     seleniumStandaloneOptions: {
         // check for more recent versions of selenium here:
         // http://selenium-release.storage.googleapis.com/index.html
-        version: '3.8.0',
+        version: '3.0.1',
         baseURL: 'https://selenium-release.storage.googleapis.com',
         drivers: {
             chrome: {
@@ -61,5 +61,6 @@ module.exports = {
         }
     },
     debugCucumber: debug ? true : null,
-    seleniumDebug: true
+    // uncomment below for selenium logs
+    // seleniumDebug: true 
 };
