@@ -30,7 +30,8 @@ module.exports = {
                     '--enable-logging',
                     '--no-sandbox',
                     '--enable-features=NetworkService,NetworkServiceInProcess',
-                    '--disable-setuid-sandbox'
+                    '--disable-setuid-sandbox',
+                    '--whitelisted-ips'
                 ]
             }
         }
