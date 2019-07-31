@@ -63,7 +63,7 @@ module.exports = {
     log: 'info',
     debugCucumber: true,
     debugBrkCucumber: debug ? true : null,
-    debugCucumber: debug ? true : null
+    debugCucumber: debug ? true : null,
     // uncomment below for selenium logs
-    // seleniumDebug: true
+    seleniumDebug: true
 };
