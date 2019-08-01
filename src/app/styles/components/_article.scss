@@ -84,7 +84,7 @@
 
     .article-header-author {
         &__name {
-            border-bottom: 1px solid $nl-color;
+            border-bottom: 1px solid $color-secondary;
         }
 
         &:before {
@@ -248,6 +248,6 @@
     margin-right: 0;
 
     &__name {
-        color: $nl-color;
+        color: $color-secondary;
     }
 }
