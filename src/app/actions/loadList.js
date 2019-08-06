@@ -1,6 +1,7 @@
+import { validateRouteParams } from '@bxm/flux';
 import listService from '../services/list';
 
-export default function loadList(context, payload) {
+function loadList(context, payload) {
     return listService.read(payload).then(
         content => {
             if (content instanceof Error) {
@@ -12,3 +13,5 @@ export default function loadList(context, payload) {
         error => context.dispatch('LOAD_LIST_FAILED', error)
     );
 }
+
+export default validateRouteParams(loadList);

@@ -32,31 +32,51 @@ export default {
         path: '/:section',
         method: 'get',
         handler: SectionPage,
-        action: loadPageContent
+        action: loadPageContent,
+        validators: {
+            section: /^[^\W_]+(-[^\W_]+)*$/g
+        }
     },
     tags: {
         path: '/tags/:tag',
         method: 'get',
         handler: SectionPage,
-        action: loadPageContent
+        action: loadPageContent,
+        validators: {
+            tag: /^[^\W_]+(-[^\W_]+)*$/g
+        }
     },
     subsection: {
         path: '/:section/:subsection',
         method: 'get',
         handler: SectionPage,
-        action: loadPageContent
+        action: loadPageContent,
+        validators: {
+            section: /^[^\W_]+(-[^\W_]+)*$/g,
+            subsection: /^[^\W_]+(-[^\W_]+)*$/g
+        }
     },
     page: {
         path: '/:section/:subsection/:page',
         method: 'get',
         handler: SinglePage,
-        action: loadPageContent
+        action: loadPageContent,
+        validators: {
+            section: /^[^\W_]+(-[^\W_]+)*$/g,
+            subsection: /^[^\W_]+(-[^\W_]+)*$/g,
+            page: /^[^\W_]+(-[^\W_]+)*$/g
+        }
     },
     previewPage: {
         path: '/:preview(preview)/:section/:subsection/:page',
         method: 'get',
         handler: SinglePage,
-        action: loadPageContent
+        action: loadPageContent,
+        validators: {
+            section: /^[^\W_]+(-[^\W_]+)*$/g,
+            subsection: /^[^\W_]+(-[^\W_]+)*$/g,
+            page: /^[^\W_]+(-[^\W_]+)*$/g,
+        }
     },
     all: {
         path: '/:all*',

@@ -45,7 +45,8 @@ export function reducer(state = initialState, payload = {}, eventName = '') {
         }
 
         case 'LOAD_CONTENT_FAILED': {
-            const { response } = { ...payload };
+            const { response = {} } = { ...payload };
+
             response.status = response.status || 400;
 
             return {

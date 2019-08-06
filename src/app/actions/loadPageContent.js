@@ -1,6 +1,7 @@
+import { validateRouteParams } from '@bxm/flux';
 import pageService from '../services/page';
 
-export default function loadPageContent(context, payload) {
+function loadPageContent(context, payload) {
     const { url, query, params } = payload;
     const routeStore = context.getStore('RouteStore');
     const navigate = routeStore.getCurrentNavigate();
@@ -31,3 +32,5 @@ export default function loadPageContent(context, payload) {
         error => context.dispatch('LOAD_CONTENT_FAILED', error)
     );
 }
+
+export default validateRouteParams(loadPageContent);
