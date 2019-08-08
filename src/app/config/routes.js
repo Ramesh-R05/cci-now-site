@@ -75,7 +75,7 @@ export default {
         validators: {
             section: /^[^\W_]+(-[^\W_]+)*$/g,
             subsection: /^[^\W_]+(-[^\W_]+)*$/g,
-            page: /^[^\W_]+(-[^\W_]+)*$/g,
+            page: /^[^\W_]+(-[^\W_]+)*$/g
         }
     },
     all: {
