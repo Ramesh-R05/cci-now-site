@@ -21,7 +21,7 @@ export default {
     site,
 
     jwPlayer: {
-        scriptKey: '71UTFPrL',
+        scriptKey: 'nCfLebbM',
         baseUrl: 'https://cdn.jwplayer.com'
     },
 

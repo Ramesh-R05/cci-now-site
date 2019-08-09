@@ -35,7 +35,8 @@ class Application extends Component {
         error: PropTypes.object,
         theme: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
         siteAlert: PropTypes.object,
-        isNavigateComplete: PropTypes.bool.isRequired
+        isNavigateComplete: PropTypes.bool.isRequired,
+        title: PropTypes.string
     };
 
     static defaultProps = {
@@ -43,7 +44,8 @@ class Application extends Component {
         theme: {},
         siteAlert: {},
         currentRoute: null,
-        currentNavigateError: null
+        currentNavigateError: null,
+        title: ''
     };
 
     static contextTypes = {
