@@ -1,4 +1,3 @@
-import { validateRouteParams } from '@bxm/flux';
 import listService from '../services/list';
 
 function loadList(context, payload) {
@@ -14,4 +13,4 @@ function loadList(context, payload) {
     );
 }
 
-export default validateRouteParams(loadList);
+export default loadList;

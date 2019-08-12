@@ -74,6 +74,6 @@ module.exports = function() {
 
         browser.click(loadMore.loadMoreButton);
 
-        wait(5000);
+        wait(6000);
     });
 };
