@@ -18,7 +18,7 @@ export default {
             identity: 'https://live.dmp.bauer-media.net.au/api/identity'
         },
         redirect: {
-            url: 'http://services.prod.bxm.net.au/redirect/v1/now/301'
+            url: 'http://services.prod.bxm.internal/redirect/v1/now/301'
         }
     },
     polar: {

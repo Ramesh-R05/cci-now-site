@@ -8,6 +8,6 @@ export default {
         search: 'https://services.sit.bxm.net.au/es-search/v1/nznow'
     },
     redirect: {
-        url: 'https://services.sit.bxm.net.au/redirect/v1/nznow/301'
+        url: 'https://services.sit.bxm.internal/redirect/v1/nznow/301'
     }
 };

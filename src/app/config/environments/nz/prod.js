@@ -13,7 +13,7 @@ export default {
             search: 'https://services.prod.bxm.net.au/es-search/v1/nznow'
         },
         redirect: {
-            url: 'http://services.prod.bxm.net.au/redirect/v1/nznow/301'
+            url: 'http://services.prod.bxm.internal/redirect/v1/nznow/301'
         }
     },
     gigya: { apiKey: '3_t9sNGuUPgwEUVDuOJ3g1BEMlqQWvKXQWS9toq53-iiMKRAbCWKXkW8yzltcsCF9N' },
