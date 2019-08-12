@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "sit:au": "bxm-automation ./config/chimpy.shippable.js --browser=chrome --format=rerun:@rerun.txt --tags=@sitAU",
+    "sit:au": "bxm-automation ./config/chimpy.shippable.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@sitAU",
+    "sit:au:local": "bxm-automation ./config/chimpy.shippable.js --browser=chrome --format=rerun:@rerun.txt --tags=@sitAU",
     "test:tags": "bxm-automation ./config/chimpy.js --browser=phantomjs --format=rerun:@rerun.txt --tags=$0",
     "test:high": "bxm-automation ./config/chimpy.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@high",
     "test:med": "bxm-automation ./config/chimpy.js --browser=phantomjs --format=rerun:@rerun.txt --tags=@now --tags=@med",
