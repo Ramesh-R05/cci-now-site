@@ -7,17 +7,6 @@ module.exports = function() {
     this.When(/^I switch to "([^"]*)" view$/, function(device) {
         var window = new window_handler(browser);
         window.windowResize(device);
-
-        browser.waitUntil(
-            () => {
-                const isDocumentReady = browser.execute(() => document.readyState);
-
-                return isDocumentReady.value === 'complete';
-            },
-            10000,
-            'page not fully loaded',
-            500
-        );
     });
 
     this.Given(/^I am currently viewing the homepage$/, function() {
@@ -28,7 +17,7 @@ module.exports = function() {
                 const isDocumentReady = browser.execute(() => document.readyState);
                 return browser.getUrl() === pageUrl && isDocumentReady.value === 'complete';
             },
-            10000,
+            80000,
             500
         );
 
@@ -42,7 +31,7 @@ module.exports = function() {
             function() {
                 return browser.getUrl() === pageUrl;
             },
-            20000,
+            8000,
             10000
         );
     });

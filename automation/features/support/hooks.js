@@ -13,7 +13,16 @@ module.exports = function() {
 
             this.setDefaultTimeout(timeoutInMs);
             console.log(`Updated default timeout to ${timeoutInMins} minutes`);
+            return;
         }
+
+        const timeoutInMs = 60000;
+        const timeoutInMins = timeoutInMs / 1000 / 60;
+
+        this.setDefaultTimeout(timeoutInMs);
+        console.log(`Updated default timeout to ${timeoutInMins} minutes`);
+
+        return;
     });
 
     this.After(scenario => {
