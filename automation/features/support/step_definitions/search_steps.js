@@ -15,7 +15,7 @@ module.exports = function() {
         const { searchNavIcon, searchNavBox} = search
     
         browser.$(searchNavIcon).click()
-        expect(browser.waitForVisible(searchNavBox, 6000)).toBe(true);
+        expect(browser.waitForExist(searchNavBox, 10000)).toBe(true);
     });
 
     this.Then(/^I should still see the search box after scrolling the page down$/, function () {

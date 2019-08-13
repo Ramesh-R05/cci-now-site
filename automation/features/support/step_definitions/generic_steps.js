@@ -15,24 +15,29 @@ module.exports = function() {
         browser.waitUntil(
             function() {
                 const isDocumentReady = browser.execute(() => document.readyState);
+
                 return browser.getUrl() === pageUrl && isDocumentReady.value === 'complete';
             },
-            80000,
+            20000,
+            `homepage failed to load`,
             500
         );
 
         expect(browser.getUrl() === pageUrl);
     });
 
-    this.Given(/^I am currently viewing "([^"]*)"$/, function(pagename) {
-        var pageUrl = world.Urls.home_page + pagename;
+    this.Given(/^I am currently viewing "([^"]*)"$/, function(pageName) {
+        var pageUrl = world.Urls.home_page + pageName;
         browser.url(pageUrl);
         browser.waitUntil(
             function() {
-                return browser.getUrl() === pageUrl;
+                const isDocumentReady = browser.execute(() => document.readyState);
+
+                return browser.getUrl() === pageUrl && isDocumentReady.value === 'complete';
             },
-            8000,
-            10000
+            20000,
+            `${pageName} failed to load`,
+            500
         );
     });
 
@@ -48,21 +53,21 @@ module.exports = function() {
         const { loadMoreButton } = loadMore;
 
         function scrollAndCentreLoadMore() {
-            const x = browser.getLocation(loadMore.loadMoreButton, 'x');
-            const y = browser.getLocation(loadMore.loadMoreButton, 'y');
+            const x = browser.getLocation(loadMoreButton, 'x');
+            const y = browser.getLocation(loadMoreButton, 'y');
 
             browser.scroll(x, y - 150);
         }
 
-        browser.$(loadMoreButton).waitForVisible(5000);
-        scrollAndCentreLoadMore();
-        browser.$(loadMoreButton).waitForVisible(8000);
-        scrollAndCentreLoadMore();
-        browser.$(loadMoreButton).waitForVisible(8000);
-        scrollAndCentreLoadMore();
+        function forceClick(el) {
+            browser.selectorExecute([el], selector => {
+                selector[0].click();
+            });
+        }
 
-        browser.click(loadMore.loadMoreButton);
+        scrollAndCentreLoadMore();
+        forceClick(loadMoreButton);
 
-        wait(6000);
+        wait(4000);
     });
 };

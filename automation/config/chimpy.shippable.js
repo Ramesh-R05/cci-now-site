@@ -24,7 +24,7 @@ module.exports = {
          * error : error only
          * verbose : command + data + result
          */
-        // logLevel: 'verbose',
+        // logLevel: 'silent',
         desiredCapabilities: {
             execArgv: debug ? ['--inspect'] : [],
             // go to https://peter.sh/experiments/chromium-command-line-switches/
@@ -54,7 +54,7 @@ module.exports = {
             chrome: {
                 // check for more recent versions of chrome driver here:
                 // http://chromedriver.storage.googleapis.com/index.html
-                version: '75.0.3770.140',
+                version: '76.0.3809.12',
                 arch: process.arch,
                 baseURL: 'https://chromedriver.storage.googleapis.com'
             }
