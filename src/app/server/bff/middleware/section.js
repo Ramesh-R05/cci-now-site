@@ -68,6 +68,7 @@ export default async function sectionMiddleware(req, res, next) {
         }
 
         const list = createReapeatableList({
+            host: config.site.host,
             listName: section,
             basePath: sectionQuery,
             pageNo,

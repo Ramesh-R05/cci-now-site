@@ -16,7 +16,7 @@ module.exports = function() {
             return;
         }
 
-        const timeoutInMs = 60000;
+        const timeoutInMs = 120000;
         const timeoutInMins = timeoutInMs / 1000 / 60;
 
         this.setDefaultTimeout(timeoutInMs);
@@ -25,7 +25,7 @@ module.exports = function() {
         return;
     });
 
-    this.After(scenario => {
+    this.After(function() {
         browser.deleteCookie();
     });
 };

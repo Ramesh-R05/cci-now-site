@@ -2,6 +2,7 @@ import { parseEntities } from './parseEntity';
 
 export default function createReapeatableList({ host, basePath, pageNo, skip, items, totalCount, listName, startFrom, additionalParams = {} } = {}) {
     if (
+        host === undefined ||
         basePath === undefined ||
         pageNo === undefined ||
         skip === undefined ||

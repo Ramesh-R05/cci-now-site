@@ -18,7 +18,7 @@ module.exports = function() {
 
                 return browser.getUrl() === pageUrl && isDocumentReady.value === 'complete';
             },
-            20000,
+            30000,
             `homepage failed to load`,
             500
         );
@@ -35,10 +35,12 @@ module.exports = function() {
 
                 return browser.getUrl() === pageUrl && isDocumentReady.value === 'complete';
             },
-            20000,
+            30000,
             `${pageName} failed to load`,
             500
         );
+
+        expect(browser.getUrl() === pageUrl);
     });
 
     this.When(/^I scroll the page down$/, function() {
