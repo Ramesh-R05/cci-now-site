@@ -120,8 +120,7 @@ jobs:
         - script: nvm use "6.2.1"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: sudo apt-get update
-        - script: sudo dpkg -i ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb
-        - script: sudo apt-get install -f
+        - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
         - script: google-chrome --product-version
         - script: java -version
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au        
@@ -210,8 +209,7 @@ jobs:
         - script: nvm use "6.2.1"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: sudo apt-get update
-        - script: sudo dpkg -i ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb
-        - script: sudo apt-get install -f
+        - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
         - script: google-chrome --product-version
         - script: java -version
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
@@ -330,8 +328,7 @@ jobs:
         - script: nvm use
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: sudo apt-get update
-        - script: sudo dpkg -i ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb
-        - script: sudo apt-get install -f
+        - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
         - script: google-chrome --product-version
         - script: java -version
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
@@ -358,8 +355,7 @@ jobs:
         - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: sudo apt-get update
-        - script: sudo dpkg -i ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb
-        - script: sudo apt-get install -f
+        - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
         - script: google-chrome --product-version
         - script: java -version        
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
@@ -385,8 +381,7 @@ jobs:
         - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: sudo apt-get update
-        - script: sudo dpkg -i ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb
-        - script: sudo apt-get install -f
+        - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
         - script: google-chrome --product-version
         - script: java -version
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
