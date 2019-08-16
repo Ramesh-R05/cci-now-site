@@ -12,34 +12,12 @@ module.exports = function() {
     this.Given(/^I am currently viewing the homepage$/, function() {
         var pageUrl = world.Urls.home_page;
         browser.url(pageUrl);
-        browser.waitUntil(
-            function() {
-                const isDocumentReady = browser.execute(() => document.readyState);
-
-                return browser.getUrl() === pageUrl && isDocumentReady.value === 'complete';
-            },
-            30000,
-            `homepage failed to load`,
-            500
-        );
-
         expect(browser.getUrl() === pageUrl);
     });
 
     this.Given(/^I am currently viewing "([^"]*)"$/, function(pageName) {
         var pageUrl = world.Urls.home_page + pageName;
         browser.url(pageUrl);
-        browser.waitUntil(
-            function() {
-                const isDocumentReady = browser.execute(() => document.readyState);
-
-                return browser.getUrl() === pageUrl && isDocumentReady.value === 'complete';
-            },
-            30000,
-            `${pageName} failed to load`,
-            500
-        );
-
         expect(browser.getUrl() === pageUrl);
     });
 

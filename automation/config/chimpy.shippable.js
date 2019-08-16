@@ -32,15 +32,16 @@ module.exports = {
                 args: [
                     '--enable-automation',
                     '--allow-insecure-localhost',
-                    '--headless',
-                    `--proxy-server='direct://'`,
-                    '--proxy-bypass-list=*',
+                    // '--headless',
+                    '--help',
                     '--disable-gpu',
                     '--enable-logging',
                     '--no-sandbox',
-                    '--enable-features=NetworkService,NetworkServiceInProcess',
                     '--disable-setuid-sandbox',
-                    '--whitelisted-ips='
+                    '--whitelisted-ips=',
+                    '--browser-test ',
+                    '--enable-auto-reload',
+                    '--new-window'
                 ]
             }
         }

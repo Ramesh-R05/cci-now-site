@@ -128,21 +128,18 @@ module.exports = function() {
                 break;
         }
 
-        browser.waitUntil(
-            () => {
-                browser.refresh();
-                browser.url(pageURL);
+        for (var i = 0; i < 20; i++) {
+            wait(1000);
+            browser.refresh();
+            browser.url(pageURL);
 
-                if (browser.isExisting(elementOnPage)) {
-                    return true;
-                }
-
+            if (browser.isExisting(elementOnPage)) {
+                console.log('Page Loaded Successfully : ID-' + docTypeID[docType] + ': ' + pageURL);
+                break;
+            } else {
                 console.log('Page not created yet, current page url is : ' + browser.getUrl());
-            },
-            60000,
-            'document did not load in time',
-            1000
-        );
+            }
+        }
     });
 
     this.Then(/^our readers can enjoy the created "([^"]*)" page$/, function(docType) {
@@ -150,20 +147,20 @@ module.exports = function() {
         switch (docType) {
             case 'article':
             case 'amp article':
-                browser.waitForVisible('.article__title', 30000);
+                browser.waitForVisible('.article__title', 10000);
                 expect(browser.getText('.article__title')).toEqual('article Test ' + ID);
                 break;
             case 'gallery':
             case 'amp gallery':
-                browser.waitForVisible('.article__title', 30000);
+                browser.waitForVisible('.article__title', 10000);
                 expect(browser.getText('.article__title')).toEqual('gallery Test ' + ID);
                 break;
             case 'section':
-                browser.waitForVisible('h1.page-title', 30000);
+                browser.waitForVisible('h1.page-title', 10000);
                 expect(browser.getText('h1.page-title')).toEqual('SectionTest-' + ID);
                 break;
             case 'subsection':
-                browser.waitForVisible('h1.page-title', 30000);
+                browser.waitForVisible('h1.page-title', 10000);
                 expect(browser.getText('h1.page-title')).toEqual('SubsectionTest-' + ID);
                 break;
         }
