@@ -32,7 +32,7 @@ module.exports = {
                 args: [
                     '--enable-automation',
                     '--allow-insecure-localhost',
-                    // '--headless',
+                    '--headless',
                     '--help',
                     '--disable-gpu',
                     '--enable-logging',

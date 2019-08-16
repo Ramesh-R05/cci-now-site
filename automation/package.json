@@ -9,7 +9,7 @@
     "test:high": "bxm-automation ./config/chimpy.js --browser=chrome --format=rerun:@rerun.txt --tags=@now --tags=@high",
     "test:med": "bxm-automation ./config/chimpy.js --browser=chrome --format=rerun:@rerun.txt --tags=@now --tags=@med",
     "test:low": "bxm-automation ./config/chimpy.js --browser=chrome --format=rerun:@rerun.txt --tags=@now --tags=@low",
-    "test:nzlow": "bxm-automation ./config/chimpy.js --browser=chrome --format=rerun:@rerun.txt --tags=@nznow --tags=@low",
+    "test:nzlow": "bxm-automation ./config/chimpy.shippable.js --browser=chrome --format=rerun:@rerun.txt --tags=@nznow --tags=@low",
     "test:rerun": "bxm-automation ./config/chimpy.js --browser=chrome @rerun.txt",
     "test:perf": "mocha --require babel-polyfill --require babel-register --reporter spec --recursive perf/lighthouse-tests.js ",
     "secure:rerun": "bxm-automation ./config/chimpy.js --browser=chrome @rerun.txt",
