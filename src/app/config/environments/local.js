@@ -2,6 +2,11 @@ import brightcove from '../brightcove';
 const playerId = 'VkuyApojl';
 
 export default {
+    features: {
+        jwPlayer: {
+            enabled: true
+        }
+    },
     site: {
         host: 'http://localhost:3001'
     },
