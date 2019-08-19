@@ -260,8 +260,8 @@ jobs:
       - NOTIFY: now-slack-notifications
     steps:
       # - IN: now-site-automation-test
-      - IN: nz-now-site-smoke-test
-      - IN: au-now-site-smoke-test
+      # - IN: nz-now-site-smoke-test
+      # - IN: au-now-site-smoke-test
       #- IN: compatibility-now-site-automation-test
       - IN: now-site-man-master
         switch: off
