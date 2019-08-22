@@ -279,7 +279,7 @@ export default {
             imageUrl: 'https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/MotherAndBaby/2015/02/12/31385/toddler-behaviour-shyness.jpg',
             nodeType: 'Article',
             summary: 'If your preschooler is nervous around new people and too timid to play with other kids, what can you do?',
-            source: 'Mother and Baby',
+            source: 'Bounty',
             url: '/parenting/expert-advice/how-to-nurture-a-shy-child-18396',
             tagsDetails: [
                 {
@@ -1060,7 +1060,7 @@ export default {
                 nodeType: 'Article',
                 summary:
                     'Automation Test Article With Hero Image Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser EOM',
-                source: 'Mother and Baby',
+                source: 'Bounty',
                 url: '/beauty/hair/automation-test-article-with-hero-video-31892',
                 video: {
                     id: '4066659625001',

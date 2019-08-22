@@ -1263,7 +1263,7 @@ export default {
                 nodeType: 'Article',
                 summary:
                     'Automation Test Article With Hero Image Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser Short Teaser EOM',
-                source: 'Mother and Baby',
+                source: 'Bounty',
                 url: '/beauty/hair/automation-test-article-with-hero-video-31892',
                 parentName: 'Hair',
                 parentUrl: '/beauty/hair',

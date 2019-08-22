@@ -182,7 +182,7 @@ export default [
         imageUrl: 'https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/WomansDay/2016/11/23/17168/NEW-MAIN-(1).jpg',
         nodeType: 'Gallery',
         summary: 'We bring you all the goss, frocks and shocks from inside the 30th annual ARIA Awards at The Star in Sydney.',
-        source: 'Mother and Baby',
+        source: 'Bounty',
         url: '/fashion/red-carpet/the-2016-aria-awards-21633',
         parentName: 'Red Carpet',
         parentUrl: '/fashion/red-carpet',

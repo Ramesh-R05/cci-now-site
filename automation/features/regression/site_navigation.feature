@@ -84,7 +84,6 @@ Feature: Build and Style the Header, Top Site Navigation and Hamburger Menu to b
             |OK! Magazine               |/okmagazine        |
             |NW                         |/nw                |
             |Take 5                     |/take5mag          |
-            |Mother and Baby            |/mother-and-baby   |
             |TV WEEK                    |/tvweek            |
             |Empire                     |/empire            |
             |Prizes To Love             |/prizestolove      |

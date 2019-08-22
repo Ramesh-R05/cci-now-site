@@ -87,20 +87,6 @@ export default [
         newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5kb/signup-take5-article-iframe-bottom'
     },
     {
-        id: 'mb',
-        title: 'Mother and Baby',
-        imageUrl: '/assets/images/headerlogos/MB-logo.svg',
-        heroImageUrl: '/assets/images/herologos/MB-logo.svg',
-        url: '/mother-and-baby',
-        socialLinks: {
-            facebook: 'https://www.facebook.com/mbmag/',
-            twitter: 'https://twitter.com/motherbaby_au',
-            instagram: 'https://www.instagram.com/motherbaby_au'
-        },
-        newsletterUrl: 'https://www.nowtolove.com.au/mother-and-baby-newsletter',
-        renderSubscribeElements: false
-    },
-    {
         id: 'bounty',
         title: 'Bounty',
         imageUrl: '/assets/images/headerlogos/BOUNTY-logo.svg',

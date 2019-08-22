@@ -332,7 +332,7 @@ export default {
                 dateCreated: '2007-12-06T13:00:00.00Z',
                 imageUrl: 'https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Now/2017/10/06/38614/nat_45.jpg',
                 nodeType: 'Article',
-                source: 'Mother And Baby',
+                source: 'Bounty',
                 url: '/news/real-life/from-kidnap-victim-to-talk-show-host-30085'
             },
             {

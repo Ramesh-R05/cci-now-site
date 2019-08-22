@@ -96,13 +96,6 @@
             }
         }
 
-        &--mother-and-baby {
-            color: $color-source-grey;
-            @media #{$medium-up} {
-                color: $mother-baby-color;
-            }
-        }
-
         &--take-5 {
             color: $color-source-grey;
             @media #{$medium-up} {

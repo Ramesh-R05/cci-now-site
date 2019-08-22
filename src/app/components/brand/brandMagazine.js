@@ -35,6 +35,11 @@ class BrandMagazine extends Component {
 
     render() {
         const { imageSizes, responsiveConfig, imageUrl, brand } = this.props;
+
+        if (!brand) {
+            return null;
+        }
+
         const breakpoints = this.context.config.global.breakpoints;
         const { socialLinks, id, title, magazineTitle } = brand;
         const renderSubscribeElements = get(brand, 'renderSubscribeElements', true);

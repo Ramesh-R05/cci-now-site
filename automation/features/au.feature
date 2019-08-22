@@ -30,7 +30,6 @@ Feature: Smoke test for AU NOW
             | okmagazine      | https://www.nowtolove.com.au/okmagazine-newsletter      |
             | nw              | https://www.nowtolove.com.au/nw-newsletter              |
             | take5mag        | https://www.nowtolove.com.au/take5mag-newsletter        |
-            | mother-and-baby | https://www.nowtolove.com.au/mother-and-baby-newsletter |
             | tvweek          | https://www.nowtolove.com.au/tvweek-newsletter          |
             | empire          | https://www.nowtolove.com.au/empire-newsletter          |
             | prizestolove    | https://www.nowtolove.com.au/prizestolove-newsletter    |

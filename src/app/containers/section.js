@@ -123,7 +123,7 @@ export default class Section extends Component {
         const isBrandPage = nodeType === 'Brand';
         const brand = isBrandPage ? find(config.brands.site, b => b.url === currentUrl.match(/\/[^/|?]*/)[0]) : null;
 
-        if (isBrandPage) {
+        if (brand) {
             headerThemeClassName = `header-${brand.id}`;
             pageTitle = <BrandTitle brand={brand} shortTitle={shortTitle} summary={summary} />;
             sectionClassNames += ` brand-section-page brand-section--${brand.id}`;
@@ -180,7 +180,7 @@ export default class Section extends Component {
                                                     topElm={topElm}
                                                 >
                                                     <Ad className="ad--section-mrec" sizes="mrec" displayFor="large" pageLocation={Ad.pos.aside} />
-                                                    {isBrandPage ? (
+                                                    {isBrandPage && brand ? (
                                                         <BrandMagazine brand={brand} />
                                                     ) : (
                                                         <div className="page__get-social-container">

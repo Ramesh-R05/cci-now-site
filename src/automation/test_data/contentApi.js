@@ -84,10 +84,6 @@ export default function stubServer(siteServer, siteConfig) {
             const section = require('../test_data/pages/brand_yours').default;
             return res.json(section);
         }
-        if (section === 'mother-and-baby') {
-            const section = require('../test_data/pages/brand_mb').default;
-            return res.json(section);
-        }
         if (section === 'tvweek') {
             const section = require('../test_data/pages/brand_tvweek').default;
             return res.json(section);
