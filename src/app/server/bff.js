@@ -22,6 +22,7 @@ import section from './bff/middleware/section';
 import siteAlert from './bff/middleware/siteAlert';
 import sitemap from './bff/middleware/sitemap';
 import tag from './bff/middleware/tag';
+import separateTagSections from './bff/middleware/separateTagSections';
 
 export default function bff(server) {
     server.get('/api/asset', assetProxy);
@@ -33,6 +34,7 @@ export default function bff(server) {
         server.get(
             '(/:preview(preview))?/amp/:section/:subsection/:page',
             createRequestData,
+            separateTagSections,
             pageModules,
             section,
             page,
@@ -43,10 +45,11 @@ export default function bff(server) {
             amp
         );
         server.get('/sitemap/:section?', sitemap, error);
-        server.get(server.locals.config.services.endpoints.list, list, https, render, error);
+        server.get(server.locals.config.services.endpoints.list, separateTagSections, list, https, render, error);
         server.get(
             server.locals.config.services.endpoints.page,
             createRequestData,
+            separateTagSections,
             emailLinkTracking,
             pageModules,
             siteAlert,

@@ -39,7 +39,11 @@ describe('Tag middleware', () => {
     });
 
     describe('when a tag is set in the query params', () => {
-        const baseReq = { app: { locals: { config } }, query: { tag: 'two-words' } };
+        const baseReq = {
+            app: { locals: { config } },
+            query: { tag: 'two-words' },
+            data: { excludeTagQuery: 'tagsDetails/fullName%20$ne%20%27food_Dish_type_Cupcake,food_Dish_type_Cake%27' }
+        };
         describe('and an entity is not defined', () => {
             describe('and the remote listing and tag service returns an error response and entity returns valid response', () => {
                 beforeEach(() => {
@@ -75,7 +79,11 @@ describe('Tag middleware', () => {
                 it('should pass an error to next middleware', done => {
                     tagMiddleware(req, res, next)
                         .then(() => {
-                            expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, 'tagsDetails/urlName eq %27two-words%27');
+                            expect(getLatestTeasersStub).to.have.been.calledWith(
+                                14,
+                                0,
+                                `tagsDetails/urlName eq %27two-words%27 and ${req.data.excludeTagQuery}`
+                            );
                             expect(next).to.be.calledWith(rejectedResponse);
                             done();
                         })
@@ -485,7 +493,11 @@ describe('Tag middleware', () => {
 
     describe('when a section is set in the query params', () => {
         beforeEach(() => {
-            req = { app: { locals: { config } }, query: { section: 'two-words' } };
+            req = {
+                app: { locals: { config } },
+                query: { section: 'two-words' },
+                data: { excludeTagQuery: 'tagsDetails/fullName%20$ne%20%27food_Dish_type_Cupcake,food_Dish_type_Cake%27' }
+            };
             next = sinon.spy();
             APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
                 getEntity: getEntityStub,
@@ -501,7 +513,11 @@ describe('Tag middleware', () => {
             tagMiddleware(req, res, next)
                 .then(() => {
                     expect(getEntityStub).to.have.been.calledWith(`section/${req.query.section}`);
-                    expect(getLatestTeasersStub).to.have.been.calledWith(14, 0, 'tagsDetails/urlName eq %27two-words%27');
+                    expect(getLatestTeasersStub).to.have.been.calledWith(
+                        14,
+                        0,
+                        `tagsDetails/urlName eq %27two-words%27 and ${req.data.excludeTagQuery}`
+                    );
                     expect(next).to.have.been.calledWith();
                     done();
                 })

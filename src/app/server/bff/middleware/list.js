@@ -8,11 +8,22 @@ export default async function list(req, res, next) {
     try {
         const { config } = req.app.locals;
         const pageNo = parseInt(req.query.pageNo, 10);
-        const { section, filter, sectionFormatted } = req.query;
-        const listingQuery = section && filter ? `${filter} eq %27${section}%27` : undefined;
+        const { section, filter, sectionFormatted, tagSectionQuery } = req.query;
+        const { excludeTagQuery } = req.data;
+
         const top = listCount;
         const skip = (pageNo - 1) * listCount;
         const { getLatestTeasers } = new APIUtils(logger, config);
+
+        let listingQuery;
+
+        if (tagSectionQuery) {
+            listingQuery = tagSectionQuery;
+        } else {
+            const query = section && filter ? `${filter} eq %27${section}%27` : undefined;
+            const queryWithCommercialTag = query ? `${query} and ${excludeTagQuery}` : excludeTagQuery;
+            listingQuery = excludeTagQuery ? queryWithCommercialTag : query;
+        }
 
         const listResp = await getLatestTeasers(top, skip, listingQuery);
 

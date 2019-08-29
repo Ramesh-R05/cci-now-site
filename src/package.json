@@ -14,7 +14,7 @@
     "test": "nyc --include-all-sources --report-dir ../shippable/codecoverage -r=cobertura -r=html mocha --require @babel/polyfill --require @babel/register --require ./test/setup.js --recursive --check-leaks",
     "test:debug": "nyc --include-all-sources -r=cobertura -r=html -r=text -r=html mocha --require ./test/setup.js --recursive --check-leaks",
     "test:ci": "npm run test -- --reporter=xunit --reporter-options output=./../shippable/testresults/result.xml",
-    "test:unit": "mocha --require babel-polyfill --require babel-register --require test/setup.js --reporter spec --recursive --check-leaks",
+    "test:unit": "mocha --require @babel/polyfill --require @babel/register --require ./test/setup.js --reporter spec --recursive --check-leaks",
     "test:tdd": "npm run test:unit -- --watch",
     "clean": "rimraf dist/ coverage/ && mkdir dist",
     "build": "npm run clean && NODE_ENV=production webpack --bail --hide-modules --progress --mode production",

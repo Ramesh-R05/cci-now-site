@@ -4,6 +4,7 @@ import getTagName from '@bxm/tags/lib/utils/getTagName';
 import APIUtils from '@bxm/api-utils';
 import logger from '../../../../logger';
 import createReapeatableList from '../helper/createReapeatableList';
+import createListingQuery from '../helper/createListingQuery';
 
 const latestTeaserCount = 7;
 const listCount = 14;
@@ -20,6 +21,8 @@ export default async function tagMiddleware(req, res, next) {
         pageNo = parseInt(query.pageNo || pageNo, 10);
         const tag = query ? query.tag || query.section : null;
         const entity = get(req, 'data.entity');
+        const tagsDetails = get(req, 'data.entity.tagsDetails', []);
+        const { excludeTagQuery } = req.data;
 
         if (!tag || query.page || (entity && entity.nodeTypeAlias !== 'TagSection')) {
             next();
@@ -72,7 +75,12 @@ export default async function tagMiddleware(req, res, next) {
 
         const skip = (pageNo - 1) * listCount;
         const loweredCaseTag = tag.toLowerCase().replace('%20', '-');
-        const listingQuery = `tagsDetails/urlName eq %27${loweredCaseTag}%27`;
+
+        const tagListingQuery = tagsDetails.length
+            ? createListingQuery(tagsDetails.map(singleTag => singleTag.fullName), { operator: 'eq' })
+            : `tagsDetails/urlName eq %27${loweredCaseTag}%27`;
+
+        const listingQuery = excludeTagQuery ? `${tagListingQuery} and ${excludeTagQuery}` : tagListingQuery;
         const latestTeasersResp = await getLatestTeasers(listCount, skip, listingQuery);
 
         // TODO: need to handle `data` in resp better
@@ -87,7 +95,8 @@ export default async function tagMiddleware(req, res, next) {
             listName: title,
             additionalParams: {
                 section: title,
-                filter: 'contentTags'
+                filter: 'contentTags',
+                tagSectionQuery: listingQuery
             },
             items: latestTeasers,
             pageNo,

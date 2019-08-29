@@ -28,7 +28,7 @@ export default async function home(req, res, next) {
 
         const { getEntity, getLatestTeasers } = new APIUtils(logger, config);
 
-        const [pageData, latestTeasersResp] = await Promise.all([getEntity('homepage'), getLatestTeasers(listCount, skip)]);
+        const [pageData, latestTeasersResp] = await Promise.all([getEntity('homepage'), getLatestTeasers(listCount, skip, req.data.excludeTagQuery)]);
 
         const latestTeasers = latestTeasersResp && transformTeaserPageDateCreated(latestTeasersResp.data);
         const totalCount = latestTeasersResp.totalCount;
