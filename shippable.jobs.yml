@@ -264,7 +264,7 @@ jobs:
       # - IN: au-now-site-smoke-test
       #- IN: compatibility-now-site-automation-test
       - IN: now-site-man-master
-        switch: off
+        # switch: off
       - IN: now-site-version
       - TASK: managed
     on_success:
