@@ -29,7 +29,6 @@
         margin: 0 auto;
         padding: 0 $column-gutter/2;
         white-space: nowrap;
-        background-color: $color-white;
 
         @media #{$medium-up} {
             height: $header-height-desktop;
@@ -90,6 +89,7 @@
         }
         
         #{$self}__inner {
+            background-color: $color-white;
             height: $header-banner-height-mobile;
 
             @media #{$medium-up} {
