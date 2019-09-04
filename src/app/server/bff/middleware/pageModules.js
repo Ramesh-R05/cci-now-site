@@ -39,10 +39,15 @@ export default async function pageModules(req, res, next) {
         const { config } = req.app.locals;
         const { getModules } = new APIUtils(logger, config);
 
-        req.data = await getModules(
+        const modulesResponse = await getModules(
             ['headernavigation', 'hamburgernavigation', 'footer', 'mustread', 'promoted', 'hero', `${section}hero`, `${section}theme`],
             processModules
         );
+
+        req.data = {
+            ...req.data,
+            ...modulesResponse
+        };
 
         next();
     } catch (error) {
