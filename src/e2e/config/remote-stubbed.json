@@ -1,0 +1,6 @@
+{
+    "baseUrl": "http://now-site.test.bxm.net.au",
+    "env": {
+        "includedTags": "@stub"
+    }
+}

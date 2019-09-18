@@ -133,3 +133,8 @@ shippable/
 # dotenv files
 *.env
 !*sample.*.env
+
+# cypress
+cypress.json
+/src/e2e/videos/
+/src/e2e/screenshots/

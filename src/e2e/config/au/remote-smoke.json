@@ -1,0 +1,7 @@
+{
+    "baseUrl": "http://now-site-au.sit.bxm.net.au",
+    "env": {
+        "includedTags": "@sitAU"
+    }
+    
+}
