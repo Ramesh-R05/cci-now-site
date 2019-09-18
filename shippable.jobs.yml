@@ -132,6 +132,33 @@ jobs:
     on_failure:
       - NOTIFY: now-deployment-notifications
 
+  # 4b. Run integration STUB test on TEST environment
+  - name: now-site-integration-stub-test
+    type: runSh
+    always:
+      - NOTIFY: now-slack-notifications
+      - NOTIFY: now-qa-team-notifications
+    steps:
+     - IN: now-site-test-deploy-master
+     - IN: now-site-repo
+       switch: off
+     - TASK:
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+        - script: source ~/.nvm/nvm.sh
+        - script: nvm install "6.2.1"
+        - script: nvm use "6.2.1"
+        - script: cd ./IN/now-site-repo/gitRepo/src/e2e
+        - script: sudo apt-get update
+        - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
+        - script: google-chrome --product-version
+        - script: java -version
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
+        - script: npm install
+        - script: export URL=http://now-site.test.bxm.net.au/
+        - script: npm run run:remote-stub-high:headless || true
+    on_failure:
+      - NOTIFY: now-deployment-notifications
+
 #This job is disabled because we have downgraded the BrowserStack account and it won't support automated testing.
 #We will enable once we decide to upgrade the account in the future
 #  # 4b. Run compatibility regression test on TEST environment - Browser Stack
@@ -221,7 +248,63 @@ jobs:
     on_failure:
       - NOTIFY: now-deployment-notifications
 
-  # 4e. Run performance test on test environment
+  # 4e. Run integration SMOKE test on SIT NZ environment
+  - name: nz-now-site-integration-smoke-test
+    type: runSh
+    always:
+      - NOTIFY: now-slack-notifications
+      - NOTIFY: now-qa-team-notifications
+    steps:
+     - IN: nz-now-site-sit-deploy-master
+     - IN: now-site-test-env
+     - IN: now-site-repo
+       switch: off
+     - TASK:
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+        - script: source ~/.nvm/nvm.sh
+        - script: nvm install "6.2.1"
+        - script: nvm use "6.2.1"
+        - script: cd ./IN/now-site-repo/gitRepo/src/e2e
+        - script: sudo apt-get update
+        - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
+        - script: google-chrome --product-version
+        - script: java -version
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
+        - script: npm install
+        - script: export URL=http://now-site-nz.sit.bxm.net.au/
+        - script: npm run run:remote-smoke-nz:headless || true
+    on_failure:
+      - NOTIFY: now-deployment-notifications
+
+  # 4f. Run integration SMOKE test on SIT AU environment
+  - name: au-now-site-integration-smoke-test
+    type: runSh
+    always:
+      - NOTIFY: now-slack-notifications
+      - NOTIFY: now-qa-team-notifications
+    steps:
+     - IN: au-now-site-sit-deploy-master
+     - IN: now-site-test-env
+     - IN: now-site-repo
+       switch: off
+     - TASK:
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+        - script: source ~/.nvm/nvm.sh
+        - script: nvm install "6.2.1"
+        - script: nvm use "6.2.1"
+        - script: cd ./IN/now-site-repo/gitRepo/src/e2e
+        - script: sudo apt-get update
+        - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
+        - script: google-chrome --product-version
+        - script: java -version
+        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
+        - script: npm install
+        - script: export URL=https://www.sit.nowtolove.com.au/
+        - script: npm run run:remote-smoke-au:headless || true
+    on_failure:
+      - NOTIFY: now-deployment-notifications
+
+  # 4g. Run performance test on test environment
   - name: now-performance-test
     type: runSh
     steps:
