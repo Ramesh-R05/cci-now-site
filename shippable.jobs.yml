@@ -305,7 +305,7 @@ jobs:
         - script: java -version
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
-        - script: export URL=https://www.sit.nowtolove.com.au/
+        - script: export URL=http://now-site-au.sit.bxm.net.au/
         - script: npm run run:remote-smoke-au:headless || true
     on_failure:
       - NOTIFY: now-deployment-notifications
