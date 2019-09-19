@@ -148,8 +148,10 @@ jobs:
         - script: nvm install "8.9.1"
         - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/src/e2e
+        - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        - script: sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
         - script: sudo apt-get update
-        - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
+        - script: sudo apt-get install google-chrome-stable
         - script: google-chrome --product-version
         - script: java -version
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
