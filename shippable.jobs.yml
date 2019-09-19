@@ -145,8 +145,8 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "6.2.1"
-        - script: nvm use "6.2.1"
+        - script: nvm install "8.9.1"
+        - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/src/e2e
         - script: sudo apt-get update
         - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
