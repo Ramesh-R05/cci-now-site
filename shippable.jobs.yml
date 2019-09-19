@@ -264,14 +264,14 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "8.9.1"
-        - script: nvm use "8.9.1"
+        - script: nvm install "8.9.1"
+        - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/src/e2e
-        - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-        - script: sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-        - script: sudo apt-get update
-        - script: sudo apt-get install google-chrome-stable
-        - script: google-chrome --product-version
+        - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        - script: sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+        - script: sudo apt-get update
+        - script: sudo apt-get install google-chrome-stable
+        - script: google-chrome --product-version
         - script: java -version
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
@@ -294,14 +294,14 @@ jobs:
      - TASK:
         - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "8.9.1"
-        - script: nvm use "8.9.1"
+        - script: nvm install "8.9.1"
+        - script: nvm use "8.9.1"
         - script: cd ./IN/now-site-repo/gitRepo/src/e2e
-        - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-        - script: sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-        - script: sudo apt-get update
-        - script: sudo apt-get install google-chrome-stable
-        - script: google-chrome --product-version
+        - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        - script: sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+        - script: sudo apt-get update
+        - script: sudo apt-get install google-chrome-stable
+        - script: google-chrome --product-version
         - script: java -version
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
