@@ -1,6 +1,7 @@
 import APIUtils from '@bxm/api-utils';
 import { parseEntities } from '../helper/parseEntity';
 import logger from '../../../../logger';
+import createListingQuery from '../helper/createListingQuery';
 
 const listCount = 14;
 
@@ -9,7 +10,7 @@ export default async function list(req, res, next) {
         const { config } = req.app.locals;
         const pageNo = parseInt(req.query.pageNo, 10);
         const { section, filter, sectionFormatted, tagSectionQuery } = req.query;
-        const { excludeTagQuery } = req.data;
+        const { commercialTagSections, excludeTagQuery } = req.data;
 
         const top = listCount;
         const skip = (pageNo - 1) * listCount;
@@ -23,10 +24,19 @@ export default async function list(req, res, next) {
             const query = section && filter ? `${filter} eq %27${section}%27` : undefined;
             const queryWithCommercialTag = query ? `${query} and ${excludeTagQuery}` : excludeTagQuery;
             listingQuery = excludeTagQuery ? queryWithCommercialTag : query;
+            const currentCommercialTag = Array.isArray(commercialTagSections)
+                ? commercialTagSections.filter(commercialTagSection => commercialTagSection.url === req.query.section)
+                : [];
+
+            if (currentCommercialTag.length && Array.isArray(currentCommercialTag[0].tagsDetails)) {
+                if (currentCommercialTag[0].tagsDetails.length) {
+                    const commercialTagFullNames = currentCommercialTag[0].tagsDetails.map(tag => tag.fullName);
+                    listingQuery = createListingQuery(commercialTagFullNames, { operator: 'eq' });
+                }
+            }
         }
 
         const listResp = await getLatestTeasers(top, skip, listingQuery);
-
         let basePath = section ? `/${section}` : '/';
 
         if (sectionFormatted) {
