@@ -50,19 +50,17 @@ export default {
             contentMonth: 2,
             contentTitle: 'Adi Video',
             contentVideo: {
-                id: '4761284339001',
-                name: 'Did Miley Cyrus and Liam Hemsworth secretly get hitched?',
+                id: 'Wdojqhyf',
+                name: "Everything you need to know about Sarah Jessica Parker's new wine",
                 type: 'VideoItem',
                 properties: {
                     videoConfiguration: {
                         status: '',
-                        videoId: '4761284339001',
+                        videoId: 'Wdojqhyf',
+                        videoUrl: 'https://cdn.jwplayer.com/manifests/Wdojqhyf.m3u8',
                         statusCode: 200,
-                        brightcoveId: '4761284339001',
-                        thumbnailUrl:
-                            'http://brightcove04.o.brightcove.com/761709621001/761709621001_4761294439001_4761284339001-th.jpg?pubId=761709621001',
-                        videoStillUrl:
-                            'http://brightcove04.o.brightcove.com/761709621001/761709621001_4761294440001_4761284339001-vs.jpg?pubId=761709621001'
+                        thumbnailUrl: 'https://cdn.jwplayer.com/thumbs/Wdojqhyf-320.jpg',
+                        videoStillUrl: 'https://cdn.jwplayer.com/thumbs/Wdojqhyf-720.jpg'
                     }
                 }
             },

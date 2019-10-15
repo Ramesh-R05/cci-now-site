@@ -1,7 +1,4 @@
 export default {
-    jwPlayer: {
-        enabled: true
-    },
     outbrain: {
         enabled: true
     },

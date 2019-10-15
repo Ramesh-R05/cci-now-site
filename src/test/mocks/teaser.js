@@ -61,21 +61,17 @@ export default {
                 type: 'video',
                 label: 'Video',
                 content: {
-                    id: 'VIDEO-2123',
-                    name: 'Wildlife2.wmv (1)',
+                    id: 'Wdojqhyf',
+                    name: "Everything you need to know about Sarah Jessica Parker's new wine",
                     type: 'VideoItem',
                     properties: {
                         videoConfiguration: {
-                            videoId: 'VIDEO-2123',
-                            uniqueFileName: '26246026-Wildlife2wmv',
-                            status: 'Video upload is complete',
-                            brightcoveId: '4164308846001',
-                            s3Identifier: '26246026-Wildlife2wmv',
-                            fileName: 'Wildlife2.wmv',
-                            siteName: 'aww',
-                            fileSize: '26246026',
-                            title: 'Geoffs awesome video',
-                            statusCode: 200
+                            status: '',
+                            videoId: 'Wdojqhyf',
+                            videoUrl: 'https://cdn.jwplayer.com/manifests/Wdojqhyf.m3u8',
+                            statusCode: 200,
+                            thumbnailUrl: 'https://cdn.jwplayer.com/thumbs/Wdojqhyf-320.jpg',
+                            videoStillUrl: 'https://cdn.jwplayer.com/thumbs/Wdojqhyf-720.jpg'
                         }
                     }
                 }
@@ -92,21 +88,17 @@ export default {
                 type: 'video',
                 label: 'Video',
                 content: {
-                    id: 'VIDEO-2123b',
-                    name: 'Wildlife2.wmv (1)',
+                    id: 'Wdojqhyf',
+                    name: "Everything you need to know about Sarah Jessica Parker's new wine",
                     type: 'VideoItem',
                     properties: {
                         videoConfiguration: {
-                            videoId: 'VIDEO-2123b',
-                            uniqueFileName: '26246026-Wildlife2wmv',
-                            status: 'Video upload is complete',
-                            brightcoveId: '4164308846001',
-                            s3Identifier: '26246026-Wildlife2wmv',
-                            fileName: 'Wildlife2.wmv',
-                            siteName: 'aww',
-                            fileSize: '26246026',
-                            title: 'Geoffs awesome video',
-                            statusCode: 200
+                            status: '',
+                            videoId: 'Wdojqhyf',
+                            videoUrl: 'https://cdn.jwplayer.com/manifests/Wdojqhyf.m3u8',
+                            statusCode: 200,
+                            thumbnailUrl: 'https://cdn.jwplayer.com/thumbs/Wdojqhyf-320.jpg',
+                            videoStillUrl: 'https://cdn.jwplayer.com/thumbs/Wdojqhyf-720.jpg'
                         }
                     }
                 }

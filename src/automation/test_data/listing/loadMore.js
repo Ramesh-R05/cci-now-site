@@ -181,19 +181,17 @@ export default {
                     parentName: 'Latest News',
                     parentUrl: '/news/latest-news',
                     video: {
-                        id: '5417083882001',
-                        name: '10 years without Madeleine: Kate and Gerry McCann speak to the BBC',
+                        id: 'Wdojqhyf',
+                        name: "Everything you need to know about Sarah Jessica Parker's new wine",
                         type: 'VideoItem',
                         properties: {
                             videoConfiguration: {
                                 status: '',
-                                videoId: '5417083882001',
+                                videoId: 'Wdojqhyf',
+                                videoUrl: 'https://cdn.jwplayer.com/manifests/Wdojqhyf.m3u8',
                                 statusCode: 200,
-                                brightcoveId: '5417083882001',
-                                thumbnailUrl:
-                                    'http://brightcove01.brightcove.com/5/761709621001/201704/3900/761709621001_5417091848001_5417083882001-th.jpg?pubId=761709621001',
-                                videoStillUrl:
-                                    'http://brightcove01.brightcove.com/5/761709621001/201704/3900/761709621001_5417093630001_5417083882001-vs.jpg?pubId=761709621001'
+                                thumbnailUrl: 'https://cdn.jwplayer.com/thumbs/Wdojqhyf-320.jpg',
+                                videoStillUrl: 'https://cdn.jwplayer.com/thumbs/Wdojqhyf-720.jpg'
                             }
                         }
                     },

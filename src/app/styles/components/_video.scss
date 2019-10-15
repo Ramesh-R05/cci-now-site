@@ -1,4 +1,3 @@
-// Unfortunately stupid brightcove uses important in its default styling :(
 $play-icon-size-small: 20px;
 $play-icon-size-large: 40px;
 
@@ -50,7 +49,7 @@ $play-icon-size-large: 40px;
 
     &:hover,
     &:active {
-        
+
         .vjs-big-play-button {
             background-color: #000;
         }
