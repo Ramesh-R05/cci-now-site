@@ -15,9 +15,6 @@ export default {
     navigationSubSectionDropdown: {
         enabled: true
     },
-    oriel: {
-        enabled: true
-    },
     feedCarousel: {
         enabled: true
     },

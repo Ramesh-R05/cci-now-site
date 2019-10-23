@@ -8,9 +8,6 @@ export default {
     navigationSubSectionDropdown: {
         enabled: true
     },
-    oriel: {
-        enabled: true
-    },
     ias: {
         enabled: true,
         id: 926929
