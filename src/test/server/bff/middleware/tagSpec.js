@@ -1,3 +1,4 @@
+import get from 'lodash/object/get';
 import proxyquire, { noCallThru } from 'proxyquire';
 
 noCallThru();
@@ -27,6 +28,7 @@ describe('Tag middleware', () => {
     const latestTeasers = { data: ['Teaser 1', 'Teaser 2'], totalCount: 2 };
     const res = {};
     const expectedTitle = 'Two Words';
+    const id = 'DOLLY-36424';
     const expectedUrl = `/tags/two-words`;
     let next;
     let req;
@@ -60,7 +62,7 @@ describe('Tag middleware', () => {
                         getLatestTeasers: getLatestTeasersStub
                     });
 
-                    getEntityStub.withArgs(`section/${req.query.tag}`).resolves({ nodeTypeAlias: 'TagSection' });
+                    getEntityStub.withArgs(`section/${req.query.tag}`).resolves({ id, nodeTypeAlias: 'TagSection' });
                     getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).rejects();
                     getLatestTeasersStub.rejects(rejectedResponse);
                 });
@@ -118,6 +120,7 @@ describe('Tag middleware', () => {
                         tagMiddleware(req, res, next)
                             .then(() => {
                                 expect(req.data.entity).to.deep.eq({
+                                    id: get(req, 'data.entity.id'),
                                     nodeTypeAlias: 'TagSection',
                                     contentTitle: expectedTitle,
                                     url: expectedUrl,
@@ -142,7 +145,7 @@ describe('Tag middleware', () => {
                     it('should set the section property', done => {
                         tagMiddleware(req, res, next)
                             .then(() => {
-                                expect(req.data.section).to.deep.eq({ name: 'Tag', urlName: 'tag' });
+                                expect(req.data.section).to.deep.eq({ id: get(req, 'data.entity.id'), name: 'Tag', urlName: 'tag' });
                                 done();
                             })
                             .catch(done);
@@ -164,6 +167,7 @@ describe('Tag middleware', () => {
                             tagMiddleware(req, res, next)
                                 .then(() => {
                                     expect(req.data.entity).to.deep.eq({
+                                        id: get(req, 'data.entity.id'),
                                         nodeTypeAlias: 'TagSection',
                                         contentTitle: expectedTitle,
                                         url: expectedUrl,
@@ -190,6 +194,7 @@ describe('Tag middleware', () => {
                             tagMiddleware(req, res, next)
                                 .then(() => {
                                     expect(req.data.entity).to.deep.eq({
+                                        id: get(req, 'data.entity.id'),
                                         nodeTypeAlias: 'TagSection',
                                         contentTitle: expectedTitle,
                                         url: expectedUrl,
@@ -218,6 +223,7 @@ describe('Tag middleware', () => {
                             tagMiddleware(req, res, next)
                                 .then(() => {
                                     expect(req.data.entity).to.deep.eq({
+                                        id: get(req, 'data.entity.id'),
                                         nodeTypeAlias: 'TagSection',
                                         contentTitle: expectedTitle,
                                         url: expectedUrl,
@@ -246,6 +252,7 @@ describe('Tag middleware', () => {
                             tagMiddleware(req, res, next)
                                 .then(() => {
                                     expect(req.data.entity).to.deep.eq({
+                                        id: get(req, 'data.entity.id'),
                                         nodeTypeAlias: 'TagSection',
                                         contentTitle: expectedTitle,
                                         url: expectedUrl,
@@ -280,6 +287,7 @@ describe('Tag middleware', () => {
                             tagMiddleware(req, res, next)
                                 .then(() => {
                                     expect(req.data.entity).to.deep.eq({
+                                        id: get(req, 'data.entity.id'),
                                         nodeTypeAlias: 'TagSection',
                                         contentTitle: expectedTitle,
                                         url: expectedUrl,
@@ -304,7 +312,7 @@ describe('Tag middleware', () => {
                             getTags: getTagStub,
                             getLatestTeasers: getLatestTeasersStub
                         });
-                        getEntityStub.withArgs(`section/${req.query.tag}`).resolves({ nodeTypeAlias: 'Section', url: '/url-here' });
+                        getEntityStub.withArgs(`section/${req.query.tag}`).resolves({ id, nodeTypeAlias: 'Section', url: '/url-here' });
                         getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).rejects();
                         getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
                     });
@@ -313,6 +321,7 @@ describe('Tag middleware', () => {
                         tagMiddleware(req, res, next)
                             .then(() => {
                                 expect(req.data.entity).to.deep.eq({
+                                    id: get(req, 'data.entity.id'),
                                     nodeTypeAlias: 'TagSection',
                                     contentTitle: expectedTitle,
                                     url: expectedUrl,
@@ -334,7 +343,7 @@ describe('Tag middleware', () => {
                             getTags: getTagStub,
                             getLatestTeasers: getLatestTeasersStub
                         });
-                        getEntityStub.withArgs(`section/${req.query.tag}`).resolves({ nodeTypeAlias: 'TagSection' });
+                        getEntityStub.withArgs(`section/${req.query.tag}`).resolves({ id, nodeTypeAlias: 'TagSection' });
                         getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).rejects();
                         getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
                     });
@@ -343,6 +352,7 @@ describe('Tag middleware', () => {
                         tagMiddleware(req, res, next)
                             .then(() => {
                                 expect(req.data.entity).to.deep.eq({
+                                    id: get(req, 'data.entity.id'),
                                     nodeTypeAlias: 'TagSection',
                                     contentTitle: expectedTitle,
                                     url: expectedUrl,
@@ -364,7 +374,7 @@ describe('Tag middleware', () => {
                             getTags: getTagStub,
                             getLatestTeasers: getLatestTeasersStub
                         });
-                        getEntityStub.withArgs(`section/${req.query.tag}`).resolves({ nodeTypeAlias: 'TagSection', url: '/url-of-tag-page' });
+                        getEntityStub.withArgs(`section/${req.query.tag}`).resolves({ id, nodeTypeAlias: 'TagSection', url: '/url-of-tag-page' });
                         getTagStub.withArgs(`${generateTagToTitle(req.query.tag)}`).rejects();
                         getLatestTeasersStub.resolves({ data: [], totalCount: 0 });
                     });
@@ -373,6 +383,7 @@ describe('Tag middleware', () => {
                         tagMiddleware(req, res, next)
                             .then(() => {
                                 expect(req.data.entity).to.deep.eq({
+                                    id: get(req, 'data.entity.id'),
                                     nodeTypeAlias: 'TagSection',
                                     contentTitle: expectedTitle,
                                     url: '/url-of-tag-page',
@@ -390,7 +401,7 @@ describe('Tag middleware', () => {
         describe('and an entity is defined', () => {
             describe('and the nodeTypeAlias equals to TagSection', () => {
                 beforeEach(() => {
-                    req = { ...baseReq, data: { entity: { nodeTypeAlias: 'TagSection' } } };
+                    req = { ...baseReq, data: { entity: { id, nodeTypeAlias: 'TagSection' } } };
                     next = sinon.spy();
                     APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
                         getEntity: getEntityStub,
@@ -441,7 +452,7 @@ describe('Tag middleware', () => {
 
             describe('and there is a url set inside the entity', () => {
                 before(() => {
-                    req = { ...baseReq, data: { entity: { nodeTypeAlias: 'TagSection', url: '/tag-url' } } };
+                    req = { ...baseReq, data: { entity: { id, nodeTypeAlias: 'TagSection', url: '/tag-url' } } };
                     APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns({
                         getEntity: getEntityStub,
                         getTags: getTagStub,

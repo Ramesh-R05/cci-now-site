@@ -108,6 +108,7 @@ export default async function tagMiddleware(req, res, next) {
         req.data = {
             ...req.data,
             entity: {
+                id: get(req, 'data.entity.id'),
                 nodeTypeAlias: 'TagSection',
                 contentTitle: title,
                 url,
@@ -116,7 +117,7 @@ export default async function tagMiddleware(req, res, next) {
             },
             latestTeasers: latestTeasers.slice(0, latestTeaserCount),
             list,
-            section: { name: 'Tag', urlName: 'tag' }
+            section: { id: get(req, 'data.entity.id'), name: 'Tag', urlName: 'tag' }
         };
 
         next();
