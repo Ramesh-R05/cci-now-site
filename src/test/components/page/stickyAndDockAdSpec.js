@@ -13,7 +13,6 @@ describe('StickyAndDockAd component', () => {
 
     it('should render out the default style', () => {
         expect(wrapper.at(0).props().style).deep.eq({
-            position: 'absolute',
             top: 0,
             right: 0,
             zIndex: 1

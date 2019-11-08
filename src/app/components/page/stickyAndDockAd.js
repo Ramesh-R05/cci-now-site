@@ -4,12 +4,10 @@ import watchResize from '@bxm/behaviour/lib/components/resizeViewport';
 
 const styles = {
     adStyle: {
-        position: 'absolute',
         top: 0,
         right: 0
     },
     adContainerStyle: {
-        position: 'absolute',
         top: 0,
         right: 0,
         zIndex: 1
