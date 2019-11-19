@@ -40,5 +40,12 @@ export default {
     },
     brandsModalInHeader: {
         enabled: true
+    },
+    jwPlayer: {
+        enabled: true
+    },
+    skimLinks: {
+        enabled: true,
+        publisherCode: '105419X1569321'
     }
 };
