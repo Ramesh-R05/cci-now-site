@@ -1,7 +1,7 @@
 # language setting
 build_environment: Ubuntu 12.04
 language: node_js
-node_js: '8.9.1'
+node_js: '10.18.1'
 
 env:
     global:
@@ -19,6 +19,7 @@ build:
         - mkdir -p ./shippable/testresults ./shippable/codecoverage ./shippable/buildoutput
         - cd src
         - npm install
+        - npm rebuild node-sass --force
         - echo "module.exports={buildNumber:'$BRANCH_NAME'};" > version.js
         - cat version.js
         - npm run test:ci
