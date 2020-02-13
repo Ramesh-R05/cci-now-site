@@ -64,11 +64,7 @@ const config = {
                         loader: 'postcss-loader',
                         options: {
                             sourceMap: false,
-                            plugins: () => [
-                                autoprefixer({
-                                    browsers: ['last 2 versions', 'ie >= 10', 'ios >= 9', 'Android >= 4']
-                                })
-                            ]
+                            plugins: () => [autoprefixer()]
                         }
                     },
                     'resolve-url-loader',

@@ -36,6 +36,12 @@
   "author": "Bauer Xcel Media",
   "license": "UNLICENSED",
   "homepage": "https://github.com/bauerxcelmedia/now-site#readme",
+  "browserslist": [
+    "last 2 versions",
+    "ie >= 10",
+    "ios >= 9",
+    "Android >= 4"
+  ],
   "dependencies": {
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
