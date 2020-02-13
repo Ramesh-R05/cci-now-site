@@ -8,6 +8,9 @@ export default {
         return request
             .get(`${host}/api/list`)
             .query(params)
-            .then(response => response, error => error);
+            .then(
+                response => response,
+                error => error
+            );
     }
 };

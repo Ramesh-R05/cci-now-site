@@ -77,7 +77,10 @@ export default async function tagMiddleware(req, res, next) {
         const loweredCaseTag = tag.toLowerCase().replace('%20', '-');
 
         const tagListingQuery = tagsDetails.length
-            ? createListingQuery(tagsDetails.map(singleTag => singleTag.fullName), { operator: 'eq' })
+            ? createListingQuery(
+                  tagsDetails.map(singleTag => singleTag.fullName),
+                  { operator: 'eq' }
+              )
             : `tagsDetails/urlName eq %27${loweredCaseTag}%27`;
 
         const listingQuery = excludeTagQuery ? `${tagListingQuery} and ${excludeTagQuery}` : tagListingQuery;

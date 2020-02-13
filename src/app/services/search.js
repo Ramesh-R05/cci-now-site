@@ -14,6 +14,9 @@ export default {
         return request
             .get(`${host}/api/search`)
             .query(q)
-            .then(response => response, error => error);
+            .then(
+                response => response,
+                error => error
+            );
     }
 };

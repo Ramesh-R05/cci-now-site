@@ -71,7 +71,10 @@ describe('Page Container', () => {
             }
         }
     };
-    const headerItems = [{ name: 'Test 1', url: '/test-1' }, { name: 'Test 2', url: '/test-2' }];
+    const headerItems = [
+        { name: 'Test 1', url: '/test-1' },
+        { name: 'Test 2', url: '/test-2' }
+    ];
     let hamburgerItems = [
         { name: 'Test 1', url: '/test-1' },
         { name: 'Test 2', url: '/test-2' },

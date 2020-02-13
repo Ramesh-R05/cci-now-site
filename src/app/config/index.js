@@ -43,12 +43,6 @@ const env = {
     ADS_DEBUG: process.env.ADS_DEBUG
 };
 
-export default mergeWith(
-    env,
-    configApi,
-    config,
-    environmentConfig,
-    regionConfig,
-    regionEnvironmentConfig,
-    (objValue, srcValue) => (Array.isArray(objValue) ? srcValue : undefined)
+export default mergeWith(env, configApi, config, environmentConfig, regionConfig, regionEnvironmentConfig, (objValue, srcValue) =>
+    Array.isArray(objValue) ? srcValue : undefined
 );
