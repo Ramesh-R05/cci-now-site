@@ -114,10 +114,10 @@ jobs:
      - IN: now-site-repo
        switch: off
      - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "10.18.1"
-        - script: nvm use "10.18.1"
+        - script: nvm install "10.19.0"
+        - script: nvm use "10.19.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: sudo apt-get update
         - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
@@ -143,10 +143,10 @@ jobs:
      - IN: now-site-repo
        switch: off
      - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "10.18.1"
-        - script: nvm use "10.18.1"
+        - script: nvm install "10.19.0"
+        - script: nvm use "10.19.0"
         - script: cd ./IN/now-site-repo/gitRepo/src/e2e
         - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
         - script: sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
@@ -174,10 +174,10 @@ jobs:
 #     - IN: now-site-repo
 #       switch: off
 #     - TASK:
-#        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+#        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
 #        - script: source ~/.nvm/nvm.sh
-#        - script: nvm install "10.18.1"
-#        - script: nvm use "10.18.1"
+#        - script: nvm install "10.19.0"
+#        - script: nvm use "10.19.0"
 #        - script: cd ./IN/now-site-repo/gitRepo/automation
 #        - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
 #        - script: npm install
@@ -202,10 +202,10 @@ jobs:
      - IN: now-site-repo
        switch: off
      - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
         - script: source ~/.nvm/nvm.sh        
-        - script: nvm install "10.18.1"
-        - script: nvm use "10.18.1"
+        - script: nvm install "10.19.0"
+        - script: nvm use "10.19.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: sudo apt-get update
         - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
@@ -232,10 +232,10 @@ jobs:
      - IN: now-site-repo
        switch: off
      - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
         - script: source ~/.nvm/nvm.sh        
-        - script: nvm install "10.18.1"
-        - script: nvm use "10.18.1"
+        - script: nvm install "10.19.0"
+        - script: nvm use "10.19.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: sudo apt-get update
         - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
@@ -262,10 +262,10 @@ jobs:
      - IN: now-site-repo
        switch: off
      - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "10.18.1"
-        - script: nvm use "10.18.1"
+        - script: nvm install "10.19.0"
+        - script: nvm use "10.19.0"
         - script: cd ./IN/now-site-repo/gitRepo/src/e2e
         - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
         - script: sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
@@ -292,10 +292,10 @@ jobs:
      - IN: now-site-repo
        switch: off
      - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "10.18.1"
-        - script: nvm use "10.18.1"
+        - script: nvm install "10.19.0"
+        - script: nvm use "10.19.0"
         - script: cd ./IN/now-site-repo/gitRepo/src/e2e
         - script: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
         - script: sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
@@ -319,10 +319,10 @@ jobs:
       - IN: now-site-repo
         switch: off
       - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "10.18.1"
-        - script: nvm use "10.18.1"
+        - script: nvm install "10.19.0"
+        - script: nvm use "10.19.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: npm set @bxm:registry http://npm.digital.bauer-media.net.au
         - script: npm install
@@ -412,7 +412,7 @@ jobs:
        switch: off
      - IN: now-morning-trigger
      - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
         - script: source ~/.nvm/nvm.sh
         - script: nvm use
         - script: cd ./IN/now-site-repo/gitRepo/automation
@@ -438,10 +438,10 @@ jobs:
        switch: off
      - IN: now-weekly-trigger
      - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "10.18.1"
-        - script: nvm use "10.18.1"
+        - script: nvm install "10.19.0"
+        - script: nvm use "10.19.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: sudo apt-get update
         - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
@@ -464,10 +464,10 @@ jobs:
        switch: off
      - IN: nznow-weekly-trigger
      - TASK:
-        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+        - script: curl https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
         - script: source ~/.nvm/nvm.sh
-        - script: nvm install "10.18.1"
-        - script: nvm use "10.18.1"
+        - script: nvm install "10.19.0"
+        - script: nvm use "10.19.0"
         - script: cd ./IN/now-site-repo/gitRepo/automation
         - script: sudo apt-get update
         - script: sudo apt install ./packages/google-chrome-stable_76.0.3809.100-1_amd64.deb && sudo apt-get install -f
