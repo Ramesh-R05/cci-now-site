@@ -74,6 +74,13 @@ export default {
         }
     },
     useBrandTitleSuffix: true,
+
+    meta: {
+        commissionFactoryVerification: {
+            content: 'a380c2ed69c04c3680aa8755a729d913'
+        }
+    },
+
     footer: {
         links: {
             corporate: [
