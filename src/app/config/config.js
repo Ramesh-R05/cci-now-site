@@ -76,6 +76,10 @@ export default {
     useBrandTitleSuffix: true,
 
     meta: {
+        awinDomainVerification: {
+            content: '20efe2d93067619017128517d6ebfc18',
+            scriptUrl: 'https://www.dwin2.com/pub.687331.min.js'
+        },
         commissionFactoryVerification: {
             content: 'a380c2ed69c04c3680aa8755a729d913'
         }
