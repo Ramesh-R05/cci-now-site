@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connectToStores, provideContext } from '@bxm/flux';
 import AdManager from '@bxm/ad/lib/google/components/adManager';
 import { handleHistory } from 'fluxible-router';
-import canUseDOM from 'exenv';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import ErrorPage from '../components/page/error';
@@ -97,12 +96,37 @@ class Application extends Component {
             fontFamily: '"Amsi Pro Narrow",sans-serif',
             userAgent: '' // TODO: get userAgent from request header or window.navigator
         });
-        const className = canUseDOM ? '' : 'no-js';
         const regionClassName = this.region ? `region--${this.region}` : '';
 
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
-                <div className={`${className} ${regionClassName}`}>
+                <noscript
+                    dangerouslySetInnerHTML={{
+                        __html: `<style type="text/css">
+                            .load-more {
+                                display: none !important;
+                            }
+
+                            .pagination {
+                                padding-left: 15px;
+                                padding-right: 15px;
+                                width: 100%;
+                                float: left;
+                                display: block !important;
+                                text-align: center;
+                            }
+
+                            .pagination .button {
+                                margin-left: 10px;
+                            }
+
+                            .lazyload {
+                                display: none !important;
+                            }
+                        </style>`
+                    }}
+                />
+                <div className={regionClassName}>
                     <Handler currentUrl={currentRoute && currentRoute.url} nodeType={nodeType} theme={theme} siteAlert={siteAlert} />
                 </div>
             </MuiThemeProvider>
