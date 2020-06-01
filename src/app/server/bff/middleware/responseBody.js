@@ -56,10 +56,6 @@ export default function responseBody(req, res, next) {
             res.body.leftHandSide = { items: parseEntities(lhsData) };
         }
 
-        if (req.data.moreGalleries) {
-            res.body.moreGalleries = parseEntities(req.data.moreGalleries.data);
-        }
-
         if (get(req, 'data.hero')) {
             //  TODO - Fix the pageDateCreated time so that it comes through in correct NZ format for NTLNZ
             req.data.hero.pageDateCreated = momentTimezone.tz(req.data.hero.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss');

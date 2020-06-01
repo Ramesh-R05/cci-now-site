@@ -1,17 +1,14 @@
 import proxyquire, { noCallThru } from 'proxyquire';
 import gallery from '../../../mocks/gallery';
-import moreGalleries from '../../../mocks/moreGalleries';
 import listing from '../../../mocks/listing';
 noCallThru();
 
 const APIUtilsStub = sinon.stub();
 const loggerStub = sinon.stub();
 const getLatestTeasersStub = sinon.stub();
-const getMoreGalleriesStub = sinon.stub();
 
 const APIUtilsReturn = {
-    getLatestTeasers: getLatestTeasersStub,
-    getMoreGalleries: getMoreGalleriesStub
+    getLatestTeasers: getLatestTeasersStub
 };
 
 const galleryMiddleware = proxyquire('../../../../app/server/bff/middleware/gallery', {
@@ -22,7 +19,6 @@ const galleryMiddleware = proxyquire('../../../../app/server/bff/middleware/gall
 function resetStubs() {
     APIUtilsStub.reset();
     getLatestTeasersStub.reset();
-    getMoreGalleriesStub.reset();
 }
 
 describe('Gallery middleware', () => {
@@ -75,7 +71,6 @@ describe('Gallery middleware', () => {
             next = sinon.spy();
             req.data.entity.nodeTypeAlias = 'Article';
             getLatestTeasersStub.resolves(listing);
-            getMoreGalleriesStub.resolves(moreGalleries);
         });
 
         after(() => {
@@ -83,15 +78,6 @@ describe('Gallery middleware', () => {
             req.data.entity.nodeTypeAlias = validNodeType;
         });
 
-        it('should not set moreGalleries on `req.data` object', done => {
-            galleryMiddleware(req, res, next)
-                .then(() => {
-                    expect(req.data).to.not.include.keys('moreGalleries');
-                    expect(next).to.be.called;
-                    done();
-                })
-                .catch(done);
-        });
         it('should not set leftHandSide on `req.data` object', done => {
             galleryMiddleware(req, res, next)
                 .then(() => {
@@ -130,7 +116,6 @@ describe('Gallery middleware', () => {
                 req = { ...reqBase };
                 APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns(APIUtilsReturn);
                 next = sinon.spy();
-                getMoreGalleriesStub.resolves(moreGalleries);
             });
 
             after(resetStubs);
@@ -165,7 +150,6 @@ describe('Gallery middleware', () => {
                 req = { ...reqBase };
                 APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns(APIUtilsReturn);
                 next = sinon.spy();
-                getMoreGalleriesStub.resolves(moreGalleries);
             });
 
             after(resetStubs);
@@ -174,44 +158,6 @@ describe('Gallery middleware', () => {
                 galleryMiddleware(req, res, next)
                     .then(() => {
                         expect(req.data.entity.adBrand).to.equal('ntl');
-                        done();
-                    })
-                    .catch(done);
-            });
-        });
-
-        describe('when moreGalleries is called', () => {
-            before(() => {
-                reqBase = {
-                    app: { locals: { config } },
-                    query: {
-                        section: validSection,
-                        subsection: validSubsection,
-                        page: validPage
-                    },
-                    data: {
-                        entity: {
-                            url: gallery.url,
-                            sectionId: gallery.sectionId,
-                            nodeTypeAlias: 'Gallery',
-                            source: 'Good Health'
-                        }
-                    }
-                };
-                req = { ...reqBase };
-                next = sinon.spy();
-                APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns(APIUtilsReturn);
-                getMoreGalleriesStub.resolves(moreGalleries);
-            });
-
-            after(resetStubs);
-
-            it('should set moreGalleries in req.data with `getMoreGalleries` response', done => {
-                galleryMiddleware(req, res, next)
-                    .then(() => {
-                        expect(req.data).to.include.keys('moreGalleries');
-                        expect(req.data.moreGalleries).to.equal(moreGalleries);
-                        expect(next).to.be.called;
                         done();
                     })
                     .catch(done);
@@ -240,7 +186,6 @@ describe('Gallery middleware', () => {
                 next = sinon.spy();
                 APIUtilsStub.withArgs(loggerStub, req.app.locals.config).returns(APIUtilsReturn);
                 getLatestTeasersStub.resolves(listing);
-                getMoreGalleriesStub.resolves(moreGalleries);
             });
 
             after(resetStubs);

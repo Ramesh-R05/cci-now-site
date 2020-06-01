@@ -19,10 +19,7 @@ export default async function gallery(req, res, next) {
         const source = get(req, 'data.entity.source', '');
         const adBrand = find(req.app.locals.config.brands.site, b => b.title === source);
         const { config } = req.app.locals;
-        const { getMoreGalleries, getLatestTeasers } = new APIUtils(logger, config);
-
-        const moreGalleries = await getMoreGalleries();
-
+        const { getLatestTeasers } = new APIUtils(logger, config);
         let listingQuery = '';
 
         if (get(req, 'data.entity.parentUrl', '').includes('barbie')) {
@@ -41,8 +38,7 @@ export default async function gallery(req, res, next) {
                 pageDateCreated: momentTimezone.tz(req.data.entity.pageDateCreated, 'Australia/Sydney').format('YYYY-MM-DDTHH:mm:ss'),
                 adBrand: get(adBrand, 'id', 'ntl')
             },
-            leftHandSide,
-            moreGalleries
+            leftHandSide
         };
 
         next();

@@ -1,7 +1,6 @@
 import proxyquire, { noCallThru } from 'proxyquire';
 import article from '../../../mocks/article';
 import listing from '../../../mocks/listing';
-import moreGalleries from '../../../mocks/moreGalleries';
 noCallThru();
 
 let parseEntityStub = () => {};
@@ -117,24 +116,6 @@ describe('ResponseBody middleware', () => {
                 responseBodyMiddleware(req, res, next);
                 expect(res.body.leftHandSide).to.deep.equal({ items: listing.data });
             });
-        });
-    });
-
-    describe('when data contains `moreGalleries`', () => {
-        let reqData = { entity: article, moreGalleries: moreGalleries };
-        let reqBase = { data: reqData, app: { locals: { config } } };
-        let req = { ...reqBase };
-        let res = {};
-        let next;
-
-        before(() => {
-            next = sinon.spy();
-            parseEntitiesStub = sinon.stub().returns(moreGalleries.data);
-        });
-
-        it('should set `res.body.moreGalleries`', () => {
-            responseBodyMiddleware(req, res, next);
-            expect(res.body.moreGalleries).to.deep.equal(moreGalleries.data);
         });
     });
 

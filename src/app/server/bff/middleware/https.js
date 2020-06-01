@@ -26,7 +26,6 @@ const itemLists = [
     'data.promoted.items',
     'data.latestTeasers',
     'data.leftHandSide.data',
-    'data.moreGalleries.data',
     'data.mustread',
     'data.hamburgernavigation',
     'data.teasers'
