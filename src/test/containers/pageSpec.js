@@ -52,6 +52,13 @@ const emailLinkTrackingMock = {
     medium: 'email'
 };
 
+const externalNavigationLinksMock = [
+    {
+        title: 'Coupons',
+        url: 'https://coupons.nowtolove.com.au/'
+    }
+];
+
 describe('Page Container', () => {
     const siteName = 'Now';
     const brandStubData = {
@@ -68,7 +75,8 @@ describe('Page Container', () => {
             },
             get() {
                 return siteName;
-            }
+            },
+            externalNavigationLinks: externalNavigationLinksMock
         }
     };
     const headerItems = [
@@ -135,7 +143,8 @@ describe('Page Container', () => {
             currentUrl: '/',
             hideLeaderboard: false,
             theme: {},
-            siteAlert: {}
+            siteAlert: {},
+            externalNavigationLinks: externalNavigationLinksMock
         };
 
         before(() => {
@@ -179,6 +188,7 @@ describe('Page Container', () => {
                 theme: {},
                 SubHeaderComponent: null,
                 subHeaderComponentProps: {},
+                externalNavigationLinks: externalNavigationLinksMock,
                 permanentlyFixedIfShorterThan: 46,
                 headerClassName: 'header__inner',
                 wrapperClassName: 'header'
@@ -205,7 +215,8 @@ describe('Page Container', () => {
             expect(hamburgerNavStub.props).to.deep.eq({
                 className: 'mobile-menu',
                 items: mobileNav,
-                currentUrl: props.currentUrl
+                currentUrl: props.currentUrl,
+                externalNavigationLinks: externalNavigationLinksMock
             });
         });
 
@@ -278,7 +289,8 @@ describe('Page Container', () => {
             expect(hamburgerNavStub.props).to.deep.eq({
                 className: 'mobile-menu',
                 items: mobileNav,
-                currentUrl: props.currentUrl
+                currentUrl: props.currentUrl,
+                externalNavigationLinks: externalNavigationLinksMock
             });
         });
     });

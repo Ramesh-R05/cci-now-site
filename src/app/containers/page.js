@@ -135,6 +135,8 @@ export default class Page extends Component {
 
         const themeEnabled = !!theme && !!theme.headerSmallBackground && !!theme.headerMediumBackground && !!theme.headerLargeBackground;
 
+        const externalNavigationLinks = config.externalNavigationLinks || [];
+
         return (
             <div className={pageClassName}>
                 <div className={menuClasses}>
@@ -151,6 +153,7 @@ export default class Page extends Component {
                         headerClassName="header__inner"
                         SubHeaderComponent={siteAlert && siteAlert.isEnabled ? SiteAlert : null}
                         subHeaderComponentProps={siteAlert && siteAlert.isEnabled ? siteAlert : {}}
+                        externalNavigationLinks={externalNavigationLinks}
                     />
 
                     <div className="page__content-header">
@@ -187,7 +190,12 @@ export default class Page extends Component {
                     `
                                 }}
                             />
-                            <HamburgerNav className="mobile-menu" items={mobileNav} currentUrl={currentUrl} />
+                            <HamburgerNav
+                                className="mobile-menu"
+                                items={mobileNav}
+                                currentUrl={currentUrl}
+                                externalNavigationLinks={externalNavigationLinks}
+                            />
                         </div>
                     </MobileOffCanvas>
                 </div>

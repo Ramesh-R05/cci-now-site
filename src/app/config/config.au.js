@@ -47,5 +47,11 @@ export default {
         templateId: 'NowtoLove',
         widgetId: 'AR_1',
         scriptUrl: '//widgets.outbrain.com/outbrain.js'
-    }
+    },
+    externalNavigationLinks: [
+        {
+            title: 'Coupons',
+            url: 'https://coupons.nowtolove.com.au/'
+        }
+    ]
 };
