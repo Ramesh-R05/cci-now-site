@@ -54,7 +54,7 @@
     "@bxm/nav": "^4.3.0",
     "@bxm/newsletter": "^5.4.0",
     "@bxm/react-script-loader": "^3.4.0",
-    "@bxm/server": "^30.19.0",
+    "@bxm/server": "^30.20.0",
     "@bxm/shared-ui": "^2.8.0",
     "@bxm/site-header": "^9.11.0",
     "@bxm/social": "^3.4.0",
