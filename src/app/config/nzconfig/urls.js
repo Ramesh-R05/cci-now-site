@@ -1,8 +1,8 @@
 export default {
     footerUrls: {
-        privacy: 'http://www.bauermedia.co.nz/privacy',
-        advertise: 'http://www.bauermedia.co.nz/advertising/rates-ad-specs',
-        terms: 'http://www.bauermedia.co.nz/terms/website-terms'
+        privacy: 'https://www.aremedia.com.au/privacy/',
+        advertise: 'https://www.aremedia.com.au/brands/now-to-love/',
+        terms: 'https://www.aremedia.com.au/terms/'
     },
     newsletterUrl: 'https://www.nowtolove.co.nz/now-nz-newsletter',
     newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5ko/signup-nowtolovenz-articlepage'

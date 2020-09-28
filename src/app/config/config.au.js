@@ -4,9 +4,9 @@ import networkBrands from './networkBrands';
 export default {
     urls: {
         footerUrls: {
-            privacy: 'http://www.bauer-media.com.au/privacy',
-            advertise: 'http://www.bauer-media.com.au/advertising/advertise-with-us',
-            terms: 'http://www.bauer-media.com.au/terms/website-terms'
+            privacy: 'https://www.aremedia.com.au/privacy',
+            advertise: 'https://www.aremedia.com.au/brands/now-to-love/',
+            terms: 'https://www.aremedia.com.au/terms/'
         },
         newsletterUrl: 'https://www.nowtolove.com.au/now-newsletter',
         newsletterSignupInBodyCopy: 'https://cb.sailthru.com/join/5k8/signup-nowtolove-article-iframe-bottom'

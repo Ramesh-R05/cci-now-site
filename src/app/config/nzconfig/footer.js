@@ -3,22 +3,22 @@ export default {
         corporate: [
             {
                 title: 'Privacy Policy',
-                url: 'https://www.bauermedia.co.nz/privacy/',
+                url: 'https://www.aremedia.com.au/privacy/',
                 gtmClass: 'gtm-footer-privacy'
             },
             {
                 title: 'Advertise',
-                url: 'https://www.bauermediaadvertising.co.nz/',
+                url: 'https://www.aremedia.com.au/brands/now-to-love/',
                 gtmClass: 'gtm-footer-advertising'
             },
             {
                 title: 'Terms of Use',
-                url: 'https://www.bauermedia.co.nz/terms/',
+                url: 'https://www.aremedia.com.au/terms/',
                 gtmClass: 'gtm-footer-terms'
             },
             {
                 title: 'Magshop',
-                url: 'https://www.magshop.co.nz/store/bauer-media',
+                url: 'https://www.magshop.co.nz/',
                 gtmClass: 'gtm-footer-magshop'
             }
         ]

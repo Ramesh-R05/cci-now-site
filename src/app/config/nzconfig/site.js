@@ -5,7 +5,7 @@ export default {
     region: 'nz',
     adTaggingId: 'NowToLoveNZ',
     alternateHrefLangUrl: 'http://www.nowtolove.com.au',
-    buyMagazinesLink: 'https://www.magshop.co.nz/store/bauer-media',
+    buyMagazinesLink: 'https://www.magshop.co.nz/',
     defaultSocialLinks: {
         facebook: 'https://www.facebook.com/nowtolovenz',
         twitter: 'https://twitter.com/NowToLovenz',
