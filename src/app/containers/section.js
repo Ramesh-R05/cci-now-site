@@ -133,7 +133,14 @@ export default class Section extends Component {
         }
 
         return (
-            <Page currentUrl={currentUrl} pageTitle={pageTitle} headerThemeClassName={headerThemeClassName} theme={theme} siteAlert={siteAlert}>
+            <Page
+                currentUrl={currentUrl}
+                pageTitle={pageTitle}
+                headerThemeClassName={headerThemeClassName}
+                theme={theme}
+                siteAlert={siteAlert}
+                nodeType={nodeType}
+            >
                 <div className={sectionClassNames}>
                     <div className="container">
                         <div className="row">

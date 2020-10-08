@@ -58,7 +58,8 @@ export default class Page extends Component {
             source: PropTypes.string,
             campaign: PropTypes.string,
             medium: PropTypes.string
-        })
+        }),
+        nodeType: PropTypes.string
     };
 
     static contextTypes = {
@@ -73,7 +74,8 @@ export default class Page extends Component {
         theme: null,
         siteAlert: null,
         showWallpaper: true,
-        emailLinkTrackingData: null
+        emailLinkTrackingData: null,
+        nodeType: ''
     };
 
     componentDidMount() {
@@ -105,7 +107,8 @@ export default class Page extends Component {
             theme,
             siteAlert,
             className,
-            menuClasses
+            menuClasses,
+            nodeType
         } = this.props;
         const { config } = this.context;
         const pageLocation = Ad.pos.outside;
@@ -154,6 +157,9 @@ export default class Page extends Component {
                         SubHeaderComponent={siteAlert && siteAlert.isEnabled ? SiteAlert : null}
                         subHeaderComponentProps={siteAlert && siteAlert.isEnabled ? siteAlert : {}}
                         externalNavigationLinks={externalNavigationLinks}
+                        tagsDetails={content && content.tagsDetails ? content.tagsDetails : []}
+                        nodeType={nodeType}
+                        contentUrl={content && content.url ? content.url : ''}
                     />
 
                     <div className="page__content-header">

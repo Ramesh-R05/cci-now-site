@@ -17,6 +17,7 @@ export default {
         twitter: 'https://twitter.com/nowtolove',
         instagram: 'https://www.instagram.com/nowtolove'
     },
+    quickExitLink: 'http://bom.gov.au',
     customFonts: [
         { url: 'https://fonts.googleapis.com/css?family=Questrial' },
         { url: 'https://fonts.googleapis.com/css?family=Muli:400,600,800' },

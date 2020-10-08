@@ -1,0 +1,14 @@
+.quick-exit-banner {
+    &__button {
+        background: $color-lighter-green;
+        &:hover, &:focus {
+            background: $color-light-green;
+        }
+    }
+
+    &__button-link {
+        &:hover, &:focus {
+            color: $color-white;
+        }
+    }
+}

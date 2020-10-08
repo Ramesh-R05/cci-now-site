@@ -40,6 +40,11 @@ export default {
         showBuyMagazinesButton: {
             enabled: true
         },
+        showQuickExitButton: {
+            enabled: true,
+            sectionUrl: '/coercive-control',
+            tagName: 'common:topic:Coercive control'
+        },
         showTeaserBrandSource: {
             enabled: true
         }

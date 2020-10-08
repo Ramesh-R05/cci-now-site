@@ -189,6 +189,18 @@ describe('Page Container', () => {
                 SubHeaderComponent: null,
                 subHeaderComponentProps: {},
                 externalNavigationLinks: externalNavigationLinksMock,
+                nodeType: '',
+                tagsDetails: [
+                    {
+                        fullName: 'homes_Topic_Garden_planner',
+                        name: 'homes:Topic:Garden planner'
+                    },
+                    {
+                        fullName: 'homes_Homes_navigation_Outdoor',
+                        name: 'homes:Homes navigation:Outdoor'
+                    }
+                ],
+                contentUrl: '',
                 permanentlyFixedIfShorterThan: 46,
                 headerClassName: 'header__inner',
                 wrapperClassName: 'header'
