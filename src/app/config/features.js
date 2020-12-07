@@ -29,7 +29,7 @@ export default {
         ]
     },
     polar: {
-        enabled: true
+        enabled: false
     },
     search: {
         enabled: true
