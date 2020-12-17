@@ -57,7 +57,7 @@ export default class Document extends Component {
             return (
                 <Page currentUrl={currentUrl} hideFooter={false} theme={theme} siteAlert={siteAlert}>
                     <Gallery
-                        articleHeaderOrder={['Source', 'Title', 'Summary', 'Date', 'Author', 'ImageCount', 'NativeAd', 'Hero']}
+                        articleHeaderOrder={['Source', 'Title', 'Summary', 'Date', 'Author', 'ImageCount', 'Hero']}
                         contentBodyConfig={galleryContentBodyConfig}
                         enableTeads
                         CustomisedTeaser={Teaser}
@@ -73,7 +73,7 @@ export default class Document extends Component {
         return (
             <Page currentUrl={currentUrl} hideFooter={false} theme={theme} siteAlert={siteAlert}>
                 <Article
-                    articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero']}
+                    articleHeaderOrder={['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'Hero']}
                     contentBodyConfig={Document.articleContentBodyConfig}
                     enableTeads
                     CustomisedTeaser={Teaser}

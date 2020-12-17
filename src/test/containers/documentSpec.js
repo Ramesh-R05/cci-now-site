@@ -51,7 +51,7 @@ describe('Document Component', () => {
 
             expect(ArticleComponent.props).to.deep.eq({
                 enableTeads: true,
-                articleHeaderOrder: ['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'NativeAd', 'Hero'],
+                articleHeaderOrder: ['Source', 'Section', 'Title', 'Summary', 'Date', 'Author', 'Hero'],
                 contentBodyConfig: Document.articleContentBodyConfig,
                 showAdBeforeRecommendations: true,
                 CustomisedTeaser: CustomisedTeaserStub,

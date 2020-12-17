@@ -3,7 +3,6 @@ import site from './nzconfig/site';
 import urls from './nzconfig/urls';
 import brands from './nzconfig/brands';
 import features from './nzconfig/features';
-import polar from './nzconfig/polar';
 import footer from './nzconfig/footer';
 
 export default {
@@ -27,8 +26,6 @@ export default {
     urls,
 
     brands,
-
-    polar,
 
     outbrain: {
         templateId: 'NowtoLoveNZ',

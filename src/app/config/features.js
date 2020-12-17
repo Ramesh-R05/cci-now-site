@@ -29,6 +29,9 @@ export default {
         ]
     },
     polar: {
+        enabled: false
+    },
+    googleNativeAds: {
         enabled: true
     },
     search: {

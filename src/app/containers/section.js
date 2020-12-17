@@ -92,7 +92,7 @@ export default class Section extends Component {
         const keyword = nodeType === 'TagSection' && title ? [title] : [];
         const pageLocation = Ad.pos.outside;
         const subsection = find(subsections.data, s => s.url === currentUrl);
-        const polarLabels = this.context.config.polar.details;
+        const googleNativeAdLabels = this.context.config.googleNativeAds.details;
         const imageSrc = imageResize.url({
             url: imageUrl,
             width: 633,
@@ -170,7 +170,7 @@ export default class Section extends Component {
                                             adTargets={{ keyword }}
                                             nativeAdConfig={
                                                 isBrandPage || {
-                                                    slotPositionIndex: polarLabels.sectionTopFeed
+                                                    slotPositionIndex: googleNativeAdLabels.sectionTopFeed
                                                 }
                                             }
                                         />
@@ -238,7 +238,7 @@ export default class Section extends Component {
                         adTargets={{ keyword }}
                         nativeAdConfig={
                             isBrandPage || {
-                                slotPositionIndex: polarLabels.sectionBottomFeed
+                                slotPositionIndex: googleNativeAdLabels.sectionBottomFeed
                             }
                         }
                     />

@@ -3,7 +3,7 @@ import features from './features';
 import global from './global';
 import services from './services';
 import site from './site';
-import polar from './polar';
+import googleNativeAds from './googleNativeAds';
 import routes from './routes';
 
 export default {
@@ -25,6 +25,7 @@ export default {
     global,
 
     ads: {
+        networkId: 13534306,
         targets: { env: 'test' },
         disabledGalleryChangeRefresh: true
     },
@@ -54,7 +55,7 @@ export default {
         }
     },
 
-    polar,
+    googleNativeAds,
 
     newrelic: {
         browser: {

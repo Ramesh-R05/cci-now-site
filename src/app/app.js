@@ -4,7 +4,6 @@ import ArticleStore from '@bxm/article/lib/stores/articleStore';
 import GalleryStore from '@bxm/article/lib/stores/verticalGalleryStore';
 import HtmlStore from '@bxm/server/lib/stores/html';
 import NavigationStore from '@bxm/site-header/lib/stores/navigation';
-import PolarAdStore from '@bxm/ad/lib/polar/stores/PolarAdStore';
 import PageStore from './stores/page';
 import SearchStore from './stores/search';
 import AppComponent from './containers/app';
@@ -20,7 +19,6 @@ export const stores = [
     NavigationStore,
     PageStore,
     SearchStore,
-    PolarAdStore,
     RouteStore,
     TeaserStore,
     TrackingStore

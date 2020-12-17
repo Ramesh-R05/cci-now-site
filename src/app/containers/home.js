@@ -66,7 +66,7 @@ export default class Home extends Component {
         const { currentUrl, heroTeaser, teasers, theme, siteAlert } = this.props;
         const { bottomElm, topElm } = this.state;
         const { config } = this.context;
-        const polarLabels = this.context.config.polar.details;
+        const googleNativeAdLabels = this.context.config.googleNativeAds.details;
         const pageLocation = Ad.pos.outside;
         const adProps = {
             className: 'ad--section-bottom-leaderboard',
@@ -109,7 +109,7 @@ export default class Home extends Component {
                                                 adPosition={8}
                                                 adSizes={{ small: 'mrec', medium: ['mrec', 'double-mrec'] }}
                                                 nativeAdConfig={{
-                                                    slotPositionIndex: polarLabels.homeTopFeed
+                                                    slotPositionIndex: googleNativeAdLabels.homeTopFeed
                                                 }}
                                             />
                                         </div>
@@ -171,7 +171,7 @@ export default class Home extends Component {
                         nextParams={this.props.listNextParams}
                         className="news-feed bottom-news-feed"
                         nativeAdConfig={{
-                            slotPositionIndex: polarLabels.homeBottomFeed
+                            slotPositionIndex: googleNativeAdLabels.homeBottomFeed
                         }}
                     />
 

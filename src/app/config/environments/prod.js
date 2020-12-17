@@ -21,7 +21,7 @@ export default {
             url: 'http://services.prod.bxm.internal/redirect/v1/now/301'
         }
     },
-    polar: {
+    googleNativeAds: {
         targets: {
             env: ''
         }

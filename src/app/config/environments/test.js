@@ -8,9 +8,6 @@ export default {
     site: {
         host: 'http://now-site.test.bxm.net.au/'
     },
-    polar: {
-        propertyId: 'NA-NOWTOLOVE-11238611'
-    },
     ads: {
         iasAds: false
     }

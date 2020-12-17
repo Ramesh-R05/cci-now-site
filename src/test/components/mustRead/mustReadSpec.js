@@ -1,7 +1,7 @@
 import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
 const { React, ReactDOM, TestUtils } = Context;
-import polarConfig from '../../mocks/polar';
+import googleNativeAdsConfig from '../../mocks/googleNativeAds';
 
 import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
@@ -24,7 +24,7 @@ describe('#MustRead Component', () => {
                     "Australian Women's Weekly": 'AWW'
                 }
             },
-            polar: polarConfig.polarSetting
+            googleNativeAds: googleNativeAdsConfig.googleNativeAdsSetting
         }
     };
 

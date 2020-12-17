@@ -17,7 +17,7 @@ export default {
         }
     },
     gigya: { apiKey: '3_t9sNGuUPgwEUVDuOJ3g1BEMlqQWvKXQWS9toq53-iiMKRAbCWKXkW8yzltcsCF9N' },
-    polar: {
+    googleNativeAds: {
         targets: {
             env: ''
         }

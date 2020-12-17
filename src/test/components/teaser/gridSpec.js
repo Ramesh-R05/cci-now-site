@@ -2,7 +2,7 @@ import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
 const { React, ReactDOM, TestUtils } = Context;
 import listingMock from '../../mocks/listing';
-import polarConfig from '../../mocks/polar';
+import googleNativeAdsConfig from '../../mocks/googleNativeAds';
 const teasers = listingMock.data;
 import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
@@ -19,7 +19,7 @@ const contextConfigStub = {
     key: 'config',
     type: '',
     value: {
-        polar: polarConfig.polarSetting
+        googleNativeAds: googleNativeAdsConfig.googleNativeAdsSetting
     }
 };
 

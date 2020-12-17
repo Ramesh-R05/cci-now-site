@@ -2,7 +2,7 @@ import { betterMockComponentContext } from '@bxm/flux';
 const Context = betterMockComponentContext();
 const { React, ReactDOM, TestUtils } = Context;
 import listingMock from '../../mocks/listing';
-import polarConfig from '../../mocks/polar';
+import googleNativeAdsConfig from '../../mocks/googleNativeAds';
 const items = listingMock.data;
 import proxyquire, { noCallThru } from 'proxyquire';
 noCallThru();
@@ -40,7 +40,7 @@ describe('TeaserListView', () => {
         key: 'config',
         type: '',
         value: {
-            polar: polarConfig.polarSetting
+            googleNativeAds: googleNativeAdsConfig.googleNativeAdsSetting
         }
     };
 

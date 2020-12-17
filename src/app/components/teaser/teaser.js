@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { canUseDOM } from 'exenv';
 import classNames from 'classnames';
 import TeaserTitle from '@bxm/article/lib/components/teaser/title';
 import TeaserImage from '@bxm/teaser/lib/components/image';
 import TeaserSummary from '@bxm/teaser/lib/components/summary';
+import GoogleNativeAdTeaser from '@bxm/teaser/lib/components/native/googleNativeAdTeaser';
 import Date from '@bxm/datetime/lib/components/Date';
 import teaserContentOverride from '@bxm/teaser/lib/teaserContentOverride';
 import Ad from '@bxm/ad/lib/google/components/ad';
@@ -11,6 +13,32 @@ import has from 'lodash/object/has';
 import get from 'lodash/object/get';
 
 export default class Teaser extends Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.adSlotName = `/${get(context, 'config.ads.networkId', '')}/${get(context, 'config.site.adTaggingId', '')}/${get(
+            props,
+            'googleNativeAds.adUnitPath',
+            ''
+        )}`;
+        this.googleNativeAdUnitPath = get(props, 'googleNativeAds.adUnitPath', null);
+
+        this.state = {
+            nativeAdHasContentReady: false,
+            nativeAdContent: false
+        };
+    }
+
+    componentDidMount() {
+        if (canUseDOM) {
+            this.addEvents();
+        }
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('message', this.onMessage);
+    }
+
     static propTypes = {
         article: PropTypes.object,
         imageSizes: PropTypes.object,
@@ -20,12 +48,14 @@ export default class Teaser extends Component {
         sourceClassName: PropTypes.string,
         onClick: PropTypes.func,
         showDate: PropTypes.bool,
-        polar: PropTypes.oneOfType([
+        googleNativeAds: PropTypes.oneOfType([
             PropTypes.shape({
                 targets: PropTypes.shape({
                     kw: PropTypes.string
                 }),
-                label: PropTypes.string
+                label: PropTypes.string,
+                adUnitPath: PropTypes.string,
+                adPositionClassName: PropTypes.string
             }),
             PropTypes.bool
         ])
@@ -58,7 +88,23 @@ export default class Teaser extends Component {
             xl: { w: 880, h: 710 }
         },
         onClick: function onClick() {},
-        polar: false
+        googleNativeAds: false
+    };
+
+    addEvents() {
+        window.addEventListener('message', this.onMessage);
+    }
+
+    onMessage = e => {
+        const data = e.data;
+
+        if (data && data.message === 'adContentAvailable' && data.adID === this.adSlotName) {
+            this.setState({
+                nativeAdHasContentReady: true,
+                nativeAdContent: data.content
+            });
+            window.removeEventListener('message', this.onMessage);
+        }
     };
 
     getGTMClass = () => {
@@ -103,8 +149,9 @@ export default class Teaser extends Component {
 
     render() {
         const { config } = this.context;
-        const { className, sourceClassName, showDate, polar } = this.props;
+        const { className, sourceClassName, showDate, googleNativeAds } = this.props;
         let { article } = this.props;
+        const { nativeAdHasContentReady, nativeAdContent } = this.state;
 
         if (!article) {
             return null;
@@ -115,6 +162,7 @@ export default class Teaser extends Component {
         const articleTitle = article.shortTitle || article.summaryTitle || article.title;
         const siteRegionSuffix = get(config, 'site.region', '');
         const showTeaserBrandSource = config.isFeatureEnabled('showTeaserBrandSource');
+        const showGoogleNativeAds = config.isFeatureEnabled('googleNativeAds');
         const siteBrands = get(config, 'brands.site', []);
         const siteRegionClass = siteRegionSuffix && `teaser--${siteRegionSuffix.toLowerCase()}`;
         const hasVideoIcon = get(article, 'video.properties.videoConfiguration.statusCode') === 200;
@@ -157,32 +205,55 @@ export default class Teaser extends Component {
 
         return (
             <article className={containerClassNames} onClick={this.props.onClick}>
-                <div className="teaser__inner">
-                    {this.renderImage()}
-                    {className === 'hero-teaser' ? <div className="teaser__hero-background">{brandImgElm}</div> : null}
-                    <div className="teaser__body">
-                        <TeaserTitle title={articleTitle} url={article.url} gtmClass={this.getGTMClass()} />
+                {!googleNativeAds && !nativeAdHasContentReady && !nativeAdContent && (
+                    <div className="teaser__inner">
+                        {this.renderImage()}
+                        {className === 'hero-teaser' ? <div className="teaser__hero-background">{brandImgElm}</div> : null}
+                        <div className="teaser__body">
+                            <TeaserTitle title={articleTitle} url={article.url} gtmClass={this.getGTMClass()} />
 
-                        {this.renderSummary()}
+                            {this.renderSummary()}
 
-                        <p className={articleSourceClassName}>
-                            {className !== 'hero-teaser' && brandImgElm}
+                            <p className={articleSourceClassName}>
+                                {className !== 'hero-teaser' && brandImgElm}
 
-                            {showDate ? (
-                                <span className={`${sourceClassName}-info`}>
-                                    <span
-                                        className={`${sourceClassName}__breaker`}
-                                        dangerouslySetInnerHTML={this.ellipseDateHTML()}
-                                        style={{ display: brandImgElm ? 'inline-block' : 'none' }}
-                                    />
-                                    <Date className="teaser__source-date" dateCreated={article.dateCreated} showElapsed />
-                                </span>
-                            ) : null}
-                        </p>
+                                {showDate ? (
+                                    <span className={`${sourceClassName}-info`}>
+                                        <span
+                                            className={`${sourceClassName}__breaker`}
+                                            dangerouslySetInnerHTML={this.ellipseDateHTML()}
+                                            style={{ display: brandImgElm ? 'inline-block' : 'none' }}
+                                        />
+                                        <Date className="teaser__source-date" dateCreated={article.dateCreated} showElapsed />
+                                    </span>
+                                ) : null}
+                            </p>
+                        </div>
                     </div>
-                </div>
+                )}
 
-                {polar && <Ad sizes="nativeAdTeaser" label={polar.label} targets={polar.targets} nativeAd pageLocation={Ad.pos.body} />}
+                {showGoogleNativeAds && googleNativeAds && (
+                    <Ad
+                        className="ad--slot-google-native"
+                        sizes="googleNativeAd"
+                        isGoogleNativeAd
+                        nativeAdPath={this.googleNativeAdUnitPath}
+                        label={googleNativeAds.label}
+                        targets={googleNativeAds.targets}
+                        pageLocation={Ad.pos.body}
+                    />
+                )}
+
+                {showGoogleNativeAds && googleNativeAds && nativeAdHasContentReady && nativeAdContent && (
+                    <div id={`GoogleNativeAd-${googleNativeAds.label}`} className="google-native-ad-teaser-container">
+                        <GoogleNativeAdTeaser
+                            nativeAdContent={nativeAdContent}
+                            gtmClassName={this.getGTMClass()}
+                            googleNativeAds={googleNativeAds}
+                            onClick={this.props.onClick}
+                        />
+                    </div>
+                )}
             </article>
         );
     }

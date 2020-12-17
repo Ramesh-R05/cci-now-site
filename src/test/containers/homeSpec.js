@@ -16,7 +16,7 @@ const PromotedStub = Context.createStubComponent();
 const MustReadStub = Context.createStubComponent();
 const StickyAdStub = Context.createStubComponent();
 
-import polarConfig from '../mocks/polar';
+import googleNativeAdsConfig from '../mocks/googleNativeAds';
 
 const HomeContainer = proxyquire('../../app/containers/home', {
     '@bxm/ad/lib/google/components/ad': AdStub,
@@ -48,7 +48,7 @@ describe('Home Container', () => {
         key: 'config',
         type: '',
         value: {
-            polar: polarConfig.polarSetting,
+            googleNativeAds: googleNativeAdsConfig.googleNativeAdsSetting,
             site: {
                 defaultSocialLinks: {
                     facebook: 'https://www.facebook.com/nowtoloveau',

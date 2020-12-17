@@ -92,7 +92,7 @@
         background: none;
         border: 1px solid transparent;
         border-top-color: $related-content-border-color;
-        padding: 35px 0px 10px;
+        padding: 35px 0 10px;
         position: relative;
         margin: 0;
         margin-top: 30px;
@@ -205,7 +205,6 @@
 
         .feed-item__body {
             padding-left: 0;
-            display: block;
         }
 
         .feed-item__body-title {

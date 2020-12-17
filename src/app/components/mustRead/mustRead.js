@@ -45,7 +45,7 @@ class MustRead extends Component {
             return mustReadItem;
         });
 
-        const polarLabels = this.context.config.polar.details;
+        const googleNativeAdLabels = this.context.config.googleNativeAds.details;
 
         return (
             <div className="mustread-teaser-view-grid">
@@ -60,7 +60,7 @@ class MustRead extends Component {
                         CustomisedTeaser={Teaser}
                         showDate={false}
                         nativeAdConfig={{
-                            slotPositionIndex: polarLabels.homeMustRead
+                            slotPositionIndex: googleNativeAdLabels.homeMustRead
                         }}
                         sourceDefault="SPONSORED"
                     />
