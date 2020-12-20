@@ -23,7 +23,6 @@ Feature: Footer
             |Homes To Love          |https://www.homestolove.com.au/     |
             |Women's Weekly Food  |https://www.womensweeklyfood.com.au/  |
             |Elle                 |https://www.elle.com.au/              |
-            |Harper's Bazaar      |https://www.harpersbazaar.com.au/     |
             |Gourmet Traveller    |https://www.gourmettraveller.com.au/  |
             |Dolly                |http://www.dolly.com.au/              |
             |Beauty Heaven        |https://www.beautyheaven.com.au/      |

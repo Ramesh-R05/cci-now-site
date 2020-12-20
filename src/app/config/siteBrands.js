@@ -133,10 +133,6 @@ export default [
         imageUrl: '/assets/images/headerlogos/PTL-logo.svg',
         heroImageUrl: '/assets/images/herologos/PTL-logo.svg',
         url: '/prizestolove',
-        socialLinks: {
-            facebook: 'https://www.facebook.com/prizestolove/',
-            instagram: 'https://www.instagram.com/prizestolove'
-        },
         newsletterUrl: 'https://www.nowtolove.com.au/prizestolove-newsletter',
         subscribeText: 'The latest competitions delivered to your inbox',
         renderSubscribeElements: false,
