@@ -25,19 +25,19 @@ class MustRead extends Component {
     static listClassName = 'small-block-grid-2 medium-block-grid-4 large-block-grid-6';
 
     render() {
-        let { mustRead } = this.props;
+        const { mustRead } = this.props;
+        const { config } = this.context;
 
         if (!mustRead || mustRead.length < 6) {
             return null;
         }
 
-        mustRead = mustRead.slice(0, 6);
-
-        const shortenedNameList = this.context.config.brands.shortSources || {};
+        const mustReadSliced = mustRead.slice(0, 6);
+        const shortenedNameList = config.brands.shortSources || {};
 
         // Add gtm class name,
         // mustReadItem.id prop will pass into teaser component and be attached as a gtm class
-        const newMustRead = mustRead.map((item, index) => {
+        const newMustRead = mustReadSliced.map((item, index) => {
             const mustReadItem = { ...item };
             mustReadItem.id = `mustread${index + 1}-homepage`;
             mustReadItem.source = shortenedNameList[mustReadItem.source] || mustReadItem.source;
@@ -45,7 +45,7 @@ class MustRead extends Component {
             return mustReadItem;
         });
 
-        const googleNativeAdLabels = this.context.config.googleNativeAds.details;
+        const googleNativeAdLabels = config.googleNativeAds.details;
 
         return (
             <div className="mustread-teaser-view-grid">
