@@ -4,5 +4,8 @@ export default {
     },
     services: {
         faceBookAppID: '520578108132544'
+    },
+    oovvuu: {
+        scriptUrl: 'http://videos.oovvuu.com/baum/stage/ovu_rec.js'
     }
 };
