@@ -4,6 +4,19 @@
         min-height: 150px;
         overflow: auto;
 
+        .teaser {
+
+            &__image {
+
+                @media #{$medium-up} {
+
+                    img {
+                        border-radius: $teaser-image-border-radius;
+                    }
+                }
+            }
+        }
+
         // Teaser body
         &__body {
             padding-top: 0;

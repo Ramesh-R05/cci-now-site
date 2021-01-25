@@ -274,6 +274,13 @@ $hero-teaser-line-height: 25px;
         @media #{$medium-only} {
             width: 100%;
         }
+
+        @media #{$medium-up} {
+
+            img {
+                border-radius: $teaser-image-border-radius;
+            }
+        }
     }
 
     .teaser__source {

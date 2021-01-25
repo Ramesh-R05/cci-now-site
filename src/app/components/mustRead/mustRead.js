@@ -16,10 +16,10 @@ class MustRead extends Component {
     };
 
     static imageSizes = {
-        s: { w: 300, h: 170 },
-        m: { w: 300, h: 170 },
-        l: { w: 300, h: 170 },
-        xl: { w: 230, h: 130 }
+        s: { w: 300, h: 185 },
+        m: { w: 300, h: 185 },
+        l: { w: 300, h: 185 },
+        xl: { w: 230, h: 142 }
     };
 
     static listClassName = 'small-block-grid-2 medium-block-grid-4 large-block-grid-6';

@@ -30,10 +30,10 @@ AdStub.pos = {
 
 describe('TeaserListView', () => {
     const imageSizes = {
-        s: { w: 323, h: 269 },
-        m: { w: 452, h: 254 },
-        l: { w: 409, h: 230 },
-        xl: { w: 1010, h: 478 }
+        s: { w: 323, h: 200 },
+        m: { w: 452, h: 279 },
+        l: { w: 409, h: 253 },
+        xl: { w: 1010, h: 624 }
     };
 
     const contextConfigStub = {

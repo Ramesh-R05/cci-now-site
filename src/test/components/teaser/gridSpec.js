@@ -25,10 +25,10 @@ const contextConfigStub = {
 
 describe('TeaserGridView', () => {
     const imageSizes = {
-        s: { w: 690, h: 388 },
-        m: { w: 486, h: 404 },
-        l: { w: 624, h: 518 },
-        xl: { w: 368, h: 306 }
+        s: { w: 690, h: 427 },
+        m: { w: 486, h: 300 },
+        l: { w: 624, h: 386 },
+        xl: { w: 368, h: 227 }
     };
     let reactModule;
     let TeaserListComponent;

@@ -56,8 +56,16 @@
         }
 
         &__image {
+
             @media #{$small-only} {
                 padding-right: $column-gutter/4;
+            }
+
+            @media #{$medium-up} {
+
+                img {
+                    border-radius: $teaser-image-border-radius;
+                }
             }
 
             @media #{$xlarge-up} {

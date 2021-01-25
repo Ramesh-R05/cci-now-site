@@ -180,6 +180,16 @@
 
 .teaser-view-grid {
 
+    .teaser__image {
+
+        @media #{$medium-up} {
+
+            img {
+                border-radius: $teaser-image-border-radius;
+            }
+        }
+    }
+
     .teaser__title {
 
         a {
@@ -216,6 +226,13 @@
 
     .teaser__list-item {
         padding-bottom: 0;
+
+        .teaser__image {
+
+            img {
+                border-radius: $teaser-image-border-radius;
+            }
+        }
 
         .teaser__title {
             font: 400 12px/20px $font-family-questrial;
@@ -320,6 +337,13 @@
 
     .teaser__list-item {
         padding-bottom: 0;
+
+        .teaser__image {
+
+            img {
+                border-radius: $teaser-image-border-radius;
+            }
+        }
 
         .teaser__title {
             font: 400 12px/20px $font-family-questrial;
