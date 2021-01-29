@@ -122,17 +122,6 @@ export default {
                     adPositionClassName: 'google-native-ad-article-news-feed-4'
                 }
             ],
-            articleRelatedFeed: {
-                index: 0,
-                label: 'article_related_1',
-                targets: {
-                    kw: 'article_related_1'
-                },
-                adUnitPath: 'sponsored/ArticleRelatedFeed1',
-                adPositionClassName: 'google-native-ad-article-related-feed-1',
-                pos: 'body' // most native ad positions are hard coded, to define it in config you must extend the functionality of the component that uses it
-                // example @ https://github.com/bauerxcelmedia/wn-article/blob/master/src/components/feed/feedItem.jsx
-            },
             articleCarousel: {
                 index: 0,
                 label: 'article_mobilecarousel_1',

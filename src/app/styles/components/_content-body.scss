@@ -184,6 +184,10 @@
                 height: auto;
                 width: 100%;
 
+                img {
+                    border-radius: $teaser-image-border-radius;
+                }
+
                 &:hover {
                     opacity: 1;
 
