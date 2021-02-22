@@ -120,7 +120,7 @@ export default {
                 adUnitPath: 'sponsored/ArticleRightFeed4',
                 adPositionClassName: 'google-native-ad-article-news-feed-4'
             }
-        ] ,
+        ],
         articleCarousel: {
             index: 0,
             label: 'article_mobilecarousel_1',

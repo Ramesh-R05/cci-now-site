@@ -50,12 +50,31 @@
             text-align: right;
             position: absolute;
             right: 15px;
-            bottom: 2px;
+            bottom: 15px;
             margin-top: 40px;
         }
     }
 
+    &__affiliate-row {
+        text-align: center;
+        padding: 0 15px;
+
+        @media #{$medium-up} {
+            text-align: right;
+            position: absolute;
+            right: 15px;
+            bottom: 0;
+            margin-top: 40px;
+            padding: 0;
+        }
+    }
+
     &__copyright-text {
+        color: $color-mid-blue2;
+        font: 400 10px/1.5 $font-family-questrial;
+    }
+
+    &__affiliate-text {
         color: $color-mid-blue2;
         font: 400 10px/1.5 $font-family-questrial;
     }

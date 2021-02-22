@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import FooterColumn from './footerColumn';
 import FooterLink from './footerLink';
@@ -59,6 +60,12 @@ export default class SiteFooter extends Component {
                 </div>
                 <div className="site-footer__copyright-row row">
                     <span className="site-footer__copyright-text">&copy; Copyright {new Date().getFullYear()} Are Media PTY Limited</span>
+                </div>
+                <div className="site-footer__affiliate-row row">
+                    <span className="site-footer__affiliate-text">
+                        All products are independently selected, tested or recommended by our team of experts. If you buy something, we may earn an
+                        affiliate commission.
+                    </span>
                 </div>
             </footer>
         );
