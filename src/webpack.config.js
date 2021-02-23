@@ -23,8 +23,8 @@ const config = {
     },
     resolve: {
         alias: {
-            /* 
-                ensure there is only one instance of react when resolving modules 
+            /*
+                ensure there is only one instance of react when resolving modules
                 this helps with symlinks
             */
             react: path.join(__dirname, 'node_modules/react')
@@ -92,7 +92,7 @@ const config = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            fileName: `[name]${production ? '-[contenthash]' : ''}.css`
+            filename: `[name]${production ? '-[contenthash]' : ''}.css`
         }),
         new ManifestPlugin({
             publicPath: '' // This removes the /dist/ prefix so that @bxm/server/lib/index.js can load properly,
