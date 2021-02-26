@@ -73,7 +73,7 @@
     "fluxible-reducer-store": "^0.1.0",
     "fluxible-router": "^1.5.3",
     "iframe-resizer": "^3.6.6",
-    "lazysizes": "^3.0.0",
+    "lazysizes": "^5.2.1",
     "lodash": "^3.10.1",
     "lodash.get": "^4.4.2",
     "lodash.mergewith": "^4.6.2",
