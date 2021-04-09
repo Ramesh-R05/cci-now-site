@@ -21,16 +21,16 @@ jobs:
       image: ubuntu-1604:202010-01
     working_directory: ~/now-site
     steps:
-# Code Checkout - CCI_Build
+# Code Checkout - Build
       - checkout
 
 # Set and Print CCI_BRANCH to use with ECR/DOCKER - Verify CircleCI Task
       - run:
           name: Print Env Vars - ENV_TYPE | Branch_Name | now-site
           command: |
-                CCI_BRANCH=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g');
-                echo "export CCI_BRANCH_NAME=$CCI_BRANCH.$CIRCLE_BUILD_NUM" >> $BASH_ENV;
-                echo "CCI_BRANCH_NAME=$CCI_BRANCH_NAME";
+                CCI_BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g');
+                echo "export CCI_BRANCH=$CCI_BRANCH_NAME" >> $BASH_ENV;
+                echo "CCI_BRANCH=$CCI_BRANCH_NAME";
 
 # Prepare the VM for NodeJS App Build
       - run:
@@ -68,9 +68,9 @@ jobs:
           create-repo: true
           repo-scan-on-push: false
           dockerfile: Dockerfile
-          no-output-timeout: 9m
+          no-output-timeout: 21m
           skip-when-tags-exist: false # Don't Skip
-          tag: '$CCI_BRANCH_NAME,latest'
+          tag: 'latest,$CCI_BRANCH.$CIRCLE_BUILD_NUM' 
 
 # AWS ECS Integration: Create a task definition using JSON: path-to/json-file.json
       - aws-ecs/update-task-definition-from-json:
@@ -81,7 +81,7 @@ jobs:
           cluster-name: arn:aws:ecs:ap-southeast-2:014901580825:cluster/cci-app-ecs
           service-name: service-sit-master-now-site
           family: sit-master-now-site
-          container-image-name-updates: "container=now-site-master-img,tag=$CCI_BRANCH_NAME"
+          container-image-name-updates: "container=cci-container4,tag=latest"
           skip-task-definition-registration: false # Don't Skip
           force-new-deployment: true
           verify-revision-is-deployed: true
