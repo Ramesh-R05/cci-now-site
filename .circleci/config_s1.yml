@@ -16,83 +16,78 @@ jobs:
   ecr-buildandpush-dockerimage:
     environment:
       APP_KEY=now-site
-      APP_STUBBED=true
-      SVC_SIT_MASTER=service-sit-master-now-site
-      SVC_SIT_BRANCH=service-sit-branch-now-site
+      APP_STUBBED=true      
     machine:
       image: ubuntu-1604:202010-01
     working_directory: ~/now-site
     steps:
-# Code Checkout - CCI_Build
-#      - checkout
+# Code Checkout - Build
+      - checkout
 
-# Set and Print ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
+# Set and Print CCI_BRANCH to use with ECR/DOCKER - Verify CircleCI Task
       - run:
           name: Print Env Vars - ENV_TYPE | Branch_Name | now-site
           command: |
-                if [ $CIRCLE_BRANCH == master ]; then
-                  echo "CCI_BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM"
-                fi
-                if [ $CIRCLE_BRANCH != master ]; then
-                  CCI_BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g').$CIRCLE_BUILD_NUM;
-                  echo "CCI_BRANCH_NAME=$CCI_BRANCH_NAME"
-                fi
+                CCI_BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g');
+                echo "export CCI_BRANCH=$CCI_BRANCH_NAME" >> $BASH_ENV;
+                echo "CCI_BRANCH=$CCI_BRANCH_NAME";
 
 # Prepare the VM for NodeJS App Build
-#      - run:
-#          name: "Install | NVM | NPM | NODE_JS"
-#          command: |
-#                echo -e "\n\n\n ### UBUNTU_16.04 | NVM | NPM | NODE_JS "
-#                cd src; pwd;
-#                echo -e "\n ### Install NVM (Node Version Manager) # Installer for NodeJS + NPM "
-#                curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-#                source ~/.profile
-#                echo -e "\n ### Install NVM v10.19.0 "
-#                nvm install v10.19.0
-#                echo -e "\n ### Setting Default NVM v10.19.0 "
-#                nvm use v10.19.0;
-#                echo -e "\n ### Setting NPM Registry as BXM "
-#                npm set @bxm:registry http://npm.digital.bauer-media.net.au
-#                echo -e "\n ### Print Version Information "
-#                echo -e "\n ### NPM Version  : $(npm --version)"
-#              echo -e "\n ### Node Version : $(node --version)"
-#                npm install
-#                npm rebuild node-sass --force
-#                npm run test:ci
-#                NODE_ENV=production npm run build
-#
+      - run:
+          name: "Install | NVM | NPM | NODE_JS"
+          command: |
+                echo -e "\n\n\n ### UBUNTU_16.04 | NVM | NPM | NODE_JS "
+                cd src; pwd;
+                echo -e "\n ### Install NVM (Node Version Manager) # Installer for NodeJS + NPM "
+                curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+                source ~/.profile
+                echo -e "\n ### Install NVM v10.19.0 "
+                nvm install v10.19.0
+                echo -e "\n ### Setting Default NVM v10.19.0 "
+                nvm use v10.19.0;
+                echo -e "\n ### Setting NPM Registry as BXM "
+                npm set @bxm:registry http://npm.digital.bauer-media.net.au
+                echo -e "\n ### Print Version Information "
+                echo -e "\n ### NVM Version  : $(nvm --version)"
+                echo -e "\n ### NPM Version  : $(npm --version)"
+                echo -e "\n ### Node Version : $(node --version)"
+                npm install
+                npm rebuild node-sass --force
+                npm run test:ci
+                NODE_ENV=production npm run build
+
 # AWS ECR Integration: Build and Push Docker Image to ECR
-#      - aws-ecr/build-and-push-image:
-#          checkout: false  # Checkout already done in previous step
-#          aws-access-key-id: ECR_AWS_ACCESS_KEY_ID
-#          aws-secret-access-key: ECR_AWS_SECRET_ACCESS_KEY
-#          account-url: AWS_ECR_ACCOUNT_URL
-#          region: AWS_DEFAULT_REGION
-#          profile-name: profile
-#          repo: cci-now-site
-#          create-repo: true
-#          repo-scan-on-push: false
-#          dockerfile: Dockerfile
-#          no-output-timeout: 9m
-#          skip-when-tags-exist: false # Don't Skip
-#          tag: '$CCI_BRANCH_NAME,latest'
-#
+      - aws-ecr/build-and-push-image:
+          checkout: false  # Checkout already done in previous step
+          aws-access-key-id: ECR_AWS_ACCESS_KEY_ID
+          aws-secret-access-key: ECR_AWS_SECRET_ACCESS_KEY
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_DEFAULT_REGION
+          profile-name: profile
+          repo: cci-now-site
+          create-repo: true
+          repo-scan-on-push: false
+          dockerfile: Dockerfile
+          no-output-timeout: 21m
+          skip-when-tags-exist: false # Don't Skip
+          tag: 'latest,$CCI_BRANCH.$CIRCLE_BUILD_NUM'
+
 # AWS ECS Integration: Create a task definition using JSON: path-to/json-file.json
-#      - aws-ecs/update-task-definition-from-json:
-#          task-definition-json: task-def.json
+      - aws-ecs/update-task-definition-from-json:
+          task-definition-json: task-def.json
 
 # AWS ECS Integration: [ Cluster | Service | Task | PullImage-ECR | Deploy-NodeJS-APP ]
-#      - aws-ecs/update-service:
-#          cluster-name: arn:aws:ecs:ap-southeast-2:014901580825:cluster/cci-app-ecs
-#          service-name: $SERVICE_NAME
-#          family: sit-master-now-site
-#          container-image-name-updates: "container=now-site-master-img,tag=$CCI_BRANCH_NAME"
-#          skip-task-definition-registration: false # Don't Skip
-#          force-new-deployment: true
-#          verify-revision-is-deployed: true
-#          verification-timeout: 9m
-#          max-poll-attempts: 10
-#          poll-interval: 120
+      - aws-ecs/update-service:
+          cluster-name: arn:aws:ecs:ap-southeast-2:014901580825:cluster/cci-app-ecs
+          service-name: service-sit-master-now-site
+          family: sit-master-now-site
+          container-image-name-updates: "container=cci-container4,tag=latest"
+          skip-task-definition-registration: false # Don't Skip
+          force-new-deployment: true
+          verify-revision-is-deployed: true
+          verification-timeout: 9m
+          max-poll-attempts: 10
+          poll-interval: 120
 
 # WORKFLOWS
 
