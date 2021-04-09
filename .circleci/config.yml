@@ -26,21 +26,28 @@ jobs:
 
 # Set ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
       - run:
-          name: Set Env Vars - ENV_TYPE | Branch_Name | now-site
+          name: Set Env Vars - env_type | branch_name | now-site
           command: |
                 if [ $CIRCLE_BRANCH == master ]; then
                   BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM;
                   echo "export BRANCH_NAME=$BRANCH_NAME" >> $BASH_ENV;
+                  echo "export SERVICE_NAME=sit-master-now-site" >> $BASH_ENV;
+                  echo "export TASKDEF_JSON_FILENAME=sit-master-task-def.json" >> $BASH_ENV;
                 fi
                 if [ $CIRCLE_BRANCH != master ]; then
                   BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g').$CIRCLE_BUILD_NUM;
                   echo "export BRANCH_NAME=$BRANCH_NAME" >> $BASH_ENV;
+                  echo "export SERVICE_NAME=sit-branch-now-site" >> $BASH_ENV;
+                  echo "export TASKDEF_JSON_FILENAME=sit-branch-task-def.json" >> $BASH_ENV;
                 fi
 # Print ENV Vars - Verify CircleCI ENV
       - run:
-          name: Print Env Vars - ENV_TYPE | Branch_Name | now-site
-          command: echo "CCI_BRANCH_NAME=$BRANCH_NAME"
-          
+          name: Print Env Vars - Verify | now-site
+          command: |
+                echo "CCI_BRANCH_NAME=$BRANCH_NAME";
+                echo "CCI_SERVICE_NAME=$SERVICE_NAME";
+                echo "CCI_TASKDEF_JSON_FILENAME=$TASKDEF_JSON_FILENAME";
+
 
 # Prepare the VM for NodeJS App Build
 #      - run:
@@ -64,7 +71,7 @@ jobs:
 #                npm rebuild node-sass --force
 #                npm run test:ci
 #                NODE_ENV=production npm run build
-#
+
 # AWS ECR Integration: Build and Push Docker Image to ECR
 #      - aws-ecr/build-and-push-image:
 #          checkout: false  # Checkout already done in previous step
@@ -78,12 +85,11 @@ jobs:
 #          repo-scan-on-push: false
 #          dockerfile: Dockerfile
 #          no-output-timeout: 9m
-#          skip-when-tags-exist: false # Don't Skip
 #          tag: '$BRANCH_NAME,latest'
-#
+
 # AWS ECS Integration: Create a task definition using JSON: path-to/json-file.json
 #      - aws-ecs/update-task-definition-from-json:
-#          task-definition-json: task-def.json
+#          task-definition-json: $TASKDEF_JSON_FILENAME
 
 # AWS ECS Integration: [ Cluster | Service | Task | PullImage-ECR | Deploy-NodeJS-APP ]
 #      - aws-ecs/update-service:
