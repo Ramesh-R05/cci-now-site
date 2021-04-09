@@ -49,12 +49,12 @@
                 "value": "2bVaf4fRcz18NmlzpnOa14Yvmirj6Gyn1ADCVGvU"
                 },
                 {
-                "name": "REDIS_CONFIG_ENDPOINT_PORT",
-                "value": "6379"
-                },
-                {
                 "name": "REDIS_CONFIG_ENDPOINT_URL",
                 "value": "redis-test-no-cluster-ro.kfx4dp.ng.0001.apse2.cache.amazonaws.com:6379"
+                },
+                {
+                "name": "REDIS_CONFIG_ENDPOINT_PORT",
+                "value": "6379"
                 }
             ],
             "logConfiguration":
@@ -64,7 +64,7 @@
                 {
                     "awslogs-group": "/ecs/cci-app-ecs-logs",
                     "awslogs-region": "ap-southeast-2",
-                    "awslogs-stream-prefix": "sit-master-now-site"
+                    "awslogs-stream-prefix": "now-site-sit-master"
                 }
             },
             "essential": true
