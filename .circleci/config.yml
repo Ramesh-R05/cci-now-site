@@ -17,7 +17,6 @@ jobs:
     environment:
       APP_KEY=now-site
       APP_STUBBED=true
-      BRANCH_NAME=branch
     machine:
       image: ubuntu-1604:202010-01
     working_directory: ~/now-site
@@ -30,12 +29,12 @@ jobs:
           name: Print Env Vars - ENV_TYPE | Branch_Name | now-site
           command: |
                 if [ $CIRCLE_BRANCH == master ]; then
-                  BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM
-                  echo "CCI_BRANCH_NAME=$BRANCH_NAME"
+                  BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM;
+                  echo "export BRANCH_NAME=$BRANCH_NAME" >> $BASH_ENV;
                 fi
                 if [ $CIRCLE_BRANCH != master ]; then
                   BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g').$CIRCLE_BUILD_NUM;
-                  echo "CCI_BRANCH_NAME=$BRANCH_NAME"
+                  echo "export BRANCH_NAME=$BRANCH_NAME" >> $BASH_ENV;
                 fi
 # Set and Print ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
       - run:
