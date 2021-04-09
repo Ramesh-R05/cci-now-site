@@ -86,6 +86,17 @@ jobs:
           no-output-timeout: 9m
           tag: '$BRANCH_NAME,latest'
 
+
+# AWS ECS Integration: Create a Service definition using aws-cli
+      - run:
+          name: Create Service to be used by the task-def
+          command: |
+                aws ecs create-service \
+                --cluster cci-app-ecs \
+                --service-name $SERVICE_NAME \
+                --task-definition sit-branch-now-site-task \
+                --desired-count 1
+
 # AWS ECS Integration: Create a task definition using JSON: path-to/json-file.json
       - aws-ecs/update-task-definition-from-json:
           task-definition-json: $TASKDEF_JSON_FILENAME
