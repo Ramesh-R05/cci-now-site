@@ -24,16 +24,18 @@ jobs:
     working_directory: ~/now-site
     steps:
 # Code Checkout - CCI_Build
-      - checkout
+#      - checkout
 
 # Set and Print ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
       - run:
           name: Print Env Vars - ENV_TYPE | Branch_Name | now-site
           command: |
                 if [ $CIRCLE_BRANCH == master ]; then
-                echo "CCI_BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM"
+                  echo "CCI_BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM"
+                fi
                 if [ $CIRCLE_BRANCH != master ]; then
-                echo "CCI_BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM"
+                  echo "CCI_BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM"
+                fi
 
 # Prepare the VM for NodeJS App Build
 #      - run:
