@@ -34,7 +34,8 @@ jobs:
                   echo "CCI_BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM"
                 fi
                 if [ $CIRCLE_BRANCH != master ]; then
-                  echo "CCI_BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM"
+                  CCI_BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g').$CIRCLE_BUILD_NUM;
+                  echo "CCI_BRANCH_NAME=$CCI_BRANCH_NAME"
                 fi
 
 # Prepare the VM for NodeJS App Build
