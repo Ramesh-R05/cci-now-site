@@ -21,8 +21,6 @@ jobs:
       image: ubuntu-1604:202010-01
     working_directory: ~/now-site
     steps:
-# Code Checkout - CCI_Build
-#      - checkout
 
 # Set ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
       - run:
@@ -40,6 +38,7 @@ jobs:
                   echo "export SERVICE_NAME=sit-branch-now-site" >> $BASH_ENV;
                   echo "export TASKDEF_JSON_FILENAME=sit-branch-task-def.json" >> $BASH_ENV;
                 fi
+
 # Print ENV Vars - Verify CircleCI ENV
       - run:
           name: Print Env Vars - Verify | now-site
@@ -48,6 +47,8 @@ jobs:
                 echo "CCI_SERVICE_NAME=$SERVICE_NAME";
                 echo "CCI_TASKDEF_JSON_FILENAME=$TASKDEF_JSON_FILENAME";
 
+# Code Checkout - CCI_Build
+      - checkout
 
 # Prepare the VM for NodeJS App Build
       - run:
