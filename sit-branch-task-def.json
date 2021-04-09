@@ -1,0 +1,75 @@
+{
+"family": "sit-branch-now-site",
+"requiresCompatibilities": [ "EC2" ],
+"executionRoleArn": "arn:aws:iam::014901580825:role/ecsTaskExecutionRole",
+"containerDefinitions":
+    [
+      {
+            "name": "sit-branch-now-site-img",
+            "image": "317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/cci-now-site:latest",
+            "cpu": 512,
+            "memory": 512,
+            "memoryReservation": 512,
+            "portMappings":
+            [
+                {
+                "containerPort": 3001,
+                "hostPort": 0,
+                "protocol": "tcp"
+                }
+            ],
+            "environment":
+            [
+                {
+                "name": "APM_KEY",
+                "value": "c777240932e6282ffacc6a42ae6a0709426522bb"
+                },
+                {
+                "name": "NODE_ENV",
+                "value": "production"
+                },
+                {
+                "name": "APP_ENV",
+                "value": "sit"
+                },
+                {
+                "name": "APP_REGION",
+                "value": "au"
+                },
+                {
+                "name": "APP_DEBUG",
+                "value": "true"
+                },
+                {
+                "name": "APP_SERVICES_ACCESS_KEY",
+                "value": "898f8bcc906c497d8ed8a224b17ff2d8"
+                },
+                {
+                "name": "EMAIL_HASH_SERVICE_SECRET_KEY",
+                "value": "2bVaf4fRcz18NmlzpnOa14Yvmirj6Gyn1ADCVGvU"
+                },
+                {
+                "name": "REDIS_CONFIG_ENDPOINT_URL",
+                "value": "redis-test-no-cluster-ro.kfx4dp.ng.0001.apse2.cache.amazonaws.com:6379"
+                },
+                {
+                "name": "REDIS_CONFIG_ENDPOINT_PORT",
+                "value": "6379"
+                }
+            ],
+            "logConfiguration":
+            {
+                "logDriver": "awslogs",
+                "options":
+                {
+                    "awslogs-group": "/ecs/cci-app-ecs-logs",
+                    "awslogs-region": "ap-southeast-2",
+                    "awslogs-stream-prefix": "sit-branch-now-site"
+                }
+            },
+            "essential": true
+        }
+    ],
+"cpu": "512",
+"memory": "512"
+}
