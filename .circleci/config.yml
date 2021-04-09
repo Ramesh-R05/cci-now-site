@@ -17,8 +17,6 @@ jobs:
     environment:
       APP_KEY=now-site
       APP_STUBBED=true
-      SVC_SIT_MASTER=service-sit-master-now-site
-      SVC_SIT_BRANCH=service-sit-branch-now-site
     machine:
       image: ubuntu-1604:202010-01
     working_directory: ~/now-site
@@ -26,17 +24,23 @@ jobs:
 # Code Checkout - CCI_Build
 #      - checkout
 
-# Set and Print ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
+# Set ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
       - run:
-          name: Print Env Vars - ENV_TYPE | Branch_Name | now-site
+          name: Set Env Vars - ENV_TYPE | Branch_Name | now-site
           command: |
                 if [ $CIRCLE_BRANCH == master ]; then
-                  echo "CCI_BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM"
+                  BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM;
+                  echo "export BRANCH_NAME=$BRANCH_NAME" >> $BASH_ENV;
                 fi
                 if [ $CIRCLE_BRANCH != master ]; then
-                  CCI_BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g').$CIRCLE_BUILD_NUM;
-                  echo "CCI_BRANCH_NAME=$CCI_BRANCH_NAME"
+                  BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g').$CIRCLE_BUILD_NUM;
+                  echo "export BRANCH_NAME=$BRANCH_NAME" >> $BASH_ENV;
                 fi
+# Print ENV Vars - Verify CircleCI ENV
+      - run:
+          name: Print Env Vars - ENV_TYPE | Branch_Name | now-site
+          command: echo "CCI_BRANCH_NAME=$BRANCH_NAME"
+          
 
 # Prepare the VM for NodeJS App Build
 #      - run:
@@ -75,7 +79,7 @@ jobs:
 #          dockerfile: Dockerfile
 #          no-output-timeout: 9m
 #          skip-when-tags-exist: false # Don't Skip
-#          tag: '$CCI_BRANCH_NAME,latest'
+#          tag: '$BRANCH_NAME,latest'
 #
 # AWS ECS Integration: Create a task definition using JSON: path-to/json-file.json
 #      - aws-ecs/update-task-definition-from-json:
@@ -86,7 +90,7 @@ jobs:
 #          cluster-name: arn:aws:ecs:ap-southeast-2:014901580825:cluster/cci-app-ecs
 #          service-name: $SERVICE_NAME
 #          family: sit-master-now-site
-#          container-image-name-updates: "container=now-site-master-img,tag=$CCI_BRANCH_NAME"
+#          container-image-name-updates: "container=now-site-master-img,tag=$BRANCH_NAME"
 #          skip-task-definition-registration: false # Don't Skip
 #          force-new-deployment: true
 #          verify-revision-is-deployed: true
