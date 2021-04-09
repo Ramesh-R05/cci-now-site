@@ -27,7 +27,7 @@ jobs:
 # Set and Print CCI_BRANCH to use with ECR/DOCKER - Verify CircleCI Task
       - run:
           name: Print Env Vars - ENV_TYPE | Branch_Name | now-site
-          command: echo "CCI_BRANCH_NAME=$CIRCLE_BRANCH"
+          command: echo "CCI_BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM"
 
 # Prepare the VM for NodeJS App Build
       - run:
