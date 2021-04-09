@@ -70,7 +70,7 @@ jobs:
           dockerfile: Dockerfile
           no-output-timeout: 21m
           skip-when-tags-exist: false # Don't Skip
-          tag: 'latest,$CCI_BRANCH.$CIRCLE_BUILD_NUM'
+          tag: 'latest,$CCI_BRANCH.$CIRCLE_BUILD_NUM' 
 
 # AWS ECS Integration: Create a task definition using JSON: path-to/json-file.json
       - aws-ecs/update-task-definition-from-json:
