@@ -24,7 +24,7 @@ jobs:
 # Code Checkout - CCI_Build
 #      - checkout
 
-# Set and Print ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
+# Set ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
       - run:
           name: Print Env Vars - ENV_TYPE | Branch_Name | now-site
           command: |
@@ -36,7 +36,7 @@ jobs:
                   BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g').$CIRCLE_BUILD_NUM;
                   echo "export BRANCH_NAME=$BRANCH_NAME" >> $BASH_ENV;
                 fi
-# Set and Print ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
+# Print ENV Vars - Verify CircleCI ENV
       - run:
           name: Print Env Vars - ENV_TYPE | Branch_Name | now-site
           command: echo "CCI_BRANCH_NAME=$BRANCH_NAME"
