@@ -1,6 +1,6 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference # NodeJS App + Docker + ECR + ECS
 
-# Version 2.1 with ORBS for AWS ECR | ECS and DOCKER - Homes-Site
+# Version 2.1 with ORBS for AWS ECR | ECS and DOCKER - now-Site
 
 version: 2.1
 
@@ -26,7 +26,7 @@ jobs:
 
 # Set and Print CCI_BRANCH to use with ECR/DOCKER - Verify CircleCI Task
       - run:
-          name: Print Env Vars - ENV_TYPE | Branch_Name | HOMES-SITE
+          name: Print Env Vars - ENV_TYPE | Branch_Name | now-site
           command: |
                 CCI_BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g');
                 echo "export CCI_BRANCH=$CCI_BRANCH_NAME" >> $BASH_ENV;
@@ -93,7 +93,7 @@ jobs:
 
 workflows:
   version: 2
-  homes-site-build:
+  now-site-build:
     jobs:
       - ecr-buildandpush-dockerimage:
           filters:
