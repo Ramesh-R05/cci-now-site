@@ -1,5 +1,5 @@
 {
-"family": "sit-branch-now-site",
+"family": "sit-branch-now-site-task",
 "requiresCompatibilities": [ "EC2" ],
 "executionRoleArn": "arn:aws:iam::014901580825:role/ecsTaskExecutionRole",
 "containerDefinitions":
@@ -64,7 +64,7 @@
                 {
                     "awslogs-group": "/ecs/cci-app-ecs-logs",
                     "awslogs-region": "ap-southeast-2",
-                    "awslogs-stream-prefix": "sit-branch-now-site"
+                    "awslogs-stream-prefix": "sit-branch-now-site-logs"
                 }
             },
             "essential": true
