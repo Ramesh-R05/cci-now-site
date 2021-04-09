@@ -21,7 +21,7 @@
             "environment":
             [
                 {
-                "name": "APM_KEY"
+                "name": "APM_KEY",
                 "value": "c777240932e6282ffacc6a42ae6a0709426522bb"
                 },
                 {
