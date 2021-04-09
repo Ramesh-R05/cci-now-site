@@ -50,46 +50,46 @@ jobs:
 
 
 # Prepare the VM for NodeJS App Build
-#      - run:
-#          name: "Install | NVM | NPM | NODE_JS"
-#          command: |
-#                echo -e "\n\n\n ### UBUNTU_16.04 | NVM | NPM | NODE_JS "
-#                cd src; pwd;
-#                echo -e "\n ### Install NVM (Node Version Manager) # Installer for NodeJS + NPM "
-#                curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-#                source ~/.profile
-#                echo -e "\n ### Install NVM v10.19.0 "
-#                nvm install v10.19.0
-#                echo -e "\n ### Setting Default NVM v10.19.0 "
-#                nvm use v10.19.0;
-#                echo -e "\n ### Setting NPM Registry as BXM "
-#                npm set @bxm:registry http://npm.digital.bauer-media.net.au
-#                echo -e "\n ### Print Version Information "
-#                echo -e "\n ### NPM Version  : $(npm --version)"
-#              echo -e "\n ### Node Version : $(node --version)"
-#                npm install
-#                npm rebuild node-sass --force
-#                npm run test:ci
-#                NODE_ENV=production npm run build
+      - run:
+          name: "Install | NVM | NPM | NODE_JS"
+          command: |
+                echo -e "\n\n\n ### UBUNTU_16.04 | NVM | NPM | NODE_JS "
+                cd src; pwd;
+                echo -e "\n ### Install NVM (Node Version Manager) # Installer for NodeJS + NPM "
+                curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+                source ~/.profile
+                echo -e "\n ### Install NVM v10.19.0 "
+                nvm install v10.19.0
+                echo -e "\n ### Setting Default NVM v10.19.0 "
+                nvm use v10.19.0;
+                echo -e "\n ### Setting NPM Registry as BXM "
+                npm set @bxm:registry http://npm.digital.bauer-media.net.au
+                echo -e "\n ### Print Version Information "
+                echo -e "\n ### NPM Version  : $(npm --version)"
+                echo -e "\n ### Node Version : $(node --version)"
+                npm install
+                npm rebuild node-sass --force
+                npm run test:ci
+                NODE_ENV=production npm run build
 
 # AWS ECR Integration: Build and Push Docker Image to ECR
-#      - aws-ecr/build-and-push-image:
-#          checkout: false  # Checkout already done in previous step
-#          aws-access-key-id: ECR_AWS_ACCESS_KEY_ID
-#          aws-secret-access-key: ECR_AWS_SECRET_ACCESS_KEY
-#          account-url: AWS_ECR_ACCOUNT_URL
-#          region: AWS_DEFAULT_REGION
-#          profile-name: profile
-#          repo: cci-now-site
-#          create-repo: true
-#          repo-scan-on-push: false
-#          dockerfile: Dockerfile
-#          no-output-timeout: 9m
-#          tag: '$BRANCH_NAME,latest'
+      - aws-ecr/build-and-push-image:
+          checkout: false  # Checkout already done in previous step
+          aws-access-key-id: ECR_AWS_ACCESS_KEY_ID
+          aws-secret-access-key: ECR_AWS_SECRET_ACCESS_KEY
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_DEFAULT_REGION
+          profile-name: profile
+          repo: cci-now-site
+          create-repo: true
+          repo-scan-on-push: false
+          dockerfile: Dockerfile
+          no-output-timeout: 9m
+          tag: '$BRANCH_NAME,latest'
 
 # AWS ECS Integration: Create a task definition using JSON: path-to/json-file.json
-#      - aws-ecs/update-task-definition-from-json:
-#          task-definition-json: $TASKDEF_JSON_FILENAME
+      - aws-ecs/update-task-definition-from-json:
+          task-definition-json: $TASKDEF_JSON_FILENAME
 
 # AWS ECS Integration: [ Cluster | Service | Task | PullImage-ECR | Deploy-NodeJS-APP ]
 #      - aws-ecs/update-service:
