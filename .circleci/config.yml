@@ -17,7 +17,6 @@ jobs:
     environment:
       APP_KEY=now-site
       APP_STUBBED=true
-      CCI_BRANCH="$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g')"
     machine:
       image: ubuntu-1604:202010-01
     working_directory: ~/now-site
@@ -28,7 +27,7 @@ jobs:
 # Set and Print CCI_BRANCH to use with ECR/DOCKER - Verify CircleCI Task
       - run:
           name: Print Env Vars - ENV_TYPE | Branch_Name | now-site
-          command: echo "CCI_BRANCH_NAME=$CCI_BRANCH"
+          command: echo "CCI_BRANCH_NAME=$CIRCLE_BRANCH"
 
 # Prepare the VM for NodeJS App Build
       - run:
