@@ -91,11 +91,6 @@ jobs:
                 npm rebuild node-sass --force
                 npm run test:ci
                 NODE_ENV=production npm run build
-
-# Print Version Information - Verify
-      - run:
-          name: "Print Version Information - Verify"
-          command: |
                 echo -e "\n ### Version Information "
                 echo -e "\n ### NVM Version  : $(nvm --version)"
                 echo -e "\n ### NPM Version  : $(npm --version)"
@@ -136,7 +131,11 @@ jobs:
                 echo -e "\n ### SERVICE STATUS - INACTIVE - Delete Service"
                 echo -e " ### SERVICE_NAME=$check_service_name"
                 echo -e " ### SERVICE_STATUS=$check_service_status"
-                aws ecs delete-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force
+                aws ecs create-service \
+                --cluster $CLUSTER_NAME \
+                --service-name $SERVICE_NAME \
+                --task-definition $TASK_NAME \
+                --desired-count 1
                 fi
                 if [ "$check_service" != "$SERVICE_NAME" ]; then
                 echo -e "\n ### SERVICE NAME - NOT-FOUND - Create Service"
@@ -189,3 +188,14 @@ workflows:
 #          source ~/.profile
 #          tag: 'latest,$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM'
 #          echo -e "\n\n\n ### CCI_BRANCHNAME: $CCI_BRANCH_NAME"
+
+
+# Print Version Information - Verify
+#      - run:
+#          name: "Print Version Information - Verify"
+#          command: |
+#                echo -e "\n ### Version Information "
+#                echo -e "\n ### NVM Version  : $(nvm --version)"
+#                echo -e "\n ### NPM Version  : $(npm --version)"
+#                echo -e "\n ### Node Version : $(node --version)"
+#                aws ecs delete-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force
