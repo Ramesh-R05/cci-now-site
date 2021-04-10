@@ -140,7 +140,7 @@ jobs:
           verify-revision-is-deployed: true
           verification-timeout: 9m
           max-poll-attempts: 10
-          poll-interval: 120 # check deployment status every 2 minutes
+          poll-interval: 120 # check deployment status every 2 minutes 
 
 # WORKFLOWS
 
