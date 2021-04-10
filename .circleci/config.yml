@@ -69,6 +69,19 @@ jobs:
                 echo "IMAGE_NAME=$IMAGE_NAME";
 
 
+# AWS ECS Integration: Create a service definition that runs the task-def
+      - run:
+          name: Create Service that runs the task-def
+          command: |
+                check_service=`aws ecs list-services --cluster $CLUSTER_NAME --query '$SERVICE_NAME' --output text`
+                echo -e "\n\n\n ### CHECK_SERVICE=$check_service"
+                if [ $check_service != $SERVICE_NAME ]; then
+                aws ecs create-service \
+                --cluster $CLUSTER_NAME --service-name $SERVICE_NAME \
+                --task-definition $TASK_NAME \
+                --desired-count 1
+                fi
+
 # Code Checkout - CCI_Build
       - checkout
 
@@ -119,18 +132,6 @@ jobs:
       - aws-ecs/update-task-definition-from-json:
           task-definition-json: $TASKDEF_JSON_FILENAME
 
-# AWS ECS Integration: Create a service definition that runs the task-def
-      - run:
-          name: Create Service that runs the task-def
-          command: |
-                check_service=`aws ecs list-services --cluster $CLUSTER_NAME --query "$SERVICE_NAME" --output text`
-                echo -e "\n\n\n ### CHECK_SERVICE=$check_service"
-                if [ $check_service != $SERVICE_NAME ]; then
-                aws ecs create-service \
-                --cluster $CLUSTER_NAME --service-name $SERVICE_NAME \
-                --task-definition $TASK_NAME \
-                --desired-count 1
-                fi
 
 # AWS ECS Integration: [ Cluster | Service | Task | PullImage-ECR | Deploy-NodeJS-APP ]
       - aws-ecs/update-service:
