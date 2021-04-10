@@ -35,7 +35,7 @@ jobs:
     working_directory: ~/now-site
     steps:
 
-# Set ENV Vars to use with ECR/DOCKER - Verify CircleCI Task 
+# Set ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
       - run:
           name: Set Env Vars - SHELL_VARIABLES
           command: |
@@ -121,7 +121,10 @@ jobs:
       - run:
           name: Create Service that runs the task-def
           command: |
-                check_service=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`
+                name_service=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`
+                status_service=`aws ecs describe-services --services $SERVICE_NAME`
+                echo "name_service=$name_service"
+                echo "status_service=$status_service"
                 echo -e "\n\n\n ### CHECK_SERVICE=$check_service"
                 if [ $check_service != $SERVICE_NAME ]; then
                 aws ecs create-service \
