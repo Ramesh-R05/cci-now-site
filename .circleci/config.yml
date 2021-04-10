@@ -55,6 +55,7 @@ jobs:
                   echo "export TASKDEF_JSON_FILENAME=$SIT_BRANCH_TASKDEF_JSON_FILENAME" >> $BASH_ENV;
                   echo "export IMAGE_NAME=$CCI_BRANCH_NAME" >> $BASH_ENV;
                 fi
+
 # Print ENV Vars - Verify CircleCI ENV
       - run:
           name: Print Env Vars - Verify
