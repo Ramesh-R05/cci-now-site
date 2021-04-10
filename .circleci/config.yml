@@ -68,6 +68,29 @@ jobs:
                 echo "CONTAINER_NAME=$CONTAINER_NAME"
                 echo "IMAGE_NAME=$IMAGE_NAME";
 
+# AWS ECS Integration: Create/Update a service definition that runs the task-def
+      - run:
+          name: Create or Update Service that runs the task-def
+          command: |
+                check_service=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`
+                echo -e "\n\n\n ### CHECK_SERVICE=$check_service"
+                if [ $check_service != $SERVICE_NAME ]; then
+                aws ecs create-service \
+                --cluster $CLUSTER_NAME \
+                --service-name $SERVICE_NAME \
+                --task-definition $TASK_NAME \
+                --desired-count 1
+                echo -e "\n\n\n ### CHECK_SERVICE=$check_service - Service Created"
+                fi
+                if [ $check_service == $SERVICE_NAME ]; then
+                aws ecs update-service \
+                --cluster $CLUSTER_NAME \
+                --service $SERVICE_NAME \
+                --task-definition $TASK_NAME \
+                --desired-count 1
+                echo -e "\n\n\n ### CHECK_SERVICE=$check_service - Service Updated"
+                fi
+
 
 # Code Checkout - CCI_Build
       - checkout
@@ -118,29 +141,6 @@ jobs:
 # AWS ECS Integration: Create a task definition using JSON: path-to/json-file.json
       - aws-ecs/update-task-definition-from-json:
           task-definition-json: $TASKDEF_JSON_FILENAME
-
-# AWS ECS Integration: Create/Update a service definition that runs the task-def
-      - run:
-          name: Create or Update Service that runs the task-def
-          command: |
-                check_service=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`
-                echo -e "\n\n\n ### CHECK_SERVICE=$check_service"
-                if [ $check_service != $SERVICE_NAME ]; then
-                aws ecs create-service \
-                --cluster $CLUSTER_NAME \
-                --service-name $SERVICE_NAME \
-                --task-definition $TASK_NAME \
-                --desired-count 1
-                echo -e "\n\n\n ### CHECK_SERVICE=$check_service - Service Created"
-                fi
-                if [ $check_service == $SERVICE_NAME ]; then
-                aws ecs update-service \
-                --cluster $CLUSTER_NAME \
-                --service $SERVICE_NAME \
-                --task-definition $TASK_NAME \
-                --desired-count 1
-                echo -e "\n\n\n ### CHECK_SERVICE=$check_service - Service Updated"
-                fi
 
 # AWS ECS Integration: [ Cluster | Service | Task | PullImage-ECR | Deploy-NodeJS-APP ]
       - aws-ecs/update-service:
