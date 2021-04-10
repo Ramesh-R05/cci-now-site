@@ -122,7 +122,7 @@ jobs:
           name: Create Service that runs the task-def
           command: |
                 name_service=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`
-                status_service=`aws ecs describe-services --services $SERVICE_NAME`
+                status_service=`aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME`
                 echo "name_service=$name_service"
                 echo "status_service=$status_service"
                 echo -e "\n\n\n ### CHECK_SERVICE=$check_service"
