@@ -20,7 +20,7 @@ jobs:
       APP_STUBBED: true
       # Settings for master
       SIT_MASTER_SERVICE_NAME: sit-master-now-site-service
-      SIT_MASTER_TASK_NAME: sit-master-now-site-task
+      SIT_MASTER_TASK_NAME: sit-master-now-site-task"
       SIT_MASTER_TASKDEF_JSON_FILENAME: sit-master-now-site-task-def.json
       # Settings for branch
       SIT_BRANCH_SERVICE_NAME: sit-branch-now-site-service
@@ -69,6 +69,7 @@ jobs:
                 echo "CONTAINER_NAME=$CONTAINER_NAME"
                 echo "IMAGE_NAME=$IMAGE_NAME";
 
+
 # Code Checkout - CCI_Build
       - checkout
 
@@ -78,12 +79,11 @@ jobs:
           command: |
                 echo -e "\n\n\n ### UBUNTU_16.04 | NVM | NPM | NODE_JS "
                 cd src; pwd;
-                echo -e "\n ### Install NVM (Node Version Manager) # Installer for NodeJS + NPM "
+                echo -e "\n ### Install NVM (Node Version Manager) - Installer for NodeJS + NPM "
                 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
                 source ~/.profile
-                echo -e "\n ### Install NVM v10.19.0 "
                 nvm install v10.19.0
-                echo -e "\n ### Setting Default NVM v10.19.0 "
+                echo -e "\n ### Setting Default NVM "
                 nvm use v10.19.0;
                 echo -e "\n ### Setting NPM Registry as BXM "
                 npm set @bxm:registry http://npm.digital.bauer-media.net.au
@@ -126,7 +126,7 @@ jobs:
           verify-revision-is-deployed: true
           verification-timeout: 9m
           max-poll-attempts: 10
-          poll-interval: 120 # check deployment status every 2 minutes 
+          poll-interval: 120 # check deployment status every 2 minutes
 
 # WORKFLOWS
 
@@ -146,23 +146,11 @@ workflows:
               ignore:
                 - main
 
+
 ### END ###
-
-
 
 #          echo -e "\n ### This is pipeline ID << pipeline.id >> # << pipeline.git.branch >>"
 #          echo -e "\n ### This is pipeline ID << pipeline.id >> # << pipeline.git.branch >>"
 #          source ~/.profile
 #          tag: 'latest,$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM'
 #          echo -e "\n\n\n ### CCI_BRANCHNAME: $CCI_BRANCH_NAME"
-
-
-# Print Version Information - Verify
-#      - run:
-#          name: "Print Version Information - Verify"
-#          command: |
-#                echo -e "\n ### Version Information "
-#                echo -e "\n ### NVM Version  : $(nvm --version)"
-#                echo -e "\n ### NPM Version  : $(npm --version)"
-#                echo -e "\n ### Node Version : $(node --version)"
-#                aws ecs delete-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force
