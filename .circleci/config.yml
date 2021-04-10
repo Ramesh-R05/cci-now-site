@@ -15,7 +15,7 @@ orbs:
 jobs:
   ecr-buildandpush-dockerimage:
     environment:
-      # settings for APP
+      # Settings for APP
       APP_KEY: now-site
       APP_STUBBED: true
       # Settings for master
