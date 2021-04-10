@@ -131,16 +131,16 @@ jobs:
                 fi
                 if [ "$check_service_status" != "ACTIVE" ]; then
                 echo -e "\n ### check_service_status NOT ACTIVE"
-                echo -e "\n ### check_service_name=$check_service_name"
+                echo -e " ### check_service_name=$check_service_name"
                 echo -e " ### check_service_status=$check_service_status"
                 fi
                 if [ "$check_service_status" == "ACTIVE" ]; then
                 echo -e "\n ### check_service_status ACTIVE"
-                echo -e "\n ### check_service_name=$check_service_name"
-                echo -e "\n ### check_service_status=$check_service_status"
+                echo -e " ### check_service_name=$check_service_name"
+                echo -e " ### check_service_status=$check_service_status"
                 fi
                 aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --output text
-                aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --output json
+                aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --query status --output json
 
 # AWS ECS Integration: [ Cluster | Service | Task | PullImage-ECR | Deploy-NodeJS-APP ]
       - aws-ecs/update-service:
