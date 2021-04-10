@@ -127,7 +127,11 @@ jobs:
                 echo -e "\n ### check_service_name=$check_service_name"
                 echo -e " ### check_service_status=$check_service_status"
                 fi
-                if [ "$check_service" == "$SERVICE_NAME" ]; then
+                if [ "$check_service_status" != "ACTIVE"]; then
+                echo -e "\n ### check_service_name=$check_service_name"
+                echo -e " ### check_service_status=$check_service_status"
+                fi
+                if [ "$check_service_status" == "ACTIVE"]; then
                 echo -e "\n ### check_service_name=$check_service_name"
                 echo -e " ### check_service_status=$check_service_status"
                 fi
