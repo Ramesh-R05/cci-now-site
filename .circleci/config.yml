@@ -132,7 +132,7 @@ jobs:
                 if [ $check_service == $SERVICE_NAME ]; then
                 aws ecs update-service \
                 --cluster $CLUSTER_NAME \
-                --service-name $SERVICE_NAME \
+                --service $SERVICE_NAME \
                 --task-definition $TASK_NAME \
                 --desired-count 1
                 echo -e "\n\n\n ### CHECK_SERVICE=$check_service - Service Updated"
