@@ -122,18 +122,18 @@ jobs:
           name: Create Service that runs the task-def
           command: |
                 check_service_name=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`
-                check_service_status=`aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --output text`
+                check_service_status=`aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME`
                 if [ "$check_service" != "$SERVICE_NAME" ]; then
                 echo -e "\n ### check_service_status SERVICE DOES NOT EXIST"
                 echo -e "\n ### check_service_name=$check_service_name"
                 echo -e " ### check_service_status=$check_service_status"
                 fi
-                if [ "$check_service_status" != "ACTIVE"]; then
+                if [ "$check_service_status" != "ACTIVE" ]; then
                 echo -e "\n ### check_service_status NOT ACTIVE"
                 echo -e "\n ### check_service_name=$check_service_name"
                 echo -e " ### check_service_status=$check_service_status"
                 fi
-                if [ "$check_service_status" == "ACTIVE"]; then
+                if [ "$check_service_status" == "ACTIVE" ]; then
                 echo -e "\n ### check_service_status ACTIVE"
                 echo -e "\n ### check_service_name=$check_service_name"
                 echo -e "\n ### check_service_status=$check_service_status"
