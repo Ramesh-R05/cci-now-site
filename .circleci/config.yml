@@ -15,8 +15,21 @@ orbs:
 jobs:
   ecr-buildandpush-dockerimage:
     environment:
-      APP_KEY=now-site
-      APP_STUBBED=true
+      # Settings for APP
+      APP_KEY: now-site
+      APP_STUBBED: true
+      # Settings for master
+      SIT_MASTER_SERVICE_NAME: sit-master-now-site-service
+      SIT_MASTER_TASK_NAME: sit-master-now-site-task"
+      SIT_MASTER_TASKDEF_JSON_FILENAME: sit-master-now-site-task-def.json
+      # Settings for branch
+      SIT_BRANCH_SERVICE_NAME: sit-branch-now-site-service
+      SIT_BRANCH_TASK_NAME: sit-branch-now-site-task
+      SIT_BRANCH_TASKDEF_JSON_FILENAME: sit-branch-now-site-task-def.json
+      # Settings for commons
+      CLUSTER_NAME: cci-app-ecs
+      REPOS_NAME: cci-now-site
+      CONTAINER_NAME: now-site-container
     machine:
       image: ubuntu-1604:202010-01
     working_directory: ~/now-site
@@ -24,28 +37,37 @@ jobs:
 
 # Set ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
       - run:
-          name: Set Env Vars - env_type | branch_name | now-site
+          name: Set Env Vars - SHELL_VARIABLES
           command: |
                 if [ $CIRCLE_BRANCH == master ]; then
-                  BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM;
-                  echo "export BRANCH_NAME=$BRANCH_NAME" >> $BASH_ENV;
-                  echo "export SERVICE_NAME=sit-master-now-site" >> $BASH_ENV;
-                  echo "export TASKDEF_JSON_FILENAME=sit-master-task-def.json" >> $BASH_ENV;
+                  CCI_BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM;
+                  echo "export BRANCH_NAME=$CCI_BRANCH_NAME" >> $BASH_ENV;
+                  echo "export SERVICE_NAME=$SIT_MASTER_SERVICE_NAME" >> $BASH_ENV;
+                  echo "export TASK_NAME=$SIT_MASTER_TASK_NAME" >> $BASH_ENV;
+                  echo "export TASKDEF_JSON_FILENAME=$SIT_MASTER_TASKDEF_JSON_FILENAME" >> $BASH_ENV;
+                  echo "export IMAGE_NAME=$CCI_BRANCH_NAME" >> $BASH_ENV;
                 fi
                 if [ $CIRCLE_BRANCH != master ]; then
-                  BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g').$CIRCLE_BUILD_NUM;
-                  echo "export BRANCH_NAME=$BRANCH_NAME" >> $BASH_ENV;
-                  echo "export SERVICE_NAME=sit-branch-now-site" >> $BASH_ENV;
-                  echo "export TASKDEF_JSON_FILENAME=sit-branch-task-def.json" >> $BASH_ENV;
+                  CCI_BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g').$CIRCLE_BUILD_NUM;
+                  echo "export BRANCH_NAME=$CCI_BRANCH_NAME" >> $BASH_ENV;
+                  echo "export SERVICE_NAME=$SIT_BRANCH_SERVICE_NAME" >> $BASH_ENV;
+                  echo "export TASK_NAME=$SIT_BRANCH_TASK_NAME" >> $BASH_ENV;
+                  echo "export TASKDEF_JSON_FILENAME=$SIT_BRANCH_TASKDEF_JSON_FILENAME" >> $BASH_ENV;
+                  echo "export IMAGE_NAME=$CCI_BRANCH_NAME" >> $BASH_ENV;
                 fi
-
 # Print ENV Vars - Verify CircleCI ENV
       - run:
-          name: Print Env Vars - Verify | now-site
+          name: Print Env Vars - Verify
           command: |
-                echo "CCI_BRANCH_NAME=$BRANCH_NAME";
-                echo "CCI_SERVICE_NAME=$SERVICE_NAME";
-                echo "CCI_TASKDEF_JSON_FILENAME=$TASKDEF_JSON_FILENAME";
+                echo "BRANCH_NAME=$BRANCH_NAME";
+                echo "CLUSTER_NAME=$CLUSTER_NAME";
+                echo "SERVICE_NAME=$SERVICE_NAME";
+                echo "TASK_NAME=$TASK_NAME";
+                echo "TASKDEF_JSON_FILENAME=$TASKDEF_JSON_FILENAME";
+                echo "REPOS_NAME=$REPOS_NAME";
+                echo "CONTAINER_NAME=$CONTAINER_NAME"
+                echo "IMAGE_NAME=$IMAGE_NAME";
+
 
 # Code Checkout - CCI_Build
       - checkout
@@ -68,43 +90,57 @@ jobs:
                 npm rebuild node-sass --force
                 npm run test:ci
                 NODE_ENV=production npm run build
-                echo -e "\n ### Print Version Information "
+
+# Prepare the VM for NodeJS App Build
+      - run:
+          name: "Print Version Information - Verify"
+          command: |
+                echo -e "\n ### Version Information "
                 echo -e "\n ### NVM Version  : $(nvm --version)"
                 echo -e "\n ### NPM Version  : $(npm --version)"
                 echo -e "\n ### Node Version : $(node --version)"
 
-
 # AWS ECR Integration: Build and Push Docker Image to ECR
       - aws-ecr/build-and-push-image:
           checkout: false  # Checkout already done in previous step
+          profile-name: profile
           aws-access-key-id: ECR_AWS_ACCESS_KEY_ID
           aws-secret-access-key: ECR_AWS_SECRET_ACCESS_KEY
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_DEFAULT_REGION
-          profile-name: profile
-          repo: cci-now-site
+          repo: $REPOS_NAME
           create-repo: true
           repo-scan-on-push: false
           dockerfile: Dockerfile
-          no-output-timeout: 9m
-          tag: '$BRANCH_NAME,latest'
+          no-output-timeout: 9m # 9 minutes
+          tag: '$IMAGE_NAME,latest'
 
 # AWS ECS Integration: Create a task definition using JSON: path-to/json-file.json
       - aws-ecs/update-task-definition-from-json:
           task-definition-json: $TASKDEF_JSON_FILENAME
 
+# AWS ECS Integration: Create a service definition that runs the task-def
+      - run:
+          name: Create Service that runs the task-def
+          command: |
+                aws ecs create-service \
+                --cluster $CLUSTER_NAME \
+                --service-name $SERVICE_NAME \
+                --task-definition $TASK_NAME \
+                --desired-count 1
+
 # AWS ECS Integration: [ Cluster | Service | Task | PullImage-ECR | Deploy-NodeJS-APP ]
-#      - aws-ecs/update-service:
-#          cluster-name: arn:aws:ecs:ap-southeast-2:014901580825:cluster/cci-app-ecs
-#          service-name: $SERVICE_NAME
-#          family: sit-master-now-site
-#          container-image-name-updates: "container=now-site-master-img,tag=$BRANCH_NAME"
-#          skip-task-definition-registration: false # Don't Skip
-#          force-new-deployment: true
-#          verify-revision-is-deployed: true
-#          verification-timeout: 9m
-#          max-poll-attempts: 10
-#          poll-interval: 120
+      - aws-ecs/update-service:
+          cluster-name: arn:aws:ecs:ap-southeast-2:014901580825:cluster/$CLUSTER_NAME
+          service-name: $SERVICE_NAME
+          family: $TASK_NAME
+          container-image-name-updates: "container=$CONTAINER_NAME,tag=$IMAGE_NAME"
+          skip-task-definition-registration: false # Don't Skip
+          force-new-deployment: true
+          verify-revision-is-deployed: true
+          verification-timeout: 9m
+          max-poll-attempts: 10
+          poll-interval: 120 # check deployment status every 2 minutes
 
 # WORKFLOWS
 
