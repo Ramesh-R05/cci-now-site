@@ -90,11 +90,6 @@ jobs:
                 npm rebuild node-sass --force
                 npm run test:ci
                 NODE_ENV=production npm run build
-
-# Prepare the VM for NodeJS App Build
-      - run:
-          name: "Print Version Information - Verify"
-          command: |
                 echo -e "\n ### Version Information "
                 echo -e "\n ### NVM Version  : $(nvm --version)"
                 echo -e "\n ### NPM Version  : $(npm --version)"
