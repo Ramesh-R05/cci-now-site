@@ -73,6 +73,8 @@ jobs:
           name: Create or Update Service that runs the task-def
           command: |
                 check_service=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`
+                service_status=`aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --query status --output text`
+                echo -e "\n\n\n ### SERVICE_STATUS=$service_status"
                 echo -e "\n\n\n ### CHECK_SERVICE=$check_service"
                 if [ $check_service != $SERVICE_NAME ]; then
                 aws ecs create-service \
