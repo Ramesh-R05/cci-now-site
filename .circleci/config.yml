@@ -29,7 +29,7 @@ jobs:
       # Settings for commons
       CLUSTER_NAME: cci-app-ecs
       REPOS_NAME: cci-now-site
-      IMAGE_NAME: now-site-img
+      CONTAINER_NAME: now-site-container
     machine:
       image: ubuntu-1604:202010-01
     working_directory: ~/now-site
@@ -63,7 +63,8 @@ jobs:
                 echo "TASK_NAME=$TASK_NAME";
                 echo "TASKDEF_JSON_FILENAME=$TASKDEF_JSON_FILENAME";
                 echo "REPOS_NAME=$REPOS_NAME";
-                echo "IMAGE_NAME=$IMAGE_NAME";
+                echo "CONTAINER_NAME=$CONTAINER_NAME"
+                echo "IMAGE_NAME=$BRANCH_NAME";
 
 
 # Code Checkout - CCI_Build
@@ -105,7 +106,7 @@ jobs:
           repo-scan-on-push: false
           dockerfile: Dockerfile
           no-output-timeout: 9m # 9 minutes
-          tag: '$BRANCH_NAME,latest'
+          tag: '$IMAGE_NAME,latest'
 
 # AWS ECS Integration: Create a task definition using JSON: path-to/json-file.json
       - aws-ecs/update-task-definition-from-json:
@@ -126,7 +127,7 @@ jobs:
           cluster-name: arn:aws:ecs:ap-southeast-2:014901580825:cluster/$CLUSTER_NAME
           service-name: $SERVICE_NAME
           family: $TASK_NAME
-          container-image-name-updates: "container=$IMAGE_NAME,tag=$BRANCH_NAME"
+          container-image-name-updates: "container=$CONTAINER_NAME,tag=$IMAGE_NAME"
           skip-task-definition-registration: false # Don't Skip
           force-new-deployment: true
           verify-revision-is-deployed: true
