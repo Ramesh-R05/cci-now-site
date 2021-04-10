@@ -121,12 +121,15 @@ jobs:
       - run:
           name: Create Service that runs the task-def
           command: |
-                check_service=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`                
+                check_service_name=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`
+                check_service_status=`aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --query status --output text`                
                 if [ $check_service != $SERVICE_NAME ]; then
-                echo -e "\n\n\n ### CHECK_SERVICE=$check_service - Service Created"
+                echo -e "\n\n\n ### check_service_name=$check_service_name"
+                echo -e "\n\n\n ### check_service_status=$check_service_status"
                 fi
                 if [ $check_service == $SERVICE_NAME ]; then
-                echo -e "\n ### CHECK_SERVICE=$check_service - Service Exists"
+                echo -e "\n\n\n ### check_service_name=$check_service_name"
+                echo -e "\n\n\n ### check_service_status=$check_service_status"
                 fi
 
 # AWS ECS Integration: [ Cluster | Service | Task | PullImage-ECR | Deploy-NodeJS-APP ]
