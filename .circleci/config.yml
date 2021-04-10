@@ -74,7 +74,7 @@ jobs:
 
 # Prepare the VM for NodeJS App Build
       - run:
-          name: "Install | NVM | NPM | NODE_JS"
+          name: "Build | Install | NVM | NPM | NODE_JS"
           command: |
                 echo -e "\n\n\n ### UBUNTU_16.04 | NVM | NPM | NODE_JS "
                 cd src; pwd;
