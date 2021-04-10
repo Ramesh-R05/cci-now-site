@@ -38,16 +38,10 @@ jobs:
                 if [ $CIRCLE_BRANCH == master ]; then
                   CCI_BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM;
                   echo "export BRANCH_NAME=$CCI_BRANCH_NAME" >> $BASH_ENV;
-                  echo "export SERVICE_NAME=$SIT_MASTER_SERVICE_NAME" >> $BASH_ENV;
-                  echo "export TASK_NAME=$SIT_MASTER_TASK_NAME" >> $BASH_ENV;
-                  echo "export TASKDEF_JSON_FILENAME=$SIT_MASTER_TASKDEF_JSON_FILENAME" >> $BASH_ENV;
                 fi
                 if [ $CIRCLE_BRANCH != master ]; then
                   CCI_BRANCH_NAME=$(echo $CIRCLE_BRANCH | sed -e 's/\//-/g').$CIRCLE_BUILD_NUM;
                   echo "export BRANCH_NAME=$CCI_BRANCH_NAME" >> $BASH_ENV;
-                  echo "export SERVICE_NAME=$SIT_BRANCH_SERVICE_NAME" >> $BASH_ENV;
-                  echo "export TASK_NAME=$SIT_BRANCH_TASK_NAME" >> $BASH_ENV;
-                  echo "export TASKDEF_JSON_FILENAME=$SIT_BRANCH_TASKDEF_JSON_FILENAME" >> $BASH_ENV;
                 fi
 # Print ENV Vars - Verify CircleCI ENV
       - run:
