@@ -125,7 +125,7 @@ jobs:
                 check_service_status=`aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --query status --output text`
                 if [ "$check_service" != "$SERVICE_NAME" ]; then
                 echo -e "\n ### check_service_status SERVICE DOES NOT EXIST"
-                echo -e "\n ### check_service_name=$check_service_name"
+                echo -e " ### check_service_name=$check_service_name"
                 echo -e " ### check_service_status=$check_service_status"
 
                 fi
@@ -140,7 +140,7 @@ jobs:
                 echo -e " ### check_service_status=$check_service_status"
                 fi
                 aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --output text
-                aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --query status --output json
+                aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --output json
 
 # AWS ECS Integration: [ Cluster | Service | Task | PullImage-ECR | Deploy-NodeJS-APP ]
       - aws-ecs/update-service:
