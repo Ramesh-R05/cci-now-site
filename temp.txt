@@ -23,6 +23,10 @@
                 echo -e "\n ### CHECK_SERVICE=$check_service - Service Exists"
                 fi
 
+                aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --output text
+                aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --output json
+
+
 
 
 
