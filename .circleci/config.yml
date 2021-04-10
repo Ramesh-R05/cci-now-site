@@ -35,7 +35,7 @@ jobs:
     working_directory: ~/now-site
     steps:
 
-# Set ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
+# Set ENV Vars to use with ECR/DOCKER - Verify CircleCI Task 
       - run:
           name: Set Env Vars - SHELL_VARIABLES
           command: |
