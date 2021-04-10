@@ -120,7 +120,7 @@ jobs:
       - aws-ecs/update-task-definition-from-json:
           task-definition-json: $TASKDEF_JSON_FILENAME
 
-# AWS ECS Integration: Create/Update a service definition that runs the task-def
+# AWS ECS Integration: Create a service that runs the task-def
       - run:
           name: Create Service that runs the task-def
           command: |
@@ -179,7 +179,7 @@ workflows:
                 - /dependabot.*/
               ignore:
                 - main
-  
+
 ### END ###
 
 
