@@ -5,7 +5,7 @@
 "containerDefinitions":
     [
       {
-            "name": "now-site-img",
+            "name": "now-site-container",
             "image": "317367993082.dkr.ecr.ap-southeast-2.amazonaws.com/cci-now-site:latest",
             "cpu": 512,
             "memory": 512,
