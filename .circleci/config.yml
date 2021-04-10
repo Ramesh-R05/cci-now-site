@@ -83,9 +83,9 @@ jobs:
                 echo -e "\n\n\n ### CHECK_SERVICE=$check_service - Service Created"
                 fi
                 if [ $check_service == $SERVICE_NAME ]; then
-                aws ecs update-service \
+                aws ecs create-service \
                 --cluster $CLUSTER_NAME \
-                --service $SERVICE_NAME \
+                --service-name $SERVICE_NAME \
                 --task-definition $TASK_NAME \
                 --desired-count 1
                 echo -e "\n\n\n ### CHECK_SERVICE=$check_service - Service Updated"
