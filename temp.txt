@@ -1,3 +1,29 @@
+
+
+# AWS ECS Integration: Create/Update a service definition that runs the task-def
+      - run:
+          name: Create Service that runs the task-def
+          command: |
+                check_service=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`
+                status_service=`aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME`
+                echo "name_service=$name_service"
+                echo "status_service=$status_service"
+                echo -e "\n\n\n ### CHECK_SERVICE=$check_service"
+                if [ $check_service != $SERVICE_NAME ]; then
+                aws ecs create-service \
+                --cluster $CLUSTER_NAME \
+                --service-name $SERVICE_NAME \
+                --task-definition $TASK_NAME \
+                --desired-count 1
+                echo -e "\n\n\n ### CHECK_SERVICE=$check_service - Service Created"
+                fi
+                if [ $check_service == $SERVICE_NAME ]; then
+                echo -e "\n ### CHECK_SERVICE=$check_service - Service Exists"
+                fi
+
+
+
+
 echo "export SERVICE_NAME=$SIT_MASTER_SERVICE_NAME" >> $BASH_ENV;
 echo "export TASK_NAME=$SIT_MASTER_TASK_NAME" >> $BASH_ENV;
 echo "export TASKDEF_JSON_FILENAME=$SIT_MASTER_TASKDEF_JSON_FILENAME" >> $BASH_ENV;

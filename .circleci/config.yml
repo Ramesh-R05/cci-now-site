@@ -121,17 +121,8 @@ jobs:
       - run:
           name: Create Service that runs the task-def
           command: |
-                name_service=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`
-                status_service=`aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME`
-                echo "name_service=$name_service"
-                echo "status_service=$status_service"
-                echo -e "\n\n\n ### CHECK_SERVICE=$check_service"
+                check_service=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`                
                 if [ $check_service != $SERVICE_NAME ]; then
-                aws ecs create-service \
-                --cluster $CLUSTER_NAME \
-                --service-name $SERVICE_NAME \
-                --task-definition $TASK_NAME \
-                --desired-count 1
                 echo -e "\n\n\n ### CHECK_SERVICE=$check_service - Service Created"
                 fi
                 if [ $check_service == $SERVICE_NAME ]; then
