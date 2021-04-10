@@ -62,8 +62,9 @@ jobs:
                 echo "SERVICE_NAME=$SERVICE_NAME";
                 echo "TASK_NAME=$TASK_NAME";
                 echo "TASKDEF_JSON_FILENAME=$TASKDEF_JSON_FILENAME";
-                echo "IMAGE_NAME=$IMAGE_NAME";
                 echo "REPOS_NAME=$REPOS_NAME";
+                echo "IMAGE_NAME=$IMAGE_NAME";
+
 
 # Code Checkout - CCI_Build
       - checkout
