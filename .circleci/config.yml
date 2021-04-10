@@ -37,7 +37,7 @@ jobs:
 
 # Set ENV Vars to use with ECR/DOCKER - Verify CircleCI Task
       - run:
-          name: Set Env Vars - env_type | branch_name | now-site
+          name: Set Env Vars - SHELL_VARIABLES
           command: |
                 if [ $CIRCLE_BRANCH == master ]; then
                   CCI_BRANCH_NAME=$CIRCLE_BRANCH.$CIRCLE_BUILD_NUM;
@@ -57,7 +57,7 @@ jobs:
                 fi
 # Print ENV Vars - Verify CircleCI ENV
       - run:
-          name: Print Env Vars - Verify | now-site
+          name: Print Env Vars - Verify
           command: |
                 echo "BRANCH_NAME=$BRANCH_NAME";
                 echo "CLUSTER_NAME=$CLUSTER_NAME";
@@ -90,7 +90,12 @@ jobs:
                 npm rebuild node-sass --force
                 npm run test:ci
                 NODE_ENV=production npm run build
-                echo -e "\n ### Print Version Information "
+
+# Prepare the VM for NodeJS App Build
+      - run:
+          name: "Print Version Information - Verify"
+          command: |
+                echo -e "\n ### Version Information "
                 echo -e "\n ### NVM Version  : $(nvm --version)"
                 echo -e "\n ### NPM Version  : $(npm --version)"
                 echo -e "\n ### Node Version : $(node --version)"
