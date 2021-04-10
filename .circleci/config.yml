@@ -73,47 +73,49 @@ jobs:
       - checkout
 
 # Prepare the VM for NodeJS App Build
-#      - run:
-#          name: "Build | Install | NVM | NPM | NODE_JS"
-#          command: |
-#                echo -e "\n\n\n ### UBUNTU_16.04 | NVM | NPM | NODE_JS "
-#                cd src; pwd;
-#                curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-#                source ~/.profile
-#                echo -e "\n ### Install NVM (Node Version Manager) - Installer for NodeJS + NPM "
-#                nvm install v10.19.0
-#                echo -e "\n ### Setting Default NVM "
-#                nvm use v10.19.0;
-#                echo -e "\n ### Setting NPM Registry as BXM "
-#                npm set @bxm:registry http://npm.digital.bauer-media.net.au
-#                npm run test:ci
-#                NODE_ENV=production npm run build
-#
+      - run:
+          name: "Build | Install | NVM | NPM | NODE_JS"
+          command: |
+                echo -e "\n\n\n ### UBUNTU_16.04 | NVM | NPM | NODE_JS "
+                cd src; pwd;
+                curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+                source ~/.profile
+                echo -e "\n ### Install NVM (Node Version Manager) - Installer for NodeJS + NPM "
+                nvm install v10.19.0
+                echo -e "\n ### Setting Default NVM "
+                nvm use v10.19.0;
+                echo -e "\n ### Setting NPM Registry as BXM "
+                npm set @bxm:registry http://npm.digital.bauer-media.net.au
+                npm run test:ci
+                NODE_ENV=production npm run build
+
 # Print Version Information - Verify
-#      - run:
-#          name: "Print Version Information - Verify"
-#          command: |
-#                echo -e "\n ### Version Information "
-#                echo -e "\n ### NVM Version  : $(nvm --version)"
-#                echo -e "\n ### NPM Version  : $(npm --version)"
-#                echo -e "\n ### Node Version : $(node --version)"
-#
-## AWS ECR Integration: Build and Push Docker Image to ECR
-#      - aws-ecr/build-and-push-image:
-#          checkout: false  # Checkout already done in previous step
-#          profile-name: profile
-#          aws-access-key-id: ECR_AWS_ACCESS_KEY_ID
-#          aws-secret-access-key: ECR_AWS_SECRET_ACCESS_KEY
-#          account-url: AWS_ECR_ACCOUNT_URL
-#          region: AWS_DEFAULT_REGION
-#          repo: $REPOS_NAME
-#          create-repo: true
-#          repo-scan-on-push: false
-#          dockerfile: Dockerfile
-#          no-output-timeout: 9m # 9 minutes
-#          tag: '$IMAGE_NAME,latest'
+      - run:
+          name: "Print Version Information - Verify"
+          command: |
+                echo -e "\n ### Version Information "
+                echo -e "\n ### NVM Version  : $(nvm --version)"
+                echo -e "\n ### NPM Version  : $(npm --version)"
+                echo -e "\n ### Node Version : $(node --version)"
 
+# AWS ECR Integration: Build and Push Docker Image to ECR
+      - aws-ecr/build-and-push-image:
+          checkout: false  # Checkout already done in previous step
+          profile-name: profile
+          aws-access-key-id: ECR_AWS_ACCESS_KEY_ID
+          aws-secret-access-key: ECR_AWS_SECRET_ACCESS_KEY
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_DEFAULT_REGION
+          repo: $REPOS_NAME
+          create-repo: true
+          repo-scan-on-push: false
+          dockerfile: Dockerfile
+          no-output-timeout: 9m # 9 minutes
+          tag: '$IMAGE_NAME,latest'
 
+# AWS ECS Integration: Create a task definition using JSON: path-to/json-file.json
+      - aws-ecs/update-task-definition-from-json:
+          task-definition-json: $TASKDEF_JSON_FILENAME
 
 # AWS ECS Integration: Create/Update a service definition that runs the task-def
       - run:
@@ -143,10 +145,6 @@ jobs:
                 --task-definition $TASK_NAME \
                 --desired-count 1
                 fi
-
-# AWS ECS Integration: Create a task definition using JSON: path-to/json-file.json
-      - aws-ecs/update-task-definition-from-json:
-          task-definition-json: $TASKDEF_JSON_FILENAME
 
 # AWS ECS Integration: [ Cluster | Service | Task | PullImage-ECR | Deploy-NodeJS-APP ]
       - aws-ecs/update-service:
