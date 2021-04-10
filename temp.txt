@@ -1,3 +1,14 @@
 echo "export SERVICE_NAME=$SIT_MASTER_SERVICE_NAME" >> $BASH_ENV;
 echo "export TASK_NAME=$SIT_MASTER_TASK_NAME" >> $BASH_ENV;
 echo "export TASKDEF_JSON_FILENAME=$SIT_MASTER_TASKDEF_JSON_FILENAME" >> $BASH_ENV;
+
+
+# AWS ECS Integration: Create a service definition that runs the task-def
+      - run:
+          name: Create Service that runs the task-def
+          command: |
+                aws ecs create-service \
+                --cluster $CLUSTER_NAME \
+                --service-name $SERVICE_NAME \
+                --task-definition $TASK_NAME \
+                --desired-count 1
