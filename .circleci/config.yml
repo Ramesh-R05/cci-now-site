@@ -123,24 +123,28 @@ jobs:
           command: |
                 check_service_name=`aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text`
                 check_service_status=`aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --query status --output text`
-                if [ "$check_service" != "$SERVICE_NAME" ]; then
-                echo -e "\n ### check_service_status SERVICE DOES NOT EXIST"
-                echo -e " ### check_service_name=$check_service_name"
-                echo -e " ### check_service_status=$check_service_status"
-
+                if [ "$check_service_status" == "ACTIVE" ]; then
+                echo -e "\n ### SERVICE STATUS - ACTIVE - Use Existing Service"
+                echo -e " ### SERVICE_NAME=$check_service_name"
+                echo -e " ### SERVICE_STATUS=$check_service_status"
+                aws ecs list-services --cluster $CLUSTER_NAME --query "'$SERVICE_NAME'" --output text
                 fi
                 if [ "$check_service_status" != "ACTIVE" ]; then
-                echo -e "\n ### check_service_status NOT ACTIVE"
-                echo -e " ### check_service_name=$check_service_name"
-                echo -e " ### check_service_status=$check_service_status"
+                echo -e "\n ### SERVICE STATUS - INACTIVE - Delete Service"
+                echo -e " ### SERVICE_NAME=$check_service_name"
+                echo -e " ### SERVICE_STATUS=$check_service_status"
+                aws ecs delete-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force
                 fi
-                if [ "$check_service_status" == "ACTIVE" ]; then
-                echo -e "\n ### check_service_status ACTIVE"
-                echo -e " ### check_service_name=$check_service_name"
-                echo -e " ### check_service_status=$check_service_status"
+                if [ "$check_service" != "$SERVICE_NAME" ]; then
+                echo -e "\n ### SERVICE NAME - NOT-FOUND - Create Service"
+                echo -e " ### SERVICE_NAME=$check_service_name"
+                echo -e " ### SERVICE_STATUS=$check_service_status"
+                aws ecs create-service \
+                --cluster $CLUSTER_NAME \
+                --service-name $SERVICE_NAME \
+                --task-definition $TASK_NAME \
+                --desired-count 1
                 fi
-                aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --output text
-                aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --output json
 
 # AWS ECS Integration: [ Cluster | Service | Task | PullImage-ECR | Deploy-NodeJS-APP ]
       - aws-ecs/update-service:
